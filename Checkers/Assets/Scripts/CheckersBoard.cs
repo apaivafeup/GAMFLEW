@@ -14,8 +14,10 @@ public class CheckersBoard : MonoBehaviour
 
     private bool isWhite;
     private bool isWhiteTurn;
+    private bool hasKilled;
 
     private Piece selectedPiece;
+    private List<Piece> forcedPieces;
 
     private Vector2 mouseOver;
     private Vector2 startDrag;
@@ -103,6 +105,8 @@ public class CheckersBoard : MonoBehaviour
 
     private void TryMove(int startX, int startY, int endX, int endY)
     {
+        forcedPieces = ScanForPossibleMove();
+
         startDrag = new Vector2(startX, startY);
         endDrag = new Vector2(endX, endY);
         selectedPiece = pieces[startX, startY];
@@ -110,7 +114,7 @@ public class CheckersBoard : MonoBehaviour
         MovePiece(selectedPiece, endX, endY);
 
         // Check for out of bounds.
-        if (endX < 0 || endX >= pieces.Length || endY < 0 || endY >= pieces.Length)
+        if (endX < 0 || endX > 7 || endY < 0 || endY > 7)
         {
             if (selectedPiece != null)
                 MovePiece(selectedPiece, startX, startY);
@@ -136,11 +140,26 @@ public class CheckersBoard : MonoBehaviour
             if (selectedPiece.ValidMove(pieces, startX, startY, endX, endY))
             {
                 // Did we kill anything - is this a jump.
-                Piece p = pieces[(startX + endX) / 2, (startY + endY) / 2];
+                
                 if (Mathf.Abs(startX - endX) == 2)
                 {
-                    pieces[(startX + endX) / 2, (startY + endY) / 2] = null;
-                    Destroy(p.gameObject);
+                    Piece p = pieces[(startX + endX) / 2, (startY + endY) / 2];
+                    
+                    if (p != null)
+                    {
+                        pieces[(startX + endX) / 2, (startY + endY) / 2] = null;
+                        Destroy(p.gameObject);
+                        hasKilled = true;
+                    }  
+                }
+
+                // Are we obligated to kill?
+                if (forcedPieces.Count != 0 && !hasKilled)
+                {
+                    MovePiece(selectedPiece, startX, startY);
+                    startDrag = Vector2.zero;
+                    selectedPiece = null;
+                    return;
                 }
 
                 pieces[endX, endY] = selectedPiece;
@@ -148,6 +167,12 @@ public class CheckersBoard : MonoBehaviour
                 MovePiece(selectedPiece, endX, endY);
 
                 EndTurn();
+            } else
+            {
+                MovePiece(selectedPiece, startX, startY);
+                startDrag = Vector2.zero;
+                selectedPiece = null;
+                return;
             }
         }
     }
@@ -157,6 +182,8 @@ public class CheckersBoard : MonoBehaviour
         selectedPiece = null;
         startDrag = Vector2.zero;
         isWhiteTurn = !isWhiteTurn;
+        isWhite = !isWhite;
+        hasKilled = false;
         CheckVictory();
     }
 
@@ -165,6 +192,27 @@ public class CheckersBoard : MonoBehaviour
         // Ending the game.
     }
 
+    private List<Piece> ScanForPossibleMove()
+    {
+        forcedPieces = new List<Piece>();
+
+        // Check all the pieces.
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if (pieces[i,j] != null && pieces[i,j].isWhite == isWhiteTurn)
+                {
+                    if (pieces[i,j].IsForcedToMove(pieces, i, j))
+                    {
+                        forcedPieces.Add(pieces[i, j]);
+                    }
+                }
+            }
+        }
+
+        return forcedPieces;
+    }
     private void GenerateBoard()
     {
         // Generate white team - first 3 rows.
