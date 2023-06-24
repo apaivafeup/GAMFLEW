@@ -26,6 +26,7 @@ public class CheckersBoard : MonoBehaviour
     private void Start()
     {
         isWhiteTurn = true;
+        forcedPieces = new List<Piece>();
         GenerateBoard();
     }
 
@@ -91,7 +92,7 @@ public class CheckersBoard : MonoBehaviour
     private void SelectPiece(int x, int y)
     {
         // Check for out of bounds.
-        if (x < 0 || x >= 7 || y < 0 || y >= 7)
+        if (x < 0 || x >= 8 || y < 0 || y >= 8)
             return;
 
         Piece p = pieces[x, y];
