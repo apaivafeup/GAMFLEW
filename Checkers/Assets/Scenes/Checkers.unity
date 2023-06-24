@@ -393,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whitePiecePrefab: {fileID: 3994901593871997316, guid: 71267760bd88d9945a349a650fcef400, type: 3}
   blackPiecePrefab: {fileID: 2073372047832325439, guid: 5ecc5705d037f3c44b825f84b43864c3, type: 3}
+  isWhite: 0
 --- !u!65 &1212562081
 BoxCollider:
   m_ObjectHideFlags: 0

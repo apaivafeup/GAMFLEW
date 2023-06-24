@@ -12,7 +12,7 @@ public class CheckersBoard : MonoBehaviour
     private Vector3 boardOffset = new Vector3(-4.0f, 0, -4.0f);
     private Vector3 pieceOffset = new Vector3(0.5f, 0, 0.5f);
 
-    private bool isWhite;
+    public bool isWhite;
     private bool isWhiteTurn;
     private bool hasKilled;
 
@@ -95,10 +95,26 @@ public class CheckersBoard : MonoBehaviour
             return;
 
         Piece p = pieces[x, y];
-        if (p != null)
+        if (p != null && p.isWhite == isWhite)
         {
-            selectedPiece = p;
-            startDrag = mouseOver;
+            if (forcedPieces.Count == 0)
+            {
+                selectedPiece = p;
+                startDrag = mouseOver;
+            } else
+            {
+                // Look for the piece under our forced pieces list.
+                if (forcedPieces.Find(fp => fp == p) == null)
+                {
+                    return;
+                }
+
+                selectedPiece = p;
+                startDrag = mouseOver;
+
+            }
+
+            
         }
 
     }
