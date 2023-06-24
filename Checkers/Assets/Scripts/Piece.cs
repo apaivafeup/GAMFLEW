@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
+    public int posX;
+    public int posY;
+
     public bool isWhite;
     public bool isKing;
+
+    public void setPosition(int x, int y)
+    {
+        posX = x;
+        posY = y;
+    }
 
     public bool IsForcedToMove(Piece[,] board, int pieceX, int pieceY)
     {
@@ -123,4 +132,32 @@ public class Piece : MonoBehaviour
         return false;
     }
     
+    public bool HasMovesToPlay(Piece[,] board)
+    {
+        // Test right-up.
+        if (ValidMove(board, posX, posY, posX + 1, posY + 1))
+        {
+            return true;
+        }
+
+        // Test left-up.
+        if (ValidMove(board, posX, posY, posX - 1, posY + 1))
+        {
+            return true;
+        }
+
+        // Test right-down.
+        if (ValidMove(board, posX, posY, posX + 1, posY - 1))
+        {
+            return true;
+        }
+
+        // Test left-down.
+        if (ValidMove(board, posX, posY, posX - 1, posY - 1))
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

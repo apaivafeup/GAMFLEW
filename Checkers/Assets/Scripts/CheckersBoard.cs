@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CheckersBoard : MonoBehaviour
@@ -35,7 +37,7 @@ public class CheckersBoard : MonoBehaviour
         UpdateMouseOver();
 
         Debug.Log(mouseOver);
-        // If it is my turn.
+        if ((isWhite) ? isWhiteTurn : !isWhiteTurn)
         {
             int x = (int)mouseOver.x;
             int y = (int)mouseOver.y;
@@ -196,8 +198,29 @@ public class CheckersBoard : MonoBehaviour
 
     private void EndTurn()
     {
+        int x = (int)endDrag.x;
+        int y = (int)endDrag.y;
+
+        if (selectedPiece != null)
+        {
+            if (selectedPiece.isWhite && !selectedPiece.isKing && y == 7)
+            {
+                selectedPiece.isKing = true;
+                selectedPiece.transform.Rotate(Vector3.right * 180);
+            } else if (!selectedPiece.isWhite && !selectedPiece.isKing && y == 0)
+            {
+                selectedPiece.isKing = true;
+                selectedPiece.transform.Rotate(Vector3.right * 180);
+            }
+        }
+
         selectedPiece = null;
         startDrag = Vector2.zero;
+
+        if (ScanForPossibleMove(selectedPiece, x, y).Count != 0 && hasKilled)
+            return;
+
+
         isWhiteTurn = !isWhiteTurn;
         isWhite = !isWhite;
         hasKilled = false;
@@ -207,8 +230,57 @@ public class CheckersBoard : MonoBehaviour
     private void CheckVictory()
     {
         // Ending the game.
+        var remainingPieces = FindObjectsOfType<Piece>();
+        bool hasWhite = false, hasBlack = false;
+
+        for (int i = 0; i < remainingPieces.Length; i++)
+        {
+            if (remainingPieces[i].isWhite)
+            {
+                hasWhite = true;
+            } else
+            {
+                hasBlack = true;
+            }
+        }
+
+        if ((hasWhite && !hasBlack) || (hasBlack && !hasWhite))
+        {
+            Victory(hasWhite);
+        } else
+        {
+            var remainingWhitePieces = FindObjectsOfType<Piece>().Where(p => p.isWhite);
+            var remainingBlackPieces = FindObjectsOfType<Piece>().Where(p => !p.isWhite);
+            bool whiteAdvantage = remainingBlackPieces.Count() < remainingWhitePieces.Count();
+            var piecesToCheck = (whiteAdvantage ? remainingBlackPieces : remainingWhitePieces);
+            
+            for (int i = 0; i < piecesToCheck.Count(); i++)
+            {
+                if (piecesToCheck.ElementAt(i).HasMovesToPlay(pieces) || ScanForPossibleMove(piecesToCheck.ElementAt(i), piecesToCheck.ElementAt(i).posX, piecesToCheck.ElementAt(i).posY).Count() != 0)
+                {
+                    return;
+                }
+            }
+
+            Victory(whiteAdvantage);
+        }
     }
 
+    private void Victory(bool isWhite)
+    {
+        Debug.Log(isWhite ? "White won." : "Black won.");
+    }
+
+    private List<Piece> ScanForPossibleMove(Piece p, int x, int y)
+    {
+        forcedPieces = new List<Piece>();
+
+        // Check just the one piece.
+        if (pieces[x, y].IsForcedToMove(pieces, x, y))
+            forcedPieces.Add(pieces[x, y]); 
+
+        return forcedPieces;
+    }
     private List<Piece> ScanForPossibleMove()
     {
         forcedPieces = new List<Piece>();
@@ -262,5 +334,6 @@ public class CheckersBoard : MonoBehaviour
     private void MovePiece(Piece p, int x, int y)
     {
         p.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
+        p.setPosition(x, y);
     }
 }
