@@ -17,6 +17,7 @@ public class CheckersBoard : MonoBehaviour
     public bool isWhite;
     private bool isWhiteTurn;
     private bool hasKilled;
+    private bool finished;
 
     private Piece selectedPiece;
     private List<Piece> forcedPieces;
@@ -65,7 +66,7 @@ public class CheckersBoard : MonoBehaviour
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("Board")))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("Board")) || !finished)
         {
             mouseOver.x = (int) (hit.point.x - boardOffset.x);
             mouseOver.y = (int) (hit.point.z - boardOffset.z);
@@ -263,6 +264,7 @@ public class CheckersBoard : MonoBehaviour
     private void Victory(bool isWhite)
     {
         Debug.Log(isWhite ? "White won." : "Black won.");
+        finished = true;
     }
 
     private List<Piece> ScanForPossibleMove(Piece p, int x, int y)
