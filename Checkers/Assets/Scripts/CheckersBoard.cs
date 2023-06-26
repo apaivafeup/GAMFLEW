@@ -31,12 +31,11 @@ public class CheckersBoard : MonoBehaviour
         forcedPieces = new List<Piece>();
         GenerateBoard();
     }
-
     private void Update()
     {
         UpdateMouseOver();
 
-        Debug.Log(mouseOver);
+        //Debug.Log(mouseOver);
         if ((isWhite) ? isWhiteTurn : !isWhiteTurn)
         {
             int x = (int)mouseOver.x;
@@ -76,7 +75,6 @@ public class CheckersBoard : MonoBehaviour
             mouseOver.y = -1;
         }
     }
-
     private void UpdatePieceDrag(Piece p)
     {
         if (!Camera.main)
@@ -121,7 +119,6 @@ public class CheckersBoard : MonoBehaviour
         }
 
     }
-
     private void TryMove(int startX, int startY, int endX, int endY)
     {
         forcedPieces = ScanForPossibleMove();
@@ -195,7 +192,6 @@ public class CheckersBoard : MonoBehaviour
             }
         }
     }
-
     private void EndTurn()
     {
         int x = (int)endDrag.x;
@@ -220,13 +216,11 @@ public class CheckersBoard : MonoBehaviour
         if (ScanForPossibleMove(selectedPiece, x, y).Count != 0 && hasKilled)
             return;
 
-
         isWhiteTurn = !isWhiteTurn;
         isWhite = !isWhite;
         hasKilled = false;
         CheckVictory();
     }
-
     private void CheckVictory()
     {
         // Ending the game.
@@ -256,7 +250,7 @@ public class CheckersBoard : MonoBehaviour
             
             for (int i = 0; i < piecesToCheck.Count(); i++)
             {
-                if (piecesToCheck.ElementAt(i).HasMovesToPlay(pieces) || ScanForPossibleMove(piecesToCheck.ElementAt(i), piecesToCheck.ElementAt(i).posX, piecesToCheck.ElementAt(i).posY).Count() != 0)
+                if (piecesToCheck.ElementAt(i).HasMovesToPlay(pieces))
                 {
                     return;
                 }
@@ -333,7 +327,10 @@ public class CheckersBoard : MonoBehaviour
     }
     private void MovePiece(Piece p, int x, int y)
     {
-        p.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
-        p.setPosition(x, y);
+        if (p != null)
+        {
+            p.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
+            p.setPosition(x, y);
+        }
     }
 }

@@ -15,7 +15,6 @@ public class Piece : MonoBehaviour
         posX = x;
         posY = y;
     }
-
     public bool IsForcedToMove(Piece[,] board, int pieceX, int pieceY)
     {
         if (isWhite || isKing)
@@ -78,10 +77,12 @@ public class Piece : MonoBehaviour
 
         return false;
     }
-
     public bool ValidMove(Piece[,] board, int startX, int startY, int endX, int endY)
     {
         // Check if end position is empty.
+        if (endX > 7 || endY > 7 || endX < 0 || endY < 0)
+            return false;
+
         if (board[endX, endY] != null)
             return false;
 
@@ -131,7 +132,6 @@ public class Piece : MonoBehaviour
 
         return false;
     }
-    
     public bool HasMovesToPlay(Piece[,] board)
     {
         // Test right-up.
