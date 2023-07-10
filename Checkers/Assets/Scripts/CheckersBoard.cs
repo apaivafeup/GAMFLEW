@@ -31,6 +31,8 @@ public class CheckersBoard : MonoBehaviour
         isWhiteTurn = true;
         forcedPieces = new List<Piece>();
         GenerateBoard();
+
+        CanvasManager canvasManager = new CanvasManager();
     }
     private void Update()
     {
