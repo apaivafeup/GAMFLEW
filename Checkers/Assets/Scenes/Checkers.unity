@@ -893,7 +893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &947793567230454599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -930,6 +930,7 @@ GameObject:
   - component: {fileID: 5840435627244803308}
   - component: {fileID: 5422797726595573456}
   - component: {fileID: 6170101390849704781}
+  - component: {fileID: 6170101390849704782}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -1562,6 +1563,7 @@ GameObject:
   - component: {fileID: 4312450302290967908}
   - component: {fileID: 1336718650491770730}
   - component: {fileID: 1213591562909232864}
+  - component: {fileID: 4537214704462650978}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1569,6 +1571,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4537214704462650978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4537214704462650977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff10c176b3f0a941b0762ff99f4b584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonType: 0
 --- !u!1 &4563974754625072744
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,12 +2039,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055148858652823434}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1b0d5247ff8264ebaaec74e9710cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   desiredCanvasType: 0
+--- !u!114 &6170101390849704782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055148858652823434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff10c176b3f0a941b0762ff99f4b584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonType: 0
 --- !u!114 &6205059365508031178
 MonoBehaviour:
   m_ObjectHideFlags: 0
