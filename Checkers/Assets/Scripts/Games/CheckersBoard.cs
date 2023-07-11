@@ -30,6 +30,7 @@ public class CheckersBoard : MonoBehaviour
     {
         isWhiteTurn = true;
         forcedPieces = new List<Piece>();
+        isWhite = true;
         GenerateBoard();
     }
     private void Update()
