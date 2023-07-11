@@ -8,6 +8,8 @@ public enum ButtonType
     MainMenu,
     NewGame,
     OptionsMenu,
+    NewCheckersGame,
+    CheckersChallenges,
     ReturnToMainMenu,
     Exit
 }
@@ -38,6 +40,9 @@ public class ButtonController : MonoBehaviour
                 break;
             case ButtonType.OptionsMenu:
                 //canvasManager.SwitchCanvas(CanvasType.OptionsMenu);
+                break;
+            case ButtonType.NewCheckersGame:
+                canvasManager.SwitchCanvas(CanvasType.CheckersGame);
                 break;
             case ButtonType.Exit:
                 Application.Quit();

@@ -8,7 +8,9 @@ public enum CanvasType
 {
     MainMenu,
     NewGameMenu,
-    OptionsMenu
+    NewCheckersGameMenu,
+    OptionsMenu,
+    CheckersGame
 }
 
 public class CanvasManager : Singleton<CanvasManager>
@@ -27,11 +29,11 @@ public class CanvasManager : Singleton<CanvasManager>
 
     public void SwitchCanvas(CanvasType canvasType)
     {
+        CanvasController desiredCanvas = controllers.Find(x => x.canvasType == canvasType);
+
         if (lastActiveCanvas != null)
             lastActiveCanvas.gameObject.SetActive(false);
 
-        CanvasController desiredCanvas = controllers.Find(x => x.canvasType == canvasType);
-        
         if (desiredCanvas != null)
         {
             desiredCanvas.gameObject.SetActive(true);
