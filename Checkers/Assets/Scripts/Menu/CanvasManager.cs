@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public enum CanvasType
 {
     MainMenu,
     NewGameMenu,
-    NewCheckersGameMenu,
-    OptionsMenu,
-    CheckersGame
+    CheckersGameMenu,
+    CheckersChallenges,
+    CheckersGame,
+    OptionsMenu
 }
 
 public class CanvasManager : Singleton<CanvasManager>

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum ButtonType
@@ -8,7 +9,8 @@ public enum ButtonType
     MainMenu,
     NewGame,
     OptionsMenu,
-    NewCheckersGame,
+    CheckersMenu,
+    CheckersGame,
     CheckersChallenges,
     ReturnToMainMenu,
     Exit
@@ -35,14 +37,20 @@ public class ButtonController : MonoBehaviour
             default:
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
                 break;
+            case ButtonType.CheckersMenu:
+                canvasManager.SwitchCanvas(CanvasType.CheckersGameMenu);
+                break;
             case ButtonType.NewGame:
                 canvasManager.SwitchCanvas(CanvasType.NewGameMenu);
                 break;
             case ButtonType.OptionsMenu:
                 //canvasManager.SwitchCanvas(CanvasType.OptionsMenu);
                 break;
-            case ButtonType.NewCheckersGame:
+            case ButtonType.CheckersGame:
                 canvasManager.SwitchCanvas(CanvasType.CheckersGame);
+                break;
+            case ButtonType.CheckersChallenges:
+                canvasManager.SwitchCanvas(CanvasType.CheckersChallenges);
                 break;
             case ButtonType.Exit:
                 Application.Quit();

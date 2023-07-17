@@ -11,29 +11,32 @@ public class CheckersBoard : MonoBehaviour
     public GameObject whitePiecePrefab;
     public GameObject blackPiecePrefab;
 
-    private Vector3 boardOffset = new Vector3(-4.0f, 0, -4.0f);
-    private Vector3 pieceOffset = new Vector3(0.5f, 0, 0.5f);
+    private protected Vector3 boardOffset = new(-4.0f, 0, -4.0f);
+    private protected Vector3 pieceOffset = new(0.5f, 0, 0.5f);
 
     public bool isWhite;
-    private bool isWhiteTurn;
-    private bool hasKilled;
-    private bool finished;
+    private protected bool isWhiteTurn;
+    private protected bool hasKilled;
+    private protected bool finished;
 
-    private Piece selectedPiece;
-    private List<Piece> forcedPieces;
+    private protected Piece selectedPiece;
+    private protected List<Piece> forcedPieces;
 
-    private Vector2 mouseOver;
-    private Vector2 startDrag;
-    private Vector2 endDrag;
+    private protected Vector2 mouseOver;
+    private protected Vector2 startDrag;
+    private protected Vector2 endDrag;
 
-    private void Start()
+    public virtual void Start()
     {
+        whitePiecePrefab = (GameObject) Resources.Load("Prefabs/WhitePieceVariant");
+        blackPiecePrefab = (GameObject) Resources.Load("Prefabs/BlackPieceVariant");
+
         isWhiteTurn = true;
         forcedPieces = new List<Piece>();
         isWhite = true;
         GenerateBoard();
     }
-    private void Update()
+    private protected void Update()
     {
         UpdateMouseOver();
 
@@ -58,7 +61,7 @@ public class CheckersBoard : MonoBehaviour
             }
         }
     }
-    private void UpdateMouseOver()
+    private protected void UpdateMouseOver()
     {
         if (!Camera.main)
         {
@@ -66,18 +69,18 @@ public class CheckersBoard : MonoBehaviour
             return;
         }
 
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("Board")) || !finished)
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 25.0f, LayerMask.GetMask("Board")) || !finished)
         {
-            mouseOver.x = (int) (hit.point.x - boardOffset.x);
-            mouseOver.y = (int) (hit.point.z - boardOffset.z);
-        } else
+            mouseOver.x = (int)(hit.point.x - boardOffset.x);
+            mouseOver.y = (int)(hit.point.z - boardOffset.z);
+        }
+        else
         {
             mouseOver.x = -1;
             mouseOver.y = -1;
         }
     }
-    private void UpdatePieceDrag(Piece p)
+    private protected void UpdatePieceDrag(Piece p)
     {
         if (!Camera.main)
         {
@@ -85,13 +88,12 @@ public class CheckersBoard : MonoBehaviour
             return;
         }
 
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("Board")))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 25.0f, LayerMask.GetMask("Board")))
         {
             p.transform.position = hit.point + Vector3.up;
         }
     }
-    private void SelectPiece(int x, int y)
+    private protected void SelectPiece(int x, int y)
     {
         // Check for out of bounds.
         if (x < 0 || x >= 8 || y < 0 || y >= 8)
@@ -121,7 +123,7 @@ public class CheckersBoard : MonoBehaviour
         }
 
     }
-    private void TryMove(int startX, int startY, int endX, int endY)
+    private protected void TryMove(int startX, int startY, int endX, int endY)
     {
         forcedPieces = ScanForPossibleMove();
 
@@ -194,7 +196,7 @@ public class CheckersBoard : MonoBehaviour
             }
         }
     }
-    private void EndTurn()
+    private protected void EndTurn()
     {
         int x = (int)endDrag.x;
         int y = (int)endDrag.y;
@@ -215,7 +217,7 @@ public class CheckersBoard : MonoBehaviour
         selectedPiece = null;
         startDrag = Vector2.zero;
 
-        if (ScanForPossibleMove(selectedPiece, x, y).Count != 0 && hasKilled)
+        if (ScanForPossibleMove(x, y).Count != 0 && hasKilled)
             return;
 
         isWhiteTurn = !isWhiteTurn;
@@ -223,7 +225,7 @@ public class CheckersBoard : MonoBehaviour
         hasKilled = false;
         CheckVictory();
     }
-    private void CheckVictory()
+    private protected virtual void CheckVictory()
     {
         // Ending the game.
         var remainingPieces = FindObjectsOfType<Piece>();
@@ -261,14 +263,13 @@ public class CheckersBoard : MonoBehaviour
             Victory(whiteAdvantage);
         }
     }
-
-    private void Victory(bool isWhite)
+    private protected void Victory(bool isWhite)
     {
         Debug.Log(isWhite ? "White won." : "Black won.");
         finished = true;
     }
 
-    private List<Piece> ScanForPossibleMove(Piece p, int x, int y)
+    private protected List<Piece> ScanForPossibleMove(int x, int y)
     {
         forcedPieces = new List<Piece>();
 
@@ -278,7 +279,7 @@ public class CheckersBoard : MonoBehaviour
 
         return forcedPieces;
     }
-    private List<Piece> ScanForPossibleMove()
+    private protected List<Piece> ScanForPossibleMove()
     {
         forcedPieces = new List<Piece>();
 
@@ -299,7 +300,7 @@ public class CheckersBoard : MonoBehaviour
 
         return forcedPieces;
     }
-    private void GenerateBoard()
+    private protected virtual void GenerateBoard()
     {
         // Generate white team - first 3 rows.
         for (int y = 0; y < 3; y++)
@@ -320,15 +321,16 @@ public class CheckersBoard : MonoBehaviour
         }
 
     }
-    private void GeneratePiece(int x, int y)
+    private protected void GeneratePiece(int x, int y)
     {
         GameObject go = Instantiate(y < 4 ? whitePiecePrefab : blackPiecePrefab) as GameObject;
         go.transform.SetParent(transform);
         Piece p = go.GetComponent<Piece>();
+        p.transform.SetParent(GameObject.Find("Board").transform);
         pieces[x, y] = p;
         MovePiece(p, x, y);
     }
-    private void MovePiece(Piece p, int x, int y)
+    private protected void MovePiece(Piece p, int x, int y)
     {
         if (p != null)
         {
