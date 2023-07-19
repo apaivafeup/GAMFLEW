@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Piece : MonoBehaviour
 {
     public int posX;
@@ -9,6 +11,10 @@ public class Piece : MonoBehaviour
 
     public bool isWhite;
     public bool isKing;
+
+    const double XOffset = -956;
+    const double YOffset = -422.75;
+    const double ZOffset = 6;
 
     public void setPosition(int x, int y)
     {

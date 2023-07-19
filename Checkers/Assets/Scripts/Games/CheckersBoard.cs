@@ -26,10 +26,18 @@ public class CheckersBoard : MonoBehaviour
     private protected Vector2 startDrag;
     private protected Vector2 endDrag;
 
+    private protected Material original;
+    private protected Material selected;
+    private protected Material highlighted;
+
     public virtual void Start()
     {
         whitePiecePrefab = (GameObject) Resources.Load("Prefabs/WhitePieceVariant");
         blackPiecePrefab = (GameObject) Resources.Load("Prefabs/BlackPieceVariant");
+
+        original = (Material) Resources.Load("Materials/Atlas");
+        selected = (Material) Resources.Load("Materials/SelectedMaterial");
+        highlighted = (Material)Resources.Load("Materials/HighlightedMaterial");
 
         isWhiteTurn = true;
         forcedPieces = new List<Piece>();
@@ -57,6 +65,9 @@ public class CheckersBoard : MonoBehaviour
             }
 
             if (Input.GetMouseButtonUp(0)) {
+                if (selectedPiece != null)
+                    selectedPiece.GetComponent<MeshRenderer>().material = original;
+
                 TryMove((int) startDrag.x, (int) startDrag.y, x, y);
             }
         }
@@ -105,6 +116,7 @@ public class CheckersBoard : MonoBehaviour
             if (forcedPieces.Count == 0)
             {
                 selectedPiece = p;
+                selectedPiece.GetComponent<MeshRenderer>().material = selected;
                 startDrag = mouseOver;
             } else
             {
@@ -115,11 +127,10 @@ public class CheckersBoard : MonoBehaviour
                 }
 
                 selectedPiece = p;
+                selectedPiece.GetComponent<MeshRenderer>().material = selected;
                 startDrag = mouseOver;
 
-            }
-
-            
+            }  
         }
 
     }
@@ -217,13 +228,21 @@ public class CheckersBoard : MonoBehaviour
         selectedPiece = null;
         startDrag = Vector2.zero;
 
+        ChangeForcedPiecesMaterial(false);
+
         if (ScanForPossibleMove(x, y).Count != 0 && hasKilled)
+        {
+            ChangeForcedPiecesMaterial(true);
             return;
+        }
 
         isWhiteTurn = !isWhiteTurn;
         isWhite = !isWhite;
         hasKilled = false;
         CheckVictory();
+
+        ScanForPossibleMove();
+        ChangeForcedPiecesMaterial(true);
     }
     private protected virtual void CheckVictory()
     {
@@ -247,25 +266,53 @@ public class CheckersBoard : MonoBehaviour
             Victory(hasWhite);
         } else
         {
-            var remainingWhitePieces = FindObjectsOfType<Piece>().Where(p => p.isWhite);
-            var remainingBlackPieces = FindObjectsOfType<Piece>().Where(p => !p.isWhite);
+            var remainingWhitePieces = Array.FindAll(remainingPieces, p => p.isWhite);
+            var remainingBlackPieces = Array.FindAll(remainingPieces, p => !p.isWhite);
             bool whiteAdvantage = remainingBlackPieces.Count() < remainingWhitePieces.Count();
-            var piecesToCheck = (whiteAdvantage ? remainingBlackPieces : remainingWhitePieces);
-            
-            for (int i = 0; i < piecesToCheck.Count(); i++)
-            {
-                if (piecesToCheck.ElementAt(i).HasMovesToPlay(pieces))
-                {
-                    return;
-                }
-            }
 
-            Victory(whiteAdvantage);
+            if (remainingBlackPieces.Count() == remainingWhitePieces.Count())
+            {
+                foreach (Piece p in remainingBlackPieces)
+                {
+                    if (p.HasMovesToPlay(pieces))
+                    {
+                        return;
+                    }
+                }
+
+                foreach (Piece p in remainingWhitePieces)
+                {
+                    if (p.HasMovesToPlay(pieces))
+                    {
+                        return;
+                    }
+                }
+
+                Tie();
+            } else
+            {
+                var piecesToCheck = (whiteAdvantage ? remainingBlackPieces : remainingWhitePieces);
+
+                for (int i = 0; i < piecesToCheck.Count(); i++)
+                {
+                    if (piecesToCheck.ElementAt(i).HasMovesToPlay(pieces))
+                    {
+                        return;
+                    }
+                }
+
+                Victory(whiteAdvantage);
+            }
         }
     }
     private protected void Victory(bool isWhite)
     {
         Debug.Log(isWhite ? "White won." : "Black won.");
+        finished = true;
+    }
+    private protected void Tie()
+    {
+        Debug.Log("It's a tie!");
         finished = true;
     }
 
@@ -275,7 +322,7 @@ public class CheckersBoard : MonoBehaviour
 
         // Check just the one piece.
         if (pieces[x, y].IsForcedToMove(pieces, x, y))
-            forcedPieces.Add(pieces[x, y]); 
+            forcedPieces.Add(pieces[x, y]);
 
         return forcedPieces;
     }
@@ -336,6 +383,22 @@ public class CheckersBoard : MonoBehaviour
         {
             p.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
             p.setPosition(x, y);
+        }
+    }
+    private protected void ChangeForcedPiecesMaterial(bool mistake)
+    {
+        if (mistake)
+        {
+            foreach (Piece p in forcedPieces)
+            {
+                p.GetComponent<MeshRenderer>().material = highlighted;
+            }
+        } else
+        {
+            foreach (Piece p in forcedPieces)
+            {
+                p.GetComponent<MeshRenderer>().material = original;
+            }
         }
     }
 }

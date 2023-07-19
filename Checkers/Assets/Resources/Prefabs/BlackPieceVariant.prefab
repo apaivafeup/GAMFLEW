@@ -58,7 +58,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0be582de2c3e9694daf5a325ca0489f1, type: 2}
     - target: {fileID: 919132149155446097, guid: 3c75385f343179f48a8368deff332201, type: 3}
       propertyPath: m_Name
-      value: BlackPiece Variant
+      value: BlackPieceVariant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3c75385f343179f48a8368deff332201, type: 3}
+      propertyPath: m_TagString
+      value: Selectable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -85,3 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1205766080c1c9e49b504e85e1ccb88d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posX: 0
+  posY: 0
+  isWhite: 0
+  isKing: 0
