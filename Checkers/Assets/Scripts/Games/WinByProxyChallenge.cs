@@ -57,4 +57,15 @@ public class WinByProxyChallenge : CheckersBoard
             Victory(whiteAdvantage);
         }
     }
+
+    private protected List<Piece> ScanForPossibleMove(int x, int y)
+    {
+        forcedPieces = new List<Piece>();
+
+        // Check just the one piece.
+        if (pieces[x, y].IsForcedToMove(pieces, x, y))
+            forcedPieces.Add(pieces[x, y]);
+
+        return forcedPieces;
+    }
 }

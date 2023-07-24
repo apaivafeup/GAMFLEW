@@ -315,7 +315,6 @@ public class CheckersBoard : MonoBehaviour
         Debug.Log("It's a tie!");
         finished = true;
     }
-
     private protected List<Piece> ScanForPossibleMove(int x, int y)
     {
         forcedPieces = new List<Piece>();
