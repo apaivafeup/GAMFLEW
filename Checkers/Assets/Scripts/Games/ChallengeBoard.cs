@@ -28,6 +28,16 @@ public class ChallengeBoard : MonoBehaviour
     private protected Material selected;
     private protected Material highlighted;
 
+    public virtual void Setup(int challenge)
+    {
+        switch (challenge)
+        {
+            case 0:
+                Debug.Log("it's a winbyproxy one");
+                break;
+        }
+    }
+
     public virtual void Start()
     {
         whitePiecePrefab = (GameObject)Resources.Load("Prefabs/WhitePieceVariant");
@@ -67,7 +77,6 @@ public class ChallengeBoard : MonoBehaviour
             startDrag = Vector2.zero;
         }
     }
-
     private protected void TryMove(int startX, int startY, int endX, int endY)
     {
 
@@ -221,4 +230,7 @@ public class ChallengeBoard : MonoBehaviour
             p.setPosition(x, y);
         }
     }
+
+    
+
 }

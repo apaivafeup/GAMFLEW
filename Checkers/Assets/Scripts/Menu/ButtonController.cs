@@ -10,8 +10,9 @@ public enum ButtonType
     NewGame,
     OptionsMenu,
     CheckersMenu,
-    Game,
+    GameNative,
     CheckersChallenges,
+    WinByProxyTutorial,
     ReturnToMainMenu,
     Exit
 }
@@ -34,7 +35,7 @@ public class ButtonController : MonoBehaviour
     {
         switch (buttonType)
         {
-            default:
+            case ButtonType.MainMenu:
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
                 break;
             case ButtonType.CheckersMenu:
@@ -46,15 +47,21 @@ public class ButtonController : MonoBehaviour
             case ButtonType.OptionsMenu:
                 //canvasManager.SwitchCanvas(CanvasType.OptionsMenu);
                 break;
-            case ButtonType.Game:
-                canvasManager.SwitchCanvas(CanvasType.Game);
-                break;
             case ButtonType.CheckersChallenges:
                 canvasManager.SwitchCanvas(CanvasType.CheckersChallenges);
                 break;
             case ButtonType.Exit:
                 Application.Quit();
-                break;                
+                break;
+            case ButtonType.GameNative:
+                canvasManager.SwitchCanvas(CanvasType.GameNative);
+                Instantiate<CheckersBoard>(gameObject.AddComponent<CheckersBoard>());
+                break;
+            case ButtonType.WinByProxyTutorial:
+                canvasManager.SwitchCanvas(CanvasType.TutorialProxy);
+                Instantiate<ChallengeBoard>(gameObject.AddComponent<ChallengeBoard>());
+                gameObject.GetComponent<ChallengeBoard>().Setup(0);
+                break;
         }
     }
 }

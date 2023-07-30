@@ -11,7 +11,8 @@ public enum CanvasType
     NewGameMenu,
     CheckersGameMenu,
     CheckersChallenges,
-    Game,
+    GameNative,
+    TutorialProxy,
     OptionsMenu
 }
 
