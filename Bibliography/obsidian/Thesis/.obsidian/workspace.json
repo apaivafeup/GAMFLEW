@@ -13,6 +13,42 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Bibliography/Software-testing education - A systematic literature mapping.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ded6a7429f8b8613",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Bibliography/Software-testing education - A systematic literature mapping.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e67e1dca6f339c1c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Bibliography/Towards a Model of Testers' Cognitive Processes - Software Testing as a Problem Solving Approach.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "9f6cd16bf844b094",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Bibliography/Exploring the industry’s challenges in software testing - An empirical study.md",
                 "mode": "source",
                 "source": false
@@ -31,7 +67,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -97,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Bibliography/Exploring the industry’s challenges in software testing - An empirical study.md",
+                "file": "Bibliography/Towards a Model of Testers' Cognitive Processes - Software Testing as a Problem Solving Approach.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Bibliography/Exploring the industry’s challenges in software testing - An empirical study.md",
+                "file": "Bibliography/Towards a Model of Testers' Cognitive Processes - Software Testing as a Problem Solving Approach.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Bibliography/Exploring the industry’s challenges in software testing - An empirical study.md"
+                "file": "Bibliography/Towards a Model of Testers' Cognitive Processes - Software Testing as a Problem Solving Approach.md"
               }
             }
           }
@@ -158,10 +195,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e1395164b87d8125",
+  "active": "e67e1dca6f339c1c",
   "lastOpenFiles": [
     "Bibliography/Software-testing education - A systematic literature mapping.md",
+    "Bibliography/Towards a Model of Testers' Cognitive Processes - Software Testing as a Problem Solving Approach.md",
     "Bibliography/Exploring the industry’s challenges in software testing - An empirical study.md",
+    "Bibliography/Software Testing in Introductory Programming Courses.md",
+    "Bibliography/Worlds Apart - Industrial and Academic Focus Areas in Software Testing.md",
+    "Untitled",
     "State of the Art",
     "Bibliography"
   ]

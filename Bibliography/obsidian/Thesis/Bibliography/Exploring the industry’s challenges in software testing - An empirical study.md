@@ -1,6 +1,9 @@
+---
+annotation-target:
+---
 #Software_testing #Software_industry #Challenges #Opinion_survey
 
-* Software testing is an importante phase to ensure developing high-quality software;
+* Software testing is an important phase to ensure developing high-quality software;
 * There is a high industry need for more improvements in effectiveness and efficiency of software testing;
 * Industry and academia have been progressing in a disjoint manner;
 * The article characterizes industry challenges, proceeds to classify them and analyse them, et cetera;

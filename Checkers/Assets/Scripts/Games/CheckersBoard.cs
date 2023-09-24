@@ -136,76 +136,74 @@ public class CheckersBoard : MonoBehaviour
     }
     private protected void TryMove(int startX, int startY, int endX, int endY)
     {
-        forcedPieces = ScanForPossibleMove();
-
         startDrag = new Vector2(startX, startY);
         endDrag = new Vector2(endX, endY);
         selectedPiece = pieces[startX, startY];
 
         MovePiece(selectedPiece, endX, endY);
 
-        // Check for out of bounds.
-        if (endX < 0 || endX > 7 || endY < 0 || endY > 7)
-        {
-            if (selectedPiece != null)
-                MovePiece(selectedPiece, startX, startY);
+        //// Check for out of bounds.
+        //if (endX < 0 || endX > 7 || endY < 0 || endY > 7)
+        //{
+        //    if (selectedPiece != null)
+        //        MovePiece(selectedPiece, startX, startY);
             
-            startDrag = Vector2.zero;
-            selectedPiece = null;
-            return;
-        }
+        //    startDrag = Vector2.zero;
+        //    selectedPiece = null;
+        //    return;
+        //}
 
-        // If there is a selected Piece.
-        if (selectedPiece != null)
-        {
-            // If no move is registered.
-            if (endDrag == startDrag)
-            {
-                MovePiece(selectedPiece, startX, startY);
-                startDrag = Vector2.zero;
-                selectedPiece = null;
-                return;
-            }
+        //// If there is a selected Piece.
+        //if (selectedPiece != null)
+        //{
+        //    // If no move is registered.
+        //    if (endDrag == startDrag)
+        //    {
+        //        MovePiece(selectedPiece, startX, startY);
+        //        startDrag = Vector2.zero;
+        //        selectedPiece = null;
+        //        return;
+        //    }
 
-            // Check if it's a valid move.
-            if (selectedPiece.ValidMove(pieces, startX, startY, endX, endY))
-            {
-                // Did we kill anything - is this a jump.
+        //    // Check if it's a valid move.
+        //    if (selectedPiece.ValidMove(pieces, startX, startY, endX, endY))
+        //    {
+        //        // Did we kill anything - is this a jump.
                 
-                if (Mathf.Abs(startX - endX) == 2)
-                {
-                    Piece p = pieces[(startX + endX) / 2, (startY + endY) / 2];
+        //        if (Mathf.Abs(startX - endX) == 2)
+        //        {
+        //            Piece p = pieces[(startX + endX) / 2, (startY + endY) / 2];
                     
-                    if (p != null)
-                    {
-                        pieces[(startX + endX) / 2, (startY + endY) / 2] = null;
-                        Destroy(p.gameObject);
-                        hasKilled = true;
-                    }  
-                }
+        //            if (p != null)
+        //            {
+        //                pieces[(startX + endX) / 2, (startY + endY) / 2] = null;
+        //                Destroy(p.gameObject);
+        //                hasKilled = true;
+        //            }  
+        //        }
 
-                // Are we obligated to kill?
-                if (forcedPieces.Count != 0 && !hasKilled)
-                {
-                    MovePiece(selectedPiece, startX, startY);
-                    startDrag = Vector2.zero;
-                    selectedPiece = null;
-                    return;
-                }
+        //        // Are we obligated to kill?
+        //        if (forcedPieces.Count != 0 && !hasKilled)
+        //        {
+        //            MovePiece(selectedPiece, startX, startY);
+        //            startDrag = Vector2.zero;
+        //            selectedPiece = null;
+        //            return;
+        //        }
 
-                pieces[endX, endY] = selectedPiece;
-                pieces[startX, startY] = null;
-                MovePiece(selectedPiece, endX, endY);
+        //        pieces[endX, endY] = selectedPiece;
+        //        pieces[startX, startY] = null;
+        //        MovePiece(selectedPiece, endX, endY);
 
-                EndTurn();
-            } else
-            {
-                MovePiece(selectedPiece, startX, startY);
-                startDrag = Vector2.zero;
-                selectedPiece = null;
-                return;
-            }
-        }
+        //        EndTurn();
+        //    } else
+        //    {
+        //        MovePiece(selectedPiece, startX, startY);
+        //        startDrag = Vector2.zero;
+        //        selectedPiece = null;
+        //        return;
+        //    }
+        //}
     }
     private protected void EndTurn()
     {
