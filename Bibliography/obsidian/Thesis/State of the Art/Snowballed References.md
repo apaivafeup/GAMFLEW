@@ -1,0 +1,2 @@
+* Stephen H Edwards. 2003. Rethinking computer science education from a test-first perspective. In Companion of the 18th annual ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications. 148–155.
+* 
