@@ -1,2 +1,2 @@
 * Stephen H Edwards. 2003. Rethinking computer science education from a test-first perspective. In Companion of the 18th annual ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications. 148–155.
-* 
+* T. Astigarraga, E. M. Dow, C. Lara, R. Prewitt and M. R. Ward, "The Emerging Role of Software Testing in Curricula," _2010 IEEE Transforming Engineering Education: Creating Interdisciplinary Skills for Complex Global Environments_, Dublin, Ireland, 2010, pp. 1-26, doi: 10.1109/TEE.2010.5508833.
