@@ -1,9 +1,25 @@
 <template>
-    <CodeBlock :prismjs=true theme="default" :copy-icon="false" :copy-button="false" :copy-tab="false" max-height="625px" :code="myCode" lang="javascript" />
+  <CodeBlock
+    :prismjs="true"
+
+    class="line-numbers"
+    theme="default"
+    :copy-icon="false"
+    :copy-button="false"
+    :copy-tab="false"
+    max-height="625px"
+    :code="myCode"
+    lang="javascript"
+    prism-plugin
+    prismjs
+    style="padding-left: 10px;"
+  />
 </template>
 
-
 <script setup>
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+
 const myCode = `class LinkedList {
     constructor() {
       this.nodes = [];
@@ -13,7 +29,7 @@ const myCode = `class LinkedList {
       return this.nodes.length;
     }
   
-    get head() {
+    get head() { 
       return this.size ? this.nodes[0] : null;
     }
   
@@ -26,7 +42,8 @@ const myCode = `class LinkedList {
       const nextNode = this.nodes[index] || null;
       const node = { value, next: nextNode };
   
-      if (previousNode) previousNode.next = node;
+      /* TARGET! */
+      if (previousNode) previousNode.next = node; // TARGET!
       this.nodes.splice(index, 0, node);
     }
   
@@ -66,6 +83,5 @@ const myCode = `class LinkedList {
       yield* this.nodes;
     }
   }
-    `;
+    `
 </script>
-  
