@@ -6,5 +6,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import CodeBlock from 'vue3-code-block'
 import { createApp } from 'vue'
 import App from './App.vue'
+import { createPinia } from 'pinia'
 
-createApp(App).component('CodeBlock', CodeBlock).mount('#app')
+const pinia = createPinia()
+const app = createApp(App)
+app.use(pinia)
+app.component('CodeBlock', CodeBlock).mount('#app')

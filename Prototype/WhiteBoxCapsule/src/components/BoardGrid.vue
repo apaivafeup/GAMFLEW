@@ -3,24 +3,22 @@ import BoardProgressBar from './BoardProgressBar.vue'
 
 // JS
 import PieceStack from './pieces/PieceStack.vue'
+import { bluePos, redPos, boardStore } from '../store/boardStore'
 
-const redPos = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23]
-const bluePos = [64, 62, 60, 58, 55, 53, 51, 49, 48, 46, 44, 42]
 
 export default {
   data() {
     return {}
   },
   mounted() {
-    this.generateBoard()
+    this.board = boardStore();
+    console.log(this.board);
+    this.board.generateState();
+    console.log(this.board.state);
   },
   methods: {
     select(id) {
       console.log(id)
-    },
-
-    generateBoard() {
-      var htmlBoard = document.getElementById('challenge-board')
     },
 
     getRedCount(index) {

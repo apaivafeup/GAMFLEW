@@ -1,7 +1,8 @@
 export const Color = Object.freeze({
   RED: 'red',
   BLUE: 'blue',
-  STACK: 'stack'
+  STACK: 'stack',
+  EMPTY: "empty"
 })
 
 export class Piece {
