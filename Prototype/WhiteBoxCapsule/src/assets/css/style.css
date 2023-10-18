@@ -117,6 +117,11 @@ pre {
   background-color: blue;
 }
 
+.empty {
+  background-color: transparent;
+  border-color: transparent;
+}
+
 #header-row {
   margin-bottom: 10px;
 }
