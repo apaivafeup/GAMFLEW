@@ -37,7 +37,9 @@ export const boardStore = defineStore('boardStore', {
 
       if (logicalSpot.color == Color.EMPTY) {
         logicalSpot.setColor(this.selectedPiece.color)
+        logicalSpot.stack = this.selectedPiece.stack
         this.selectedPiece.setColor(Color.EMPTY)
+        this.selectedPiece.setEmpty()
         this.selectedPiece = null
       } else if (logicalSpot.color == Color.RED) {
         logicalSpot.setColor(Color.STACK)

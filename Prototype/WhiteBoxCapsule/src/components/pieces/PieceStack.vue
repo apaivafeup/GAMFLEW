@@ -47,7 +47,6 @@ export default {
 
   beforeMount() {
     this.board = boardStore()
-    this.board.generateState()
   },
 
   mounted() {
@@ -62,7 +61,7 @@ export default {
   watch: {
     board: {
       handler: function() {
-        this.board = boardStore()
+        this.$forceUpdate();
       },
       deep: true
     }

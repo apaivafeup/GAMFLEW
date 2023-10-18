@@ -12,6 +12,7 @@ export default {
 
   beforeMount() {
     this.board = boardStore()
+    this.board.generateState()
   },
 
   methods: {},
