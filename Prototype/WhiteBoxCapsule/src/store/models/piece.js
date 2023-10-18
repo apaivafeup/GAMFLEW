@@ -12,6 +12,10 @@ export class Piece {
     this.position = position
   }
 
+  setEmpty() {
+    this.stack = { red: 0, blue: 0 }
+  }
+
   setStack(redCount, blueCount) {
     this.stack.red = redCount
     this.stack.blue = blueCount
