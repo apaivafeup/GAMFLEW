@@ -1,62 +1,60 @@
 <script>
-import PieceStack from './pieces/PieceStack.vue';
-import BluePiece from './pieces/BluePiece.vue';
-import RedPiece from './pieces/RedPiece.vue';
-import BoardProgressBar from './BoardProgressBar.vue';
+import BoardProgressBar from './BoardProgressBar.vue'
 
 // JS
-import {Board} from '../assets/js/board.js';
-import App from '../App.vue';
+import { Board } from '../assets/js/board.js'
+import PieceStack from './pieces/PieceStack.vue'
+
+const redPos = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23];
+const bluePos = [64, 62, 60, 58, 55, 53, 51, 49, 48, 46, 44, 42];
 
 export default {
-    data() {
-        return {
-            board: Board,
-        };
-    },
-    mounted() {
-        this.generateBoard();
-    },
-    methods: {
-        boxMaker(id) {
-            var box = document.createElement("div");
-            box.setAttribute("class", "box");
-            box.setAttribute("id", "board-box-" + id);
-            return box;
-        },
-
-        generateBoard() {
-            var htmlBoard = document.getElementById("challenge-board");
-            this.$data.board = new Board(htmlBoard);
-
-            for (let i = 0; i <= 64; i++) {
-                htmlBoard.appendChild(this.boxMaker(i));
-            }
-
-            for (let i = 0; i <= 24; i = i + 2) {
-                var redChild = <RedPiece/>;
-                document.getElementById("board-box-" + i).appendChild(redChild);
-            }
-
-            // for (let i = 40; i <= 64; i = i + 2) {
-            //     document.getElementById("board-box-" + i).appendChild(BluePiece);
-            // }
-        }
+  data() {
+    return {
+      board: Board
     }
-};
+  },
+  mounted() {
+    this.generateBoard();
+  },
+  methods: {
+    generateBoard() {
+      var htmlBoard = document.getElementById('challenge-board')
+      this.$data.board = new Board(htmlBoard);
+    },
+
+    getRedCount(index) {
+       if (redPos.includes(index)) {
+        return 1;
+       }
+       return 0;
+    },
+
+    getBlueCount(index) {
+        if (bluePos.includes(index)) {
+            return 1;
+        }
+        return 0;
+    }
+  },
+  components: { PieceStack }
+}
 </script>
 
 <template>
-    <div style="display: flex">
-        <div>
-            <div class="game-board-out">
-                <div class="box"></div>
-            </div>
-        </div>
-        <div style="justify-content: center;">
-            <div class="game-board" id="challenge-board" v-once="generateBoard">
-            </div>
-            <BoardProgressBar />
-        </div>
+  <div style="display: flex">
+    <div>
+      <div class="game-board-out">
+        <div class="box"></div>
+      </div>
     </div>
+    <div style="justify-content: center">
+      <div class="game-board" id="challenge-board">
+        <div class="box" v-for="index in 64" :id="'board-box-' + index">
+          <PieceStack :id="'piece-stack-' + index" :redCount="getRedCount(index)" :blueCount="getBlueCount(index)" />
+        </div>
+      </div>
+      <BoardProgressBar />
+    </div>
+  </div>
 </template>

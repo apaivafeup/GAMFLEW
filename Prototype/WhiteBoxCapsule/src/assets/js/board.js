@@ -1,4 +1,4 @@
-import { Piece, Color } from "./piece.js"
+import { Piece, Color } from './piece.js'
 
 export class Board {
   constructor(htmlBoard) {
@@ -11,24 +11,22 @@ export class Board {
 
   generateBoard() {
     for (let i = 0; i < this.boardSide; i++) {
-      this.board.push([]);
+      this.board.push([])
       for (let j = 0; j < this.boardSide; j++) {
-        this.board[i].push([]);
+        this.board[i].push([])
       }
     }
 
     for (let i = 1; i <= 3; i++) {
       for (let j = 1; j <= this.boardSide; j++) {
-        this.board[i - 1][j - 1] = new Piece(i*j, Color.RED);
+        this.board[i - 1][j - 1] = new Piece(i * j, Color.RED)
       }
     }
 
     for (let i = 5; i <= 7; i++) {
       for (let j = 1; j <= this.boardSide; j++) {
-        this.board[i - 1][j - 1] = new Piece(i*j, Color.BLUE);
+        this.board[i - 1][j - 1] = new Piece(i * j, Color.BLUE)
       }
     }
-
-    
   }
 }

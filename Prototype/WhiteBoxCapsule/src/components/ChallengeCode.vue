@@ -1,7 +1,6 @@
 <template>
   <CodeBlock
     :prismjs="true"
-
     class="line-numbers"
     theme="default"
     :copy-icon="false"
@@ -12,7 +11,7 @@
     lang="javascript"
     prism-plugin
     prismjs
-    style="padding-left: 10px;"
+    style="padding-left: 10px"
   />
 </template>
 
