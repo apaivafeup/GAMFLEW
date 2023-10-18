@@ -7,6 +7,7 @@ import CodeBlock from 'vue3-code-block'
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
+import { boardStore } from './store/boardStore'
 
 const pinia = createPinia()
 const app = createApp(App)
