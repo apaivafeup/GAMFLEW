@@ -35,6 +35,9 @@
 </template>
 
 <script>
+import { boardStore } from '../../store/boardStore'
+
+
 export default {
   components: {},
   props: {
@@ -42,6 +45,11 @@ export default {
     redCount: Number,
     blueCount: Number
   },
+
+  mounted() {
+    this.board = boardStore();
+  },
+
   methods: {
     changeRedCount(redCount) {
       this.$props.redCount = redCount
@@ -52,7 +60,7 @@ export default {
     },
 
     select() {
-      console.log(this.$props.id)
+      this.board.selectPiece(this.$props.id.split('-')[2], this.$props.id.split('-')[3]);
     }
   }
 }

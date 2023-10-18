@@ -12,15 +12,9 @@ export default {
   },
   mounted() {
     this.board = boardStore();
-    console.log(this.board);
     this.board.generateState();
-    console.log(this.board.state);
   },
   methods: {
-    select(id) {
-      console.log(id)
-    },
-
     getRedCount(index) {
       if (redPos.includes(index)) {
         return 1
@@ -50,9 +44,9 @@ export default {
     </div>
     <div style="justify-content: center">
       <div class="game-board" id="challenge-board">
-        <div class="box" v-for="index in 64" :id="'board-box-' + index">
+        <div class="box" v-for="index in 64" :id="'board-box-' + (Math.floor((index - 1) / 8)) + '-' + ((index - 1) % 8)">
           <PieceStack
-            :id="'piece-stack-' + index"
+            :id="'piece-stack-' + (Math.floor((index - 1) / 8)) + '-' + ((index - 1) % 8)"
             :redCount="getRedCount(index)"
             :blueCount="getBlueCount(index)"
           />
