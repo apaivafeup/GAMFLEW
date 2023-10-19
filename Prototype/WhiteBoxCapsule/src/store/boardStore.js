@@ -18,7 +18,6 @@ export const boardStore = defineStore('boardStore', {
         this.selectedCoords.x = x
         this.selectedCoords.y = y
         this.selectedPiece = this.state[x][y]
-        console.log(this.selectedPiece)
       } else if (this.selectedPiece == this.state[x][y]) {
         this.selectedPiece = null
       } else {
