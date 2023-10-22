@@ -38,8 +38,8 @@ export default {
         >
           <PieceStack
             :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-            :x="Math.floor((index - 1) / 8)"
-            :y="(index - 1) % 8"
+            :x="(Math.floor((index - 1) / 8)).toString()"
+            :y="((index - 1) % 8).toString()"
           />
         </div>
       </div>

@@ -9,6 +9,8 @@ export const boardStore = defineStore('boardStore', {
     return {
       state: [],
       selectedPiece: null,
+      selectedColor: null,
+      selectedPieceCount: null,
       selectedCoords: { x: 0, y: 0 }
     }
   },
@@ -19,6 +21,18 @@ export const boardStore = defineStore('boardStore', {
         this.selectedCoords.y = y
         this.selectedPiece = this.state[x][y]
         this.selectedPiece.select()
+
+        if (this.selectedPiece.color == Color.STACK) {
+          var color = window.prompt("What movement do you wish to perform?", "blue, red or stack");
+
+          if (color == Color.BLUE || color == Color.RED) {
+            this.selectedColor = color;
+          } else if (color == "stack") {
+            this.selectedColor = Color.STACK;
+          } else {
+            this.selectedPiece = null
+          }
+        }
       } else if (this.selectedPiece == this.state[x][y]) {
         this.selectedPiece = null
       } else {
@@ -29,26 +43,13 @@ export const boardStore = defineStore('boardStore', {
     movePiece(x, y) {
       var logicalSpot = this.state[x][y]
 
-      // var selectedSpot = document.getElementById(
-      //   'board-box-' + this.selectedCoords.x + '-' + this.selectedCoords.y
-      // )
 
-      if (logicalSpot.color == Color.EMPTY) {
-        logicalSpot.setColor(this.selectedPiece.color)
-        logicalSpot.stack = this.selectedPiece.stack
-        this.selectedPiece.setEmpty()
-        this.selectedPiece.select()
-        this.selectedPiece = null
-      } else {
-        logicalSpot.setColor(Color.STACK)
-        logicalSpot.addStack(this.selectedPiece.stack)
+      logicalSpot.addStack(this.selectedPiece.stack, this.selectedColor)
 
-        console.log(logicalSpot)
-
-        this.selectedPiece.setEmpty()
-        this.selectedPiece.select()
-        this.selectedPiece = null
-      }
+      this.selectedPiece.select()
+      this.selectedPiece.setEmpty()
+      this.selectedPiece = null
+      this.selectedColor = null
     },
 
     emptyState() {
