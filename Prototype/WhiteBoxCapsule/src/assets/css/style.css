@@ -117,6 +117,10 @@ pre {
   background-color: blue;
 }
 
+.selected {
+  background-color: rgb(169, 89, 255);
+}
+
 .empty {
   background-color: transparent;
   border-color: transparent;

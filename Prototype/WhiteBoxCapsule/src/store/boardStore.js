@@ -18,6 +18,7 @@ export const boardStore = defineStore('boardStore', {
         this.selectedCoords.x = x
         this.selectedCoords.y = y
         this.selectedPiece = this.state[x][y]
+        this.selectedPiece.select()
       } else if (this.selectedPiece == this.state[x][y]) {
         this.selectedPiece = null
       } else {
@@ -26,23 +27,27 @@ export const boardStore = defineStore('boardStore', {
     },
 
     movePiece(x, y) {
-      console.log(document)
-      var logicalSpot = this.state[x][y],
-        spot = document.getElementById('board-box-' + x + '-' + y)
+      var logicalSpot = this.state[x][y]
 
-      var selectedSpot = document.getElementById(
-        'board-box-' + this.selectedCoords.x + '-' + this.selectedCoords.y
-      )
+      // var selectedSpot = document.getElementById(
+      //   'board-box-' + this.selectedCoords.x + '-' + this.selectedCoords.y
+      // )
 
       if (logicalSpot.color == Color.EMPTY) {
         logicalSpot.setColor(this.selectedPiece.color)
         logicalSpot.stack = this.selectedPiece.stack
-        this.selectedPiece.setColor(Color.EMPTY)
         this.selectedPiece.setEmpty()
+        this.selectedPiece.select()
         this.selectedPiece = null
-      } else if (logicalSpot.color == Color.RED) {
+      } else {
         logicalSpot.setColor(Color.STACK)
-        this.selectedPiece.setColor(Color.EMPTY)
+        logicalSpot.addStack(this.selectedPiece.stack)
+
+        console.log(logicalSpot)
+
+        this.selectedPiece.setEmpty()
+        this.selectedPiece.select()
+        this.selectedPiece = null
       }
     },
 
