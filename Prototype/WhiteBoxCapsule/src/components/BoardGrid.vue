@@ -22,10 +22,19 @@ export default {
 
 <template>
   <div style="display: flex">
-    <div>
+    <div style="flex-direction: column; justify-content: space-between; display: flex">
       <div class="game-board-out">
         <div class="box">
           <!-- <PieceStack :id="piece-stack-out" :coordinates="{x: 0, y: 0}" :stack="{red: 0, blue: 0}" /> -->
+        </div>
+      </div>
+
+      <div class="buttons">
+        <div class="">
+          <button class="button is-primary is-fullwidth" @click="board.generateState()">
+            Reset
+          </button>
+          <button class="button is-primary is-fullwidth" @click="board.undo()">Undo</button>
         </div>
       </div>
     </div>
@@ -38,7 +47,7 @@ export default {
         >
           <PieceStack
             :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-            :x="(Math.floor((index - 1) / 8)).toString()"
+            :x="Math.floor((index - 1) / 8).toString()"
             :y="((index - 1) % 8).toString()"
           />
         </div>

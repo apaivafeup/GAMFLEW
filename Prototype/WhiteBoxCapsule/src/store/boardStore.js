@@ -7,56 +7,52 @@ export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
 export const boardStore = defineStore('boardStore', {
   state: () => {
     return {
+      log: [],
       state: [],
       selectedPiece: null,
-      selectedColor: null,
-      selectedPieceCount: null,
       selectedCoords: { x: 0, y: 0 }
     }
   },
   actions: {
     selectPiece(x, y) {
-      if (this.selectedPiece == null) {
+      if (this.selectedPiece == null && this.state[x][y].color != Color.EMPTY) {
         this.selectedCoords.x = x
         this.selectedCoords.y = y
         this.selectedPiece = this.state[x][y]
         this.selectedPiece.select()
-
-        if (this.selectedPiece.color == Color.STACK) {
-          var color = window.prompt("What movement do you wish to perform?", "blue, red or stack");
-
-          if (color == Color.BLUE || color == Color.RED) {
-            this.selectedColor = color;
-          } else if (color == "stack") {
-            this.selectedColor = Color.STACK;
-          } else {
-            this.selectedPiece = null
-          }
-        }
       } else if (this.selectedPiece == this.state[x][y]) {
         this.selectedPiece = null
-      } else {
+      } else if (this.selectedPiece != null) {
         this.movePiece(x, y)
       }
     },
 
-    movePiece(x, y) {
+    movePiece(x, y, undo = false) {
       var logicalSpot = this.state[x][y]
-
 
       logicalSpot.addStack(this.selectedPiece.stack, this.selectedColor)
 
       this.selectedPiece.select()
       this.selectedPiece.setEmpty()
+
+      if (!undo) {
+        this.log.push({
+          from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
+          to: { x: parseInt(x), y: parseInt(y) }
+        })
+      }
+
       this.selectedPiece = null
       this.selectedColor = null
     },
 
     emptyState() {
-      state = []
+      this.state = []
     },
 
     generateState() {
+      this.emptyState()
+
       for (let i = 1; i <= 8; i++) {
         this.state.push([])
       }
@@ -86,6 +82,23 @@ export const boardStore = defineStore('boardStore', {
         }
         edge = !edge
       }
+    },
+
+    undo() {
+      if (this.log.length <= 1) {
+        this.log = []
+        this.generateState()
+        return
+      }
+
+      if (this.selectedPiece != null) {
+        this.selectedPiece.select()
+      }
+
+      this.selectedPiece = this.state[this.log[this.log.length - 1].to.x][this.log[this.log.length - 1].to.y]
+      this.selectedPiece.select()
+      this.movePiece(this.log[this.log.length - 1].from.x, this.log[this.log.length - 1].from.y, true)
+      this.log.pop()
     }
   }
 })

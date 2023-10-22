@@ -16,17 +16,12 @@ export class Piece {
       this.stack = { red: this.color == Color.RED ? 1 : 0, blue: this.color == Color.RED ? 0 : 1 }
     }
     this.position = position
-    this.selected = false;
+    this.selected = false
   }
 
   setEmpty() {
     this.stack = { red: 0, blue: 0 }
     this.color = Color.EMPTY
-  }
-
-  setStack(redCount, blueCount) {
-    this.stack.red = redCount
-    this.stack.blue = blueCount
   }
 
   pieceCount() {
@@ -40,10 +35,23 @@ export class Piece {
   addStack(stack) {
     this.stack.red += stack.red
     this.stack.blue += stack.blue
+    this.updateColor()
   }
 
   setColor(color) {
     this.color = color
+  }
+
+  updateColor() {
+    if (this.stack.red > 0 && this.stack.blue > 0) {
+      this.color = Color.STACK
+    } else if (this.stack.red > 0) {
+      this.color = Color.RED
+    } else if (this.stack.blue > 0) {
+      this.color = Color.BLUE
+    } else {
+      this.color = Color.EMPTY
+    }
   }
 
   select() {
