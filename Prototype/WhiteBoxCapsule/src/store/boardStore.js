@@ -107,8 +107,8 @@ export const boardStore = defineStore('boardStore', {
     },
 
     undo() {
-      if (this.log.length <= 1) {
-        this.log = []
+      if (this.log[this.currentKey].length <= 1) {
+        this.log[this.currentKey] = []
         this.generateState()
         return
       }
@@ -118,13 +118,13 @@ export const boardStore = defineStore('boardStore', {
       }
 
       this.selectedPiece =
-        this.state[this.currentKey][this.log[this.log.length - 1].to.x][
-          this.log[this.log.length - 1].to.y
+        this.state[this.currentKey][this.log[this.currentKey][this.log.length - 1].to.x][
+          this.log[this.currentKey][this.log[this.currentKey].length - 1].to.y
         ]
       this.selectedPiece.select()
       this.movePiece(
-        this.log[this.log.length - 1].from.x,
-        this.log[this.log.length - 1].from.y,
+        this.log[this.currentKey][this.log[this.currentKey].length - 1].from.x,
+        this.log[this.currentKey][this.log[this.currentKey].length - 1].from.y,
         true
       )
       this.log.pop()
