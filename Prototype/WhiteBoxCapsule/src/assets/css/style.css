@@ -15,6 +15,12 @@ body {
   text-align: right !important;
 }
 
+#challenge-timer-hurry {
+  text-align: right !important;
+  font-weight: bold;
+  color: red;
+}
+
 #challenge-code {
   height: 625px;
   width: 45%;
