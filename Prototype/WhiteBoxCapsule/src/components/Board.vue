@@ -1,20 +1,16 @@
 <script setup>
 import ChallengeCode from './ChallengeCode.vue'
 import BoardGrid from './BoardGrid.vue'
+import { testChallenge } from '../assets/challenges/test/testValues.js'
 
 defineProps({
-  msg: {
-    type: String,
-    required: true
-  },
-  code: String
 })
 </script>
 
 <template>
   <div id="board-row" class="justify-content-between" style="display: flex; flex-direction: row">
-    <ChallengeCode :code="code" />
+    <ChallengeCode :challenge="testChallenge"  />
 
-    <BoardGrid />
+    <BoardGrid :challenge="testChallenge" />
   </div>
 </template>

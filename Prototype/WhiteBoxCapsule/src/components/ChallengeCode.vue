@@ -7,7 +7,7 @@
     :copy-button="false"
     :copy-tab="false"
     max-height="625px"
-    :code="code"
+    :code="challenge.file"
     lang="javascript"
     prism-plugin
     prismjs
@@ -21,10 +21,12 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 </script>
 
 <script>
+import { Challenge } from '../store/models/challenge';
+
 export default {
   components: {},
   props: {
-    code: String
+    challenge: Challenge
   }
 }
 </script>

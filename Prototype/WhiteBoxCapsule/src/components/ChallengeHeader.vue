@@ -1,18 +1,7 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  },
-  timer: Number,
-  title: String
-})
-</script>
-
 <template>
   <header>
     <div class="row justify-content-between" id="header-row">
-      <div class="col" id="challenge-id">Challenge 1</div>
+      <div class="col" id="challenge-id">{{ challenge.name }}</div>
       <div class="col" v-if="this.board.timer > 100" id="challenge-timer">{{ this.board.timer }}</div>
       <div class="col" v-else id="challenge-timer-hurry">{{ this.board.timer }}</div>
     </div>
@@ -21,18 +10,15 @@ defineProps({
 
 <script>
 import { bluePos, redPos, boardStore } from '../store/boardStore'
+import { Challenge } from '../store/models/challenge';
 
 export default {
-  data() {
-    return {}
+  props: {
+    challenge: Challenge
   },
 
   beforeMount() {
     this.board = boardStore()
-
-    setInterval(() => {
-      this.board.timer--;
-    }, 1000)
   },
 
   methods: {},

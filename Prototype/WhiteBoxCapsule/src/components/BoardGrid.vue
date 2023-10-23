@@ -1,5 +1,6 @@
 <script>
 import BoardProgressBar from './BoardProgressBar.vue'
+import { Challenge } from '../store/models/challenge'
 
 // JS
 import PieceStack from './pieces/PieceStack.vue'
@@ -7,7 +8,9 @@ import { bluePos, redPos, boardStore } from '../store/boardStore'
 
 export default {
   data() {
-    return {}
+    return {
+      challenge: Challenge
+    }
   },
 
   beforeMount() {
@@ -30,11 +33,22 @@ export default {
       </div>
 
       <div class="buttons">
-        <div class="">
+        <div style="display: flex; flex-direction: column;">
           <button class="button is-primary is-fullwidth" @click="board.generateState()">
             Reset
           </button>
-          <button class="button is-primary is-fullwidth" @click="board.undo()">Undo</button>
+          <button class="button is-primary is-fullwidth" @click="board.undo()">
+            Undo
+          </button>
+          <button class="button is-primary is-fullwidth" v-if="board.currentKey != 0" @click="board.previous()">
+            Previous
+          </button>
+          <button class="button is-primary is-fullwidth" @click="board.next()">
+            Next
+          </button>
+          <button class="button is-primary is-fullwidth" v-if="board.currentKey == challenge.stepsCount" @click="board.submit()">
+            Submit
+          </button>
         </div>
       </div>
     </div>
@@ -52,7 +66,7 @@ export default {
           />
         </div>
       </div>
-      <BoardProgressBar />
+      <!-- <BoardProgressBar /> -->
     </div>
   </div>
 </template>
