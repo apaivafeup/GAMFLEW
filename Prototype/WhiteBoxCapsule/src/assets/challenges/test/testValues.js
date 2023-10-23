@@ -1,4 +1,4 @@
-import { Challenge } from "../../../store/models/challenge"
+import { Challenge } from '../../../store/models/challenge'
 
 export const testCode = `function test(from, to) {
   if (from == to) {
@@ -21,4 +21,4 @@ export const testCode = `function test(from, to) {
   }
 }`
 
-export const testChallenge = new Challenge("Challenge 0: Test", 2, 300, null, testCode);
+export const testChallenge = new Challenge('Challenge 0: Test', 2, 300, null, testCode)

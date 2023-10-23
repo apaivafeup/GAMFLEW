@@ -2,20 +2,19 @@
 import ChallengeHeader from '../components/ChallengeHeader.vue'
 import Board from '../components/Board.vue'
 import { boardStore } from '../store/boardStore'
-import { testChallenge } from '../assets/challenges/test/testValues';
+import { testChallenge } from '../assets/challenges/test/testValues'
 </script>
 
 <template>
   <ChallengeHeader :challenge="testChallenge" />
 
-  <Board :challenge="testChallenge"/>
+  <Board :challenge="testChallenge" />
 </template>
 
 <script>
 export default {
   components: {},
-  props: {
-  },
+  props: {},
 
   beforeMount() {
     this.board = boardStore()
@@ -23,9 +22,15 @@ export default {
 
     setInterval(() => {
       this.board.timer--
+
+      if (this.board.timer == 0) {
+        this.board.timeout()
+
+        clearInterval()
+      }
     }, 1000)
   },
-  mounted() { },
+  mounted() {},
 
   methods: {},
 

@@ -21,7 +21,7 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 </script>
 
 <script>
-import { Challenge } from '../store/models/challenge';
+import { Challenge } from '../store/models/challenge'
 
 export default {
   components: {},

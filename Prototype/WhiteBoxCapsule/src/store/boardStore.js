@@ -8,8 +8,8 @@ export const boardStore = defineStore('boardStore', {
   state: () => {
     return {
       timer: Number,
-      log: [],
-      state: [],
+      log: {},
+      state: {},
       selectedPiece: null,
       selectedCoords: { x: 0, y: 0 },
       currentKey: 0
@@ -38,18 +38,18 @@ export const boardStore = defineStore('boardStore', {
       this.selectedPiece.setEmpty()
 
       if (!undo) {
-        this.log.push({
+        this.log[this.currentKey].push({
           from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
           to: { x: parseInt(x), y: parseInt(y) }
         })
       }
 
       this.selectedPiece = null
-      this.selectedColor = null
     },
 
     emptyState() {
       this.state[this.currentKey] = []
+      this.log[this.currentKey] = []
     },
 
     generateState() {
@@ -78,17 +78,20 @@ export const boardStore = defineStore('boardStore', {
             if (j % 2 == 0) this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
             else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
           } else {
-            if (j % 2 == 0) this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+            if (j % 2 == 0)
+              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
             else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
           }
         }
         edge = !edge
       }
+
+      this.log[this.currentKey] = []
     },
 
     previous() {
       this.currentKey--
-      this.selectPiece = null
+      this.selectedPiece = null
       this.selectedCoords = { x: 0, y: 0 }
     },
 
@@ -99,7 +102,7 @@ export const boardStore = defineStore('boardStore', {
         this.generateState()
       }
 
-      this.selectPiece = null
+      this.selectedPiece = null
       this.selectedCoords = { x: 0, y: 0 }
     },
 
@@ -115,7 +118,9 @@ export const boardStore = defineStore('boardStore', {
       }
 
       this.selectedPiece =
-        this.state[this.currentKey][this.log[this.log.length - 1].to.x][this.log[this.log.length - 1].to.y]
+        this.state[this.currentKey][this.log[this.log.length - 1].to.x][
+          this.log[this.log.length - 1].to.y
+        ]
       this.selectedPiece.select()
       this.movePiece(
         this.log[this.log.length - 1].from.x,
@@ -123,6 +128,14 @@ export const boardStore = defineStore('boardStore', {
         true
       )
       this.log.pop()
+    },
+
+    timeout() {
+      if (confirm('Time is up! Try again?')) {
+        window.location.reload()
+      } else {
+        window.location.href = '/'
+      }
     }
   }
 })

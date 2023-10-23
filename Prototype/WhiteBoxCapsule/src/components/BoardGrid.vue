@@ -33,20 +33,24 @@ export default {
       </div>
 
       <div class="buttons">
-        <div style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-direction: column">
           <button class="button is-primary is-fullwidth" @click="board.generateState()">
             Reset
           </button>
-          <button class="button is-primary is-fullwidth" @click="board.undo()">
-            Undo
-          </button>
-          <button class="button is-primary is-fullwidth" v-if="board.currentKey != 0" @click="board.previous()">
+          <button class="button is-primary is-fullwidth" @click="board.undo()">Undo</button>
+          <button
+            class="button is-primary is-fullwidth"
+            v-if="board.currentKey != 0"
+            @click="board.previous()"
+          >
             Previous
           </button>
-          <button class="button is-primary is-fullwidth" @click="board.next()">
-            Next
-          </button>
-          <button class="button is-primary is-fullwidth" v-if="board.currentKey == challenge.stepsCount" @click="board.submit()">
+          <button class="button is-primary is-fullwidth" @click="board.next()">Next</button>
+          <button
+            class="button is-primary is-fullwidth"
+            v-if="board.currentKey == challenge.stepsCount"
+            @click="board.submit()"
+          >
             Submit
           </button>
         </div>
