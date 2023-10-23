@@ -1,10 +1,8 @@
 <script setup>
-import Header from './components/Header.vue'
-import Board from './components/Board.vue'
+import ChallengeTest from './pages/ChallengeTest.vue'
+import { testCode } from './assets/challenges/test/testValues.js'
 </script>
 
 <template>
-  <Header />
-
-  <Board />
+  <ChallengeTest :timer="300" :code="testCode" />
 </template>

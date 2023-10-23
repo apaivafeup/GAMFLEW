@@ -6,13 +6,14 @@ defineProps({
   msg: {
     type: String,
     required: true
-  }
+  },
+  code: String
 })
 </script>
 
 <template>
   <div id="board-row" class="justify-content-between" style="display: flex; flex-direction: row">
-    <ChallengeCode />
+    <ChallengeCode :code="code" />
 
     <BoardGrid />
   </div>

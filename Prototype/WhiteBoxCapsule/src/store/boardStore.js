@@ -7,6 +7,7 @@ export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
 export const boardStore = defineStore('boardStore', {
   state: () => {
     return {
+      timer: Number,
       log: [],
       state: [],
       selectedPiece: null,
@@ -95,9 +96,14 @@ export const boardStore = defineStore('boardStore', {
         this.selectedPiece.select()
       }
 
-      this.selectedPiece = this.state[this.log[this.log.length - 1].to.x][this.log[this.log.length - 1].to.y]
+      this.selectedPiece =
+        this.state[this.log[this.log.length - 1].to.x][this.log[this.log.length - 1].to.y]
       this.selectedPiece.select()
-      this.movePiece(this.log[this.log.length - 1].from.x, this.log[this.log.length - 1].from.y, true)
+      this.movePiece(
+        this.log[this.log.length - 1].from.x,
+        this.log[this.log.length - 1].from.y,
+        true
+      )
       this.log.pop()
     }
   }
