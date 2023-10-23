@@ -1,7 +1,7 @@
 export class Challenge {
-  constructor(name, submitCount, timer, board = null, file) {
+  constructor(name, count, timer, board = null, file) {
     this.name = name
-    this.submitCount = submitCount
+    this.count = count
     this.timer = timer
     this.board = board
     this.file = file

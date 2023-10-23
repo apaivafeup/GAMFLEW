@@ -1,8 +1,12 @@
-<script setup>
-import ChallengeTest from './pages/ChallengeTest.vue'
-import { testCode } from './assets/challenges/test/testValues.js'
-</script>
-
 <template>
-  <ChallengeTest />
+  <router-view></router-view>
 </template>
+
+<script>
+export default {
+  beforeMount() {
+    console.log("In app...")
+  },
+  components: {}
+}
+</script>

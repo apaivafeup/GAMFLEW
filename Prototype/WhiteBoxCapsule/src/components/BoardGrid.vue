@@ -7,10 +7,8 @@ import PieceStack from './pieces/PieceStack.vue'
 import { bluePos, redPos, boardStore } from '../store/boardStore'
 
 export default {
-  data() {
-    return {
-      challenge: Challenge
-    }
+  props: {
+    challenge: Challenge
   },
 
   beforeMount() {
@@ -38,19 +36,12 @@ export default {
             Reset
           </button>
           <button class="button is-primary is-fullwidth" @click="board.undo()">Undo</button>
-          <button
-            class="button is-primary is-fullwidth"
-            v-if="board.currentKey != 0"
-            @click="board.previous()"
-          >
+          <button class="button is-primary is-fullwidth" v-if="board.currentKey != 0" @click="board.previous()">
             Previous
           </button>
           <button class="button is-primary is-fullwidth" @click="board.next()">Next</button>
-          <button
-            class="button is-primary is-fullwidth"
-            v-if="board.currentKey == challenge.stepsCount"
-            @click="board.submit()"
-          >
+          <button class="button is-primary is-fullwidth" v-if="board.currentKey + 1 == challenge.count"
+            @click="board.submit()">
             Submit
           </button>
         </div>
@@ -58,16 +49,9 @@ export default {
     </div>
     <div style="justify-content: center">
       <div class="game-board" id="challenge-board">
-        <div
-          class="box"
-          v-for="index in 64"
-          :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-        >
-          <PieceStack
-            :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-            :x="Math.floor((index - 1) / 8).toString()"
-            :y="((index - 1) % 8).toString()"
-          />
+        <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
+          <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+            :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
         </div>
       </div>
       <!-- <BoardProgressBar /> -->
