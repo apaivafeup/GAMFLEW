@@ -1,0 +1,2022 @@
+TY  - CONF
+TI  - Quality of Reusable Game Software: Empowering Developers with Automated Quality Checks
+T2  - 2019 IEEE 19th International Conference on Software Quality, Reliability and Security (QRS)
+SP  - 446
+EP  - 452
+AU  - W. van der Vegt
+AU  - W. Westera
+PY  - 2019
+DO  - 10.1109/QRS.2019.00061
+JO  - 2019 IEEE 19th International Conference on Software Quality, Reliability and Security (QRS)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE 19th International Conference on Software Quality, Reliability and Security (QRS)
+Y1  - 22-26 July 2019
+AB  - This study presents a quality assurance methodology geared to reusable (serious) game software that is posted on the Gamecomponents.eu marketplace portal. This portal provides an online hub for the exchange of serious game software components. The quality assurance methodology comes with a running prototype in C#. It is based on a flexible, plug-in architecture, which allows to flexibly add new checks. The tool starts at solution/project file level rather than code level and covers a variety of issues, e.g. naming conventions, warnings, documentation, portability, namespaces and classes. Specific coding level tests check for portability of game software components. Software testing results show that the approach uncovers a large numbers of hidden flaws and issues that require to be fixed. The tool will empower developers to enhance the quality of their software during development and will contribute to the overall quality level of exposed game software at the Gamecomponents.eu portal.
+ER  - 
+
+TY  - CONF
+TI  - AutoPrompt: A Desktop Application for Designing Micro-Lectures using Micro-Prompt Strategy for Online Education Systems
+T2  - 2021 International Conference on Advanced Learning Technologies (ICALT)
+SP  - 209
+EP  - 210
+AU  - S. Srivastava
+AU  - P. T. V.
+PY  - 2021
+DO  - 10.1109/ICALT52272.2021.00069
+JO  - 2021 International Conference on Advanced Learning Technologies (ICALT)
+IS  - 
+SN  - 2161-377X
+VO  - 
+VL  - 
+JA  - 2021 International Conference on Advanced Learning Technologies (ICALT)
+Y1  - 12-15 July 2021
+AB  - The micro-prompt* strategy balances several complex pedagogical tradeoffs hence found helpful in designing assignment free micro-lectures (MIL). Manual implementation of this strategy is time-consuming and may introduce human errors. This research is the answer to these problems. This research presents a desktop application entitled "AutoPrompt". This application helps in designing assignment free micro-lectures using the micro-prompt strategy by automating the MIL design process. The complete reference architecture of the proposed application is discussed in detail in this paper. To judge our application's quality, we conducted a software testing program and found satisfying results, including some precious feedback. The details of the testing program, results and feedbacks are also presented in this paper. We believe that the reference architecture proposed in this paper helps researchers and software developers to design more sophisticated applications for online educators and learners.
+ER  - 
+
+TY  - CONF
+TI  - Taxonomy of Machine Learning Techniques in Test Case Generation
+T2  - 2023 7th International Conference on Intelligent Computing and Control Systems (ICICCS)
+SP  - 474
+EP  - 481
+AU  - A. Singh
+PY  - 2023
+DO  - 10.1109/ICICCS56967.2023.10142518
+JO  - 2023 7th International Conference on Intelligent Computing and Control Systems (ICICCS)
+IS  - 
+SN  - 2768-5330
+VO  - 
+VL  - 
+JA  - 2023 7th International Conference on Intelligent Computing and Control Systems (ICICCS)
+Y1  - 17-19 May 2023
+AB  - machine learning empowers computer systems to automatically learn and improve their performance without being explicitly programmed for each specific task. It has revolutionized many industries and continues to drive advancements in artificial intelligence, enabling computers to perform complex tasks with greater efficiency and accuracy Machine learning algorithms use training data to learn patterns and make predictions or decisions about new data. It involves a range of techniques such as supervised learning, unsupervised learning, reinforcement learning, deep learning, and others. Machine learning (ML) can be applied to test case generation in several ways: Like Prioritization, Test case reduction, Test case minimization etc. Machine learning techniques can be beneficial in test case generation in several ways. This article reviews the research work on application of machine learning algorithms in test case generation.
+ER  - 
+
+TY  - CONF
+TI  - Experience report: Can software testing education lead to more reliable code?
+T2  - 2015 IEEE 26th International Symposium on Software Reliability Engineering (ISSRE)
+SP  - 359
+EP  - 369
+AU  - O. A. Lazzarini Lemos
+AU  - F. C. Ferrari
+AU  - F. F. Silveira
+AU  - A. Garcia
+PY  - 2015
+DO  - 10.1109/ISSRE.2015.7381829
+JO  - 2015 IEEE 26th International Symposium on Software Reliability Engineering (ISSRE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE 26th International Symposium on Software Reliability Engineering (ISSRE)
+Y1  - 2-5 Nov. 2015
+AB  - Software Testing (ST) is one of the least known aspects of software development. Yet, software engineers often argue that it demands more than half of the costs of a software project. Thus, proper testing education is of paramount importance. In fact, the mere exposition to ST knowledge might have an impact on programming skills. In particular, it can encourage the production of more reliable code. Although this is intuitive, to the best of our knowledge, there are no empirical studies about such effects. Evidence on this matter is important to motivate - or demotivate - classical testing education. Concerned with this, we have conducted a study to investigate the possible impact of ST knowledge on the production of reliable code. Our controlled experiment involved 28 senior-level Computer Science students, 8 auxiliary functions with 92 test cases, and a total of 112 implementations. Results show that code delivered after the exposition to ST knowledge is, on average, 20% more reliable (a significant difference at the 0.01 level). Also, implementations delivered afterwards are not significantly larger in terms of lines of code. This indicates that ST knowledge can make developers produce more reliable software with no additional overhead in terms of program size.
+ER  - 
+
+TY  - JOUR
+TI  - Machine Learning Applied to Software Testing: A Systematic Mapping Study
+T2  - IEEE Transactions on Reliability
+SP  - 1189
+EP  - 1212
+AU  - V. H. S. Durelli
+AU  - R. S. Durelli
+AU  - S. S. Borges
+AU  - A. T. Endo
+AU  - M. M. Eler
+AU  - D. R. C. Dias
+AU  - M. P. Guimarães
+PY  - 2019
+DO  - 10.1109/TR.2019.2892517
+JO  - IEEE Transactions on Reliability
+IS  - 3
+SN  - 1558-1721
+VO  - 68
+VL  - 68
+JA  - IEEE Transactions on Reliability
+Y1  - Sept. 2019
+AB  - Software testing involves probing into the behavior of software systems to uncover faults. Most testing activities are complex and costly, so a practical strategy that has been adopted to circumvent these issues is to automate software testing. There has been a growing interest in applying machine learning (ML) to automate various software engineering activities, including testing-related ones. In this paper, we set out to review the state-of-the art of how ML has been explored to automate and streamline software testing and provide an overview of the research at the intersection of these two fields by conducting a systematic mapping study. We selected 48 primary studies. These selected studies were then categorized according to study type, testing activity, and ML algorithm employed to automate the testing activity. The results highlight the most widely used ML algorithms and identify several avenues for future research. We found that ML algorithms have been used mainly for test-case generation, refinement, and evaluation. Also, ML has been used to evaluate test oracle construction and to predict the cost of testing-related activities. The results of this paper outline the ML algorithms that are most commonly used to automate software-testing activities, helping researchers to understand the current state of research concerning ML applied to software testing. We also found that there is a need for better empirical studies examining how ML algorithms have been used to automate software-testing activities.
+ER  - 
+
+TY  - CONF
+TI  - Speak, Memory! Analyzing Historical Accidents to Sensitize Software Testing Novices
+T2  - 2023 IEEE/ACM 45th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+SP  - 70
+EP  - 81
+AU  - N. Silvis-Cividjian
+AU  - F. Hager
+PY  - 2023
+DO  - 10.1109/ICSE-SEET58685.2023.00013
+JO  - 2023 IEEE/ACM 45th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+IS  - 
+SN  - 2832-7578
+VO  - 
+VL  - 
+JA  - 2023 IEEE/ACM 45th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+Y1  - 14-20 May 2023
+AB  - Accidents tend to be traumatic events that one would rather forget than remember. Software testing novices at the Vrije Universiteit in Amsterdam, on the contrary, rewind the past and learn how to safeguard the future.In this paper we will present FAIL, a rather unconventional assignment that methodically investigate 13 historical software-related accidents, varying from the Ariane-5 rocket explosion to the Knight Capital trading glitch. Innovative is that software testing students use STAMP, a modern systems-theory-based accident causality model and have the possibility to interview a witness of the famous Therac-25 radiation overexposures.A recent deployment to 96 CS graduates received positive evaluations. We learned that even a lightweight, yet systematic investigation of failures (1) motivates students, by sensitizing them to the consequences of suboptimal testing, and (2) reveals key soft-skills testers need to prevent disasters, such as defensive pessimism and a strong backbone. Other, more subtle benefits of the proposed approach include (3) really-happened, instead of artificial case-studies that increase a teacher’s credibility, and (4) extraordinary test scenarios students will always remember.These results invite software engineering educators to include safety assessment elements in their curricula, and call on witnesses of software-related accidents to break the silence and share memories. Future work includes crafting a repository of heritage artifacts (narratives, videos, witness testimonies and physical replicas) to reproduce historical software-related accidents, and make it available to interested educators. Our hope is that motivated professionals will emerge, better prepared to engineer the safe software-intensive systems we all can rely on.
+ER  - 
+
+TY  - CONF
+TI  - Reinforcement Learning Guided Symbolic Execution
+T2  - 2020 IEEE 27th International Conference on Software Analysis, Evolution and Reengineering (SANER)
+SP  - 662
+EP  - 663
+AU  - J. Wu
+AU  - C. Zhang
+AU  - G. Pu
+PY  - 2020
+DO  - 10.1109/SANER48275.2020.9054815
+JO  - 2020 IEEE 27th International Conference on Software Analysis, Evolution and Reengineering (SANER)
+IS  - 
+SN  - 1534-5351
+VO  - 
+VL  - 
+JA  - 2020 IEEE 27th International Conference on Software Analysis, Evolution and Reengineering (SANER)
+Y1  - 18-21 Feb. 2020
+AB  - Symbolic execution is an indispensable technique for software testing and program analysis. Path-explosion is one of the key challenges in symbolic execution. To relieve the challenge, this paper leverages the Q-learning algorithm to guide symbolic execution. Our guided symbolic execution technique focuses on generating a test input for triggering a particular statement in the program. In our approach, we first obtain the dominators with respect to a particular statement with static analysis. Such dominators are the statements that have to be visited before reaching the particular statement. Then we start the symbolic execution with the branch choice controlled by the policy in Q-learning. Only when symbolic execution encounters a dominator, it returns a positive reward to Q-learning. Otherwise, it will return a negative reward. And we update the Q-table in Q-learning accordingly. Our initial evaluation results indicate that in average more than 90% of exploration paths and instructions are reduced for reaching the target statement compared with the default search strategy in KLEE, which shows the promise of this work.
+ER  - 
+
+TY  - CONF
+TI  - Broadening the Search in Search-Based Software Testing: It Need Not Be Evolutionary
+T2  - 2015 IEEE/ACM 8th International Workshop on Search-Based Software Testing
+SP  - 1
+EP  - 7
+AU  - R. Feldt
+AU  - S. Poulding
+PY  - 2015
+DO  - 10.1109/SBST.2015.8
+JO  - 2015 IEEE/ACM 8th International Workshop on Search-Based Software Testing
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE/ACM 8th International Workshop on Search-Based Software Testing
+Y1  - 18-19 May 2015
+AB  - Search-based software testing (SBST) can potentially help software practitioners create better test suites using less time and resources by employing powerful methods for search and optimization. However, research on SBST has typically focused on only a few search approaches and basic techniques. A majority of publications in recent years use some form of evolutionary search, typically a genetic algorithm, or, alternatively, some other optimization algorithm inspired from nature. This paper argues that SBST researchers and practitioners should not restrict themselves to a limited choice of search algorithms or approaches to optimization. To support our argument we empirically investigate three alternatives and compare them to the de facto SBST standards in regards to performance, resource efficiency and robustness on different test data generation problems: classic algorithms from the optimization literature, bayesian optimization with gaussian processes from machine learning, and nested monte carlo search from game playing / reinforcement learning. In all cases we show comparable and sometimes better performance than the current state-of-the-SBST-art. We conclude that SBST researchers should consider a more general set of solution approaches, more consider combinations and hybrid solutions and look to other areas for how to develop the field.
+ER  - 
+
+TY  - CONF
+TI  - Improving Retention and Confidence Through Cross-Course Collaborative Project-Based Learning
+T2  - 2018 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 5
+AU  - J. Winikus
+AU  - L. Ziarek
+AU  - C. Alphonce
+AU  - J. Hartloff
+PY  - 2018
+DO  - 10.1109/FIE.2018.8658509
+JO  - 2018 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2018 IEEE Frontiers in Education Conference (FIE)
+Y1  - 3-6 Oct. 2018
+AB  - This work in progress introduces cross-course collaborative, project-based learning, or C3 PBL. C3 PBL builds on established collaborative project-based learning ideas that have been shown to improve retention at various institutions, by introducing collaboration that spans multiple courses in the same term. We discuss how such a collaboration between students in different courses can change the undergraduate educational experience to improve retention, community, and self-confidence. For our work we are focusing on a curriculum based approach, leveraging collaborative project-based learning experiences to affect the mindset and culture of our department. We present lessons learned from an initial pilot of C3 PBL deployed over two semesters. The pilot looks at the pairing of introductory level courses with an upper level software engineering class. The collaboration is centered on the idea of experienced students in the upper level software engineering course working with novice students from the introductory courses. The logistics explored has lead to more meaningful interaction and assessment in the second semester offering of C3 PBL.
+ER  - 
+
+TY  - CONF
+TI  - What Pakistani Computer Science and Software Engineering Students Think about Software Testing?
+T2  - 2022 29th Asia-Pacific Software Engineering Conference (APSEC)
+SP  - 574
+EP  - 575
+AU  - L. F. Capretz
+AU  - A. R. Gilal
+PY  - 2022
+DO  - 10.1109/APSEC57359.2022.00087
+JO  - 2022 29th Asia-Pacific Software Engineering Conference (APSEC)
+IS  - 
+SN  - 2640-0715
+VO  - 
+VL  - 
+JA  - 2022 29th Asia-Pacific Software Engineering Conference (APSEC)
+Y1  - 6-9 Dec. 2022
+AB  - Software testing is one of the crucial supporting processes of the software life cycle. Unfortunately for the software industry, the role is stigmatized, partly due to misperception and partly due to treatment of the role. The present study aims to analyse the situation to explore what restricts computer science and software engineering students from taking up a testing career in the software industry. To conduct this study, we surveyed 88 Pakistani students taking computer science or software engineering degrees. The results showed that the present study supports previous work into the unpopularity of testing compared to other software life cycle roles. Furthermore, the findings of our study showed that the role of tester has become a social role, with as many social connotations as technical implications.
+ER  - 
+
+TY  - CONF
+TI  - Advancing the State of the Art in Automotive Software Testing by Certification
+T2  - 2018 Third International Conference on Engineering Science and Innovative Technology (ESIT)
+SP  - 1
+EP  - 5
+AU  - R. Reissing
+AU  - H. Pohlmann
+PY  - 2018
+DO  - 10.1109/ESIT.2018.8665173
+JO  - 2018 Third International Conference on Engineering Science and Innovative Technology (ESIT)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 Third International Conference on Engineering Science and Innovative Technology (ESIT)
+Y1  - 19-22 April 2018
+AB  - Testing is the most important activity in quality assurance for software. To ensure that there are enough qualified testers to do the testing, and to make sure that these testers are well trained, the International Software Qualification Board (ISTQB®) introduced the Certified Tester Foundation Level (CTFL®) in 2002. The CTFL program aims at ensuring that all certified testers have a common understanding of software testing - independent of the product domain. So far, more than 500,000 testers worldwide passed the CTFL certification.However, each product domain has specific characteristics and constraints that must be considered when qualifying testers for that domain. This applies especially to the automotive domain, which has international and national regulations, standards, and technologies. These have a high impact on automotive software testing. Additionally, with the introduction of electric, connected and autonomous vehicles, the amount of software in the car is rising significantly. The ISTQB is introducing an add-on qualification to the CTFL for the automotive domain: the CTFL Specialist Automotive Software Tester (CTFL-AuT). The CTFL-AuT gives testers with a CTFL all the necessary background and additional skills for the automotive domain. This paper describes the objectives, the content, and first experiences with the CTFL-AuT qualification program.
+ER  - 
+
+TY  - CONF
+TI  - Predicting and Analyzing College Students’ Performance Based on Multifaceted Data Using Machine Learning
+T2  - 2022 4th International Conference on Advances in Computer Technology, Information Science and Communications (CTISC)
+SP  - 1
+EP  - 6
+AU  - Y. Sun
+AU  - Z. Tan
+AU  - Z. Li
+AU  - S. Long
+PY  - 2022
+DO  - 10.1109/CTISC54888.2022.9849815
+JO  - 2022 4th International Conference on Advances in Computer Technology, Information Science and Communications (CTISC)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 4th International Conference on Advances in Computer Technology, Information Science and Communications (CTISC)
+Y1  - 22-24 April 2022
+AB  - During the teaching process of college courses, prediction of students' final performance at early stages can help teachers intervene students and improve the teaching effects. In recent years, there have been some researches on predicting students' performance based on machine learning techniques. However, many existing works lack comprehensive and sufficient student data, and there is still room for improvement in the effectiveness of predictions. Moreover, many existing methods require obtaining student data of the whole semester, which are unavailable until the end of the semester. In order to alleviate the above problems, 576 students' data are collected during five years teaching of our Software Testing course. The multifaceted data consists of 39 attributes covering students' demographic information, theoretical learning activities, practical training activities and contest learning activities. Several prediction models are created based on logical regression, random forest, and convolutional neural network. Experimental studies show that with the student data available in the middle or second half of the semester, our models can effectively predict students' final performance. Furthermore, the student features that most affect the prediction results are analyzed in the experiments.
+ER  - 
+
+TY  - CONF
+TI  - Fault Localization for Reinforcement Learning
+T2  - 2023 IEEE International Conference On Artificial Intelligence Testing (AITest)
+SP  - 49
+EP  - 50
+AU  - J. Morán
+AU  - A. Bertolino
+AU  - C. De La Riva
+AU  - J. Tuya
+PY  - 2023
+DO  - 10.1109/AITest58265.2023.00016
+JO  - 2023 IEEE International Conference On Artificial Intelligence Testing (AITest)
+IS  - 
+SN  - 2835-3560
+VO  - 
+VL  - 
+JA  - 2023 IEEE International Conference On Artificial Intelligence Testing (AITest)
+Y1  - 17-20 July 2023
+AB  - Reinforcement Learning is widely adopted in industry to approach control tasks in intelligent way. The quality of these programs is important especially when they are used for critical tasks like autonomous driving. Testing and debugging these programs are complex because they behave autonomously without providing insights about the reasons of the decisions taken. Even these decisions could be wrong if they learned from faults. In this paper, we present the first approach to automatically locate faults in Reinforcement Learning programs. This approach called SBFL4RL analyses several executions to extract those internal states that commonly reduce the performance of the program when they are covered. Locating these states can help testers to understand a known fault, or even detect an unknown fault. SBFL4RL is validated in 2 case studies locating correctly an injected fault. Initial results suggest that the faults of reinforcement learning programs can be automatically located, and there is room for further research.
+ER  - 
+
+TY  - CONF
+TI  - Artificial Intelligence Applied to Software Testing: A Literature Review
+T2  - 2020 15th Iberian Conference on Information Systems and Technologies (CISTI)
+SP  - 1
+EP  - 6
+AU  - R. Lima
+AU  - A. M. R. da Cruz
+AU  - J. Ribeiro
+PY  - 2020
+DO  - 10.23919/CISTI49556.2020.9141124
+JO  - 2020 15th Iberian Conference on Information Systems and Technologies (CISTI)
+IS  - 
+SN  - 2166-0727
+VO  - 
+VL  - 
+JA  - 2020 15th Iberian Conference on Information Systems and Technologies (CISTI)
+Y1  - 24-27 June 2020
+AB  - In the last few years Artificial Intelligence (AI) algorithms and Machine Learning (ML) approaches have been successfully applied in real-world scenarios like commerce, industry and digital services, but they are not a widespread reality in Software Testing. Due to the complexity of software testing, most of the work of AI/ML applied to it is still academic. This paper briefly presents the state of the art in the field of software testing, applying ML approaches and AI algorithms. The progress analysis of the AI and ML methods used for this purpose during the last three years is based on the Scopus Elsevier, web of Science and Google Scholar databases. Algorithms used in software testing have been grouped by test types. The paper also tries to create relations between the main AI approaches and which type of tests they are applied to, in particular white-box, grey-box and black-box software testing types. We conclude that black-box testing is, by far, the preferred method of software testing, when AI is applied, and all three methods of ML (supervised, unsupervised and reinforcement) are commonly used in black-box testing being the “clustering” technique, Artificial Neural Networks and Genetic Algorithms applied to “fuzzing” and regression testing.
+ER  - 
+
+TY  - CONF
+TI  - Optimized Mutation of Grey-box Fuzzing: A Deep RL-based Approach
+T2  - 2023 IEEE 12th Data Driven Control and Learning Systems Conference (DDCLS)
+SP  - 1296
+EP  - 1300
+AU  - J. Shao
+AU  - Y. Zhou
+AU  - G. Liu
+AU  - D. Zheng
+PY  - 2023
+DO  - 10.1109/DDCLS58216.2023.10166955
+JO  - 2023 IEEE 12th Data Driven Control and Learning Systems Conference (DDCLS)
+IS  - 
+SN  - 2767-9861
+VO  - 
+VL  - 
+JA  - 2023 IEEE 12th Data Driven Control and Learning Systems Conference (DDCLS)
+Y1  - 12-14 May 2023
+AB  - As a vulnerability discovery technique, fuzzing has been widely used in the field of software test in the past years. Traditional fuzzing has several drawbacks, including poor efficiency, low code coverage, and a high dependence on expert experience. By introducing the deep reinforcement learning technique, one can train the mutator of the fuzzer to move in a desired direction, such as maximizing code coverage or finding more code paths. This paper proposes a reinforcement learning-based fuzzing method to enhance the code coverage and explore potential code vulnerabilities. First, the concept of the input field is introduced to the seed file, reducing invalid operations by marking whether each byte of the seed file is a valid byte. Then, we optimize mutation by modeling the grey-box fuzzing as a reinforcement learning problem and training mutator's behavior on test cases. By observing the rewards caused by mutating with a specific set of actions performed on an initial program input, the fuzzing agent learns a policy that can next generate new higher-reward inputs. Finally, experimental results show that the proposed deep reinforcement learning-based fuzzing method outperforms the baseline random fuzzing algorithms.
+ER  - 
+
+TY  - CONF
+TI  - Mutation Testing of Deep Reinforcement Learning Based on Real Faults
+T2  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 188
+EP  - 198
+AU  - F. Tambon
+AU  - V. Majdinasab
+AU  - A. Nikanjam
+AU  - F. Khomh
+AU  - G. Antoniol
+PY  - 2023
+DO  - 10.1109/ICST57152.2023.00026
+JO  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 16-20 April 2023
+AB  - Testing Deep Learning (DL) systems is a complex task as they do not behave like traditional systems would, notably because of their stochastic nature. Nonetheless, being able to adapt existing testing techniques such as Mutation Testing (MT) to DL settings would greatly improve their potential verifiability. While some efforts have been made to extend MT to the Supervised Learning paradigm, little work has gone into extending it to Reinforcement Learning (RL) which is also an important component of the DL ecosystem but behaves very differently from SL. This paper builds on the existing approach of MT in order to propose a framework, RLMutation, for MT applied to RL. Notably, we use existing taxonomies of faults to build a set of mutation operators relevant to RL and use a simple heuristic to generate test cases for RL. This allows us to compare different mutation killing definitions based on existing approaches, as well as to analyze the behavior of the obtained mutation operators and their potential combinations called Higher Order Mutation(s) (HOM). We show that the design choice of the mutation killing definition can affect whether or not a mutation is killed as well as the generated test cases. Moreover, we found that even with a relatively small number of test cases and operators we manage to generate HOM with interesting properties which can enhance testing capability in RL systems.
+ER  - 
+
+TY  - CONF
+TI  - Software metrics for fault prediction using machine learning approaches: A literature review with PROMISE repository dataset
+T2  - 2017 IEEE International Conference on Cybernetics and Computational Intelligence (CyberneticsCom)
+SP  - 19
+EP  - 23
+AU  - Meiliana
+AU  - S. Karim
+AU  - H. L. H. S. Warnars
+AU  - F. L. Gaol
+AU  - E. Abdurachman
+AU  - B. Soewito
+PY  - 2017
+DO  - 10.1109/CYBERNETICSCOM.2017.8311708
+JO  - 2017 IEEE International Conference on Cybernetics and Computational Intelligence (CyberneticsCom)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 IEEE International Conference on Cybernetics and Computational Intelligence (CyberneticsCom)
+Y1  - 20-22 Nov. 2017
+AB  - Software testing is an important and critical phase of software development life cycle to find software faults or defects and then correct those faults. However, testing process is a time-consuming activity that requires good planning and a lot of resources. Therefore, technique and methodology for predicting the testing effort is important process prior the testing process to significantly increase efficiency of time, effort and cost usage. Correspond to software metric usage for measuring software quality, software metric can be used to identify the faulty modules in software. Furthermore, implementing machine learning technique will allow computer to “learn” and able to predict the fault prone modules. Research in this field has become a hot issue for more than ten years ago. However, considering the high importance of software quality with support of machine learning methods development, this research area is still being highlighted until this year. In this paper, a survey of various software metric used for predicting software fault by using machine learning algorithm is examined. According to our review, this is the first study of software fault prediction that focuses to PROMISE repository dataset usage. Some conducted experiments from PROMISE repository dataset are compared to contribute a consensus on what constitute effective software metrics and machine learning method in software fault prediction.
+ER  - 
+
+TY  - CONF
+TI  - Construction of English APP Self-learning Platform Based on Swarm Intelligence Algorithm
+T2  - 2022 International Conference on Artificial Intelligence of Things and Crowdsensing (AIoTCs)
+SP  - 180
+EP  - 184
+AU  - Y. Song
+AU  - X. Wei
+PY  - 2022
+DO  - 10.1109/AIoTCs58181.2022.00034
+JO  - 2022 International Conference on Artificial Intelligence of Things and Crowdsensing (AIoTCs)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 International Conference on Artificial Intelligence of Things and Crowdsensing (AIoTCs)
+Y1  - 26-28 Oct. 2022
+AB  - Nowadays, the demand for English in life is increasing, and lifelong learning has become a necessity for human survival and development. The purpose of this paper is to build an English APP self-learning platform based on swarm intelligence algorithm. First, it sorts out the literature on English APP self-learning platform and intelligent optimization algorithm at home and abroad; Expected goals, effective learning time, combined with the learning difficulty of resources, knowledge points and time features contained in learning resources to create feature models for students and learning resources effectiveness. Finally, through the use of software testing theory, relevant example tests are carried out on the functions, interfaces, security, performance and other aspects of the platform. The network occupancy rate is 10%, the average memory occupancy rate is 23%, and the CPU occupancy rate is 10%. From this test that the English online self-learning platform has achieved the expected goals in terms of interface and functions.
+ER  - 
+
+TY  - CONF
+TI  - Business Scenario Driven Reinforcement Learning Testing Method
+T2  - 2023 26th ACIS International Winter Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD-Winter)
+SP  - 158
+EP  - 165
+AU  - L. Cai
+AU  - J. Wang
+PY  - 2023
+DO  - 10.1109/SNPD-Winter57765.2023.10223736
+JO  - 2023 26th ACIS International Winter Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD-Winter)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2023 26th ACIS International Winter Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD-Winter)
+Y1  - 5-7 July 2023
+AB  - Reinforcement learning has been successfully applied in software testing, but the existing testing methods cannot perform effective testing according to the characteristics of applications, and using outdated interactive experience during training, resulting in inefficient testing. In this paper, we propose BSDRTesting. Firstly, the demonstration experience of human users is collected according to the functional scenarios and business logic of each application, and combining reinforcement learning and imitation learning to maximize rewards while imitating user behavior, experience replay aims to sample experiences from the agent's self-exploration and expert demonstrations to improve sampling efficiency. At the same time, according to the input rules, the black-box testing method is used to fully test the input events, and finally an experience filtering mechanism is proposed, and the reward value and TD-Error are used as the basis for priority sampling. The experimental results on 10 open source applications show BSDRTesting has achieved significant improvements in code coverage and branch coverage compared with existing methods.
+ER  - 
+
+TY  - CONF
+TI  - Learning CS Subjects of Professional Software Development and Team Projects
+T2  - 2022 IEEE International Conference on Teaching, Assessment and Learning for Engineering (TALE)
+SP  - 71
+EP  - 77
+AU  - Y. C. Chan
+AU  - C. Min Gan
+AU  - C. Y. Lim
+AU  - T. Hwa Tan
+AU  - Q. Cao
+AU  - C. K. Seow
+PY  - 2022
+DO  - 10.1109/TALE54877.2022.00020
+JO  - 2022 IEEE International Conference on Teaching, Assessment and Learning for Engineering (TALE)
+IS  - 
+SN  - 2470-6698
+VO  - 
+VL  - 
+JA  - 2022 IEEE International Conference on Teaching, Assessment and Learning for Engineering (TALE)
+Y1  - 4-7 Dec. 2022
+AB  - Professional Software Development (PSD) course is about the emerging profession of software engineering which involves developing, deploying, testing, and maintaining software. Currently, the Bachelor of Science with Honours in Computing Science (CS) joint degree programme of University of Glasgow (UofG) and Singapore Institute of Technology (SIT) carries out both PSD and Team Projects (TP) courses concurrently, where students are expected to apply the theory learnt from PSD to real-world projects in TP. TP is a practical project continuation from knowledge learnt in the PSD course. Both PSD and TP last two trimesters in parallel. This paper analyses the advantages and disadvantages of the current learning methods in PSD and TP. It is possible that there is still room for improvement in the current system. Tо further analyse the current learning system, a comparison of how the Software Engineering course is taught in other universities is also performed, from where ideas and methodology are proposed. The proposed methodology is analyzed and discussed from the suggestions or feedback of the CS students who have gone through both PSD and TP courses. The purposes are to improve the learning effectiveness of both PSD and TP courses.
+ER  - 
+
+TY  - CONF
+TI  - Coverage-Guided Learning-Assisted Grammar-Based Fuzzing
+T2  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 275
+EP  - 280
+AU  - Y. Jitsunari
+AU  - Y. Arahori
+PY  - 2019
+DO  - 10.1109/ICSTW.2019.00065
+JO  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 22-23 April 2019
+AB  - Grammar-based fuzzing is known to be an effective technique for checking security vulnerabilities in programs, such as parsers, which take complex structured inputs. Unfortunately, most of existing grammar-based fuzzers require a lot of manual efforts of writing complex input grammars, which hinders their practical use. To address this problem, recently proposed approaches use machine learning to automatically acquire a generative model for structured inputs conforming to a complex grammar. Even such approaches, however, have major limitations: they fail to learn a generative model for instruction sequences, and they cannot achieve good coverage of instruction-parsing code. To overcome such limitations. this paper proposes a collection of techniques for enhancing learning-assisited grammar-based fuzzing. Our approach allows for the learning of a generative model for instruction sequences by training a hybrid character/token-level recursive neural network. In addition, we exploit coverage metrics gathered during previous runs of fuzzing in order to efficiently refine (or fine-tune) the learnt model so that it can make high coverage-inducing new inputs. Our experiments with a real PDF parser show that our approach succeeded in generating new sequences of instructions (in PDF page streams) that induce better code coverage (of the PDF parser) than state-of-the-art learning-assisted grammar-based fuzzers.
+ER  - 
+
+TY  - CONF
+TI  - Teaching Internet of Things (IoT) Literacy: A Systems Engineering Approach
+T2  - 2019 IEEE/ACM 41st International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+SP  - 50
+EP  - 61
+AU  - N. Silvis-Cividjian
+PY  - 2019
+DO  - 10.1109/ICSE-SEET.2019.00014
+JO  - 2019 IEEE/ACM 41st International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE/ACM 41st International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+Y1  - 25-31 May 2019
+AB  - The Internet of Things (IoT) invades our world with billions of smart, interconnected devices, all programmed to make our lives easier. For educators, teaching such a vast and dynamic field is both a necessity and a challenge. IoT-relevant topics such as programming, hardware, networking and artificial intelligence are already covered in core computing curricula. Does this mean that fresh graduates are well prepared to tackle complex IoT problems? Unfortunately, nothing could be further from the truth. The problem is that IoT devices are complex systems, where software, hardware, and humans interact with each other. From this interaction, unique behavior and hazardous situations can emerge that might easily stay undetected, unless systems are analyzed as a whole. This paper presents two differently flavored courses that teach IoT using a holistic, system-centric approach. The first is a broad introduction to Pervasive Computing, focused on the intelligence of "Things". The second is an advanced course that zooms on the process of testing a software-intensive system. The key characteristics of our approach are : (1) teaching only the bare essentials (topics needed for end-to-end engineering of a smart system), (2) a strong, hands-on project component, using microcontroller-based miniature systems, inspired by real-life, and (3) a rich partnership with industry and academic idea incubators. Positive student evaluations gathered during the last five years demonstrate that such an approach brings engagement, self-confidence and realism in IoT classrooms. We believe that this success can be replicated in other courses, by shifting the focus on different IoT-relevant aspects.
+ER  - 
+
+TY  - JOUR
+TI  - Toward Understanding Students’ Learning Performance in an Object-Oriented Programming Course: The Perspective of Program Quality
+T2  - IEEE Access
+SP  - 37505
+EP  - 37517
+AU  - Q. Sun
+AU  - J. Wu
+AU  - K. Liu
+PY  - 2020
+DO  - 10.1109/ACCESS.2020.2973470
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 8
+VL  - 8
+JA  - IEEE Access
+Y1  - 2020
+AB  - This pilot study examines how students' performance has evolved in an Object-oriented (OO) programming course and contributes to the learning analytic framework for similar programming courses in university curriculum. First, we briefly introduce the research background, a novel OO teaching practice with consecutive and iterative assignments consisting of programming and testing assignments. We propose a planned quantitative method for assessing students' gains in terms of programming performance and testing performance. Based on real data collected from students who engaged in our course, we use trend analysis to observe how students' performance has improved over the whole semester. By using correlation analysis, we obtain some interesting findings on how students' programming performance correlates with testing performance, which provides persuasive empirical evidence in integrating software testing practices into an Object-oriented programming curriculum. Then, we conduct an empirical study on how students' design competencies are represented by their program code quality changes over consecutive assignments by analyzing their submitted source code in the course system and the GitLab repository. Three different kinds of profiles are found in the students' program quality in the OO design level. The group analysis results reveal several significant differences in their programming performance and testing performance. Moreover, we conduct systematical explanations on how students' programming skill improvement can be attributed to their object-oriented design competency. By performing principal component analysis on software statistical data, a predictive OO metrics suite for both students' programming performance and their testing performance is proposed. The results show that these quality factors can serve as useful predictors of students' learning performance and can provide effective feedback to the instructors in the teaching practices.
+ER  - 
+
+TY  - CONF
+TI  - Reinforcement Learning Application Testing Method based on Multi-attribute Fusion
+T2  - 2022 9th International Conference on Dependable Systems and Their Applications (DSA)
+SP  - 24
+EP  - 33
+AU  - L. Cai
+AU  - J. Wang
+AU  - M. Chen
+AU  - J. Wang
+PY  - 2022
+DO  - 10.1109/DSA56465.2022.00013
+JO  - 2022 9th International Conference on Dependable Systems and Their Applications (DSA)
+IS  - 
+SN  - 2767-6684
+VO  - 
+VL  - 
+JA  - 2022 9th International Conference on Dependable Systems and Their Applications (DSA)
+Y1  - 4-5 Aug. 2022
+AB  - Reinforcement learning has been successfully applied to assess the reliability of applications, but the existing testing methods based on reinforcement learning have the problems of invalid interactive widgets and difficult training, resulting in low testing efficiency. In order to solve these problems, this paper proposes a lightweight application automation testing method of deep reinforcement learning based on multi-attribute fusion (MARTesting). First, the invalid widgets are removed by the difference operation of the attribute sets of the current and previous state, then the attributes of all widget elements on the page are abstracted into state as the input of the neural network, and a state is accurately determined by fusing the position and text information of page elements, finally combine the novelty of the state and the execution frequency of the action as a reward function. The experimental results on six open source applications show that the MARTesting method proposed in this paper has achieved significant improvements in code coverage and branch coverage compared with existing methods.
+ER  - 
+
+TY  - CONF
+TI  - A survey on graduates’ curriculum-based knowledge gaps in software testing
+T2  - 2018 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 8
+AU  - L. P. Scatalon
+AU  - M. L. Fioravanti
+AU  - J. M. Prates
+AU  - R. E. Garcia
+AU  - E. F. Barbosa
+PY  - 2018
+DO  - 10.1109/FIE.2018.8658688
+JO  - 2018 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2018 IEEE Frontiers in Education Conference (FIE)
+Y1  - 3-6 Oct. 2018
+AB  - This research full paper presents a study on graduates' knowledge gaps in software testing according to industry needs. Several studies indicate that students graduate from computing programs with a knowledge gap in software testing. In this sense, we aimed to investigate in details this broader testing gap, by considering gaps in the level of testing topics. We conducted a survey with Brazilian practitioners in order to collect data (N=90). For each testing topic, knowledge gaps were calculated as the difference between what respondents' learned/practiced in undergraduate courses and what they actually applied in industry after graduating. Results provide evidence on points that could be improved in software testing education. Firstly, for all testing topics there was a negative gap on practice activities. This means that students could benefit from more testing assignments throughout the curriculum. Regarding gaps in concepts, some testing topics presented negative gaps (such as test in web applications) and others positive (such as test in aspect oriented software and mutation analysis). Therefore, results suggest that it is possible to counterbalance them in order to reduce the existing gaps. We also present respondents' opinions about their experience in software testing education and industry practices.
+ER  - 
+
+TY  - CONF
+TI  - Summary of: Adaptive Metamorphic Testing with Contextual Bandits
+T2  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 275
+EP  - 277
+AU  - H. Spieker
+AU  - A. Gotlieb
+PY  - 2021
+DO  - 10.1109/ICST49551.2021.00037
+JO  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 12-16 April 2021
+AB  - Metamorphic Testing (MT) is a software testing paradigm that aims at using user-specified properties of a program under test to either check its expected outputs or to generate new test cases [1] , [2] . More precisely, MT tackles the so-called oracle problem which occurs whenever predicting the expected outputs of a system is just too difficult or even impossible. A typical example where MT has been successfully deployed is for testing machine learning models. For instance, in supervised machine learning, we train models for classification problems, but testing these models is hard as only stochastic behaviors of these models can be specified [3] . Indeed, we initially train these models with existing labelled datasets and then we exploit them to classify new data samples. Testing these models means only to reserve some portion of the labelled datasets to control that the correct classification is given for these reserved datasets. However, nothing is really available to test these models on unlabelled data samples.
+ER  - 
+
+TY  - CONF
+TI  - Learning to Rank for Test Case Prioritization
+T2  - 2022 IEEE/ACM 15th International Workshop on Search-Based Software Testing (SBST)
+SP  - 16
+EP  - 24
+AU  - S. Omri
+AU  - C. Sinz
+PY  - 2022
+DO  - 10.1145/3526072.3527525
+JO  - 2022 IEEE/ACM 15th International Workshop on Search-Based Software Testing (SBST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 15th International Workshop on Search-Based Software Testing (SBST)
+Y1  - 9-9 May 2022
+AB  - In Continuous Integration (CI) environments, the productivity of software engineers depends strongly on the ability to reduce the round-trip time between code commits and feedback on failed test cases. Test case prioritization is popularly used as an optimization mechanism for ranking tests by their likelihood in revealing failures. However, existing techniques are usually time and resource intensive making them not suitable to be applied within CI cycles. This paper formulates the test case prioritization problem as an online learn-to-rank model using reinforcement learning techniques. Our approach minimizes the testing overhead and continuously adapts to the changing environment as new code and new test cases are added in each CI cycle. We validated our approach on an industrial case study showing that over 95% of the test failures are still reported back to the software engineers while only 40% of the total available test cases are being executed.
+ER  - 
+
+TY  - CONF
+TI  - A mapping of prescribed assets in the ACM / IEEE and SBC curriculum to the test design and execution practices of TMMi
+T2  - 2021 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 8
+AU  - I. E. Ferreira Costa
+AU  - S. R. Bezerra Oliveira
+PY  - 2021
+DO  - 10.1109/FIE49875.2021.9637410
+JO  - 2021 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2021 IEEE Frontiers in Education Conference (FIE)
+Y1  - 13-16 Oct. 2021
+AB  - This Research to Practice Full Paper presents that the test design and execution activities are essential in a testing process, as they involve the identification and analysis of assets in order to develop and apply effective test cases in the discovery of incidents. In general, these activities are related to architecture, execution, and test analysis, where the TMMi (Test Maturity Model integration) prescribes a process area with many goals and practices to perform them in an organized and effective way. In the applicability of Exploratory Test (ET), most test design activities are generally not performed because many professionals understand that it is an agile test approach that does not have a systematic strategy that can be used, so only execution activities are performed based on the tester's intuition or experience. Additionally, it is observed in the specialized literature the growth in the use of E T in the industry, making it important to have a teaching-learning approach with structured activities allowing the understanding of how to apply test design and execution. Thus, this work aims to carry out a mapping to establish curricular assets to compose a syllabus aimed at teaching-learning activities of test design and execution. From this, have a basis to extract the curricular guidelines directed to the teaching-learning of E T. This is aligned with the research question: How to match assets related to knowledge on test design and execution of TMMi that adhere to the ACM/IEEE (Association for Computing Machinery / Institute of Electrical and Electronics Engineers) curriculum and the reference to training undergraduate course in Computing at SBC (Brazilian Computer Society)? The mapping took place sequentially: i) the study theme was defined, ii) the curriculum structures and their inputs to be analyzed were defined, iii) the description of each asset was identified, iv) the correspondence between the assets was made, and v) the mapping was validated using peer review. The activity “iv” was carried out based on the specific goals and practices related to the Test Design and Execution process area of TMMi to analyze the correlation of assets present in the SBC and ACM/IEEE curriculum guidelines. As a result, correspondence was generated on two levels, as follows: a) Training axes (SBC) and knowledge areas (ACM/IEEE) related to the test design and execution area of TMMi, b) Derived skills and contents (SBC), as well as topics and learning outcomes (ACM/IEEE) related to specific goals, specific practices and sub-practices of the TMMi process area. In general, the items listed above were identified, respectively, 13 assets and 110 items of assets adhering to the guidelines prescribed in the international and national curriculum for Test Design and Execution. The mapping encourages the development of a teaching plan focused on teaching and learning of ET design and execution, as there is a strong adherence of assets and their corresponding items with academic and industry practices. Such mapping should support the application of specific guidelines to ET.
+ER  - 
+
+TY  - CONF
+TI  - Application of Data Guidance Site Generation Technology in the Cloud Platform Supporting the Construction of Subject Teams in Finance and Economics Applied Universities
+T2  - 2022 International Conference on Edge Computing and Applications (ICECAA)
+SP  - 19
+EP  - 22
+AU  - L. Li
+AU  - Y. Tian
+PY  - 2022
+DO  - 10.1109/ICECAA55415.2022.9936334
+JO  - 2022 International Conference on Edge Computing and Applications (ICECAA)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 International Conference on Edge Computing and Applications (ICECAA)
+Y1  - 13-15 Oct. 2022
+AB  - On the basis of in-depth research on SOA architecture, Web services, software testing technology and data-guided site generation technology, this paper studies that the “Trinity” entrepreneurship project is an entrepreneurial practice teaching mode explored and practiced by finance and economics colleges and universities, project authenticity, knowledge integration, diversity and openness, teamwork and good attitude and other teaching characteristics. Build a practical teaching mode system with financial and economic characteristics; improve the working mechanism, strengthen the construction of teachers and practice bases, and build a practical teaching guarantee system for ideological and political courses.
+ER  - 
+
+TY  - CONF
+TI  - A Machine Learning Model for Predicting Performance of Gamified Software Test Specialist
+T2  - 2022 International Conference on INnovations in Intelligent SysTems and Applications (INISTA)
+SP  - 1
+EP  - 3
+AU  - B. B. Ödevci
+AU  - M. Özdem
+AU  - E. Emsen
+AU  - T. Bilen
+PY  - 2022
+DO  - 10.1109/INISTA55318.2022.9894269
+JO  - 2022 International Conference on INnovations in Intelligent SysTems and Applications (INISTA)
+IS  - 
+SN  - 2768-7295
+VO  - 
+VL  - 
+JA  - 2022 International Conference on INnovations in Intelligent SysTems and Applications (INISTA)
+Y1  - 8-12 Aug. 2022
+AB  - Gamification is one of the new trend in software development and it has already gained a well-deserved popularity in finance, healthcare, education and even manufacturing. Software testing is a continuous cycle layered with several stages and spanning across multiple types of testing. Teams need to design test suites and implement test execution methodologies in each stage of development. For this reason, software testing teams comprise many individuals skilled in different aspects of software testing. The inclusion of gamification in this course can lead to positive benefits based on the idea that it is used to influence behavior. This paper presents an preliminary study of Machine Learning (ML) approach for predicting performance gamification of software tester specialists under a gamified testing environment. ImonaGame is a software company that delivers gamification as a service for software testing team of 30 members with different static and dynamic data. User behavior collected in dynamic data sets was classified into categories by deconstructing complex activities into behavior chains using supervision of domain experts. The classification approach was centered on the system’s testing processes’ performance objectives and potential for encouragement or dissuasion. Motivators and obstacles for the target activity and its behaviors will be found when the model has been developed. After conducting preliminary research, it is possible to determine whether gameful design is an effective and efficient tactic for achieving the desired result by analyzing needs, motives, and obstacles. The source data was classified target data in four categories such as I: Static feature (personal information; 4), II: Daily feature (gamification elements; 14), III: Mission feature (points; 7 sources) and IV: Cumulative futures (Sum of daily and mission features; 13).
+ER  - 
+
+TY  - CONF
+TI  - Boosted Exploratory Test Architecture: Coaching Test Engineers with Word Similarity
+T2  - 2021 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 173
+EP  - 174
+AU  - Y. Nishi
+AU  - Y. Shibasaki
+PY  - 2021
+DO  - 10.1109/ICSTW52544.2021.00038
+JO  - 2021 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 12-16 April 2021
+AB  - Testing software using machine learning and neural network is difficult due to non-linearity. This paper proposes Boosted Exploratory Test architecture to support creativity of test engineers by using a non-linear test generator. This paper also shows experimental results Boosted Exploratory Test architecture with Word2Vec is better for a smart speaker.
+ER  - 
+
+TY  - CONF
+TI  - Qunomon: A FAIR testbed of quality evaluation for machine learning models
+T2  - 2021 28th Asia-Pacific Software Engineering Conference Workshops (APSEC Workshops)
+SP  - 21
+EP  - 24
+AU  - K. Narita
+AU  - M. Akita
+AU  - K. -S. Kim
+AU  - Y. Iwase
+AU  - Y. Watanaka
+AU  - T. Nakagawa
+AU  - Q. Zhong
+PY  - 2021
+DO  - 10.1109/APSECW53869.2021.00015
+JO  - 2021 28th Asia-Pacific Software Engineering Conference Workshops (APSEC Workshops)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 28th Asia-Pacific Software Engineering Conference Workshops (APSEC Workshops)
+Y1  - 6-9 Dec. 2021
+AB  - Rapid development of artificial intelligence (AI) technologies brings quality and reliability issues to real-world applications and business products, as well as their advanced performance. However, traditional testing methods of the quality of engineering systems have difficulties supporting AI systems with machine learning (ML) based on large-scale data due to their uncertainty, non-deterministic, and vulnerability. Academic fields have studied new techniques to manage and guarantee high-quality ML components in AI systems with the importance of realizing trustworthy AI. Moreover, regulatory authorities have developed new guidelines and rules for safe and broad market adoption to control quality. Although there is a lot of effort from both sides, ML quality control and assessment pose challenges that arise from gaps between their different points of view. This paper proposes a new testbed called “Qunomon (QUality + gNOMON)” that harmonizes gaps of two sides and supports the combination and comparison of various testing methods in ML component quality. The testbed is designed to improve the findability, accessibility, interoperability, and reusability of testing methods. Furthermore, we show the efficiency of quality testing and reporting with case studies where our testbed is applied.
+ER  - 
+
+TY  - CONF
+TI  - Test Agents: The Next Generation of Test Cases
+T2  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 305
+EP  - 308
+AU  - E. Enoiu
+AU  - M. Frasheri
+PY  - 2019
+DO  - 10.1109/ICSTW.2019.00070
+JO  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 22-23 April 2019
+AB  - Growth of software size, lack of resources to perform regression testing, and failure to detect bugs faster have seen increased reliance on continuous integration and test automation. Even with greater hardware and software resources dedicated to test automation, software testing is faced with enormous challenges, resulting in increased dependence on centralized and complex mechanisms for automated test case selection as part of continuous integration. These mechanisms are currently using static entities called test cases that are concretely realized as executable scripts. Our key vision is to provide test cases with more reasoning, adaptive behavior and learning capabilities by using the concepts of software agents. We refer to such test cases as test agents. The model that underlie a test agent is capable of flexible and autonomous actions in order to meet overall testing objectives. Our goal is to increase the decentralization of regression testing by letting test agents to know for themselves when they should be executing, how they should update their purpose, and when they should interact with each other. In this paper, we envision test agents that display such adaptive autonomous behavior. Existing and emerging developments and challenges regarding the use of test agents are explored-in particular, new research that seeks to use adaptive autonomous agents in software testing.
+ER  - 
+
+TY  - CONF
+TI  - Fuzzy adaptive teaching learning-based optimization strategy for pairwise testing
+T2  - 2017 7th IEEE International Conference on System Engineering and Technology (ICSET)
+SP  - 17
+EP  - 22
+AU  - F. Din
+AU  - K. Z. Zamli
+PY  - 2017
+DO  - 10.1109/ICSEngT.2017.8123413
+JO  - 2017 7th IEEE International Conference on System Engineering and Technology (ICSET)
+IS  - 
+SN  - 2470-640X
+VO  - 
+VL  - 
+JA  - 2017 7th IEEE International Conference on System Engineering and Technology (ICSET)
+Y1  - 2-3 Oct. 2017
+AB  - Pairwise strategies have tested effectively a range of software and hardware systems. These testing strategies offer solutions that can substitute exhaustive testing. In simple terms, a pairwise testing strategy significantly minimizes large input parameter values (or configuration options) of a system into a smaller set based on pairwise interaction (or combination). Fuzzy Adaptive Teaching Learning-based Optimization (ATLBO) algorithm is an improved form of Teaching Learning-based Optimization (TLBO) algorithm. ATLBO employs Mamdani fuzzy inference system to select adaptively either teacher phase or learner phase based on performance instead of blind sequential application as in original TLBO. In this paper, two pairwise testing strategies based on ATLBO and TLBO are proposed. Experimental results suggest that the proposed strategies are capable to be part of testers' toolkit as they outperformed competing meta-heuristic based pairwise testing strategies and tools on many pairwise benchmarks. Moreover, ATLBO based strategy generated optimal pairwise test suites than the one based on TLBO.
+ER  - 
+
+TY  - CONF
+TI  - An Ensemble Model for Software Defect Prediction
+T2  - 2022 2nd International Conference on Digital Futures and Transformative Technologies (ICoDT2)
+SP  - 1
+EP  - 5
+AU  - A. R. Ali
+AU  - A. Ur Rehman
+AU  - A. Nawaz
+AU  - T. M. Ali
+AU  - M. Abbas
+PY  - 2022
+DO  - 10.1109/ICoDT255437.2022.9787439
+JO  - 2022 2nd International Conference on Digital Futures and Transformative Technologies (ICoDT2)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 2nd International Conference on Digital Futures and Transformative Technologies (ICoDT2)
+Y1  - 24-26 May 2022
+AB  - Software testing is one of the important ways to ensure the quality of software. It is found that testing cost more than 50% of overall project cost. Effective and efficient software testing utilizes the minimum resources of software. Therefore, it is important to construct the procedure which is not only able to perform the efficient testing but also minimizes the utilization of project resources. The goal of software testing is to find maximum defects in the software system. As world is continuously moving toward data driven approach for making important decision. Therefore, in this research paper we performed the machine learning analysis on the publicly available datasets and tried to achieve the maximum accuracy. The major focus of the paper is to apply different machine learning techniques on the datasets and find out which technique produce efficient result. Particularly, we proposed an ensemble learning models and perform comparative analysis among KNN, Decision tree, SVM and Naïve Bayes on different datasets and it is demonstrated that performance of Ensemble method is more than other methods in term of accuracy, precision, recall and F1-score. The classification accuracy of ensemble model trained on CM1 is 98.56%, classification accuracy of ensemble model trained on KM2 is 98.18% similarly, the classification accuracy of ensemble learning model trained on PC1 is 99.27%. This reveals that ensemble learning is more efficient method for making the defect prediction as compared other techniques.
+ER  - 
+
+TY  - CONF
+TI  - A study on assets applied in exploratory test design and execution: an interview application
+T2  - 2021 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 8
+AU  - I. E. F. Costa
+AU  - S. R. B. Oliveira
+PY  - 2021
+DO  - 10.1109/FIE49875.2021.9637359
+JO  - 2021 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2021 IEEE Frontiers in Education Conference (FIE)
+Y1  - 13-16 Oct. 2021
+AB  - This Research to Practice Full Paper presents that the Exploratory Test (ET) is evidenced in the specialized literature as an alternative used in the industry to meet the needs of agile and / or short-term test processes. However, there is still an understanding by professionals in the field that this agile test approach is informal, not considering the realization, mainly, of a strategy that can encompass ET project activities and execution in a systematic way. It is noted that the industry has been spreading the ET due to proposing an efficacy for quick feedback of the test process and not requiring great effort in documentation. However, the applicability of ET still faces challenges related to the definition of an adequate and effective strategy, mainly, to the design and execution of this approach. In view of this, this study aims to identify tools, techniques and / or methods, and work products relevant to ET design and execution activities used by professionals in the field in the industrial context adhering to the practices and goals prescribed in the TMMi (Test Maturity Model Integration). For this, a Survey was applied, by means of the interview technique with implementing professionals and / or evaluators of MPT.Br (Brazilian Testing Process Improvement), certified by TMMi and professionals without accreditation, as long as they are active in the Software Testing area, mainly with process improvement. The results were organized into three groups: 1) identification of the participants, 2) identification of tools, techniques and / or methods, and work products in the context of the ET design, and 3) identification of tools, techniques and / or methods, and work products in the context of ET execution. Thus, in group “1” all participants had more than 5 years of experience in Software Testing and with the ET approach, having their first contact with ET in the work environment or study on their own. In group “2” the Testlink and Jira tools are most used to support project activities, with risk analysis being the most cited technique for activities to identify and prioritize conditions and data for the test, also serving as a complement to the application of ET. As for work products, the most cited were the use of the test plan and results of previous test runs in which the ET was applied. In group “3”, the Mantis and Jira tools were most cited to support the management and execution of the tests. Regarding the execution techniques, the use of ET with manual and automated strategy is noted, and in relation to the work products, the incidents report and matrix were the most cited. It is noted that a tool serves many activities related to the design and execution of ET, with risk analysis being a widely used technique and incident reports being important in the analysis to make decisions regarding the testing process. Finally, it is mentioned that this work together with another study previously carried out on the identification of assets in the international and Brazilian curricula for the use of teaching-learning test design and execution will serve to support the elaboration of a ET teaching plan.
+ER  - 
+
+TY  - CONF
+TI  - Software Testing Conferences and Women
+T2  - 2018 IEEE/ACM 1st International Workshop on Gender Equality in Software Engineering (GE)
+SP  - 17
+EP  - 20
+AU  - J. Jász
+AU  - Á. Beszédes
+PY  - 2018
+DO  - 
+JO  - 2018 IEEE/ACM 1st International Workshop on Gender Equality in Software Engineering (GE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE/ACM 1st International Workshop on Gender Equality in Software Engineering (GE)
+Y1  - 27 May-3 June 2018
+AB  - The question of gender equality is an increasing concern in all aspects of life these days. ICT has its peculiarities in this respect, as it is often regarded as a "male" discipline. Among the many different subfields of ICT, in this work we concentrate on software testing, an area in which a significant portion of all ICT professionals is engaged. Testing is an interesting field because according to certain views more women work in this area compared to other ICT fields. Since testing itself still covers a large topic involving education, research and industry, we further limit our analysis to em software testing conferences and the rate of women participation in important roles at these venues. We looked at keynote speakers and chairs in different roles and program committees, but not the participants themselves as reliable data was available only for the former. We investigated if gender distribution was similar to or different from the reported data for ICT as a whole. We also compared the different types of conferences, academic and industrial, from this aspect. We have found, among other things, that gender ratio at software testing conferences is similar to other fields, but in more important roles such as keynotes, equality is more significantly maintained.
+ER  - 
+
+TY  - CONF
+TI  - Grey-box Fuzzing With Deep Reinforcement Learning And Process Trace Back
+T2  - 2021 4th International Conference on Advanced Electronic Materials, Computers and Software Engineering (AEMCSE)
+SP  - 1167
+EP  - 1171
+AU  - C. Chen
+PY  - 2021
+DO  - 10.1109/AEMCSE51986.2021.00238
+JO  - 2021 4th International Conference on Advanced Electronic Materials, Computers and Software Engineering (AEMCSE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 4th International Conference on Advanced Electronic Materials, Computers and Software Engineering (AEMCSE)
+Y1  - 26-28 March 2021
+AB  - Grey-box fuzzing, as a software testing technique, can find possible program bugs such as memory leaks, assertion failures and invalid input by generate random data then input it into a program, and monitor program exceptions. With program running, grey-box fuzzing collected the branch information in order to guide choosing next seeds. In this paper, we try to use the concept of Markov decision processes to formalize grey-box fuzzing as a deep reinforcement learning problem, and use process trace back(Intel Process Trace) to collect branch information in order to improve its efficiency toward binary programs. The experiments show this approach can outperform baseline random fuzzing and gain performance improvement.
+ER  - 
+
+TY  - CONF
+TI  - GenRL at the SBST 2022 Tool Competition
+T2  - 2022 IEEE/ACM 15th International Workshop on Search-Based Software Testing (SBST)
+SP  - 49
+EP  - 50
+AU  - L. L. L. Starace
+AU  - A. Romdhana
+AU  - S. Di Martino
+PY  - 2022
+DO  - 10.1145/3526072.3527533
+JO  - 2022 IEEE/ACM 15th International Workshop on Search-Based Software Testing (SBST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 15th International Workshop on Search-Based Software Testing (SBST)
+Y1  - 9-9 May 2022
+AB  - GenRL is a Deep Reinforcement Learning-based tool designed to generate test cases for Lane-Keeping Assist Systems. In this paper, we briefly presents GenRL, and summarize the results of its participation in the Cyber-Physical Systems (CPS) tool competition at SBST 2022.
+ER  - 
+
+TY  - CONF
+TI  - Poster: Repair Cross Browser Layout Issues by Combining Learning and Search-based technique
+T2  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 470
+EP  - 473
+AU  - Z. Long
+AU  - G. Wu
+AU  - Y. Zhang
+AU  - W. Chen
+AU  - J. Wei
+PY  - 2021
+DO  - 10.1109/ICST49551.2021.00062
+JO  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 12-16 April 2021
+AB  - With the increasing number of browsers and platforms on which the applications can be executed, cross-browser incompatibilities (XBIs) are becoming a serious problem for organizations to develop web-based software. In order to eliminate cross browser issues, existing work tries to repair layout XBIs using search-based technique. However, the designed fitness function is too strict, and may miss the chance to repair some layout XBIs. For each reported layout XBI, it will search all possible candidate fixes, and cannot reuse existing repair solutions for similar issues. This paper proposes to combine learning and search based technique to improve the state-of-the-art of automated repair of layout XBIs. By extracting the characteristics of successfully repaired layout XBIs and learn a decision tree, our approach will accelerate the search process by directly applying the recommended solution to fix similar XBIs. Moreover, by redesigning search-based repair process, our technique can improve the chance to repair layout XBIs. The initial evaluation shows that the proposed approach is effective.
+ER  - 
+
+TY  - JOUR
+TI  - A Study on Testers’ Learning Curve in Crowdsourced Software Testing
+T2  - IEEE Access
+SP  - 77127
+EP  - 77137
+AU  - Y. Yao
+AU  - S. Huang
+AU  - C. Zong
+AU  - E. Liu
+AU  - N. Chen
+PY  - 2021
+DO  - 10.1109/ACCESS.2021.3081592
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 9
+VL  - 9
+JA  - IEEE Access
+Y1  - 2021
+AB  - Recommending effective testers in crowdsourced software testing is a challenge. In this paper, we study the improvement of crowdsourced software testers' skills over time. We propose the project difficulty coefficient to eliminate the influence of the item on the tester's score. The hyperbolic learning curve model and exponential learning curve model are used to fit the learning ability of the testers. The experimental results show that when the test data is large, the exponential learning curve can better simulate the improvement of testers' skills.
+ER  - 
+
+TY  - CONF
+TI  - Combinatorial Testing Metrics for Machine Learning
+T2  - 2021 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 81
+EP  - 84
+AU  - E. Lanus
+AU  - L. J. Freeman
+AU  - D. Richard Kuhn
+AU  - R. N. Kacker
+PY  - 2021
+DO  - 10.1109/ICSTW52544.2021.00025
+JO  - 2021 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 12-16 April 2021
+AB  - This paper defines a set difference metric for comparing machine learning (ML) datasets and proposes the difference between datasets be a function of combinatorial coverage. We illustrate its utility for evaluating and predicting performance of ML models. Identifying and measuring differences between datasets is of significant value for ML problems, where the accuracy of the model is heavily dependent on the degree to which training data are sufficiently representative of data encountered in application. The method is illustrated for transfer learning without retraining, the problem of predicting performance of a model trained on one dataset and applied to another.
+ER  - 
+
+TY  - CONF
+TI  - Gamified Exploratory GUI Testing of Web Applications: a Preliminary Evaluation
+T2  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 215
+EP  - 222
+AU  - T. Fulcini
+AU  - L. Ardito
+PY  - 2022
+DO  - 10.1109/ICSTW55395.2022.00045
+JO  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 4-13 April 2022
+AB  - In the context of Software Engineering, testing is a well-known phase that plays a critical role, as is needed to ensure that the designed and produced code provides the expected results, avoiding faults and crashes. Exploratory GUI testing allows the tester to manually define test cases by directly interacting with the user interface of the finite system. However, testers often loosely perform exploratory GUI testing, as they perceive it as a time-consuming, repetitive and unappealing activity. We defined a gamified framework for GUI testing to address this issue, which we developed and integrated into the Augmented testing tool, Scout. Gamification is perceived as a means to enhance the performance of human testers by stimulating competition and encouraging them to achieve better results in terms of both efficiency and effectiveness. We performed a preliminary evaluation of the gamification layer with a small sample of testers to assess the benefits of the technique compared with the standard version of the same tool. Test sequences defined with the gamified tool achieved higher coverage (i.e., higher efficiency) and a slightly higher percentage of bugs found. The user’s opinion was almost unanimously in favor of the gamified version of the tool.
+ER  - 
+
+TY  - CONF
+TI  - Challenges of Software Testing for Astronomical Big Data
+T2  - 2017 IEEE International Congress on Big Data (BigData Congress)
+SP  - 529
+EP  - 532
+AU  - L. Zhou
+AU  - M. Huang
+PY  - 2017
+DO  - 10.1109/BigDataCongress.2017.91
+JO  - 2017 IEEE International Congress on Big Data (BigData Congress)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 IEEE International Congress on Big Data (BigData Congress)
+Y1  - 25-30 June 2017
+AB  - Astronomy has been one of the first areas of science to embrace and learn from big data. The amount of data we have on our universe is doubling every year thanks to big telescopes and better light detectors. Most leading research is based on data from a handful of very expensive telescopes. Undoubtedly, the data quality is the key basis for the leading scientific findings. It is imperative that software testers understand that big data is about far more than simply data volume. This paper will analyze characteristics, types, methods, strategies, problems, challenges and propose some possible solutions of software testing for astronomical big data.
+ER  - 
+
+TY  - CONF
+TI  - Test Maintenance for Machine Learning Systems: A Case Study in the Automotive Industry
+T2  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 410
+EP  - 421
+AU  - L. Berglund
+AU  - T. Grube
+AU  - G. Gay
+AU  - F. G. de Oliveira Neto
+AU  - D. Platis
+PY  - 2023
+DO  - 10.1109/ICST57152.2023.00045
+JO  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 16-20 April 2023
+AB  - Machine Learning (ML) systems have seen widespread use for automated decision making. Testing is essential to ensure the quality of these systems, especially safety-critical autonomous systems in the automotive domain. ML systems introduce new challenges with the potential to affect test maintenance, the process of updating test cases to match the evolving system. We conducted an exploratory case study in the automotive domain to identify factors that affect test maintenance for ML systems, as well as to make recommendations to improve the maintenance process. Based on interview and artifact analysis, we identified 14 factors affecting maintenance, including five especially relevant for ML systems—with the most important relating to non-determinism and large input spaces. We also proposed ten recommendations for improving test maintenance, including four targeting ML systems—in particular, emphasizing the use of test oracles tolerant to acceptable non-determinism. The study’s findings expand our knowledge of test maintenance for an emerging class of systems, benefiting the practitioners testing these systems.
+ER  - 
+
+TY  - CONF
+TI  - A Hybrid Salp Swarm Algorithm with Artificial Neural Network Model for Predicting the Team Size Required for Software Testing Phase
+T2  - 2021 International Conference on Electrical Engineering and Informatics (ICEEI)
+SP  - 1
+EP  - 6
+AU  - S. Kassaymeh
+AU  - S. Abdullah
+AU  - M. Alweshah
+AU  - A. I. Hammouri
+PY  - 2021
+DO  - 10.1109/ICEEI52609.2021.9611128
+JO  - 2021 International Conference on Electrical Engineering and Informatics (ICEEI)
+IS  - 
+SN  - 2155-6830
+VO  - 
+VL  - 
+JA  - 2021 International Conference on Electrical Engineering and Informatics (ICEEI)
+Y1  - 12-13 Oct. 2021
+AB  - The software project director has to keep estimating the required resources and planning the schedule for deliverables. Unfortunately, such estimation and planning are not accurate unless careful monitoring and control plan is maintained because software development is risky. In this paper, an investigation was carried out by integrating a promising metaheuristic algorithm with an artificial neural network to optimize the network parameters to address predicting the size of a software test team. The target of this integration was to enhance the accuracy of network prediction. The proposed method has been evaluated on two datasets. These datasets have different characteristics and have been extracted from the industry repository. The comparative results proved the superiority of the proposed method over the other methods.
+ER  - 
+
+TY  - CONF
+TI  - Testing Deep Learning Models: A First Comparative Study of Multiple Testing Techniques
+T2  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 130
+EP  - 137
+AU  - M. K. Ahuja
+AU  - A. Gotlieb
+AU  - H. Spieker
+PY  - 2022
+DO  - 10.1109/ICSTW55395.2022.00035
+JO  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 4-13 April 2022
+AB  - Deep Learning (DL) has revolutionized the capabilities of vision-based systems (VBS) in critical applications such as autonomous driving, robotic surgery, critical infrastructure surveillance, air and maritime traffic control, etc. By analyzing images, voice, videos, or any type of complex signals, DL has considerably increased the situation awareness of these systems. At the same time, while relying more and more on trained DL models, the reliability and robustness of VBS have been challenged and it has become crucial to test thoroughly these models to assess their capabilities and potential errors. To discover faults in DL models, existing software testing methods have been adapted and refined accordingly. In this article, we provide an overview of these software testing methods, namely differential, metamorphic, mutation, and combinatorial testing, as well as adversarial perturbation testing and review some challenges in their deployment for boosting perception systems used in VBS. We also provide a first experimental comparative study on a classical benchmark used in VBS and discuss its results.
+ER  - 
+
+TY  - CONF
+TI  - Towards Having a Cloud of Mobile Devices Specialized for Software Testing
+T2  - 2016 IEEE/ACM International Conference on Mobile Software Engineering and Systems (MOBILESoft)
+SP  - 9
+EP  - 10
+AU  - M. C. Calpur
+AU  - C. Yilmaz
+PY  - 2016
+DO  - 10.1145/2897073.2897109
+JO  - 2016 IEEE/ACM International Conference on Mobile Software Engineering and Systems (MOBILESoft)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE/ACM International Conference on Mobile Software Engineering and Systems (MOBILESoft)
+Y1  - 16-17 May 2016
+AB  - This paper proposes a novel cloud testing platform specialized for software testing. Our novel approach aims to perform dynamic analysis on mobile application binaries, generate the model of the application, its test cases and test input sets on the run. Domain information generated via dynamic analysis and utilization of combinatorial interaction testing for test case and input set analysis will be used for improving the systems coverage capability. The system will be a self learning system in the sense that the lessons learned from testing one application will be used to test another application.
+ER  - 
+
+TY  - CONF
+TI  - Evaluating Features for Machine Learning Detection of Order- and Non-Order-Dependent Flaky Tests
+T2  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 93
+EP  - 104
+AU  - O. Parry
+AU  - G. M. Kapfhammer
+AU  - M. Hilton
+AU  - P. McMinn
+PY  - 2022
+DO  - 10.1109/ICST53961.2022.00021
+JO  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 4-14 April 2022
+AB  - Flaky tests are test cases that can pass or fail without code changes. They often waste the time of software developers and obstruct the use of continuous integration. Previous work has presented several automated techniques for detecting flaky tests, though many involve repeated test executions and a lot of source code instrumentation and thus may be both intrusive and expensive. While this motivates researchers to evaluate machine learning models for detecting flaky tests, prior work on the features used to encode a test case is limited. Without further study of this topic, machine learning models cannot perform to their full potential in this domain. Previous studies also exclude a specific, yet prevalent and problematic, category of flaky tests: order-dependent (OD) flaky tests. This means that prior research only addresses part of the challenge of detecting flaky tests with machine learning. Closing this knowledge gap, this paper presents a new feature set for encoding tests, called Flake16. Using 54 distinct pipelines of data preprocessing, data balancing, and machine learning models for detecting both non-order-dependent (NOD) and OD flaky tests, this paper compares Flake16 to another well-established feature set. To assess the new feature set's effectiveness, this paper's experiments use the test suites of 26 Python projects, consisting of over 67,000 tests. Along with identifying the most impactful metrics for using machine learning to detect both types of flaky test, the empirical study shows how Flake16 is better than prior work, including (1) a 13% increase in overall F1 score when detecting NOD flaky tests and (2) a 17% increase in overall F1 score when detecting OD flaky tests.
+ER  - 
+
+TY  - CONF
+TI  - Semantic Metamorphic Testing focusing on Object Rarity
+T2  - 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 288
+EP  - 291
+AU  - Y. Nishi
+AU  - H. Ito
+AU  - Y. Torikoshi
+PY  - 2023
+DO  - 10.1109/ICSTW58534.2023.00058
+JO  - 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 16-20 April 2023
+AB  - Deep Learning (DL) driven image recognition systems have developed rapidly. Recent researches have applied metamorphic testing (MT) to detect image misrecognition. Most of them are based on non-semantic transformation, while semantic MTs don’t focus on rarity. Our fundamental concept is "Rare object is rarely well-recognized." In this paper, we propose a semantic rarity-based MT and its test architecture. It consists of two units: BERT-based unit and Stable-Diffusion-based unit. The former transforms a seed word into rare sentences. The latter generates corresponding rare images. Experiments are conducted and show that the semantic rarity-based MT detects more failures.
+ER  - 
+
+TY  - CONF
+TI  - IFRIT: Focused Testing through Deep Reinforcement Learning
+T2  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 24
+EP  - 34
+AU  - A. Romdhana
+AU  - M. Ceccato
+AU  - A. Merlo
+AU  - P. Tonella
+PY  - 2022
+DO  - 10.1109/ICST53961.2022.00013
+JO  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 4-14 April 2022
+AB  - Software is constantly changing as developers add new features or make changes. This directly impacts the effectiveness of the test suite associated with that software, especially when the new modifications are in an area where no test case exists. This article addresses the issue of developing a high-quality test suite to repeatedly cover a given point in a program, with the ultimate goal of exposing faults affecting the given program point. Our approach, IFRIT, uses Deep Reinforcement Learning to generate diverse inputs while keeping a high level of reachability of the desired program point. IFRIT achieves better results than state-of-the-art and baseline tools, improving reachability, diversity and fault detection.
+ER  - 
+
+TY  - CONF
+TI  - A Replication Study: Just-in-Time Defect Prediction with Ensemble Learning
+T2  - 2018 IEEE/ACM 6th International Workshop on Realizing Artificial Intelligence Synergies in Software Engineering (RAISE)
+SP  - 42
+EP  - 47
+AU  - S. Young
+AU  - T. Abdou
+AU  - A. Bener
+PY  - 2018
+DO  - 
+JO  - 2018 IEEE/ACM 6th International Workshop on Realizing Artificial Intelligence Synergies in Software Engineering (RAISE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE/ACM 6th International Workshop on Realizing Artificial Intelligence Synergies in Software Engineering (RAISE)
+Y1  - 27 May-3 June 2018
+AB  - Just-in-time defect prediction, which is also known as change-level defect prediction, can be used to efficiently allocate resources and manage project schedules in the software testing and debugging process. Just-in-time defect prediction can reduce the amount of code to review and simplify the assignment of developers to bug fixes. This paper reports a replicated experiment and an extension comparing the prediction of defect-prone changes using traditional machine learning techniques and ensemble learning. Using datasets from six open source projects, namely Bugzilla, Columba, JDT, Platform, Mozilla, and PostgreSQL we replicate the original approach to verify the results of the original experiment and use them as a basis for comparison for alternatives in the approach. Our results from the replicated experiment are consistent with the original. The original approach uses a combination of data preprocessing and a two-layer ensemble of decision trees. The first layer uses bagging to form multiple random forests. The second layer stacks the forests together with equal weights. Generalizing the approach to allow the use of any arbitrary set of classifiers in the ensemble, optimizing the weights of the classifiers, and allowing additional layers, we apply a new deep ensemble approach, called deep super learner, to test the depth of the original study. The deep super learner achieves statistically significantly better results than the original approach on five of the six projects in predicting defects as measured by F1 score.
+ER  - 
+
+TY  - CONF
+TI  - Humanoid: A Deep Learning-Based Approach to Automated Black-box Android App Testing
+T2  - 2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)
+SP  - 1070
+EP  - 1073
+AU  - Y. Li
+AU  - Z. Yang
+AU  - Y. Guo
+AU  - X. Chen
+PY  - 2019
+DO  - 10.1109/ASE.2019.00104
+JO  - 2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)
+IS  - 
+SN  - 2643-1572
+VO  - 
+VL  - 
+JA  - 2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)
+Y1  - 11-15 Nov. 2019
+AB  - Automated input generators must constantly choose which UI element to interact with and how to interact with it, in order to achieve high coverage with a limited time budget. Currently, most black-box input generators adopt pseudo-random or brute-force searching strategies, which may take very long to find the correct combination of inputs that can drive the app into new and important states. We propose Humanoid, an automated black-box Android app testing tool based on deep learning. The key technique behind Humanoid is a deep neural network model that can learn how human users choose actions based on an app's GUI from human interaction traces. The learned model can then be used to guide test input generation to achieve higher coverage. Experiments on both open-source apps and market apps demonstrate that Humanoid is able to reach higher coverage, and faster as well, than the state-of-the-art test input generators. Humanoid is open-sourced at https://github.com/yzygitzh/Humanoid and a demo video can be found at https://youtu.be/PDRxDrkyORs.
+ER  - 
+
+TY  - CONF
+TI  - How high will it be? Using machine learning models to predict branch coverage in automated testing
+T2  - 2018 IEEE Workshop on Machine Learning Techniques for Software Quality Evaluation (MaLTeSQuE)
+SP  - 19
+EP  - 24
+AU  - G. Grano
+AU  - T. V. Titov
+AU  - S. Panichella
+AU  - H. C. Gall
+PY  - 2018
+DO  - 10.1109/MALTESQUE.2018.8368454
+JO  - 2018 IEEE Workshop on Machine Learning Techniques for Software Quality Evaluation (MaLTeSQuE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE Workshop on Machine Learning Techniques for Software Quality Evaluation (MaLTeSQuE)
+Y1  - 20-20 March 2018
+AB  - Software testing is a crucial component in modern continuous integration development environment. Ideally, at every commit, all the system's test cases should be executed and moreover, new test cases should be generated for the new code. This is especially true in a Continuous Test Generation (CTG) environment, where the automatic generation of test cases is integrated into the continuous integration pipeline. Furthermore, developers want to achieve a minimum level of coverage for every build of their systems. Since both executing all the test cases and generating new ones for all the classes at every commit is not feasible, they have to select which subset of classes has to be tested. In this context, knowing a priori the branch coverage that can be achieved with test data generation tools might give some useful indications for answering such a question. In this paper, we take the first steps towards the definition of machine learning models to predict the branch coverage achieved by test data generation tools. We conduct a preliminary study considering well known code metrics as a features. Despite the simplicity of these features, our results show that using machine learning to predict branch coverage in automated testing is a viable and feasible option.
+ER  - 
+
+TY  - CONF
+TI  - Using Machine Learning to Classify Test Outcomes
+T2  - 2019 IEEE International Conference On Artificial Intelligence Testing (AITest)
+SP  - 99
+EP  - 100
+AU  - M. Roper
+PY  - 2019
+DO  - 10.1109/AITest.2019.00009
+JO  - 2019 IEEE International Conference On Artificial Intelligence Testing (AITest)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE International Conference On Artificial Intelligence Testing (AITest)
+Y1  - 4-9 April 2019
+AB  - When testing software it has been shown that there are substantial benefits to be gained from approaches which exercise unusual or unexplored interactions with a system - techniques such as random testing, fuzzing, and exploratory testing. However, such approaches have a drawback in that the outputs of the tests need to be manually checked for correctness, representing a significant burden for the software engineer. This paper presents a strategy to support the process of identifying which tests have passed or failed by combining clustering and semi-supervised learning. We have shown that by using machine learning it is possible to cluster test cases in such a way that those corresponding to failures concentrate into smaller clusters. Examining the test outcomes in cluster-size order has the effect of prioritising the results: those that are checked early on have a much higher probability of being a failing test. As the software engineer examines the results (and confirms or refutes the initial classification), this information is employed to bootstrap a secondary learner to further improve the accuracy of the classification of the (as yet) unchecked tests. Results from experimenting with a range of systems demonstrate the substantial benefits that can be gained from this strategy, and how remarkably accurate test output classifications can be derived from examining a relatively small proportion of results.
+ER  - 
+
+TY  - CONF
+TI  - AI is a game-changing technology: how to test and robustify Machine-Learning software?
+T2  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 12
+EP  - 12
+AU  - Y. Le Traon
+PY  - 2023
+DO  - 10.1109/ICST57152.2023.00010
+JO  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 16-20 April 2023
+AB  - The recent release of ChatGPT conversational agent has been a surprise to me, and to many of my colleagues from the software engineering community. Progress goes extremely fast, while it appears to be a true "game-changing" technology that can even generate programs and fix bugs. Machine Learning (ML) provides engineers with the prospect of producing data-driven software, with little manual code writing. These ML-enabled software bring us to a new era where systems’ logic is automatically produced from data, with a small amount of human-written code. Would we trust such software mixing ML and regular code, would you rely on it and under which conditions? This is still too early to answer these questions, and a challenging direction to explore.This radical change questions the way software are engineered, validated, secured, deployed and maintained. The overall challenge is thus to automate these activities accounting for the statistical nature of ML-enabled software.Taking a software engineering perspective, and starting from a concrete case from the finance industry, the presentation will focus on testing and robustifying a ML model which is integrated in a larger software system that takes as input domain objects (e.g. financial transaction, malware, network traffic). One traditional way to robustify a ML model consists in generating adversarial inputs, e.g. leading to a misclassification, and retraining the model. Indeed, despite their impressive performance, ML models are sensitive to small perturbations in the input. The resulting adversarial inputs raise multiple questions about the robustness of such systems, especially in safety- and business-critical domains. However, the generation of feasible, exploitable adversarial test examples is challenging, as they must satisfy the business logic constraints over the feature space. We analyse the limitations of current adversarial approaches and explore new algorithms that combine multi-objective search with constraint-solving techniques. While the attack part is the offensive weapon, we also consider the challenge to efficiently shield (e.g. repair) the systems against such threats, and finally end the seminar by mentioning other research directions to deploy robust ML-enabled systems.
+ER  - 
+
+TY  - CONF
+TI  - SIMULATION EDUCATION IN NON-SIMULATION COURSES
+T2  - 2018 Winter Simulation Conference (WSC)
+SP  - 4038
+EP  - 4045
+AU  - R. McHaney
+PY  - 2018
+DO  - 10.1109/WSC.2018.8632361
+JO  - 2018 Winter Simulation Conference (WSC)
+IS  - 
+SN  - 1558-4305
+VO  - 
+VL  - 
+JA  - 2018 Winter Simulation Conference (WSC)
+Y1  - 9-12 Dec. 2018
+AB  - In many curricula and degree programs, simulation courses are not required, but these tools and techniques could be beneficial to students preparing for a variety of careers. The current paper describes two examples of simulation education embedded into broader course topics from a development perspective. The examples, from courses generally described in this paper as Cloud Computing and Big Data, offer a recommended approach for exposing students to practical uses of simulation. In the first example, we use simulation techniques to develop a web service emulation response database within a cloud computing environment for software testing. In the second example, simulation techniques provide an approach to generate data sets for learning data analytics techniques.
+ER  - 
+
+TY  - CONF
+TI  - Learning Non-robustness using Simulation-based Testing: a Network Traffic-shaping Case Study
+T2  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 386
+EP  - 397
+AU  - B. A. Jodat
+AU  - S. Nejati
+AU  - M. Sabetzadeh
+AU  - P. Saavedra
+PY  - 2023
+DO  - 10.1109/ICST57152.2023.00043
+JO  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 16-20 April 2023
+AB  - An input to a system reveals a non-robust behaviour when, by making a small change in the input, the output of the system changes from acceptable (passing) to unacceptable (failing) or vice versa. Identifying inputs that lead to non-robust behaviours is important for many types of systems, e.g., cyber-physical and network systems, whose inputs are prone to perturbations. In this paper, we propose an approach that combines simulation-based testing with regression tree models to generate value ranges for inputs in response to which a system is likely to exhibit non-robust behaviours. We apply our approach to a network traffic-shaping system (NTSS) – a novel case study from the network domain. In this case study, developed and conducted in collaboration with a network solutions provider, RabbitRun Technologies, input ranges that lead to non-robustness are of interest as a way to identify and mitigate network quality-of-service issues. We demonstrate that our approach accurately characterizes non-robust test inputs of NTSS by achieving a precision of 84% and a recall of 100%, significantly outperforming a standard baseline. In addition, we show that there is no statistically significant difference between the results obtained from our simulated testbed and a hardware testbed with identical configurations. Finally we describe lessons learned from our industrial collaboration, offering insights about how simulation helps discover unknown and undocumented behaviours as well as a new perspective on using non-robustness as a measure for system re-configuration.
+ER  - 
+
+TY  - CONF
+TI  - Peer Instruction in Online Software Testing and Continuous Integration - A Replication Study
+T2  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+SP  - 199
+EP  - 204
+AU  - B. Gopal
+AU  - S. Cooper
+PY  - 2022
+DO  - 10.1145/3510456.3514168
+JO  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+Y1  - 22-24 May 2022
+AB  - This paper discusses the results of replicating and extending a previous study on the active learning pedagogy of Peer Instruction (PI) in the topics of unit testing, integration testing and continuous integration. The original paper studied the efficacy of PI as a pedagogy for an in-person classroom with honors students from various academic majors. In this replication study we focus on a fully virtual, synchronous online classroom consisting of computing related majors. Our findings reinforce the results in Gopal and Cooper's original study. Cognitively, we found a correlation between PI and student learning, by observing encouraging increases in levels of success as measured through cognitive pre- and post-course instrument for the topics we studied. In addition, we also found that PI had a statistically significant impact on student attitudes in the constructs of interest, gender, usefulness, confidence and professionalism.
+ER  - 
+
+TY  - CONF
+TI  - Integration of Software Testing to Programming Assignments: An Experimental Study
+T2  - 2019 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - G. M. N. Avellar
+AU  - R. F. d. Silva
+AU  - L. P. Scatalon
+AU  - S. A. Andrade
+AU  - M. E. Delamaro
+AU  - E. F. Barbosa
+PY  - 2019
+DO  - 10.1109/FIE43999.2019.9028519
+JO  - 2019 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2019 IEEE Frontiers in Education Conference (FIE)
+Y1  - 16-19 Oct. 2019
+AB  - This Research Full Paper reinforces that Software Testing can be a helpful practice to students while working on programming assignments. Considering Software Testing as a process, the testing activity is composed by a sequence of steps. When students write and submit their own test cases, they are responsible for the test design, automation, execution, and evaluation. Otherwise, instructors can provide ready-made test suites, needing only to execute it and evaluate it. In this scenario, we conducted an experimental study to investigate how the programming performance of students from the Computer Science area is affected when Software Testing is integrated with programming. We proposed three different approaches: (i) ad hoc programming; (ii) programming and testing by writing the test suite; and (iii) programming and testing with a readymade test suite. We assessed students' programs in terms of correctness, measured by the pass rate of the reference test suite. Results indicate that students had a lower performance with ad hoc programming in comparison with both approaches involving Software Testing. On the other hand, using ready-made test cases raised better results than when students had to write their own test cases. We also assessed students' attitudes towards testing by means of a survey.
+ER  - 
+
+TY  - CONF
+TI  - Metamorphosis Relationship Generation Based on Fixed Memory Step Gradient Descent Method with Noise
+T2  - 2021 IEEE 12th International Conference on Software Engineering and Service Science (ICSESS)
+SP  - 282
+EP  - 286
+AU  - L. Zeng
+AU  - Z. Yang
+AU  - S. Liao
+AU  - C. Yang
+AU  - W. Nai
+AU  - D. Li
+PY  - 2021
+DO  - 10.1109/ICSESS52187.2021.9522332
+JO  - 2021 IEEE 12th International Conference on Software Engineering and Service Science (ICSESS)
+IS  - 
+SN  - 2327-0594
+VO  - 
+VL  - 
+JA  - 2021 IEEE 12th International Conference on Software Engineering and Service Science (ICSESS)
+Y1  - 20-22 Aug. 2021
+AB  - Metamorphosis relationship generation is a state-of-the-art practical applied testing method in the field of software testing industry, and its main idea is to detect whether there are errors caused by unsatisfied programs in two or more output results. The most important task is of course to generate the metamorphosis relationship, and such process is a kind of supervised learning with huge amount of calculation. As metamorphosis relationship generation is a kind of supervised learning whose specific loss function is based on absolute value and has poor derivability, it not only depends on huge amount of calculation, but also requires complex algorithms to get the optimal solution, as the traditional gradient descent (GD) method cannot work well in solving its loss function. In this paper, two improvements for metamorphosis relationship generation has been made: firstly, Huber loss function is introduced to make the main loss function derivable; secondly, fixed memory step gradient descent method with noise is introduced to solve the sawtooth effect and falling into local optimum problems. Via numerical analysis, it has been verified that the improved metamorphosis relationship generation has better performance.
+ER  - 
+
+TY  - CONF
+TI  - Designing and Developing a Resource Center for Primary and Secondary Computing Education Researchers
+T2  - 2020 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - J. Xavier
+AU  - M. M. McGill
+AU  - A. Decker
+PY  - 2020
+DO  - 10.1109/FIE44824.2020.9274252
+JO  - 2020 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2020 IEEE Frontiers in Education Conference (FIE)
+Y1  - 21-24 Oct. 2020
+AB  - This full research paper considers the resources needed to meet the research and evaluation needs of the many efforts to incorporate computing education throughout primary and secondary schools. In order to support these efforts, we developed csedresearch.org, a site designed to serve as a resource center for primary and secondary computing education research. We first considered criteria and recommendations for resource centers previously established by others. We provide a general description of the purpose of the csedresearch.org as well as a description of how we used quantitative and qualitative methods over numerous phases of development (pre-concept/research, concept, alpha, and beta, launch) to ensure that it meets the needs of potential users. We discuss how the current product compares against the general criteria for resource centers, its original intentions and expectations, and how it has fared through the phases of development one normally expects from a digital resource center. As the resource center evolves, we continue to seek feedback and resources to further meet the needs of the community. We also discuss the data that is being collected and could be collected to further benefit the community to define not only what educational practices work best overall, but what works best for particular demographic groups, including underrepresented groups in computing. And finally, we are faced with the challenge for maintaining the information so that remains robust and current.
+ER  - 
+
+TY  - CONF
+TI  - Using Semi-Supervised Learning for Predicting Metamorphic Relations
+T2  - 2018 IEEE/ACM 3rd International Workshop on Metamorphic Testing (MET)
+SP  - 14
+EP  - 17
+AU  - B. Hardin
+AU  - U. Kanewala
+PY  - 2018
+DO  - 
+JO  - 2018 IEEE/ACM 3rd International Workshop on Metamorphic Testing (MET)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE/ACM 3rd International Workshop on Metamorphic Testing (MET)
+Y1  - 27 May-3 June 2018
+AB  - Software testing is difficult to automate, especially in programs which have no oracle, or method of determining which output is correct. Metamorphic testing is a solution this problem. Metamorphic testing uses metamorphic relations to define test cases and expected outputs. A large amount of time is needed for a domain expert to determine which metamorphic relations can be used to test a given program. Metamorphic relation prediction removes this need for such an expert. We propose a method using semi-supervised machine learning to detect which metamorphic relations are applicable to a given code base. We compare this semi-supervised model with a supervised model, and show that the addition of unlabeled data improves the classification accuracy of the MR prediction model.
+ER  - 
+
+TY  - CONF
+TI  - Learning-based Mutant Reduction Using Fine-grained Mutation Operators
+T2  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 464
+EP  - 464
+AU  - Y. Kim
+AU  - S. Hong
+PY  - 2022
+DO  - 10.1109/ICST53961.2022.00065
+JO  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 4-14 April 2022
+AB  - This is an extended abstract of the article: Yunho Kim and SHin Hong, Learning-based Mutant Reduction Using Fine-grained Mutation Operators, Journal of Software Testing, Verification and Reliability, e1786, https://doi.org/10.1002/stvr.1786
+ER  - 
+
+TY  - CONF
+TI  - Automatic Collaborative Testing of Applications Integrating Text Features and Priority Experience Replay
+T2  - 2022 IEEE 22nd International Conference on Software Quality, Reliability and Security (QRS)
+SP  - 95
+EP  - 104
+AU  - L. Cai
+AU  - J. Wang
+AU  - M. Chen
+AU  - J. Wang
+PY  - 2022
+DO  - 10.1109/QRS57517.2022.00020
+JO  - 2022 IEEE 22nd International Conference on Software Quality, Reliability and Security (QRS)
+IS  - 
+SN  - 2693-9177
+VO  - 
+VL  - 
+JA  - 2022 IEEE 22nd International Conference on Software Quality, Reliability and Security (QRS)
+Y1  - 5-9 Dec. 2022
+AB  - With the popularity of deep reinforcement learning(DRL), people have great interest in using deep reinforcement learning for application automated testing. However, most automated testing methods based on reinforcement learning ignore text information, use random sampling in experience replay and ignore the characteristics of Android automated testing. To solve above problem, this paper proposes ITPRTesting(Integrated Text feature information and Priority experience in Testing). It extracts the text information in the interface and uses the BERT algorithm to generate sentence vectors. It fuses the interactive control feature diagram(ICFD), which is mentioned in the previous work, and text information as the state required by reinforcement learning. And in reinforcement learning, the priority experience replay is combined, also the traditional priority experience replay is improved. This paper has carried out experiments on 10 open source applications. The experimental results show that ITPRTesting is superior to other methods in statement coverage and branch coverage.
+ER  - 
+
+TY  - CONF
+TI  - SEbox4DL: A Modular Software Engineering Toolbox for Deep Learning Models
+T2  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+SP  - 193
+EP  - 196
+AU  - Z. Wei
+AU  - H. Wang
+AU  - Z. Yang
+AU  - W. K. Chan
+PY  - 2022
+DO  - 10.1145/3510454.3516828
+JO  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+IS  - 
+SN  - 2574-1926
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+Y1  - 22-24 May 2022
+AB  - Deep learning (DL) models are widely used in software applications. Novel DL models and datasets are published from time to time. Developers may also tempt to apply new software engineering (SE) techniques on their DL models. However, no existing tool supports the applications of software testing and debugging techniques on new DL models and their datasets without modifying the code. Developers should manually write code to glue every combination of models, datasets, and SE technique and chain them together.We propose SEbox4DL, a novel and modular toolbox that automatically integrates models, datasets, and SE techniques into SE pipelines seen in developing DL models. SEbox4DL exemplifies six SE pipelines and can be extended with ease. Each user-defined task in the pipelines is to implement a SE technique within a function with a unified interface so that the whole design of SEbox4DL is generic, modular, and extensible. We have implemented several SE techniques as user-defined tasks to make SEbox4DL off-the-shelf. Our experiments demonstrate that SEbox4DL can simplify the applications of software testing and repair techniques on the latest or popular DL models and datasets. The toolbox is open-source and published at https://github.com/Wsine/SEbox4DL. A video for demonstration is available at: https://youtu.be/EYeFFi4lswc.
+ER  - 
+
+TY  - CONF
+TI  - Directing a Search Towards Execution Properties with a Learned Fitness Function
+T2  - 2019 12th IEEE Conference on Software Testing, Validation and Verification (ICST)
+SP  - 206
+EP  - 216
+AU  - L. Joffe
+AU  - D. Clark
+PY  - 2019
+DO  - 10.1109/ICST.2019.00029
+JO  - 2019 12th IEEE Conference on Software Testing, Validation and Verification (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2019 12th IEEE Conference on Software Testing, Validation and Verification (ICST)
+Y1  - 22-27 April 2019
+AB  - Search based software testing is a popular and successful approach both in academia and industry. SBST methods typically aim to increase coverage whereas searching for executions with specific properties is largely unresearched. Fitness functions for execution properties often possess search landscapes that are difficult or intractable. We demonstrate how machine learning techniques can convert a property that is not searchable, in this case crashes, into one that is. Through experimentation on 6000 C programs drawn from the Codeflaws repository, we demonstrate a strong, program independent correlation between crashing executions and library function call patterns within those executions as discovered by a neural net. We then exploit the correlation to produce a searchable fitness landscape to modify American Fuzzy Lop, a widely used fuzz testing tool. On a test set of previously unseen programs drawn from Codeflaws, a search strategy based on a crash targeting fitness function outperformed a baseline in 80.1% of cases. The experiments were then repeated on three real world programs: the VLC media player, and the libjpeg and mpg321 libraries. The correlation between library call traces and crashes generalises as indicated by ROC AUC scores of 0.91, 0.88 and 0.61. The produced search landscape however is not convenient due to plateaus. This is likely because these programs do not use standard C libraries as often as do those in Codeflaws. This limitation can be overcome by considering a more powerful observation domain and a broader training corpus in future work. Despite limited generalisability of the experimental setup, this research opens new possibilities in the intersection of machine learning, fitness functions, and search based testing in general.
+ER  - 
+
+TY  - CONF
+TI  - Defect Prediction based on Machine Learning using System Test Parameters
+T2  - 2019 Amity International Conference on Artificial Intelligence (AICAI)
+SP  - 134
+EP  - 139
+AU  - S. Sutar
+AU  - R. Kumar
+AU  - S. Pai
+AU  - B. R. Shwetha
+PY  - 2019
+DO  - 10.1109/AICAI.2019.8701345
+JO  - 2019 Amity International Conference on Artificial Intelligence (AICAI)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 Amity International Conference on Artificial Intelligence (AICAI)
+Y1  - 4-6 Feb. 2019
+AB  - Since its inception, software testing has evolved over the years. In this era of Artificial Intelligence & Machine learning, there are many recent advancements in Software Engineering. Various software engineering metrics are analyzed; deciphered and the required predictions are made. Defect prediction is one such activity which is of great significance in improving the software quality which helps software developers and testers to focus on the modules which are more likely to defect prone. In the literature survey, we found several techniques to predict defects based on features which were mostly captured from the development perspective. In this paper, we propose our machine learning based approach with the main objective of finding potential areas of the defects by considering parameters from System Testing matrices & a unique `parameter called Component Dependency score'. This method also helps in controlling the software quality of a dynamically evolving software.
+ER  - 
+
+TY  - CONF
+TI  - Testing Cyber-Physical Systems via Evolutionary Algorithms and Machine Learning
+T2  - 2019 IEEE/ACM 12th International Workshop on Search-Based Software Testing (SBST)
+SP  - 1
+EP  - 1
+AU  - S. Nejati
+PY  - 2019
+DO  - 10.1109/SBST.2019.00008
+JO  - 2019 IEEE/ACM 12th International Workshop on Search-Based Software Testing (SBST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE/ACM 12th International Workshop on Search-Based Software Testing (SBST)
+Y1  - 26-27 May 2019
+AB  - Cyber-Physical Systems (CPS) are systems or systems of systems made up of collaborating computational elements that control physical entities. CPS are developed in diverse domains ranging from automotive and aerospace to medical systems. This keynote argues that search-based techniques are a suitable match for testing CPS as they can handle complex continuous behaviors, scale to large test input spaces and are applicable to black-box systems such as physics-based simulators used in CPS development. In addition, the keynote demonstrates how search-based techniques can be flexibly combined with machine learning to improve search effectiveness and extend test results with explanatory information.
+ER  - 
+
+TY  - CONF
+TI  - Learning to Restrict Test Range for Compiler Test
+T2  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 272
+EP  - 274
+AU  - J. Zhu
+AU  - L. Wang
+AU  - Y. Gu
+AU  - X. Lin
+PY  - 2019
+DO  - 10.1109/ICSTW.2019.00064
+JO  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 22-23 April 2019
+AB  - it is a tremendous challenge to guarantee the correctness of compilers in a limited time, especially when the compiler product is immature. It is necessary to restrict the test range to avoid over-testing, since our compiler products are usually delivered for specific domain. We perform feature extraction on user code through machine learning and use feature information for fuzzy test case generation. The probability of bugs detected has been improved 3.7 times and case size has been reduced 70%.
+ER  - 
+
+TY  - CONF
+TI  - The Adoption of Open Source Projects in Engineering Education: A Real Software Development Experience
+T2  - 2018 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - D. M. C. Nascimento
+AU  - C. F. G. Chavez
+AU  - R. A. Bittencourt
+PY  - 2018
+DO  - 10.1109/FIE.2018.8658908
+JO  - 2018 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2018 IEEE Frontiers in Education Conference (FIE)
+Y1  - 3-6 Oct. 2018
+AB  - This research to practice full paper investigates software engineering students' perceptions of their contact with open source projects as a real-world experience. Working with open source projects (OSPs) has been shown as an interesting option in software engineering courses to bringing students closer to more realistic environments. However, when instructors use this approach, it is not clear whether students perceive the OSP as a real industrial software project, or whether they perceive the tasks they perform over OSPs as typical or close to industrial software project activities. The goal of this work was to identify students' perceptions of their interaction with an open source project as a real world experience. To do so, we performed three mixed-methods case studies with three different undergraduate classes. Each class had a different focus: i) software maintenance and evolution, ii) software testing, and iii) reverse engineering of software requirements. Results show that students perceived features that make OSPs close to industrial projects, realized that their OSP tasks are close to the ones in industrial projects, and also faced difficulties typical of working with real world software. Moreover, students forged a view of the skills needed for their future professional success. We conclude that students realized that performing tasks in OSPs was a real world experience they took part, contributing to their background both for the competencies they acquired and the difficulties they had to overcome.
+ER  - 
+
+TY  - CONF
+TI  - Systematic Training and Testing for Machine Learning Using Combinatorial Interaction Testing
+T2  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 102
+EP  - 109
+AU  - T. Cody
+AU  - E. Lanus
+AU  - D. D. Doyle
+AU  - L. Freeman
+PY  - 2022
+DO  - 10.1109/ICSTW55395.2022.00031
+JO  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 4-13 April 2022
+AB  - This paper demonstrates the systematic use of combinatorial coverage for selecting and characterizing test and training sets for machine learning models. The presented work adapts combinatorial interaction testing, which has been successfully leveraged in identifying faults in software testing, to characterize data used in machine learning. The MNIST hand-written digits data is used to demonstrate that combinatorial coverage can be used to select test sets that stress machine learning model performance, to select training sets that lead to robust model performance, and to select data for fine-tuning models to new domains. Thus, the results posit combinatorial coverage as a holistic approach to training and testing for machine learning. In contrast to prior work which has focused on the use of coverage in regard to the internal of neural networks, this paper considers coverage over simple features derived from inputs and outputs. Thus, this paper addresses the case where the supplier of test and training sets for machine learning models does not have intellectual property rights to the models themselves. Finally, the paper addresses prior criticism of combinatorial coverage and provides a rebuttal which advocates the use of coverage metrics in machine learning applications.
+ER  - 
+
+TY  - CONF
+TI  - Automated Testing of Android Applications Integrating Residual Network and Deep Reinforcement Learning
+T2  - 2021 IEEE 21st International Conference on Software Quality, Reliability and Security (QRS)
+SP  - 189
+EP  - 196
+AU  - L. Cai
+AU  - J. Wang
+AU  - M. Cheng
+AU  - J. Wang
+PY  - 2021
+DO  - 10.1109/QRS54544.2021.00030
+JO  - 2021 IEEE 21st International Conference on Software Quality, Reliability and Security (QRS)
+IS  - 
+SN  - 2693-9177
+VO  - 
+VL  - 
+JA  - 2021 IEEE 21st International Conference on Software Quality, Reliability and Security (QRS)
+Y1  - 6-10 Dec. 2021
+AB  - With the improvements of Deep Reinforcement Learning (DRL), there have been tremendous interests in utilizing DRL for automated application testing. However, most automated testing methods based on reinforcement learning have the problem of interacting with invalid UI areas and invalid interactions with controls. To solve this problem, this paper extracts the page features, constructs the Interactive Control Feature Diagram(ICCD); improves the DDQN network structure, adds the residual network, makes the algorithm take the picture as the input, and splits the original single output action(n*w*h) into two successive outputs: the interaction(1,n) and the position(1,w*h); a new reward function which combines the interaction times and the image similarity of ICCD is proposed to explore different UIs and ensure that there will be more than one action will be executed under the same UI. Experiments are carried out on five open source applications. The experimental results show that the proposed method is superior to other methods in code coverage and branch coverage.
+ER  - 
+
+TY  - CONF
+TI  - Performance Analysis of Feature Selection Techniques in Software Defect Prediction using Machine Learning
+T2  - 2022 International Conference on Advancements in Smart, Secure and Intelligent Computing (ASSIC)
+SP  - 1
+EP  - 7
+AU  - K. Anand
+AU  - A. K. Jena
+AU  - T. Choudhary
+PY  - 2022
+DO  - 10.1109/ASSIC55218.2022.10088364
+JO  - 2022 International Conference on Advancements in Smart, Secure and Intelligent Computing (ASSIC)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 International Conference on Advancements in Smart, Secure and Intelligent Computing (ASSIC)
+Y1  - 19-20 Nov. 2022
+AB  - Software Testing is an essential activity in the development process of a software product. A defect-free software is the need of the hour. Identifying the defects as early as possible is critical to avoid any disastrous consequences in the later stages of development. Software Defect Prediction (SDP) is a process of early identification of defect-prone modules. Lately, software defect prediction coupled with machine learning techniques has gained momentum as it significantly brings down maintenance costs. Feature selection (FS) plays a very significant role in a defect prediction model's efficiency; hence, choosing a suitable FS method is challenging when building a defect prediction model. This paper evaluates six filter-based FS techniques, four wrapper-based FS techniques, and two embedded FS techniques using four supervised learning classifiers over six NASA datasets from the PROMISE repository. The experimental results strengthened that FS techniques significantly improve the model's predictive performance. From our experimental data, we concluded that SVM based defect prediction model showed the best performance among all other studied models. We also observed that Fisher's score, a filter-based FS technique, outperformed all other FS techniques studied in this work.
+ER  - 
+
+TY  - CONF
+TI  - The Evolutionary Landscape of SBST: A 10 Year Perspective
+T2  - 2017 IEEE/ACM 10th International Workshop on Search-Based Software Testing (SBST)
+SP  - 47
+EP  - 48
+AU  - M. B. Cohen
+PY  - 2017
+DO  - 10.1109/SBST.2017.2
+JO  - 2017 IEEE/ACM 10th International Workshop on Search-Based Software Testing (SBST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 IEEE/ACM 10th International Workshop on Search-Based Software Testing (SBST)
+Y1  - 22-23 May 2017
+AB  - A key indicator of the health and quality of any evolutionary algorithm is the landscape of its search. By analyzing the landscape one can determine the peaks (local maxima) where significant solutions exist. In this paper we examine the landscape for the history of the International Workshop on Search-Based Software Testing (SBST) within the context of the broader field of search-based software testing. We study the evolution of the field, highlighting key advances during three phases of its ten year history. In 2008 the focus of SBST was inner looking, with advances in existing search techniques, improvements to individual generation techniques, and methods to transform the problem space for search effectiveness. However, diverse seeds of new ideas (such as automated program repair) were already being injected into the population. A few SBST tools existed, but the engineer still required skill and expertise to effectively apply search based approaches. During the middle years, open source tools were created and released, whole test suite generation appeared, and searches hybridized. Tool competitions began and industry started to play a stronger role. As we move to the most recent workshop years and look towards the future, more sophisticated techniques such as those that incorporate hyper-heuristics via learning, and/or balance multiple objectives at once are now common. SBST has become a mainstream topic in the testing community, tools are being commercialized and these tools often hide their inner workings, leading to a future that is optimized towards SBST for all.
+ER  - 
+
+TY  - CONF
+TI  - An Implementation of Automatic Dart Code Verification for Mobile Application Programming Learning Assistance System Using Flutter
+T2  - 2022 International Conference on Electrical and Information Technology (IEIT)
+SP  - 322
+EP  - 326
+AU  - Y. W. Syaifudin
+AU  - A. S. Hatjrianto
+AU  - N. Funabiki
+AU  - D. Y. Liliana
+AU  - A. B. Kaswar
+AU  - U. Nurhasan
+PY  - 2022
+DO  - 10.1109/IEIT56384.2022.9967902
+JO  - 2022 International Conference on Electrical and Information Technology (IEIT)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 International Conference on Electrical and Information Technology (IEIT)
+Y1  - 15-16 Sept. 2022
+AB  - The popularity of smartphone devices has rapidly increased in recent years and many people utilize smartphones for various needs. The development of mobile applications has been aimed at various fields that make the demand for mobile application programmers increase. Recently, Flutter has become a software development kit for cross-platform applications development, including Android and iOS, so many software developers have adopted it. To provide a self-learning system for studying mobile programming with Flutter, we propose a learning assistance system with an automatic Dart code verification feature. Based on our previous studies in Android Programming Learning Assistance System (APLAS), the automatic code verification process can adopt software testing process for Android applications. The learning model provides learning materials for studying and practicing by solving an assignment. A learning topic of developing a simple application is prepared for the proposed system evaluation. 40 university students in IT department have been appointed to study Flutter and solve the assignment. Finally, they can solve the assignment correctly and give positive opinions about using this system.
+ER  - 
+
+TY  - CONF
+TI  - Pinpointing Anomaly Events in Logs from Stability Testing – N-Grams vs. Deep-Learning
+T2  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 285
+EP  - 292
+AU  - M. Mäntylä
+AU  - M. Varela
+AU  - S. Hashemi
+PY  - 2022
+DO  - 10.1109/ICSTW55395.2022.00056
+JO  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 4-13 April 2022
+AB  - As stability testing execution logs can be very long, software engineers need help in locating anomalous events. We develop and evaluate two models for scoring individual log-events for anomalousness, namely an N-Gram model and a Deep Learning model with LSTM (Long short-term memory). Both are trained on normal log sequences only. We evaluate the models with long log sequences of Android stability testing in our company case and with short log sequences from HDFS (Hadoop Distributed File System) public dataset. We evaluate next event prediction accuracy and computational efficiency. The LSTM model is more accurate in stability testing logs (0.848 vs 0.865), whereas in HDFS logs the N-Gram is slightly more accurate (0.904 vs 0.900). The N-Gram model has far superior computational efficiency compared to the Deep model (4 to 13 seconds vs 16 minutes to nearly 4 hours), making it the preferred choice for our case company. Scoring individual log events for anomalousness seems like a good aid for root cause analysis of failing test cases, and our case company plans to add it to its online services. Despite the recent surge in using deep learning in software system anomaly detection, we found limited benefits in doing so. However, future work should consider whether our finding holds with different LSTM-model hyper-parameters, other datasets, and with other deep-learning approaches that promise better accuracy and computational efficiency than LSTM based models.
+ER  - 
+
+TY  - CONF
+TI  - Towards a Learning Environment for Internet of Things Testing with LEGO® MINDSTORMS®
+T2  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 457
+EP  - 460
+AU  - T. Auer
+AU  - M. Felderer
+PY  - 2020
+DO  - 10.1109/ICSTW50294.2020.00081
+JO  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 24-28 Oct. 2020
+AB  - Internet of Things (IoT) is one of the most fast-growing topics in computer science. Nearly all devices can be connected to the Internet nowadays. This is related with big opportunities on the one hand, but also with significant risks on the other hand. The challenge is to define a strategy how to test single IoT devices and complete IoT environments consisting of a suite of multiple connected devices. The range of application fields is very extensive and consequently there is no unique testing strategy existing which is suitable for all possible application areas. Testing experts need to be qualified in IoT Testing because this requires more than common software testing technical knowledge of the functions of several devices and its integration in embedded environments. In this paper a concept for further training of testing experts in IoT Testing with LEGO® MINDSTORMS® will be demonstrated. Thereby the proven course unit `Build a Self-Driving Car' of LEGO® for computing lessons at schools will be extended by learning units for IoT Testing. The goal is to provide training courses close to real-world scenarios. The scenarios will be simulated within a virtual learning environment. It will finally be analyzed if this approach fulfills the expectations of the participants in relation to usability and the learning progress by getting feedback between the participants after each individual learning unit.
+ER  - 
+
+TY  - CONF
+TI  - NEAT Algorithm for Testsuite generation in Automated Software Testing
+T2  - 2018 IEEE Symposium Series on Computational Intelligence (SSCI)
+SP  - 2361
+EP  - 2368
+AU  - H. L. P. Raj
+AU  - K. Chandrasekaran
+PY  - 2018
+DO  - 10.1109/SSCI.2018.8628668
+JO  - 2018 IEEE Symposium Series on Computational Intelligence (SSCI)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE Symposium Series on Computational Intelligence (SSCI)
+Y1  - 18-21 Nov. 2018
+AB  - Software testing is one of the most essential and an indispensable part of Software production life cycle. Software testing helps in validating if the product meets with the requirements or not, and also testing helps to validate the performance of the product. Unfortunately, this process takes up about 50% of the production time and budget, due to its laboriosity. Hence, in order to reduce the time it takes, Automated Software Testing becomes essential. Here we propose a novel idea of using Machine Learning for automatically generating the test suites. In this paper we present an approach that uses NEAT (Neuroevolution of Augmenting Topologies) Algorithm to automatically generate new test suites or for improving the coverage of already produced test suite. Our approach automatically generates test suites for white box testing. White box testing refers to testing of the internal structure and the working of the Software Under Test.
+ER  - 
+
+TY  - CONF
+TI  - A Survey of Software Quality for Machine Learning Applications
+T2  - 2018 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 279
+EP  - 284
+AU  - S. Masuda
+AU  - K. Ono
+AU  - T. Yasue
+AU  - N. Hosokawa
+PY  - 2018
+DO  - 10.1109/ICSTW.2018.00061
+JO  - 2018 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 9-13 April 2018
+AB  - Machine learning (ML) is now widespread. Traditional software engineering can be applied to the development ML applications. However, we have to consider specific problems with ML applications in therms of their quality. In this paper, we present a survey of software quality for ML applications to consider the quality of ML applications as an emerging discussion. From this survey, we raised problems with ML applications and discovered software engineering approaches and software testing research areas to solve these problems. We classified survey targets into Academic Conferences, Magazines, and Communities. We targeted 16 academic conferences on artificial intelligence and software engineering, including 78 papers. We targeted 5 Magazines, including 22 papers. The results indicated key areas, such as deep learning, fault localization, and prediction, to be researched with software engineering and testing.
+ER  - 
+
+TY  - CONF
+TI  - The Impact of Artificial Intelligence on Software Testing
+T2  - 2019 IEEE Jordan International Joint Conference on Electrical Engineering and Information Technology (JEEIT)
+SP  - 565
+EP  - 570
+AU  - H. Hourani
+AU  - A. Hammad
+AU  - M. Lafi
+PY  - 2019
+DO  - 10.1109/JEEIT.2019.8717439
+JO  - 2019 IEEE Jordan International Joint Conference on Electrical Engineering and Information Technology (JEEIT)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE Jordan International Joint Conference on Electrical Engineering and Information Technology (JEEIT)
+Y1  - 9-11 April 2019
+AB  - Artificial Intelligence (AI) plays an important role in our life and touch base most of our surrounding applications and systems. A huge amounts of data are created every day from many different sources that need to be monitored and analyzed properly and report results and take actions. A more complex software applications have been built, time is becoming a critical factor to release applications that must be fully tested and comply with Business Requirements. AI plays a key role in Software Testing and can get more accurate results and saves time. This paper discuss the Artificial Intelligence key pillars that can be used in Software Testing. It also open a window on how the future will look like in terms of Artificial Intelligence and the Software Testing. The results show that AI can achieve better results in Software Testing and AI-driven testing will lead the new era of the quality assurance (QA) work in the near future. AI Software Testing will reduce time to market and will increase the efficiency of the organization to produce more sophisticated software and will create smarter automated testing.
+ER  - 
+
+TY  - CONF
+TI  - Impact of CS Programs on the Quality of Test Cases Generation: An Empirical Study
+T2  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+SP  - 374
+EP  - 383
+AU  - O. S. Gómez
+AU  - S. Vegas
+AU  - N. Juristo
+PY  - 2016
+DO  - 
+JO  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+Y1  - 14-22 May 2016
+AB  - Background: Although most Computer Science (CS) programs offered by higher education institutions usually include a software engineering course, some works report a lack of formal training in software testing. Aim: With the aim of studying the possible impact of knowledge acquired from CS programs on software testing, this paper reports an investigation composed of four experiments. The experiments conducted in Spain, Mexico and Ecuador examine the quality of test cases (TC) generated using black-box and white-box methods. The subjects of the experiments were undergraduate and graduate students who were exposed to different levels of CS knowledge. Method: We pool together the data from the four experiments and apply logistic regression to investigate possible relations of the quality of test cases with students' level of exposure to CS knowledge. Results: The quality of test cases generated by students depend significantly on the amount of CS program studied. The odds of generating test cases that reveal failures against those that do not reveal decrease when students are exposed to a low level of CS knowledge. Conclusions: Software testing plays a key role in what is an increasingly complex process of developing and maintaining software products today. The results of our empirical study provide evidence in favor of greater formal training in software testing as part of CS programs.
+ER  - 
+
+TY  - CONF
+TI  - Fully Automated Game Testing via Neuroevolution
+T2  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 486
+EP  - 488
+AU  - P. Feldmeier
+PY  - 2023
+DO  - 10.1109/ICST57152.2023.00058
+JO  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 16-20 April 2023
+AB  - The video gaming industry thrives with an expected record revenue of $365.60 billion in 2023 and an annual growth rate of 6.52% from 2023 to 2027 [1] . To gain a foothold in this emerging market, developers have to ensure the best gaming experience possible, which can only be achieved via extensive testing procedures. However, most video games are created incrementally; some are even developed indefinitely, resulting in many program increments that have to be tested over and over again. Even though fully automated testing of games could relieve developers from this tedious task, a look at current industry practices reveals a dire need for more research, as most companies still test manually [2] , [3] . Besides entertaining the player, video games are also increasingly used for programming education because games keep the students motivated while demonstrating crucial programming concepts [4] – [6] . Although even experienced programmers rely on integrated development tools, students are left off with a lack of tools to assist them during their learning journey. Thus, more work on automated game testing is required such that students and practitioners cannot only validate the correctness of programs but also use generated inputs for dynamic program analysis.
+ER  - 
+
+TY  - JOUR
+TI  - Trend Application of Machine Learning in Test Case Prioritization: A Review on Techniques
+T2  - IEEE Access
+SP  - 166262
+EP  - 166282
+AU  - M. Khatibsyarbini
+AU  - M. A. Isa
+AU  - D. N. A. Jawawi
+AU  - M. L. M. Shafie
+AU  - W. M. N. Wan-Kadir
+AU  - H. N. A. Hamed
+AU  - M. D. M. Suffian
+PY  - 2021
+DO  - 10.1109/ACCESS.2021.3135508
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 9
+VL  - 9
+JA  - IEEE Access
+Y1  - 2021
+AB  - Software quality can be assured by passing the process of software testing. However, software testing process involve many phases which lead to more resources and time consumption. To reduce these downsides, one of the approaches is to adopt test case prioritization (TCP) where numerous works has indicated that TCP do improve the overall software testing performance. TCP does have several kinds of techniques which have their own strengths and weaknesses. As for this review paper, the main objective of this paper is to examine deeper on machine learning (ML) techniques based on research questions created. The research method for this paper was designed in parallel with the research questions. Consequently, 110 primary studies were selected where, 58 were journal articles, 50 were conference papers and 2 considered as others articles. For overall result, it can be said that ML techniques in TCP has trending in recent years yet some improvements are certainly welcomed. There are multiple ML techniques available, in which each technique has specified potential values, advantages, and limitation. It is notable that ML techniques has been considerably discussed in TCP approach for software testing.
+ER  - 
+
+TY  - CONF
+TI  - Deep Feature Learning to Quantitative Prediction of Software Defects
+T2  - 2021 IEEE 45th Annual Computers, Software, and Applications Conference (COMPSAC)
+SP  - 1401
+EP  - 1402
+AU  - L. Qiao
+AU  - G. Li
+AU  - D. Yu
+AU  - H. Liu
+PY  - 2021
+DO  - 10.1109/COMPSAC51774.2021.00204
+JO  - 2021 IEEE 45th Annual Computers, Software, and Applications Conference (COMPSAC)
+IS  - 
+SN  - 0730-3157
+VO  - 
+VL  - 
+JA  - 2021 IEEE 45th Annual Computers, Software, and Applications Conference (COMPSAC)
+Y1  - 12-16 July 2021
+AB  - Defect prediction forecasts defect proneness or the number of defects contained in software systems. It is frequently employed to efficiently prioritize and allocate the limited testing resources to the modules that are more likely to be defective during the process of software development and maintenance. Consequently, a number of defect prediction approaches have been proposed. Most of the existing approaches on defect prediction regard defect prediction as a classification problem in which programs are classified as buggy or non-buggy. However, identifying the defect proneness of a given software module is not sufficient in practical software testing. The research on predicting the number of defects is limited and the performances of these approaches are constantly being optimized and improved. Therefore, in this paper, we propose a novel approach that leverages a convolutional neural network to predict the number of defects in software systems automatically. First, we preprocess the PROMISE dataset, which involves performing natural logarithm transformation and data normalization. Second, we feed the preprocessed dataset to a specially designed convolutional neural network-based model to predict the number of defects. Third, we rank the software modules according to the corresponding predicted number of defects in descending order. We also evaluate the proposed approach on a well-known dataset by cross-validation. The evaluation results suggest that the proposed approach is both accurate and robust, and it improves the state of the art. On average, it significantly improves the Kendall correlation coefficient by 16% and the fault-percentile-average by 4%.
+ER  - 
+
+TY  - CONF
+TI  - A Preliminary Report on Hands-On and Cross-Course Activities in a College Software Testing Course
+T2  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 445
+EP  - 451
+AU  - U. Praphamontripong
+AU  - M. Floryan
+AU  - R. Ritzo
+PY  - 2020
+DO  - 10.1109/ICSTW50294.2020.00080
+JO  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 24-28 Oct. 2020
+AB  - This report presents numerous interventions deployed in a college-level course on software testing. The aim of these interventions was to increase interest, motivation, and confidence in software testing among computer science majors. Four hands-on in-class activities (Agile Airplane Testing, Test-Driven Development Activities, Candy Testing, and Bypass Testing) were deployed and are described. In addition, students in the course participated in a cross-course activity in which the students produced tests for younger peers in an introductory (CS2) software development course. Students in the software testing course acted as test engineers while students in the earlier course acted as developers and used the tests provided, interacting with their peers when necessary. Preliminary results are presented. Students generally found the activities to be useful, engaging, and provided positive feedback. Developers in the earlier software development course produced more correct code when using test suites provided by upperclassmen, and survey results show small but positive gains in student interest and confidence in software testing.
+ER  - 
+
+TY  - CONF
+TI  - Challenges of Testing Machine Learning Based Systems
+T2  - 2019 IEEE International Conference On Artificial Intelligence Testing (AITest)
+SP  - 101
+EP  - 102
+AU  - D. Marijan
+AU  - A. Gotlieb
+AU  - M. Kumar Ahuja
+PY  - 2019
+DO  - 10.1109/AITest.2019.00010
+JO  - 2019 IEEE International Conference On Artificial Intelligence Testing (AITest)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE International Conference On Artificial Intelligence Testing (AITest)
+Y1  - 4-9 April 2019
+AB  - Machine learning is being increasingly deployed in many industrial and societal applications. Given its widespread use, it is of utmost importance to ensure the quality of software systems supported by machine learning. Although researchers have applied some concepts from traditional software testing to testing of machine learning based systems, the latter introduce a range of challenges not typical for traditional software systems, thus making traditional software testing techniques ineffective. In this paper, we discuss the challenges intrinsic to testing of machine learning based systems. We highlight the promising role of machine learning based testing to alleviate some of these challenges. We also discuss directions for future research in this domain. This paper focuses on the testing aspects of machine learning based systems from the quality assurance perspective, rather than model performance perspective.
+ER  - 
+
+TY  - CONF
+TI  - Development of an Islamic Higher Education Institution Tracer Study Information System and It's Performance Analysis using ISO/IEC 25010
+T2  - 2019 7th International Conference on Cyber and IT Service Management (CITSM)
+SP  - 1
+EP  - 6
+AU  - N. Anggraini
+AU  - M. J. D. Putra
+AU  - N. Hakiem
+PY  - 2019
+DO  - 10.1109/CITSM47753.2019.8965356
+JO  - 2019 7th International Conference on Cyber and IT Service Management (CITSM)
+IS  - 
+SN  - 
+VO  - 7
+VL  - 7
+JA  - 2019 7th International Conference on Cyber and IT Service Management (CITSM)
+Y1  - 6-8 Nov. 2019
+AB  - Alumni is one of the benchmark points in accreditation to assess the quality of higher education and as a comparison of a learning curriculum, Tracer Study is a method used to collect information about alumni using questionnaires. After the authors of the system analysis of the Universitas Islam Negeri (UIN) Syarif Hidayatullah Jakarta, for now, do not have a Tracer Study Information System, thus the authors want to develop a Tracer Study information system that is integrated with the AIS database and analyzes its performance using ISO / IEC 25010 and uses Rapid Application system development methods Development (RAD). The results of testing using the characteristics of ISO / IEC 25010 are functional suitability Tracer Study Information System with a value of 1, performance efficiency with page responses of less than 5 seconds, compatibility with can be run on several browsers with different versions, Reliability with a value of 100%, usability with a value of 67.5%, maintainability with a value of less than 0.56%, and portability, namely responsive websites in various browser sizes. With the success of this writing, it can facilitate the university in monitoring alumni and getting a comparison of learning curriculum.
+ER  - 
+
+TY  - CONF
+TI  - Generating Test Suites with High 3-Way Coverage for Software Testing
+T2  - 2016 IEEE International Conference on Computer and Information Technology (CIT)
+SP  - 10
+EP  - 17
+AU  - Y. Akhtar
+AU  - S. Maity
+AU  - R. C. Chandrasekharan
+PY  - 2016
+DO  - 10.1109/CIT.2016.89
+JO  - 2016 IEEE International Conference on Computer and Information Technology (CIT)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE International Conference on Computer and Information Technology (CIT)
+Y1  - 8-10 Dec. 2016
+AB  - Software testing is the process of executing a program or system with the intent of finding errors. Budgets assigned for software testing are generally limited. Performing exhaustive testing which tests all possible input combinations (test cases) is practically impossible. A major challenge in testing is how to achieve maximum test coverage using limited number of test cases. In this article, we propose an algebraic method of creating test suites with high 3-way configuration coverage within a fixed number of test cases.
+ER  - 
+
+TY  - CONF
+TI  - Machine Learning to Guide Performance Testing: An Autonomous Test Framework
+T2  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 164
+EP  - 167
+AU  - M. Helali Moghadam
+AU  - M. Saadatmand
+AU  - M. Borg
+AU  - M. Bohlin
+AU  - B. Lisper
+PY  - 2019
+DO  - 10.1109/ICSTW.2019.00046
+JO  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 22-23 April 2019
+AB  - Satisfying performance requirements is of great importance for performance-critical software systems. Performance analysis to provide an estimation of performance indices and ascertain whether the requirements are met is essential for achieving this target. Model-based analysis as a common approach might provide useful information but inferring a precise performance model is challenging, especially for complex systems. Performance testing is considered as a dynamic approach for doing performance analysis. In this work-in-progress paper, we propose a self-adaptive learning-based test framework which learns how to apply stress testing as one aspect of performance testing on various software systems to find the performance breaking point. It learns the optimal policy of generating stress test cases for different types of software systems, then replays the learned policy to generate the test cases with less required effort. Our study indicates that the proposed learning-based framework could be applied to different types of software systems and guides towards autonomous performance testing.
+ER  - 
+
+TY  - CONF
+TI  - Gamified Internet of Things Testing within a Virtual Learning Environment — towards the Interactive Simulation Game “IoTCityLab”
+T2  - 2020 IEEE 32nd Conference on Software Engineering Education and Training (CSEE&T)
+SP  - 1
+EP  - 4
+AU  - T. Auer
+AU  - M. Felderer
+PY  - 2020
+DO  - 10.1109/CSEET49119.2020.9206175
+JO  - 2020 IEEE 32nd Conference on Software Engineering Education and Training (CSEE&T)
+IS  - 
+SN  - 2377-570X
+VO  - 
+VL  - 
+JA  - 2020 IEEE 32nd Conference on Software Engineering Education and Training (CSEE&T)
+Y1  - 9-12 Nov. 2020
+AB  - The number of connected devices increases continually. The Internet is omnipresent in nearly all areas of daily life, both in private and professional spheres. Humans and institutions are especially concerned about security and usability of the large number of connected objects. This is also a big challenge for professionals in the field of software and hardware testing. They are forced to extend their knowledge to provide quality assurance of connected devices and environments. The qualification requirements are constantly changing. For this reason, the virtual simulation game IoTCityLab will be developed. The target audience are both experienced software testing professionals as also students at universities and vocational trainees who plan a career in the Internet of Things domain. It is a multi-player game in which teams act as in real projects while they will gain experience and knowledge through application. The simulation game is composed of several modules on several approaches of Internet of Things testing. In the first game module the players need to set up a test automation environment for testing an autonomous vehicle in an agile team. In each individual game module the focus is on testing of elements which are part of a smart city infrastructure. Each individual game module focuses on a particular stage of development. By playing the game modules, the players have the opportunity to accompany the proceedings in the implementation of a smart city infrastructure and experience testing and quality assurance in this field interactively.
+ER  - 
+
+TY  - JOUR
+TI  - Software-Testing Contests: Observations and Lessons Learned
+T2  - Computer
+SP  - 61
+EP  - 69
+AU  - X. Wang
+AU  - W. Sun
+AU  - L. Hu
+AU  - Y. Zhao
+AU  - W. E. Wong
+AU  - Z. Chen
+PY  - 2019
+DO  - 10.1109/MC.2019.2905533
+JO  - Computer
+IS  - 10
+SN  - 1558-0814
+VO  - 52
+VL  - 52
+JA  - Computer
+Y1  - Oct. 2019
+AB  - While a significant amount of resources can be spent on software testing, the software produced may still suffer from low quality. The authors describe their experience of hosting industrysponsored software-testing contests to help undergraduate and graduate students, as well as practitioners, improve their testing skills.
+ER  - 
+
+TY  - CONF
+TI  - Automated User Experience Testing through Multi-Dimensional Performance Impact Analysis
+T2  - 2021 IEEE/ACM International Conference on Automation of Software Test (AST)
+SP  - 125
+EP  - 128
+AU  - C. Biringa
+AU  - G. Kul
+PY  - 2021
+DO  - 10.1109/AST52587.2021.00024
+JO  - 2021 IEEE/ACM International Conference on Automation of Software Test (AST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 IEEE/ACM International Conference on Automation of Software Test (AST)
+Y1  - 20-21 May 2021
+AB  - Although there are many automated software testing suites, they usually focus on unit, system, and interface testing. However, especially software updates such as new security features have the potential to diminish user experience. In this paper, we propose a novel automated user experience testing methodology that learns how code changes impact the time unit and system tests take, and extrapolate user experience changes based on this information. Such a tool can be integrated into existing continuous integration pipelines, and it provides software teams immediate user experience feedback. We construct a feature set from lexical, layout, and syntactic characteristics of the code, and using Abstract Syntax Tree-Based Embeddings, we can calculate the approximate semantic distance to feed into a machine learning algorithm. In our experiments, we use several regression methods to estimate the time impact of software updates. Our open-source tool achieved a 3.7% mean absolute error rate with a random forest regressor.
+ER  - 
+
+TY  - CONF
+TI  - A Minimally Disruptive Approach of Integrating Testing into Computer Programming Courses
+T2  - 2018 IEEE/ACM International Workshop on Software Engineering Education for Millennials (SEEM)
+SP  - 1
+EP  - 7
+AU  - V. Ramasamy
+AU  - H. Alomari
+AU  - J. Kiper
+AU  - G. Potvin
+PY  - 2018
+DO  - 
+JO  - 2018 IEEE/ACM International Workshop on Software Engineering Education for Millennials (SEEM)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE/ACM International Workshop on Software Engineering Education for Millennials (SEEM)
+Y1  - 2-2 June 2018
+AB  - The problem of finding and evaluating effective ways of integrating software testing concepts and related techniques into introductory programming courses is still an open research question. In this paper, we present multiple studies that assess our approach to integrating software testing in Computer Science (CS) and Software Engineering (SE) courses. Each study uses SEP-CyLE (Software Engineering and Programming Cyberlearning Environment), an external, web-based learning tool to help instructors integrate testing concepts into their courses. These empirical studies were conducted in eight CS/SE course sections at a medium-sized public university. The results show (1) SEP-CyLE can be efficiently used in the classroom to impact the testing knowledge gained by students, and (2) students find that SEP CyLE is a useful learning resource that effectively helps them complete course tasks and better master course concepts.
+ER  - 
+
+TY  - CONF
+TI  - UnoAPI: Balancing Performance, Portability, and Productivity (P3) in HPC Education
+T2  - 2022 IEEE/ACM International Workshop on Education for High Performance Computing (EduHPC)
+SP  - 1
+EP  - 10
+AU  - K. Läufer
+AU  - G. K. Thiruvathukal
+PY  - 2022
+DO  - 10.1109/EduHPC56719.2022.00006
+JO  - 2022 IEEE/ACM International Workshop on Education for High Performance Computing (EduHPC)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM International Workshop on Education for High Performance Computing (EduHPC)
+Y1  - 13-18 Nov. 2022
+AB  - oneAPI is a major initiative by Intel aimed at making it easier to program heterogeneous architectures used in high-performance computing using a unified application programming interface (API). While raising the abstraction level via a unified API represents a promising step for the current generation of students and practitioners to embrace high-performance computing, we argue that a curriculum of well-developed software engineering methods and well-crafted exem-plars will be necessary to ensure interest by this audience and those who teach them. We aim to bridge the gap by developing a curriculum-codenamed UnoAPI-that takes a more holistic approach by looking beyond language and framework to include the broader development ecosystem, similar to the experience found in popular HPC languages such as Python. We hope to make parallel programming a more attractive option by making it look more like general application development in modern languages being used by most students and educators today. Our curriculum emanates from the perspective of well-crafted exemplars from the foundations of computer systems-given that most HPC architectures of interest begin from the systems tradition-with an integrated treatment of essential principles of distributed systems, programming languages, and software engineering. We argue that a curriculum should cover the essence of these topics to attract students to HPC and enable them to confidently solve computational problems using oneAPI. By the time of this submission, we have shared our materials with a small group of undergraduate sophomores, and their responses have been encouraging in terms of self-reported comprehension and ability to reproduce the compilation and execution of exemplars on their personal systems. We plan a follow-up study with a larger cohort by incorporating some of our materials in our existing course on High-Performance Computing.
+ER  - 
+
+TY  - CONF
+TI  - Time Series Anomaly Detection using Convolutional Neural Networks in the Manufacturing Process of RAN
+T2  - 2023 IEEE International Conference On Artificial Intelligence Testing (AITest)
+SP  - 90
+EP  - 98
+AU  - C. Landin
+AU  - J. Liu
+AU  - K. Katsarou
+AU  - S. Tahvili
+PY  - 2023
+DO  - 10.1109/AITest58265.2023.00023
+JO  - 2023 IEEE International Conference On Artificial Intelligence Testing (AITest)
+IS  - 
+SN  - 2835-3560
+VO  - 
+VL  - 
+JA  - 2023 IEEE International Conference On Artificial Intelligence Testing (AITest)
+Y1  - 17-20 July 2023
+AB  - The traditional approach of categorizing test results as “Pass” or “Fail” based on fixed thresholds can be labor-intensive and lead to dropping test data. This paper presents a framework to enhance the semi-automated software testing process by detecting deviations in executed data and alerting when anomalous inputs fall outside data-driven thresholds. In detail, the proposed solution utilizes classification with convolutional neural networks and prediction modeling using linear regression, Ridge regression, Lasso regression, and XGBoost. The study also explores transfer learning in a highly correlated use case. Empirical evaluation at a leading Telecom company validates the effectiveness of the approach, showcasing its potential to improve testing efficiency and accuracy. Despite its significance, limitations include the need for further research in different domains and industries to generalize the findings, as well as the potential biases introduced by the selected machine learning models. Overall, this study contributes to the field of semi-automated software testing and highlights the benefits of leveraging data-driven thresholds and machine learning techniques for enhanced software quality assurance processes.
+ER  - 
+
+TY  - CONF
+TI  - TEST-INT: A Testing Platform for Deep Learning Models
+T2  - 2021 15th Turkish National Software Engineering Symposium (UYMS)
+SP  - 1
+EP  - 3
+AU  - &#x00D6;. &#x00D6;zdemir
+AU  - D. Demir
+PY  - 2021
+DO  - 10.1109/UYMS54260.2021.9659790
+JO  - 2021 15th Turkish National Software Engineering Symposium (UYMS)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 15th Turkish National Software Engineering Symposium (UYMS)
+Y1  - 17-19 Nov. 2021
+AB  - Deep learning models indicate remarkable performance in a wide variety of tasks especially in computer vision. However, it is often that deep learning models developed only perform well on a specific and limited test data, and fail in real-world applications. In safety-critical applications, it is highly significant to minimize the possibility of any erroneous behavior of deep learning model. The TEST-INT system, which we have produced to solve this problem, is a testing platform that creates new test sets from existing test data with different image transformation methods and adversarial attacks, as well as measures test adequacy and performance of the model, and reports them to the user.
+ER  - 
+
+TY  - CONF
+TI  - Generating Test Input with Deep Reinforcement Learning
+T2  - 2018 IEEE/ACM 11th International Workshop on Search-Based Software Testing (SBST)
+SP  - 51
+EP  - 58
+AU  - J. Kim
+AU  - M. Kwon
+AU  - S. Yoo
+PY  - 2018
+DO  - 
+JO  - 2018 IEEE/ACM 11th International Workshop on Search-Based Software Testing (SBST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE/ACM 11th International Workshop on Search-Based Software Testing (SBST)
+Y1  - 28-29 May 2018
+AB  - Test data generation is a tedious and laborious process. Search-based Software Testing (SBST) automatically generates test data optimising structural test criteria using metaheuristic algorithms. In essence, metaheuristic algorithms are systematic trial-and-error based on the feedback of fitness function. This is similar to an agent of reinforcement learning which iteratively decides an action based on the current state to maximise the cumulative reward. Inspired by this analogy, this paper investigates the feasibility of employing reinforcement learning in SBST to replace human designed metaheuristic algorithms. We reformulate the software under test (SUT) as an environment of reinforcement learning. At the same time, we present GunPowder, a novel framework for SBST which extends SUT to the environment. We train a Double Deep Q-Networks (DDQN) agent with deep neural network and evaluate the effectiveness of our approach by conducting a small empirical study. Finally, we find that agents can learn metaheuristic algorithms for SBST, achieving 100% branch coverage for training functions. Our study sheds light on the future integration of deep neural network and SBST.
+ER  - 
+
+TY  - CONF
+TI  - HoliCoW: Automatically Breaking Team-Based Software Projects to Motivate Student Testing
+T2  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+SP  - 436
+EP  - 439
+AU  - P. Zhang
+AU  - J. White
+AU  - D. C. Schmidt
+PY  - 2016
+DO  - 
+JO  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+Y1  - 14-22 May 2016
+AB  - Intensive testing is often applied by professional software engineers to assure the quality of enterprise information technology (IT) systems. For example, Netflix's Simian Army consists of services that generate various types of failures, detect abnormal conditions, and test the ability of cloud-based enterprise IT software to survive them. Although software engineering students should be taught these types of rigorous testing techniques, it is often hard to motivate students to produce high-quality test suites for their assignments since classroom environments lack the harsh outcomes of unexpected system failures. This paper provides two contributions to work on strengthening coding and testing skills of software engineering students by aligning educational environment more closely with real-world industries. First, we describe the Holistic Code-Wrecker (HoliCoW), which is our testing method and tool that simulates production environments through forced logical error injections into student projects. The modified versions are then run against regression tests written by students, and the test results are analyzed to determine the robustness of original software. Second, this paper describes preliminary results from our ongoing experience applying HoliCoW to Software Engineering project courses at Vanderbilt University, where the tool is used to automatically evaluate student software project submissions to determine whether regression tests they define detect errors injected into their code.
+ER  - 
+
+TY  - CONF
+TI  - Poster: Performance Testing Driven by Reinforcement Learning
+T2  - 2020 IEEE 13th International Conference on Software Testing, Validation and Verification (ICST)
+SP  - 402
+EP  - 405
+AU  - M. H. Moghadam
+AU  - M. Saadatmand
+AU  - M. Borg
+AU  - M. Bohlin
+AU  - B. Lisper
+PY  - 2020
+DO  - 10.1109/ICST46399.2020.00048
+JO  - 2020 IEEE 13th International Conference on Software Testing, Validation and Verification (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2020 IEEE 13th International Conference on Software Testing, Validation and Verification (ICST)
+Y1  - 24-28 Oct. 2020
+AB  - Performance testing remains a challenge, particularly for complex systems. Different application-, platform- and workload-based factors can influence the performance of software under test. Common approaches for generating platform- and workload-based test conditions are often based on system model or source code analysis, real usage modeling and use-case based design techniques. Nonetheless, creating a detailed performance model is often difficult, and also those artifacts might not be always available during the testing. On the other hand, test automation solutions such as automated test case generation can enable effort and cost reduction with the potential to improve the intended test criteria coverage. Furthermore, if the optimal way (policy) to generate test cases can be learnt by testing system, then the learnt policy can be reused in further testing situations such as testing variants, evolved versions of software, and different testing scenarios. This capability can lead to additional cost and computation time saving in the testing process. In this research, we present an autonomous performance testing framework which uses a model-free reinforcement learning augmented by fuzzy logic and self-adaptive strategies. It is able to learn the optimal policy to generate platform- and workload-based test conditions which result in meeting the intended testing objective without access to system model and source code. The use of fuzzy logic and self-adaptive strategy helps to tackle the issue of uncertainty and improve the accuracy and adaptivity of the proposed learning. Our evaluation experiments show that the proposed autonomous performance testing framework is able to generate the test conditions efficiently and in a way adaptive to varying testing situations.
+ER  - 
+
+

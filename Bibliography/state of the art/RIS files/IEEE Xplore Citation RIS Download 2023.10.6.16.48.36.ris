@@ -1,0 +1,931 @@
+TY  - JOUR
+TI  - A Multi-Goal Particle Swarm Optimizer for Test Case Prioritization
+T2  - IEEE Access
+SP  - 90683
+EP  - 90697
+AU  - M. Nazir
+AU  - A. Mehmood
+AU  - W. Aslam
+AU  - Y. Park
+AU  - G. S. Choi
+AU  - I. Ashraf
+PY  - 2023
+DO  - 10.1109/ACCESS.2023.3305973
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 11
+VL  - 11
+JA  - IEEE Access
+Y1  - 2023
+AB  - Regression testing is carried out to test the updated supply code within the constraints of time and sources. Since it is very difficult to run all the updated source code every time, test case prioritization is needed to decrease the fee of regression testing. Various methodologies including extensions of white box and black box prioritization, have been presented considering the prioritization of test instances. In this context, the employment of particle swarm optimization (PSO) is usually recommended for test case prioritization. Single test case prioritization focuses to order test cases to maximize objectives like fault detection rate, execution time, etc. Regression testing for single-objective test suite prioritization can become challenging due to its longer execution time. However, test case prioritization for multi-objective functions is a complex and time-consuming task. A check suite may be organized in a certain order by an appropriate technique, subsequently permitting the detection of flaws as early as possible. Multi-goal particle swarm optimization (MOPSO) is used for case prioritization in regression testing. The purpose of MOPSO in this context is to organize the test suite in a specific order that maximizes fault coverage, provides sufficient coverage of test cases, and minimizes execution time. This study proposes an approach based on MOPSO that focuses on maximum fault coverage, most circumstance insurance, and minimal execution time. Experiments are performed using the average percentage of faults detected (APFD) to evaluate its performance. Performance analysis using APFD consisting of no order, opposite order, and random order indicates that the MOPSO surpasses all the previous techniques and obtains an 85% fault coverage. Moreover, MOPSO is better in terms of execution time, fault detection fee, and early detection capabilities.
+ER  - 
+
+TY  - CONF
+TI  - Research Progress of Flaky Tests
+T2  - 2021 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)
+SP  - 639
+EP  - 646
+AU  - W. Zheng
+AU  - G. Liu
+AU  - M. Zhang
+AU  - X. Chen
+AU  - W. Zhao
+PY  - 2021
+DO  - 10.1109/SANER50967.2021.00081
+JO  - 2021 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)
+IS  - 
+SN  - 1534-5351
+VO  - 
+VL  - 
+JA  - 2021 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)
+Y1  - 9-12 March 2021
+AB  - A flaky test is a test that both passes and fails periodically without any code changes, and its uncontrolled uncertainty will destroy the value of the test suites and even cause developers to distrust the test results. Recently, researches in the flaky test have received broad attention in the software test community to reduce the manual maintenance cost of flaky tests by developers. In this survey, we conducted comprehensive research progress on the flaky test We identified 31 relevant studies and summarized the following aspects of the flaky test: root causes and factors, analyzing the impact, detecting and classifying techniques, and fixing approaches. This survey also identifies open research challenges to be further explored in future work.
+ER  - 
+
+TY  - CONF
+TI  - Metamorphic Testing for Processor Verification: A RISC-V Case Study at the Instruction Level
+T2  - 2021 IFIP/IEEE 29th International Conference on Very Large Scale Integration (VLSI-SoC)
+SP  - 1
+EP  - 6
+AU  - F. Riese
+AU  - V. Herdt
+AU  - D. Große
+AU  - R. Drechsler
+PY  - 2021
+DO  - 10.1109/VLSI-SoC53125.2021.9606997
+JO  - 2021 IFIP/IEEE 29th International Conference on Very Large Scale Integration (VLSI-SoC)
+IS  - 
+SN  - 2324-8440
+VO  - 
+VL  - 
+JA  - 2021 IFIP/IEEE 29th International Conference on Very Large Scale Integration (VLSI-SoC)
+Y1  - 4-7 Oct. 2021
+AB  - Metamorphic Testing (MT) has been shown to be a very effective technique in the Software (SW) domain. MT does not require a reference model to compare against for testing but instead relies on Metamorphic Relations (MR) to derive the expected result from relationships between several calls to the function under test. An example of an MR is the expectation that the sum of an arbitrary list of integers remain unchanged regardless of it being sorted or reversed. Thus, a key requirement for applying MT effectively is availability of MRs specific to the domain at hand. In this paper, we propose MT to the domain of processor verification. As a case study, we consider the RISC-V Instruction Set Architecture (ISA) and provide MRs tailored for RISC-V For evaluation purposes, we propose an efficient on-the-fly MT framework that integrates the MRs with an Instruction Set Simulator (ISS). We measure the quality of those MRs by the number of mutations they kill, also referred to as mutation analysis. Our experiments demonstrate the effectiveness of the MRs to kill all mutations, which confirms our research question that MT is also a suitable technique for the domain of processor verification.
+ER  - 
+
+TY  - CONF
+TI  - Grammar-based Fuzzing Tool Using Markov Chain Model to Generate New Fuzzing Inputs
+T2  - 2021 International Conference on Computational Science and Computational Intelligence (CSCI)
+SP  - 1924
+EP  - 1930
+AU  - H. Al Salem
+AU  - J. Song
+PY  - 2021
+DO  - 10.1109/CSCI54926.2021.00358
+JO  - 2021 International Conference on Computational Science and Computational Intelligence (CSCI)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 International Conference on Computational Science and Computational Intelligence (CSCI)
+Y1  - 15-17 Dec. 2021
+AB  - In recent years, Fuzzing has been one of the promising techniques in software testing field. It supports testers and software developers to find bugs and issues in their applications. Fuzzing is automated hence it saves time and energy for the testers. However, the biggest drawback of fuzzing is that it usually cannot reach the deeper levels in an application because randomly generated fuzzing inputs will most likely not satisfy the format requirement of the application. To solve this problem, we conducted our previous research and developed a grammar-based fuzzing tool by extracting grammars from sample inputs. Then, we took the sample input files and modified them to generate effective fuzzing input files. By modifying the sample input files, the generated fuzzing input can test deeper code because it meets the format requirement of the program. However, the limitation of modifying sample input files is the tool was limited by the quality of the sample input file. In addition, the tool used the same commands order which prevented going to other locations in the target program. In this paper we propose our new technique of generating fuzzing input files with the help of Markov chain model on top of our previous work. The new tool learns the commands order, the probability of occurrence of each command, and the structure of sample input file. It employs the analyzed grammars to generate completely new fuzzing files. We have tested the DARPA CGC dataset and the new tool has successfully crashed another 7 programs that were not discovered by our previous work.
+ER  - 
+
+TY  - JOUR
+TI  - Fuzzy Rule-Based Approach for Software Fault Prediction
+T2  - IEEE Transactions on Systems, Man, and Cybernetics: Systems
+SP  - 826
+EP  - 837
+AU  - P. Singh
+AU  - N. R. Pal
+AU  - S. Verma
+AU  - O. P. Vyas
+PY  - 2017
+DO  - 10.1109/TSMC.2016.2521840
+JO  - IEEE Transactions on Systems, Man, and Cybernetics: Systems
+IS  - 5
+SN  - 2168-2232
+VO  - 47
+VL  - 47
+JA  - IEEE Transactions on Systems, Man, and Cybernetics: Systems
+Y1  - May 2017
+AB  - Knowing faulty modules prior to testing makes testing more effective and helps to obtain reliable software. Here, we develop a framework for automatic extraction of human understandable fuzzy rules for software fault detection/classification. This is an integrated framework to simultaneously identify useful determinants (attributes) of faults and fuzzy rules using those attributes. At the beginning of the training, the system assumes every attribute (feature) as a useless feature and then uses a concept of feature attenuating gate to select useful features. The learning process opens the gates or closes them more tightly based on utility of the features. Our system can discard derogatory and indifferent attributes and select the useful ones. It can also exploit subtle nonlinear interaction between attributes. In order to demonstrate the effectiveness of the framework, we have used several publicly available software fault data sets and compared the performance of our method with that of some existing methods. The results using tenfold cross-validation setup show that our system can find useful fuzzy rules for fault prediction.
+ER  - 
+
+TY  - JOUR
+TI  - A Systematic Review on Test Suite Reduction: Approaches, Experiment’s Quality Evaluation, and Guidelines
+T2  - IEEE Access
+SP  - 11816
+EP  - 11841
+AU  - S. U. Rehman Khan
+AU  - S. P. Lee
+AU  - N. Javaid
+AU  - W. Abdul
+PY  - 2018
+DO  - 10.1109/ACCESS.2018.2809600
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 6
+VL  - 6
+JA  - IEEE Access
+Y1  - 2018
+AB  - Regression testing aims at testing a system under test (SUT) in the presence of changes. As a SUT changes, the number of test cases increases to handle the modifications, and ultimately, it becomes practically impossible to execute all of them within limited testing budget. Test suite reduction (TSR) approaches are widely used to improve the regression testing costs by selecting representative test suite without compromising effectiveness, such as fault-detection capability, within allowed time budget. The aim of this systematic review is to identify state-of-the-art TSR approaches categories, assess the quality of experiments reported on this subject, and provide a set of guidelines for conducting future experiments in this area of research. After applying a two-facet study selection procedure, we finalized 113 most relevant studies from an initial pool of 4230 papers published in the field of TSR between 1993 and 2016. The TSR approaches are broadly classified into four main categories based on the literature including greedy, clustering, search, and hybrid approaches. It is noted that majority of the experiments in TSR do not follow any specific guidelines for planning, conducting, and reporting the experiments, which may pose validity threats related to their results. Thus, we recommend conducting experiments that are better designed for the future. In this direction, an initial set of recommendations is provided that are useful for performing well-designed experiments in the field of TSR. Furthermore, we provide a number of future research directions based on current trends in this field of research.
+ER  - 
+
+TY  - JOUR
+TI  - Combinatorial Test Suites Generation Strategy Utilizing the Whale Optimization Algorithm
+T2  - IEEE Access
+SP  - 192288
+EP  - 192303
+AU  - A. A. Hassan
+AU  - S. Abdullah
+AU  - K. Z. Zamli
+AU  - R. Razali
+PY  - 2020
+DO  - 10.1109/ACCESS.2020.3032851
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 8
+VL  - 8
+JA  - IEEE Access
+Y1  - 2020
+AB  - The potentially many software system input combinations make exhaustive testing practically impossible. To address this issue, combinatorial t-way testing (where t indicates the interaction strength, i.e. the number of interacting parameters (input)) was adopted to minimize the number of cases for testing. Complimentary to existing testing techniques (e.g. boundary value, equivalence partitioning, cause and effect graphing), combinatorial testing helps to detect faults caused by the faulty interaction between input parameters. In the last 15 years, applications of meta-heuristics as the backbone of t-way test suite generation have shown promising results (e.g. Particle Swarm Optimization, Cuckoo Search, Flower Pollination Algorithm, and Hyper-Heuristics (HHH), to name a few). Supporting the No Free Lunch theorem, as well as potentially offering new insights into the whole process of t-way generation, this article proposes a new strategy with constraint support based on the Whale Optimization Algorithm (WOA). Our work is the first attempt to adopt the WOA as part of a search-based software engineering (SBSE) initiative for t-way test suite generation with constraint support. The experimental results of the test-suite generation indicate that WOA produces competitive outcomes compared to some selected single-based and population-based meta-heuristic algorithms.
+ER  - 
+
+TY  - CONF
+TI  - Mining User's Browsing History to Personalize Web Search
+T2  - 2018 Second International Conference on Inventive Communication and Computational Technologies (ICICCT)
+SP  - 1209
+EP  - 1215
+AU  - V. Zaveri
+AU  - J. Dholakia
+AU  - I. Bandi
+AU  - S. Sankhe
+PY  - 2018
+DO  - 10.1109/ICICCT.2018.8473282
+JO  - 2018 Second International Conference on Inventive Communication and Computational Technologies (ICICCT)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 Second International Conference on Inventive Communication and Computational Technologies (ICICCT)
+Y1  - 20-21 April 2018
+AB  - In today's world, search engines have become a very convenient method of searching and retrieving information. But this increasing use of search engines goes hand in hand with the ever-increasing data available on the internet. With such large number of websites available, it is essential to have these websites sorted in decreasing order of their relevance to the user's query for effective operation and retrieval of data. This paper explores various domains related to Computer Science and proposes a framework that seems the best fix to this problem. The proposed framework aims to maximize personalization of web search for each user by modeling the user profile at the user level and leveraging this information to rearrange the Search Engine Result Pages (SERP) and achieve the objectives. This framework also incorporates an adaptive model based on supervised learning, which records feedbacks to improve its performance over time. After testing the software, we could derive from the results that users could relate to the modified search result pages on deeper levels. It also marked a significant reduction in time and efforts incurred searching on Search Engine.
+ER  - 
+
+TY  - CONF
+TI  - Quality Assurance of Micro-Services - When to trust your micro-service test results?
+T2  - 2021 IEEE 21st International Conference on Software Quality, Reliability and Security Companion (QRS-C)
+SP  - 01
+EP  - 06
+AU  - T. Vassiliou-Gioles
+PY  - 2021
+DO  - 10.1109/QRS-C55045.2021.00024
+JO  - 2021 IEEE 21st International Conference on Software Quality, Reliability and Security Companion (QRS-C)
+IS  - 
+SN  - 2693-9371
+VO  - 
+VL  - 
+JA  - 2021 IEEE 21st International Conference on Software Quality, Reliability and Security Companion (QRS-C)
+Y1  - 6-10 Dec. 2021
+AB  - Micro-service architecture has become a standard software architecture style, with loosely coupled, specified, and implemented services owned by small teams and independently deployable. In particular, with the emergence of managed services, deployment aspects have to be addressed explicitly. While tools and frameworks support micro-service developers in developing and unit-testing their services, less attention has been given to higher testing levels, particularly to the integration testing phase. This paper identifies aspects that limit the expressiveness and therefore the trust of integration testing and test results in the context of managed micros-services and function as a service. We propose the introduction of instance identification to overcome these limitations and illustrate how instance identification can be used to enhance integration testing's expressiveness and trust into integration test results.
+ER  - 
+
+TY  - CONF
+TI  - Build System Aware Multi-language Regression Test Selection in Continuous Integration
+T2  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)
+SP  - 87
+EP  - 96
+AU  - D. Elsner
+AU  - R. Wuersching
+AU  - M. Schnappinger
+AU  - A. Pretschner
+AU  - M. Graber
+AU  - R. Dammer
+AU  - S. Reimer
+PY  - 2022
+DO  - 10.1145/3510457.3513078
+JO  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)
+Y1  - 22-24 May 2022
+AB  - At IVU Traffic Technologies, continuous integration (CI) pipelines build, analyze, and test the code for inadvertent effects before pull requests are merged. However, compiling the entire code base and executing all regression tests for each pull request is infeasible due to prohibitively long feedback times. Regression test selection (RTS) aims to reduce the testing effort. Yet, existing safe RTS techniques are not suitable, as they largely rely on language-specific program analysis. The IVU code base consists of more than 13 million lines of code in Java or C/C++ and contains thousands of non-code artifacts. Regression tests commonly operate across languages, using cross-language links, or read from non-code artifacts. In this paper, we describe our build system aware multi-language RTS approach, which selectively compiles and executes affected code modules and regression tests, respectively, for a pull request. We evaluate our RTS technique on 397 pull requests, covering roughly 2,700 commits. The results show that we are able to safely exclude up to 75% of tests on average (no undetected real failures slip into the target branches) and thereby save 72% of testing time, whereas end-to-end CI pipeline time is reduced by up to 63% on average.
+ER  - 
+
+TY  - CONF
+TI  - Testing Your Question Answering Software via Asking Recursively
+T2  - 2021 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)
+SP  - 104
+EP  - 116
+AU  - S. Chen
+AU  - S. Jin
+AU  - X. Xie
+PY  - 2021
+DO  - 10.1109/ASE51524.2021.9678670
+JO  - 2021 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)
+IS  - 
+SN  - 2643-1572
+VO  - 
+VL  - 
+JA  - 2021 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)
+Y1  - 15-19 Nov. 2021
+AB  - Question Answering (QA) is an attractive and challenging area in NLP community. There are diverse algorithms being proposed and various benchmark datasets with different topics and task formats being constructed. QA software has also been widely used in daily human life now. However, current QA software is mainly tested in a reference-based paradigm, in which the expected outputs (labels) of test cases need to be annotated with much human effort before testing. As a result, neither the just-in-time test during usage nor the extensible test on massive unlabeled real-life data is feasible, which keeps the current testing of QA software from being flexible and sufficient. In this paper, we propose a method, qaAskeR, with three novel Metamorphic Relations for testing QA software. qaAskeR does not require the annotated labels but tests QA software by checking its behaviors on multiple recursively asked questions that are related to the same knowledge. Experimental results show that qaAskeR can reveal violations at over 80% of valid cases without using any preannotated labels. Diverse answering issues, especially the limited generalization on question types across datasets, are revealed on a state-of-the-art QA algorithm.
+ER  - 
+
+TY  - CONF
+TI  - Defect Prediction on a Legacy Industrial Software: A Case Study on Software with Few Defects
+T2  - 2016 IEEE/ACM 4th International Workshop on Conducting Empirical Studies in Industry (CESI)
+SP  - 14
+EP  - 20
+AU  - Y. Koroglu
+AU  - A. Sen
+AU  - D. Kutluay
+AU  - A. Bayraktar
+AU  - Y. Tosun
+AU  - M. Cinar
+AU  - H. Kaya
+PY  - 2016
+DO  - 10.1145/2896839.2896843
+JO  - 2016 IEEE/ACM 4th International Workshop on Conducting Empirical Studies in Industry (CESI)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE/ACM 4th International Workshop on Conducting Empirical Studies in Industry (CESI)
+Y1  - 17-17 May 2016
+AB  - Context: Building defect prediction models for software projects is helpful for reducing the effort in locating defects. In this paper, we share our experiences in building a defect prediction model for a large industrial software project. We extract product and process metrics to build models and show that we can build an accurate defect prediction model even when 4% of the software is defective. Objective: Our goal in this project is to integrate a defect predictor into the continuous integration (CI) cycle of a large software project and decrease the effort in testing. Method: We present our approach in the form of an experi- ence report. Specifically, we collected data from seven older versions of the software project and used additional features to predict defects of current versions. We compared several classification techniques including Naive Bayes, Decision Trees, and Random Forest and resampled our training data to present the company with the most accurate defect predictor. Results: Our results indicate that we can focus testing ef- forts by guiding the test team to only 8% of the software where 53% of actual defects can be found. Our model has 90% accuracy. Conclusion: We produce a defect prediction model with high accuracy for a software with defect rate of 4%. Our model uses Random Forest, that which we show has more predictive power than Naive Bayes, Logistic Regression and Decision Trees in our case.
+ER  - 
+
+TY  - JOUR
+TI  - Techniques to Improve Reliability in an IoT Architecture Framework for Intelligent Products
+T2  - IEEE Access
+SP  - 56940
+EP  - 56954
+AU  - C. M. Coman
+AU  - G. D’amico
+AU  - A. V. Coman
+AU  - A. Florescu
+PY  - 2021
+DO  - 10.1109/ACCESS.2021.3072168
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 9
+VL  - 9
+JA  - IEEE Access
+Y1  - 2021
+AB  - Sensor-Cloud Systems (SCS) are designed to link sensor networks and cloud applications, in order to gather and process information. While this is a hot topic for both academia and industry, with a large number of implementations, not much effort was put towards analysing the reliability of these systems. This article presents an experimental implementation of a system in the field of intelligent products and explores reliability improving techniques in five main areas of the SCS: network communication performance, auto recovery, local backup, automated software testing and system security. They all play an important role in determining the level of reliability of the novel Internet of Things (IoT) architecture framework for intelligent products presented in the article. A new formula is proposed for assessing the reliability of a SCS based on metrics from each of the five areas. Metrics used to assess the system reliability are presented, along with comparisons between operating with improvement techniques and without them. The results show that the reliability of the implemented SCS is improved considerably by implementing a deliberate reliability policy using an original five level tiered approach.
+ER  - 
+
+TY  - JOUR
+TI  - Developer Testing in the IDE: Patterns, Beliefs, and Behavior
+T2  - IEEE Transactions on Software Engineering
+SP  - 261
+EP  - 284
+AU  - M. Beller
+AU  - G. Gousios
+AU  - A. Panichella
+AU  - S. Proksch
+AU  - S. Amann
+AU  - A. Zaidman
+PY  - 2019
+DO  - 10.1109/TSE.2017.2776152
+JO  - IEEE Transactions on Software Engineering
+IS  - 3
+SN  - 1939-3520
+VO  - 45
+VL  - 45
+JA  - IEEE Transactions on Software Engineering
+Y1  - 1 March 2019
+AB  - Software testing is one of the key activities to achieve software quality in practice. Despite its importance, however, we have a remarkable lack of knowledge on how developers test in real-world projects. In this paper, we report on a large-scale field study with 2,443 software engineers whose development activities we closely monitored over 2.5 years in four integrated development environments (IDEs). Our findings, which largely generalized across the studied IDEs and programming languages Java and C#, question several commonly shared assumptions and beliefs about developer testing: half of the developers in our study do not test; developers rarely run their tests in the IDE; most programming sessions end without any test execution; only once they start testing, do they do it extensively; a quarter of test cases is responsible for three quarters of all test failures; 12 percent of tests show flaky behavior; Test-Driven Development (TDD) is not widely practiced; and software developers only spend a quarter of their time engineering tests, whereas they think they test half of their time. We summarize these practices of loosely guiding one's development efforts with the help of testing in an initial summary on Test-Guided Development (TGD), a behavior we argue to be closer to the development reality of most developers than TDD.
+ER  - 
+
+TY  - JOUR
+TI  - Reducing Feedback Delay of Software Development Tools via Continuous Analysis
+T2  - IEEE Transactions on Software Engineering
+SP  - 745
+EP  - 763
+AU  - K. Muşlu
+AU  - Y. Brun
+AU  - M. D. Ernst
+AU  - D. Notkin
+PY  - 2015
+DO  - 10.1109/TSE.2015.2417161
+JO  - IEEE Transactions on Software Engineering
+IS  - 8
+SN  - 1939-3520
+VO  - 41
+VL  - 41
+JA  - IEEE Transactions on Software Engineering
+Y1  - 1 Aug. 2015
+AB  - During software development, the sooner a developer learns how code changes affect program analysis results, the more helpful that analysis is. Manually invoking an analysis may interrupt the developer's workflow or cause a delay before the developer learns the implications of the change. A better approach is continuous analysis tools that always provide up-to-date results. We present Codebase Replication, a technique that eases the implementation of continuous analysis tools by converting an existing offline analysis into an IDE-integrated, continuous tool with two desirable properties: isolation and currency. Codebase Replication creates and keeps in sync a copy of the developer's codebase. The analysis runs on the copy codebase without disturbing the developer and without being disturbed by the developer's changes. We developed Solstice, an open-source, publicly-available Eclipse plug-in that implements Codebase Replication. Solstice has less than 2.5 milliseconds overhead for most common developer actions. We used Solstice to implement four Eclipse-integrated continuous analysis tools based on the offline versions of FindBugs, PMD, data race detection, and unit testing. Each conversion required on average 710 LoC and 20 hours of implementation effort. Case studies indicate that Solstice-based continuous analysis tools are intuitive and easy-to-use.
+ER  - 
+
+TY  - CONF
+TI  - An approach using agile method for software development
+T2  - 2016 International Conference on Innovation and Challenges in Cyber Security (ICICCS-INBUSH)
+SP  - 155
+EP  - 158
+AU  - B. Choudhary
+AU  - S. K. Rakesh
+PY  - 2016
+DO  - 10.1109/ICICCS.2016.7542304
+JO  - 2016 International Conference on Innovation and Challenges in Cyber Security (ICICCS-INBUSH)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 International Conference on Innovation and Challenges in Cyber Security (ICICCS-INBUSH)
+Y1  - 3-5 Feb. 2016
+AB  - Agile software development has rapidly gained a lot of interest in the field of software engineering. Agile software development, despite its novelty, is an important domain of research within software engineering discipline. Agile software development methods have caught the attention of software engineers and researchers worldwide. Scientific research is yet scarce, there has been little detailed reporting of the usage, penetration and success of agile methodologies in traditional, professional software development organizations. We report on the results of an empirical study conducted at Microsoft to learn about agile development and its perception by people in development, testing, and management. This paper reports results from a study, which aims to organize, analyse and make sense out of the dispersed field of agile software development methods.
+ER  - 
+
+TY  - CONF
+TI  - A Conceptual Framework for the Comparison of Fully Automated GUI Testing Techniques
+T2  - 2015 30th IEEE/ACM International Conference on Automated Software Engineering Workshop (ASEW)
+SP  - 50
+EP  - 57
+AU  - D. Amalfitano
+AU  - N. Amatucci
+AU  - A. R. Fasolino
+AU  - P. Tramontana
+PY  - 2015
+DO  - 10.1109/ASEW.2015.19
+JO  - 2015 30th IEEE/ACM International Conference on Automated Software Engineering Workshop (ASEW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 30th IEEE/ACM International Conference on Automated Software Engineering Workshop (ASEW)
+Y1  - 9-13 Nov. 2015
+AB  - Fully automated GUI testing techniques play an important role in the modern software development life cycles. These techniques are implemented by algorithms that automatically traverse the GUI by interacting with it, like robots discovering unexplored spaces. These algorithms are able to define and run test cases on the fly, while the application is in execution. Testing adequacy, performance or costs of such techniques may differ on the basis of different factors. In this paper we will propose an approach for comparing fully automated GUI testing techniques in a systematic manner. The approach is based on a generalized parametric algorithm that abstracts the key aspects of these techniques and provides a conceptual framework that can be used to define and compare different testing approaches. To validate the framework, we exploit it to compare the testing adequacy and the GUI models inferred by 9 fully automated testing techniques obtained by varying the configuration of the algorithm. The experiment is performed on a real Android application.
+ER  - 
+
+TY  - CONF
+TI  - Testing Scientific Software with Invariant Relations: A Case Study
+T2  - 2019 IEEE 19th International Conference on Software Quality, Reliability and Security (QRS)
+SP  - 406
+EP  - 417
+AU  - J. Ding
+AU  - X. Li
+AU  - X. -H. Hu
+PY  - 2019
+DO  - 10.1109/QRS.2019.00057
+JO  - 2019 IEEE 19th International Conference on Software Quality, Reliability and Security (QRS)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE 19th International Conference on Software Quality, Reliability and Security (QRS)
+Y1  - 22-26 July 2019
+AB  - Adequately testing scientific software is essential to the quality of the software. However, it is a grand challenge due to the oracle problem. Metamorphic testing has shown its effectiveness for alleviating the problem. But the effectiveness of metamorphic testing is highly dependent on the quality of metamorphic relations that are developed for testing the software. In this paper, we propose a framework for iteratively developing metamorphic relations for adequately testing scientific software. The basic idea is to refine metamorphic relations that are loosely defined to those that can be verified with only limited number of cases so that the relations can be accurately tested. We explain the framework through testing a scientific software system that is used for modeling light scattering of particles. Based on domain knowledge and general guidelines, a group of metamorphic relations are first identified and tested. According to testing results, the metamorphic relations are refined step by step until each of them can be accurately tested. In particular, an invariant transform is applied to the metamorphic relations for significantly reducing the number of cases that can satisfy the relations. Finally the relations are further transformed with a carefully defined hash function to ensure each of the metamorphic relations can be automatically verified. The proposed approach truly solves the oracle problem and greatly improves the effectiveness of metamorphic testing. Its effectiveness is evaluated by mutation testing and demonstrated by new problems found in the software.
+ER  - 
+
+TY  - JOUR
+TI  - Detecting Software Security Vulnerabilities Via Requirements Dependency Analysis
+T2  - IEEE Transactions on Software Engineering
+SP  - 1665
+EP  - 1675
+AU  - W. Wang
+AU  - F. Dumont
+AU  - N. Niu
+AU  - G. Horton
+PY  - 2022
+DO  - 10.1109/TSE.2020.3030745
+JO  - IEEE Transactions on Software Engineering
+IS  - 5
+SN  - 1939-3520
+VO  - 48
+VL  - 48
+JA  - IEEE Transactions on Software Engineering
+Y1  - 1 May 2022
+AB  - Cyber attacks targeting software applications have a tremendous impact on our daily life. For example, attackers have utilized vulnerabilities of web applications to steal and gain unauthorized use of sensitive data stored in these systems. Previous studies indicate that security testing is highly precise, and therefore is widely applied to validate individual security requirements. However, dependencies between security requirements may cause additional vulnerabilities. Manual dependency detection faces scalability challenges, e.g., a previous study shows that the pairwise dependency analysis of 40 requirements would take around 12 hours. In this article, we present a novel approach which integrates the interdependency among high-level security requirements, such as those documented in policies, regulations, and standards. We then use automated requirements tracing methods to identify product-level security requirements and their dependencies. Our manual analysis of HIPAA and FIPS 200 leads to the identification of five types of high-level security requirements dependencies, which further inform the automated tracing methods and guide the designs of system-level security tests. Experimental results on five projects in healthcare and education domains show the significant recall improvements at 81 percent. Our case study on a deployed production system uncovers four previously unknown vulnerabilities by using the detected requirements dependencies as test paths, demonstrating our approach's value in connecting requirements engineering with security testing.
+ER  - 
+
+TY  - CONF
+TI  - Software performance prediction at source level
+T2  - 2017 IEEE 15th International Conference on Software Engineering Research, Management and Applications (SERA)
+SP  - 263
+EP  - 270
+AU  - E. -W. Hu
+AU  - B. Su
+AU  - J. Wang
+PY  - 2017
+DO  - 10.1109/SERA.2017.7965736
+JO  - 2017 IEEE 15th International Conference on Software Engineering Research, Management and Applications (SERA)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 IEEE 15th International Conference on Software Engineering Research, Management and Applications (SERA)
+Y1  - 7-9 June 2017
+AB  - Performance prediction is critical in embedded system design for reducing the turnaround time of software. Using simulation to measure the performance of the whole source code is often too slow, particularly after the modification of the source code due to changes in problem specification. In this paper we present a comprehensive method that combines analytical modeling and statistical approach to predicting the performance of application software at source code level. We take samples from EEMBC and SMV benchmarks and gather the static attributes from the source code of those samples as our learning set. To determine the effectiveness of our new approach, we select several functions from PHY Benchmark as our testing set. We then apply multiple linear regression technique enhanced with the inclusion of new approaches by using the popular statistical tool SPSS23 to predict the performance of these functions. Comparing our predicted results with the actual measured values, the outcome is promising as the average relative error is within 20%.
+ER  - 
+
+TY  - JOUR
+TI  - Forecasting of software reliability using neighborhood fuzzy particle swarm optimization based novel neural network
+T2  - IEEE/CAA Journal of Automatica Sinica
+SP  - 1365
+EP  - 1383
+AU  - P. Roy
+AU  - G. S. Mahapatra
+AU  - K. N. Dey
+PY  - 2019
+DO  - 10.1109/JAS.2019.1911753
+JO  - IEEE/CAA Journal of Automatica Sinica
+IS  - 6
+SN  - 2329-9274
+VO  - 6
+VL  - 6
+JA  - IEEE/CAA Journal of Automatica Sinica
+Y1  - November 2019
+AB  - This paper proposes an artificial neural network (ANN) based software reliability model trained by novel particle swarm optimization (PSO) algorithm for enhanced forecasting of the reliability of software. The proposed ANN is developed considering the fault generation phenomenon during software testing with the fault complexity of different levels. We demonstrate the proposed model considering three types of faults residing in the software. We propose a neighborhood based fuzzy PSO algorithm for competent learning of the proposed ANN using software failure data. Fitting and prediction performances of the neighborhood fuzzy PSO based proposed neural network model are compared with the standard PSO based proposed neural network model and existing ANN based software reliability models in the literature through three real software failure data sets. We also compare the performance of the proposed PSO algorithm with the standard PSO algorithm through learning of the proposed ANN. Statistical analysis shows that the neighborhood fuzzy PSO based proposed neural network model has comparatively better fitting and predictive ability than the standard PSO based proposed neural network model and other ANN based software reliability models. Faster release of software is achievable by applying the proposed PSO based neural network model during the testing period.
+ER  - 
+
+TY  - JOUR
+TI  - RAPD: Rapid and Participatory Application Development of Usable Systems During COVID19 Crisis
+T2  - IEEE Access
+SP  - 93601
+EP  - 93614
+AU  - Y. -A. Daraghmi
+AU  - E. -Y. Daraghmi
+PY  - 2022
+DO  - 10.1109/ACCESS.2022.3203582
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 10
+VL  - 10
+JA  - IEEE Access
+Y1  - 2022
+AB  - Software development methods have been evolved to enable producing usable systems rapidly while considering all requirements. Several studies have focused on the need to balance between rapid development and capturing requirements related to user experience and business workflow. This balance has become more urging during COVID19 because many businesses want to quickly transfer to usable electronic systems that are accurate, efficient, easy to learn, satisfy users and support remote work. Therefore, this paper proposes a framework by integrating Rapid Application Development (RAD) method with Participatory Design (PD) method for enabling rapid production of usable systems. Both RAD and PD consist of design stages that can overlap and generate new phases where users participate in the design process and accelerate the production. Five usability tests are also added to the framework to validate the usability of the design at all stages. The Action Research method is used to assess the framework empirically in a context of an urgent need to an electronic system, and qualitative data analyses were conducted. The results show that the framework can be adopted by software companies because it satisfies the requirements of adopting software development methods. Also, the system developed using the framework is usable. The paper concludes that COVID19 affects software development by emphasizing rapid development while maintaining workflow. Also, using video conference for remote design assists in meeting users more frequently and in creating concise requirement documentation.
+ER  - 
+
+TY  - JOUR
+TI  - Take Your VNF to the Gym: A Testing Framework for Automated NFV Performance Benchmarking
+T2  - IEEE Communications Magazine
+SP  - 110
+EP  - 117
+AU  - R. V. Rosa
+AU  - C. Bertoldo
+AU  - C. E. Rothenberg
+PY  - 2017
+DO  - 10.1109/MCOM.2017.1700127
+JO  - IEEE Communications Magazine
+IS  - 9
+SN  - 1558-1896
+VO  - 55
+VL  - 55
+JA  - IEEE Communications Magazine
+Y1  - Sept. 2017
+AB  - A VNF is a software entity to be run in diverse execution environments with variable configuration options and capabilities (e.g., hardware acceleration) impacting performance. NFV resource multiplexed infrastructures can impose hard-topredict relationships between VNF performance metrics (e.g., latency, frame loss), the underlying allocated resources (e.g., units of vCPU), and the overall system workload. Characterized by many-fold platform configuration and environment variables, the evolving scenario of NFV calls for adequate testing methodologies embracing modern continuous development and integration practices and leveraging open source tools and mindset. To this end, we introduce Gym as our proposed testing framework and methodology for automated NFV performance benchmarking. We present our design principles and the outcomes from a practical validation on a vIMS scenario. A discussion of the lessons learned and the overall NFV performance testing landscape are further contributions of this article.
+ER  - 
+
+TY  - CONF
+TI  - Evaluating Unit Testing Practices in R Packages
+T2  - 2021 IEEE/ACM 43rd International Conference on Software Engineering (ICSE)
+SP  - 1523
+EP  - 1534
+AU  - M. Vidoni
+PY  - 2021
+DO  - 10.1109/ICSE43902.2021.00136
+JO  - 2021 IEEE/ACM 43rd International Conference on Software Engineering (ICSE)
+IS  - 
+SN  - 1558-1225
+VO  - 
+VL  - 
+JA  - 2021 IEEE/ACM 43rd International Conference on Software Engineering (ICSE)
+Y1  - 22-30 May 2021
+AB  - Testing Technical Debt (TTD) occurs due to shortcuts (non-optimal decisions) taken about testing; it is the test dimension of technical debt. R is a package-based programming ecosystem that provides an easy way to install third-party code, datasets, tests, documentation and examples. This structure makes it especially vulnerable to TTD because errors present in a package can transitively affect all packages and scripts that depend on it. Thus, TTD can effectively become a threat to the validity of all analysis written in R that rely on potentially faulty code. This two-part study provides the first analysis in this area. First, 177 systematically-selected, open-source R packages were mined and analysed to address quality of testing, testing goals, and identify potential TTD sources. Second, a survey addressed how R package developers perceive testing and face its challenges (response rate of 19.4%). Results show that testing in R packages is of low quality; the most common smells are inadequate and obscure unit testing, improper asserts, inexperienced testers and improper test design. Furthermore, skilled R developers still face challenges such as time constraints, emphasis on development rather than testing, poor tool documentation and a steep learning curve.
+ER  - 
+
+TY  - CONF
+TI  - Improving Semantic Consistency of Variable Names with Use-Flow Graph Analysis
+T2  - 2021 28th Asia-Pacific Software Engineering Conference (APSEC)
+SP  - 223
+EP  - 232
+AU  - Y. Shinyama
+AU  - Y. Arahori
+AU  - K. Gondow
+PY  - 2021
+DO  - 10.1109/APSEC53868.2021.00030
+JO  - 2021 28th Asia-Pacific Software Engineering Conference (APSEC)
+IS  - 
+SN  - 2640-0715
+VO  - 
+VL  - 
+JA  - 2021 28th Asia-Pacific Software Engineering Conference (APSEC)
+Y1  - 6-9 Dec. 2021
+AB  - Consistency is one of the keys to maintainable source code and hence a successful software project. We propose a novel method of extracting the intent of programmers from source code of a large project (~ 300 kLOC) and checking the semantic consistency of its variable names. Our system learns a project-specific naming convention for variables based on its role solely from source code, and suggest alternatives when it violates its internal consistency. The system can also show the reasoning why a certain variable should be named in a specific way. The system does not rely on any external knowledge. We applied our method to 12 open-source projects and evaluated its results with human reviewers. Our system proposed alternative variable names for 416 out of 1080 (39%) instances that are considered better than ones originally used by the developers. Based on the results, we created patches to correct the inconsistent names and sent them to its developers. Three open-source projects adopted it.
+ER  - 
+
+TY  - CONF
+TI  - TestEX: A Search Tool for Finding and Retrieving Example Unit Tests from Open Source Projects
+T2  - 2016 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW)
+SP  - 153
+EP  - 159
+AU  - D. Gonzalez
+AU  - A. Popovich
+AU  - M. Mirakhorli
+PY  - 2016
+DO  - 10.1109/ISSREW.2016.41
+JO  - 2016 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW)
+Y1  - 23-27 Oct. 2016
+AB  - Software testing as a means of early fault detection is increasingly practiced and integrated into software development activities. Despite its importance, many junior developers lack sufficient testing education and expertise. When faced with a task they are unfamiliar with, developers often use online resources to find code for adaptation or reference. Code search engines and repository mining tools have been created to assist developers, particularly less experienced ones, with finding solutions to common coding problems. However, many of these search engines lack the capability to facilitate test case searches. This has prevented developers from taking advantage of the massive analytical knowledge embodied in test cases written by other developers. In this paper we introduce TestEX, a web-based test case search engine designed to make finding useful test cases easier for developers. The strength of TestEX is the combination of three unique strategies for providing developers with useful and relevant test cases: (i) test-case identification within source code, (ii) test case categorization, and (iii) semantic mapping to the concern being searched via TestEX. Through the paper we present TestEX's Architecture, features and potential use cases. Furthermore, we report a study which was conducted to evaluate the effectiveness of our test case search engine. Tool: http://juno.main.ad.rit.edu:8081/TestEX/.
+ER  - 
+
+TY  - CONF
+TI  - An Improvement of a Checkpoint-based Distributed Testing Technique on a Big Data Environment
+T2  - 2019 21st International Conference on Advanced Communication Technology (ICACT)
+SP  - 1081
+EP  - 1090
+AU  - B. Sudsee
+AU  - C. Kaewkasi
+PY  - 2019
+DO  - 10.23919/ICACT.2019.8702037
+JO  - 2019 21st International Conference on Advanced Communication Technology (ICACT)
+IS  - 
+SN  - 1738-9445
+VO  - 
+VL  - 
+JA  - 2019 21st International Conference on Advanced Communication Technology (ICACT)
+Y1  - 17-20 Feb. 2019
+AB  - The advancement of storage technologies and the fast-growing number of generated data have made the world moved into the Big Data era. In this past, we had many data mining tools but they are inadequate to process Data-Intensive Scalable Computing workloads. The Apache Spark framework is a popular tool designed for Big Data processing. It leverages in-memory processing techniques that make Spark up to 100 times faster than Hadoop. Testing this kind of Big Data program is time consuming. Unfortunately, developers lack a proper testing framework, which cloud help assure quality of their data-intensive processing programs while saving development time and storage usages.We propose Distributed Test Checkpointing (DTC) for Apache Spark. DTC applies unit testing to the Big Data software development life cycle and reduce time spent for each testing loop with checkpoint. By using checkpoint technique, DTC keeps quality of Big Data processing software while keeps an inexpensive testing cost by overriding original Spark mechanism so that developers no pain to learn how to use DTC. Moreover, DTC has no addition abstraction layers. Developers can upgrade to a new version of Spark seamlessly. From the experimental results, we found that in the subsequence rounds of unit testing, DTC dramatically speed the testing time up to 450-500% faster. In case of storage, DTC can cut unnecessary data off and make the storage 19.7 times saver than the original checkpoint of Spark. DTC can be used either in case of JVM termination or testing with random values.
+ER  - 
+
+TY  - CONF
+TI  - Hybrid Automated Test Generation Tool (HATG)
+T2  - 2019 International Conference on Information Science and Communication Technology (ICISCT)
+SP  - 1
+EP  - 6
+AU  - H. Fakhruddin
+AU  - K. N. Kiani
+PY  - 2019
+DO  - 10.1109/CISCT.2019.8777436
+JO  - 2019 International Conference on Information Science and Communication Technology (ICISCT)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 International Conference on Information Science and Communication Technology (ICISCT)
+Y1  - 9-10 March 2019
+AB  - Testing is the primary mode to ensure that the software is defect free and demonstrate high level of reliability. Testing constitutes the critical aspect of software development process which also considered being contributory in realizing the quality goals along with software quality assurance function. We have two types of basic testing techniques; Static and dynamic testing that are used for detecting defects in software product. It is challenging to automate testing phase of the software product which includes both type of testing in a single solution according to the relation they have to each other. We have number of tools available for automated static testing (mainly unit testing) which depends upon random testing inputs independent of external interfaces of the method under test. We also have dynamic testing tool which take inputs from user and apply to the system and matches with user entered output to check whether system has quality output.We have developed a tool named ”Hybrid automated test generation tool that produces test suite automatically with high code coverage. It performs dynamic program analysis using dynamic emblematic execution in order to identify test inputs for created unit tests. By using execution path traces, it learns the behavior of program. HATG uses constraint solver for generating new inputs for different program behavior. We have applied HATG to a server based application written in.NET and found multiple errors including serious issues.We used both type of testing techniques, static and dynamic testing, so that it can create concrete number of inputs with highly coverage area. Our results show that it is more effective for applications that are developed for backend processing and which should be capable of handling any types of data for processing.
+ER  - 
+
+TY  - CONF
+TI  - Identification of Test Cases for Automated Driving Systems Using Bayesian Optimization
+T2  - 2019 IEEE Intelligent Transportation Systems Conference (ITSC)
+SP  - 1961
+EP  - 1967
+AU  - B. Gangopadhyay
+AU  - S. Khastgir
+AU  - S. Dey
+AU  - P. Dasgupta
+AU  - G. Montana
+AU  - P. Jennings
+PY  - 2019
+DO  - 10.1109/ITSC.2019.8917103
+JO  - 2019 IEEE Intelligent Transportation Systems Conference (ITSC)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE Intelligent Transportation Systems Conference (ITSC)
+Y1  - 27-30 Oct. 2019
+AB  - With advancements in technology, the automotive industry is experiencing a paradigm shift from assisted driving to highly automated driving. However, autonomous driving systems are highly safety critical in nature and need to be thoroughly tested for a diverse set of conditions before being commercially deployed. Due to the huge complexities involved with Advanced Driver Assistance Systems (ADAS) and Automated Driving Systems (ADS), traditional software testing methods have well-known limitations. They also fail to cover the infinite number of adverse conditions that can occur due to a slight change in the interactions between the environment and the system. Hence, it is important to identify test conditions that push the vehicle under test to breach its safe boundaries. Hazard Based Testing (HBT) methods, inspired by Systems-Theoretic Process Analysis (STPA), identify such parameterized test conditions that can lead to system failure. However, these techniques fall short of discovering the exact parameter values that lead to the failure condition. The presented paper proposes a test case identification technique using Bayesian Optimization. For a given test scenario, the proposed method learns parameter values by observing the system's output. The identified values create test cases that drive the system to violate its safe boundaries. STPA inspired outputs (parameters and pass/fail criteria) are used as inputs to the Bayesian Optimization model. The proposed method was applied to an SAE Level-4 Low Speed Automated Driving (LSAD) system which was modelled in a driving simulator.
+ER  - 
+
+TY  - CONF
+TI  - Software Defect Prediction Using Neural Network Based SMOTE
+T2  - 2020 7th International Conference on Electrical Engineering, Computer Sciences and Informatics (EECSI)
+SP  - 71
+EP  - 76
+AU  - R. B. Bahaweres
+AU  - F. Agustian
+AU  - I. Hermadi
+AU  - A. I. Suroso
+AU  - Y. Arkeman
+PY  - 2020
+DO  - 10.23919/EECSI50503.2020.9251874
+JO  - 2020 7th International Conference on Electrical Engineering, Computer Sciences and Informatics (EECSI)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 7th International Conference on Electrical Engineering, Computer Sciences and Informatics (EECSI)
+Y1  - 1-2 Oct. 2020
+AB  - Software defect prediction is a practical approach to improve the quality and efficiency of time and costs for software testing by focusing on defect modules. The dataset of software defect prediction naturally has a class imbalance problem with very few defective modules compared to non-defective modules. This situation has a negative impact on the Neural Network, which can lead to overfitting and poor accuracy. Synthetic Minority Over-sampling Technique (SMOTE) is one of the popular techniques that can solve the problem of class imbalance. However, Neural Network and SMOTE both have hyperparameters which must be determined by the user before the modelling process. In this study, we applied the Neural Networks Based SMOTE, a combination of Neural Network and SMOTE with each hyperparameter of SMOTE and Neural Network that are optimized using random search to solve the class imbalance problem in the six NASA datasets. The results use a 5*5 cross-validation show that increases Bal by 25.48% and Recall by 45.99% compared to the original Neural Network. We also compare the performance of Neural Network-based SMOTE with “Traditional” Machine Learning-based SMOTE. The Neural Network-based SMOTE takes first place in the average rank.
+ER  - 
+
+TY  - CONF
+TI  - Trusted Autonomous Vehicles: an Interactive Exhibit
+T2  - 2019 IEEE International Conferences on Ubiquitous Computing & Communications (IUCC) and Data Science and Computational Intelligence (DSCI) and Smart Computing, Networking and Services (SmartCNS)
+SP  - 386
+EP  - 393
+AU  - H. L. S. Araujo
+AU  - C. D. N. Damasceno
+AU  - R. Dimitrova
+AU  - G. Kefalidou
+AU  - M. Mehtarizadeh
+AU  - M. R. Mousavi
+AU  - J. Onime
+AU  - J. O. Ringert
+AU  - J. M. Rojas
+AU  - N. X. Verdezoto
+AU  - S. Wali
+PY  - 2019
+DO  - 10.1109/IUCC/DSCI/SmartCNS.2019.00091
+JO  - 2019 IEEE International Conferences on Ubiquitous Computing & Communications (IUCC) and Data Science and Computational Intelligence (DSCI) and Smart Computing, Networking and Services (SmartCNS)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE International Conferences on Ubiquitous Computing & Communications (IUCC) and Data Science and Computational Intelligence (DSCI) and Smart Computing, Networking and Services (SmartCNS)
+Y1  - 21-23 Oct. 2019
+AB  - Recent surveys about autonomous vehicles show that the public is concerned about the safety consequences of system or equipment failures and the vehicles' reactions to unexpected situations. We believe that informing about the technology and quality, e.g., safety and reliability, of autonomous vehicles is paramount to improving public expectations, perception and acceptance. In this paper, we report on the design of an interactive exhibit to illustrate (1) basic technologies employed in autonomous vehicles, i.e., sensors and object classification; and (2) basic principles for ensuring their quality, i.e., employing software testing and simulations. We subsequently report on a public engagement event involving this exhibit at the Royal Society Summer Science Exhibition 2019 in the exhibit titled "Trusted Autonomous Vehicles". We describe the process of designing and developing the artefacts used in our exhibit, the theoretical background associated to them, the design of our stand, and the lessons learned. The activities and findings of this study can be used by other educators and researchers interested in promoting trust in autonomous vehicles among the general public.
+ER  - 
+
+TY  - JOUR
+TI  - A Survey of App Store Analysis for Software Engineering
+T2  - IEEE Transactions on Software Engineering
+SP  - 817
+EP  - 847
+AU  - W. Martin
+AU  - F. Sarro
+AU  - Y. Jia
+AU  - Y. Zhang
+AU  - M. Harman
+PY  - 2017
+DO  - 10.1109/TSE.2016.2630689
+JO  - IEEE Transactions on Software Engineering
+IS  - 9
+SN  - 1939-3520
+VO  - 43
+VL  - 43
+JA  - IEEE Transactions on Software Engineering
+Y1  - 1 Sept. 2017
+AB  - App Store Analysis studies information about applications obtained from app stores. App stores provide a wealth of information derived from users that would not exist had the applications been distributed via previous software deployment methods. App Store Analysis combines this non-technical information with technical information to learn trends and behaviours within these forms of software repositories. Findings from App Store Analysis have a direct and actionable impact on the software teams that develop software for app stores, and have led to techniques for requirements engineering, release planning, software design, security and testing. This survey describes and compares the areas of research that have been explored thus far, drawing out common aspects, trends and directions future research should take to address open problems and challenges.
+ER  - 
+
+TY  - CONF
+TI  - Model generation to support model-based testing applied on the NASA DAT Web-application - An experience report
+T2  - 2015 IEEE 26th International Symposium on Software Reliability Engineering (ISSRE)
+SP  - 77
+EP  - 87
+AU  - C. Schulze
+AU  - M. Lindvall
+AU  - S. Bjorgvinsson
+AU  - R. Wiegand
+PY  - 2015
+DO  - 10.1109/ISSRE.2015.7381801
+JO  - 2015 IEEE 26th International Symposium on Software Reliability Engineering (ISSRE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE 26th International Symposium on Software Reliability Engineering (ISSRE)
+Y1  - 2-5 Nov. 2015
+AB  - Model-based Testing (MBT), where a model of the system under test's (SUT) behavior is used to automatically generate executable test cases, is a promising and versatile testing technology. Nevertheless, adoption of MBT technologies in industry is slow and many testing tasks are performed via manually created executable test cases (i.e. test programs such as JUnit). In order to adopt MBT, testers must learn how to construct models and use these models to generate test cases, which might be a hurdle. An interesting observation in our previous work is that the existing manually created test cases often provided invaluable insights for the manual creation of the testing models of the system. In this paper we present an approach that allows the tester to first create and debug a set of test cases. When the tester is happy with the test cases, the next step is to automatically generate a model from the test cases. The generated model is derived from the test cases, which are actions that the system can perform (e.g. a button clicks) and their expected outputs in form of assert statements (e.g. assert data entered). The model is a Finite State Machine (FSM) model that can be employed with little or no manual changes to generate additional test cases for the SUT. We successfully applied the approach in a feasibility study to the NASA Data Access Toolkit (DaT), which is a web-based GUI. One compelling finding is that the test cases that were generated from the automatically generated models were able to detect issues that were not detected by the original set of manually created test cases. We present the findings from the case study and discuss best practices for incorporating model generation techniques into an existing testing process.
+ER  - 
+
+TY  - CONF
+TI  - Message from the TAIC PART 2019 Chairs
+T2  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 15
+EP  - 15
+PY  - 2019
+DO  - 10.1109/ICSTW.2019.00008
+JO  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 22-23 April 2019
+AB  - The following topics are dealt with: program testing; combinatorial mathematics; learning (artificial intelligence); program debugging; Java; software fault tolerance; formal verification; source code (software); application program interfaces; mobile computing.
+ER  - 
+
+TY  - CONF
+TI  - Message from the ICST 2018 Program Chairs
+T2  - 2018 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 11
+EP  - 12
+PY  - 2018
+DO  - 10.1109/ICSTW.2018.00005
+JO  - 2018 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 9-13 April 2018
+AB  - The following topics are dealt with: program testing; software quality; software architecture; formal verification; Internet of Things; formal specification; software engineering; combinatorial mathematics; learning (artificial intelligence); and embedded systems.
+ER  - 
+
+TY  - CONF
+TI  - [Title page]
+T2  - 2015 IEEE International Conference on Teaching, Assessment, and Learning for Engineering (TALE)
+SP  - 1
+EP  - 1
+PY  - 2015
+DO  - 10.1109/TALE.2015.7385997
+JO  - 2015 IEEE International Conference on Teaching, Assessment, and Learning for Engineering (TALE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE International Conference on Teaching, Assessment, and Learning for Engineering (TALE)
+Y1  - 10-12 Dec. 2015
+AB  - The following topics are dealt with: teaching-assessment-and-learning-for-engineering; mobile learning; engineering education; computer programming course; software testing skills teaching; higher education; e-learning environment; online educational resources; semisupervised learning approach; MOOC; m-learning; STEM; and telecommunication engineering.
+ER  - 
+
+TY  - CONF
+TI  - [Title page]
+T2  - 2015 International Conference on Futuristic Trends on Computational Analysis and Knowledge Management (ABLAZE)
+SP  - 1
+EP  - 1
+PY  - 2015
+DO  - 10.1109/ABLAZE.2015.7155050
+JO  - 2015 International Conference on Futuristic Trends on Computational Analysis and Knowledge Management (ABLAZE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 International Conference on Futuristic Trends on Computational Analysis and Knowledge Management (ABLAZE)
+Y1  - 25-27 Feb. 2015
+AB  - The following topics are dealt with: vibration signal based monitoring; mechanical microdrilling; rule based inflectional urdu stemmer usal; rule based derivational urdu stemmer usal; fuzzy logic controller; heat exchanger temperature process; text dependent speaker recognition; MFCC; SBC; multikeyword based sorted querying; encrypted cloud data; communication understandability enhancement; GSD; parsing; input power quality; switched reluctance motor drive; externally powered upper limb prostheses; program test data generation; launch vehicle optimal trajectory generation; misalignment fault detection; induction motors; current signature analysis; vibration signature analysis; wind power plants; vortex induced vibration; mechanical structure modal analysis; machining parameter optimization; diesel engines; high speed nonvolatile NEMS memory devices; image fusion; RGB color space; LUV color space; offline English character recognition; human skin detection; tumor boundary extraction; MR images; OdiaBraille; text transcription; shadow detection; YIQ color models; color aerial images; moving object segmentation; image data deduplication; iris recognition; two-stage series connected thermoelectric generator; education information system; cyclone separator CFD simulation; imperfect debugging; vulnerability discovery model; stochastic differential equation; cloud data access; attribute based encryption; agile SCRUM framework; PID controller optimisation; hybrid watermarking technique; privacy preservation; vertical partitioned medical database; power amplifier; software reliability growth modeling; cochlear implantation; cellular towers; feedforward neural networks; MBSOM; agent based semantic ontology matching; phonetic word identification; test case selection; MANET security issues; online movie data classification; modified LEACH protocol; mobile ad hoc networks; virtual machine introspection; task scheduling; cluster computing; image compression; green cloud computing; critical health data transmission system; irreversible regenerative Brayton cycle; task set based adaptive round robin scheduling; database security; heterogeneous online social networks; aspect oriented systems; IP network; MPLS network; DBSCAN algorithm; VANET; self-organizing feature map; image segmentation; enzyme classification; wireless sensor networks; energy smart routing protocol; adaptive gateway discovery mechanism; heuristic job scheduling; AODV based congestion control protocol; expert system; home appliances; relay node based heer protocol; data storage; TORA security; data aggregation; low energy adaptive stable energy efficient protocol; fuzzy logic based clustering algorithm; hybrid evolutionary MPLS tunneling algorithm; English mobile teaching; eigenvector centrality; genetic algorithms; data mining; heart disease prediction; lossless data compression; reconfigurable ring resonator; triple band stacked patch antenna; energy based spectrum sensing; cognitive radio networks; FPGA; knowledge representation; multiband microstrip antenna; Web indexing; HTML priority system; Web cache recommender system; e-learning; IT skill learning for visual impaired; user review data analysis; software up-gradation model; software testing; Web crawlers; secret key watermarking; WAV audio file; SRM drive; ZETA converter; fractional PID tuning; medical image reconstruction; speech recognition system; video authentication; digital forensics; content based image retrieval; image classification; hybrid wavelet transform; facial feature extraction; RBSD adder; smart home environment; generalized discrete time model; We Chat marketing; foreign language learning; carbon dioxide emission mitigation; power generation; smartphone storage enhancement; and virtualization.
+ER  - 
+
+TY  - CONF
+TI  - [Front cover]
+T2  - 2015 International Computer Science and Engineering Conference (ICSEC)
+SP  - 1
+EP  - 1
+PY  - 2015
+DO  - 10.1109/ICSEC.2015.7401457
+JO  - 2015 International Computer Science and Engineering Conference (ICSEC)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 International Computer Science and Engineering Conference (ICSEC)
+Y1  - 23-26 Nov. 2015
+AB  - The following topics are dealt with: robot; electronic health information; parser generator; high-frequency-queries-based filter; health GIS system; Big Data cloud computing; word segmentation technique; flood forecasting; Java teaching; human leukocyte antigen gene prediction; wireless sensor network; P2P traffic classification; stereo image matching method; LTE; satellite communications; software development projects; software testing; sentiment analysis; emotion recognition; MPI-PageRank; and soccer archive summarization.
+ER  - 
+
+TY  - CONF
+TI  - Table of contents
+T2  - 2017 IEEE/ACM 39th International Conference on Software Engineering: New Ideas and Emerging Technologies Results Track (ICSE-NIER)
+SP  - v
+EP  - vi
+PY  - 2017
+DO  - 10.1109/ICSE-NIER.2017.4
+JO  - 2017 IEEE/ACM 39th International Conference on Software Engineering: New Ideas and Emerging Technologies Results Track (ICSE-NIER)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 IEEE/ACM 39th International Conference on Software Engineering: New Ideas and Emerging Technologies Results Track (ICSE-NIER)
+Y1  - 20-28 May 2017
+AB  - The following topics are dealt with: software engineering; software testing; software development; program synthesis; program analysis; data mining; learning; and monitoring.
+ER  - 
+
+TY  - CONF
+TI  - [Title page i]
+T2  - 2017 IEEE 28th International Symposium on Software Reliability Engineering (ISSRE)
+SP  - i
+EP  - i
+PY  - 2017
+DO  - 10.1109/ISSRE.2017.1
+JO  - 2017 IEEE 28th International Symposium on Software Reliability Engineering (ISSRE)
+IS  - 
+SN  - 2332-6549
+VO  - 
+VL  - 
+JA  - 2017 IEEE 28th International Symposium on Software Reliability Engineering (ISSRE)
+Y1  - 23-26 Oct. 2017
+AB  - The following topics are dealt with: software reliability engineering; software faults; failure analysis; static analysis; security modeling; quality assurance; software testing; and machine learning.
+ER  - 
+
+TY  - CONF
+TI  - Table of contents
+T2  - 2018 IEEE/ACM 11th International Workshop on Search-Based Software Testing (SBST)
+SP  - 5
+EP  - 6
+PY  - 2018
+DO  - 
+JO  - 2018 IEEE/ACM 11th International Workshop on Search-Based Software Testing (SBST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE/ACM 11th International Workshop on Search-Based Software Testing (SBST)
+Y1  - 28-29 May 2018
+AB  - The following topics are dealt with: program testing; search problems; Java; software engineering; data structures; statistical testing; learning (artificial intelligence); program debugging; software fault tolerance; and genetic algorithms.
+ER  - 
+
+TY  - CONF
+TI  - Table of contents
+T2  - 2019 IEEE/ACM 12th International Workshop on Search-Based Software Testing (SBST)
+SP  - 5
+EP  - 6
+PY  - 2019
+DO  - 10.1109/SBST.2019.00004
+JO  - 2019 IEEE/ACM 12th International Workshop on Search-Based Software Testing (SBST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE/ACM 12th International Workshop on Search-Based Software Testing (SBST)
+Y1  - 26-27 May 2019
+AB  - The following topics are dealt with: program testing; Java; search problems; learning (artificial intelligence); cyber-physical systems; evolutionary computation; cloud computing; software quality; software development management; formal verification.
+ER  - 
+
+TY  - CONF
+TI  - Table of contents
+T2  - 2019 12th IEEE Conference on Software Testing, Validation and Verification (ICST)
+SP  - 5
+EP  - 11
+PY  - 2019
+DO  - 10.1109/ICST.2019.00004
+JO  - 2019 12th IEEE Conference on Software Testing, Validation and Verification (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2019 12th IEEE Conference on Software Testing, Validation and Verification (ICST)
+Y1  - 22-27 April 2019
+AB  - The following topics are dealt with: program testing; program debugging; learning (artificial intelligence); Java; program diagnostics; software maintenance; software quality; security of data; software libraries; regression analysis.
+ER  - 
+
+TY  - CONF
+TI  - [Title page i]
+T2  - 2016 42th Euromicro Conference on Software Engineering and Advanced Applications (SEAA)
+SP  - i
+EP  - i
+PY  - 2016
+DO  - 10.1109/SEAA.2016.1
+JO  - 2016 42th Euromicro Conference on Software Engineering and Advanced Applications (SEAA)
+IS  - 
+SN  - 2376-9505
+VO  - 
+VL  - 
+JA  - 2016 42th Euromicro Conference on Software Engineering and Advanced Applications (SEAA)
+Y1  - 31 Aug.-2 Sept. 2016
+AB  - The following topics are dealt with: life-cycle management; risk management; decision making support; software architecture; software process improvement; software management; software measurement; knowledge management; model-based development; software quality; software ecosystems; education ecosystems; autonomous systems; software testing; software test automation; industrial control IoT; embedded software requirements; embedded software analysis; software engineering; software product lines; business process management; and systems engineering.
+ER  - 
+
+TY  - CONF
+TI  - Table of contents
+T2  - 2016 17th IEEE/ACIS International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD)
+SP  - 1
+EP  - 6
+PY  - 2016
+DO  - 10.1109/SNPD.2016.7515862
+JO  - 2016 17th IEEE/ACIS International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 17th IEEE/ACIS International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD)
+Y1  - 30 May-1 June 2016
+AB  - The following topics are dealt with: artificial intelligence; software engineering; system design; communication systems; cryptography; network security; data mining; machine learning; embedded systems; image processing; speech processing; signal processing; internet technology; mobile networks; wireless networks; ad hoc networks; neural networks; genetic algorithms; parallel computing; distributed computing; software specification; software architecture; software testing; Web-based applications; computer architecture; natural language processing; spatial data warehouse; software quality; cloud computing; software maintenance; software evolution; personalized service recommendation and social network.
+ER  - 
+
+TY  - CONF
+TI  - Table of contents
+T2  - 2017 18th IEEE/ACIS International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD)
+SP  - xi
+EP  - xvi
+PY  - 2017
+DO  - 10.1109/SNPD.2017.8022643
+JO  - 2017 18th IEEE/ACIS International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 18th IEEE/ACIS International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD)
+Y1  - 26-28 June 2017
+AB  - The following topics are dealt with: artificial intelligence; audio and video technology; communication system and networks; component-based software engineering; cryptography and network security; data mining; machine learning; database system management; e-commerce; image, speech, and signal processing; Internet technology; ad-hoc networks; parallel processing; software specification and architecture; software testing; Web-based applications; information systems; ergonomics; and evolutionary computation.
+ER  - 
+
+TY  - CONF
+TI  - [Front cover]
+T2  - 2016 International Computer Symposium (ICS)
+SP  - c1
+EP  - c1
+PY  - 2016
+DO  - 10.1109/ICS.2016.0001
+JO  - 2016 International Computer Symposium (ICS)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 International Computer Symposium (ICS)
+Y1  - 15-17 Dec. 2016
+AB  - The following topics are dealt with: bioinformatics; graphy theory; artificial intelligence; nature-inspired computing; multirate multiradio network; software-defined networking; wireless ad hoc network; wireless sensor network; information security; software security; data mining; database application; multimedia signal processing; multimedia technologies; image processing; mobile computing; wireless communications; vehicular technologies; cloud computing; requirement engineering; software maintenance; program analysis; e-learning; software testing; green systems; wearable computing and fog computing.
+ER  - 
+
+
