@@ -20,7 +20,7 @@ app.use(pinia)
 // We'll talk about nested routes later.
 const routes = [
   { path: '/', component: Menu },
-  { path: '/challenge/test', component: ChallengeTest },
+  { path: '/challenge/test', component: ChallengeTest }
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -29,9 +29,8 @@ const routes = [
 const router = createRouter({
   // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
   history: createWebHashHistory(),
-  routes, // short for `routes: routes`
+  routes // short for `routes: routes`
 })
-
 
 app.use(router)
 app.component('CodeBlock', CodeBlock).mount('#app')

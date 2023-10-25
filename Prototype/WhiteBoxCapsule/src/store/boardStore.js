@@ -118,7 +118,7 @@ export const boardStore = defineStore('boardStore', {
       }
 
       this.selectedPiece =
-        this.state[this.currentKey][this.log[this.currentKey][this.log.length - 1].to.x][
+        this.state[this.currentKey][this.log[this.currentKey][this.log[this.currentKey].length - 1].to.x][
           this.log[this.currentKey][this.log[this.currentKey].length - 1].to.y
         ]
       this.selectedPiece.select()
@@ -127,7 +127,7 @@ export const boardStore = defineStore('boardStore', {
         this.log[this.currentKey][this.log[this.currentKey].length - 1].from.y,
         true
       )
-      this.log.pop()
+      this.log[this.currentKey].pop()
     },
 
     timeout() {

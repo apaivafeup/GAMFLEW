@@ -5,7 +5,7 @@
 <script>
 export default {
   beforeMount() {
-    console.log("In app...")
+    console.log('In app...')
   },
   components: {}
 }
