@@ -107,6 +107,8 @@ export const boardStore = defineStore('boardStore', {
     },
 
     undo() {
+      //TODO: Undo is not working properly when undoing a stack...
+      // Check what's wrong and fix.
       if (this.log[this.currentKey].length <= 1) {
         this.log[this.currentKey] = []
         this.generateState()
