@@ -1,0 +1,2072 @@
+TY  - CONF
+TI  - SIMULATION EDUCATION IN NON-SIMULATION COURSES
+T2  - 2018 Winter Simulation Conference (WSC)
+SP  - 4038
+EP  - 4045
+AU  - R. McHaney
+PY  - 2018
+DO  - 10.1109/WSC.2018.8632361
+JO  - 2018 Winter Simulation Conference (WSC)
+IS  - 
+SN  - 1558-4305
+VO  - 
+VL  - 
+JA  - 2018 Winter Simulation Conference (WSC)
+Y1  - 9-12 Dec. 2018
+AB  - In many curricula and degree programs, simulation courses are not required, but these tools and techniques could be beneficial to students preparing for a variety of careers. The current paper describes two examples of simulation education embedded into broader course topics from a development perspective. The examples, from courses generally described in this paper as Cloud Computing and Big Data, offer a recommended approach for exposing students to practical uses of simulation. In the first example, we use simulation techniques to develop a web service emulation response database within a cloud computing environment for software testing. In the second example, simulation techniques provide an approach to generate data sets for learning data analytics techniques.
+ER  - 
+
+TY  - CONF
+TI  - Peer Instruction in Online Software Testing and Continuous Integration - A Replication Study
+T2  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+SP  - 199
+EP  - 204
+AU  - B. Gopal
+AU  - S. Cooper
+PY  - 2022
+DO  - 10.1145/3510456.3514168
+JO  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+Y1  - 22-24 May 2022
+AB  - This paper discusses the results of replicating and extending a previous study on the active learning pedagogy of Peer Instruction (PI) in the topics of unit testing, integration testing and continuous integration. The original paper studied the efficacy of PI as a pedagogy for an in-person classroom with honors students from various academic majors. In this replication study we focus on a fully virtual, synchronous online classroom consisting of computing related majors. Our findings reinforce the results in Gopal and Cooper's original study. Cognitively, we found a correlation between PI and student learning, by observing encouraging increases in levels of success as measured through cognitive pre- and post-course instrument for the topics we studied. In addition, we also found that PI had a statistically significant impact on student attitudes in the constructs of interest, gender, usefulness, confidence and professionalism.
+ER  - 
+
+TY  - JOUR
+TI  - Rigorous Data Validation for Accurate Dashboards: Experience From a Higher Education Institution
+T2  - IT Professional
+SP  - 95
+EP  - 101
+AU  - N. Abdou
+AU  - A. Karimi
+AU  - R. Murarka
+AU  - S. Swarat
+PY  - 2021
+DO  - 10.1109/MITP.2021.3073799
+JO  - IT Professional
+IS  - 3
+SN  - 1941-045X
+VO  - 23
+VL  - 23
+JA  - IT Professional
+Y1  - 1 May-June 2021
+AB  - Data have become an indispensable aspect of our daily lives. The demand for data visualization tools such as dashboards is driven by the desire to make data—and more importantly, the power of using data to inform decision making—accessible to all. During the current pandemic, the availability of realtime data via various dashboards at the global, national, and local levels empowered many to accurately assess the situation and take appropriate actions, a testament to the value of data visualization. For the same reasons, data dashboards are increasingly popular in higher education to promote data consumption and data-driven decision making. California State University, Fullerton (CSUF) is no exception. CSUF has developed a suite of dashboards in the past few years to promote an operational culture that is rooted in evidence. Discussions about data visualization tools often gravitate towards dashboard design, accessibility, and usability, while neglecting a fundamental (and arguably more critical) issue—the importance of having appropriate and accurate underlying data. The accuracy and adaptability of a dashboard are determined by the accuracy and adaptability of the data behind it, and to ensure such requires a meticulous, streamlined development process. This article is intended to do a “deep dive” into this process.
+ER  - 
+
+TY  - CONF
+TI  - Integration of Software Testing to Programming Assignments: An Experimental Study
+T2  - 2019 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - G. M. N. Avellar
+AU  - R. F. d. Silva
+AU  - L. P. Scatalon
+AU  - S. A. Andrade
+AU  - M. E. Delamaro
+AU  - E. F. Barbosa
+PY  - 2019
+DO  - 10.1109/FIE43999.2019.9028519
+JO  - 2019 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2019 IEEE Frontiers in Education Conference (FIE)
+Y1  - 16-19 Oct. 2019
+AB  - This Research Full Paper reinforces that Software Testing can be a helpful practice to students while working on programming assignments. Considering Software Testing as a process, the testing activity is composed by a sequence of steps. When students write and submit their own test cases, they are responsible for the test design, automation, execution, and evaluation. Otherwise, instructors can provide ready-made test suites, needing only to execute it and evaluate it. In this scenario, we conducted an experimental study to investigate how the programming performance of students from the Computer Science area is affected when Software Testing is integrated with programming. We proposed three different approaches: (i) ad hoc programming; (ii) programming and testing by writing the test suite; and (iii) programming and testing with a readymade test suite. We assessed students' programs in terms of correctness, measured by the pass rate of the reference test suite. Results indicate that students had a lower performance with ad hoc programming in comparison with both approaches involving Software Testing. On the other hand, using ready-made test cases raised better results than when students had to write their own test cases. We also assessed students' attitudes towards testing by means of a survey.
+ER  - 
+
+TY  - CONF
+TI  - Designing and Developing a Resource Center for Primary and Secondary Computing Education Researchers
+T2  - 2020 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - J. Xavier
+AU  - M. M. McGill
+AU  - A. Decker
+PY  - 2020
+DO  - 10.1109/FIE44824.2020.9274252
+JO  - 2020 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2020 IEEE Frontiers in Education Conference (FIE)
+Y1  - 21-24 Oct. 2020
+AB  - This full research paper considers the resources needed to meet the research and evaluation needs of the many efforts to incorporate computing education throughout primary and secondary schools. In order to support these efforts, we developed csedresearch.org, a site designed to serve as a resource center for primary and secondary computing education research. We first considered criteria and recommendations for resource centers previously established by others. We provide a general description of the purpose of the csedresearch.org as well as a description of how we used quantitative and qualitative methods over numerous phases of development (pre-concept/research, concept, alpha, and beta, launch) to ensure that it meets the needs of potential users. We discuss how the current product compares against the general criteria for resource centers, its original intentions and expectations, and how it has fared through the phases of development one normally expects from a digital resource center. As the resource center evolves, we continue to seek feedback and resources to further meet the needs of the community. We also discuss the data that is being collected and could be collected to further benefit the community to define not only what educational practices work best overall, but what works best for particular demographic groups, including underrepresented groups in computing. And finally, we are faced with the challenge for maintaining the information so that remains robust and current.
+ER  - 
+
+TY  - CONF
+TI  - SEbox4DL: A Modular Software Engineering Toolbox for Deep Learning Models
+T2  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+SP  - 193
+EP  - 196
+AU  - Z. Wei
+AU  - H. Wang
+AU  - Z. Yang
+AU  - W. K. Chan
+PY  - 2022
+DO  - 10.1145/3510454.3516828
+JO  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+IS  - 
+SN  - 2574-1926
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+Y1  - 22-24 May 2022
+AB  - Deep learning (DL) models are widely used in software applications. Novel DL models and datasets are published from time to time. Developers may also tempt to apply new software engineering (SE) techniques on their DL models. However, no existing tool supports the applications of software testing and debugging techniques on new DL models and their datasets without modifying the code. Developers should manually write code to glue every combination of models, datasets, and SE technique and chain them together.We propose SEbox4DL, a novel and modular toolbox that automatically integrates models, datasets, and SE techniques into SE pipelines seen in developing DL models. SEbox4DL exemplifies six SE pipelines and can be extended with ease. Each user-defined task in the pipelines is to implement a SE technique within a function with a unified interface so that the whole design of SEbox4DL is generic, modular, and extensible. We have implemented several SE techniques as user-defined tasks to make SEbox4DL off-the-shelf. Our experiments demonstrate that SEbox4DL can simplify the applications of software testing and repair techniques on the latest or popular DL models and datasets. The toolbox is open-source and published at https://github.com/Wsine/SEbox4DL. A video for demonstration is available at: https://youtu.be/EYeFFi4lswc.
+ER  - 
+
+TY  - CONF
+TI  - The Adoption of Open Source Projects in Engineering Education: A Real Software Development Experience
+T2  - 2018 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - D. M. C. Nascimento
+AU  - C. F. G. Chavez
+AU  - R. A. Bittencourt
+PY  - 2018
+DO  - 10.1109/FIE.2018.8658908
+JO  - 2018 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2018 IEEE Frontiers in Education Conference (FIE)
+Y1  - 3-6 Oct. 2018
+AB  - This research to practice full paper investigates software engineering students' perceptions of their contact with open source projects as a real-world experience. Working with open source projects (OSPs) has been shown as an interesting option in software engineering courses to bringing students closer to more realistic environments. However, when instructors use this approach, it is not clear whether students perceive the OSP as a real industrial software project, or whether they perceive the tasks they perform over OSPs as typical or close to industrial software project activities. The goal of this work was to identify students' perceptions of their interaction with an open source project as a real world experience. To do so, we performed three mixed-methods case studies with three different undergraduate classes. Each class had a different focus: i) software maintenance and evolution, ii) software testing, and iii) reverse engineering of software requirements. Results show that students perceived features that make OSPs close to industrial projects, realized that their OSP tasks are close to the ones in industrial projects, and also faced difficulties typical of working with real world software. Moreover, students forged a view of the skills needed for their future professional success. We conclude that students realized that performing tasks in OSPs was a real world experience they took part, contributing to their background both for the competencies they acquired and the difficulties they had to overcome.
+ER  - 
+
+TY  - CONF
+TI  - An Implementation of Automatic Dart Code Verification for Mobile Application Programming Learning Assistance System Using Flutter
+T2  - 2022 International Conference on Electrical and Information Technology (IEIT)
+SP  - 322
+EP  - 326
+AU  - Y. W. Syaifudin
+AU  - A. S. Hatjrianto
+AU  - N. Funabiki
+AU  - D. Y. Liliana
+AU  - A. B. Kaswar
+AU  - U. Nurhasan
+PY  - 2022
+DO  - 10.1109/IEIT56384.2022.9967902
+JO  - 2022 International Conference on Electrical and Information Technology (IEIT)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 International Conference on Electrical and Information Technology (IEIT)
+Y1  - 15-16 Sept. 2022
+AB  - The popularity of smartphone devices has rapidly increased in recent years and many people utilize smartphones for various needs. The development of mobile applications has been aimed at various fields that make the demand for mobile application programmers increase. Recently, Flutter has become a software development kit for cross-platform applications development, including Android and iOS, so many software developers have adopted it. To provide a self-learning system for studying mobile programming with Flutter, we propose a learning assistance system with an automatic Dart code verification feature. Based on our previous studies in Android Programming Learning Assistance System (APLAS), the automatic code verification process can adopt software testing process for Android applications. The learning model provides learning materials for studying and practicing by solving an assignment. A learning topic of developing a simple application is prepared for the proposed system evaluation. 40 university students in IT department have been appointed to study Flutter and solve the assignment. Finally, they can solve the assignment correctly and give positive opinions about using this system.
+ER  - 
+
+TY  - CONF
+TI  - Towards a Learning Environment for Internet of Things Testing with LEGO® MINDSTORMS®
+T2  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 457
+EP  - 460
+AU  - T. Auer
+AU  - M. Felderer
+PY  - 2020
+DO  - 10.1109/ICSTW50294.2020.00081
+JO  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 24-28 Oct. 2020
+AB  - Internet of Things (IoT) is one of the most fast-growing topics in computer science. Nearly all devices can be connected to the Internet nowadays. This is related with big opportunities on the one hand, but also with significant risks on the other hand. The challenge is to define a strategy how to test single IoT devices and complete IoT environments consisting of a suite of multiple connected devices. The range of application fields is very extensive and consequently there is no unique testing strategy existing which is suitable for all possible application areas. Testing experts need to be qualified in IoT Testing because this requires more than common software testing technical knowledge of the functions of several devices and its integration in embedded environments. In this paper a concept for further training of testing experts in IoT Testing with LEGO® MINDSTORMS® will be demonstrated. Thereby the proven course unit `Build a Self-Driving Car' of LEGO® for computing lessons at schools will be extended by learning units for IoT Testing. The goal is to provide training courses close to real-world scenarios. The scenarios will be simulated within a virtual learning environment. It will finally be analyzed if this approach fulfills the expectations of the participants in relation to usability and the learning progress by getting feedback between the participants after each individual learning unit.
+ER  - 
+
+TY  - CONF
+TI  - NEAT Algorithm for Testsuite generation in Automated Software Testing
+T2  - 2018 IEEE Symposium Series on Computational Intelligence (SSCI)
+SP  - 2361
+EP  - 2368
+AU  - H. L. P. Raj
+AU  - K. Chandrasekaran
+PY  - 2018
+DO  - 10.1109/SSCI.2018.8628668
+JO  - 2018 IEEE Symposium Series on Computational Intelligence (SSCI)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE Symposium Series on Computational Intelligence (SSCI)
+Y1  - 18-21 Nov. 2018
+AB  - Software testing is one of the most essential and an indispensable part of Software production life cycle. Software testing helps in validating if the product meets with the requirements or not, and also testing helps to validate the performance of the product. Unfortunately, this process takes up about 50% of the production time and budget, due to its laboriosity. Hence, in order to reduce the time it takes, Automated Software Testing becomes essential. Here we propose a novel idea of using Machine Learning for automatically generating the test suites. In this paper we present an approach that uses NEAT (Neuroevolution of Augmenting Topologies) Algorithm to automatically generate new test suites or for improving the coverage of already produced test suite. Our approach automatically generates test suites for white box testing. White box testing refers to testing of the internal structure and the working of the Software Under Test.
+ER  - 
+
+TY  - CONF
+TI  - Impact of CS Programs on the Quality of Test Cases Generation: An Empirical Study
+T2  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+SP  - 374
+EP  - 383
+AU  - O. S. Gómez
+AU  - S. Vegas
+AU  - N. Juristo
+PY  - 2016
+DO  - 
+JO  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+Y1  - 14-22 May 2016
+AB  - Background: Although most Computer Science (CS) programs offered by higher education institutions usually include a software engineering course, some works report a lack of formal training in software testing. Aim: With the aim of studying the possible impact of knowledge acquired from CS programs on software testing, this paper reports an investigation composed of four experiments. The experiments conducted in Spain, Mexico and Ecuador examine the quality of test cases (TC) generated using black-box and white-box methods. The subjects of the experiments were undergraduate and graduate students who were exposed to different levels of CS knowledge. Method: We pool together the data from the four experiments and apply logistic regression to investigate possible relations of the quality of test cases with students' level of exposure to CS knowledge. Results: The quality of test cases generated by students depend significantly on the amount of CS program studied. The odds of generating test cases that reveal failures against those that do not reveal decrease when students are exposed to a low level of CS knowledge. Conclusions: Software testing plays a key role in what is an increasingly complex process of developing and maintaining software products today. The results of our empirical study provide evidence in favor of greater formal training in software testing as part of CS programs.
+ER  - 
+
+TY  - CONF
+TI  - Fully Automated Game Testing via Neuroevolution
+T2  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 486
+EP  - 488
+AU  - P. Feldmeier
+PY  - 2023
+DO  - 10.1109/ICST57152.2023.00058
+JO  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2023 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 16-20 April 2023
+AB  - The video gaming industry thrives with an expected record revenue of $365.60 billion in 2023 and an annual growth rate of 6.52% from 2023 to 2027 [1] . To gain a foothold in this emerging market, developers have to ensure the best gaming experience possible, which can only be achieved via extensive testing procedures. However, most video games are created incrementally; some are even developed indefinitely, resulting in many program increments that have to be tested over and over again. Even though fully automated testing of games could relieve developers from this tedious task, a look at current industry practices reveals a dire need for more research, as most companies still test manually [2] , [3] . Besides entertaining the player, video games are also increasingly used for programming education because games keep the students motivated while demonstrating crucial programming concepts [4] – [6] . Although even experienced programmers rely on integrated development tools, students are left off with a lack of tools to assist them during their learning journey. Thus, more work on automated game testing is required such that students and practitioners cannot only validate the correctness of programs but also use generated inputs for dynamic program analysis.
+ER  - 
+
+TY  - CONF
+TI  - A Preliminary Report on Hands-On and Cross-Course Activities in a College Software Testing Course
+T2  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 445
+EP  - 451
+AU  - U. Praphamontripong
+AU  - M. Floryan
+AU  - R. Ritzo
+PY  - 2020
+DO  - 10.1109/ICSTW50294.2020.00080
+JO  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 24-28 Oct. 2020
+AB  - This report presents numerous interventions deployed in a college-level course on software testing. The aim of these interventions was to increase interest, motivation, and confidence in software testing among computer science majors. Four hands-on in-class activities (Agile Airplane Testing, Test-Driven Development Activities, Candy Testing, and Bypass Testing) were deployed and are described. In addition, students in the course participated in a cross-course activity in which the students produced tests for younger peers in an introductory (CS2) software development course. Students in the software testing course acted as test engineers while students in the earlier course acted as developers and used the tests provided, interacting with their peers when necessary. Preliminary results are presented. Students generally found the activities to be useful, engaging, and provided positive feedback. Developers in the earlier software development course produced more correct code when using test suites provided by upperclassmen, and survey results show small but positive gains in student interest and confidence in software testing.
+ER  - 
+
+TY  - CONF
+TI  - Experiments with personal ownership of quality at the University of Texas at El Paso
+T2  - 2015 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 5
+AU  - O. Mondragon
+AU  - J. T. Mallikarjan
+AU  - E. Smith
+PY  - 2015
+DO  - 10.1109/FIE.2015.7344079
+JO  - 2015 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE Frontiers in Education Conference (FIE)
+Y1  - 21-24 Oct. 2015
+AB  - The lack of commitment to create quality work is a long-standing problem in education, and it is a direct negative driver of student performance, disturbing students' ability to: apply imparted concepts, build team quality work, and foster industry's economy. The quality of delivered work is poor mainly because students do not spend needed time and effort to review their own work; e.g., research papers, group projects, and assignments. At the University of Texas at El Paso (UTEP), experimental developments targeted students' commitment to create quality work, creating infrastructure to conduct personal reviews for different types of work products, and teaching students to conduct effective personal reviews of their own work. A partial implementation of check lists, review processes, and teaching material has been used in courses at UTEP. The work to be developed includes measuring time distributions of effort (time to build the product vs. time to correct the product), recording the defects injected in products, creating checklists based on the recorded defects, creating a process to review products, and defining a defect log. The goal is to create a habit within students to create quality work by using personal reviews to improve the quality of submitted work.
+ER  - 
+
+TY  - CONF
+TI  - Development of an Islamic Higher Education Institution Tracer Study Information System and It's Performance Analysis using ISO/IEC 25010
+T2  - 2019 7th International Conference on Cyber and IT Service Management (CITSM)
+SP  - 1
+EP  - 6
+AU  - N. Anggraini
+AU  - M. J. D. Putra
+AU  - N. Hakiem
+PY  - 2019
+DO  - 10.1109/CITSM47753.2019.8965356
+JO  - 2019 7th International Conference on Cyber and IT Service Management (CITSM)
+IS  - 
+SN  - 
+VO  - 7
+VL  - 7
+JA  - 2019 7th International Conference on Cyber and IT Service Management (CITSM)
+Y1  - 6-8 Nov. 2019
+AB  - Alumni is one of the benchmark points in accreditation to assess the quality of higher education and as a comparison of a learning curriculum, Tracer Study is a method used to collect information about alumni using questionnaires. After the authors of the system analysis of the Universitas Islam Negeri (UIN) Syarif Hidayatullah Jakarta, for now, do not have a Tracer Study Information System, thus the authors want to develop a Tracer Study information system that is integrated with the AIS database and analyzes its performance using ISO / IEC 25010 and uses Rapid Application system development methods Development (RAD). The results of testing using the characteristics of ISO / IEC 25010 are functional suitability Tracer Study Information System with a value of 1, performance efficiency with page responses of less than 5 seconds, compatibility with can be run on several browsers with different versions, Reliability with a value of 100%, usability with a value of 67.5%, maintainability with a value of less than 0.56%, and portability, namely responsive websites in various browser sizes. With the success of this writing, it can facilitate the university in monitoring alumni and getting a comparison of learning curriculum.
+ER  - 
+
+TY  - JOUR
+TI  - Software-Testing Contests: Observations and Lessons Learned
+T2  - Computer
+SP  - 61
+EP  - 69
+AU  - X. Wang
+AU  - W. Sun
+AU  - L. Hu
+AU  - Y. Zhao
+AU  - W. E. Wong
+AU  - Z. Chen
+PY  - 2019
+DO  - 10.1109/MC.2019.2905533
+JO  - Computer
+IS  - 10
+SN  - 1558-0814
+VO  - 52
+VL  - 52
+JA  - Computer
+Y1  - Oct. 2019
+AB  - While a significant amount of resources can be spent on software testing, the software produced may still suffer from low quality. The authors describe their experience of hosting industrysponsored software-testing contests to help undergraduate and graduate students, as well as practitioners, improve their testing skills.
+ER  - 
+
+TY  - CONF
+TI  - A Minimally Disruptive Approach of Integrating Testing into Computer Programming Courses
+T2  - 2018 IEEE/ACM International Workshop on Software Engineering Education for Millennials (SEEM)
+SP  - 1
+EP  - 7
+AU  - V. Ramasamy
+AU  - H. Alomari
+AU  - J. Kiper
+AU  - G. Potvin
+PY  - 2018
+DO  - 
+JO  - 2018 IEEE/ACM International Workshop on Software Engineering Education for Millennials (SEEM)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE/ACM International Workshop on Software Engineering Education for Millennials (SEEM)
+Y1  - 2-2 June 2018
+AB  - The problem of finding and evaluating effective ways of integrating software testing concepts and related techniques into introductory programming courses is still an open research question. In this paper, we present multiple studies that assess our approach to integrating software testing in Computer Science (CS) and Software Engineering (SE) courses. Each study uses SEP-CyLE (Software Engineering and Programming Cyberlearning Environment), an external, web-based learning tool to help instructors integrate testing concepts into their courses. These empirical studies were conducted in eight CS/SE course sections at a medium-sized public university. The results show (1) SEP-CyLE can be efficiently used in the classroom to impact the testing knowledge gained by students, and (2) students find that SEP CyLE is a useful learning resource that effectively helps them complete course tasks and better master course concepts.
+ER  - 
+
+TY  - CONF
+TI  - Automated User Experience Testing through Multi-Dimensional Performance Impact Analysis
+T2  - 2021 IEEE/ACM International Conference on Automation of Software Test (AST)
+SP  - 125
+EP  - 128
+AU  - C. Biringa
+AU  - G. Kul
+PY  - 2021
+DO  - 10.1109/AST52587.2021.00024
+JO  - 2021 IEEE/ACM International Conference on Automation of Software Test (AST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 IEEE/ACM International Conference on Automation of Software Test (AST)
+Y1  - 20-21 May 2021
+AB  - Although there are many automated software testing suites, they usually focus on unit, system, and interface testing. However, especially software updates such as new security features have the potential to diminish user experience. In this paper, we propose a novel automated user experience testing methodology that learns how code changes impact the time unit and system tests take, and extrapolate user experience changes based on this information. Such a tool can be integrated into existing continuous integration pipelines, and it provides software teams immediate user experience feedback. We construct a feature set from lexical, layout, and syntactic characteristics of the code, and using Abstract Syntax Tree-Based Embeddings, we can calculate the approximate semantic distance to feed into a machine learning algorithm. In our experiments, we use several regression methods to estimate the time impact of software updates. Our open-source tool achieved a 3.7% mean absolute error rate with a random forest regressor.
+ER  - 
+
+TY  - CONF
+TI  - UnoAPI: Balancing Performance, Portability, and Productivity (P3) in HPC Education
+T2  - 2022 IEEE/ACM International Workshop on Education for High Performance Computing (EduHPC)
+SP  - 1
+EP  - 10
+AU  - K. Läufer
+AU  - G. K. Thiruvathukal
+PY  - 2022
+DO  - 10.1109/EduHPC56719.2022.00006
+JO  - 2022 IEEE/ACM International Workshop on Education for High Performance Computing (EduHPC)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM International Workshop on Education for High Performance Computing (EduHPC)
+Y1  - 13-18 Nov. 2022
+AB  - oneAPI is a major initiative by Intel aimed at making it easier to program heterogeneous architectures used in high-performance computing using a unified application programming interface (API). While raising the abstraction level via a unified API represents a promising step for the current generation of students and practitioners to embrace high-performance computing, we argue that a curriculum of well-developed software engineering methods and well-crafted exem-plars will be necessary to ensure interest by this audience and those who teach them. We aim to bridge the gap by developing a curriculum-codenamed UnoAPI-that takes a more holistic approach by looking beyond language and framework to include the broader development ecosystem, similar to the experience found in popular HPC languages such as Python. We hope to make parallel programming a more attractive option by making it look more like general application development in modern languages being used by most students and educators today. Our curriculum emanates from the perspective of well-crafted exemplars from the foundations of computer systems-given that most HPC architectures of interest begin from the systems tradition-with an integrated treatment of essential principles of distributed systems, programming languages, and software engineering. We argue that a curriculum should cover the essence of these topics to attract students to HPC and enable them to confidently solve computational problems using oneAPI. By the time of this submission, we have shared our materials with a small group of undergraduate sophomores, and their responses have been encouraging in terms of self-reported comprehension and ability to reproduce the compilation and execution of exemplars on their personal systems. We plan a follow-up study with a larger cohort by incorporating some of our materials in our existing course on High-Performance Computing.
+ER  - 
+
+TY  - CONF
+TI  - HoliCoW: Automatically Breaking Team-Based Software Projects to Motivate Student Testing
+T2  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+SP  - 436
+EP  - 439
+AU  - P. Zhang
+AU  - J. White
+AU  - D. C. Schmidt
+PY  - 2016
+DO  - 
+JO  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+Y1  - 14-22 May 2016
+AB  - Intensive testing is often applied by professional software engineers to assure the quality of enterprise information technology (IT) systems. For example, Netflix's Simian Army consists of services that generate various types of failures, detect abnormal conditions, and test the ability of cloud-based enterprise IT software to survive them. Although software engineering students should be taught these types of rigorous testing techniques, it is often hard to motivate students to produce high-quality test suites for their assignments since classroom environments lack the harsh outcomes of unexpected system failures. This paper provides two contributions to work on strengthening coding and testing skills of software engineering students by aligning educational environment more closely with real-world industries. First, we describe the Holistic Code-Wrecker (HoliCoW), which is our testing method and tool that simulates production environments through forced logical error injections into student projects. The modified versions are then run against regression tests written by students, and the test results are analyzed to determine the robustness of original software. Second, this paper describes preliminary results from our ongoing experience applying HoliCoW to Software Engineering project courses at Vanderbilt University, where the tool is used to automatically evaluate student software project submissions to determine whether regression tests they define detect errors injected into their code.
+ER  - 
+
+TY  - CONF
+TI  - Improving Students’ Testing Practices
+T2  - 2020 IEEE/ACM 42nd International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+SP  - 218
+EP  - 221
+AU  - G. R. Bai
+AU  - K. T. Stolee
+PY  - 2020
+DO  - 
+JO  - 2020 IEEE/ACM 42nd International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+IS  - 
+SN  - 2574-1926
+VO  - 
+VL  - 
+JA  - 2020 IEEE/ACM 42nd International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+Y1  - 5-11 Oct. 2020
+AB  - Software testing prevents and detects the introduction of faults and bugs during the process of evolving and delivering reliable software. As an important software development activity, testing has been intensively studied to measure test code quality and effectiveness, and assist professional developers and testers with automated test generation tools. In recent years, testing has been attracting educators' attention and has been integrated into some Computer Science education programs. Understanding challenges and problems faced by students can help inform educators the topics that require extra attention and practice when presenting testing concepts and techniques. In my research, I study how students implement and modify source code given unit tests, and how they perceive and perform unit testing. I propose to quantitatively measure the quality of student-written test code, and qualitatively identify the common mistakes and bad smells observed in student-written test code. We compare the performance of students and professionals, who vary in prior testing experience, to investigate the factors that lead to high-quality test code. The ultimate goal of my research is to address the challenges students encountered during test code composition and improve their testing skills with supportive tools or guidance.
+ER  - 
+
+TY  - CONF
+TI  - gDefects4DL: A Dataset of General Real-World Deep Learning Program Defects
+T2  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+SP  - 90
+EP  - 94
+AU  - Y. Liang
+AU  - Y. Lin
+AU  - X. Song
+AU  - J. Sun
+AU  - Z. Feng
+AU  - J. S. Dong
+PY  - 2022
+DO  - 10.1145/3510454.3516826
+JO  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+IS  - 
+SN  - 2574-1926
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+Y1  - 22-24 May 2022
+AB  - The development of deep learning programs, as a new programming paradigm, is observed to suffer from various defects. Emerging research works have been proposed to detect, debug, and repair deep learning bugs, which drive the need to construct the bug benchmarks. In this work, we present gDefects4DL, a dataset for general bugs of deep learning programs. Comparing to existing datasets, gDefects4DL collects bugs where the root causes and fix solutions can be well generalized to other projects. Our general bugs include deep learning program bugs such as (1) violation of deep learning API usage pattern (e.g., the standard to implement cross entropy function y•log(y), y → 0, without NaN error), (2) shape-mismatch of tensor calculation, (3) numeric bugs, (4) type-mismatch (e.g., confusing similar types among numpy, pytorch, and tensorflow), (5) violation of model architecture design convention, and (6) performance bugs.For each bug in gDefects4DL, we describe why it is general and group the bugs with similar root causes and fix solutions for reference. Moreover, gDefects4DL also maintains (1) its buggy/fixed versions and the isolated fix change, (2) an isolated environment to replicate the defect, and (3) the whole code evolution history from the buggy version to the fixed version. We design gDefects4DL with extensible interfaces to evaluate software engineering methodologies and tools. We have integrated tools such as ShapeFlow, DEBAR, and GRIST. gDefects4DL contains 64 bugs falling into 6 categories (i.e., API Misuse, Shape Mismatch, Number Error, Type Mismatch, Violation of Architecture Convention, and Performance Bug). gDefects4DL is available at https://github.com/llmhyy/defects4dl, its online web demonstration is at http://47.93.14.147:9000/bugList, and the demo video is at https://youtu.be/0XtaEt4Fhm4.
+ER  - 
+
+TY  - JOUR
+TI  - International Comparative Studies on the Software Testing Profession
+T2  - IT Professional
+SP  - 56
+EP  - 61
+AU  - L. F. Capretz
+AU  - P. Waychal
+AU  - J. Jia
+AU  - D. Varona
+AU  - Y. Lizama
+PY  - 2021
+DO  - 10.1109/MITP.2020.3031862
+JO  - IT Professional
+IS  - 5
+SN  - 1941-045X
+VO  - 23
+VL  - 23
+JA  - IT Professional
+Y1  - 1 Sept.-Oct. 2021
+AB  - This work attempts to fill a gap by exploring the human dimension in particular, by trying to understand the motivation of software professionals for taking up and sustaining their careers as software testers. Towards that goal, four surveys were conducted in four countries—India, Canada, Cuba, and China—to try to understand how professional software engineers perceive and value work-related factors that could influence their motivation to start or move into software testing careers. From our sample of 220 software professionals, we observed that very few were keen to take up testing careers. Some aspects of software testing, such as the potential for learning opportunities and the importance of the job, appear to be common motivators across the four countries, whereas the treatment of testers as second-class citizens and the complexity of the job appeared to be the most prominent de-motivators.
+ER  - 
+
+TY  - CONF
+TI  - Software Testing Based on Software Product Quality Metrics (SPQM)
+T2  - 2023 9th International Conference on Advanced Computing and Communication Systems (ICACCS)
+SP  - 2151
+EP  - 2156
+AU  - V. SivaKrishna
+AU  - P. S. Kumar
+AU  - J. Jhaveri
+AU  - L. S. Akanksha
+AU  - P. V. Rao
+AU  - N. R. Sai
+PY  - 2023
+DO  - 10.1109/ICACCS57279.2023.10113076
+JO  - 2023 9th International Conference on Advanced Computing and Communication Systems (ICACCS)
+IS  - 
+SN  - 2575-7288
+VO  - 1
+VL  - 1
+JA  - 2023 9th International Conference on Advanced Computing and Communication Systems (ICACCS)
+Y1  - 17-18 March 2023
+AB  - Producinghigh-quality products has emerged-as a crucial component of corporate success in today's marketplace. In this regard, establishing and holding to software product to assess the present quality standardto environment and promote system to improvethe quality of the productit significance. Testing software is an essential step in the software development process. This technique is more accurate and effective when it is automated. Emerged new testing tools for automated testing. The selection of the proper tools has become a challenging and confusing activity as a result of the abundance and variety of testing instruments. The current study attempts to assess the current research areas and trends on this subject that have appeared in the literature over the previous twelve years. Based on their titles and abstracts, 50 conference and article papers on SPQM published in the interval 2010 and 2022 were subjected to Systematic Mapping (SM) research. The findings are presented using a combination of diagrams, written explanations, and mind-mapping techniques, which include a trend map for the period from 2010 to 2022, details about the field and measurement techniques, identified areas for improvement, and consistency across sources such as conference papers, journal articles, and internationally recognized quality models. Future research that aims to advance this important topic may build on the outcome of this study. This research may provide a starting point for further investigations meant to advance this vital area of study
+ER  - 
+
+TY  - CONF
+TI  - Fail-Safe Execution of Deep Learning based Systems through Uncertainty Monitoring
+T2  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 24
+EP  - 35
+AU  - M. Weiss
+AU  - P. Tonella
+PY  - 2021
+DO  - 10.1109/ICST49551.2021.00015
+JO  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 12-16 April 2021
+AB  - Modern software systems rely on Deep Neural Networks (DNN) when processing complex, unstructured inputs, such as images, videos, natural language texts or audio signals. Provided the intractably large size of such input spaces, the intrinsic limitations of learning algorithms and the ambiguity about the expected predictions for some of the inputs, not only there is no guarantee that DNN’s predictions are always correct, but rather developers must safely assume a low, though not negligible, error probability. A fail-safe Deep Learning based System (DLS) is one equipped to handle DNN faults by means of a supervisor, capable of recognizing predictions that should not be trusted and that should activate a healing procedure bringing the DLS to a safe state.In this paper, we propose an approach to use DNN uncertainty estimators to implement such supervisor. We first discuss advantages and disadvantages of existing approaches to measure uncertainty for DNNs and propose novel metrics for the empirical assessment of the supervisor that rely on such approaches. We then describe our publicly available tool UNCERTAINTY-WIZARD, which allows transparent estimation of uncertainty for regular tf.keras DNNs. Lastly, we discuss a large-scale study conducted on four different subjects to empirically validate the approach, reporting the lessons-learned as guidance for software engineers who intend to monitor uncertainty for fail-safe execution of DLS.
+ER  - 
+
+TY  - CONF
+TI  - Secure Modules for Undergraduate Software Engineering Courses
+T2  - 2018 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 5
+AU  - J. Yang
+AU  - A. Lodgher
+AU  - Y. Lee
+PY  - 2018
+DO  - 10.1109/FIE.2018.8658433
+JO  - 2018 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2018 IEEE Frontiers in Education Conference (FIE)
+Y1  - 3-6 Oct. 2018
+AB  - Security affects every software component in different types of computing systems. Many vulnerabilities and attacks on software systems are due to security weaknesses in the software itself. During the process of software specification, development, or testing, security issues are either taken into consideration insufficiently or not at all. Such software, due to internal weaknesses is prone to new attacks. By teaching secure software engineering techniques for designing and developing software modules, students would learn systematic secure software development techniques, such as defect detecting and security testing. This paper presents a series of modules that are designed to be integrated into undergraduate software engineering courses from a security perspective. The goal of the modules is to teach the building of robust software security requirements, secure software design and development, and secure software verification through a secure software development lifecycle.
+ER  - 
+
+TY  - CONF
+TI  - Questionnaire Approach for Assessing Software Engineering and Quality Assurance Practices
+T2  - 2022 45th Jubilee International Convention on Information, Communication and Electronic Technology (MIPRO)
+SP  - 1301
+EP  - 1306
+AU  - T. Hynninen
+AU  - S. Jantunen
+PY  - 2022
+DO  - 10.23919/MIPRO55190.2022.9803658
+JO  - 2022 45th Jubilee International Convention on Information, Communication and Electronic Technology (MIPRO)
+IS  - 
+SN  - 2623-8764
+VO  - 
+VL  - 
+JA  - 2022 45th Jubilee International Convention on Information, Communication and Electronic Technology (MIPRO)
+Y1  - 23-27 May 2022
+AB  - The industry-academia gap is one of the persistent challenges of Software Engineering education. Software development is a rapidly moving industry, and academia is not quick enough to adapt to the changing software engineering profession. To this end, this paper introduces a project that seeks to bridge the Software Engineering -related industry-academia gap in the Finnish region of South Savo. The project intends to bring together regional software engineering companies with teachers, developers, and students in higher education. The objective of such a community is to provide a platform for discussion and the development of collaborative models to improve education and interaction. As the first step towards building the community, we are building a better understanding of the software development companies in the region. In this paper, we describe our method of inquiry and early experiences for understanding companies’ type of business, software engineering activities, and attitude towards collaboration. The preliminary results show that our method of inquiry was perceived as useful for both industry and academia. While we were able to gather useful information about the industry practices and feedback for higher education about the skills graduates should possess, industry representatives considered the data gathering as an opportunity for self-reflection.
+ER  - 
+
+TY  - CONF
+TI  - A Comprehensive Experiment Approach to Enhancing Computer Engineering Ability
+T2  - 2022 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 8
+AU  - L. Zhang
+AU  - J. Niu
+PY  - 2022
+DO  - 10.1109/FIE56618.2022.9962680
+JO  - 2022 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2022 IEEE Frontiers in Education Conference (FIE)
+Y1  - 8-11 Oct. 2022
+AB  - This Research to Practice Full Paper presented a comprehensive experiment approach to enhancing computer engineering ability. This approach integrated Swift programming language, iOS development, UML, software testing, MVC, Cocoa Touch Framework and Design Patterns into a comprehensive experiment, through which students can master the engineering methods to solve complex application problems.In college, traditional computer programming courses focus on the grammar and classical algorithm of programming language. Usually the amount of code is far lower than that of industrial products. Such programming courses can’t effectively improve students’ ability to solve complex engineering problems. They also can’t meet the requirements of industrial development. Students are not satisfied with the results of these courses. There is an intense need for the studies of enhancing student’s computer engineering ability.Taking Swift Language Programming course as an example, this paper presented a comprehensive experiment approach to enhancing students’ computer engineering ability by developing classic industrial iOS Apps.Flipped classroom pedagogy is conducive to free much time in class. Lecturers can fully communicate with students and help students complete challenging tasks. The comprehensive experiment consists of pre-class activities and in-class activities. Before class, the lecturer provides experiment materials online including theoretical handouts of Design Patterns, manuals of UML 2.0 specifications and Cocoa Touch reference manual, etc. Students learn the materials by themselves, practice and discuss online and complete the corresponding pre-class tests. In class, the lecturer analyzes in detail the problems students encounter after class and guides them to solve these problems. The lecturer also participates in each group discussion to ensure the smooth progress of students’ project.The implementation of comprehensive experiment is divided into four sub tasks. These tasks are app function analysis, App detailed design, programming implementation, and App release and launch. First, according to the requirements of the App, the function is analyzed in detail and defined with UML. Second, based on functional analysis, the App’s system architecture, data structure, view combination, logic execution process and core algorithms are designed. The system is defined in detail with UML Class diagram. Third, according to the detailed design of the App, user interface is built by Xcode storyboard, and the model layer, view layer and control layer are implemented in Swift. Then unit test and system test are conducted on the App and bugs are repaired. Finally, App launch is completed including App internationalization, developer certificate applying, creating description file, setting product identification and deployment information, and submitting App online.To assess the effect of this comprehensive experiment approach, three-year teaching data were analyzed using statistical methods. The results show that students’ engineering ability (measured by code scale) and student satisfaction (measured by questionnaires) were significantly improved.Our contribution is to propose a detailed comprehensive experiment approach to enhancing computer engineering ability. The analysis of teaching data show that it is helpful to improve students’ computer engineering ability and course satisfaction.
+ER  - 
+
+TY  - CONF
+TI  - Comparing the Popularity of Testing Careers Among Canadian, Chinese, and Indian Students
+T2  - 2019 IEEE/ACM 41st International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+SP  - 258
+EP  - 259
+AU  - L. F. Capretz
+AU  - P. Waychal
+AU  - J. Jia
+PY  - 2019
+DO  - 10.1109/ICSE-Companion.2019.00103
+JO  - 2019 IEEE/ACM 41st International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+IS  - 
+SN  - 2574-1934
+VO  - 
+VL  - 
+JA  - 2019 IEEE/ACM 41st International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+Y1  - 25-31 May 2019
+AB  - Despite its importance, software testing is, arguably, the least understood part of the software life cycle and still the toughest to perform correctly. Many researchers and practitioners have been working to address the situation. However, most of the studies focus on the process and technology dimensions and only a few on the human dimension of testing, in spite of the reported relevance of human aspects of software testing. Testers need to understand various stakeholders' explicit and implicit requirements, be aware of how developers work individually and in teams, and develop skills to report test results wisely to stakeholders.These multifaceted qualifications lend vitality to the human dimension in software testing. Exploring this human dimension carefully may help understand testing in a better way.
+ER  - 
+
+TY  - CONF
+TI  - Exploring students' sensemaking of test case design. An initial study
+T2  - 2021 IEEE 21st International Conference on Software Quality, Reliability and Security Companion (QRS-C)
+SP  - 1069
+EP  - 1078
+AU  - N. Doorn
+AU  - T. E. J. Vos
+AU  - B. Marín
+AU  - H. Passier
+AU  - L. Bijlsma
+AU  - S. Cacace
+PY  - 2021
+DO  - 10.1109/QRS-C55045.2021.00161
+JO  - 2021 IEEE 21st International Conference on Software Quality, Reliability and Security Companion (QRS-C)
+IS  - 
+SN  - 2693-9371
+VO  - 
+VL  - 
+JA  - 2021 IEEE 21st International Conference on Software Quality, Reliability and Security Companion (QRS-C)
+Y1  - 6-10 Dec. 2021
+AB  - Testing is the most used process to assure software systems quality. With increasing complexity of software, testing is getting more important. Testing is an intellectual activity that needs to allocate multiple cognitive resources in students, making it a challenging topic to teach in computer science programs. We advocate that testing is both model-based and exploratory, meaning that we can only make useful test models for test case design once we have made enough sense about the testing problem. The latter can only be achieved through exploring, i.e. questioning, studying, observing and inferring. In this paper, we present an initial diagnostic study to understand the sensemaking used by students while creating test models. We found indications of four different approaches used by students when modelling test cases. A plan for further research is presented on how to improve teaching by taking into account the student's sensemaking approaches.
+ER  - 
+
+TY  - CONF
+TI  - Designing Early Testing Course Curricula with Activities Matching the V-Model Phases
+T2  - 2019 42nd International Convention on Information and Communication Technology, Electronics and Microelectronics (MIPRO)
+SP  - 1593
+EP  - 1598
+AU  - T. Hynninen
+AU  - A. Knutas
+AU  - J. Kasurinen
+PY  - 2019
+DO  - 10.23919/MIPRO.2019.8757033
+JO  - 2019 42nd International Convention on Information and Communication Technology, Electronics and Microelectronics (MIPRO)
+IS  - 
+SN  - 2623-8764
+VO  - 
+VL  - 
+JA  - 2019 42nd International Convention on Information and Communication Technology, Electronics and Microelectronics (MIPRO)
+Y1  - 20-24 May 2019
+AB  - This work addresses the gap between software engineering process terminology in formal education, and the practical skills relevant to testing related work. The V-model is a commonly referenced description of how the software engineering processes are tied to the different software testing levels. It is used in software engineering education to illustrate which type of testing work should be carried out during a certain development stage. However, the V-model is mainly conceptual and tied to the steps in the Waterfall model, leaving the students with little knowledge about what is actually done. To solve this problem, we propose an approach to map the V-Model development phases and testing levels with corresponding, actual testing techniques. We then evaluate the approach by designing the weekly topics, learning goals and testing activities for a 7 week introductory course on the basics software testing and quality assurance. Based on the course outcomes and recent literature, we discuss the strengths and weaknesses of the proposed curriculum.
+ER  - 
+
+TY  - CONF
+TI  - SoCa: Software Catalog
+T2  - 2018 International Conference on Applied Engineering (ICAE)
+SP  - 1
+EP  - 6
+AU  - M. K. Mufida
+AU  - W. Anurogo
+AU  - M. Santiputri
+AU  - M. Ansori
+AU  - M. Z. Lubis
+PY  - 2018
+DO  - 10.1109/INCAE.2018.8579367
+JO  - 2018 International Conference on Applied Engineering (ICAE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 International Conference on Applied Engineering (ICAE)
+Y1  - 3-4 Oct. 2018
+AB  - Teaching, learning process and the research at Department of Informatics of the State Polytechnic of Batam produce many software as project based learning teaching method starts to be implemented since 2017. All softwares have been documented as files on a server and in a CD or DVD. These software of a big volume requires good management and documentation in order to get more benefit instead of stack them as archive. This research aims to record further application development such as customization and commercialization of applications as well as versioning for advanced research on certain software products. This study target to handle documentation and publication problem generated from the teaching and research activity at Department of Informatics of the State Polytechnic of Batam in the form of catalogs that accessible online. SoCa is an application developed on web platform to facilitate data access over the internet anywhere and anytime. We used waterfall software development method that starts with data collection through interviews, and observation to complete system specification, design, develop, test and then validate the testing results performed using Black Box technique. The SoCa is equipped with detailed information on applications such as application descriptions, documentation and application's version. It also provides video demonstration of software workflow and its manual book. SoCa is expected to be a solution to realize various software management problem at Department of Informatics Engineering State Polytechnic of Batam.
+ER  - 
+
+TY  - CONF
+TI  - A Global View on the Hard Skills and Testing Tools in Software Testing
+T2  - 2019 ACM/IEEE 14th International Conference on Global Software Engineering (ICGSE)
+SP  - 143
+EP  - 151
+AU  - R. Florea
+AU  - V. Stray
+PY  - 2019
+DO  - 10.1109/ICGSE.2019.00035
+JO  - 2019 ACM/IEEE 14th International Conference on Global Software Engineering (ICGSE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 ACM/IEEE 14th International Conference on Global Software Engineering (ICGSE)
+Y1  - 25-26 May 2019
+AB  - Developing software with high quality is challenging in distributed software development. The purpose of the current study is to investigate the testing skills and tools required in the ever-changing world of global software engineering, according to industrial needs. We analysed 500 job ads from 33 countries. The results show that a quarter of the testers and a fifth of developers are asked to work in distributed projects. The testers are asked to be highly skilled in a variety of test activities and tools, while the testing-skills demand for developers is low and somewhat vague. The profile of testers has a strong technical component in addition to the managerial one. Our findings show that employers need most that testers are competent in automated testing. Furthermore, the industry does not cover all aspects of testing with the demand for testers and developers. Surprisingly, neither role is asked to test the implementation of the general data protection requirements. Our study bridges the industrial needs and the practitioners' skill development process. Therefore, software testers can use our study as a reference point to enhance their skills. Employers should use our results to check their testing-skill coverage within the development teams. Tertiary education providers are encouraged to use our findings, to update the curriculum in the software development area.
+ER  - 
+
+TY  - CONF
+TI  - A Redesigned Educational System for the COVID-19 Pandemic and Post Pandemic era
+T2  - 2022 IEEE Learning with MOOCS (LWMOOCS)
+SP  - 78
+EP  - 83
+AU  - H. Ehtesham
+AU  - A. Khelifi
+AU  - R. Fatima
+AU  - S. Faizan
+AU  - H. M. Ismail
+PY  - 2022
+DO  - 10.1109/LWMOOCS53067.2022.9927872
+JO  - 2022 IEEE Learning with MOOCS (LWMOOCS)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE Learning with MOOCS (LWMOOCS)
+Y1  - 29-30 Sept. 2022
+AB  - This research aims to develop a technology-driven educational application that will be a platform for providing interesting content to students. In light of the COVID-19 pan-demic, the objective of this redesign is to address the shortcomings of the current teaching strategy. In addition, survey and interview results supported the need for a revision of the current educational strategy. The proposed application employs Bloom's taxonomy quizzes to create a customized learning technique and structure content so that students can comprehend subjects more thoroughly. Visual Studio Code and the Ionic Framework were used for front-end development, while the Angular and PHP frameworks were utilized for the back-end. The program was reviewed using white box testing techniques and received positive feedback from users. In addition, it highlighted the possibility for sophisticated enhancements, such as the incorporation of learning styles, to improve the learning experiences of students.
+ER  - 
+
+TY  - CONF
+TI  - ISSRE 2020 Doctoral Symposium Keynote: How to Get Your Paper Rejected
+T2  - 2020 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW)
+SP  - xxvi
+EP  - xxvii
+AU  - J. Offutt
+PY  - 2020
+DO  - 10.1109/ISSREW51248.2020.00010
+JO  - 2020 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW)
+Y1  - 12-15 Oct. 2020
+AB  - My papers have been rejected nearly a thousand times (including by ISSRE 2020). In fact, being rejected is one of my best skills! I am confident that I lead the field of software testing in the number of rejections. In this talk, I try to pass on my knowledge and skills to a younger generation, so that you, too, can aspire to accumulate large piles of rejection messages.
+ER  - 
+
+TY  - CONF
+TI  - Development Model of Warteg Online Applications based on Web and Mobile
+T2  - 2020 International Conference on Information Management and Technology (ICIMTech)
+SP  - 864
+EP  - 869
+AU  - J. W. Ivanovich
+AU  - M. A. Said
+AU  - S. A. Rohim
+AU  - M. R. Wicaksono
+AU  - E. H. Yossy
+PY  - 2020
+DO  - 10.1109/ICIMTech50083.2020.9211263
+JO  - 2020 International Conference on Information Management and Technology (ICIMTech)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 International Conference on Information Management and Technology (ICIMTech)
+Y1  - 13-14 Aug. 2020
+AB  - The development of software engineering as well as mobile and web-apps has enabled the modernization of businesses such as warung tegal (warteg). The purpose of this research is to design an online warteg application. Application development uses the method of developing system development life cycle with the waterfall model. This application was built using the Native React Framework and with the PostgreSQL Database. The expected result is the design of online warteg applications that can be accessed on websites and mobile phones that can help warteg entrepreneurs to facilitate the promotion and sale of merchandise they sell, as well as to facilitate the public to buy food without having to come to the warteg.
+ER  - 
+
+TY  - CONF
+TI  - Applying an Instructional Design Process to Development of an Independent Verification and Validation Training Program
+T2  - 2016 IEEE 29th International Conference on Software Engineering Education and Training (CSEET)
+SP  - 237
+EP  - 240
+AU  - N. Okubo
+AU  - K. Nara
+AU  - S. Takemura
+AU  - Y. Ueda
+PY  - 2016
+DO  - 10.1109/CSEET.2016.17
+JO  - 2016 IEEE 29th International Conference on Software Engineering Education and Training (CSEET)
+IS  - 
+SN  - 2377-570X
+VO  - 
+VL  - 
+JA  - 2016 IEEE 29th International Conference on Software Engineering Education and Training (CSEET)
+Y1  - 5-6 April 2016
+AB  - This paper describes the experience of developing Independent Verification and Validation (IV&V) training programby applying an Instructional Design Process(IDP). This is not complete training to become an IV&V engineer, but job training to help solve common problems encountered in IV&V work. The instructional design process featured extensive frontend analysis before the design and implementation of the instruction, and also repeated revision of the instruction. The Dick and Carey model influenced the process used for developing the IV&V training program, which we called J-IDP. We conducted a field trial with the entry level of the training materials, but the resultwas not as positive as expected. Therefore, following J-IDP, we reviewed the materials and revised the training. Our experience with this training program suggests applying an instructional design process may solve some aspects of two common issues for software engineering education or training, the difficulty in identifying necessary abilities for software engineers and the difficulty in maintaining the training up-to-date.
+ER  - 
+
+TY  - CONF
+TI  - Impact of mutation intensity on evolutionary test model learning
+T2  - 2015 IEEE 19th International Conference on Intelligent Engineering Systems (INES)
+SP  - 271
+EP  - 276
+AU  - M. Sroka
+AU  - R. Nagy
+AU  - D. Fisch
+PY  - 2015
+DO  - 10.1109/INES.2015.7329720
+JO  - 2015 IEEE 19th International Conference on Intelligent Engineering Systems (INES)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE 19th International Conference on Intelligent Engineering Systems (INES)
+Y1  - 3-5 Sept. 2015
+AB  - Automation in the software testing process has significant impact on the overall software development in industry. The focus of this paper is on automation of test case design via model-based testing for automotive embedded software. A new method based on an evolutionary algorithm for acquiring the necessary test model automatically from sample test cases and additional sources of information was designed and this paper investigates the impact of mutation intensity on the evolutionary learning process.
+ER  - 
+
+TY  - CONF
+TI  - Testing Machine Learning Systems in Industry: An Empirical Study
+T2  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)
+SP  - 263
+EP  - 272
+AU  - S. Li†
+AU  - J. Guo†
+AU  - J. -G. Lou
+AU  - M. Fan
+AU  - T. Liu‡
+AU  - D. Zhang
+PY  - 2022
+DO  - 10.1145/3510457.3513036
+JO  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)
+Y1  - 22-24 May 2022
+AB  - Machine learning becomes increasingly prevalent and integrated into a wide range of software systems. These systems, named ML systems, must be adequately tested to gain confidence that they behave correctly. Although many research efforts have been devoted to testing technologies for ML systems, the industrial teams are faced with new challenges on testing the ML systems in real-world settings. To absorb inspirations from the industry on the problems in ML testing, we conducted an empirical study including a survey with 87 responses and interviews with 7 senior ML practitioners from well-known IT companies. Our study uncovers significant industrial concerns on major testing activities, i.e., test data collection, test execution, and test result analysis, and also the good practices and open challenges from the perspective of the industry. (1) Test data collection is conducted in different ways on ML model, data, and code and faced with different challenges. (2) Test execution in ML systems suffers from two major problems: entanglement among the components and the regression on model performance. (3) Test result analysis centers on quantitative methods, e.g., metric-based evaluation, and is combined with some qualitative methods based on practitioners’ experience. Based on our findings, we highlight the research opportunities and also provide some implications for practitioners.
+ER  - 
+
+TY  - CONF
+TI  - How do Students Test Software Units?
+T2  - 2021 IEEE/ACM 43rd International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+SP  - 189
+EP  - 198
+AU  - L. Bijlsma
+AU  - N. Doorn
+AU  - H. Passier
+AU  - H. Pootjes
+AU  - S. Stuurman
+PY  - 2021
+DO  - 10.1109/ICSE-SEET52601.2021.00029
+JO  - 2021 IEEE/ACM 43rd International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 IEEE/ACM 43rd International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+Y1  - 25-28 May 2021
+AB  - We gained insight into ideas and beliefs on testing of students who finished an introductory course on programming without any formal education on testing. We asked students to fill in a small survey, to do four exercises and to fill in a second survey. We interviewed eleven of these students in semi-structured interviews, to obtain more in-depth insight. The main outcome is that students do not test systematically, while most of them think they do test systematically. One of the misconceptions we found is that most students can only think of test cases based on programming code. Even if no code was provided (black-box testing), students try to come up with code to base their test cases on.
+ER  - 
+
+TY  - CONF
+TI  - An agile learning design method for open educational resources
+T2  - 2015 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - M. M. Arimoto
+AU  - E. F. Barbosa
+AU  - L. Barroca
+PY  - 2015
+DO  - 10.1109/FIE.2015.7344334
+JO  - 2015 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE Frontiers in Education Conference (FIE)
+Y1  - 21-24 Oct. 2015
+AB  - Open Educational Resources (OERs) have provided new perspectives for the construction, access and sharing of knowledge. While OERs can bring benefits to, and impact on education, there are still challenges to their widespread production and use. One of the challenges faced by developers (including educators and practitioners) of OERs has been how to produce quality and relevant learning materials, capable of being reused and adapted in different learning situations. In our work we propose and define an agile learning design method to support the design and creation of OERs. It is based on agile practices from software engineering and on practices of learning design from the OULDI project at the UK Open University. We illustrate our ideas with an experiment that validates the proposed method through its application in the design and creation of an OER in the software testing domain. The results obtained so far have shown that the method is feasible and effective for the design and creation of OERs.
+ER  - 
+
+TY  - JOUR
+TI  - Collaborative assessments in computer science education: A survey
+T2  - Tsinghua Science and Technology
+SP  - 435
+EP  - 445
+AU  - H. Yuan
+AU  - P. Cao
+PY  - 2019
+DO  - 10.26599/TST.2018.9010108
+JO  - Tsinghua Science and Technology
+IS  - 4
+SN  - 1007-0214
+VO  - 24
+VL  - 24
+JA  - Tsinghua Science and Technology
+Y1  - Aug. 2019
+AB  - As computer science enrollments continue to surge, assessments that involve student collaboration may play a more critical role in improving student learning. We provide a review on some of the most commonly adopted collaborative assessments in computer science, including pair programming, collaborative exams, and group projects. Existing research on these assessment formats is categorized and compared. We also discuss potential future research topics on the aforementioned collaborative assessment formats.
+ER  - 
+
+TY  - JOUR
+TI  - A Literature Review of Using Machine Learning in Software Development Life Cycle Stages
+T2  - IEEE Access
+SP  - 140896
+EP  - 140920
+AU  - S. Shafiq
+AU  - A. Mashkoor
+AU  - C. Mayr-Dorn
+AU  - A. Egyed
+PY  - 2021
+DO  - 10.1109/ACCESS.2021.3119746
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 9
+VL  - 9
+JA  - IEEE Access
+Y1  - 2021
+AB  - The software engineering community is rapidly adopting machine learning for transitioning modern-day software towards highly intelligent and self-learning systems. However, the software engineering community is still discovering new ways how machine learning can offer help for various software development life cycle stages. In this article, we present a study on the use of machine learning across various software development life cycle stages. The overall aim of this article is to investigate the relationship between software development life cycle stages, and machine learning tools, techniques, and types. We attempt a holistic investigation in part to answer the question of whether machine learning favors certain stages and/or certain techniques.
+ER  - 
+
+TY  - CONF
+TI  - Identification of patterns in the involvement of novice software developers in software testing processes
+T2  - 2021 IEEE International Conference on Artificial Intelligence and Computer Applications (ICAICA)
+SP  - 378
+EP  - 382
+AU  - G. Caiza
+AU  - F. I. Torres
+AU  - M. V. Garcia
+PY  - 2021
+DO  - 10.1109/ICAICA52286.2021.9498137
+JO  - 2021 IEEE International Conference on Artificial Intelligence and Computer Applications (ICAICA)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 IEEE International Conference on Artificial Intelligence and Computer Applications (ICAICA)
+Y1  - 28-30 June 2021
+AB  - Background: Testing is often used to make decisions about whether or not to implement software projects. How the software industry effectively engages novice software developers in both general development and testing is less clear; however, it is especially important to determine the views of more experienced developers on this issue. Objectives: We seek to explore how software companies involve novice software developers in software development and testing; to understand how experienced developers involve novice programmers in testing; and to discover systematic patterns in experienced developers' opinions about the involvement of novice software developers. Methods: We conducted a survey of three private software companies and one public institution, taking into account experienced developers. We asked respondents to indicate how they involve novice software developers in their work activities, as well as their perspectives on software testing. Results: We identified 4 patterns that describe the involvement of novice programmers. We identified that, due to the lack of clear processes for involving novice developers in software testing, a key pattern that was identified is how the novice developer is limited when testing a product.
+ER  - 
+
+TY  - CONF
+TI  - An approach to enhance students' competency in software verification techniques
+T2  - 2015 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - O. Ochoa
+AU  - S. Salamah
+PY  - 2015
+DO  - 10.1109/FIE.2015.7344050
+JO  - 2015 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE Frontiers in Education Conference (FIE)
+Y1  - 21-24 Oct. 2015
+AB  - In this paper we present an approach used to enhance students' competency in software verification. Students were asked to apply software verification techniques to a complex formal specification system. The complexity of the system stems from its sophisticated requirements. Selecting such system for this study was intentional for the following two reasons 1) the system is difficult to understand and analyze because of the domain knowledge required to generate formal specifications in temporal logic and 2) the system is large and complex which lends itself to a wide range of applicable verification techniques, and thus highlights the differences in the capabilities of each of the software verification approaches. Students were assessed using multiple criteria including; examination in applying learned techniques, students' attitude toward the technique, perceived efficiency of the techniques in discovering software defects, and the ability of the technique to locate errors in the code beyond simply indicating their presence. The results of this work show that the students applied the learned techniques successfully and their attitudes towards software verification improved.
+ER  - 
+
+TY  - CONF
+TI  - META: Multidimensional Evaluation of Testing Ability
+T2  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+SP  - 139
+EP  - 143
+AU  - T. Zhou
+AU  - J. Liu
+AU  - Y. Wang
+AU  - Z. Chen
+PY  - 2022
+DO  - 10.1145/3510454.3516867
+JO  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+IS  - 
+SN  - 2574-1926
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 44th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)
+Y1  - 22-24 May 2022
+AB  - As the market’s demand for software quality continues increasing, companies increase demand for excellent testing engineers. The on-line testing platform cultivates students by offering software testing courses. Students are encouraged to submit test codes by exams on the online testing platform during the course evaluation. However, the problem of how to effectively assess the test code written by students is to be solved. This paper implements a multidimensional evaluation system named META for software testing based on an online testing platform. META is designed to address the problem of how to evaluate testing effectiveness systematically. This paper evaluates students’ testing effectiveness in seven dimensions for three software testing types: developer unit testing, web application testing, and mobile application testing, combining test codes and test behaviours. For the validity of META, 14 exams are selected from MOOCTest for an experiment in this paper, of which ten exams for developer unit testing, three exams for mobile application testing, and one exam for web application testing, involving 718 students participating in the exam and 26666 records submitted. The experimental results show that META can present significant variability in different dimensions for different students with similar scores. Video URL: https://www.youtube.com/watch?v=EiCSMtefPMU.
+ER  - 
+
+TY  - CONF
+TI  - Towards the Role of Test Design in Programming Assignments
+T2  - 2017 IEEE 30th Conference on Software Engineering Education and Training (CSEE&T)
+SP  - 170
+EP  - 179
+AU  - L. P. Scatalon
+AU  - J. M. Prates
+AU  - D. M. de Souza
+AU  - E. F. Barbosa
+AU  - R. E. Garcia
+PY  - 2017
+DO  - 10.1109/CSEET.2017.34
+JO  - 2017 IEEE 30th Conference on Software Engineering Education and Training (CSEE&T)
+IS  - 
+SN  - 2377-570X
+VO  - 
+VL  - 
+JA  - 2017 IEEE 30th Conference on Software Engineering Education and Training (CSEE&T)
+Y1  - 7-9 Nov. 2017
+AB  - Software testing can be very helpful to students if adopted in programming assignments throughout the Computer Science curriculum. Many testing practices involve students writing their own test cases. This approach implies that students are responsible for the test design task while performing the test activity. On the other hand, some testing practices follow the opposite approach of providing ready-made test cases, so students only need to execute and evaluate test results for their solution code. In this paper, we investigated the effect of test design in student programming performance. We conducted an experiment comparing two different testing approaches during programming assignments: student-written and instructor-provided test cases. We also assessed students' perceptions of this subject by means of a survey. Results suggest that when students are responsible for test design, i.e. when they write their own test cases, they perform better in programming assignments.
+ER  - 
+
+TY  - CONF
+TI  - Evaluation and assessment of effects on exploring mutation testing in programming courses
+T2  - 2015 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - R. A. P. Oliveira
+AU  - L. B. R. Oliveira
+AU  - B. B. P. Cafeo
+AU  - V. H. S. Durelli
+PY  - 2015
+DO  - 10.1109/FIE.2015.7344051
+JO  - 2015 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE Frontiers in Education Conference (FIE)
+Y1  - 21-24 Oct. 2015
+AB  - Mutation analysis is a testing strategy that consists of using supporting tools to seed artificial faults in the original code of a software under test, generating faulty programs (“mutants”) that are supposed to produce incorrect outputs. Novice programmers suffer of a wide range of deficits due to defective training processes. We argue that the incorporation of experiences on mutation testing in programming courses adds valuable knowledge to the learning process. In this paper we evaluate the effects of using mutation testing to improve the learning process of students in programming courses. We present results of experiments and analysis involving undergraduate students. These experiments are the continuation of a previous work in which we raise empirical evidences that the adequate incorporation of mutation testing in programming courses contributes to form an effective environment that fosters learning. To do so, we provide a mutation testing tool to promote the practice of mutation testing by novice programmers. Through practical experiences and several analysis survey we measured the effects of using the mutation testing criterion to teach programming. In addition, we collected the opinion of senior students who already knew mutation testing concepts about their opinion on the usage of mutation concepts to teach novice programmers. Our findings reveal that the effective use of mutation analysis concepts contributes to the learning process, making students see the code as a product under development that is the result of a careful manual coding process which they need for measuring and predicting the effect of each command. The main contributions discussed in this paper are: (1) presenting results of an empirical analysis involving undergraduate students, thus giving us preliminary evidence on the effects of the novel practice; (2) exposing possible practices to explore mutation testing in programming classes, highlighting the limitations and strengths of such strategy; and (3) a mutation testing tool for educational purposes.
+ER  - 
+
+TY  - CONF
+TI  - Bug Hide-and-Seek: An Educational Game for Investigating Verification Accuracy in Software Tests
+T2  - 2018 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 8
+AU  - K. Buffardi
+AU  - P. Valdivia
+PY  - 2018
+DO  - 10.1109/FIE.2018.8658748
+JO  - 2018 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2018 IEEE Frontiers in Education Conference (FIE)
+Y1  - 3-6 Oct. 2018
+AB  - This Innovative Practice Full Paper describes a pedagogical technique for introducing unit testing within software engineering courses. The Bug Hide-and-Seek educational game reinforces testing principles by requiring students to develop some correct solutions as well as some other solutions that intentionally contain bugs. While developing the correct and buggy solutions, students also write corresponding tests that should identify whether each solution contains bugs or exhibits acceptable behavior. Consequently, the first goal of the game is to hide a clever bug that will trick other students' tests into passing the implementation, despite the hidden bug. The second goal is to write thorough tests that can accurately differentiate correct from incorrect software behavior. We introduce the motivation, pedagogy, and preliminary analysis of two variations of the Bug Hide-and-Seek game, while comparing their tradeoffs. The between-subject variation considers each student's test suite in its entirety. The within-subject variation requires more sophisticated analysis, but considers each individual function along with its corresponding tests, which provides more granular insight and specific feedback to students. We conducted a pilot study of both variations over two semesters of students (n=87) playing the Bug Hide-and-Seek game. We found that students' test True Positive Rate and True Negative Rate at verifying implementations are both significant predictors of a lack of bugs in their own solution.
+ER  - 
+
+TY  - CONF
+TI  - An empirical study of regression test suite reduction using MHBG_TCS tool
+T2  - 2017 International Conference on Computing Networking and Informatics (ICCNI)
+SP  - 1
+EP  - 5
+AU  - S. Singhal
+AU  - B. Suri
+AU  - S. Misra
+PY  - 2017
+DO  - 10.1109/ICCNI.2017.8123805
+JO  - 2017 International Conference on Computing Networking and Informatics (ICCNI)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 International Conference on Computing Networking and Informatics (ICCNI)
+Y1  - 29-31 Oct. 2017
+AB  - The following topics are dealt with: computer aided instruction; cloud computing; Internet; software engineering; feature extraction; mobile computing; genetic algorithms; business data processing; educational institutions; learning (artificial intelligence).
+ER  - 
+
+TY  - CONF
+TI  - Grading 600+ Students: A Case Study on Peer and Self Grading
+T2  - 2021 IEEE/ACM 43rd International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+SP  - 211
+EP  - 220
+AU  - M. Aniche
+AU  - F. Mulder
+AU  - F. Hermans
+PY  - 2021
+DO  - 10.1109/ICSE-SEET52601.2021.00031
+JO  - 2021 IEEE/ACM 43rd International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 IEEE/ACM 43rd International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+Y1  - 25-28 May 2021
+AB  - Grading large classes has become a challenging and expensive task for many universities. The Delft University of Technology (TU Delft), located in the Netherlands, has observed a large increase in student numbers over the past few years. Given the large growth of the student population, grading all the submissions results in high costs. We made use of self and peer grading in the 2018-2019 edition of our software testing course. Students worked in teams of two, and self and peer graded three assignments in our course. We ended up with 906 self and peer graded submissions, which we compared to 248 submissions that were graded by our TAs. In this paper, we report on the differences we observed between self, peer, and TA grading. Our findings show that: (i) self grades tend to be 8-10% higher than peer grades on average, (ii) peer grades seem to be a good approximator of TA grades; in cases where self and peer grade differ significantly, the TA grade seems to lie in between, and (iii) the gender and the nationality of the student do not seem to affect self and peer grading.
+ER  - 
+
+TY  - CONF
+TI  - Design and Implementation of Software Test Laboratory Based on Cloud Platform
+T2  - 2019 IEEE 19th International Conference on Software Quality, Reliability and Security Companion (QRS-C)
+SP  - 138
+EP  - 144
+AU  - W. Wen
+AU  - J. Sun
+AU  - Y. Li
+AU  - P. Gu
+AU  - J. Xu
+PY  - 2019
+DO  - 10.1109/QRS-C.2019.00039
+JO  - 2019 IEEE 19th International Conference on Software Quality, Reliability and Security Companion (QRS-C)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE 19th International Conference on Software Quality, Reliability and Security Companion (QRS-C)
+Y1  - 22-26 July 2019
+AB  - Software testing has become an essential indicator of students' professional level. To improve students' software testing ability, the construction of software testing laboratory has become an urgent need for many institutions. With the development and popularization of cloud computing, more and more software industries rely on cloud computing, which also brings new ideas for the construction and development of software testing laboratories in colleges and universities. This paper designs and implements a software testing laboratory based on a cloud platform, which can reuse the traditional hardware devices such as the servers in the laboratory. It is an intelligent and convenient laboratory environment with rich functions and powerful management functions, such as antagonistic experiments, programming communities, developer testing, and so on. Students can also connect to the cloud platform through the campus network to carry out various experiments. The experimental results of students will be stored on the cloud platform to facilitate the management of teachers, which can effectively improve the level of resource utilization of university laboratories. Through the cloud platform, we can arouse the enthusiasm of students and improve their professional skills, and improve the quality of experimental teaching in colleges and universities as well.
+ER  - 
+
+TY  - CONF
+TI  - METHODS2TEST: A dataset of focal methods mapped to test cases
+T2  - 2022 IEEE/ACM 19th International Conference on Mining Software Repositories (MSR)
+SP  - 299
+EP  - 303
+AU  - M. Tufano
+AU  - S. K. Deng
+AU  - N. Sundaresan
+AU  - A. Svyatkovskiy
+PY  - 2022
+DO  - 10.1145/3524842.3528009
+JO  - 2022 IEEE/ACM 19th International Conference on Mining Software Repositories (MSR)
+IS  - 
+SN  - 2574-3864
+VO  - 
+VL  - 
+JA  - 2022 IEEE/ACM 19th International Conference on Mining Software Repositories (MSR)
+Y1  - 23-24 May 2022
+AB  - Unit testing is an essential part of the software development process, which helps to identify issues with source code in early stages of development and prevent regressions. Machine learning has emerged as viable approach to help software developers generate automated unit tests. However, generating reliable unit test cases that are semantically correct and capable of catching software bugs or unintended behavior via machine learning requires large, metadata-rich, datasets. In this paper we present Methods2Test: a large, supervised dataset of test cases mapped to corresponding methods under test (i.e., focal methods). This dataset contains 780,944 pairs of JUnit tests and focal methods, extracted from a total of 91,385 Java open source projects hosted on GitHub with licenses permitting re-distribution. The main challenge behind the creation of the Methods2Test was to establish a reliable mapping between a test case and the relevant focal method. To this aim, we designed a set of heuristics, based on developers' best practices in software testing, which identify the likely focal method for a given test case. To facilitate further analysis, we store a rich set of metadata for each method-test pair in JSON-formatted files. Additionally, we extract textual corpus from the dataset at different context levels, which we provide both in raw and tokenized forms, in order to enable researchers to train and evaluate machine learning models for Automated Test Generation. Methods2Test is publicly available at: https://github.com/microsoft/methods2test
+ER  - 
+
+TY  - CONF
+TI  - MAF: Method-Anchored Test Fragmentation for Test Code Plagiarism Detection
+T2  - 2019 IEEE/ACM 41st International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+SP  - 110
+EP  - 120
+AU  - W. Sun
+AU  - X. Wang
+AU  - H. Wu
+AU  - D. Duan
+AU  - Z. Sun
+AU  - Z. Chen
+PY  - 2019
+DO  - 10.1109/ICSE-SEET.2019.00020
+JO  - 2019 IEEE/ACM 41st International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE/ACM 41st International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+Y1  - 25-31 May 2019
+AB  - Software engineering education becomes popular due to the rapid development of the software industry. In order to reduce learning costs and improve learning efficiency, some online practice platforms have emerged. This paper proposes a novel test code plagiarism detection technology, namely MAF, by introducing bidirectional static slicing to anchor methods under test and extract fragments of test codes. Combined with similarity measures, MAF can achieve effective plagiarism detection by avoiding massive unrelated noisy test codes. The experiment is conducted on the dataset of Mooctest, which so far has supported hundreds of test activities around the world in the past 3 years. The experimental results show that MAF can effectively improve the performance (precision, recall and F1-measure) of similarity measures for test code plagiarism detection. We believe that MAF can further expand and promote software testing education, and it can also be extended to use in test recommendation, test reuse and other engineering applications.
+ER  - 
+
+TY  - CONF
+TI  - Do the Test Smells Assertion Roulette and Eager Test Impact Students’ Troubleshooting and Debugging Capabilities?
+T2  - 2023 IEEE/ACM 45th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+SP  - 29
+EP  - 39
+AU  - W. Aljedaani
+AU  - M. W. Mkaouer
+AU  - A. Peruma
+AU  - S. Ludi
+PY  - 2023
+DO  - 10.1109/ICSE-SEET58685.2023.00009
+JO  - 2023 IEEE/ACM 45th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+IS  - 
+SN  - 2832-7578
+VO  - 
+VL  - 
+JA  - 2023 IEEE/ACM 45th International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+Y1  - 14-20 May 2023
+AB  - To ensure the quality of a software system, developers perform an activity known as unit testing, where they write code (known as test cases) that verifies the individual software units that make up the system. Like production code, test cases are subject to bad programming practices, known as test smells, that hurt maintenance activities. An essential part of most maintenance activities is program comprehension which involves developers reading the code to understand its behavior to fix issues or update features. In this study, we conduct a controlled experiment with 96 undergraduate computer science students to investigate the impact of two common types of test smells, namely Assertion Roulette and Eager Test, on a student’s ability to debug and troubleshoot test case failures. Our findings show that students take longer to correct errors in production code when smells are present in their associated test cases, especially Assertion Roulette. We envision our findings supporting academia in better equipping students with the knowledge and resources in writing and maintaining high-quality test cases. Our experimental materials are available online11https://wajdialjedaani.github.io/testsmellstd/
+ER  - 
+
+TY  - CONF
+TI  - ElectroLab: Electronic Laboratory System
+T2  - 2015 Fifth International Conference on e-Learning (econf)
+SP  - 35
+EP  - 41
+AU  - S. A. El Rahman
+PY  - 2015
+DO  - 10.1109/ECONF.2015.23
+JO  - 2015 Fifth International Conference on e-Learning (econf)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 Fifth International Conference on e-Learning (econf)
+Y1  - 18-20 Oct. 2015
+AB  - Nowdays, technology is often looked for more efficient solutions to several challenges in our life. In universities 'managing the labs' information manually consumes a lot of the lab-user's time and effort. It is also hard to search for a lab in a timely manner or for one that has specific hardware (HW) and software (SW). Moreover, maintaining every lab and device is done randomly upon one's request, which is not regulated nor appointed. Users are frequently increasing and the procedure is getting more complicated and difficult to coordinate between them. So, This work aims to make an Electronic Laboratory (ElectroLab) System for laboratories in the College of Computer and Information Sciences (CCIS) at Princess Nourah bint Abdulrahman University (PNU), Riyadh, Saudi Arabia. Whereas the system provide different information required about each laboratory in interactive way. Using ElectroLab system all the paper work will be replaced and offer a set of key features that manages computer-related information which will prevent any deficiencies and waste of time. These key features include laboratories scheduling, reporting technical problems, control and overseeing labs equipment. Whereas, It provides different information required about each laboratory such as hardware, software, schedules, instructors. Presenting such information will help both the Information Technology (IT) Staff and faculty members in keeping track of computer laboratories and will help the management process.
+ER  - 
+
+TY  - CONF
+TI  - A Tool for Mutation Analysis in Racket
+T2  - 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 308
+EP  - 313
+AU  - B. Zhuang
+AU  - J. Perretta
+AU  - A. Guha
+AU  - J. Bell
+PY  - 2023
+DO  - 10.1109/ICSTW58534.2023.00061
+JO  - 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 16-20 April 2023
+AB  - Racket is a functional programming language that is used to teach CS1 at many high schools and colleges. Recent research results have shown that mutation analysis can be an effective substitute for manual grading of student test cases. In order to evaluate its efficacy in our college’s introductory programming courses, we created a prototype mutation analysis tool for Racket. We describe the design and features of the tool and perform a feasibility study using two assignments from an intro CS course where student test suite thoroughness was evaluated by hand by human graders. In our results, we find a moderate correlation between mutation score and hand-grading test suite quality score and conduct a qualitative analysis to identify situations where mutation score and hand-grading score do not correlate. We find that, compared to hand-grading, mutation analysis may require more stringent adherence to the interface specified in an assignment as well as more precisely specified assignments. On the other hand, inter-reviewer reliability is a known challenge of hand-grading, and we observe several instances where hand-graders may have assigned the wrong score. Given the relatively cheap cost to providing mutation analysis feedback to students (compared to hand-grading feedback), mutation analysis still provides the opportunity to provide faster, more frequent, feedback to learners, enabling them to improve their testing practices further. Future work will study the effectiveness of various mutation operators in Racket and perform larger-scale evaluations.
+ER  - 
+
+TY  - CONF
+TI  - A Classification Study on Testing and Verification of AI-based Systems
+T2  - 2023 IEEE International Conference On Artificial Intelligence Testing (AITest)
+SP  - 1
+EP  - 8
+AU  - E. De Angelis
+AU  - G. De Angelis
+AU  - M. Proietti
+PY  - 2023
+DO  - 10.1109/AITest58265.2023.00010
+JO  - 2023 IEEE International Conference On Artificial Intelligence Testing (AITest)
+IS  - 
+SN  - 2835-3560
+VO  - 
+VL  - 
+JA  - 2023 IEEE International Conference On Artificial Intelligence Testing (AITest)
+Y1  - 17-20 July 2023
+AB  - Recent advances in Artificial Intelligence (AI) have paved the way for the development of new generations of self-adaptive systems that embed learning behaviours. Often these systems make use of Machine Learning (ML) models and algorithms, others make use of symbolic reasoning, or a combination of the two. A problem common to all these solutions is the difficulty in establishing clear conformance criteria that can be used to reliably assess whether an AI-based software system (and, in particular, ML-based) is behaving as intended, i.e., according to its specification. Research communities from different areas are investigating innovative V&V approaches in order to assess evolving AI systems against their expected functionalities. This empirical study identifies, collects and categorises relevant research papers on testing and formal verification of AI-based software systems. In total, we have considered a set of 78 fully qualified primary studies from the digital library Scopus. For each of them, we have mapped their key aspects into a classification framework that supports their comparison across a set of common dimensions.
+ER  - 
+
+TY  - CONF
+TI  - Design and Development of Attendance System Application Using Android-Based Flutter
+T2  - 2020 Third International Conference on Vocational Education and Electrical Engineering (ICVEE)
+SP  - 1
+EP  - 6
+AU  - G. W. Wiriasto
+AU  - R. W. S. Aji
+AU  - D. F. Budiman
+PY  - 2020
+DO  - 10.1109/ICVEE50212.2020.9243190
+JO  - 2020 Third International Conference on Vocational Education and Electrical Engineering (ICVEE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 Third International Conference on Vocational Education and Electrical Engineering (ICVEE)
+Y1  - 3-4 Oct. 2020
+AB  - Student attendance application prototype using Android-based flutter: a case study in the electrical engineering department, University of Mataram. It is an application whose purpose is used in student attendance system activities by preventing cheating. This application is equipped with a validation feature using a QR code and geolocation to overcome student cheating during attendance activities. This application development using a flutter software development kit. This application development is used by two users that are students and lecturers, students use the application for attendance facilities, lecturers use the application to set open or close sessions, and check attendance. Tests carried out on the application are installation, application usage, QR code scanning methods, geolocation features, and Mean Opinion Score (MOS). As a result of the development of this application, it can be used to simulate attendance activities in a class attended by 10 students and it takes 5 minutes 58 seconds. This application also gets a mean opinion score measurement of 81.08.
+ER  - 
+
+TY  - CONF
+TI  - DeepTLE: Learning Code-Level Features to Predict Code Performance before It Runs
+T2  - 2019 26th Asia-Pacific Software Engineering Conference (APSEC)
+SP  - 252
+EP  - 259
+AU  - M. Zhou
+AU  - J. Chen
+AU  - H. Hu
+AU  - J. Yu
+AU  - Z. Li
+AU  - H. Hu
+PY  - 2019
+DO  - 10.1109/APSEC48747.2019.00042
+JO  - 2019 26th Asia-Pacific Software Engineering Conference (APSEC)
+IS  - 
+SN  - 2640-0715
+VO  - 
+VL  - 
+JA  - 2019 26th Asia-Pacific Software Engineering Conference (APSEC)
+Y1  - 2-5 Dec. 2019
+AB  - With the continuous expansion of the software market and the updating of the maturity of the software development process, the performance requirements of software users are becoming increasingly prominent. Performance issues are essentially related to the source code. For solving the same problem, different programmers may write completely different "correct" code with the same functionality but have different performance. Most online judge system on programming make use of automated grading systems, usually rely on test results to quantify the correctness and performance for the submitted source code. However, traditional dynamic testing takes a lot of time, and the discovery of performance problems is usually after the fact even for those small scale programs. Therefore, we proposed DeepTLE which is used to effectively predict the performance of submitted source code before it runs. DeepTLE can automatically learn the semantic and structural features of the source code. In order to verify the effect of our approach, we applied it to the source code collected from the program competition website to predict if the source code would be time limit exceed or not without running its test cases. Experiment results show that our method can save 96% of the time cost compared to the dynamic testing, and the accuracy of the prediction reaches 82%.
+ER  - 
+
+TY  - JOUR
+TI  - Open Science in Software Engineering: A Study on Deep Learning-Based Vulnerability Detection
+T2  - IEEE Transactions on Software Engineering
+SP  - 1983
+EP  - 2005
+AU  - Y. Nong
+AU  - R. Sharma
+AU  - A. Hamou-Lhadj
+AU  - X. Luo
+AU  - H. Cai
+PY  - 2023
+DO  - 10.1109/TSE.2022.3207149
+JO  - IEEE Transactions on Software Engineering
+IS  - 4
+SN  - 1939-3520
+VO  - 49
+VL  - 49
+JA  - IEEE Transactions on Software Engineering
+Y1  - 1 April 2023
+AB  - Open science is a practice that makes scientific research publicly accessible to anyone, hence is highly beneficial. Given the benefits, the software engineering (SE) community has been diligently advocating open science policies during peer reviews and publication processes. However, to this date, there has been few studies that look into the status and issues of open science in SE from a systematic perspective. In this paper, we set out to start filling this gap. Given the great breadth of SE in general, we constrained our scope to a particular topic area in SE as an example case. Recently, an increasing number of deep learning (DL) approaches have been explored in SE, including DL-based software vulnerability detection, a popular, fast-growing topic that addresses an important problem in software security. We exhaustively searched the literature in this area and identified 55 relevant works that propose a DL-based vulnerability detection approach. This was then followed by comprehensively investigating the four integral aspects of open science: availability, executability, reproducibility, and replicability. Among other findings, our study revealed that only a small percentage (25.5%) of the studied approaches provided publicly available tools. Some of these available tools did not provide sufficient documentation and complete implementation, making them not executable or not reproducible. The uses of balanced or artificially generated datasets caused significantly overrated performance of the respective techniques, making most of them not replicable. Based on our empirical results, we made actionable suggestions on improving the state of open science in each of the four aspects. We note that our results and recommendations on most of these aspects (availability, executability, reproducibility) are not tied to the nature of the chosen topic (DL-based vulnerability detection) hence are likely applicable to other SE topic areas. We also believe our results and recommendations on replicability to be applicable to other DL-based topics in SE as they are not tied to (the particular application of DL in) detecting software vulnerabilities.
+ER  - 
+
+TY  - CONF
+TI  - FlakyCat: Predicting Flaky Tests Categories using Few-Shot Learning
+T2  - 2023 IEEE/ACM International Conference on Automation of Software Test (AST)
+SP  - 140
+EP  - 151
+AU  - A. Akli
+AU  - G. Haben
+AU  - S. Habchi
+AU  - M. Papadakis
+AU  - Y. Le Traon
+PY  - 2023
+DO  - 10.1109/AST58925.2023.00018
+JO  - 2023 IEEE/ACM International Conference on Automation of Software Test (AST)
+IS  - 
+SN  - 2833-9061
+VO  - 
+VL  - 
+JA  - 2023 IEEE/ACM International Conference on Automation of Software Test (AST)
+Y1  - 15-16 May 2023
+AB  - Flaky tests are tests that yield different outcomes when run on the same version of a program. This non-deterministic behaviour plagues continuous integration with false signals, wasting developers’ time and reducing their trust in test suites. Studies highlighted the importance of keeping tests flakiness-free. Recently, the research community has been pushing towards the detection of flaky tests by suggesting many static and dynamic approaches. While promising, those approaches mainly focus on classifying tests as flaky or not and, even when high performances are reported, it remains challenging to understand the cause of flakiness. This part is crucial for researchers and developers that aim to fix it. To help with the comprehension of a given flaky test, we propose FlakyCat, the first approach to classify flaky tests based on their root cause category. FlakyCat relies on CodeBERT for code representation and leverages Siamese networks to train a multi-class classifier. We train and evaluate FlakyCat on a set of 451 flaky tests collected from open-source Java projects. Our evaluation shows that FlakyCat categorises flaky tests accurately, with an F1 score of 73%. Furthermore, we investigate the performance of our approach for each category, revealing that Async waits, Unordered collections and Time-related flaky tests are accurately classified, while Concurrency-related flaky tests are more challenging to predict. Finally, to facilitate the comprehension of FlakyCat’s predictions, we present a new technique for CodeBERT-based model interpretability that highlights code statements influencing the categorization.
+ER  - 
+
+TY  - CONF
+TI  - Industry and Academia Partnership for Short-time High-level Qualification
+T2  - 2018 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 8
+AU  - J. R. H. Carvalho
+AU  - A. Vnicenzi
+AU  - J. C. Maldonado
+AU  - M. Gonçalves
+PY  - 2018
+DO  - 10.1109/FIE.2018.8659248
+JO  - 2018 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 2377-634X
+VO  - 
+VL  - 
+JA  - 2018 IEEE Frontiers in Education Conference (FIE)
+Y1  - 3-6 Oct. 2018
+AB  - This Innovate Practice Full Paper reports a Industry/Academia partnership to improve the qualification of both students and professionals. Consider the following scenario: a city located in a third world country, with one of the lowest countrywide educational performances, hosting an industrial pole based on Federal tax incentives aiming to develop a R&D cluster. The city has basic services issues, from health to urban violence, making the attraction of professionals from other locations unfeasible. As a consequence, the lack of professionals with R&D profile is now considered a relevant risk to the continuation of the city's industrial policies. Therefore, initiatives that shorten the qualification life-cycle of local professionals, while preparing senior students with real-world experience, are welcome. An example of such initiative, reported in this paper, was the software test residence, formed by professionals from the industry, and senior undergraduate and graduate students of a local university. The proposal consisted on defining a set of learning activities where students and professionals would be partners, but still being aware that they belong to different realities (with respect to timing, accountability and accreditation). The challenge can be summarized as follows: how to jointly qualify students and professionals, while respecting the peculiarities of both audiences. In order to address the issue in a short time period, representatives from a global company with R&D site in the city partnered with a local university to define a learning program inspired by the software residence approach. The university's course syllabus in Software Test was reviewed and customized to the on-the-job training subject of interest. Moreover, the approach was based on three nonnegotiable principles: Accountability, Excellence and Sustainability. The experience was successful, reaching 25 participants from four R&D organizations and the university. Results obtained include qualification of 23 participants (only two dropped off), the development of an open source educational material composed by a set of slides for testing automation classes, theory-practice of software testing targeting Test Maturity Model integration (TMMi) level 2, and the improvement in the collaboration between academia and industry for other projects. The paper will detail the experience, and list some lessons learned, including how to synchronize the schedules.
+ER  - 
+
+TY  - CONF
+TI  - WebTA: Automated iterative critique of student programming assignments
+T2  - 2015 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 9
+AU  - L. C. Ureel
+AU  - C. Wallace
+PY  - 2015
+DO  - 10.1109/FIE.2015.7344225
+JO  - 2015 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE Frontiers in Education Conference (FIE)
+Y1  - 21-24 Oct. 2015
+AB  - We introduce an interactive tool called WebTA that facilitates learning through automatic critique of student source code. Our tool provides immediate feedback to students and gives them experience with test-driven development. Students receive the benefits of cognitive apprenticeship through the feedback they receive in the tool. This facilitates tight, productive cycles of inquiry, critique and learning. WebTA compiles each student submission and executes it over a series of shakedown tests. Immediate feedback is given concerning errors and warnings, coupled with suggestions for debugging. The tool performs a textual analysis of the students source code and critiques programming style based on standard programming guidelines. To encourage inquiry through test-driven development, edge-case coverage, and API compliance, students develop and submit their own tests to be evaluated by the software. We report on use of WebTA in one first-year programming course and one second-year data structures course. Lab and assignment scores have improved with WebTA, and student comments attest to the effectiveness of the tool. Preliminary results indicate students receive higher grades with WebTA. One area with mixed results is WebTAs analysis of student developed JUnit tests; this feature improved API compliance but reduced edge-case testing. With these successful initial results, we offer suggestions for future development.
+ER  - 
+
+TY  - CONF
+TI  - STAGE - Software Tool for Automatic Grading of Testing Exercises - Case Study Paper
+T2  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+SP  - 491
+EP  - 500
+AU  - S. Pape
+AU  - J. Flake
+AU  - A. Beckmann
+AU  - J. Jürjens
+PY  - 2016
+DO  - 
+JO  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE/ACM 38th International Conference on Software Engineering Companion (ICSE-C)
+Y1  - 14-22 May 2016
+AB  - We report on an approach and associated tool-support for automatically evaluating and grading exercises in Software Engineering courses, by connecting various third-party tools to the online learning platform Moodle. In the case study presented here, the tool was used in several instances of a lecture course to automatically measure the test coverage criteria wrt. the test cases defined by the students for given Java code. We report on empirical evidence gathered using this case-study (involving more than 250 students), including the results of a survey conducted after the exercises (which yielded positive feedback from the students), as well as a performance evaluation of our tool implementation.
+ER  - 
+
+TY  - CONF
+TI  - Collaboration of Software Architect and Test Architect Helps to Systematically Bridge Product Lifecycle Gap
+T2  - 2016 IEEE/ACM 1st International Workshop on Bringing Architectural Design Thinking Into Developers' Daily Activities (BRIDGE)
+SP  - 11
+EP  - 13
+AU  - F. Paulisch
+AU  - P. Zimmerer
+PY  - 2016
+DO  - 10.1145/2896935.2896936
+JO  - 2016 IEEE/ACM 1st International Workshop on Bringing Architectural Design Thinking Into Developers' Daily Activities (BRIDGE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2016 IEEE/ACM 1st International Workshop on Bringing Architectural Design Thinking Into Developers' Daily Activities (BRIDGE)
+Y1  - 17-17 May 2016
+AB  - In this position paper for the BRIDGE workshop we describe an approach used at Siemens to address the gap between high-level design and low-level implementation. This approach is a key part of our organization-wide qualification and training program for software-related roles. These roles include both a “software architect” and a “test architect” and these roles (as well as other roles) must collaborate closely as a kind of “joint venture”.
+ER  - 
+
+TY  - JOUR
+TI  - An Empirical Study on the Ability Relationships Between Programming and Testing
+T2  - IEEE Access
+SP  - 161438
+EP  - 161448
+AU  - P. Yang
+AU  - Z. Liu
+AU  - J. Xu
+AU  - Y. Huang
+AU  - Y. Pan
+PY  - 2020
+DO  - 10.1109/ACCESS.2020.3018718
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 8
+VL  - 8
+JA  - IEEE Access
+Y1  - 2020
+AB  - Under the software quality management mechanism, developers are generally required to review and test their own code firstly to ensure that the submitted code meets specific quality standards. At the same time, with the popularity of test-driven development (TDD) and extreme programming (XP), programming and testing are complementary in the process of software development, i.e., software testing has become as important as programming. Despite its importance, there is no empirical study that investigates the ability relationships between programming and testing. This article presents such a study, where we designed software tasks to investigate the ability of programming and testing. We distributed the program tasks to software vocational students and analyzed the results from multiple dimensions. Our main findings show that (i) almost half of the developers with strong programming ability do not have a good testing ability; (ii) some developers with weak programming ability can do well in testing; (iii) compared with programming ability, testing fundamentals have a greater impact on the testing ability; and (iv) most developers can do well at finding bugs but lack experience in writing test scripts.
+ER  - 
+
+TY  - CONF
+TI  - AI-assisted Software Engineering: a tertiary study
+T2  - 2023 12th Mediterranean Conference on Embedded Computing (MECO)
+SP  - 1
+EP  - 6
+AU  - O. Cico
+AU  - B. Cico
+AU  - A. Cico
+PY  - 2023
+DO  - 10.1109/MECO58584.2023.10154972
+JO  - 2023 12th Mediterranean Conference on Embedded Computing (MECO)
+IS  - 
+SN  - 2637-9511
+VO  - 
+VL  - 
+JA  - 2023 12th Mediterranean Conference on Embedded Computing (MECO)
+Y1  - 6-10 June 2023
+AB  - The research in Artificial Intelligence (AI) and its applications across the software engineering (SE) domain has progressed significantly in the last decade, evidenced by an increase in systematic literature reviews. Our study aims to provide an overview of existing systematic reviews within this research area and synthesize the findings related to AI subfields (Machine Learning, Search-based, Evolutionary Computation, Vision, Robotics, Expert Systems, Speech Processing, Natural Language Processing, and Planning) supporting the five main SE processes: requirements, design, development, testing, and maintenance. For our tertiary study, we used the methodology based on Kitchenham's guidelines. We selected 11 reviews published between 2000 and 2021, including results from 513 primary studies. The selected reviews cover the AI subfields across the five main SE processes. Studies have covered Machine Learning, Natural Language Processing, and Evolutionary Computations as AI subfields assisting SE processes. We have found that reviews in AI-assisted software testing are the most common, followed by software maintenance and development. Our study can help researchers identify missing reviews on AI-assisted SE topics to help further consolidate this research area.
+ER  - 
+
+TY  - CONF
+TI  - Hammer and Nails - Crucial Practices and Tools in Ad Hoc Student Teams
+T2  - 2016 IEEE 29th International Conference on Software Engineering Education and Training (CSEET)
+SP  - 142
+EP  - 146
+AU  - M. Leppänen
+AU  - S. Lahtinen
+AU  - P. Ihantola
+PY  - 2016
+DO  - 10.1109/CSEET.2016.38
+JO  - 2016 IEEE 29th International Conference on Software Engineering Education and Training (CSEET)
+IS  - 
+SN  - 2377-570X
+VO  - 
+VL  - 
+JA  - 2016 IEEE 29th International Conference on Software Engineering Education and Training (CSEET)
+Y1  - 5-6 April 2016
+AB  - We have observed students teams on a software engineering project course to understand what software engineering practices they end up using and how do they experience the usefulness of the selected practices and tools. In our context, the most often applied practices and tools were planning meeting, commitment to using tasks, self-selected communication tools, a revision control, and project management systems. We found out that student valued various face-to-face activities the most - even more than they were able to practice them. Finally, the wide variety of communication tools students take even from their leisure time and apply in the course setting surprised us.
+ER  - 
+
+TY  - CONF
+TI  - An evaluation method for panoramic understanding of programming by comparison with visual examples
+T2  - 2015 IEEE Frontiers in Education Conference (FIE)
+SP  - 1
+EP  - 8
+AU  - D. M. Calderon
+AU  - K. Man
+AU  - H. Kiyomitsu
+AU  - K. Ohtsuki
+AU  - Y. Miyamoto
+AU  - Y. Sun
+PY  - 2015
+DO  - 10.1109/FIE.2015.7344104
+JO  - 2015 IEEE Frontiers in Education Conference (FIE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE Frontiers in Education Conference (FIE)
+Y1  - 21-24 Oct. 2015
+AB  - In recent years, professionals in different fields have become able to do programming by using simplified software tools, as a consequence of this they are becoming able to understand programming in a general or “panoramic” way. This understanding is not evaluated by current programming abilities testing methods such as written paper tests or practical programming. This paper proposes a Programmed Visual Contents Comparison Method to assess programming ability, and additionally, a testing system based on this method. With this method, by comparing 2 displayed images and interactive animations produced by programming samples (a question) a subject must decide which one of the programs is more difficult to build with programming than the other, or, if the difficulty is similar for both of them. The validity of the method is confirmed by comparing the ability reported by programming teachers with the results of an experiment performed with a testing system.
+ER  - 
+
+TY  - CONF
+TI  - Automating Testing of Visual Observed Concurrency
+T2  - 2021 IEEE/ACM Ninth Workshop on Education for High Performance Computing (EduHPC)
+SP  - 32
+EP  - 42
+AU  - P. Dewan
+AU  - A. Wortas
+AU  - Z. Liu
+AU  - S. George
+AU  - B. Gu
+AU  - H. Wang
+PY  - 2021
+DO  - 10.1109/EduHPC54835.2021.00010
+JO  - 2021 IEEE/ACM Ninth Workshop on Education for High Performance Computing (EduHPC)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 IEEE/ACM Ninth Workshop on Education for High Performance Computing (EduHPC)
+Y1  - 14-14 Nov. 2021
+AB  - Existing techniques for automating the testing of sequential programming assignments are fundamentally at odds with concurrent programming as they are oblivious to the algorithm used to implement the assignments. We have developed a framework that addresses this limitation for those object-based concurrent assignments whose user-interface (a) is implemented using the observer pattern and (b) makes apparent whether concurrency requirements are met. It has two components. The first component reduces the number of steps a human grader needs to take to interact with and score the user-interfaces of the submitted programs. The second component completely automates assessment by observing the events sent by the student-implemented observable objects. Both components are used to score the final submission and log interaction. The second component is also used to provide feedback during assignment implementation. Our experience shows that the framework is used extensively by students, leads to more partial credit, reduces grading time, and gives statistics about incremental student progress.
+ER  - 
+
+TY  - CONF
+TI  - Evolving Software to be ML-Driven Utilizing Real-World A/B Testing: Experiences, Insights, Challenges
+T2  - 2021 IEEE/ACM 43rd International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)
+SP  - 170
+EP  - 179
+AU  - P. L. Li
+AU  - X. Chai
+AU  - F. Campbell
+AU  - J. Liao
+AU  - N. Abburu
+AU  - M. Kang
+AU  - I. Niculescu
+AU  - G. Brake
+AU  - S. Patil
+AU  - J. Dooley
+AU  - B. Paddock
+PY  - 2021
+DO  - 10.1109/ICSE-SEIP52600.2021.00026
+JO  - 2021 IEEE/ACM 43rd International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 IEEE/ACM 43rd International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP)
+Y1  - 25-28 May 2021
+AB  - ML-driven software is heralded as the next majoradvancement in software engineering; existing software todaycan benefit from being evolved to be ML-driven. In this paper, we contribute practical knowledge about evolving software tobe ML-driven, utilizing real-world A/B testing. We draw onexperiences evolving two software features from the Windowsoperating system to be ML-driven, with more than ten real-world A/B tests on millions of PCs over more than two years.We discuss practical reasons for using A/B testing to engineerML-driven software, insights for success, as well as on-going real-world challenges. This knowledge may help practitioners, as wellas help direct future research and innovations.
+ER  - 
+
+TY  - CONF
+TI  - VCC Ceres: Challenges and Lessons Learned in an Undergraduate CubeSat Project
+T2  - 2020 IEEE Aerospace Conference
+SP  - 1
+EP  - 11
+AU  - G. Gargioni
+AU  - S. Hitefield
+AU  - H. Avagyan
+AU  - N. Angle
+AU  - M. Du
+AU  - G. Brown
+AU  - B. Clegg
+AU  - M. Brodnax
+AU  - S. Noel
+AU  - Z. Leffke
+AU  - K. Shinpaugh
+AU  - J. Black
+PY  - 2020
+DO  - 10.1109/AERO47225.2020.9172353
+JO  - 2020 IEEE Aerospace Conference
+IS  - 
+SN  - 1095-323X
+VO  - 
+VL  - 
+JA  - 2020 IEEE Aerospace Conference
+Y1  - 7-14 March 2020
+AB  - This paper describes challenges and lessons learned throughout the assembling, integrating, and testing for hardware and software of VCC Ceres, the first Virginia Tech CubeSat built and designed by undergraduates. The project started in 2016 as part of the Virginia CubeSat Constellation (VCC), Virginia Tech (VT), Old Dominion University (ODU), University of Virginia (UVA), and Hampton University in collaboration with the Virginia Space Grant Consortium (VSGC). In July of 2019, the three CubeSats were successfully launched from the International Space Station (ISS). The project's mission is to obtain measurements of properties of the Earth's atmosphere in low earth orbit as well as to collect orbital data throughout their lifespan to develop a drag profile for CubeSats launched from the ISS. To develop the Virginia Tech's spacecraft, VCC Ceres, over 50 different undergraduate students participated. In this process, they reached many breaking points and tough decisions. This paper builds the challenges and lessons learned from assembling, integrating, and testing hardware and software. Furthermore, it describes the initial period of the operations phase, right after deployment, where the students had the opportunity to attempt contact with their satellite. This study comprises of an analytical point of view from the senior monitoring group and other engineers that work at the Center for Space Science and Engineering Research, known as (Space@VT), summarizing the experience from an undergraduate CubeSat project. The outcome of this paper is to share an experience that leads to bolster future CubeSat missions at Virginia Tech and other institutions.
+ER  - 
+
+TY  - CONF
+TI  - Wait, Wait. No, Tell Me. Analyzing Selenium Configuration Effects on Test Flakiness
+T2  - 2019 IEEE/ACM 14th International Workshop on Automation of Software Test (AST)
+SP  - 7
+EP  - 13
+AU  - K. Presler-Marshall
+AU  - E. Horton
+AU  - S. Heckman
+AU  - K. Stolee
+PY  - 2019
+DO  - 10.1109/AST.2019.000-1
+JO  - 2019 IEEE/ACM 14th International Workshop on Automation of Software Test (AST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2019 IEEE/ACM 14th International Workshop on Automation of Software Test (AST)
+Y1  - 27-27 May 2019
+AB  - Flaky tests are a source of frustration and uncertainty for developers. In an educational environment, flaky tests can create doubts related to software behavior and student grades, especially when the grades depend on tests passing. NC State University's junior-level software engineering course models industrial practice through team-based development and testing of new features on a large electronic health record (EHR) system, iTrust2. Students are expected to maintain and supplement an extensive suite of UI tests using Selenium WebDriver. Team builds are run on the course's continuous integration (CI) infrastructure. Students report, and we confirm, that tests that pass on one build will inexplicably fail on the next, impacting productivity and confidence in code quality and the CI system. The goal of this work is to find and fix the sources of flaky tests in iTrust2. We analyze configurations of Selenium using different underlying web browsers and timeout strategies (waits) for both test stability and runtime performance. We also consider underlying hardware and operating systems. Our results show that HtmlUnit with Thread waits provides the lowest number of test failures and best runtime on poor-performing hardware. When given more resources (e.g., more memory and a faster CPU), Google Chrome with Angular waits is less flaky and faster than HtmlUnit, especially if the browser instance is not restarted between tests. The outcomes of this research are a more stable and substantially faster teaching application and a recommendation on how to configure Selenium for applications similar to iTrust2 that run in a CI environment.
+ER  - 
+
+TY  - CONF
+TI  - Machine Learning Augmented Fuzzing
+T2  - 2018 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW)
+SP  - 178
+EP  - 183
+AU  - L. Joffe
+PY  - 2018
+DO  - 10.1109/ISSREW.2018.000-1
+JO  - 2018 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE International Symposium on Software Reliability Engineering Workshops (ISSREW)
+Y1  - 15-18 Oct. 2018
+AB  - The proposed thesis introduces cutting edge Machine Learning (ML) tools into Search Based Software Engineering (SBST). The contribution is three-fold. The first is an ML driven property targeting search strategy. It uses a deep neural network to process execution trace information to yield a likelihood score of a presence of a crash, which is in turn used as a fitness function for search. This method clearly outperforms the baseline search technique. The second contribution is a method for defining a property agnostic search landscape. This is achieved by training an autoencoder on a corpus of execution traces to produce a "latent space" representation. The expectation is to observe a tendency for arbitrary properties of executions to group in distinct regions of the latent space. Location in this space would in turn be used to direct an SBST process. The third contribution is to augment an automated tool with a generative model. The intention is to produce approximately valid input seeds that would target desired locations of a fitness landscape. These contributions will provide novel ideas for future research in the intersection of SBST and ML.
+ER  - 
+
+TY  - CONF
+TI  - CS/SE Instructors Can Improve Student Writing without Reducing Class Time Devoted to Technical Content: Experimental Results
+T2  - 2015 IEEE/ACM 37th IEEE International Conference on Software Engineering
+SP  - 455
+EP  - 464
+AU  - P. V. Anderson
+AU  - S. Heckman
+AU  - M. Vouk
+AU  - D. Wright
+AU  - M. Carter
+AU  - J. E. Burge
+AU  - G. C. Gannod
+PY  - 2015
+DO  - 10.1109/ICSE.2015.178
+JO  - 2015 IEEE/ACM 37th IEEE International Conference on Software Engineering
+IS  - 
+SN  - 1558-1225
+VO  - 2
+VL  - 2
+JA  - 2015 IEEE/ACM 37th IEEE International Conference on Software Engineering
+Y1  - 16-24 May 2015
+AB  - The Computer Science and Software Engineering (CS/SE) profession reports that new college graduates lack the communication skills needed for personal and organizational success. Many CS/SE faculty may omit communication instruction from their courses because they do not want to reduce technical content. We experimented in a software-engineering-intensive second-semester programming course with strategies for improving students' writing of black box test plans that included no instruction on writing the plans beyond the standard lecture on testing. The treatment version of the course used 1) a modified assignment that focused on the plan's readers, 2) a model plan students could consult online, and 3) a modified grading rubric that identified the readers' needs. Three external raters found that students in the treatment sections outperformed students in the control sections on writing for five of nine criteria on rubrics for evaluating the plans and on the raters' holistic impression of the students' technical and communication abilities from the perspectives of a manager and a tester.
+ER  - 
+
+TY  - CONF
+TI  - A guide to lean software development in action
+T2  - 2015 IEEE Eighth International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 1
+EP  - 2
+AU  - A. Janes
+PY  - 2015
+DO  - 10.1109/ICSTW.2015.7107412
+JO  - 2015 IEEE Eighth International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 IEEE Eighth International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 13-17 April 2015
+AB  - Inspired by the success of Lean Manufacturing, various attempts have been made to translate Lean principles into the software engineering domain. As a result, Lean Software Development has gained large attention in the software development community as well as in academia. Unfortunately, it is still difficult to actually implement Lean Thinking as suggested by the pioneers of Lean Software Development, since Lean adopts a more scientific style: a style that invites the practitioner to investigate him or herself where value is created or wasted and to constantly improve in doing so. This extended abstract points out the core ideas presented in the book “Lean Software Development in Action”, published by Springer in 2014, which aims to fill this gap.
+ER  - 
+
+TY  - CONF
+TI  - A comparative recapitulating study of recent sentiment analysis approaches
+T2  - 2020 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE)
+SP  - 173
+EP  - 176
+AU  - A. Gupta
+AU  - R. P. Mahapatra
+PY  - 2020
+DO  - 10.1109/WIECON-ECE52138.2020.9397928
+JO  - 2020 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE)
+Y1  - 26-27 Dec. 2020
+AB  - In accordance with the convention, sentiments are defined as a thought, judgement or attitude prompted by feelings or a specific notion. With explosion of social networks, every individual/user actively manifests and share their ideas or emotions in disparate life aspects. Past few years have shown Sentiment Analysis as a pivotal activity in various systems and thus become a center of attention for the researchers. Considerable amount of research has already been done to inspect and examine user's sentiments, which are extracted either from web pages or social media, through lexicon, machine learning or deep learning techniques. This paper presents a vital contribution in this field of research through comprehensive exploration of most recent articles/studies, extremely aiming to highlight the applicability of sentiment analysis in software engineering field as well as through bio-inspired algorithms along with other modi operandi, and thereby helping practitioners to get detailed insights of some of the lately exercised feature extraction tactics, methodologies and datasets considered for the analysis of sentiment-specific studies.
+ER  - 
+
+TY  - CONF
+TI  - A Virtual Reality OER Platform to Deliver Phobia-Motivated Experiences
+T2  - 2020 IEEE 44th Annual Computers, Software, and Applications Conference (COMPSAC)
+SP  - 1528
+EP  - 1533
+AU  - D. Stepanov
+AU  - D. Towey
+AU  - T. Y. Chen
+AU  - Z. Q. Zhou
+PY  - 2020
+DO  - 10.1109/COMPSAC48688.2020.00-38
+JO  - 2020 IEEE 44th Annual Computers, Software, and Applications Conference (COMPSAC)
+IS  - 
+SN  - 0730-3157
+VO  - 
+VL  - 
+JA  - 2020 IEEE 44th Annual Computers, Software, and Applications Conference (COMPSAC)
+Y1  - 13-17 July 2020
+AB  - This paper describes an on-going project to develop a Virtual Reality platform to deliver phobia-inspired experiences. These experiences could induce a reaction in the user that may help the user overcome, or alleviate, the phobia. The platform includes monitoring sensors that could be used to measure how much impact the experience is having. The project development has been taking place at a Sino-foreign Higher Education Institution in Mainland China, University of Nottingham Ningbo China (UNNC). UNNC has already been host to a number of OER (Open Educational Resource) development projects, and the current project is also anticipated to eventually be released to the OER community. This paper presents the background, development, and current state of the project. Challenges to project completion, and future work are also outlined.
+ER  - 
+
+TY  - CONF
+TI  - A Modular and Expandable Testbed for Evaluating ML-based Bug Finders
+T2  - 2022 IEEE 29th Annual Software Technology Conference (STC)
+SP  - 57
+EP  - 58
+AU  - P. Dessauw
+AU  - A. Delaitre
+AU  - H. M. Carvalho
+AU  - V. Okun
+PY  - 2022
+DO  - 10.1109/STC55697.2022.00017
+JO  - 2022 IEEE 29th Annual Software Technology Conference (STC)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 IEEE 29th Annual Software Technology Conference (STC)
+Y1  - 3-6 Oct. 2022
+AB  - This extended abstract presents the implementation of a modular and expandable testbed for crafting, modifying, and testing ML-based bug finders.
+ER  - 
+
+TY  - CONF
+TI  - A Large-scale Study on API Misuses in the Wild
+T2  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 241
+EP  - 252
+AU  - X. Li
+AU  - J. Jiang
+AU  - S. Benton
+AU  - Y. Xiong
+AU  - L. Zhang
+PY  - 2021
+DO  - 10.1109/ICST49551.2021.00034
+JO  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2021 14th IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 12-16 April 2021
+AB  - API misuses are prevalent and extremely harmful. Despite various techniques have been proposed for API-misuse detection, it is not even clear how different types of API misuses distribute and whether existing techniques have covered all major types of API misuses. Therefore, in this paper, we conduct the first large-scale empirical study on API misuses based on 528,546 historical bug-fixing commits from GitHub (from 2011 to 2018). By leveraging a state-of-the-art fine-grained AST differencing tool, GumTree, we extract more than one million bug-fixing edit operations, 51.7% of which are API misuses. We further systematically classify API misuses into nine different categories according to the edit operations and context. We also extract various frequent API-misuse patterns based on the categories and corresponding operations, which can be complementary to existing API-misuse detection tools. Our study reveals various practical guidelines regarding the importance of different types of API misuses. Furthermore, based on our dataset, we perform a user study to manually analyze the usage constraints of 10 patterns to explore whether the mined patterns can guide the design of future API-misuse detection tools. Specifically, we find that 7,541 potential misuses still exist in latest Apache projects and 149 of them have been reported to developers. To date, 57 have already been confirmed and fixed (with 15 rejected misuses correspondingly). The results indicate the importance of studying historical API misuses and the promising future of employing our mined patterns for detecting unknown API misuses.
+ER  - 
+
+TY  - CONF
+TI  - Repairing Fragile GUI Test Cases Using Word and Layout Embedding
+T2  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+SP  - 291
+EP  - 301
+AU  - J. Yoon
+AU  - S. Chung
+AU  - K. Shin
+AU  - J. Kim
+AU  - S. Hong
+AU  - S. Yoo
+PY  - 2022
+DO  - 10.1109/ICST53961.2022.00038
+JO  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2022 IEEE Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 4-14 April 2022
+AB  - Smartphone vendors apply both device and brand-specific customisations to the underlying operating systems, resulting in a wide range of device configurations. It is crucial that all of the device variations provide compatibility with the default version of the underlying operating system, such as Android. To ensure that widely and commonly used apps run on each of these device variations without any problem, vendors depend on automated GUI level testing of widely and commonly used apps: the failure of a GUI test script that emulates a routine usage of these apps would raise an alarm that a recent change made to a specific device variation may have caused a regression fault. These GUI level compatibility smoke tests are unique in the sense that they are GUI level automated test scripts that are written outside the software development life cycle of the target apps: they are written and maintained by the engineers of the smartphone vendors, and not the app developers. As such, these test scripts are extra vulnerable to the fragility of GUI test scripts, which are already known to be fragile when maintained by app developers. This paper introduces a repair technique for View Identification Failures (VIFs) in those smoke tests so that the smartphone vendors can quickly update their GUI test scripts when they break due to changed view ids. Our technique matches view ids between old and new versions of the target app based on various similarity metrics such as the semantic embedding similarity between ids and GUI labels, and layout similarity based on node embeddings of the GUI layout tree. We evaluate the proposed technique using 512 VIFs collected from real-world Android mobile apps. The proposed technique can repair 72 % of the 512 studied VIFs with only one attempt, compared to 28 % repaired using lexical distance-based matching.
+ER  - 
+
+TY  - JOUR
+TI  - Software Engineering for Data Analytics
+T2  - IEEE Software
+SP  - 36
+EP  - 42
+AU  - M. Kim
+PY  - 2020
+DO  - 10.1109/MS.2020.2985775
+JO  - IEEE Software
+IS  - 4
+SN  - 1937-4194
+VO  - 37
+VL  - 37
+JA  - IEEE Software
+Y1  - July-Aug. 2020
+AB  - We are at an inflection point where software engineering meets the data-centric world of big data, machine learning, and artificial intelligence. In this article, I summarize findings from studies of professional data scientists and discuss my perspectives on open research problems to improve data-centric software development.
+ER  - 
+
+TY  - CONF
+TI  - Benchmarking the software engineering undergraduate program curriculum at Jordan university of science and technology with the IEEE software engineering body of knowledge: (software engineering knowledge Areas #11-15)
+T2  - 2021 International Conference on Computational Science and Computational Intelligence (CSCI)
+SP  - 1043
+EP  - 1049
+AU  - M. A. Radaideh
+PY  - 2021
+DO  - 10.1109/CSCI54926.2021.00223
+JO  - 2021 International Conference on Computational Science and Computational Intelligence (CSCI)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2021 International Conference on Computational Science and Computational Intelligence (CSCI)
+Y1  - 15-17 Dec. 2021
+AB  - This paper evaluates the compliance of the software engineering undergraduate program (SWE-curriculum) at Jordan university of science and technology (JUST) with the last five of the fifteen software engineering knowledge Areas (SWE-KAs) of the SWEBOK-V3.0 of the IEEE computer Society. This research is the first to measure the coverage of the SWE-KAs in any SWE-curriculum. It is essential to line up the SWE-curriculum with the IEEE and IET views of software engineering (SWEBOK V3.0).This research attempted to answer questions such as: (a) what is the gap in the coverage of the SWE-KAs#11-15 topics across the SWE-curriculum? (b) what can be done to eliminate that gap? (c) What is the overall gap in the coverage of the SWE-KAs1-15 topics across the SWE-curriculum?This research was divided into three parts (P#1, P#2, and P#3). This paper focused on SWE-KAs#11-15. The previous two papers [1][2] focused on SWE-KA#1-5 and SWE-KA#6-10, respectively. The coverage of SWE-KAs#1-10 [1][2] was inspected across the SWE-curriculum courses. The results were identified as either fully compliant (the SWE-KA is fully covered across one or more of the SWE-curriculum courses); highly compliant (the SWE-KA is highly covered); or partially compliant (the SWE-KA is partially covered). Similarly, the coverage of SWE-KAs#11-15 (this paper, P#3) was inspected across the SWE-curriculum courses as well.The compliance was found fully compliant in the cases of the software requirements, software testing, software engineering management, and software quality software engineering knowledge areas. It was found highly compliant in the cases of the software design, software engineering models and methods, computing foundation, and mathematical foundation knowledge areas. It was found as partially compliant in the cases of the software construction, software maintenance, software configuration management, and software engineering process knowledge areas. In the cases of the software engineering professional Practice, software engineering economics, and engineering foundation knowledge areas, the compliance was found poorly compliant.
+ER  - 
+
+TY  - CONF
+TI  - Turn up the Heat!: Using Heat Maps to Visualize Suspicious Code to Help Students Successfully Complete Programming Problems Faster
+T2  - 2020 IEEE/ACM 42nd International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+SP  - 34
+EP  - 44
+AU  - B. Edmison
+AU  - S. H. Edwards
+PY  - 2020
+DO  - 
+JO  - 2020 IEEE/ACM 42nd International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2020 IEEE/ACM 42nd International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET)
+Y1  - 5-11 Oct. 2020
+AB  - Automated grading systems provide feedback to students in a variety of ways, but they typically focus on identifying incorrect program behaviors. Such systems provide notices of test case failures or runtime errors, but without debugging skills, students often become frustrated when they don't know where to start addressing these defects. Borrowing from work in software engineering research related to automated defect location, we leverage previous research describes using statistical fault localization (SFL) techniques to identify the probable locations of defects in student coding assignments. The goal is to use these SFL techniques to provide a scaffold for students, to direct their debugging efforts without giving too much guidance, and thus minimizing the learning associated with investigating the defects. After determining the “suspiciousness” for each line of code involved in the defect, we create a “heat map” visualization overlay onto their source code of the “suspiciousness” scores to visually guide a student's attention to parts of their code that are most likely to contain problems. This paper describes the results of an analysis comparing two semesters of CS 1114: Introduction to Software Design (CS1) students, one which had access to the heat map feedback (Fall 2017: n~170), and one that did not (Fall 2015: n~270). The results show that when the heat maps were available, students found it easier to make improvements on their code from submission to submission, as well as spending less time overall achieving the maximum score on the instructor testing assessments. In fact, while we were optimistic in the impact of the heat map feedback, the results we observed were unexpectedly strong. To address this concern, we conducted an additional study, using student submissions from our Spring 2019 CS 1 students (n~230). The results of the second analysis confirmed the results of the first.
+ER  - 
+
+TY  - CONF
+TI  - A Preliminary Study on Generating Well-Formed Q# Quantum Programs for Fuzz Testing
+T2  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 118
+EP  - 121
+AU  - M. Trinca
+AU  - J. F. Ferreira
+AU  - R. Abreu
+PY  - 2022
+DO  - 10.1109/ICSTW55395.2022.00033
+JO  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2022 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 4-13 April 2022
+AB  - Generative Sequence-To-Sequence models have been proposed for the task of generating well-formed programs, an important task for fuzz testing tools such as compilers. In this paper, we propose a Sequence-to-Sequence model to generate well-formed Q# Quantum programs. The ratio of syntactically valid programs among 1,000 Q# files generated by our model is 79.6%. In addition, we also contribute with a dataset of 1,723 Q# files taken from publicly available repositories on GitHub, which can be used by the growing community of Quantum Software Engineering.
+ER  - 
+
+TY  - JOUR
+TI  - Flakify: A Black-Box, Language Model-Based Predictor for Flaky Tests
+T2  - IEEE Transactions on Software Engineering
+SP  - 1912
+EP  - 1927
+AU  - S. Fatima
+AU  - T. A. Ghaleb
+AU  - L. Briand
+PY  - 2023
+DO  - 10.1109/TSE.2022.3201209
+JO  - IEEE Transactions on Software Engineering
+IS  - 4
+SN  - 1939-3520
+VO  - 49
+VL  - 49
+JA  - IEEE Transactions on Software Engineering
+Y1  - 1 April 2023
+AB  - Software testing assures that code changes do not adversely affect existing functionality. However, a test case can be flaky, i.e., passing and failing across executions, even for the same version of the source code. Flaky test cases introduce overhead to software development as they can lead to unnecessary attempts to debug production or testing code. Besides rerunning test cases multiple times, which is time-consuming and computationally expensive, flaky test cases can be predicted using machine learning (ML) models, thus reducing the wasted cost of re-running and debugging these test cases. However, the state-of-the-art ML-based flaky test case predictors rely on pre-defined sets of features that are either project-specific, i.e., inapplicable to other projects, or require access to production code, which is not always available to software test engineers. Moreover, given the non-deterministic behavior of flaky test cases, it can be challenging to determine a complete set of features that could potentially be associated with test flakiness. Therefore, in this article, we propose Flakify, a black-box, language model-based predictor for flaky test cases. Flakify relies exclusively on the source code of test cases, thus not requiring to (a) access to production code (black-box), (b) rerun test cases, (c) pre-define features. To this end, we employed CodeBERT, a pre-trained language model, and fine-tuned it to predict flaky test cases using the source code of test cases. We evaluated Flakify on two publicly available datasets (FlakeFlagger and IDoFT) for flaky test cases and compared our technique with the FlakeFlagger approach, the best state-of-the-art ML-based, white-box predictor for flaky test cases, using two different evaluation procedures: (1) cross-validation and (2) per-project validation, i.e., prediction on new projects. Flakify achieved F1-scores of 79% and 73% on the FlakeFlagger dataset using cross-validation and per-project validation, respectively. Similarly, Flakify achieved F1-scores of 98% and 89% on the IDoFT dataset using the two validation procedures, respectively. Further, Flakify surpassed FlakeFlagger by 10 and 18 percentage points (pp) in terms of precision and recall, respectively, when evaluated on the FlakeFlagger dataset, thus reducing the cost bound to be wasted on unnecessarily debugging test cases and production code by the same percentages (corresponding to reduction rates of 25% and 64%). Flakify also achieved significantly higher prediction results when used to predict test cases on new projects, suggesting better generalizability over FlakeFlagger. Our results further show that a black-box version of FlakeFlagger is not a viable option for predicting flaky test cases.
+ER  - 
+
+TY  - CONF
+TI  - Aristotle: A flexible open-source software toolkit for semi-automated marking of programming assignments
+T2  - 2017 IEEE Pacific Rim Conference on Communications, Computers and Signal Processing (PACRIM)
+SP  - 1
+EP  - 6
+AU  - M. D. Adams
+PY  - 2017
+DO  - 10.1109/PACRIM.2017.8121888
+JO  - 2017 IEEE Pacific Rim Conference on Communications, Computers and Signal Processing (PACRIM)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 IEEE Pacific Rim Conference on Communications, Computers and Signal Processing (PACRIM)
+Y1  - 21-23 Aug. 2017
+AB  - A new flexible open-source software toolkit to assist in the marking of programming assignments is presented. This toolkit automates the process of validating, building, and testing assignment submissions in addition to generating reports summarizing the results of building and testing student code. By using this toolkit (especially in conjunction with a tool like GitHub Classroom), the amount of effort required for assignment marking can be greatly reduced. The toolkit is programming-language neutral (i.e., does not mandate the use of a particular language) and provides a high degree of flexibility by allowing various operations to be customized via user-provided programs, which may be written in a scripting language of the user's choice.
+ER  - 
+
+TY  - CONF
+TI  - COBOL to Java and Newspapers Still Get Delivered
+T2  - 2018 IEEE International Conference on Software Maintenance and Evolution (ICSME)
+SP  - 583
+EP  - 586
+AU  - A. De Marco
+AU  - V. Iancu
+AU  - I. Asinofsky
+PY  - 2018
+DO  - 10.1109/ICSME.2018.00055
+JO  - 2018 IEEE International Conference on Software Maintenance and Evolution (ICSME)
+IS  - 
+SN  - 2576-3148
+VO  - 
+VL  - 
+JA  - 2018 IEEE International Conference on Software Maintenance and Evolution (ICSME)
+Y1  - 23-29 Sept. 2018
+AB  - This paper is an experience report on migrating an American newspaper company's business-critical IBM mainframe application to Linux servers by automatically translating the application's source code from COBOL to Java and converting the mainframe data store from VSAM KSDS files to an Oracle relational database. The mainframe application had supported daily home delivery of the newspaper since 1979. It was in need of modernization in order to increase interoperability and enable future convergence with newer enterprise systems as well as to reduce operating costs. Testing the modernized application proved to be the most vexing area of work. This paper explains the process that was employed to test functional equivalence between the legacy and modernized applications, the main testing challenges, and lessons learned after having operated and maintained the modernized application in production over the last eight months. The goal of delivering a functionally equivalent system was achieved, but problems remained to be solved related to new feature development, business domain knowledge transfer, and recruiting new software engineers to work on the modernized application.
+ER  - 
+
+TY  - CONF
+TI  - BioSIMP: Using Software Testing Techniques for Sampling and Inference in Biological Organisms
+T2  - 2017 IEEE/ACM 12th International Workshop on Software Engineering for Science (SE4Science)
+SP  - 2
+EP  - 8
+AU  - M. Cashman
+AU  - J. L. Catlett
+AU  - M. B. Cohen
+AU  - N. R. Buan
+AU  - Z. Sakkaff
+AU  - M. Pierobon
+AU  - C. A. Kelley
+PY  - 2017
+DO  - 10.1109/SE4Science.2017.9
+JO  - 2017 IEEE/ACM 12th International Workshop on Software Engineering for Science (SE4Science)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 IEEE/ACM 12th International Workshop on Software Engineering for Science (SE4Science)
+Y1  - 22-22 May 2017
+AB  - Years of research in software engineering have given us novel ways to reason about, test, and predict the behavior of complex software systems that contain hundreds of thousands of lines of code. Many of these techniques have been inspired by nature such as genetic algorithms, swarm intelligence, and ant colony optimization. In this paper we reverse the direction and present BioSIMP, a process that models and predicts the behavior of biological organisms to aid in the emerging field of systems biology. It utilizes techniques from testing and modeling of highly-configurable software systems. Using both experimental and simulation data we show that BioSIMP can find important environmental factors in two microbial organisms. However, we learn that in order to fully reason about the complexity of biological systems, we will need to extend existing or create new software engineering techniques.
+ER  - 
+
+TY  - JOUR
+TI  - Behavior Driven Development: A Systematic Literature Review
+T2  - IEEE Access
+SP  - 88008
+EP  - 88024
+AU  - M. S. Farooq
+AU  - U. Omer
+AU  - A. Ramzan
+AU  - M. A. Rasheed
+AU  - Z. Atal
+PY  - 2023
+DO  - 10.1109/ACCESS.2023.3302356
+JO  - IEEE Access
+IS  - 
+SN  - 2169-3536
+VO  - 11
+VL  - 11
+JA  - IEEE Access
+Y1  - 2023
+AB  - Behavior Driven Development (BDD) is a widely adopted agile methodology for software development that emphasizes the behavior of an application as a series of test cases, using the keywords, which include “Given,” “When,” and “Then.” It involves writing requirements in a structured and testable format that can be evaluated to ensure compliance with the expected behavior. Although a significant amount of research has been conducted to examine the impact of using BDD on software development process yet rare work is observed to synthesize these studies and identify areas for future exploration. This study presents a review of the state-of-the-art BDD by synthesizing the recent advancements in its uses and applications. It aims to systematically investigate the impact of BDD on software development process as well as on product quality by aiding to bridge the communication gap between the stakeholders. The results reveal that BDD is an effective technique to clarify requirements during the software development process as it helps minimizing the intrinsic ambiguities. This work proposes a taxonomy based on the role and applications of BDD in various contexts. It suggests a framework for applying BDD in software development and defines a workflow for its application in software development. Finally, this work highlights some pertinent future directions for the use of BDD in software development.
+ER  - 
+
+TY  - CONF
+TI  - We Tried and Failed: An Experience Report on a Collaborative Workflow for GUI-based Testing
+T2  - 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 1
+EP  - 9
+AU  - A. Bauer
+AU  - E. Alégroth
+PY  - 2023
+DO  - 10.1109/ICSTW58534.2023.00015
+JO  - 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 2159-4848
+VO  - 
+VL  - 
+JA  - 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 16-20 April 2023
+AB  - Modern software development is a team-based effort supported by tools, processes, and practices. One integral part is automated testing, where developers incorporate automated tests on multiple levels of system abstraction, from low-level unit tests to high-level system tests and Graphical User Interface (GUI) tests. Furthermore, the common practices of code reviews allow collaboration on artifacts based on discussions that improve the artifact’s quality and to share information within the team. However, the characteristics of GUI-based tests, due to the level of abstraction and visual elements, introduce additional requirements and complexities compared to code or lower-level test code review, delimiting the practice benefits.The objective of this work is to propose a tool-supported workflow that enables active collaboration among stakeholders and improves the efficiency and effectiveness of team-based development of GUI-based tests.To evaluate the workflow, and show proof of concept, a technical demonstrator for merging of GUI-based tests was to be developed. However, during its development, we encountered several unforeseen challenges that forced us to halt its development. We report the negative results from this development and the main challenges we encountered, as well as the rationale and the decisions we took towards this workflow.In conclusion, this work presents a negative research result on a failed attempt to propose a tool-supported workflow that enables active collaboration on GUI-based tests. The outcome and learnings of this work are intended to guide future research and prevent researchers from falling into the same pitfalls we did.
+ER  - 
+
+TY  - CONF
+TI  - An Industrial Application of Mutation Testing: Lessons, Challenges, and Research Directions
+T2  - 2018 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+SP  - 47
+EP  - 53
+AU  - G. Petrovic
+AU  - M. Ivankovic
+AU  - B. Kurtz
+AU  - P. Ammann
+AU  - R. Just
+PY  - 2018
+DO  - 10.1109/ICSTW.2018.00027
+JO  - 2018 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2018 IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)
+Y1  - 9-13 April 2018
+AB  - Mutation analysis evaluates a testing or debugging technique by measuring how well it detects mutants, which are systematically seeded, artificial faults. Mutation analysis is inherently expensive due to the large number of mutants it generates and due to the fact that many of these generated mutants are not effective; they are redundant, equivalent, or simply uninteresting and waste computational resources. A large body of research has focused on improving the scalability of mutation analysis and proposed numerous optimizations to, e.g., select effective mutants or efficiently execute a large number of tests against a large number of mutants. However, comparatively little research has focused on the costs and benefits of mutation testing, in which mutants are presented as testing goals to a developer, in the context of an industrial-scale software development process. This paper draws on an industrial application of mutation testing, involving 30,000+ developers and 1.9 million change sets, written in 4 programming languages. It shows that mutation testing with productive mutants does not add a significant overhead to the software development process and reports on mutation testing benefits perceived by developers. This paper also quantifies the costs of unproductive mutants, and the results suggest that achieving mutation adequacy is neither practical nor desirable. Finally, this paper describes lessons learned from these studies, highlights the current challenges of efficiently and effectively applying mutation testing in an industrial-scale software development process, and outlines research directions.
+ER  - 
+
+TY  - CONF
+TI  - Online Craftsman Ordering Application Development using Waterfall Methodology
+T2  - 2022 5th International Conference of Computer and Informatics Engineering (IC2IE)
+SP  - 150
+EP  - 155
+AU  - A. L. Santonanda
+AU  - R. Nathaniel
+AU  - W. L. Putra
+AU  - M. S. Anggreainy
+AU  - M. Danaparamita
+AU  - A. Elok Amalia
+PY  - 2022
+DO  - 10.1109/IC2IE56416.2022.9970021
+JO  - 2022 5th International Conference of Computer and Informatics Engineering (IC2IE)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2022 5th International Conference of Computer and Informatics Engineering (IC2IE)
+Y1  - 13-14 Sept. 2022
+AB  - Having a plan to build or renovate a house, besides the budget, choosing a skilled craftsman is one of the determining factors. Craftsman skills are needed by customers, such as building, electronics, water, yard, mechanics, and home maintenance. By choosing the right craftsman, at least you can realize the dwelling you want. Choosing the services of a craftsman is not easy. To get a good result, it is necessary to choose the services of a skilled craftsman. The purpose of this research is to develop an application for ordering craftsmen where customers can choose skilled craftsmen by looking at the rating and performance of the craftsmen. This research also aims to help craftsmen to get customers anywhere. Because many skilled craftsmen were only known around him. The software development method used is the Waterfall method, which consists of several stages. The stages of the Waterfall method include identifying problems and needs, determining solution objectives, developing, designing applications, and verifying. Based on the results of tests conducted using the black box method, the black box method test shows that this system has no errors and can be used according to its function.
+ER  - 
+
+TY  - CONF
+TI  - Design and Development of Fitness Test Standard Query Software Based on Angular Architecture
+T2  - 2023 International Conference on Data Science and Network Security (ICDSNS)
+SP  - 1
+EP  - 5
+AU  - W. Jiang
+PY  - 2023
+DO  - 10.1109/ICDSNS58469.2023.10245054
+JO  - 2023 International Conference on Data Science and Network Security (ICDSNS)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2023 International Conference on Data Science and Network Security (ICDSNS)
+Y1  - 28-29 July 2023
+AB  - Angular is a platform development framework for heavyweight software. It is a fitness test standard query software based on Angular architecture, which is convenient for students to query, and provides help for the organization and management of school sports testing. Angular's bidirectional data binding and dependency injection solve many problems of developers in operating DOM, and also reduce the coupling of code logic. Angular's modular design supports the dynamic loading mechanism of modules, speeds up application startup, saves network bandwidth, and protects code. The software background is based on the MySQL database management system, which is characterized by high security and large storage capacity. The research results of this paper give full play to the advantages of Angular architecture and MySQL database management system, and improve the efficiency and quality of software development.
+ER  - 
+
+TY  - JOUR
+TI  - Gamification
+T2  - IEEE Software
+SP  - 76
+EP  - 81
+AU  - D. Basten
+PY  - 2017
+DO  - 10.1109/MS.2017.3571581
+JO  - IEEE Software
+IS  - 5
+SN  - 1937-4194
+VO  - 34
+VL  - 34
+JA  - IEEE Software
+Y1  - 2017
+AB  - Games can help motivate people in otherwise nongame scenarios and engage users in high interaction. This article explores gamification applications and underlying technologies.
+ER  - 
+
+TY  - CONF
+TI  - Timed k-Tail: Automatic Inference of Timed Automata
+T2  - 2017 IEEE International Conference on Software Testing, Verification and Validation (ICST)
+SP  - 401
+EP  - 411
+AU  - F. Pastore
+AU  - D. Micucci
+AU  - L. Mariani
+PY  - 2017
+DO  - 10.1109/ICST.2017.43
+JO  - 2017 IEEE International Conference on Software Testing, Verification and Validation (ICST)
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2017 IEEE International Conference on Software Testing, Verification and Validation (ICST)
+Y1  - 13-17 March 2017
+AB  - Accurate and up-to-date models describing the behavior of software systems are seldom available in practice. To address this issue, software engineers may use specification mining techniques, which can automatically derive models that capture the behavior of the system under analysis. So far, most specification mining techniques focused on the functional behavior of the systems, with specific emphasis on models that represent the ordering of operations, such as temporal rules and finite state models. Although useful, these models are inherently partial. For instance, they miss the timing behavior, which is extremely relevant for many classes of systems and components, such as shared libraries and user-driven applications. Mining specifications that include both the functional and the timing aspects can improve the applicability of many testing and analysis solutions. This paper addresses this challenge by presenting the Timed k-Tail (TkT) specification mining technique that can mine timed automata from program traces. Since timed automata can effectively represent the interplay between the functional and the timing behavior of a system, TkT could be exploited in those contexts where time-related information is relevant. Our empirical evaluation shows that TkT can efficiently and effectively mine accurate models. The mined models have been used to identify executions with anomalous timing. The evaluation shows that most of the anomalous executions have been correctly identified while producing few false positives.
+ER  - 
+
+TY  - JOUR
+TI  - Mapping the Effectiveness of Automated Test Suite Generation Techniques
+T2  - IEEE Transactions on Reliability
+SP  - 771
+EP  - 785
+AU  - C. Oliveira
+AU  - A. Aleti
+AU  - L. Grunske
+AU  - K. Smith-Miles
+PY  - 2018
+DO  - 10.1109/TR.2018.2832072
+JO  - IEEE Transactions on Reliability
+IS  - 3
+SN  - 1558-1721
+VO  - 67
+VL  - 67
+JA  - IEEE Transactions on Reliability
+Y1  - Sept. 2018
+AB  - Automated test suite generation (ATSG) is an important topic in software engineering, with a wide range of techniques and tools being used in academia and industry. While their usefulness is widely recognized, due to the labor-intensive nature of the task, the effectiveness of the different techniques in automatically generating test cases for different software systems is not thoroughly understood. Despite many studies introducing various ATSG techniques, much remains to be learned, however, about what makes a particular technique work well (or not) for a specific software system. In this paper, we seek an answer to the question: “What features of a software system impact the effectiveness of ATSG techniques?” Once these features are identified, can they be used to select the most effective ATSG technique for a particular software system? To this end, we have implemented the mapping the effectiveness of test automation (META) tool, a new framework that identifies important software features that can be used to select suitable ATSG techniques to apply to new software systems. We evaluate the framework on a large set of open-source software projects and three ATSG techniques. The evaluation indicates that the number of methods in a class, the coupling between object classes, and the response for a class are the most indicative of what makes a software system hard to test by different techniques. The decision tree for ATSG technique selection generated by the META framework has an 88% accuracy, as shown by n-fold cross validation.
+ER  - 
+
+TY  - CONF
+TI  - Internet of Things and the Credit Card Market: How Companies Can Deal with the Exponential Increase of Transactions with Connected Devices and Can Also be Efficient to Prevent Frauds
+T2  - 2015 12th International Conference on Information Technology - New Generations
+SP  - 107
+EP  - 111
+AU  - G. A. Lopes Ferreira
+AU  - G. S. Gonçalves
+AU  - A. Gomes Lamas Otero
+AU  - G. L. Bertoze Lima
+AU  - P. T. Tsoucamoto
+AU  - P. C. Louzada Villaca
+AU  - L. F. Stege Mialaret
+AU  - A. M. Da Cunha
+AU  - L. A. Vieira Dias
+PY  - 2015
+DO  - 10.1109/ITNG.2015.23
+JO  - 2015 12th International Conference on Information Technology - New Generations
+IS  - 
+SN  - 
+VO  - 
+VL  - 
+JA  - 2015 12th International Conference on Information Technology - New Generations
+Y1  - 13-15 April 2015
+AB  - Communication devices like cell phones, refrigerators, TVs, and others have been considered lately as some Internet of Things (IoT) components, mainly due to the embedded systems evolution and web connectivity. During the first semester of 2014, at the Brazilian Aeronautics Institute of Technology (Instituto Tecnologico de Aeronautica -- ITA), a successful Interdisciplinary Problem Based Learning (IPBL) experience took place. At that time, almost 60 graduate students from three different courses (CE-229 Software Testing, CE-240 Database System Project, and CE-245 Information Technologies), within just 17 academic weeks, had the opportunity to conceptualize, model, and develop a system prototype to capture, store, and analyze credit card transactions. This system, named BDIT-C2 (Big Data, Internet of Things, and Credit Cards), has used an Application Programing Interface to enable communication devices to make purchases, allowing e-commerce through a web portal where fraud analysts could monitor all suspicious transactions.
+ER  - 
+
+TY  - CONF
+TI  - Dynamic partitioning strategy to enhance symbolic execution
+T2  - 2016 Design, Automation & Test in Europe Conference & Exhibition (DATE)
+SP  - 774
+EP  - 779
+AU  - B. A. Marcellino
+AU  - M. S. Hsiao
+PY  - 2016
+DO  - 
+JO  - 2016 Design, Automation & Test in Europe Conference & Exhibition (DATE)
+IS  - 
+SN  - 1558-1101
+VO  - 
+VL  - 
+JA  - 2016 Design, Automation & Test in Europe Conference & Exhibition (DATE)
+Y1  - 14-18 March 2016
+AB  - Software testing is a fundamental part of the software development process. In the context of embedded-software applications, testing can find defects which cause unprecedented risks. The path explosion problem often necessitates one to consider an extremely large number of paths in order to reach a specific target. Symbolic execution can reduce this cost by using symbolic values and heuristic exploration strategies. Although various exploration strategies have been proposed in the past, the number of SMT solver calls for reaching a target is still large, resulting in long execution times for programs containing many paths. In this paper, we present a dynamic partitioning strategy in order to mitigate this problem, consequently reducing unnecessary SMT solver calls as well. Using this strategy on SSA-applied code, the code sections are analyzed in a nonconsecutive order guided by data dependency metrics within the sections. Experimental results show that our dynamic strategy can achieve significant speedups in reducing the number of unnecessary solver calls in large programs. More than 1000× speedup can be achieved in large programs over conflict-driven learning techniques.
+ER  - 
+
+
