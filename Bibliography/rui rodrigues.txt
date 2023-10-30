@@ -1,0 +1,43 @@
+Escolher a plataforma -> fazer parte da tese
+- antes de decidir a plataforma, definir bem o jogo
+- como mapear os objetivos em desafios? perguntas? uma tarefa de design mais difícil?
+- casual game: fazer portas lógicas, por exemplo
+- público alvo: faixa etária? background tecnológico?
+- análise comparativa com outros jogos!!!!!
+- decidir a tecnologia agora pode ser contraproducente
+
+Unity
+- mixed feelings (não só por causa da parte recente)
+- apesar de tudo, é fechado
+- projetos de há 2 anos ficam inutilizáveis... -> argumento de longevidade
+- comunidade bem grande... até há pouco tempo, muitos recursos (embora pouco estruturados)
+
+Alternativas
+- PlayCanvas (da web para a web)
+- Vários motores de jogo web based
+- (Mais elaborado) Godot (maybe risco menor, uses C# and Javascript now; bons recursos; aberto; livre; mais leve que unity, mas menos recursos), Unreal - DEMASIADO -, GDevelop (mais visual)
+
+https://godotengine.github.io/godot-demo-projects/
+- Demos bem focadas
+- Bons anos, cresceu de forma sustentável e democratizada
+
+https://unity.com/demos
+- Coisas com bastante mais esforço, mais elaborados
+- Mais vantagens! Dá para montar umas coisas rapidamente.
+- Sometimes, less is more.
+
+https://www.babylonjs.com
+- Mais ligado a rendering, ig
+
+espírito crítico a avaliar decisões tomadas!!!!!
+estudar e definir de forma informada
+
+recompensasssss
+contrapor alternativas para perceber o que pode ser melhorado em termos de experiência de jogador para um jogo sério
+retenção de informação xD
+
+O meu problema: melhorar a compreensão de software testing usando jogos sérios.
+- O que me pode ajudar na literatura relacionado com esse problema
+- Tópico + jogos sérios
+- Talvez olhar a áreas semelhantes a software testing para outras abordagens e propostas (e.g.: verificação de produção de peças);
+- o que não funcionou e pq e o que fazer sim.
