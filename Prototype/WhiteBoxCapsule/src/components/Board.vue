@@ -13,7 +13,7 @@ defineProps({})
       <ChallengeCode :challenge="testChallenge" />
       <PlayerInfo />
     </div>
-    
+
     <div class="col">
       <BoardGrid :challenge="testChallenge" />
     </div>

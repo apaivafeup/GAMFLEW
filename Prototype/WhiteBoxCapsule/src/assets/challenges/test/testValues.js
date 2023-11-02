@@ -1,16 +1,8 @@
-import { Challenge } from '../../../store/models/challenge'
+import { TestChallenge } from './testChallenge'
 
 export const testCode = `function test(from, to) {
-  if (from == to) {
-    return
-  }
-
   var a = from.x - to.x
   var b = from.y - to.y
-
-  if (a == b) {
-    return true
-  }
 
   if (a > 2) {
     if (b < 2) {
@@ -21,4 +13,17 @@ export const testCode = `function test(from, to) {
   }
 }`
 
-export const testChallenge = new Challenge('Challenge 0: Test', 2, 300, null, testCode)
+export const f = function test(from, to) {
+  var a = Math.abs(from.x - to.x)
+  var b = Math.abs(from.y - to.y)
+
+  if (a > 2) {
+    if (b < 2) {
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
+export const testChallenge = new TestChallenge('Challenge 0: Test', 2, 300, null, testCode, f)
