@@ -19,7 +19,7 @@ export class TestChallenge extends Challenge {
 
       var log = board.log[board.currentKey - i];
 
-      if (log.length <= 1){
+      if (log.length < 1){
         break
       }
 

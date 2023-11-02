@@ -19,18 +19,7 @@ export default {
   beforeMount() {
     this.board = boardStore()
     this.board.timer = testChallenge.timer
-
-    setInterval(() => {
-      this.board.timer--
-
-      if (this.board.timer == 0) {
-        this.board.timeout()
-        this.board.failed()
-        clearInterval()
-      } else if (this.board.passed) {
-        clearInterval()
-      }
-    }, 1000)
+    this.board.startTimer()
   },
   mounted() {},
 

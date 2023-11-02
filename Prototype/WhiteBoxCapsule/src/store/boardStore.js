@@ -8,6 +8,7 @@ export const boardStore = defineStore('boardStore', {
   state: () => {
     return {
       timer: Number,
+      interval: null,
       log: {},
       state: {},
       outOfBoundsState: {},
@@ -65,6 +66,8 @@ export const boardStore = defineStore('boardStore', {
         from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
         to: { x: parseInt(x), y: parseInt(y) }
       })
+
+      console.log(this.log[this.currentKey])
       this.updateInfoState()
 
       this.selectedPiece = null
@@ -166,6 +169,31 @@ export const boardStore = defineStore('boardStore', {
 
     fail() {
       this.failed = !this.failed
+    },
+
+    retry() {
+      while (this.currentKey > 0) {
+        this.previous()
+        this.generateState()
+      }
+
+      this.currentKey = 0
+    },
+
+    startTimer() {
+      this.interval = setInterval(() => {
+        this.timer--
+  
+        if (this.timer == 0) {
+          this.timeout()
+          this.failed()
+          clearInterval(this.interval)
+        }
+        
+        if (this.passed) {
+          clearInterval(this.interval)
+        }
+      }, 1000)
     }
   }
 })

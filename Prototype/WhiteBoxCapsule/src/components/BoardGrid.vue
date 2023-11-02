@@ -41,6 +41,9 @@ export default {
 
       <div class="buttons">
         <div style="display: flex; flex-direction: column">
+          <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
+            Retry
+          </button>
           <button class="button is-primary is-fullwidth" @click="board.generateState()">
             Reset
           </button>
