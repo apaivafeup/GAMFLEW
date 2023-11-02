@@ -14,7 +14,9 @@ export const boardStore = defineStore('boardStore', {
       selectedPiece: null,
       selectedCoords: { x: -1, y: -1 },
       currentKey: 0,
-      infoState: String
+      infoState: String,
+      passed: Boolean,
+      failed: Boolean
     }
   },
   actions: {
@@ -74,6 +76,8 @@ export const boardStore = defineStore('boardStore', {
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
       this.log[this.currentKey] = []
       this.infoState = ''
+      this.passed = false
+      this.failed = false
     },
 
     generateState() {
@@ -154,6 +158,14 @@ export const boardStore = defineStore('boardStore', {
         ', ' +
         lastLog.to.y +
         ').'
+    },
+
+    pass() {
+      this.passed = !this.passed
+    },
+
+    fail() {
+      this.failed = !this.failed
     }
   }
 })

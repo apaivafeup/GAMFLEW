@@ -25,7 +25,9 @@ export default {
 
       if (this.board.timer == 0) {
         this.board.timeout()
-
+        this.board.failed()
+        clearInterval()
+      } else if (this.board.passed) {
         clearInterval()
       }
     }, 1000)
