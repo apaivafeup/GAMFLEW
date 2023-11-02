@@ -135,3 +135,20 @@ pre {
 #header-row {
   margin-bottom: 10px;
 }
+
+.game-board-label .row {
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+}
+
+.game-board-label .col {
+  display: flex;
+  justify-content: center;
+}
+
+.game-board-labels {
+  display: grid;
+  grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-rows: 25px;
+  justify-content: center;
+}
