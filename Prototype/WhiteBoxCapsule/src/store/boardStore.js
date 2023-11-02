@@ -172,12 +172,7 @@ export const boardStore = defineStore('boardStore', {
     },
 
     retry() {
-      while (this.currentKey > 0) {
-        this.previous()
-        this.generateState()
-      }
-
-      this.currentKey = 0
+      window.location.reload()
     },
 
     startTimer() {
