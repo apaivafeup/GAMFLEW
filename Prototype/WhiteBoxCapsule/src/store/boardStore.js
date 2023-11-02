@@ -10,6 +10,7 @@ export const boardStore = defineStore('boardStore', {
       timer: Number,
       log: {},
       state: {},
+      outOfBoundsState: Piece,
       selectedPiece: null,
       selectedCoords: { x: 0, y: 0 },
       currentKey: 0
@@ -17,7 +18,12 @@ export const boardStore = defineStore('boardStore', {
   },
   actions: {
     selectPiece(x, y) {
-      if (this.selectedPiece == null && this.state[this.currentKey][x][y].color != Color.EMPTY) {
+      if (x == -1 && y == -1) {
+        this.selectedPiece = outOfBoundState
+        this.selectedCoords = { x: -1, y: -1 }
+        this.selectedPiece.select()
+      }
+      else if (this.selectedPiece == null && this.state[this.currentKey][x][y].color != Color.EMPTY) {
         this.selectedCoords.x = x
         this.selectedCoords.y = y
         this.selectedPiece = this.state[this.currentKey][x][y]
@@ -120,9 +126,9 @@ export const boardStore = defineStore('boardStore', {
       }
 
       this.selectedPiece =
-        this.state[this.currentKey][this.log[this.currentKey][this.log[this.currentKey].length - 1].to.x][
-          this.log[this.currentKey][this.log[this.currentKey].length - 1].to.y
-        ]
+        this.state[this.currentKey][
+          this.log[this.currentKey][this.log[this.currentKey].length - 1].to.x
+        ][this.log[this.currentKey][this.log[this.currentKey].length - 1].to.y]
       this.selectedPiece.select()
       this.movePiece(
         this.log[this.currentKey][this.log[this.currentKey].length - 1].from.x,
