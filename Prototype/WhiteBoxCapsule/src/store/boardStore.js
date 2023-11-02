@@ -4,6 +4,7 @@ import { Piece, Color } from './models/piece.js'
 export const redPos = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23]
 export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
 
+
 export const boardStore = defineStore('boardStore', {
   state: () => {
     return {
@@ -13,29 +14,33 @@ export const boardStore = defineStore('boardStore', {
       outOfBoundsState: {},
       selectedPiece: null,
       selectedCoords: { x: -1, y: -1 },
-      currentKey: 0
+      currentKey: 0,
+      infoState: String
     }
   },
   actions: {
     selectPiece(x, y) {
       if (x == -1 && y == -1) {
         if (this.selectedPiece == null) {
-          if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY)
-            return
+          if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY) return
           else {
             this.selectedPiece = this.outOfBoundsState[this.currentKey]
             this.selectedCoords = { x: -1, y: -1 }
             this.selectedPiece.select()
           }
         } else {
-          this.movePiece(x,y)
+          this.movePiece(x, y)
         }
-      } else if (this.selectedPiece == null && this.state[this.currentKey][x][y].color != Color.EMPTY) {
+      } else if (
+        this.selectedPiece == null &&
+        this.state[this.currentKey][x][y].color != Color.EMPTY
+      ) {
         this.selectedCoords.x = x
         this.selectedCoords.y = y
         this.selectedPiece = this.state[this.currentKey][x][y]
         this.selectedPiece.select()
       } else if (this.selectedPiece == this.state[this.currentKey][x][y]) {
+        this.selectedPiece.select()
         this.selectedPiece = null
       } else if (this.selectedPiece != null) {
         this.movePiece(x, y)
@@ -55,21 +60,21 @@ export const boardStore = defineStore('boardStore', {
       this.selectedPiece.select()
       this.selectedPiece.setEmpty()
 
-      if (!undo) {
-        this.log[this.currentKey].push({
-          from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
-          to: { x: parseInt(x), y: parseInt(y) }
-        })
-      }
+      this.log[this.currentKey].push({
+        from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
+        to: { x: parseInt(x), y: parseInt(y) },
+      })
+      this.updateInfoState()
 
       this.selectedPiece = null
-      this.selectedCoords = {x: -1, y: -1}
+      this.selectedCoords = { x: -1, y: -1 }
     },
 
     emptyState() {
       this.state[this.currentKey] = []
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
       this.log[this.currentKey] = []
+      this.infoState = ''
     },
 
     generateState() {
@@ -130,38 +135,17 @@ export const boardStore = defineStore('boardStore', {
       this.selectedCoords = { x: 0, y: 0 }
     },
 
-    undo() {
-      //TODO: Undo is not working properly when undoing a stack...
-      // Check what's wrong and fix.
-      if (this.log[this.currentKey].length <= 1) {
-        this.log[this.currentKey] = []
-        this.generateState()
-        return
-      }
-
-      if (this.selectedPiece != null) {
-        this.selectedPiece.select()
-      }
-
-      this.selectedPiece =
-        this.state[this.currentKey][
-        this.log[this.currentKey][this.log[this.currentKey].length - 1].to.x
-        ][this.log[this.currentKey][this.log[this.currentKey].length - 1].to.y]
-      this.selectedPiece.select()
-      this.movePiece(
-        this.log[this.currentKey][this.log[this.currentKey].length - 1].from.x,
-        this.log[this.currentKey][this.log[this.currentKey].length - 1].from.y,
-        true
-      )
-      this.log[this.currentKey].pop()
-    },
-
     timeout() {
       if (confirm('Time is up! Try again?')) {
         window.location.reload()
       } else {
         window.location.href = '/'
       }
+    },
+
+    updateInfoState() {
+      var lastLog = this.log[this.currentKey][this.log[this.currentKey].length - 1]
+      this.infoState = '  Moved (' + lastLog.from.x + ', ' + lastLog.from.y + ') to (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
     }
   }
 })

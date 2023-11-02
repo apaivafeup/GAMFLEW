@@ -7,13 +7,15 @@ export const Color = Object.freeze({
 })
 
 export class Piece {
-  constructor(position, color) {
+  constructor(position, color, stack = null) {
     this.color = color
 
-    if (this.color == Color.EMPTY) {
+    if (this.color == Color.EMPTY && stack == null) {
       this.stack = { red: 0, blue: 0 }
     } else {
-      this.stack = { red: this.color == Color.RED ? 1 : 0, blue: this.color == Color.RED ? 0 : 1 }
+      if (stack != null) this.stack = stack
+      else
+        this.stack = { red: this.color == Color.RED ? 1 : 0, blue: this.color == Color.RED ? 0 : 1 }
     }
     this.position = position
     this.selected = false
@@ -21,7 +23,7 @@ export class Piece {
 
   setEmpty() {
     this.stack = { red: 0, blue: 0 }
-    this.color = Color.EMPTY
+    this.updateColor()
   }
 
   pieceCount() {

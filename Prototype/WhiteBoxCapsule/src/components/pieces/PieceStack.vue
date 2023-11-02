@@ -136,6 +136,7 @@ export default {
 
   beforeMount() {
     this.board = boardStore()
+    this.posString = '(' + this.x + ', ' + this.y + ')'
   },
 
   mounted() {},

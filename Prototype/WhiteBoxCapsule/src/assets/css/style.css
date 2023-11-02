@@ -146,9 +146,28 @@ pre {
   justify-content: center;
 }
 
-.game-board-labels {
+.game-board-col-labels {
   display: grid;
   grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px;
   grid-template-rows: 25px;
   justify-content: center;
 }
+
+.game-board-row-labels {
+  display: grid;
+  grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-columns: 25px;
+  justify-content: center;
+}
+
+.player-info {
+  padding-left: 10px;
+  width: 650px;
+  border-radius: 0.5rem;
+  display: flex;
+  height: auto;
+  overflow: auto;
+  margin-left: 10px;
+}
+
+
