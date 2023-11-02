@@ -26,7 +26,7 @@ export default {
     <div style="flex-direction: column; justify-content: space-between; display: flex">
       <div class="game-board-out">
         <div class="box">
-          <!-- <PieceStack :id="piece-stack-out" :coordinates="{x: 0, y: 0}" :stack="{red: 0, blue: 0}" /> -->
+          <PieceStack :id="'piece-stack-out'" :x="-1" :y="-1" />
         </div>
       </div>
 
@@ -36,12 +36,19 @@ export default {
             Reset
           </button>
           <button class="button is-primary is-fullwidth" @click="board.undo()">Undo</button>
-          <button class="button is-primary is-fullwidth" v-if="board.currentKey != 0" @click="board.previous()">
+          <button
+            class="button is-primary is-fullwidth"
+            v-if="board.currentKey != 0"
+            @click="board.previous()"
+          >
             Previous
           </button>
           <button class="button is-primary is-fullwidth" @click="board.next()">Next</button>
-          <button class="button is-primary is-fullwidth" v-if="board.currentKey + 1 == challenge.count"
-            @click="board.submit()">
+          <button
+            class="button is-primary is-fullwidth"
+            v-if="board.currentKey + 1 == challenge.count"
+            @click="board.submit()"
+          >
             Submit
           </button>
         </div>
@@ -49,21 +56,28 @@ export default {
     </div>
     <div style="justify-content: center">
       <div class="game-board-labels">
-        <div class="game-board-label col" style="display: flex; justify-content: center;">0</div>
-        <div class="game-board-label col" style="display: flex; justify-content: center;">1</div>
-        <div class="game-board-label col" style="display: flex; justify-content: center;">2</div>
-        <div class="game-board-label col" style="display: flex; justify-content: center;">3</div>
-        <div class="game-board-label col" style="display: flex; justify-content: center;">4</div>
-        <div class="game-board-label col" style="display: flex; justify-content: center;">5</div>
-        <div class="game-board-label col" style="display: flex; justify-content: center;">6</div>
-        <div class="game-board-label col" style="display: flex; justify-content: center;">7</div>
+        <div class="game-board-label col" style="display: flex; justify-content: center">0</div>
+        <div class="game-board-label col" style="display: flex; justify-content: center">1</div>
+        <div class="game-board-label col" style="display: flex; justify-content: center">2</div>
+        <div class="game-board-label col" style="display: flex; justify-content: center">3</div>
+        <div class="game-board-label col" style="display: flex; justify-content: center">4</div>
+        <div class="game-board-label col" style="display: flex; justify-content: center">5</div>
+        <div class="game-board-label col" style="display: flex; justify-content: center">6</div>
+        <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
-        <div class="game-board" id="challenge-board">
-          <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
-            <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-              :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
-          </div>
+      <div class="game-board" id="challenge-board">
+        <div
+          class="box"
+          v-for="index in 64"
+          :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+        >
+          <PieceStack
+            :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+            :x="Math.floor((index - 1) / 8).toString()"
+            :y="((index - 1) % 8).toString()"
+          />
         </div>
+      </div>
 
       <!-- <BoardProgressBar /> -->
     </div>

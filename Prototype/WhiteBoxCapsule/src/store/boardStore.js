@@ -10,20 +10,27 @@ export const boardStore = defineStore('boardStore', {
       timer: Number,
       log: {},
       state: {},
-      outOfBoundsState: Piece,
+      outOfBoundsState: {},
       selectedPiece: null,
-      selectedCoords: { x: 0, y: 0 },
+      selectedCoords: { x: -1, y: -1 },
       currentKey: 0
     }
   },
   actions: {
     selectPiece(x, y) {
       if (x == -1 && y == -1) {
-        this.selectedPiece = outOfBoundState
-        this.selectedCoords = { x: -1, y: -1 }
-        this.selectedPiece.select()
-      }
-      else if (this.selectedPiece == null && this.state[this.currentKey][x][y].color != Color.EMPTY) {
+        if (this.selectedPiece == null) {
+          if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY)
+            return
+          else {
+            this.selectedPiece = this.outOfBoundsState[this.currentKey]
+            this.selectedCoords = { x: -1, y: -1 }
+            this.selectedPiece.select()
+          }
+        } else {
+          this.movePiece(x,y)
+        }
+      } else if (this.selectedPiece == null && this.state[this.currentKey][x][y].color != Color.EMPTY) {
         this.selectedCoords.x = x
         this.selectedCoords.y = y
         this.selectedPiece = this.state[this.currentKey][x][y]
@@ -36,7 +43,12 @@ export const boardStore = defineStore('boardStore', {
     },
 
     movePiece(x, y, undo = false) {
-      var logicalSpot = this.state[this.currentKey][x][y]
+      var logicalSpot
+      if (x == -1 && y == -1) {
+        logicalSpot = this.outOfBoundsState[this.currentKey]
+      } else {
+        logicalSpot = this.state[this.currentKey][x][y]
+      }
 
       logicalSpot.addStack(this.selectedPiece.stack, this.selectedColor)
 
@@ -51,14 +63,18 @@ export const boardStore = defineStore('boardStore', {
       }
 
       this.selectedPiece = null
+      this.selectedCoords = {x: -1, y: -1}
     },
 
     emptyState() {
       this.state[this.currentKey] = []
+      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
       this.log[this.currentKey] = []
     },
 
     generateState() {
+      console.log('generating state')
+
       this.emptyState()
 
       for (let i = 1; i <= 8; i++) {
@@ -91,6 +107,8 @@ export const boardStore = defineStore('boardStore', {
         }
         edge = !edge
       }
+
+      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
 
       this.log[this.currentKey] = []
     },
@@ -127,7 +145,7 @@ export const boardStore = defineStore('boardStore', {
 
       this.selectedPiece =
         this.state[this.currentKey][
-          this.log[this.currentKey][this.log[this.currentKey].length - 1].to.x
+        this.log[this.currentKey][this.log[this.currentKey].length - 1].to.x
         ][this.log[this.currentKey][this.log[this.currentKey].length - 1].to.y]
       this.selectedPiece.select()
       this.movePiece(
