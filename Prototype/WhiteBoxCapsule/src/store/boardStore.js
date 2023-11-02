@@ -180,9 +180,8 @@ export const boardStore = defineStore('boardStore', {
         this.timer--
   
         if (this.timer == 0) {
-          this.timeout()
-          this.failed()
           clearInterval(this.interval)
+          this.timeout()
         }
         
         if (this.passed) {
