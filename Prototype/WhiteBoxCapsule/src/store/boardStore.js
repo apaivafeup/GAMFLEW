@@ -178,12 +178,12 @@ export const boardStore = defineStore('boardStore', {
     startTimer() {
       this.interval = setInterval(() => {
         this.timer--
-  
+
         if (this.timer == 0) {
           clearInterval(this.interval)
           this.timeout()
         }
-        
+
         if (this.passed) {
           clearInterval(this.interval)
         }

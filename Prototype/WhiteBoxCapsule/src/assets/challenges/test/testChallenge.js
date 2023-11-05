@@ -10,21 +10,21 @@ export class TestChallenge extends Challenge {
 
   submit(board) {
     var truePassed = false,
-        falsePassed = false
+      falsePassed = false
 
     for (var i = 0; i < this.count; i++) {
       if (board.log.length - i < 0) {
         break
       }
 
-      var log = board.log[board.currentKey - i];
+      var log = board.log[board.currentKey - i]
 
-      if (log.length < 1){
+      if (log.length < 1) {
         break
       }
 
       var from = log[log.length - 1].from,
-          to = log[log.length - 1].to
+        to = log[log.length - 1].to
 
       if (!this.f(from, to)) {
         falsePassed = true

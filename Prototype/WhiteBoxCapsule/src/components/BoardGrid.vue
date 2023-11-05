@@ -2,7 +2,7 @@
 import { Challenge } from '../store/models/challenge'
 
 // JS
-import PieceStack from './pieces/PieceStack.vue'
+import PieceStack from './PieceStack.vue'
 import { bluePos, redPos, boardStore } from '../store/boardStore'
 
 export default {
