@@ -4,6 +4,7 @@
   --background-color: #fff !important;
   --text-color: #333 !important;
   --border-color: #cdcdcd !important;
+  --button-color: #333 !important
 }
 
 body {
@@ -15,6 +16,7 @@ body {
   --background-color: #333 !important;
   --text-color: #fff !important;
   --border-color: #b8b8b8 !important;
+  --button-color: #fff !important
 }
 
 body {
@@ -198,10 +200,13 @@ button.menu-button {
 }
 
 #theme-toggle {
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--button-color);
+  width: 40px;
+  height: 40px;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 200px;
   cursor: pointer;
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
 }

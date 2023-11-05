@@ -1,6 +1,6 @@
 <template>
   <router-view></router-view>
-  <button @click="toggleMode" id="theme-toggle"></button>
+  <button @click="toggleMode" id="theme-toggle">💡</button>
 
 </template>
 
