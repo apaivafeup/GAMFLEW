@@ -9,7 +9,7 @@
     lang="javascript"
     prism-plugin
     prism-js
-    style="padding-left: 10px; width: 650px"
+    style="width: 650px; margin-left: 5px; font-size: 16px;"
     :copy-icon="false"
     :copy-button="false"
     :copy-tab="false"
@@ -21,6 +21,8 @@
 import 'prismjs'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import 'prismjs/plugins/line-highlight/prism-line-highlight.js'
+import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 </script>
 
 <script>
