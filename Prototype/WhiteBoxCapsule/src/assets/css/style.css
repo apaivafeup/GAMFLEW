@@ -221,3 +221,7 @@ button.menu-button {
   left: 20px;
   bottom: 20px;
 }
+
+.add-button {
+  border: var(--box-border)
+}

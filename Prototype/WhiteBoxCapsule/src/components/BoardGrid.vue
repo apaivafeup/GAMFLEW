@@ -48,7 +48,7 @@ export default {
             Reset
           </button>
           <!-- <button class="button is-primary is-fullwidth" @click="board.undo()">Undo</button> -->
-          <button class="button is-primary is-fullwidth" @click="board.addMode()">Add</button>
+          <button class="button is-primary is-fullwidth add-button" @click="board.addMode()">Add</button>
           <button
             class="button is-primary is-fullwidth"
             v-if="board.currentKey != 0"
