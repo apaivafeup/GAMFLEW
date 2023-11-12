@@ -55,7 +55,7 @@ body {
   height: 625px;
   width: 45%;
   border-radius: 5px;
-  border: 1px solid #cdcdcd;
+  border: var(--box-border);
   overflow-y: scroll;
 }
 
