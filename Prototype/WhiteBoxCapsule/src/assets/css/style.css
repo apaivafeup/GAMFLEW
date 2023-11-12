@@ -4,7 +4,8 @@
   --background-color: #fff !important;
   --text-color: #333 !important;
   --border-color: #cdcdcd !important;
-  --button-color: #333 !important
+  --button-color: #333 !important;
+  --box-border: 1px solid #cdcdcd !important;
 ;
 }
 
@@ -19,6 +20,14 @@ body {
   --border-color: #b8b8b8 !important;
   --button-color: #fff !important
 ;
+}
+
+.play-mode {
+  --box-border: 1px solid #cdcdcd;
+}
+
+.add-mode {
+  --box-border: 1px solid rgb(169, 89, 255);
 }
 
 body {
@@ -71,7 +80,7 @@ pre {
 
 .box {
   background-color: var(--background-color);
-  border: 1px solid #cdcdcd;
+  border: var(--box-border);
   margin: 3px;
   display: flex;
   justify-content: center;

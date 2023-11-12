@@ -26,6 +26,11 @@ export class Piece {
     this.updateColor()
   }
 
+  setStack(stack) {
+    this.stack = stack
+    this.updateColor()
+  }
+
   pieceCount() {
     return this.stack.red + this.stack.blue
   }

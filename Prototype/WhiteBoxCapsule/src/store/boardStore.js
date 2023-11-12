@@ -17,11 +17,31 @@ export const boardStore = defineStore('boardStore', {
       currentKey: 0,
       infoState: String,
       passed: Boolean,
-      failed: Boolean
+      failed: Boolean,
+      add: Boolean
     }
   },
   actions: {
+    addPiece(x, y) {
+      var piece = this.state[this.currentKey][x][y]
+
+      if (piece.color == Color.EMPTY) {
+        piece.setStack({ red: 1, blue: 0 })
+      } else if (piece.color == Color.RED) {
+        piece.setStack({ red: 0, blue: 1 })
+      } else {
+        piece.setEmpty()
+      }
+
+      piece.updateColor()
+    },
+
     selectPiece(x, y) {
+      if (this.add) {
+        this.addPiece(x, y)
+        return
+      }
+
       if (x == -1 && y == -1) {
         if (this.selectedPiece == null) {
           if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY) return
@@ -81,6 +101,7 @@ export const boardStore = defineStore('boardStore', {
       this.infoState = ''
       this.passed = false
       this.failed = false
+      this.add = false
     },
 
     generateState() {
@@ -161,6 +182,11 @@ export const boardStore = defineStore('boardStore', {
         ', ' +
         lastLog.to.y +
         ').'
+    },
+
+    addMode() {
+      this.add = !this.add
+      document.body.classList.toggle('add-mode')
     },
 
     pass() {
