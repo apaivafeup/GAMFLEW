@@ -23,7 +23,12 @@ export default {
       </div>
 
       <ChallengeCode :challenge="this.testChallenge" />
-      <div class="alert alert-secondary player-info" v-if="board.timer <= 100">
+      <div class="alert alert-secondary player-info" v-if="board.timer > 100">
+        <p style="margin: 0px;">
+          You will get a hint when the timer reaches <b>100 seconds</b>. Try your best, and if you don't pass until then, know help is coming!
+        </p>
+      </div>
+      <div class="alert alert-secondary player-info" v-else>
         {{ this.testChallenge.hint }}
       </div>
       <PlayerInfo />
@@ -35,8 +40,9 @@ export default {
       </div>
     </div>
 
-    <div class="col">
+    <div class="col" style="display: flex; flex-direction: column; justify-content: right;">
       <BoardGrid :challenge="this.testChallenge" />
+      <PlayerBar />
     </div>
   </div>
 </template>

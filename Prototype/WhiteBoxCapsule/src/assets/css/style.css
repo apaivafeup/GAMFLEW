@@ -33,7 +33,7 @@ body {
 body {
   font-family: 'Inter', sans-serif;
   max-width: 100%;
-  padding: 10px;
+  padding: 20px;
 }
 
 #challenge-header {
@@ -66,15 +66,15 @@ pre {
 
 .game-board {
   display: grid;
-  grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px;
-  grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-columns: 65px 65px 65px 65px 65px 65px 65px 65px;
+  grid-template-rows: 65px 65px 65px 65px 65px 65px 65px 65px;
   justify-content: center;
 }
 
 .game-board-out {
   display: grid;
-  grid-template-columns: 75px;
-  grid-template-rows: 75px;
+  grid-template-columns: 65px;
+  grid-template-rows: 65px;
   justify-content: center;
 }
 
@@ -136,8 +136,8 @@ pre {
 
 .piece {
   border-radius: 100px;
-  height: 65px;
-  width: 65px;
+  height: 55px;
+  width: 55px;
   border: 1px solid var(--border-color);
 }
 
@@ -179,21 +179,21 @@ pre {
 
 .game-board-col-labels {
   display: grid;
-  grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-columns: 65px 65px 65px 65px 65px 65px 65px 65px;
   grid-template-rows: 25px;
   justify-content: center;
 }
 
 .game-board-row-labels {
   display: grid;
-  grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-rows: 65px 65px 65px 65px 65px 65px 65px 65px;
   grid-template-columns: 25px;
   justify-content: center;
 }
 
 .player-info {
   padding-left: 10px;
-  width: 650px;
+  width: 100%;
   border-radius: 0.5rem;
   display: flex;
   height: auto;
@@ -220,6 +220,7 @@ button.menu-button {
   position: fixed;
   left: 20px;
   bottom: 20px;
+  z-index: 1;
 }
 
 .add-button {

@@ -20,12 +20,12 @@ export default {
 </script>
 
 <template>
-  <div style="display: flex">
+  <div style="display: flex; justify-content: right;">
     <div style="flex-direction: column; justify-content: space-between; display: flex">
       <div class="col">
         <div class="game-board-out-labels">
           <div class="game-board-label col" style="display: flex; justify-content: center">
-            (-1, -1)
+            Out
           </div>
         </div>
         <div class="game-board-out">
@@ -75,10 +75,7 @@ export default {
     </div>
     <div style="align-content: center">
       <div class="game-board-labels">
-        <div
-          class="game-board-label col"
-          style="display: flex; justify-content: center; margin-top: 25px"
-        ></div>
+        <div class="game-board-label col" style="display: flex; justify-content: center; margin-top: 25px"></div>
       </div>
       <div class="game-board-row-labels">
         <div class="game-board-label row" style="align-self: center; justify-content: center">

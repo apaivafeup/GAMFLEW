@@ -3,9 +3,8 @@ import { Challenge } from '../../../store/models/challenge'
 export class TestChallenge extends Challenge {
   constructor(name, count, timer, board, testCode, f) {
     super(name, count, timer, board, testCode, f)
-    this.hint =
-      'You must cover both branches of the if statement - it may be true or false, as you can see.'
-    this.objective = 'You need to cover the if (b < 2) line.'
+    this.hint = 'You may cover the statement through the true or false branch - only one is needed!'
+    this.objective = 'Statement coverage of line 6.'
   }
 
   submit(board) {

@@ -26,4 +26,4 @@ export const f = function test(from, to) {
   }
 }
 
-export const testChallenge = new TestChallenge('Challenge 0: Test', 2, 300, null, testCode, f)
+export const testChallenge = new TestChallenge('Challenge 0: Test', 1, 300, null, testCode, f)

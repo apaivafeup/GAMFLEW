@@ -9,7 +9,7 @@
     lang="javascript"
     prism-plugin
     prism-js
-    style="width: 650px; margin-left: 5px; font-size: 16px"
+    style="width: 100%; margin-left: 5px; font-size: 16px"
     :copy-icon="false"
     :copy-button="false"
     :copy-tab="false"
