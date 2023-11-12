@@ -1,8 +1,6 @@
-import './assets/css/main.css'
-import './assets/css/prism.css'
 import 'bootstrap/dist/css/bootstrap.css'
-
 import './assets/css/style.css'
+import './assets/css/prism-line-numbers.css'
 
 import CodeBlock from 'vue3-code-block'
 import { createApp } from 'vue'
@@ -15,7 +13,6 @@ import Home from './pages/Home.vue'
 const pinia = createPinia()
 const app = createApp(App)
 app.use(pinia)
-
 
 // 2. Define some routes
 // Each route should map to a component.
