@@ -1,13 +1,10 @@
 <template>
-  <div class="alert alert-info player-info">
-    <em>Fuck!</em>
+  <div class="row">
+    <div class="player-bar-box">
+      <em>oh wow</em>
+    </div>
   </div>
 </template>
-
-<script setup>
-import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
-</script>
 
 <script>
 import { Challenge } from '../store/models/challenge'

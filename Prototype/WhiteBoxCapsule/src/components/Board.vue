@@ -6,7 +6,7 @@ import PlayerInfo from './PlayerInfo.vue'
 import { boardStore } from '../store/boardStore'
 
 export default {
-  components: { ChallengeCode, BoardGrid, PlayerInfo },
+  components: { ChallengeCode, BoardGrid, PlayerInfo},
   beforeMount() {
     this.board = boardStore()
     this.board.generateState()
@@ -42,7 +42,6 @@ export default {
 
     <div class="col" style="display: flex; flex-direction: column; justify-content: right;">
       <BoardGrid :challenge="this.testChallenge" />
-      <PlayerBar />
     </div>
   </div>
 </template>
