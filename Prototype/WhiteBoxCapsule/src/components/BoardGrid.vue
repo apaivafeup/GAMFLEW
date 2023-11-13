@@ -79,7 +79,7 @@ export default {
             class="button is-primary is-fullwidth"
             @click="board.pauseMode()"
           >
-            Pause
+            {{ !this.board.pause ? 'Pause' : 'Resume' }}
           </button>
       </div>
     </div>
