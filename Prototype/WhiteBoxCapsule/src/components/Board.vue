@@ -4,9 +4,10 @@ import BoardGrid from './BoardGrid.vue'
 import { testChallenge } from '../assets/challenges/test/testValues.js'
 import PlayerInfo from './PlayerInfo.vue'
 import { boardStore } from '../store/boardStore'
+import PlayerBar from './PlayerBar.vue'
 
 export default {
-  components: { ChallengeCode, BoardGrid, PlayerInfo},
+  components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar },
   beforeMount() {
     this.board = boardStore()
     this.board.generateState()
@@ -24,8 +25,9 @@ export default {
 
       <ChallengeCode :challenge="this.testChallenge" />
       <div class="alert alert-secondary player-info" v-if="board.timer > 100">
-        <p style="margin: 0px;">
-          You will get a hint when the timer reaches <b>100 seconds</b>. Try your best, and if you don't pass until then, know help is coming!
+        <p style="margin: 0px">
+          You will get a hint when the timer reaches <b>100 seconds</b>. Try your best, and if you
+          don't pass until then, know help is coming!
         </p>
       </div>
       <div class="alert alert-secondary player-info" v-else>
@@ -40,8 +42,9 @@ export default {
       </div>
     </div>
 
-    <div class="col" style="display: flex; flex-direction: column; justify-content: right;">
+    <div class="col" style="display: flex; flex-direction: column; justify-content: right">
       <BoardGrid :challenge="this.testChallenge" />
+      <PlayerBar />
     </div>
   </div>
 </template>

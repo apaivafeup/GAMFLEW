@@ -6,7 +6,6 @@
   --border-color: #cdcdcd !important;
   --button-color: #333 !important;
   --box-border: 1px solid #cdcdcd !important;
-;
 }
 
 body {
@@ -223,11 +222,16 @@ button.menu-button {
 }
 
 .add-button {
-  border: var(--box-border)
+  border: var(--box-border);
 }
 
 .player-bar-box {
-  width: 100%;
+  width: 95%;
   height: 100px;
   border: 1px solid #cdcdcd;
+}
+
+.buttons-grid {
+  display: grid;
+  grid-template-columns: 85px 85px;
 }

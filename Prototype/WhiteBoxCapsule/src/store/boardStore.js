@@ -18,7 +18,8 @@ export const boardStore = defineStore('boardStore', {
       infoState: String,
       passed: Boolean,
       failed: Boolean,
-      add: Boolean
+      add: Boolean,
+      pause: Boolean
     }
   },
   actions: {
@@ -39,6 +40,10 @@ export const boardStore = defineStore('boardStore', {
     selectPiece(x, y) {
       if (this.add) {
         this.addPiece(x, y)
+        return
+      }
+
+      if (this.pause) {
         return
       }
 
@@ -102,6 +107,7 @@ export const boardStore = defineStore('boardStore', {
       this.passed = false
       this.failed = false
       this.add = false
+      this.pause = false
     },
 
     generateState() {
@@ -214,6 +220,16 @@ export const boardStore = defineStore('boardStore', {
           clearInterval(this.interval)
         }
       }, 1000)
+    },
+
+    pauseMode() {
+      this.pause = !this.pause
+
+      if (!this.pause) {
+        this.startTimer()
+      } else {
+        clearInterval(this.interval)
+      }
     }
   }
 })

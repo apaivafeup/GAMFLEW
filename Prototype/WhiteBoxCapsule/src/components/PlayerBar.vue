@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row" style="padding: 15px;justify-content: right;">
     <div class="player-bar-box">
       <em>oh wow</em>
     </div>

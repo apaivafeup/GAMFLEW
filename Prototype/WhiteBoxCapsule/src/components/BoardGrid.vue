@@ -4,6 +4,7 @@ import { Challenge } from '../store/models/challenge'
 // JS
 import PieceStack from './PieceStack.vue'
 import { bluePos, redPos, boardStore } from '../store/boardStore'
+import PlayerBar from './PlayerBar.vue'
 
 export default {
   props: {
@@ -15,18 +16,16 @@ export default {
   },
 
   methods: {},
-  components: { PieceStack }
+  components: { PieceStack, PlayerBar }
 }
 </script>
 
 <template>
-  <div style="display: flex; justify-content: right;">
+  <div style="display: flex; justify-content: right">
     <div style="flex-direction: column; justify-content: space-between; display: flex">
       <div class="col">
         <div class="game-board-out-labels">
-          <div class="game-board-label col" style="display: flex; justify-content: center">
-            Out
-          </div>
+          <div class="game-board-label col" style="display: flex; justify-content: center">Out</div>
         </div>
         <div class="game-board-out">
           <div class="box">
@@ -39,16 +38,13 @@ export default {
         {{ this.board.currentKey + 1 + '/' + challenge.count }}
       </div>
 
-      <div class="buttons">
-        <div style="display: flex; flex-direction: column">
+      <div class="buttons-grid">
           <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
             Retry
           </button>
           <button class="button is-primary is-fullwidth" @click="board.generateState()">
             Reset
           </button>
-          <!-- <button class="button is-primary is-fullwidth" @click="board.undo()">Undo</button> -->
-          <button class="button is-primary is-fullwidth add-button" @click="board.addMode()">Add</button>
           <button
             class="button is-primary is-fullwidth"
             v-if="board.currentKey != 0"
@@ -70,12 +66,29 @@ export default {
           >
             Submit
           </button>
-        </div>
+          <button class="button is-primary is-fullwidth add-button" @click="board.addMode()">
+            Add
+          </button>
+          <button
+            class="button is-primary is-fullwidth"
+            @click="board.exit()"
+          >
+            Exit
+          </button>
+          <button
+            class="button is-primary is-fullwidth"
+            @click="board.pauseMode()"
+          >
+            Pause
+          </button>
       </div>
     </div>
     <div style="align-content: center">
       <div class="game-board-labels">
-        <div class="game-board-label col" style="display: flex; justify-content: center; margin-top: 25px"></div>
+        <div
+          class="game-board-label col"
+          style="display: flex; justify-content: center; margin-top: 25px"
+        ></div>
       </div>
       <div class="game-board-row-labels">
         <div class="game-board-label row" style="align-self: center; justify-content: center">
@@ -104,7 +117,7 @@ export default {
         </div>
       </div>
     </div>
-    <div style="justify-content: center">
+    <div style="justify-self: right">
       <div class="game-board-col-labels">
         <div class="game-board-label col" style="display: flex; justify-content: center">0</div>
         <div class="game-board-label col" style="display: flex; justify-content: center">1</div>
@@ -116,11 +129,7 @@ export default {
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
       <div class="game-board" id="challenge-board">
-        <div
-          class="box"
-          v-for="index in 64"
-          :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-        >
+        <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
           <PieceStack
             :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
             :x="Math.floor((index - 1) / 8).toString()"
