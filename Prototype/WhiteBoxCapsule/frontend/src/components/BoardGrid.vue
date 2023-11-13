@@ -39,48 +39,38 @@ export default {
       </div>
 
       <div class="buttons-grid">
-          <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
-            Retry
-          </button>
-          <button class="button is-primary is-fullwidth" @click="board.generateState()">
-            Reset
-          </button>
-          <button
-            class="button is-primary is-fullwidth"
-            v-if="board.currentKey != 0"
-            @click="board.previous()"
-          >
-            Previous
-          </button>
-          <button
-            class="button is-primary is-fullwidth"
-            v-if="board.currentKey + 1 != challenge.count"
-            @click="board.next()"
-          >
-            Next
-          </button>
-          <button
-            class="button is-primary is-fullwidth"
-            v-if="board.currentKey + 1 == challenge.count"
-            @click="challenge.submit(board)"
-          >
-            Submit
-          </button>
-          <button class="button is-primary is-fullwidth add-button" @click="board.addMode()">
-            Add
-          </button>
-          <button
-            class="button is-primary is-fullwidth"
-            @click="board.exit()"
-          >
-            Exit
-          </button>
-          <button
-            class="button is-primary is-fullwidth"
-            @click="board.pauseMode()"
-          >
-            {{ !this.board.pause ? 'Pause' : 'Resume' }}
-          </button>
+        <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
+          Retry
+        </button>
+        <button class="button is-primary is-fullwidth" @click="board.generateState()">Reset</button>
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="board.currentKey != 0"
+          @click="board.previous()"
+        >
+          Previous
+        </button>
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="board.currentKey + 1 != challenge.count"
+          @click="board.next()"
+        >
+          Next
+        </button>
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="board.currentKey + 1 == challenge.count"
+          @click="challenge.submit(board)"
+        >
+          Submit
+        </button>
+        <button class="button is-primary is-fullwidth add-button" @click="board.addMode()">
+          Add
+        </button>
+        <button class="button is-primary is-fullwidth" @click="board.exit()">Exit</button>
+        <button class="button is-primary is-fullwidth" @click="board.pauseMode()">
+          {{ !this.board.pause ? 'Pause' : 'Resume' }}
+        </button>
       </div>
     </div>
     <div style="align-content: center">
@@ -129,7 +119,11 @@ export default {
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
       <div class="game-board" id="challenge-board">
-        <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
+        <div
+          class="box"
+          v-for="index in 64"
+          :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+        >
           <PieceStack
             :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
             :x="Math.floor((index - 1) / 8).toString()"
