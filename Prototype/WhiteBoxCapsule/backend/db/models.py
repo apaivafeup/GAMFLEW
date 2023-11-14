@@ -1,7 +1,7 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from .database import Base
+from database import Base
 
 class User(Base):
     __tablename__ = "users"
@@ -18,6 +18,8 @@ class Challenge(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
+    hint = Column(String, index=True)
+    objective = Column(String, index=True)
     count = Column(Integer, index=True)
     timer = Column(Integer, index=True)
     board = Column(String, index=True)

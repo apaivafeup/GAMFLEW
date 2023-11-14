@@ -16,6 +16,8 @@ class Challenge(BaseModel):
     id: int
     name: str
     count: int
+    hint: str
+    objective: str
     timer: int
     board: str
     code_file: str
