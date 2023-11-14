@@ -2,20 +2,9 @@ from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
 from . import crud, models, schemas
-from database import SessionLocal, engine
-
-models.Base.metadata.create_all(bind=engine)
+from .backend_start import get_db
 
 app = FastAPI()
-
-# Dependency
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
 
 @app.post("/create/user", response_model=schemas.User)
 def create_user(user: schemas.User, db: Session = Depends(get_db)):

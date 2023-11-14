@@ -1,12 +1,12 @@
-{
+[{
     "id": 0,
     "name": "Challenge 0: Test",
     "count": 1,
     "timer": 300,
     "hint": "You may cover the statement through the true or false branch - only one is needed!",
     "objective": "Statement coverage of line 6.",
-    "board": null,
+    "board": "null",
     "code_file": "function test(from, to) {\nvar a = Math.abs(from.x - to.x)\nvar b = Math.abs(from.y - to.y)\n\nif (a > 2) {\nif (b < 2) {\nreturn true\n} else {\nreturn false\n}\n}",
     "submit_function": "function submit(board) {\nvar truePassed = false,\nfalsePassed = false\n\nfor (var i = 0; i < this.count; i++) {\nif (board.log.length - i < 0) {\nbreak\n}\n\nvar log = board.log[board.currentKey - i]\n\nif (log.length < 1) {\nbreak\n}\n\nvar from = log[log.length - 1].from,\nto = log[log.length - 1].to\n\nif (!this.f(from, to)) {\nfalsePassed = true\n}\n\nif (this.f(from, to)) {\ntruePassed = true\n}\n}\n\nif (truePassed && falsePassed) {\nboard.pass()\n} else {\nboard.fail()\n}\n}",
     "owner_id": 0
-}
+}]

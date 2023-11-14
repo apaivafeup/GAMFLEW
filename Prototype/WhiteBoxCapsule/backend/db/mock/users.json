@@ -1,6 +1,6 @@
-{
+[{
     "id": 0,
     "name": "Professor",
     "email": "professor@prototype.com",
-    "hashed_password": "password"
-}
+    "password": "password"
+}]

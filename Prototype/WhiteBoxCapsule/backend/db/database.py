@@ -7,4 +7,3 @@ SQLALCHEMY_DATABASE_URL = "postgresql://postgres:password@localhost/prototype"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-Base = declarative_base()

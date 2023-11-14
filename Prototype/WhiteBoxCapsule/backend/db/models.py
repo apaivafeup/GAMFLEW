@@ -1,37 +1,37 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship
+from pydantic import BaseModel
+from typing import Optional
 
-from database import Base
+class Attempt(BaseModel):
+    id: Optional[int]
+    player_id: int
+    challenge_id: int
+    time_elapsed: int
+    score: int
 
-class User(Base):
-    __tablename__ = "users"
+    class Config:
+        from_attributes = True
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
-    email = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    attempts = relationship("Attempt", back_populates="user")
-    challenges = relationship("Challenge", back_populates="user")
+class Challenge(BaseModel):
+    id: Optional[int]
+    name: str
+    count: int
+    hint: str
+    objective: str
+    timer: int
+    board: str
+    code_file: str
+    submit_function: str
+    owner_id: int
 
-class Challenge(Base):
-    __tablename__ = "challenges"
+    class Config:
+        from_attributes = True
 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    hint = Column(String, index=True)
-    objective = Column(String, index=True)
-    count = Column(Integer, index=True)
-    timer = Column(Integer, index=True)
-    board = Column(String, index=True)
-    code_file = Column(String, index=True)
-    submit_function = Column(String, index=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
 
-class Attempt(Base):
-    __tablename__ = "attempts"
+class User(BaseModel):
+    id: Optional[int]
+    name: str
+    email: str
+    password: str
 
-    id = Column(Integer, primary_key=True, index=True)
-    player_id = Column(Integer, ForeignKey("users.id"))
-    challenge_id = Column(Integer, ForeignKey("challenges.id"))
-    time_elapsed = Column(Integer, index=True)
-    score = Column(Integer, index=True)
+    class Config:
+        from_attributes = True

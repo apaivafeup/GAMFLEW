@@ -1,9 +1,10 @@
 """
 Seed database with mock data
 """
+import os
 import json
 
-import backend.db.models as models
+import models
 import loader
 
 import logging
@@ -12,9 +13,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 models_entries = [
-    (models.user.User, './mock/users.json'),
-    (models.challenge.Challenge, './mock/challenges.json'),
-    (models.attempt.Attempt, './mock/attempts.json'),
+    (models.User, "./backend/db/mock/users.json"),
+    (models.Challenge, "./backend/db/mock/challenges.json"),
+    (models.Attempt, "./backend/db/mock/attempts.json"),
 ]
  
 def main():
@@ -26,7 +27,7 @@ def main():
         with open(file, encoding='utf8') as json_file:
             data = json.load(json_file)
             for entry in data:
-                entries.append(model.parse_obj(entry))
+                entries.append(model.model_validate(entry))
         loader.load_data_best_effort(entries)
 
 if __name__ == '__main__':
