@@ -57,3 +57,4 @@ Checkers/*.unitypackage
  
 # Crashlytics generated file
 Checkers/crashlytics-build.properties
+*.pyc
