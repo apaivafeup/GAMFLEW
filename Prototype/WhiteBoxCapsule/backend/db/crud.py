@@ -1,47 +1,68 @@
 from sqlalchemy.orm import Session
 
-import models, schemas
+import schemas
 
 def get_user(db: Session, user_id: int):
-    return db.query(models.User).filter(models.User.id == user_id).first()
+    return db.query(schemas.User).filter(schemas.User.id == user_id).first()
 
 def get_user_by_email(db: Session, email: str):
-    return db.query(models.User).filter(models.User.email == email).first()
+    return db.query(schemas.User).filter(schemas.User.email == email).first()
 
 def get_users(db: Session, skip: int = 0, limit: int = 500):
-    return db.query(models.User).offset(skip).limit(limit).all()
+    return db.query(schemas.User).offset(skip).limit(limit).all()
 
 def create_user(db: Session, user: schemas.User):
-    db_user = models.User(
+    print(user)
+    db_user = schemas.User(
         name=user.name,
         email=user.email,
         password=user.password  # You may want to hash the password here
     )
+    print(db_user)
     db.add(db_user)
     db.commit()
-    db.refresh(db_user)
     return db_user
 
 def create_challenge(db: Session, challenge: schemas.Challenge):
-    db_challenge = models.Challenge(challenge)
+    db_challenge = schemas.Challenge(
+        name = challenge.name,
+        hint = challenge.hint,
+        objective = challenge.objective,
+        count = challenge.count,
+        timer = challenge.timer,
+        board = challenge.board,
+        code_file = challenge.code_file,
+        submit_function = challenge.submit_function,
+        owner_id = challenge.owner_id
+    )
     db.add(db_challenge)
     db.commit()
-    db.refresh(db_challenge)
     return db_challenge
 
 def create_attempt(db: Session, attempt: schemas.Attempt):
-    db_attempt = models.Attempt(attempt)
+    db_attempt = schemas.Attempt(
+        time_elapsed = attempt.time_elapsed,
+        score = attempt.score,
+        player_id = attempt.player_id,
+        challenge_id = attempt.challenge_id
+    )
     db.add(db_attempt)
     db.commit()
-    db.refresh(db_attempt)
     return db_attempt
 
 def get_challenges(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Challenge).offset(skip).limit(limit).all()
+    return db.query(schemas.Challenge).offset(skip).limit(limit).all()
 
 def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: int):
-    db_challenge = models.Challenge(**challenge.model_dump(), owner_id=user_id)
+    db_challenge = schemas.Challenge(**challenge.model_dump(), owner_id=user_id)
     db.add(db_challenge)
     db.commit()
-    db.refresh(db_challenge)
     return db_challenge
+
+def delete_user(db: Session, user_id: int):
+    user_to_delete = get_user(db, user_id)
+    if user_to_delete is None:
+        return None
+    db.delete(user_to_delete)
+    db.commit()
+    return user_to_delete

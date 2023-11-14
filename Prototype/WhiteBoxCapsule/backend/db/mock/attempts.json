@@ -1,7 +1,7 @@
 [{
     "id": 0,
-    "player_id": 0,
-    "challenge_id": 0,
+    "player_id": 1,
+    "challenge_id": 1,
     "time_elapsed": 100,
     "score": 100
 }]

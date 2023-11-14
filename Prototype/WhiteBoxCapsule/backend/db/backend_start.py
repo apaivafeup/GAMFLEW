@@ -4,4 +4,4 @@ import seed_db
 
 # db_op.main()
 schemas_definition.main()
-seed_db.main()
+# seed_db.main()

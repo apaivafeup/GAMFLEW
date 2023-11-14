@@ -3,7 +3,6 @@ Create schemas on the database
 """
 
 from db_op import init_db
-import schemas_references
 
 def init():
     try:
