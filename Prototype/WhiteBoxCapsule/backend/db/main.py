@@ -62,6 +62,11 @@ def read_challenges(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
     challenges = crud.get_challenges(db, skip=skip, limit=limit)
     return challenges
 
+@app.get("/challenges/{challenge_id}", response_model=models.Challenge)
+def read_challenge(challenge_id: int, db: Session = Depends(get_db)):
+    challenge = crud.get_challenge(db, challenge_id=challenge_id)
+    return challenge
+
 @app.delete('/user/{user_id}', status_code=200)
 def delete_user(user_id:int, db: Session = Depends(get_db)):
     user_to_delete = crud.get_user(db=db, user_id=user_id)

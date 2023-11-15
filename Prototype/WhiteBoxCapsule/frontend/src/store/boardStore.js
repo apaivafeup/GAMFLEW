@@ -74,7 +74,7 @@ export const boardStore = defineStore('boardStore', {
       }
     },
 
-    movePiece(x, y, undo = false) {
+    movePiece(x, y) {
       var logicalSpot
       if (x == -1 && y == -1) {
         logicalSpot = this.outOfBoundsState[this.currentKey]
@@ -197,6 +197,7 @@ export const boardStore = defineStore('boardStore', {
 
     pass() {
       this.passed = !this.passed
+      this.failed = false
     },
 
     fail() {
@@ -230,6 +231,6 @@ export const boardStore = defineStore('boardStore', {
       } else {
         clearInterval(this.interval)
       }
-    }
+    },
   }
 })

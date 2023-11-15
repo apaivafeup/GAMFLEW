@@ -19,7 +19,7 @@ app.use(pinia)
 // We'll talk about nested routes later.
 const routes = [
   { path: '/', component: Home },
-  { path: '/challenge/test', component: ChallengeTest }
+  { path: '/challenge/:id', component: ChallengeTest, props: true }
 ]
 
 // 3. Create the router instance and pass the `routes` option

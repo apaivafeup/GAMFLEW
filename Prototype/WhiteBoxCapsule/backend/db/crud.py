@@ -53,6 +53,9 @@ def create_attempt(db: Session, attempt: schemas.Attempt):
 def get_challenges(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Challenge).offset(skip).limit(limit).all()
 
+def get_challenge(db: Session, challenge_id: int):
+    return db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
+
 def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: int):
     db_challenge = schemas.Challenge(**challenge.model_dump(), owner_id=user_id)
     db.add(db_challenge)

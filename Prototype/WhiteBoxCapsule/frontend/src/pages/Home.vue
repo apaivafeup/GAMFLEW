@@ -14,9 +14,8 @@ export default {
   beforeMount() {},
 
   methods: {
-    testChallenge() {
-      console.log('Test Challenge')
-      this.$router.push('/challenge/test')
+    goToChallenge(id) {
+      this.$router.push('/challenge/' + id)
     },
 
     switchMenu(target) {
@@ -77,7 +76,7 @@ export default {
       class="col"
       style="display: flex; justify-content: center; align-items: center; flex-direction: column"
     >
-      <button class="menu-button" @click="testChallenge()" style="width: 500px">
+      <button class="menu-button" @click="goToChallenge(1)" style="width: 500px">
         Tutorial Challenge
       </button>
       <button

@@ -1,25 +1,3 @@
-<script>
-import { Challenge } from '../store/models/challenge'
-
-// JS
-import PieceStack from './PieceStack.vue'
-import { bluePos, redPos, boardStore } from '../store/boardStore'
-import PlayerBar from './PlayerBar.vue'
-
-export default {
-  props: {
-    challenge: Challenge
-  },
-
-  beforeMount() {
-    this.board = boardStore()
-  },
-
-  methods: {},
-  components: { PieceStack, PlayerBar }
-}
-</script>
-
 <template>
   <div style="display: flex; justify-content: right">
     <div style="flex-direction: column; justify-content: space-between; display: flex">
@@ -60,7 +38,7 @@ export default {
         <button
           class="button is-primary is-fullwidth"
           v-if="board.currentKey + 1 == challenge.count"
-          @click="challenge.submit(board)"
+          @click="submit(this.board)"
         >
           Submit
         </button>
@@ -119,9 +97,7 @@ export default {
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
       <div class="game-board" id="challenge-board">
-        <div
-          class="box"
-          v-for="index in 64"
+        <div class="box" v-for="index in 64"
           :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
         >
           <PieceStack
@@ -134,3 +110,38 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+import { Challenge } from '../store/models/challenge'
+
+// JS
+import PieceStack from './PieceStack.vue'
+import { boardStore } from '../store/boardStore'
+import PlayerBar from './PlayerBar.vue'
+
+export default {
+  props: {
+    challenge: Challenge
+  },
+
+  beforeMount() {
+    this.board = boardStore()
+  },
+
+  mounted() {
+    console.log("Challenge", this.challenge)
+  },
+
+  methods: {
+    submit(board) {
+      console.log("Current board:", board)
+
+      if (eval(this.challenge.submit))
+        this.board.pass()
+      else
+        this.board.fail()
+    }
+  },
+  components: { PieceStack }
+}
+</script>

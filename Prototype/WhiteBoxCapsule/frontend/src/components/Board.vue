@@ -1,17 +1,19 @@
 <script>
 import ChallengeCode from './ChallengeCode.vue'
 import BoardGrid from './BoardGrid.vue'
-import { testChallenge } from '../assets/challenges/test/testValues.js'
 import PlayerInfo from './PlayerInfo.vue'
 import { boardStore } from '../store/boardStore'
 import PlayerBar from './PlayerBar.vue'
+import { Challenge } from '../store/models/challenge'
 
 export default {
+  props: {
+    challenge: Challenge
+  },
   components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar },
   beforeMount() {
     this.board = boardStore()
     this.board.generateState()
-    this.testChallenge = testChallenge
   }
 }
 </script>
@@ -20,10 +22,10 @@ export default {
   <div id="board-row" class="justify-content-between" style="display: flex; flex-direction: row">
     <div class="col">
       <div class="alert alert-warning player-info">
-        {{ this.testChallenge.objective }}
+        {{ this.challenge.objective }}
       </div>
 
-      <ChallengeCode :challenge="this.testChallenge" />
+      <ChallengeCode :challenge="this.challenge" />
       <div class="alert alert-secondary player-info" v-if="board.timer > 100">
         <p style="margin: 0px">
           You will get a hint when the timer reaches <b>100 seconds</b>. Try your best, and if you
@@ -31,7 +33,7 @@ export default {
         </p>
       </div>
       <div class="alert alert-secondary player-info" v-else>
-        {{ this.testChallenge.hint }}
+        {{ this.challenge.hint }}
       </div>
       <PlayerInfo />
       <div v-if="board.failed" class="alert alert-danger player-info">
@@ -43,7 +45,7 @@ export default {
     </div>
 
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
-      <BoardGrid :challenge="this.testChallenge" />
+      <BoardGrid :challenge="this.challenge" />
       <PlayerBar />
     </div>
   </div>
