@@ -136,7 +136,8 @@ export default {
     submit(board) {
       console.log("Current board:", board)
 
-      if (eval(this.challenge.submit))
+      var f = new Function("board", this.challenge.submit)
+      if (f(board))
         this.board.pass()
       else
         this.board.fail()

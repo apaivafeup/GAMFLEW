@@ -39,7 +39,7 @@ export default {
         response.data.objective,
         response.data.hint,
         response.data.code_file,
-        new Function("board", response.data.submit_function)
+        response.data.submit_function
       )
     })
 

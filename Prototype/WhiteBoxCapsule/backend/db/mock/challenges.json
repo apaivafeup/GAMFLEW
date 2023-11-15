@@ -7,6 +7,6 @@
     "objective": "Statement coverage of line 6.",
     "board": "null",
     "code_file": "function test(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
-    "submit_function": "(board) => board.log[board.currentKey][board.log[board.currentKey].length - 1].from.x - board.log[board.currentKey][board.log[board.currentKey].length - 1].to.x > 2;",
+    "submit_function": "return board.log[board.currentKey].length - 1 > 0 && board.log[board.currentKey][board.log[board.currentKey].length - 1].from.x - board.log[board.currentKey][board.log[board.currentKey].length - 1].to.x > 2;",
     "owner_id": 1
 }]
