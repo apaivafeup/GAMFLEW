@@ -65,15 +65,15 @@ pre {
 
 .game-board {
   display: grid;
-  grid-template-columns: 65px 65px 65px 65px 65px 65px 65px 65px;
-  grid-template-rows: 65px 65px 65px 65px 65px 65px 65px 65px;
+  grid-template-columns: 55px 55px 55px 55px 55px 55px 55px 55px;
+  grid-template-rows: 55px 55px 55px 55px 55px 55px 55px 55px;
   justify-content: center;
 }
 
 .game-board-out {
   display: grid;
-  grid-template-columns: 65px;
-  grid-template-rows: 65px;
+  grid-template-columns: 55px;
+  grid-template-rows: 55px;
   justify-content: center;
 }
 
@@ -135,8 +135,8 @@ pre {
 
 .piece {
   border-radius: 100px;
-  height: 55px;
-  width: 55px;
+  height: 45px;
+  width: 45px;
   border: 1px solid var(--border-color);
 }
 
@@ -178,14 +178,14 @@ pre {
 
 .game-board-col-labels {
   display: grid;
-  grid-template-columns: 65px 65px 65px 65px 65px 65px 65px 65px;
+  grid-template-columns: 55px 55px 55px 55px 55px 55px 55px 55px;
   grid-template-rows: 25px;
   justify-content: center;
 }
 
 .game-board-row-labels {
   display: grid;
-  grid-template-rows: 65px 65px 65px 65px 65px 65px 65px 65px;
+  grid-template-rows: 55px 55px 55px 55px 55px 55px 55px 55px;
   grid-template-columns: 25px;
   justify-content: center;
 }
@@ -227,7 +227,7 @@ button.menu-button {
 
 .player-bar-box {
   width: 95.5%;
-  height: 100px;
+  height: 150px;
   border: 1px solid #cdcdcd;
 }
 
