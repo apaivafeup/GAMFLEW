@@ -117,7 +117,6 @@ import { Challenge } from '../store/models/challenge'
 // JS
 import PieceStack from './PieceStack.vue'
 import { boardStore } from '../store/boardStore'
-import PlayerBar from './PlayerBar.vue'
 
 export default {
   props: {
@@ -133,11 +132,15 @@ export default {
   },
 
   methods: {
-    submit(board) {
-      console.log("Current board:", board)
+    submit(input) {
 
-      var f = new Function("board", this.challenge.submit)
-      if (f(board))
+      if (input.log[input.currentKey].length <= 0) {
+        alert("You must make at least one move before submitting!")
+        return
+      }
+
+      //var f = new Function("board", this.challenge.submit)
+      if (eval(this.challenge.submit))
         this.board.pass()
       else
         this.board.fail()
