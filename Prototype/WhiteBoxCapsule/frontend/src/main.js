@@ -10,6 +10,13 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import ChallengeTest from './pages/ChallengeTest.vue'
 import Home from './pages/Home.vue'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faTrophy, faListAlt, faListCheck } from '@fortawesome/free-solid-svg-icons'
+
+/* add icons to the library */
+library.add(faTrophy, faListAlt, faListCheck)
+
 const pinia = createPinia()
 const app = createApp(App)
 app.use(pinia)
@@ -32,4 +39,4 @@ const router = createRouter({
 })
 
 app.use(router)
-app.component('CodeBlock', CodeBlock).mount('#app')
+app.component('CodeBlock', CodeBlock).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

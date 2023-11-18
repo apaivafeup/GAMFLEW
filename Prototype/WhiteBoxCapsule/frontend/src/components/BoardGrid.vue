@@ -97,7 +97,9 @@
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
       <div class="game-board" id="challenge-board">
-        <div class="box" v-for="index in 64"
+        <div
+          class="box"
+          v-for="index in 64"
           :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
         >
           <PieceStack
@@ -128,22 +130,19 @@ export default {
   },
 
   mounted() {
-    console.log("Challenge", this.challenge)
+    console.log('Challenge', this.challenge)
   },
 
   methods: {
     submit(input) {
-
       if (input.log[input.currentKey].length <= 0) {
-        alert("You must make at least one move before submitting!")
+        alert('You must make at least one move before submitting!')
         return
       }
 
       //var f = new Function("board", this.challenge.submit)
-      if (eval(this.challenge.submit))
-        this.board.pass()
-      else
-        this.board.fail()
+      if (eval(this.challenge.submit)) this.board.pass()
+      else this.board.fail()
     }
   },
   components: { PieceStack }

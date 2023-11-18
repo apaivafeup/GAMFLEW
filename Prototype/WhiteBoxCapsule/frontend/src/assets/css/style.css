@@ -231,6 +231,15 @@ button.menu-button {
   border: 1px solid #cdcdcd;
 }
 
+.player-bar-avatar {
+  width: 75px;
+  height: 75px;
+  border-radius: 100px;
+  border: 1px solid #cdcdcd;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
 .buttons-grid {
   display: grid;
   grid-template-columns: 85px 85px;

@@ -5,12 +5,13 @@ import { boardStore } from '../store/boardStore'
 import axios from 'axios'
 import { Challenge } from '../store/models/challenge'
 import Prism from 'prismjs'
+import { User } from '../store/models/user.js'
 </script>
 
 <template>
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
 
-  <Board :challenge="challenge" />
+  <Board :challenge="challenge" :user="user" />
 </template>
 
 <script>
@@ -23,13 +24,18 @@ export default {
 
   data() {
     return {
-      challenge: Challenge
+      challenge: Challenge,
+      user: User
     }
   },
 
   async beforeMount() {
+    var user_id
+
     await axios.get('http://localhost:8000/challenges/' + this.id).then((response) => {
       console.log(response.data)
+
+      user_id = response.data.owner_id
 
       this.challenge = new Challenge(
         response.data.name,
@@ -39,15 +45,22 @@ export default {
         response.data.objective,
         response.data.hint,
         response.data.code_file,
-        response.data.submit_function
+        response.data.submit_function,
+        response.data.owner_id
       )
+    })
+
+    axios.get('http://localhost:8000/users/' + user_id).then((response) => {
+      console.log(response.data)
+
+      this.user = new User(response.data.name, response.data.email, '../assets/pictures/avatar.png')
     })
 
     this.board = boardStore()
     this.board.timer = this.challenge.timer
     this.board.startTimer()
   },
-  mounted() { },
+  mounted() {},
 
   updated() {
     Prism.highlightAll()

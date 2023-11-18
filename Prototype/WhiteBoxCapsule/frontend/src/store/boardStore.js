@@ -231,6 +231,6 @@ export const boardStore = defineStore('boardStore', {
       } else {
         clearInterval(this.interval)
       }
-    },
+    }
   }
 })

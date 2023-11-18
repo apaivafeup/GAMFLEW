@@ -5,10 +5,12 @@ import PlayerInfo from './PlayerInfo.vue'
 import { boardStore } from '../store/boardStore'
 import PlayerBar from './PlayerBar.vue'
 import { Challenge } from '../store/models/challenge'
+import { User } from '../store/models/user.js'
 
 export default {
   props: {
-    challenge: Challenge
+    challenge: Challenge,
+    user: User
   },
   components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar },
   beforeMount() {
@@ -46,7 +48,7 @@ export default {
 
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
       <BoardGrid :challenge="this.challenge" />
-      <PlayerBar />
+      <PlayerBar :user="this.user" />
     </div>
   </div>
 </template>
