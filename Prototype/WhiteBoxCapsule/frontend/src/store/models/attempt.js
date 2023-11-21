@@ -15,6 +15,7 @@ export class Attempt {
     }
 
     setScore() {
+        //TODO: implement score calculation
         this.score = 0
     }
 

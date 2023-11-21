@@ -8,6 +8,7 @@ import Prism from 'prismjs'
 import { User } from '../store/models/user.js'
 import { Attempt } from '../store/models/attempt.js'
 import SubmitModal from '../components/modals/SubmitModal.vue'
+import FailModal from '../components/modals/FailModal.vue'
 </script>
 
 <template>
@@ -16,11 +17,12 @@ import SubmitModal from '../components/modals/SubmitModal.vue'
   <Board :challenge="challenge" :user="user" />
 
   <SubmitModal :placeholder="submit_placeholder" />
+  <FailModal :placeholder="fail_placeholder" />
 </template>
 
 <script>
 export default {
-  components: { ChallengeHeader, Board, SubmitModal },
+  components: { ChallengeHeader, Board, SubmitModal, FailModal },
 
   props: {
     id: Number
@@ -30,8 +32,8 @@ export default {
     return {
       challenge: Challenge,
       user: User,
-      submit_placeholder:
-        "Don't know what to write? Answer these: What was the specific objective to hit, beyond the target line? How did you hit it?"
+      submit_placeholder: "Don't know what to write? Answer these: What was the specific objective to hit, beyond the target line? How did you hit it?",
+      fail_placeholder: "Writing what you tried shows that it was an honest attempt! Can you identify the objective to hit, beyond the target line?"
     }
   },
 

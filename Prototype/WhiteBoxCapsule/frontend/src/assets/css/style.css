@@ -258,7 +258,9 @@ textarea {
 }
 
 #close-submit-modal:hover,
-#close-submit-modal:active {
+#close-submit-modal:active,
+#close-fail-modal:hover,
+#close-fail-modal:active {
   background-color: #dc3545 !important;
   color: white;
 }
@@ -278,7 +280,11 @@ textarea {
 }
 
 #submit-modal-button:hover,
-#submit-modal-button:active {
+#submit-modal-button:active,
+#fail-modal-button:hover,
+#fail-modal-button:active {
   background-color: #8adc6d !important;
-  color: var(--text-color);
+  color: white;
 }
+
+

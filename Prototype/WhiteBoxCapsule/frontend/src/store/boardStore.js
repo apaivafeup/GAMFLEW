@@ -198,11 +198,7 @@ export const boardStore = defineStore('boardStore', {
     },
 
     timeout() {
-      if (confirm('Time is up! Try again?')) {
-        window.location.reload()
-      } else {
-        window.location.href = '/'
-      }
+      document.getElementById('timeout-button').click()
     },
 
     updateInfoState() {

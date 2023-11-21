@@ -1,22 +1,23 @@
 <template>
-  <div ref="submitModal" class="modal fade" id="submit-modal" tabindex="-1">
+  <button hidden id="timeout-button" data-bs-toggle="modal" data-bs-target="#fail-modal" />
+  <div ref="failModal" class="modal fade" id="fail-modal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body">
-          <h2 style="text-align: center">That was great!</h2>
+          <h2 style="text-align: center">Time is up!</h2>
           <h5 style="text-align: center; font-weight: normal">
-            Explain what you did and why you think it worked.
+            Explain what you tried!
           </h5>
 
           <textarea
-            id="submit-modal-textarea"
+            id="fail-modal-textarea"
             style="width: 100%; resize: none"
             rows="10"
             :placeholder="placeholder"
           />
           <p style="text-align: center; font-size: 10px">
             <em>
-              Do know that, without submitting this explanation, your submission doesn't count!
+              Do know that, without submitting this explanation, this attempt won't count!
             </em>
           </p>
         </div>
@@ -24,16 +25,17 @@
           <button ref="close" type="button" data-bs-dismiss="modal" hidden />
           <button
             type="button"
-            id="close-submit-modal"
+            id="close-fail-modal"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
+            @click="window.location.reload()"
           >
             Cancel
           </button>
           <button
             type="button"
             class="btn btn-primary"
-            id="submit-modal-button"
+            id="fail-modal-button"
             @click="submitAttempt"
           >
             Submit
@@ -66,7 +68,7 @@ export default defineComponent({
 
   methods: {
     async submitAttempt() {
-      var comment = document.getElementById('submit-modal-textarea').value
+      var comment = document.getElementById('fail-modal-textarea').value
 
       if (comment == '') {
         alert('You must write a comment!')
@@ -83,7 +85,7 @@ export default defineComponent({
         score: this.board.attempt.score,
         player_id: this.board.attempt.player_id,
         challenge_id: this.board.attempt.challenge_id,
-        attempt_type: "pass",
+        attempt_type: "fail",
         comment: this.board.attempt.comment
       }
 
@@ -91,6 +93,15 @@ export default defineComponent({
                  .then((response) => {
               console.log(response)
       })
+
+      /* "id": 0,
+    "player_id": 1,
+    "challenge_id": 1,
+    "time_elapsed": 100,
+    "score": 100,
+    "attempt_type": "pass",
+    "comment": "Testing comments... I did very well!"
+    */
     }
   }
 })
