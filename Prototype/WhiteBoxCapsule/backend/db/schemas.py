@@ -1,7 +1,14 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.dialects.postgresql import ENUM
+from enum import Enum
 
 Base = declarative_base()
+
+class AttemptType(str, Enum):
+    """Enum for the type of attempt."""
+    PASS = "pass"
+    FAIL = "fail"
 
 class User(Base):
     __tablename__ = "users"
@@ -39,6 +46,8 @@ class Attempt(Base):
     score = Column(Integer, index=True)
     player_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     challenge_id = Column(Integer, ForeignKey("challenges.id"), nullable=False)
+    attempt_type = Column(ENUM(AttemptType), nullable=False, default=AttemptType.PASS, index=True)
+    comment = Column(String, index=True)
 
     user = relationship("User", back_populates="attempts")
     challenge = relationship("Challenge", back_populates="attempts")

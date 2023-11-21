@@ -141,8 +141,8 @@ pre {
 }
 
 .small {
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
 }
 
 .red {
@@ -243,4 +243,31 @@ button.menu-button {
 .buttons-grid {
   display: grid;
   grid-template-columns: 85px 85px;
+}
+
+#submit-modal {
+
+}
+
+textarea {
+  text-align: justify;
+  white-space: normal;
+}
+
+#close-submit-modal:hover, #close-submit-modal:active {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+.modal-content {
+  border-radius: 0px;
+}
+
+.btn.btn-secondary, .btn.btn-primary {
+  border-radius: 0px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  margin: 3px;
+  padding: 5px 10px;
+  color: var(--text-color);
 }

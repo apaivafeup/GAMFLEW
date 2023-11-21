@@ -12,11 +12,18 @@ import { User } from '../store/models/user.js'
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
 
   <Board :challenge="challenge" :user="user" />
+
+
+  <button type="button" data-bs-toggle="modal" data-bs-target="#submit-modal">Launch modal</button>
+
+  <SubmitModal />
 </template>
 
 <script>
+import SubmitModal from '../components/modals/SubmitModal.vue'
+
 export default {
-  components: { ChallengeHeader, Board },
+  components: { ChallengeHeader, Board, SubmitModal },
 
   props: {
     id: Number
@@ -33,8 +40,6 @@ export default {
     var user_id
 
     await axios.get('http://localhost:8000/challenges/' + this.id).then((response) => {
-      console.log(response.data)
-
       user_id = response.data.owner_id
 
       this.challenge = new Challenge(
@@ -51,8 +56,6 @@ export default {
     })
 
     axios.get('http://localhost:8000/users/' + user_id).then((response) => {
-      console.log(response.data)
-
       this.user = new User(response.data.name, response.data.email, '../assets/pictures/avatar.png')
     })
 

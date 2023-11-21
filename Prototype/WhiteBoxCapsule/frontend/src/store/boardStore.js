@@ -19,6 +19,7 @@ export const boardStore = defineStore('boardStore', {
       passed: Boolean,
       failed: Boolean,
       add: Boolean,
+      lastAdd: { x: -1, y: -1 },
       pause: Boolean
     }
   },
@@ -35,6 +36,24 @@ export const boardStore = defineStore('boardStore', {
       }
 
       piece.updateColor()
+
+      if (this.lastAdd.x != x && this.lastAdd.y != y) {
+        this.log[this.currentKey].push({
+          type: 'add',
+          to: { x: parseInt(x), y: parseInt(y) },
+          color: piece.color
+        })
+      } else {
+        this.log[this.currentKey].pop()
+
+        this.log[this.currentKey].push({
+          type: 'add',
+          to: { x: parseInt(x), y: parseInt(y) },
+          color: piece.color
+        })
+      }
+      
+      this.lastAdd = { x: parseInt(x), y: parseInt(y) }
     },
 
     selectPiece(x, y) {
@@ -88,6 +107,7 @@ export const boardStore = defineStore('boardStore', {
       this.selectedPiece.setEmpty()
 
       this.log[this.currentKey].push({
+        type: "move",
         from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
         to: { x: parseInt(x), y: parseInt(y) }
       })
@@ -198,6 +218,8 @@ export const boardStore = defineStore('boardStore', {
     pass() {
       this.passed = !this.passed
       this.failed = false
+
+      
     },
 
     fail() {

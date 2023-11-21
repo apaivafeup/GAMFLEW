@@ -2,12 +2,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './assets/css/style.css'
 import './assets/css/prism-line-numbers.css'
 
+import 'bootstrap'
+
 import CodeBlock from 'vue3-code-block'
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import ChallengeTest from './pages/ChallengeTest.vue'
+import Challenge from './pages/Challenge.vue'
 import Home from './pages/Home.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -26,7 +28,7 @@ app.use(pinia)
 // We'll talk about nested routes later.
 const routes = [
   { path: '/', component: Home },
-  { path: '/challenge/:id', component: ChallengeTest, props: true }
+  { path: '/challenge/:id', component: Challenge, props: true }
 ]
 
 // 3. Create the router instance and pass the `routes` option

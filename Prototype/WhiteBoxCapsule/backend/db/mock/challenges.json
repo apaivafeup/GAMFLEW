@@ -8,7 +8,7 @@
         "objective": "Statement coverage of line 6.",
         "board": "null",
         "code_file": "function test(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
-        "submit_function": "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) > 2",
+        "submit_function": "input.log[input.currentKey][input.log[input.currentKey].length - 1].type == 'move' ? Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) > 2 : false",
         "owner_id": 1
     }
 ]

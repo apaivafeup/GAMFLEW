@@ -44,7 +44,9 @@ def create_attempt(db: Session, attempt: schemas.Attempt):
         time_elapsed = attempt.time_elapsed,
         score = attempt.score,
         player_id = attempt.player_id,
-        challenge_id = attempt.challenge_id
+        challenge_id = attempt.challenge_id,
+        attempt_type = attempt.attempt_type, #attempt.pass or attempt.fail
+        comment = attempt.comment
     )
     db.add(db_attempt)
     db.commit()

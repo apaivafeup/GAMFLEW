@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
+from schemas import AttemptType
 
 class Attempt(BaseModel):
     id: Optional[int]
@@ -7,6 +8,8 @@ class Attempt(BaseModel):
     challenge_id: int
     time_elapsed: int
     score: int
+    attempt_type: AttemptType
+    comment: str
 
     class Config:
         from_attributes = True

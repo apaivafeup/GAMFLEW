@@ -20,33 +20,33 @@
         <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
           Retry
         </button>
-        <button class="button is-primary is-fullwidth" @click="board.generateState()">Reset</button>
+        <button class="button is-primary is-fullwidth" v-if="!board.passed" @click="board.generateState()">Reset</button>
         <button
           class="button is-primary is-fullwidth"
-          v-if="board.currentKey != 0"
+          v-if="board.currentKey != 0 && !board.passed"
           @click="board.previous()"
         >
           Previous
         </button>
         <button
           class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 != challenge.count"
+          v-if="board.currentKey + 1 != challenge.count && !board.passed"
           @click="board.next()"
         >
           Next
         </button>
         <button
           class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 == challenge.count"
+          v-if="board.currentKey + 1 == challenge.count && !board.passed"
           @click="submit(this.board)"
         >
           Submit
         </button>
-        <button class="button is-primary is-fullwidth add-button" @click="board.addMode()">
+        <button class="button is-primary is-fullwidth add-button" v-if="!board.passed" @click="board.addMode()">
           Add
         </button>
         <button class="button is-primary is-fullwidth" @click="board.exit()">Exit</button>
-        <button class="button is-primary is-fullwidth" @click="board.pauseMode()">
+        <button class="button is-primary is-fullwidth" v-if="!board.passed" @click="board.pauseMode()">
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
       </div>
@@ -141,8 +141,10 @@ export default {
       }
 
       //var f = new Function("board", this.challenge.submit)
-      if (eval(this.challenge.submit)) this.board.pass()
-      else this.board.fail()
+      if (eval(this.challenge.submit))
+        this.board.pass()
+      else
+        this.board.fail()
     }
   },
   components: { PieceStack }
