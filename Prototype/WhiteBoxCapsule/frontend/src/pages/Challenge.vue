@@ -32,8 +32,10 @@ export default {
     return {
       challenge: Challenge,
       user: User,
-      submit_placeholder: "Don't know what to write? Answer these: What was the specific objective to hit, beyond the target line? How did you hit it?",
-      fail_placeholder: "Writing what you tried shows that it was an honest attempt! Can you identify the objective to hit, beyond the target line?"
+      submit_placeholder:
+        "Don't know what to write? Answer these: What was the specific objective to hit, beyond the target line? How did you hit it?",
+      fail_placeholder:
+        'Writing what you tried shows that it was an honest attempt! Can you identify the objective to hit, beyond the target line?'
     }
   },
 

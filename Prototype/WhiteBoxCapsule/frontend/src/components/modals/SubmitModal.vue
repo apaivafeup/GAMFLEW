@@ -83,13 +83,12 @@ export default defineComponent({
         score: this.board.attempt.score,
         player_id: this.board.attempt.player_id,
         challenge_id: this.board.attempt.challenge_id,
-        attempt_type: "pass",
+        attempt_type: 'pass',
         comment: this.board.attempt.comment
       }
 
-      await axios.post('http://localhost:8000/create/attempt/', body)
-                 .then((response) => {
-              console.log(response)
+      await axios.post('http://localhost:8000/create/attempt/', body).then((response) => {
+        console.log(response)
       })
     }
   }

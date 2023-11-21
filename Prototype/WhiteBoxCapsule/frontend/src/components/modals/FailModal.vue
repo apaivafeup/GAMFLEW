@@ -5,9 +5,7 @@
       <div class="modal-content">
         <div class="modal-body">
           <h2 style="text-align: center">Time is up!</h2>
-          <h5 style="text-align: center; font-weight: normal">
-            Explain what you tried!
-          </h5>
+          <h5 style="text-align: center; font-weight: normal">Explain what you tried!</h5>
 
           <textarea
             id="fail-modal-textarea"
@@ -16,9 +14,7 @@
             :placeholder="placeholder"
           />
           <p style="text-align: center; font-size: 10px">
-            <em>
-              Do know that, without submitting this explanation, this attempt won't count!
-            </em>
+            <em> Do know that, without submitting this explanation, this attempt won't count! </em>
           </p>
         </div>
         <div class="modal-footer">
@@ -75,7 +71,7 @@ export default defineComponent({
         return
       }
 
-      //this.$refs.close.click()
+      //this.$refs.close.click() // Also worked for closing!
 
       this.board.attempt.comment = comment
 
@@ -85,23 +81,13 @@ export default defineComponent({
         score: this.board.attempt.score,
         player_id: this.board.attempt.player_id,
         challenge_id: this.board.attempt.challenge_id,
-        attempt_type: "fail",
+        attempt_type: 'fail',
         comment: this.board.attempt.comment
       }
 
-      await axios.post('http://localhost:8000/create/attempt/', body)
-                 .then((response) => {
-              console.log(response)
+      await axios.post('http://localhost:8000/create/attempt/', body).then((response) => {
+        console.log(response)
       })
-
-      /* "id": 0,
-    "player_id": 1,
-    "challenge_id": 1,
-    "time_elapsed": 100,
-    "score": 100,
-    "attempt_type": "pass",
-    "comment": "Testing comments... I did very well!"
-    */
     }
   }
 })
