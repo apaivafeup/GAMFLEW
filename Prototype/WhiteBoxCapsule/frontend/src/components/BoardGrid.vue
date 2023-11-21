@@ -20,7 +20,13 @@
         <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
           Retry
         </button>
-        <button class="button is-primary is-fullwidth" v-if="!board.passed" @click="board.generateState()">Reset</button>
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="!board.passed"
+          @click="board.generateState()"
+        >
+          Reset
+        </button>
         <button
           class="button is-primary is-fullwidth"
           v-if="board.currentKey != 0 && !board.passed"
@@ -38,15 +44,31 @@
         <button
           class="button is-primary is-fullwidth"
           v-if="board.currentKey + 1 == challenge.count && !board.passed"
-          @click="submit(this.board)"
+          @click="go(this.board)"
         >
-          Submit
+          Go!
         </button>
-        <button class="button is-primary is-fullwidth add-button" v-if="!board.passed" @click="board.addMode()">
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="board.passed"
+          data-bs-toggle="modal"
+          data-bs-target="#submit-modal"
+        >
+          Comment
+        </button>
+        <button
+          class="button is-primary is-fullwidth add-button"
+          v-if="!board.passed"
+          @click="board.addMode()"
+        >
           Add
         </button>
         <button class="button is-primary is-fullwidth" @click="board.exit()">Exit</button>
-        <button class="button is-primary is-fullwidth" v-if="!board.passed" @click="board.pauseMode()">
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="!board.passed"
+          @click="board.pauseMode()"
+        >
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
       </div>
@@ -114,13 +136,15 @@
 </template>
 
 <script>
-import { Challenge } from '../store/models/challenge'
+import PieceStack from './PieceStack.vue'
+import SubmitModal from './modals/SubmitModal.vue'
 
 // JS
-import PieceStack from './PieceStack.vue'
+import { Challenge } from '../store/models/challenge'
 import { boardStore } from '../store/boardStore'
 
 export default {
+  components: { PieceStack, SubmitModal },
   props: {
     challenge: Challenge
   },
@@ -134,17 +158,15 @@ export default {
   },
 
   methods: {
-    submit(input) {
+    go(input) {
       if (input.log[input.currentKey].length <= 0) {
         alert('You must make at least one move before submitting!')
         return
       }
 
       //var f = new Function("board", this.challenge.submit)
-      if (eval(this.challenge.submit))
-        this.board.pass()
-      else
-        this.board.fail()
+      if (eval(this.challenge.submit)) this.board.pass()
+      else this.board.fail()
     }
   },
   components: { PieceStack }

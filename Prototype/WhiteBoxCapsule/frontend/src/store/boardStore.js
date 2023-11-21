@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { Piece, Color } from './models/piece.js'
+import { Attempt } from './models/attempt.js'
 
 export const redPos = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23]
 export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
@@ -7,20 +8,28 @@ export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
 export const boardStore = defineStore('boardStore', {
   state: () => {
     return {
+      // Actual game state.
       timer: Number,
       interval: null,
       log: {},
       state: {},
       outOfBoundsState: {},
+      currentKey: 0,
+      infoState: String, // Displayables for the user
+
+      // Auxiliary state, for game mechanics (movement, selection, adding, etc).
       selectedPiece: null,
       selectedCoords: { x: -1, y: -1 },
-      currentKey: 0,
-      infoState: String,
+      lastAdd: { x: -1, y: -1 },
+
+      // Flags, for game mechanics / button panel.
       passed: Boolean,
       failed: Boolean,
       add: Boolean,
-      lastAdd: { x: -1, y: -1 },
-      pause: Boolean
+      pause: Boolean,
+
+      // Attempt state, for future submission.
+      attempt: Attempt
     }
   },
   actions: {
@@ -52,7 +61,7 @@ export const boardStore = defineStore('boardStore', {
           color: piece.color
         })
       }
-      
+
       this.lastAdd = { x: parseInt(x), y: parseInt(y) }
     },
 
@@ -107,7 +116,7 @@ export const boardStore = defineStore('boardStore', {
       this.selectedPiece.setEmpty()
 
       this.log[this.currentKey].push({
-        type: "move",
+        type: 'move',
         from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
         to: { x: parseInt(x), y: parseInt(y) }
       })
@@ -218,8 +227,6 @@ export const boardStore = defineStore('boardStore', {
     pass() {
       this.passed = !this.passed
       this.failed = false
-
-      
     },
 
     fail() {
@@ -240,6 +247,7 @@ export const boardStore = defineStore('boardStore', {
         }
 
         if (this.passed) {
+          this.attempt.setTimeElapsed(this.timer)
           clearInterval(this.interval)
         }
       }, 1000)

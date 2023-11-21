@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './assets/css/style.css'
 import './assets/css/prism-line-numbers.css'
 
+import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap'
 
 import CodeBlock from 'vue3-code-block'

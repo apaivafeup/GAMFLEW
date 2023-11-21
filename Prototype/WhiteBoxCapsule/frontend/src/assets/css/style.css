@@ -246,7 +246,10 @@ button.menu-button {
 }
 
 #submit-modal {
+}
 
+button {
+  font-size: small;
 }
 
 textarea {
@@ -254,7 +257,8 @@ textarea {
   white-space: normal;
 }
 
-#close-submit-modal:hover, #close-submit-modal:active {
+#close-submit-modal:hover,
+#close-submit-modal:active {
   background-color: #dc3545 !important;
   color: white;
 }
@@ -263,11 +267,18 @@ textarea {
   border-radius: 0px;
 }
 
-.btn.btn-secondary, .btn.btn-primary {
+.btn.btn-secondary,
+.btn.btn-primary {
   border-radius: 0px;
   background-color: var(--background-color);
   border: 1px solid var(--border-color);
   margin: 3px;
   padding: 5px 10px;
+  color: var(--text-color);
+}
+
+#submit-modal-button:hover,
+#submit-modal-button:active {
+  background-color: #8adc6d !important;
   color: var(--text-color);
 }

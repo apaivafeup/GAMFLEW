@@ -12,6 +12,11 @@ export default {
     challenge: Challenge,
     user: User
   },
+
+  data() {
+    return {}
+  },
+
   components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar },
   beforeMount() {
     this.board = boardStore()
@@ -42,7 +47,10 @@ export default {
         You didn't pass. There's still time, though! Keep trying.
       </div>
       <div v-else-if="board.passed" class="alert alert-success player-info">
-        You passed! Congratulations!
+        <p style="margin: 0px">
+          You passed, congratulations! To submit your solution, click the <b>Comment</b> button.
+          <em>It's required for your score!</em>
+        </p>
       </div>
     </div>
 
