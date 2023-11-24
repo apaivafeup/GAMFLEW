@@ -17,6 +17,10 @@ class User(Base):
     name = Column(String, unique=True, index=True)
     email = Column(String, unique=True, index=True)
     password = Column(String)
+    failed_attempts = Column(Integer, index=True)
+    successful_attempts = Column(Integer, index=True)
+    score = Column(Integer, index=True)
+    achievements = Column(Integer, index=True)
 
     attempts = relationship("Attempt", back_populates="user")
     challenges = relationship("Challenge", back_populates="user")

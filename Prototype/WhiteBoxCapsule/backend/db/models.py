@@ -35,6 +35,22 @@ class User(BaseModel):
     name: str
     email: str
     password: str
+    failed_attempts: int
+    successful_attempts: int
+    score: int
+    achievements: int
+
+    class Config:
+        from_attributes = True
+
+class UserBasics(BaseModel):
+    id: Optional[int]
+    name: str
+    email: str
+    failed_attempts: int
+    successful_attempts: int
+    score: int
+    achievements: int
 
     class Config:
         from_attributes = True
