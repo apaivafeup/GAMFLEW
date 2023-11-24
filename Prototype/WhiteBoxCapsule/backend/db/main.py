@@ -38,18 +38,20 @@ def create_challenge(challenge: models.Challenge, db: Session = Depends(get_db))
 ## Create Attempt
 @app.post("/create/attempt", response_model=models.Attempt)
 def create_attempt(attempt: models.Attempt, db: Session = Depends(get_db)):
-    return crud.create_attempt(db=db, attempt=attempt)
+    create_attempt = crud.create_attempt(db=db, attempt=attempt)
+    crud.update_user(db, attempt.player_id)
+    return create_attempt
 
 ## Get Users
-@app.get("/users/", response_model=list[models.User])
+@app.get("/users/", response_model=list[models.UserBasics])
 def read_users(skip: int = 0, limit: int = 500, db: Session = Depends(get_db)):
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
 
 ## Get specific user
-@app.get("/users/{user_id}", response_model=models.User)
+@app.get("/users/{user_id}", response_model=models.UserBasics)
 def read_user(user_id: int, db: Session = Depends(get_db)):
-    db_user = crud.get_user(db, user_id=user_id)
+    db_user = crud.get_user_basics(db, user_id=user_id)
     if db_user is None:
         raise HTTPException(status_code=404, detail="User not found")
     return db_user
