@@ -59,7 +59,8 @@ export default {
     })
 
     axios.get('http://localhost:8000/users/' + user_id).then((response) => {
-      this.user = new User(response.data.name, response.data.email, '../assets/pictures/avatar.png')
+      console.log("user", response.data);
+      this.user = new User(response.data.name, response.data.email, '../assets/pictures/avatar.png', response.data.score, response.data.successful_attempts, response.data.failed_attempts, response.data.achievements)
     })
 
     this.board = boardStore()

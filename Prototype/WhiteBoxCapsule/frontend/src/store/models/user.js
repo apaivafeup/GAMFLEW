@@ -1,10 +1,11 @@
 export class User {
-  constructor(name, email, avatar) {
+  constructor(name, email, avatar, score, failedAttempts, successfulAttempts, achievements) {
     this.name = name
     this.email = email
     this.avatar = avatar
-    this.achievements = 0
-    this.points = 0
-    this.attempts = 0
+    this.score = score
+    this.failedAttempts = failedAttempts
+    this.successfulAttempts = successfulAttempts
+    this.achievements = achievements
   }
 }
