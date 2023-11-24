@@ -1,6 +1,6 @@
 <template>
   <button hidden id="timeout-button" data-bs-toggle="modal" data-bs-target="#fail-modal" />
-  <div ref="failModal" class="modal fade" id="fail-modal" tabindex="-1">
+  <div ref="failModal" class="modal fade" id="fail-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body">
@@ -24,7 +24,7 @@
             id="close-fail-modal"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
-            @click="window.location.reload()"
+            @click="redirect()"
           >
             Cancel
           </button>
@@ -63,6 +63,10 @@ export default defineComponent({
   },
 
   methods: {
+    redirect() {
+      window.location.reload()
+    },
+
     async submitAttempt() {
       var comment = document.getElementById('fail-modal-textarea').value
 

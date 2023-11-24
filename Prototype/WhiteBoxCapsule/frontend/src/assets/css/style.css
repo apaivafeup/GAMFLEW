@@ -286,3 +286,9 @@ textarea {
   background-color: #8adc6d !important;
   color: white;
 }
+
+.alert-special {
+  color: #390c60;
+  background-color: #e1d1f1;
+  border-color: #d9beeb;
+}

@@ -28,28 +28,36 @@ export default {
 <template>
   <div id="board-row" class="justify-content-between" style="display: flex; flex-direction: row">
     <div class="col">
-      <div class="alert alert-warning player-info">
+      <div class="alert alert-warning player-info" v-if="!board.timeout">
         {{ this.challenge.objective }}
       </div>
 
       <ChallengeCode :challenge="this.challenge" />
-      <div class="alert alert-secondary player-info" v-if="board.timer > 100">
+      <div class="alert alert-secondary player-info" v-if="board.timer > 100 && !board.timeout && !board.passed">
         <p style="margin: 0px">
           You will get a hint when the timer reaches <b>100 seconds</b>. Try your best, and if you
           don't pass until then, know help is coming!
         </p>
       </div>
-      <div class="alert alert-secondary player-info" v-else>
+      <div class="alert alert-secondary player-info" v-else-if="!board.timeout && board.timer <= 100 && !board.passed">
         {{ this.challenge.hint }}
       </div>
-      <PlayerInfo />
-      <div v-if="board.failed" class="alert alert-danger player-info">
+      <PlayerInfo v-if="!board.passed && !board.timeout" />
+      <div v-if="board.timeout" class="alert alert-danger player-info">
+        Game over! You ran out of time. Try again!
+      </div>
+      <div v-if="board.failed && !board.timeout && !board.passed" class="alert alert-danger player-info">
         You didn't pass. There's still time, though! Keep trying.
       </div>
-      <div v-else-if="board.passed" class="alert alert-success player-info">
+      <div v-else-if="board.passed && !board.timeout" class="alert alert-success player-info">
         <p style="margin: 0px">
           You passed, congratulations! To submit your solution, click the <b>Comment</b> button.
           <em>It's required for your score!</em>
+        </p>
+      </div>
+      <div v-if="board.passed && !board.timeout" class="alert alert-special player-info">
+        <p style="margin: 0px">
+          A <b>special achievement</b> hint will be here!
         </p>
       </div>
     </div>

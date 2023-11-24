@@ -27,6 +27,7 @@ export const boardStore = defineStore('boardStore', {
       failed: Boolean,
       add: Boolean,
       pause: Boolean,
+      timeout: Boolean,
 
       // Attempt state, for future submission.
       attempt: Attempt
@@ -137,6 +138,7 @@ export const boardStore = defineStore('boardStore', {
       this.failed = false
       this.add = false
       this.pause = false
+      this.timeout = false
     },
 
     generateState() {
@@ -197,7 +199,8 @@ export const boardStore = defineStore('boardStore', {
       this.selectedCoords = { x: 0, y: 0 }
     },
 
-    timeout() {
+    gameOver() {
+      this.pause = true
       document.getElementById('timeout-button').click()
     },
 
@@ -223,6 +226,7 @@ export const boardStore = defineStore('boardStore', {
     pass() {
       this.passed = !this.passed
       this.failed = false
+      this.paused = true
     },
 
     fail() {
@@ -239,7 +243,7 @@ export const boardStore = defineStore('boardStore', {
 
         if (this.timer == 0) {
           clearInterval(this.interval)
-          this.timeout()
+          this.gameOver()
         }
 
         if (this.passed) {
