@@ -1,3 +1,4 @@
+import json
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -79,7 +80,7 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
         timer=challenge.timer,
         board=challenge.board,
         code_file=challenge.code_file,
-        submit_function=challenge.submit_function,
+        passing_criteria=challenge.passing_criteria,
         owner_id=challenge.owner_id
     )
     db.add(db_challenge)

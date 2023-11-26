@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import PickleType, Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy.dialects.postgresql import ENUM
 from enum import Enum
@@ -36,7 +36,7 @@ class Challenge(Base):
     timer = Column(Integer, index=True)
     board = Column(String, index=True, nullable=True)
     code_file = Column(String, index=True)
-    submit_function = Column(String, index=True)
+    passing_criteria = Column(PickleType)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
     user = relationship("User", back_populates="challenges")

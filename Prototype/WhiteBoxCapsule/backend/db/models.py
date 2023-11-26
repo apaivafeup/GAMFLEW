@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+import json
+from pydantic import Json, BaseModel
 from typing import Optional
 from schemas import AttemptType
 
@@ -23,7 +24,7 @@ class Challenge(BaseModel):
     timer: int
     board: str
     code_file: str
-    submit_function: str
+    passing_criteria: dict
     owner_id: int
 
     class Config:

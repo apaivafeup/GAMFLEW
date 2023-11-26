@@ -15,7 +15,7 @@ export class Attempt {
   }
 
   setScore() {
-    //TODO: implement score calculation
-    this.score = 0
+    //TODO: Better score calculation.
+    this.score = Math.sqrt(this.time / this.time_elapsed) * 100 + this.time_elapsed * 10
   }
 }

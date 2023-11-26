@@ -1,14 +1,35 @@
 [
     {
         "id": 0,
-        "name": "Challenge 0: Test",
+        "name": "Challenge 0.1: Tutorial",
         "count": 1,
         "timer": 300,
         "hint": "You may cover the statement through the true or false branch - only one is needed!",
         "objective": "Statement coverage of line 6.",
         "board": "null",
         "code_file": "function test(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
-        "submit_function": "input.log[input.currentKey][input.log[input.currentKey].length - 1].type == 'move' ? Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) > 2 : false",
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+                "input.log[input.currentKey].length > 0",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) > 2"
+            ],
+            "tests": [
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) > 2"
+            ]
+        },
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 0.2: Baby's First Decision Coverage Challenge",
+        "count": 1,
+        "timer": 300,
+        "hint": "There are two branches to cover. You must cover both!",
+        "objective": "Decision coverage of line 5.",
+        "board": "null",
+        "code_file": "function test(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
+        "passing_criteria": {},
         "owner_id": 1
     }
 ]

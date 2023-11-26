@@ -53,14 +53,22 @@ export default {
         response.data.objective,
         response.data.hint,
         response.data.code_file,
-        response.data.submit_function,
+        response.data.passing_criteria,
         response.data.owner_id
       )
     })
 
     axios.get('http://localhost:8000/users/' + user_id).then((response) => {
-      console.log("user", response.data);
-      this.user = new User(response.data.name, response.data.email, '../assets/pictures/avatar.png', response.data.score, response.data.successful_attempts, response.data.failed_attempts, response.data.achievements)
+      console.log('user', response.data)
+      this.user = new User(
+        response.data.name,
+        response.data.email,
+        '../assets/pictures/avatar.png',
+        response.data.score,
+        response.data.successful_attempts,
+        response.data.failed_attempts,
+        response.data.achievements
+      )
     })
 
     this.board = boardStore()

@@ -230,7 +230,7 @@ export const boardStore = defineStore('boardStore', {
     },
 
     fail() {
-      this.failed = !this.failed
+      this.failed = true
     },
 
     retry() {

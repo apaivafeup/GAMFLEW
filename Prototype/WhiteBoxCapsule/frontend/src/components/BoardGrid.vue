@@ -159,14 +159,37 @@ export default {
 
   methods: {
     go(input) {
-      if (input.log[input.currentKey].length <= 0) {
-        alert('You must make at least one move before submitting!')
-        return
+      for (var i = 0; i < this.challenge.submit.preconditions.length; i++) {
+        var precondition = this.challenge.submit.preconditions[i]
+        if (!eval(precondition)) {
+          this.board.fail()
+        }
       }
 
-      //var f = new Function("board", this.challenge.submit)
-      if (eval(this.challenge.submit)) this.board.pass()
-      else this.board.fail()
+      /*if (input.log[input.currentKey].length <= 0) {
+        alert('You must make at least one move before submitting!')
+        return
+      }*/
+      
+      var count = 0;
+      for (var i = 0; i < this.challenge.submit.tests.length; i++) {
+        var test = this.challenge.submit.tests[i]
+        if (!eval(test)) {
+          this.board.fail()
+        } else {
+          count++;
+        }
+      }
+
+      if (count == this.challenge.submit.tests.length) {
+        this.board.pass()
+      }
+
+      // var f = new Function("board", this.challenge.submit)
+      // if (eval(this.challenge.submit))
+      //   this.board.pass()
+      // else
+      //   this.board.fail()
     }
   },
   components: { PieceStack }
