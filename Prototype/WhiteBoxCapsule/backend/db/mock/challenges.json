@@ -26,8 +26,8 @@
         "timer": 300,
         "hint": "There are two branches to cover. You must cover both!",
         "objective": "Decision coverage of line 5.",
-        "board": "null",
-        "code_file": "function test(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
+        "board": "empty",
+        "code_file": "function test_zero_two(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
         "passing_criteria": {
             "type": "decision",
             "preconditions": [
@@ -37,6 +37,26 @@
             "tests": [
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y) < 2",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y) > 2"
+            ]
+        },
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 0.3: Red vs. Blue, Round 1",
+        "count": 1,
+        "timer": 200,
+        "hint": "You have two options to cover the objective. Also: don't get hung up on the function calls - they mean exactly what their name says!",
+        "objective": "Statement coverage of line 5.",
+        "board": "null",
+        "code_file": "function tutorial_zero_three(board) {\n\tvar a = count_red_pieces(board);\n\tvar b = count_blue_pieces(board);\n\n\tlet diff = Math.abs(a - b);\n\n\tswitch (diff) {\n\t\tcase 0, 1:\n\t\t\treturn true;\n\t\tcase 2, 3:\n\t\t\treturn false;\n\t\tdefault:\n\t\t\treturn true;\n\t}\n}",
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+                "utils.count_empty_spaces(input) != 64"
+            ],
+            "tests": [
+                "Math.abs(utils.count_blue_pieces(input) - utils.count_red_pieces(input)) == 0 || Math.abs(utils.count_blue_pieces(input) - utils.count_red_pieces(input)) == 1"
             ]
         },
         "owner_id": 1

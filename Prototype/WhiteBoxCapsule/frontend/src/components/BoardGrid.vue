@@ -108,6 +108,8 @@ import SubmitModal from './modals/SubmitModal.vue'
 import { Challenge } from '../store/models/challenge'
 import { boardStore } from '../store/boardStore'
 
+import * as utils from '../store/utils.js'
+
 export default {
   components: { PieceStack, SubmitModal },
   props: {
@@ -146,19 +148,16 @@ export default {
         var precondition = preconditions[i]
         if (!eval(precondition)) {
           this.board.fail()
+          return;
         }
       }
-
-      /*if (input.log[input.currentKey].length <= 0) {
-        alert('You must make at least one move before submitting!')
-        return
-      }*/
 
       var count = 0
       for (var i = 0; i < tests.length; i++) {
         var test = tests[i]
         if (!eval(test)) {
           this.board.fail()
+          return;
         } else {
           count++
         }
@@ -179,6 +178,7 @@ export default {
           var precondition = preconditions[i]
           if (!eval(precondition)) {
             this.board.fail()
+            return;
           }
         }
 
@@ -193,7 +193,7 @@ export default {
       }
 
       if (count == tests.length) {
-          this.board.pass()
+        this.board.pass()
       } else {
         this.board.fail()
       }
