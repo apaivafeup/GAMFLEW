@@ -79,6 +79,9 @@ export default {
       <button class="menu-button" @click="goToChallenge(1)" style="width: 500px">
         Tutorial Challenge
       </button>
+      <button class="menu-button" @click="goToChallenge(2)" style="width: 500px">
+        Tutorial Challenge 2
+      </button>
       <button
         class="menu-button"
         @click="switchMenu('main')"

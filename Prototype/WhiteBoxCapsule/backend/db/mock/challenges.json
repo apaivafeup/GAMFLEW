@@ -11,8 +11,7 @@
         "passing_criteria": {
             "type": "statement",
             "preconditions": [
-                "input.log[input.currentKey].length > 0",
-                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) > 2"
+                "input.log[input.currentKey].length > 0"
             ],
             "tests": [
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) > 2"
@@ -23,13 +22,23 @@
     {
         "id": 0,
         "name": "Challenge 0.2: Baby's First Decision Coverage Challenge",
-        "count": 1,
+        "count": 2,
         "timer": 300,
         "hint": "There are two branches to cover. You must cover both!",
         "objective": "Decision coverage of line 5.",
         "board": "null",
         "code_file": "function test(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
-        "passing_criteria": {},
+        "passing_criteria": {
+            "type": "decision",
+            "preconditions": [
+                "input.log[case_num].length > 0",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) > 2"
+            ],
+            "tests": [
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y) < 2",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y) > 2"
+            ]
+        },
         "owner_id": 1
     }
 ]
