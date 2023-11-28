@@ -82,8 +82,6 @@ export default defineComponent({
         return
       }
 
-      //this.$refs.close.click() // Also worked for closing!
-
       this.board.attempt.comment = comment
 
       var body = {
@@ -98,6 +96,8 @@ export default defineComponent({
 
       await axios.post('http://localhost:8000/create/attempt/', body).then((response) => {
         console.log(response)
+        this.board.submit()
+        this.$refs.close.click()
       })
     }
   }

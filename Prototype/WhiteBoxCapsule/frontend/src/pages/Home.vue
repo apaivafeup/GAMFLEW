@@ -8,9 +8,7 @@ export default {
   methods: {
     goToChallenge(id) {
       this.$router.push('/challenge/' + id)
-    },
-
-    
+    }
   },
   components: { Menu }
 }

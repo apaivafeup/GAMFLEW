@@ -77,6 +77,8 @@ export default defineComponent({
 
       this.board.attempt.comment = comment
 
+      this.board.attempt.setScore()
+
       var body = {
         id: 0,
         time_elapsed: this.board.attempt.time_elapsed,
@@ -88,7 +90,8 @@ export default defineComponent({
       }
 
       await axios.post('http://localhost:8000/create/attempt/', body).then((response) => {
-        console.log(response)
+        this.board.submit()
+        this.$refs.close.click()
       })
     }
   }

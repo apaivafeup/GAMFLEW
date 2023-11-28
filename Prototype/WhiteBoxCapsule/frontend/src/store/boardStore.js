@@ -28,6 +28,7 @@ export const boardStore = defineStore('boardStore', {
       add: Boolean,
       pause: Boolean,
       timeout: Boolean,
+      submitted: Boolean,
 
       // Attempt state, for future submission.
       attempt: Attempt,
@@ -142,6 +143,7 @@ export const boardStore = defineStore('boardStore', {
       this.add = false
       this.pause = false
       this.timeout = false
+      this.submitted = false
     },
 
     generateState() {
@@ -158,7 +160,7 @@ export const boardStore = defineStore('boardStore', {
           this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
         }
       }
-      
+
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
 
       this.log[this.currentKey] = []
@@ -171,7 +173,7 @@ export const boardStore = defineStore('boardStore', {
         for (let i = 1; i <= 8; i++) {
           this.state[this.currentKey].push([])
         }
-  
+
         var edge = true
         for (let i = 0; i < 8; i++) {
           for (let j = 0; j < 8; j++) {
@@ -179,14 +181,14 @@ export const boardStore = defineStore('boardStore', {
               this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
               continue
             }
-  
+
             var color
             if (i < 3) {
               color = Color.RED
             } else {
               color = Color.BLUE
             }
-  
+
             if (edge) {
               if (j % 2 == 0) this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
               else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
@@ -202,7 +204,7 @@ export const boardStore = defineStore('boardStore', {
         this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
 
         this.log[this.currentKey] = []
-      } 
+      }
     },
 
     previous() {
@@ -234,7 +236,8 @@ export const boardStore = defineStore('boardStore', {
       console.log(lastLog)
 
       if (lastLog.type == 'move') {
-        this.infoState = 'Moved (' +
+        this.infoState =
+          'Moved (' +
           lastLog.from.x +
           ', ' +
           lastLog.from.y +
@@ -245,11 +248,10 @@ export const boardStore = defineStore('boardStore', {
           ').'
       } else {
         if (lastLog.color != 'empty')
-          this.infoState = 'Added ' + lastLog.color + ' piece to (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
-        else
-          this.infoState = 'Removed piece from (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
+          this.infoState =
+            'Added ' + lastLog.color + ' piece to (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
+        else this.infoState = 'Removed piece from (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
       }
-
     },
 
     addMode() {
@@ -273,6 +275,10 @@ export const boardStore = defineStore('boardStore', {
 
     exit() {
       window.location.href = '/'
+    },
+
+    submit() {
+      this.submitted = true
     },
 
     startTimer() {

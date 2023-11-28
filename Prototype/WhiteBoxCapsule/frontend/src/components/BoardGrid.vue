@@ -20,37 +20,65 @@
         <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
           Retry
         </button>
-        <button class="button is-primary is-fullwidth" v-if="!board.passed" @click="board.generateState()">
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="!board.passed"
+          @click="board.generateState()"
+        >
           Reset
         </button>
-        <button class="button is-primary is-fullwidth" v-if="board.currentKey != 0 && !board.passed"
-          @click="board.previous()">
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="board.currentKey != 0 && !board.passed"
+          @click="board.previous()"
+        >
           Previous
         </button>
-        <button class="button is-primary is-fullwidth" v-if="board.currentKey + 1 != challenge.count && !board.passed"
-          @click="board.next()">
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="board.currentKey + 1 != challenge.count && !board.passed"
+          @click="board.next()"
+        >
           Next
         </button>
-        <button class="button is-primary is-fullwidth" v-if="board.currentKey + 1 == challenge.count && !board.passed"
-          @click="go(this.board)">
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="board.currentKey + 1 == challenge.count && !board.passed"
+          @click="go(this.board)"
+        >
           Go!
         </button>
-        <button class="button is-primary is-fullwidth" v-if="board.passed" data-bs-toggle="modal"
-          data-bs-target="#submit-modal">
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="board.passed && !board.submitted"
+          data-bs-toggle="modal"
+          data-bs-target="#submit-modal"
+        >
           Comment
         </button>
-        <button class="button is-primary is-fullwidth add-button" v-if="!board.passed" @click="board.addMode()">
+        <button
+          class="button is-primary is-fullwidth add-button"
+          v-if="!board.passed"
+          @click="board.addMode()"
+        >
           Add
         </button>
         <button class="button is-primary is-fullwidth" @click="board.exit()">Exit</button>
-        <button class="button is-primary is-fullwidth" v-if="!board.passed" @click="board.pauseMode()">
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="!board.passed"
+          @click="board.pauseMode()"
+        >
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
       </div>
     </div>
     <div style="align-content: center">
       <div class="game-board-labels">
-        <div class="game-board-label col" style="display: flex; justify-content: center; margin-top: 25px"></div>
+        <div
+          class="game-board-label col"
+          style="display: flex; justify-content: center; margin-top: 25px"
+        ></div>
       </div>
       <div class="game-board-row-labels">
         <div class="game-board-label row" style="align-self: center; justify-content: center">
@@ -91,9 +119,16 @@
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
       <div class="game-board" id="challenge-board">
-        <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
-          <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-            :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
+        <div
+          class="box"
+          v-for="index in 64"
+          :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+        >
+          <PieceStack
+            :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+            :x="Math.floor((index - 1) / 8).toString()"
+            :y="((index - 1) % 8).toString()"
+          />
         </div>
       </div>
     </div>
@@ -120,35 +155,33 @@ export default {
     this.board = boardStore()
   },
 
-  mounted() {
-
-  },
+  mounted() {},
 
   methods: {
     go(input) {
-      var type = this.challenge.submit.type;
+      var type = this.challenge.submit.type
 
       switch (type) {
-        case "statement":
-          this.goStatement(input);
-          break;
-        case "decision":
-          this.goDecision(input);
-          break;
+        case 'statement':
+          this.goStatement(input)
+          break
+        case 'decision':
+          this.goDecision(input)
+          break
         default:
-          console.error("Invalid submit type");
+          console.error('Invalid submit type')
       }
     },
 
     goStatement(input) {
       var preconditions = this.challenge.submit.preconditions,
-        tests = this.challenge.submit.tests;
+        tests = this.challenge.submit.tests
 
       for (var i = 0; i < preconditions.length; i++) {
         var precondition = preconditions[i]
         if (!eval(precondition)) {
           this.board.fail()
-          return;
+          return
         }
       }
 
@@ -157,7 +190,7 @@ export default {
         var test = tests[i]
         if (!eval(test)) {
           this.board.fail()
-          return;
+          return
         } else {
           count++
         }
@@ -172,22 +205,22 @@ export default {
 
     goDecision(input) {
       var preconditions = this.challenge.submit.preconditions,
-        tests = this.challenge.submit.tests;
+        tests = this.challenge.submit.tests
 
-      var count = 0;
+      var count = 0
       for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
         for (var i = 0; i < preconditions.length; i++) {
           var precondition = preconditions[i]
           if (!eval(precondition)) {
             this.board.fail()
-            return;
+            return
           }
         }
 
         for (var i = 0; i < tests.length; i++) {
           var test = tests[i]
           if (!eval(test)) {
-            continue;
+            continue
           } else {
             count++
           }
@@ -201,7 +234,6 @@ export default {
       } else {
         this.board.fail()
       }
-
     }
   },
   components: { PieceStack }

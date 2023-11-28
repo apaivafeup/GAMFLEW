@@ -5,9 +5,7 @@
 
 <script>
 export default {
-  beforeMount() {
-
-  },
+  beforeMount() {},
   components: {},
   methods: {
     toggleMode() {
