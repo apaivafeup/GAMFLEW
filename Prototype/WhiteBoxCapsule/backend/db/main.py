@@ -64,7 +64,7 @@ def create_challenge_for_user(
     return crud.create_user_challenge(db=db, challenge=challenge, user_id=user_id)
 
 ## Get challenges
-@app.get("/challenges/", response_model=list[models.Challenge])
+@app.get("/challenges/", response_model=list[models.ChallengeBasics])
 def read_challenges(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     challenges = crud.get_challenges(db, skip=skip, limit=limit)
     return challenges

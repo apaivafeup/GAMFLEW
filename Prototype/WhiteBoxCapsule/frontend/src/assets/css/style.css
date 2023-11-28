@@ -3,21 +3,26 @@
 :root {
   --background-color: #fff !important;
   --text-color: #333 !important;
+  --text-color-inv: #b8b8b8 !important;
   --border-color: #cdcdcd !important;
   --button-color: #333 !important;
   --box-border: 1px solid #cdcdcd !important;
+  --accordion-button: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
 }
 
 body {
   background-color: var(--background-color);
   color: var(--text-color);
+  overflow: hidden;
 }
 
 .dark-theme {
   --background-color: #333 !important;
   --text-color: #fff !important;
+  --text-color-inv: #cdcdcd !important;
   --border-color: #b8b8b8 !important;
-  --button-color: #fff !important
+  --button-color: #fff !important;
+  --accordion-button: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
 ;
 }
 
@@ -245,9 +250,6 @@ button.menu-button {
   grid-template-columns: 85px 85px;
 }
 
-#submit-modal {
-}
-
 button {
   font-size: small;
 }
@@ -291,4 +293,46 @@ textarea {
   color: #390c60;
   background-color: #e1d1f1;
   border-color: #d9beeb;
+}
+
+.accordion, .accordion-button, .accordion-button:focus, .accordion-body {
+  background-color: var(--background-color)!important;
+  color: var(--text-color)!important;
+}
+
+.accordion-button:not(.collapsed)::after,
+.accordion-button::after {
+  background-image: var(--accordion-button)!important;
+}
+
+.list-group-item:first-of-type {
+  margin-top: 9px;
+}
+
+.list-group-item {
+  background-color: var(--background-color)!important;
+  color: var(--text-color)!important;
+  border: transparent;
+  padding: 0px;
+  margin-top: 10px;
+}
+
+.challenge-card {
+  background-color: var(--background-color)!important;
+  color: var(--text-color)!important;
+  border-color: var(--border-color)!important;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.challenge-card .text-muted {
+  color: var(--text-color-inv)!important;
+}
+
+.challenge-card:hover {
+  background-color: #8adc6d !important;
+}
+
+.challenge-card:hover .text-muted {
+  color: var(--text-color) !important;
 }

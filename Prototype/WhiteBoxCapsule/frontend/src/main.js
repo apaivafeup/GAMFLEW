@@ -15,12 +15,12 @@ import Home from './pages/Home.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faTrophy, faListCheck, faAward } from '@fortawesome/free-solid-svg-icons'
+import { faTrophy, faListCheck, faAward, faClock } from '@fortawesome/free-solid-svg-icons'
 
 import './store/utils.js'
 
 /* add icons to the library */
-library.add(faTrophy, faListCheck, faAward)
+library.add(faTrophy, faListCheck, faAward, faClock)
 
 const pinia = createPinia()
 const app = createApp(App)

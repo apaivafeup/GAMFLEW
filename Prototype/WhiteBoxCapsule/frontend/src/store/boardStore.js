@@ -228,6 +228,8 @@ export const boardStore = defineStore('boardStore', {
     },
 
     updateInfoState() {
+      this.failed = false
+
       var lastLog = this.log[this.currentKey][this.log[this.currentKey].length - 1]
       console.log(lastLog)
 

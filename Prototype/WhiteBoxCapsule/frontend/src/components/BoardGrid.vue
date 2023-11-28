@@ -164,6 +164,8 @@ export default {
       }
 
       if (count == tests.length) {
+        this.board.addMode = false
+        this.board.pauseMode()
         this.board.pass()
       }
     },
@@ -193,6 +195,8 @@ export default {
       }
 
       if (count == tests.length) {
+        this.board.addMode = false
+        this.board.pauseMode()
         this.board.pass()
       } else {
         this.board.fail()

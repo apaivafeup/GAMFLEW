@@ -30,6 +30,7 @@ class Challenge(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String, index=True)
+    description = Column(String, index=True)
     hint = Column(String, index=True)
     objective = Column(String, index=True)
     count = Column(Integer, index=True)

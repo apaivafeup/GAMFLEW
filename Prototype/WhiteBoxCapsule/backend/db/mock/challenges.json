@@ -2,11 +2,12 @@
     {
         "id": 0,
         "name": "Challenge 0.1: Tutorial",
+        "description": "This challenge is a tutorial. It will teach you how to play the game!",
         "count": 1,
         "timer": 300,
         "hint": "You may cover the statement through the true or false branch - only one is needed!",
         "objective": "Statement coverage of line 6.",
-        "board": "null",
+        "board": "default",
         "code_file": "function test(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
         "passing_criteria": {
             "type": "statement",
@@ -22,11 +23,12 @@
     {
         "id": 0,
         "name": "Challenge 0.2: Baby's First Decision Coverage Challenge",
+        "description": "This challenge is a bit more difficult than the first one... but you can take it, right?",
         "count": 2,
         "timer": 300,
         "hint": "There are two branches to cover. You must cover both!",
         "objective": "Decision coverage of line 5.",
-        "board": "null",
+        "board": "default",
         "code_file": "function test_zero_two(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
         "passing_criteria": {
             "type": "decision",
@@ -44,6 +46,7 @@
     {
         "id": 0,
         "name": "Challenge 0.3: Red vs. Blue, Round 1",
+        "description": "In a game of Checkers, only one color can win. In this challenge, you'll explore a new way to interact with the board.",
         "count": 1,
         "timer": 200,
         "hint": "You can only cover the objective in one way. Also: don't get hung up on the function calls - they mean exactly what their name says!",
@@ -62,3 +65,4 @@
         "owner_id": 1
     }
 ]
+

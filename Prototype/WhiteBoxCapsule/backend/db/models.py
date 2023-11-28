@@ -18,6 +18,7 @@ class Attempt(BaseModel):
 class Challenge(BaseModel):
     id: Optional[int]
     name: str
+    description: str
     count: int
     hint: str
     objective: str
@@ -25,6 +26,18 @@ class Challenge(BaseModel):
     board: str
     code_file: str
     passing_criteria: dict
+    owner_id: int
+
+    class Config:
+        from_attributes = True
+
+
+class ChallengeBasics(BaseModel):
+    id: Optional[int]
+    name: str
+    description: str
+    passing_criteria: dict
+    timer: int
     owner_id: int
 
     class Config:
