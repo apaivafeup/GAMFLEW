@@ -73,6 +73,7 @@ export default {
 
     this.board = boardStore()
     this.board.boardState = this.challenge.board
+    this.board.setState()
 
     this.board.attempt = new Attempt(user_id, this.id, this.challenge.timer, 0, 0, null, null)
 
