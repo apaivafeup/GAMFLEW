@@ -269,6 +269,10 @@ export const boardStore = defineStore('boardStore', {
       window.location.reload()
     },
 
+    exit() {
+      window.location.href = '/'
+    },
+
     startTimer() {
       this.interval = setInterval(() => {
         this.timer--
