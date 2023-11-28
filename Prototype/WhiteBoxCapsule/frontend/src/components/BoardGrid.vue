@@ -118,10 +118,14 @@ export default {
 
   beforeMount() {
     this.board = boardStore()
+
+    if (this.board.boardState != '') {
+      this.board.setState()
+    }
   },
 
   mounted() {
-    console.log('Challenge', this.challenge)
+
   },
 
   methods: {

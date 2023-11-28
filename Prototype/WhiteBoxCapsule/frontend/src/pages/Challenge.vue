@@ -59,7 +59,7 @@ export default {
     })
 
     axios.get('http://localhost:8000/users/' + user_id).then((response) => {
-      console.log('user', response.data)
+
       this.user = new User(
         response.data.name,
         response.data.email,
@@ -72,6 +72,7 @@ export default {
     })
 
     this.board = boardStore()
+    this.board.boardState = this.challenge.board
 
     this.board.attempt = new Attempt(user_id, this.id, this.challenge.timer, 0, 0, null, null)
 

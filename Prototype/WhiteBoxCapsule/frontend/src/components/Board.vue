@@ -20,7 +20,7 @@ export default {
   components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar },
   beforeMount() {
     this.board = boardStore()
-    this.board.generateState(this.challenge.board)
+    this.board.generateState()
   }
 }
 </script>

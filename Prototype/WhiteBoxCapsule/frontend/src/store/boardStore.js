@@ -63,6 +63,8 @@ export const boardStore = defineStore('boardStore', {
         })
       }
 
+      this.updateInfoState()
+
       this.lastAdd = { x: parseInt(x), y: parseInt(y) }
     },
 
@@ -141,44 +143,51 @@ export const boardStore = defineStore('boardStore', {
       this.timeout = false
     },
 
-    generateState(state = "null") {
+    generateState() {
       console.log('generating state')
-
 
       this.emptyState()
 
-      if (state == "null") {
-        for (let i = 1; i <= 8; i++) {
-          this.state[this.currentKey].push([])
-        }
+      for (let i = 1; i <= 8; i++) {
+        this.state[this.currentKey].push([])
+      }
 
-        var edge = true
-        for (let i = 0; i < 8; i++) {
-          for (let j = 0; j < 8; j++) {
-            if (i == 3 || i == 4) {
-              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-              continue
-            }
-
-            var color
-            if (i < 3) {
-              color = Color.RED
-            } else {
-              color = Color.BLUE
-            }
-
-            if (edge) {
-              if (j % 2 == 0) this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
-              else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-            } else {
-              if (j % 2 == 0)
-                this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-              else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
-            }
+      var edge = true
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          if (i == 3 || i == 4) {
+            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+            continue
           }
-          edge = !edge
+
+          var color
+          if (i < 3) {
+            color = Color.RED
+          } else {
+            color = Color.BLUE
+          }
+
+          if (edge) {
+            if (j % 2 == 0) this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
+            else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+          } else {
+            if (j % 2 == 0)
+              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+            else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
+          }
         }
-      } else if (state == "empty") {
+        edge = !edge
+      }
+
+      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
+
+      this.log[this.currentKey] = []
+    },
+
+    setState() {
+      if (this.boardState == 'empty') {
+        this.emptyState()
+        
         for (let i = 1; i <= 8; i++) {
           this.state[this.currentKey].push([])
         }
@@ -189,10 +198,6 @@ export const boardStore = defineStore('boardStore', {
           }
         }
       }
-
-      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
-
-      this.log[this.currentKey] = []
     },
 
     previous() {
@@ -219,16 +224,25 @@ export const boardStore = defineStore('boardStore', {
 
     updateInfoState() {
       var lastLog = this.log[this.currentKey][this.log[this.currentKey].length - 1]
-      this.infoState =
-        '  Moved (' +
-        lastLog.from.x +
-        ', ' +
-        lastLog.from.y +
-        ') to (' +
-        lastLog.to.x +
-        ', ' +
-        lastLog.to.y +
-        ').'
+      console.log(lastLog)
+
+      if (lastLog.type == 'move') {
+        this.infoState = 'Moved (' +
+          lastLog.from.x +
+          ', ' +
+          lastLog.from.y +
+          ') to (' +
+          lastLog.to.x +
+          ', ' +
+          lastLog.to.y +
+          ').'
+      } else {
+        if (lastLog.color != 'empty')
+          this.infoState = 'Added ' + lastLog.color + ' piece to (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
+        else
+          this.infoState = 'Removed piece from (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
+      }
+
     },
 
     addMode() {
