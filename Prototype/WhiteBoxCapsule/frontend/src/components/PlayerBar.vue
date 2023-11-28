@@ -31,7 +31,7 @@
               flex-direction: row;
               justify-content: end;
               font-weight: normal;
-              color: black;
+              color: var(--text-color);
               font-size: 14px;
             "
           >
@@ -50,7 +50,7 @@
               flex-direction: row;
               justify-content: end;
               font-weight: normal;
-              color: black;
+              color: var(--text-color);
               font-size: 14px;
             "
           >
@@ -69,7 +69,7 @@
               flex-direction: row;
               justify-content: end;
               font-weight: normal;
-              color: black;
+              color: var(--text-color);
               font-size: 14px;
             "
           >
