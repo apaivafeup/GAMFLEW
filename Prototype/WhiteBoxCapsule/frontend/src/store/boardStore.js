@@ -218,6 +218,7 @@ export const boardStore = defineStore('boardStore', {
 
       if (this.state[this.currentKey] == undefined) {
         this.generateState()
+        this.setState()
       }
 
       this.selectedPiece = null

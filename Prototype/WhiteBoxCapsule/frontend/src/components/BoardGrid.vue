@@ -207,7 +207,7 @@ export default {
       var preconditions = this.challenge.submit.preconditions,
         tests = this.challenge.submit.tests
 
-      var count = 0
+      var passed = Array(tests.length).fill(false)
       for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
         for (var i = 0; i < preconditions.length; i++) {
           var precondition = preconditions[i]
@@ -222,12 +222,12 @@ export default {
           if (!eval(test)) {
             continue
           } else {
-            count++
+            passed[i] = true
           }
         }
       }
 
-      if (count == tests.length) {
+      if (!passed.includes(false)) {
         this.board.addMode = false
         this.board.pauseMode()
         this.board.pass()
