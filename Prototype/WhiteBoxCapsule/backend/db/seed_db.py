@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 models_entries = [
     (models.User, "./backend/db/mock/users.json"),
+    (models.CodeFile, "./backend/db/mock/code_files.json"),
     (models.Challenge, "./backend/db/mock/challenges.json"),
     (models.Attempt, "./backend/db/mock/attempts.json"),
 ]

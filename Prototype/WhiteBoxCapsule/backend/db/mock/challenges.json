@@ -1,14 +1,14 @@
 [
     {
         "id": 0,
-        "name": "Challenge 0.1: Tutorial",
+        "name": "Challenge 1.1: Baby's First Statement Coverage Challenge",
         "description": "This challenge is a tutorial. It will teach you how to play the game!",
         "count": 1,
         "timer": 300,
         "hint": "You may cover the statement through the true or false branch - only one is needed!",
         "objective": "Statement coverage of line 6.",
         "board": "default",
-        "code_file": "function test(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
+        "code_file": 1,
         "passing_criteria": {
             "type": "statement",
             "preconditions": [
@@ -22,14 +22,14 @@
     },
     {
         "id": 0,
-        "name": "Challenge 0.2: Baby's First Decision Coverage Challenge",
+        "name": "Challenge 1.2: Baby's First Decision Coverage Challenge",
         "description": "This challenge is a bit more difficult than the first one... but you can take it, right?",
         "count": 2,
         "timer": 300,
         "hint": "There are two branches to cover. You must cover both!",
         "objective": "Decision coverage of line 5.",
         "board": "default",
-        "code_file": "function test_zero_two(from, to) {\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
+        "code_file": 1,
         "passing_criteria": {
             "type": "decision",
             "preconditions": [
@@ -45,14 +45,14 @@
     },
     {
         "id": 0,
-        "name": "Challenge 0.3: Red vs. Blue, Round 1",
+        "name": "Challenge 2.1: Red vs. Blue, Round 1",
         "description": "In a game of Checkers, only one color can win. In this challenge, you'll explore a new way to interact with the board.",
         "count": 1,
         "timer": 200,
         "hint": "You can only cover the objective in one way. Also: don't get hung up on the function calls - they mean exactly what their name says!",
         "objective": "Statement coverage of line 5.",
         "board": "empty",
-        "code_file": "function tutorial_zero_three(board) {\n\tvar a = count_red_pieces(board);\n\tvar b = count_blue_pieces(board);\n\n\tlet diff = Math.abs(a - b);\n\n\tswitch (diff) {\n\t\tcase 1:\n\t\t\treturn true;\n\t\tcase 2, 3:\n\t\t\treturn false;\n\t\tdefault:\n\t\t\treturn true;\n\t}\n}",
+        "code_file": 2,
         "passing_criteria": {
             "type": "statement",
             "preconditions": [

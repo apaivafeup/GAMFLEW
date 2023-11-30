@@ -24,7 +24,7 @@ class Challenge(BaseModel):
     objective: str
     timer: int
     board: str
-    code_file: str
+    code_file: int
     passing_criteria: dict
     owner_id: int
 
@@ -36,6 +36,7 @@ class ChallengeBasics(BaseModel):
     id: Optional[int]
     name: str
     description: str
+    code_file: str
     passing_criteria: dict
     timer: int
     owner_id: int
@@ -65,6 +66,14 @@ class UserBasics(BaseModel):
     successful_attempts: int
     score: int
     achievements: int
+
+    class Config:
+        from_attributes = True
+
+class CodeFile(BaseModel):
+    id: Optional[int]
+    name: str
+    content: str
 
     class Config:
         from_attributes = True

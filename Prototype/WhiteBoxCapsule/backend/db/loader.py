@@ -10,8 +10,9 @@ from database import SessionLocal
 
 create_op = {
     str(models.User): crud.create_user,
+    str(models.CodeFile): crud.create_code_file,
     str(models.Challenge): crud.create_challenge,
-    str(models.Attempt): crud.create_attempt
+    str(models.Attempt): crud.create_attempt,
 }
 
 def load_data(entries: List[BaseModel]) -> None:

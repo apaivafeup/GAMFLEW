@@ -25,6 +25,15 @@ class User(Base):
     attempts = relationship("Attempt", back_populates="user")
     challenges = relationship("Challenge", back_populates="user")
 
+class CodeFile(Base):
+    __tablename__ = "code_file"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, index=True)
+    content = Column(String, index=True)
+
+    challenges = relationship("Challenge", back_populates="code_files")
+
 class Challenge(Base):
     __tablename__ = "challenges"
 
@@ -36,12 +45,13 @@ class Challenge(Base):
     count = Column(Integer, index=True)
     timer = Column(Integer, index=True)
     board = Column(String, index=True, nullable=True)
-    code_file = Column(String, index=True)
+    code_file = Column(Integer, ForeignKey("code_file.id"), nullable=False, index=True)
     passing_criteria = Column(PickleType)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
     user = relationship("User", back_populates="challenges")
     attempts = relationship("Attempt", back_populates="challenge")
+    code_files = relationship("CodeFile", back_populates="challenges")
 
 class Attempt(Base):
     __tablename__ = "attempts"

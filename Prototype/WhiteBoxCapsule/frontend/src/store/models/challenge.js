@@ -1,12 +1,12 @@
 export class Challenge {
-  constructor(name, count, timer, board, objective, hint, file, submit, owner) {
+  constructor(name, count, timer, board, objective, hint, code_file, submit, owner) {
     this.name = name
     this.count = count
     this.timer = timer
     this.board = board
     this.objective = objective
     this.hint = hint
-    this.file = file
+    this.code_file = file
     this.submit = submit
     this.owner = owner
   }

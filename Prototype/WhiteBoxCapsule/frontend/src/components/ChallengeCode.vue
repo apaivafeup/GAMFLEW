@@ -5,7 +5,7 @@
     max-height="625px"
     data-line="1"
     :prismjs="true"
-    :code="challenge.file"
+    :code="code_file.content"
     lang="javascript"
     prism-plugin
     prism-js
@@ -26,12 +26,12 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 </script>
 
 <script>
-import { Challenge } from '../store/models/challenge'
+import { CodeFile } from '../store/models/code_file'
 
 export default {
   components: {},
   props: {
-    challenge: Challenge
+    code_file: CodeFile
   }
 }
 </script>

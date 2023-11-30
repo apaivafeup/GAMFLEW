@@ -88,6 +88,15 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
     db.commit()
     return db_challenge
 
+def create_code_file(db: Session, code_file: schemas.CodeFile):
+    db_code_file = schemas.CodeFile(
+        name=code_file.name,
+        content=code_file.content
+    )
+    db.add(db_code_file)
+    db.commit()
+    return db_code_file
+
 def create_attempt(db: Session, attempt: schemas.Attempt):
     db_attempt = schemas.Attempt(
         time_elapsed=attempt.time_elapsed,
@@ -106,6 +115,25 @@ def create_attempt(db: Session, attempt: schemas.Attempt):
 def get_challenges(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Challenge).offset(skip).limit(limit).all()
 
+def get_challenges_by_code(db: Session):
+    challenges = db.query(schemas.Challenge).order_by(schemas.Challenge.code_file).all()
+
+    code_file = ''
+    challenges_by_code = {}
+    for v in challenges:
+        if (code_file != v.code_file):
+            code_file = v.code_file
+            challenges_by_code[code_file] = []
+        
+        challenges_by_code[code_file].append(v)
+    
+    return challenges_by_code
+
+def get_code_files(db: Session):
+    return db.query(schemas.CodeFile).all()
+
+def get_code_file(db: Session, code_file_id: int):
+    return db.query(schemas.CodeFile).filter(schemas.CodeFile.id == code_file_id).first()
 
 def get_challenge(db: Session, challenge_id: int):
     return db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()

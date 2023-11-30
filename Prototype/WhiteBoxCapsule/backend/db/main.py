@@ -63,6 +63,22 @@ def create_challenge_for_user(
 ):
     return crud.create_user_challenge(db=db, challenge=challenge, user_id=user_id)
 
+@app.get("/challenges-by-code/")
+def read_challenges_by_code(db: Session = Depends(get_db)):
+    challenges = crud.get_challenges_by_code(db)
+    return challenges
+
+@app.get("/code-files/", response_model=list[models.CodeFile])
+def read_code_files(db: Session = Depends(get_db)):
+    code_files = crud.get_code_files(db)
+    return code_files
+
+## Get specific code file
+@app.get("/code-files/{code_file_id}", response_model=models.CodeFile)
+def read_code_files(code_file_id: int, db: Session = Depends(get_db)):
+    code_files = crud.get_code_file(db, code_file_id)
+    return code_files
+
 ## Get challenges
 @app.get("/challenges/", response_model=list[models.ChallengeBasics])
 def read_challenges(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):

@@ -4,77 +4,33 @@
     style="display: flex; justify-content: center; align-items: center; flex-direction: column"
   >
     <div class="accordion" id="accordionExample" style="width: 1000px">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
+      <div class="accordion-item" v-for="code_file in code_files">
+        <h2 class="accordion-header" :id="'heading' + code_file.id">
           <button
             class="accordion-button"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
+            :data-bs-target="'#collapse' + code_file.id"
             aria-expanded="true"
-            aria-controls="collapseOne"
+            :aria-controls="'collapse' + code_file.id"
           >
-            Module 0: First Steps
+            {{ code_file.name }}
           </button>
         </h2>
         <div
-          id="collapseOne"
+          :id="'collapse' + code_file.id"
           class="accordion-collapse collapse show"
-          aria-labelledby="headingOne"
+          :aria-labelledby="'heading' + code_file.id"
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
             <ul class="list-group">
               <!--TODO: Make this organized by module. -->
-              <li class="list-group-item" v-for="challenge in challenges">
+              <li class="list-group-item" v-for="challenge in challenges[code_file.id]" :key="challenge.id">
                 <ChallengeCard :challenge="challenge" />
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
-            aria-expanded="false"
-            aria-controls="collapseTwo"
-          >
-            Module 1: TBD
-          </button>
-        </h2>
-        <div
-          id="collapseTwo"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingTwo"
-          data-bs-parent="#accordionExample"
-        >
-          <div class="accordion-body"></div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseThree"
-            aria-expanded="false"
-            aria-controls="collapseThree"
-          >
-            Module 2: TBD
-          </button>
-        </h2>
-        <div
-          id="collapseThree"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingThree"
-          data-bs-parent="#accordionExample"
-        >
-          <div class="accordion-body"></div>
         </div>
       </div>
     </div>
@@ -90,14 +46,20 @@ export default defineComponent({
   components: { ChallengeCard },
 
   async beforeMount() {
-    await axios.get('http://localhost:8000/challenges/').then((response) => {
+    await axios.get("http://localhost:8000/code-files/").then((response) => {
+      this.code_files = response.data
+    })
+
+
+    await axios.get('http://localhost:8000/challenges-by-code/').then((response) => {
       this.challenges = response.data
     })
   },
 
   data() {
     return {
-      challenges: []
+      challenges: {},
+      code_files: []
     }
   }
 })
