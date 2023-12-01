@@ -19,14 +19,18 @@
         </h2>
         <div
           :id="'collapse' + code_file.id"
-          class="accordion-collapse collapse show"
+          :class="code_files.indexOf(code_file) == 0 ? 'accordion-collapse collapse show' : 'accordion-collapse collapse'"
           :aria-labelledby="'heading' + code_file.id"
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
             <ul class="list-group">
               <!--TODO: Make this organized by module. -->
-              <li class="list-group-item" v-for="challenge in challenges[code_file.id]" :key="challenge.id">
+              <li
+                class="list-group-item"
+                v-for="challenge in challenges[code_file.id]"
+                :key="challenge.id"
+              >
                 <ChallengeCard :challenge="challenge" />
               </li>
             </ul>
@@ -46,10 +50,9 @@ export default defineComponent({
   components: { ChallengeCard },
 
   async beforeMount() {
-    await axios.get("http://localhost:8000/code-files/").then((response) => {
+    await axios.get('http://localhost:8000/code-files/').then((response) => {
       this.code_files = response.data
     })
-
 
     await axios.get('http://localhost:8000/challenges-by-code/').then((response) => {
       this.challenges = response.data
