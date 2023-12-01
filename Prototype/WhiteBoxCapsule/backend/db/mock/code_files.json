@@ -8,5 +8,10 @@
         "id": 2,
         "name": "Test File 2: Counting Pieces",
         "content": "function test_file_two(board) {\n\tvar a = count_red_pieces(board);\n\tvar b = count_blue_pieces(board);\n\n\tlet diff = Math.abs(a - b);\n\n\tswitch (diff) {\n\t\tcase 1:\n\t\t\treturn true;\n\t\tcase 2, 3:\n\t\t\treturn false;\n\t\tdefault:\n\t\t\treturn true;\n\t}\n}"
+    },
+    {
+        "id": 3,
+        "name": "Test File 3: Counting Empty Spaces (...Wait, you can do that?)",
+        "content": "function tutorial_zero_three(board) {\n\tvar a = board.count_red_pieces(board);\n\tvar b = board.count_blue_pieces(board);\n\tvar c = board.count_empty_spaces(board);\n\t\n\tif (isTriangle(a, b, c)) {\n\t\treturn true;\n\t} else {\n\t\tif (b < c && b > a) {\n\t\t\treturn true;\n\t\t} else if (b == a || b == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
     }
 ]

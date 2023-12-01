@@ -7,12 +7,13 @@ import PlayerBar from './PlayerBar.vue'
 import { Challenge } from '../store/models/challenge'
 import { User } from '../store/models/user.js'
 import { CodeFile } from '../store/models/code_file'
+import axios from 'axios'
 
 export default {
   props: {
     challenge: Challenge,
-    code_file: CodeFile,
-    user: User
+    user: User,
+    code_file: CodeFile
   },
 
   data() {
@@ -24,10 +25,6 @@ export default {
   async beforeMount() {
     this.board = boardStore()
     this.board.generateState()
-
-    await axios.get('/code-files/' + this.challenge.code_file).then((response) => {
-      this.code_file = response.data
-    })
   }
 }
 </script>
@@ -39,7 +36,7 @@ export default {
         {{ this.challenge.objective }}
       </div>
 
-      <ChallengeCode :code_file="this.code_file" />
+      <ChallengeCode :code_file="code_file" />
       <div
         class="alert alert-secondary player-info"
         v-if="board.timer > 100 && !board.timeout && !board.passed"

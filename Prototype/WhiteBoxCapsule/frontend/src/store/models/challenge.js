@@ -6,7 +6,7 @@ export class Challenge {
     this.board = board
     this.objective = objective
     this.hint = hint
-    this.code_file = file
+    this.code_file = code_file
     this.submit = submit
     this.owner = owner
   }

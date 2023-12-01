@@ -2,14 +2,14 @@
   <CodeBlock
     class="line-numbers"
     theme="default"
-    max-height="625px"
+    height="393px"
     data-line="1"
     :prismjs="true"
     :code="code_file.content"
     lang="javascript"
     prism-plugin
     prism-js
-    style="font-size: 16px"
+    style="font-size: 16px; overflow: scroll;"
     :copy-icon="false"
     :copy-button="false"
     :copy-tab="false"
@@ -26,12 +26,15 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 </script>
 
 <script>
-import { CodeFile } from '../store/models/code_file'
+import { CodeFile } from '../store/models/code_file.js'
 
 export default {
   components: {},
   props: {
     code_file: CodeFile
+  },
+
+  async beforeMount() {
   }
 }
 </script>

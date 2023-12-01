@@ -163,17 +163,17 @@ export default {
 
       switch (type) {
         case 'statement':
-          this.goStatement(input)
+          this.goUnique(input)
           break
-        case 'decision':
-          this.goDecision(input)
+        case 'decision', 'branch', 'condition':
+          this.goMultiple(input)
           break
         default:
           console.error('Invalid submit type')
       }
     },
 
-    goStatement(input) {
+    goUnique(input) {
       var preconditions = this.challenge.submit.preconditions,
         tests = this.challenge.submit.tests
 
@@ -203,7 +203,7 @@ export default {
       }
     },
 
-    goDecision(input) {
+    goMultiple(input) {
       var preconditions = this.challenge.submit.preconditions,
         tests = this.challenge.submit.tests
 

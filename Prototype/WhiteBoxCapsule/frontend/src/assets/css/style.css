@@ -220,7 +220,7 @@ button.menu-button {
   border-radius: 200px;
   cursor: pointer;
   position: fixed;
-  left: 20px;
+  right: 20px;
   bottom: 20px;
   z-index: 1;
 }

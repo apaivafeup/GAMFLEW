@@ -19,13 +19,16 @@
         </h2>
         <div
           :id="'collapse' + code_file.id"
-          :class="code_files.indexOf(code_file) == 0 ? 'accordion-collapse collapse show' : 'accordion-collapse collapse'"
+          :class="
+            code_files.indexOf(code_file) == 0
+              ? 'accordion-collapse collapse show'
+              : 'accordion-collapse collapse'
+          "
           :aria-labelledby="'heading' + code_file.id"
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
             <ul class="list-group">
-              <!--TODO: Make this organized by module. -->
               <li
                 class="list-group-item"
                 v-for="challenge in challenges[code_file.id]"

@@ -1,20 +1,21 @@
 <script setup>
 import ChallengeHeader from '../components/ChallengeHeader.vue'
 import Board from '../components/Board.vue'
-import { boardStore } from '../store/boardStore'
-import axios from 'axios'
-import { Challenge } from '../store/models/challenge'
-import Prism from 'prismjs'
-import { User } from '../store/models/user.js'
-import { Attempt } from '../store/models/attempt.js'
 import SubmitModal from '../components/modals/SubmitModal.vue'
 import FailModal from '../components/modals/FailModal.vue'
+import { boardStore } from '../store/boardStore'
+import axios from 'axios'
+import { Challenge } from '../store/models/challenge.js'
+import { User } from '../store/models/user.js'
+import { Attempt } from '../store/models/attempt.js'
+import { CodeFile } from '../store/models/code_file.js'
+import Prism from 'prismjs'
 </script>
 
 <template>
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
 
-  <Board :challenge="challenge" :user="user" />
+  <Board :challenge="challenge" :code_file="code_file" :user="user" />
 
   <SubmitModal :placeholder="submit_placeholder" />
   <FailModal :placeholder="fail_placeholder" />
@@ -30,6 +31,7 @@ export default {
 
   data() {
     return {
+      code_file: CodeFile,
       challenge: Challenge,
       user: User,
       submit_placeholder:
@@ -58,7 +60,7 @@ export default {
       )
     })
 
-    axios.get('http://localhost:8000/users/' + user_id).then((response) => {
+    await axios.get('http://localhost:8000/users/' + user_id).then((response) => {
       this.user = new User(
         response.data.name,
         response.data.email,
@@ -67,6 +69,14 @@ export default {
         response.data.failed_attempts,
         response.data.successful_attempts,
         response.data.achievements
+      )
+    })
+
+    await axios.get('http://localhost:8000/code-files/' + this.challenge.code_file).then((response) => {
+      this.code_file = new CodeFile(
+        response.data.id,
+        response.data.name,
+        response.data.content
       )
     })
 

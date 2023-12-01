@@ -167,44 +167,107 @@ export const boardStore = defineStore('boardStore', {
     },
 
     setState() {
-      if (this.boardState == 'default') {
-        this.emptyState()
-
-        for (let i = 1; i <= 8; i++) {
-          this.state[this.currentKey].push([])
-        }
-
-        var edge = true
-        for (let i = 0; i < 8; i++) {
-          for (let j = 0; j < 8; j++) {
-            if (i == 3 || i == 4) {
-              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-              continue
-            }
-
-            var color
-            if (i < 3) {
-              color = Color.RED
-            } else {
-              color = Color.BLUE
-            }
-
-            if (edge) {
-              if (j % 2 == 0) this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
-              else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-            } else {
-              if (j % 2 == 0)
-                this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-              else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
-            }
-          }
-          edge = !edge
-        }
-
-        this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
-
-        this.log[this.currentKey] = []
+      switch (this.boardState) {
+        case "default":
+          this.defaultState()
+          break
+        case "full":
+          this.fullState()
+          break
+        case "thirds":
+          this.thirdsState()
+          break
+        default:
+          break
       }
+    },
+
+    defaultState() {
+      this.emptyState()
+
+      for (let i = 1; i <= 8; i++) {
+        this.state[this.currentKey].push([])
+      }
+
+      var edge = true
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          if (i == 3 || i == 4) {
+            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+            continue
+          }
+
+          var color
+          if (i < 3) {
+            color = Color.RED
+          } else {
+            color = Color.BLUE
+          }
+
+          if (edge) {
+            if (j % 2 == 0) this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
+            else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+          } else {
+            if (j % 2 == 0)
+              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+            else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
+          }
+        }
+        edge = !edge
+      }
+
+      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
+
+      this.log[this.currentKey] = []
+    },
+
+    thirdsState() {
+      this.emptyState()
+
+      for (let i = 1; i <= 8; i++) {
+        this.state[this.currentKey].push([])
+      }
+
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          if (i < 3) {
+            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.RED))
+          } else if (i < 5) {
+            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+          } else {
+            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.BLUE))
+          }
+        }
+      }
+
+      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
+
+      this.log[this.currentKey] = []
+    },
+
+    fullState() {
+      this.emptyState()
+
+      for (let i = 1; i <= 8; i++) {
+        this.state[this.currentKey].push([])
+      }
+
+      var count = 0;
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          if (count < 32) {
+            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.RED))
+          } else {
+            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.BLUE))
+          }
+
+          count++
+        }
+      }
+
+      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
+
+      this.log[this.currentKey] = []
     },
 
     previous() {
@@ -267,6 +330,7 @@ export const boardStore = defineStore('boardStore', {
     },
 
     fail() {
+      this.infoState = 'You failed the level.'
       this.failed = true
     },
 
