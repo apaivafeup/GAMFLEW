@@ -12,7 +12,7 @@ import { CodeFile } from '../store/models/code_file.js'
 import Prism from 'prismjs'
 </script>
 
-<template>
+<template style="overflow: hidden;">
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
 
   <Board :challenge="challenge" :code_file="code_file" :user="user" />

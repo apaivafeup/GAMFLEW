@@ -22,7 +22,7 @@
         </button>
         <button
           class="button is-primary is-fullwidth"
-          v-if="!board.passed"
+          v-if="!board.passed && !board.pause"
           @click="board.generateState()"
         >
           Reset
@@ -58,7 +58,7 @@
         </button>
         <button
           class="button is-primary is-fullwidth add-button"
-          v-if="!board.passed"
+          v-if="!board.passed && !board.pause"
           @click="board.addMode()"
         >
           Add
@@ -161,15 +161,12 @@ export default {
     go(input) {
       var type = this.challenge.submit.type
 
-      switch (type) {
-        case 'statement':
-          this.goUnique(input)
-          break
-        case 'decision', 'branch', 'condition':
-          this.goMultiple(input)
-          break
-        default:
-          console.error('Invalid submit type')
+      if (type == "statement") {
+        this.goUnique(input)
+      } else if (type == "decision" || type == "condition"){
+        this.goMultiple(input)
+      } else {
+        console.error("Invalid submit type")
       }
     },
 
@@ -219,10 +216,16 @@ export default {
 
         for (var i = 0; i < tests.length; i++) {
           var test = tests[i]
+
+          if (passed[i] == true) {
+            continue
+          }
+
           if (!eval(test)) {
             continue
           } else {
             passed[i] = true
+            break
           }
         }
       }

@@ -12,6 +12,11 @@
     {
         "id": 3,
         "name": "Test File 3: Counting Empty Spaces (...Wait, you can do that?)",
-        "content": "function tutorial_zero_three(board) {\n\tvar a = board.count_red_pieces(board);\n\tvar b = board.count_blue_pieces(board);\n\tvar c = board.count_empty_spaces(board);\n\t\n\tif (isTriangle(a, b, c)) {\n\t\treturn true;\n\t} else {\n\t\tif (b < c && b > a) {\n\t\t\treturn true;\n\t\t} else if (b == a || b == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
+        "content": "function test_file_three(board) {\n\tvar a = board.count_red_pieces(board);\n\tvar b = board.count_blue_pieces(board);\n\tvar c = board.count_empty_spaces(board);\n\t\n\tif (isTriangle(a, b, c)) {\n\t\treturn true;\n\t} else {\n\t\tif (b < c && b > a) {\n\t\t\treturn true;\n\t\t} else if (b == a || b == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
+    },
+    {
+        "id": 4,
+        "name": "Test File 4: Pieces Where They Shouldn't Be",
+        "content": "function test_file_four(board) {\n\tvar a = board.find_first_red_piece(board)\n\tvar b = board.find_first_blue_piece(board)\n\t\n\tif (a.position == b.position) {\n\t\treturn true;\n\t} else if (a.position.x == -1 && a.position.y == -1) {\n\t\treturn true;\n\t} else if (b.position.x == -1 && b.position.y == -1) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
     }
 ]
