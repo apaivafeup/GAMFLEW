@@ -3,11 +3,11 @@
         "id": 0,
         "name": "Challenge 1.1: Baby's First Statement Coverage Challenge",
         "description": "This challenge is a tutorial. It will teach you how to play the game!",
-        "count": 1,
-        "timer": 300,
+        "test_cases_count": 1,
+        "timer_value": 300,
         "hint": "You may cover the statement through the true or false branch - only one is needed!",
         "objective": "Statement coverage of line 6.",
-        "board": "default",
+        "initial_board": "default",
         "code_file": 1,
         "passing_criteria": {
             "type": "statement",
@@ -18,17 +18,19 @@
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) > 2"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 1.2: Baby's First Decision Coverage Challenge",
         "description": "This challenge is a bit more difficult than the first one... but you can take it, right?",
-        "count": 2,
-        "timer": 250,
+        "test_cases_count": 2,
+        "timer_value": 250,
         "hint": "There are two branches to cover. You must cover both!",
         "objective": "Decision coverage of line 5.",
-        "board": "default",
+        "initial_board": "default",
         "code_file": 1,
         "passing_criteria": {
             "type": "decision",
@@ -41,17 +43,19 @@
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y) > 2"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 2.1: Red vs. Blue, Round 1",
         "description": "In a game of Checkers, only one color can win. In this challenge, you'll explore a new way to interact with the board.",
-        "count": 1,
-        "timer": 180,
+        "test_cases_count": 1,
+        "timer_value": 180,
         "hint": "You can only cover the objective in one way. Also: don't get hung up on the function calls - they mean exactly what their name says!",
         "objective": "Statement coverage of line 9.",
-        "board": "empty",
+        "initial_board": "empty",
         "code_file": 2,
         "passing_criteria": {
             "type": "statement",
@@ -62,17 +66,19 @@
                 "Math.abs(utils.count_blue_pieces(input, input.currentKey) - utils.count_red_pieces(input, input.currentKey)) == 1"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 2.2: Red vs. Blue, Round 2",
         "description": "Not exactly trickier, but everyone needs practice. Both sides have an army this time, which color will win this round?",
-        "count": 1,
-        "timer": 180,
+        "test_cases_count": 1,
+        "timer_value": 180,
         "hint": "The objective can be covered in one of two ways, but remember you're dealing with a switch case, not True and False branches!",
         "objective": "Statement coverage of line 11.",
-        "board": "full",
+        "initial_board": "full",
         "code_file": 2,
         "passing_criteria": {
             "type": "statement",
@@ -84,17 +90,19 @@
                 "Math.abs(utils.count_blue_pieces(input, input.currentKey) - utils.count_red_pieces(input, input.currentKey)) == 2 || Math.abs(utils.count_blue_pieces(input, input.currentKey) - utils.count_red_pieces(input, input.currentKey)) == 3"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 2.3: Red vs. Blue, Round 3",
         "description": "This will look familiar... do you remember the last two rounds?",
-        "count": 3,
-        "timer": 300,
+        "test_cases_count": 3,
+        "timer_value": 300,
         "hint": "There are a lot of ways to cover that default branch... but only one way to cover the objective!",
         "objective": "Decision coverage of line 7.",
-        "board": "empty",
+        "initial_board": "empty",
         "code_file": 2,
         "passing_criteria": {
             "type": "decision",
@@ -107,17 +115,19 @@
                 "Math.abs(utils.count_blue_pieces(input, input.case_num) - utils.count_red_pieces(input, input.case_num)) != 1 && Math.abs(utils.count_blue_pieces(input, input.case_num) - utils.count_red_pieces(input, input.case_num)) != 2 && Math.abs(utils.count_blue_pieces(input, input.case_num) - utils.count_red_pieces(input, input.case_num)) != 3"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 3.1: Build-a-Triangle",
         "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
-        "count": 1,
-        "timer": 300,
+        "test_cases_count": 1,
+        "timer_value": 300,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You can pause the timer, if needed! Also, each triangle's side must be greater than 0 when measured.",
         "objective": "Statement coverage of line 7.",
-        "board": "thirds",
+        "initial_board": "thirds",
         "code_file": 3,
         "passing_criteria": {
             "type": "statement",
@@ -130,17 +140,19 @@
                 "utils.isTriangle(utils.count_red_pieces(input, input.currentKey), utils.count_blue_pieces(input, input.currentKey), utils.count_empty_spaces(input, input.currentKey))"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 3.2: Not Quite a Scalene Triangle",
         "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle. That means one side can be equal to zero!",
-        "count": 2,
-        "timer": 300,
+        "test_cases_count": 2,
+        "timer_value": 300,
         "hint": "Though it's all tested at once, you're dealing with two separate conditions. Each case needs to cover True-False state for each, across two tests! Notice how the variables' meaning (i.e., variable a will always count red pieces) never changes!",
         "objective": "Condition coverage of line 9.",
-        "board": "empty",
+        "initial_board": "empty",
         "code_file": 3,
         "passing_criteria": {
             "type": "condition",
@@ -152,17 +164,19 @@
                 "!(utils.count_blue_pieces(input, case_num) < utils.count_empty_spaces(input, case_num)) && utils.count_blue_pieces(input, case_num) > utils.count_red_pieces(input, case_num)"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 3.3: It's (NOT) an Isosceles Triangle!",
         "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
-        "count": 2,
-        "timer": 300,
+        "test_cases_count": 2,
+        "timer_value": 300,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. You're dealing with two separate conditions, so cover True-False state for each, across two test cases! Also, notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
         "objective": "Condition coverage of line 10.",
-        "board": "thirds",
+        "initial_board": "thirds",
         "code_file": 3,
         "passing_criteria": {
             "type": "condition",
@@ -174,17 +188,19 @@
                 "!(utils.count_blue_pieces(input, case_num) == utils.count_empty_spaces(input, case_num)) && utils.count_blue_pieces(input, case_num) == utils.count_red_pieces(input, case_num)"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 3.4: If This Was A Triangle, We'd Be Concerned",
         "description": "We encourage creativity on this one. But we make no reservations about the results.",
-        "count": 1,
-        "timer": 300,
+        "test_cases_count": 1,
+        "timer_value": 300,
         "hint": "Treat the first three If conditions as landmines - you can't cover them!",
         "objective": "Statement coverage of line 14.",
-        "board": "full",
+        "initial_board": "full",
         "code_file": 3,
         "passing_criteria": {
             "type": "statement",
@@ -195,17 +211,19 @@
                 "!(utils.count_blue_pieces(input, input.currentKey) == utils.count_empty_spaces(input, input.currentKey) || utils.count_blue_pieces(input, input.currentKey) == utils.count_red_pieces(input, input.currentKey)) && !(utils.count_blue_pieces(input, input.currentKey) < utils.count_empty_spaces(input, input.currentKey) && utils.count_blue_pieces(input, input.currentKey) > utils.count_red_pieces(input, input.currentKey))"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 4.1: A 1v1 for the Ages",
         "description": "Red and Blue remains a classic. But... how can they settle their feel- We mean, differences?",
-        "count": 1,
-        "timer": 200,
+        "test_cases_count": 1,
+        "timer_value": 200,
         "hint": "Even if you think you can't do something... you can. Come on, try it! However, you can't cover the objective by only using the Add function of the board. You need to make at least 1 move. Also: the utils functions work linearly (they search from top to bottom).",
         "objective": "Statement coverage of line 6.",
-        "board": "empty",
+        "initial_board": "empty",
         "code_file": 4,
         "passing_criteria": {
             "type": "statement",
@@ -217,17 +235,19 @@
                 "utils.find_first_blue_piece(input, input.currentKey).position == utils.find_first_red_piece(input, input.currentKey).position"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 4.2: God Help The Outcasts",
         "description": "The title's joke would be better in Portuguese, but one red piece has got to go! Which one will it be?",
-        "count": 1,
-        "timer": 150,
+        "test_cases_count": 1,
+        "timer_value": 150,
         "hint": "That (-1, -1) spot looks mighty helpful, doesn't it?",
         "objective": "Statement coverage of line 8.",
-        "board": "empty",
+        "initial_board": "empty",
         "code_file": 4,
         "passing_criteria": {
             "type": "statement",
@@ -238,17 +258,19 @@
                 "utils.find_first_red_piece(input, input.currentKey).position.x == -1 || utils.find_first_red_piece(input, input.currentKey).position.y == -1"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 4.3: The Last Joke is Funnier The Second Time, Really",
         "description": "Blue pieces are the new red pieces. Or something like that.",
-        "count": 1,
-        "timer": 150,
+        "test_cases_count": 1,
+        "timer_value": 150,
         "hint": "That (-1, -1) spot looks mighty helpful, doesn't it? If you saw the other hint before this one, this is probably unneeded.",
         "objective": "Statement coverage of line 10.",
-        "board": "empty",
+        "initial_board": "empty",
         "code_file": 4,
         "passing_criteria": {
             "type": "statement",
@@ -259,17 +281,19 @@
                 "utils.find_first_blue_piece(input, input.currentKey).position.x == -1 || utils.find_first_blue_piece(input, input.currentKey).position.y == -1"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
         "owner_id": 1
     },
     {
         "id": 0,
         "name": "Challenge 4.4: Third Time's the Charm",
         "description": "Ok, ok, this is the last time. But you have a bunch of cases to cover, so get to it! ",
-        "count": 4,
-        "timer": 300,
+        "test_cases_count": 4,
+        "timer_value": 300,
         "hint": ".",
         "objective": "Decision coverage of line 5.",
-        "board": "empty",
+        "initial_board": "empty",
         "code_file": 4,
         "passing_criteria": {
             "type": "decision",
@@ -283,6 +307,8 @@
                 "utils.find_first_blue_piece(input, case_num).position != utils.find_first_red_piece(input, case_num).position && utils.find_first_blue_piece(input, case_num).position != { x: -1, y: -1} && utils.find_first_red_piece(input, case_num).position != { x: -1, y: -1}"
             ]
         },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
         "owner_id": 1
     }
     

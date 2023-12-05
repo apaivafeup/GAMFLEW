@@ -77,12 +77,14 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
         description=challenge.description,
         hint=challenge.hint,
         objective=challenge.objective,
-        count=challenge.count,
-        timer=challenge.timer,
-        board=challenge.board,
+        test_cases_count=challenge.test_cases_count,
+        timer_value=challenge.timer_value,
+        initial_board=challenge.initial_board,
         code_file=challenge.code_file,
         passing_criteria=challenge.passing_criteria,
-        owner_id=challenge.owner_id
+        achievement_criteria=challenge.achievement_criteria,
+        owner_id=challenge.owner_id,
+        difficulty=challenge.difficulty
     )
     db.add(db_challenge)
     db.commit()
@@ -104,13 +106,13 @@ def create_attempt(db: Session, attempt: schemas.Attempt):
         player_id=attempt.player_id,
         challenge_id=attempt.challenge_id,
         attempt_type=attempt.attempt_type,  # attempt.pass or attempt.fail
-        comment=attempt.comment
+        comment=attempt.comment,
+        test_cases=attempt.test_cases
     )
 
     db.add(db_attempt)
     db.commit() # Save create attempt to db
     return db_attempt
-
 
 def get_challenges(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Challenge).offset(skip).limit(limit).all()
@@ -137,7 +139,6 @@ def get_code_file(db: Session, code_file_id: int):
 
 def get_challenge(db: Session, challenge_id: int):
     return db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
-
 
 def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: int):
     db_challenge = schemas.Challenge(

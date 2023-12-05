@@ -13,7 +13,7 @@
       </div>
 
       <div class="progress-bar">
-        {{ this.board.currentKey + 1 + '/' + challenge.count }}
+        {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
 
       <div class="buttons-grid">
@@ -36,14 +36,14 @@
         </button>
         <button
           class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 != challenge.count && !board.passed"
+          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.passed"
           @click="board.next()"
         >
           Next
         </button>
         <button
           class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 == challenge.count && !board.passed"
+          v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed"
           @click="go(this.board)"
         >
           Go!
@@ -159,20 +159,20 @@ export default {
 
   methods: {
     go(input) {
-      var type = this.challenge.submit.type
+      var type = this.challenge.passing_criteria.type
 
-      if (type == "statement") {
+      if (type == 'statement') {
         this.goUnique(input)
-      } else if (type == "decision" || type == "condition"){
+      } else if (type == 'decision' || type == 'condition') {
         this.goMultiple(input)
       } else {
-        console.error("Invalid submit type")
+        console.error('Invalid submit type')
       }
     },
 
     goUnique(input) {
-      var preconditions = this.challenge.submit.preconditions,
-        tests = this.challenge.submit.tests
+      var preconditions = this.challenge.passing_criteria.preconditions,
+        tests = this.challenge.passing_criteria.tests
 
       for (var i = 0; i < preconditions.length; i++) {
         var precondition = preconditions[i]
@@ -201,8 +201,8 @@ export default {
     },
 
     goMultiple(input) {
-      var preconditions = this.challenge.submit.preconditions,
-        tests = this.challenge.submit.tests
+      var preconditions = this.challenge.passing_criteria.preconditions,
+        tests = this.challenge.passing_criteria.tests
 
       var passed = Array(tests.length).fill(false)
       for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {

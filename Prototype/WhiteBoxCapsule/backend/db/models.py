@@ -11,6 +11,7 @@ class Attempt(BaseModel):
     score: int
     attempt_type: AttemptType
     comment: str
+    test_cases: dict
 
     class Config:
         from_attributes = True
@@ -19,14 +20,16 @@ class Challenge(BaseModel):
     id: Optional[int]
     name: str
     description: str
-    count: int
+    test_cases_count: int
     hint: str
     objective: str
-    timer: int
-    board: str
+    timer_value: int
+    initial_board: str
     code_file: int
     passing_criteria: dict
+    achievement_criteria: Optional[dict]
     owner_id: int
+    difficulty: str
 
     class Config:
         from_attributes = True
@@ -38,8 +41,10 @@ class ChallengeBasics(BaseModel):
     description: str
     code_file: str
     passing_criteria: dict
-    timer: int
+    timer_value: int
     owner_id: int
+    difficulty: str
+    initial_board: str
 
     class Config:
         from_attributes = True

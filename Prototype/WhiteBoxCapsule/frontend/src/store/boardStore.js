@@ -168,13 +168,13 @@ export const boardStore = defineStore('boardStore', {
 
     setState() {
       switch (this.boardState) {
-        case "default":
+        case 'default':
           this.defaultState()
           break
-        case "full":
+        case 'full':
           this.fullState()
           break
-        case "thirds":
+        case 'thirds':
           this.thirdsState()
           break
         default:
@@ -252,7 +252,7 @@ export const boardStore = defineStore('boardStore', {
         this.state[this.currentKey].push([])
       }
 
-      var count = 0;
+      var count = 0
       for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
           if (count < 32) {
@@ -325,6 +325,7 @@ export const boardStore = defineStore('boardStore', {
 
     pass() {
       this.passed = !this.passed
+      this.attempt.setTimeElapsed(this.timer)
       this.failed = false
       this.paused = true
     },
@@ -356,7 +357,6 @@ export const boardStore = defineStore('boardStore', {
         }
 
         if (this.passed) {
-          this.attempt.setTimeElapsed(this.timer)
           clearInterval(this.interval)
         }
       }, 1000)

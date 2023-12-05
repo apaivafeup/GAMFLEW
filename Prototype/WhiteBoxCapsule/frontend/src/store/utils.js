@@ -43,7 +43,11 @@ export function count_empty_spaces(board, boardKey) {
 export function find_first_red_piece(board, boardKey) {
   for (var i = 0; i < board.state[boardKey].length; i++) {
     for (var j = 0; j < board.state[boardKey][i].length; j++) {
-      if (board.state[boardKey][i][j].color == Color.RED || (board.state[boardKey][i][j].color == Color.STACK && board.state[boardKey][i][j].stack.red > 0)) {
+      if (
+        board.state[boardKey][i][j].color == Color.RED ||
+        (board.state[boardKey][i][j].color == Color.STACK &&
+          board.state[boardKey][i][j].stack.red > 0)
+      ) {
         return board.state[boardKey][i][j]
       }
     }
@@ -59,7 +63,11 @@ export function find_first_red_piece(board, boardKey) {
 export function find_first_blue_piece(board, boardKey) {
   for (var i = 0; i < board.state[boardKey].length; i++) {
     for (var j = 0; j < board.state[boardKey][i].length; j++) {
-      if (board.state[boardKey][i][j].color == Color.BLUE || (board.state[boardKey][i][j].color == Color.STACK && board.state[boardKey][i][j].stack.blue > 0)) {
+      if (
+        board.state[boardKey][i][j].color == Color.BLUE ||
+        (board.state[boardKey][i][j].color == Color.STACK &&
+          board.state[boardKey][i][j].stack.blue > 0)
+      ) {
         return board.state[boardKey][i][j]
       }
     }
@@ -87,4 +95,3 @@ export function find_first_stack(board, boardKey) {
 
   return new Piece({ x: -2, y: -2 }, Color.EMPTY)
 }
-

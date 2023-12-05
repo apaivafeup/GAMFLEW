@@ -12,7 +12,7 @@ import { CodeFile } from '../store/models/code_file.js'
 import Prism from 'prismjs'
 </script>
 
-<template style="overflow: hidden;">
+<template style="overflow: hidden">
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
 
   <Board :challenge="challenge" :code_file="code_file" :user="user" />
@@ -48,14 +48,18 @@ export default {
       user_id = response.data.owner_id
 
       this.challenge = new Challenge(
+        response.data.id,
         response.data.name,
-        response.data.count,
-        response.data.timer,
-        response.data.board,
-        response.data.objective,
+        response.data.description,
+        response.data.difficulty,
         response.data.hint,
+        response.data.objective,
+        response.data.test_cases_count,
+        response.data.timer_value,
+        response.data.initial_board,
         response.data.code_file,
         response.data.passing_criteria,
+        response.data.achievement_criteria,
         response.data.owner_id
       )
     })
@@ -72,21 +76,19 @@ export default {
       )
     })
 
-    await axios.get('http://localhost:8000/code-files/' + this.challenge.code_file).then((response) => {
-      this.code_file = new CodeFile(
-        response.data.id,
-        response.data.name,
-        response.data.content
-      )
-    })
+    await axios
+      .get('http://localhost:8000/code-files/' + this.challenge.code_file)
+      .then((response) => {
+        this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
+      })
 
     this.board = boardStore()
-    this.board.boardState = this.challenge.board
+    this.board.boardState = this.challenge.initial_board
     this.board.setState()
 
-    this.board.attempt = new Attempt(user_id, this.id, this.challenge.timer, 0, 0, null, null)
+    this.board.attempt = new Attempt(user_id, this.id, this.challenge.timer_value, 0, 0, null, null)
 
-    this.board.timer = this.challenge.timer
+    this.board.timer = this.challenge.timer_value
     this.board.startTimer()
   },
   mounted() {},

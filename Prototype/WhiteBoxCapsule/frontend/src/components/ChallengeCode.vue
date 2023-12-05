@@ -9,7 +9,7 @@
     lang="javascript"
     prism-plugin
     prism-js
-    style="font-size: 16px; overflow: scroll;"
+    style="font-size: 16px; overflow: scroll"
     :copy-icon="false"
     :copy-button="false"
     :copy-tab="false"
@@ -34,7 +34,6 @@ export default {
     code_file: CodeFile
   },
 
-  async beforeMount() {
-  }
+  async beforeMount() {}
 }
 </script>

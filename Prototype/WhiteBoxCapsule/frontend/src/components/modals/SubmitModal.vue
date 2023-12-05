@@ -79,6 +79,8 @@ export default defineComponent({
 
       this.board.attempt.setScore()
 
+      this.board.timer
+
       var body = {
         id: 0,
         time_elapsed: this.board.attempt.time_elapsed,
@@ -86,7 +88,8 @@ export default defineComponent({
         player_id: this.board.attempt.player_id,
         challenge_id: this.board.attempt.challenge_id,
         attempt_type: 'pass',
-        comment: this.board.attempt.comment
+        comment: this.board.attempt.comment,
+        test_cases: this.board.state
       }
 
       await axios.post('http://localhost:8000/create/attempt/', body).then((response) => {
