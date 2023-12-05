@@ -18,5 +18,15 @@
         "id": 4,
         "name": "Test File 4: Pieces Where They Shouldn't Be",
         "content": "function test_file_four(board) {\n\tvar a = board.find_first_red_piece(board)\n\tvar b = board.find_first_blue_piece(board)\n\t\n\tif (a.position == b.position) {\n\t\treturn true;\n\t} else if (a.position.x == -1 && a.position.y == -1) {\n\t\treturn true;\n\t} else if (b.position.x == -1 && b.position.y == -1) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+    },
+    {
+        "id": 5,
+        "name": "Test File 5: Pieces on Pieces on Pieces",
+        "content": "function test_file_five(board) {\n\tvar a = board.find_first_stack(board)\n\n\tif (a.stack.red + a.stack.blue % 2 == 0 && a.stack.red + a.stack.blue > 2) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+    },
+    {
+        "id": 6,
+        "name": "Test File 6: Draw A Triangle",
+        "content": "function test_file_six(board) {\n\t// Sorted by x, then y coordinate.\n\tvar vertices = utils.find_blue_pieces(board)\n\n\tif (vertices.length != 3) {\n\t\treturn;\n\t}\n\n\tvar side_a = [vertices[0], vertices[1]],\n\t    side_b = [vertices[1], vertices[2]],\n\t    side_c = [vertices[2], vertices[0]];\n\n\tvar side_a_length = utils.distance(side_a[0], side_a[1]),\n\t    side_b_length = utils.distance(side_b[0], side_b[1]),\n\t    side_c_length = utils.distance(side_c[0], side_c[1]);\n\n\tif (Math.sqrt(Math.pow(side_a_length, 2) + Math.pow(side_b_length, 2)) == side_c_length) {\n\t\treturn true;\n\t} else if (Set([side_a_length, side_b_length, side_c_length]).size == 3) {\n\t\treturn true;\n\t} else if (Set([side_a_length, side_b_length, side_c_length]).size == 2) {\n\t\treturn true;\n\t} else if (Set([side_a_length, side_b_length, side_c_length]).size == 1 && side_a_length == 0) {\n\t\treturn false;\n\t}\n}"
     }
 ]

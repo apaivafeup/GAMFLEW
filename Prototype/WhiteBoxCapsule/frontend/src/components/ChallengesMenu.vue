@@ -31,7 +31,7 @@
             <ul class="list-group">
               <li
                 class="list-group-item"
-                v-for="challenge in challenges[code_file.id]"
+                v-for="challenge in challenges[code_file.id].sort((a, b) => a.id - b.id)"
                 :key="challenge.id"
               >
                 <ChallengeCard :challenge="challenge" />

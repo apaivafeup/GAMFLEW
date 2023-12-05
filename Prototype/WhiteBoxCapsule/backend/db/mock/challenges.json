@@ -228,8 +228,8 @@
         "passing_criteria": {
             "type": "statement",
             "preconditions": [
-                "utils.find_first_blue_piece(input, input.currentKey) != null",
-                "utils.find_first_red_piece(input, input.currentKey) != null"
+                "utils.find_first_blue_piece(input, input.currentKey).position.x != -2",
+                "utils.find_first_red_piece(input, input.currentKey).position.x != -2"
             ],
             "tests": [
                 "utils.find_first_blue_piece(input, input.currentKey).position == utils.find_first_red_piece(input, input.currentKey).position"
@@ -252,7 +252,7 @@
         "passing_criteria": {
             "type": "statement",
             "preconditions": [
-                "utils.find_first_red_piece(input, input.currentKey) != null"
+                "utils.find_first_red_piece(input, input.currentKey).position.x != -2"
             ],
             "tests": [
                 "utils.find_first_red_piece(input, input.currentKey).position.x == -1 || utils.find_first_red_piece(input, input.currentKey).position.y == -1"
@@ -275,7 +275,7 @@
         "passing_criteria": {
             "type": "statement",
             "preconditions": [
-                "utils.find_first_blue_piece(input, input.currentKey) != null"
+                "utils.find_first_blue_piece(input, input.currentKey).position.x != -2"
             ],
             "tests": [
                 "utils.find_first_blue_piece(input, input.currentKey).position.x == -1 || utils.find_first_blue_piece(input, input.currentKey).position.y == -1"
@@ -298,7 +298,7 @@
         "passing_criteria": {
             "type": "decision",
             "preconditions": [
-                "utils.find_first_red_piece(input, case_num) != null || utils.find_first_blue_piece(input, case_num) != null"
+                "utils.find_first_red_piece(input, case_num).position.x != -2 || utils.find_first_blue_piece(input, case_num).position.x != -2"
             ],
             "tests": [
                 "utils.find_first_red_piece(input, case_num).position.x == -1 || utils.find_first_red_piece(input, case_num).position.y == -1",
@@ -310,7 +310,215 @@
         "achievement_criteria": null,
         "difficulty": "Hard",
         "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.1: Even Numbers Are Better",
+        "description": "Stacking pieces starts with an even number... how many pieces will you stack?",
+        "test_cases_count": 1,
+        "timer_value": 150,
+        "hint": "The number of pieces in the stack must be even AND it can't be equal to...?",
+        "objective": "Statement coverage of line 5.",
+        "initial_board": "empty",
+        "code_file": 5,
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+                "utils.find_first_stack(input, input.currentKey).position.x != -2"
+            ],
+            "tests": [
+                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.red > 2 && utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue % 2 == 0"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.2: Even Numbers Aren't (Always) Better",
+        "description": "Because odd numbers need love too... And stacking pieces is still fun, right?",
+        "test_cases_count": 2,
+        "timer_value": 200,
+        "hint": "The number of pieces in the stack can't be even AND it can't be equal to...?",
+        "objective": "Decision coverage of line 5.",
+        "initial_board": "empty",
+        "code_file": 5,
+        "passing_criteria": {
+            "type": "decision",
+            "preconditions": [
+                "utils.find_first_stack(input, input.currentKey).position.x != -2"
+            ],
+            "tests": [
+                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.red > 2 && utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue % 2 == 0",
+                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.red < 2 || utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue % 2 != 0"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.3: Odd Numbers, Let's Go!",
+        "description": "But can a stack handle it?",
+        "test_cases_count": 1,
+        "timer_value": 150,
+        "hint": "You're dealing with a conjunction - both sides of the condition must be true!",
+        "objective": "Statement coverage of line 7.",
+        "initial_board": "empty",
+        "code_file": 5,
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+                "utils.find_first_stack(input, input.currentKey).position.x != -2"
+            ],
+            "tests": [
+                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.red < 2 || utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue % 2 != 0"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.4: Stack... Overflow?",
+        "description": "Shoutout! But a condition is a condition, and it must be covered.",
+        "test_cases_count": 2,
+        "timer_value": 150,
+        "hint": "Remember: each side of the condition must be True and False at least once, across the test cases!",
+        "objective": "Condition coverage of line 7.",
+        "initial_board": "empty",
+        "code_file": 5,
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+                "utils.find_first_stack(input, input.currentKey).position.x != -2"
+            ],
+            "tests": [
+                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.red < 2 || utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue % 2 != 0"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.1: Draw A Right Triangle",
+        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
+        "test_cases_count": 1,
+        "timer_value": 300,
+        "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
+        "objective": "Statement coverage of line 18.",
+        "initial_board": "empty",
+        "code_file": 6,
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+                "utils.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "Math.sqrt(Math.pow(utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), 2) + Math.pow(utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), 2)) == utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.2: Draw A Scalene Triangle",
+        "description": "You might have to Google this one. But it's not that hard, we promise!",
+        "test_cases_count": 1,
+        "timer_value": 250,
+        "hint": "Here, the comment in line 2 is not that help- Actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
+        "objective": "Statement coverage of line 20.",
+        "initial_board": "empty",
+        "code_file": 6,
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+                "utils.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "Set([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])]).length == 3"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.3: Draw An Isosceles Triangle",
+        "description": "Be honest, did you remember these ones? We hope so! Once again, it's an easy challenge.",
+        "test_cases_count": 1,
+        "timer_value": 250,
+        "hint": "An isosceles triangle has only two equal sides. It doesn't matter which ones you choose to be equal.",
+        "objective": "Statement coverage of line 22.",
+        "initial_board": "empty",
+        "code_file": 6,
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+                "utils.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "Set([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])]).length == 2"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.4: (Don't) Draw An Equilateral Triangle",
+        "description": "Believe it or not, it's impossible... Unless we get creative!",
+        "test_cases_count": 1,
+        "timer_value": 250,
+        "hint": "No checks are performed on the triangle's sides, so you can make them equal. But how? ",
+        "objective": "Statement coverage of line 22.",
+        "initial_board": "empty",
+        "code_file": 6,
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+            ],
+            "tests": [
+                "Set(utils.find_blue_pieces(input, input.currentKey)).length == 0"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.5: Drawing Triangles is Hard!",
+        "description": "The biggest challenge you'll face yet!",
+        "test_cases_count": 4,
+        "timer_value": 400,
+        "hint": "No checks are performed on the triangle's sides, here, but order CAN be relevant to your test cases in at least 2 of them!",
+        "objective": "Statement coverage of line 22.",
+        "initial_board": "empty",
+        "code_file": 6,
+        "passing_criteria": {
+            "type": "statement",
+            "preconditions": [
+            ],
+            "tests": [
+                "Math.sqrt(Math.pow(utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), 2) + Math.pow(utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), 2)) == utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])",
+                "Set([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])]).length == 3",
+                "Set([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])]).length == 2",
+                "Set(utils.find_blue_pieces(input, case_num)).length == 0"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Hard",
+        "owner_id": 1
     }
-    
 ]
 
