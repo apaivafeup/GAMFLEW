@@ -11,16 +11,28 @@
             <font-awesome-icon icon="fa-clock" style="width: auto" />
             {{ challenge.timer_value + 's' }}
           </div>
-          <div class="row" style="
+          <div
+            class="row"
+            style="
               align-items: center;
               text-align: right;
               font-size: 12px;
               font-style: italic;
               justify-content: end;
-            ">
+            "
+          >
             {{ challenge.passing_criteria.type }}
           </div>
-          <div class="row" style="align-items: center; text-align: right; font-size: 10px; font-weight: bold; justify-content: end;">
+          <div
+            class="row"
+            style="
+              align-items: center;
+              text-align: right;
+              font-size: 10px;
+              font-weight: bold;
+              justify-content: end;
+            "
+          >
             {{ challenge.difficulty }}
           </div>
         </div>
@@ -37,17 +49,17 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default defineComponent({
   props: {
-    challenge: Challenge,
+    challenge: Challenge
   },
 
   data() {
     return {
       difficulty_colors: {
-        "Very Easy": "#085E18",
-        "Easy": "#ABDF75",
-        "Normal": "#FAF33E",
-        "Hard": "#FA8B37",
-        "Very Hard": "#FA0F32"
+        'Very Easy': '#085E18',
+        Easy: '#ABDF75',
+        Normal: '#FAF33E',
+        Hard: '#FA8B37',
+        'Very Hard': '#FA0F32'
       }
     }
   },

@@ -63,11 +63,13 @@ def create_challenge_for_user(
 ):
     return crud.create_user_challenge(db=db, challenge=challenge, user_id=user_id)
 
+## Get challenges dictionary, where code file is the key.
 @app.get("/challenges-by-code/")
 def read_challenges_by_code(db: Session = Depends(get_db)):
     challenges = crud.get_challenges_by_code(db)
     return challenges
 
+## Get code files.
 @app.get("/code-files/", response_model=list[models.CodeFile])
 def read_code_files(db: Session = Depends(get_db)):
     code_files = crud.get_code_files(db)
@@ -90,6 +92,12 @@ def read_challenges(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
 def read_challenge(challenge_id: int, db: Session = Depends(get_db)):
     challenge = crud.get_challenge(db, challenge_id=challenge_id)
     return challenge
+
+## Get passed challenges
+@app.get("/users/{user_id}/passed-challenges/", response_model=list[int])
+def read_passed_challenges(user_id: int, db: Session = Depends(get_db)):
+    passed_challenges = crud.get_passed_challenges(db, user_id=user_id)
+    return passed_challenges
 
 ## Delete specific user
 @app.delete('/user/{user_id}', status_code=200)

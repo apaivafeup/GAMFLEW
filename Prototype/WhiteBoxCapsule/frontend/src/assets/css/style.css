@@ -3,6 +3,7 @@
 :root {
   --background-color: #fff !important;
   --text-color: #333 !important;
+  --toggle-color: darkgray !important;
   --text-color-inv: #b8b8b8 !important;
   --border-color: #cdcdcd !important;
   --button-color: #333 !important;
@@ -19,6 +20,7 @@ body {
 .dark-theme {
   --background-color: #333 !important;
   --text-color: #fff !important;
+  --toggle-color: darkgray !important;
   --text-color-inv: #cdcdcd !important;
   --border-color: #b8b8b8 !important;
   --button-color: #fff !important;
@@ -214,7 +216,8 @@ button.menu-button {
 
 #theme-toggle {
   background-color: var(--button-color);
-  width: 40px;
+  color: var(--toggle-color);
+  width: 77.5px;
   height: 40px;
   border: none;
   border-radius: 200px;
@@ -222,6 +225,20 @@ button.menu-button {
   position: fixed;
   right: 20px;
   bottom: 20px;
+  z-index: 1;
+}
+
+#guide-button {
+  background-color: var(--button-color);
+  color: var(--toggle-color);
+  width: 77.5px;
+  height: 40px;
+  border: none;
+  border-radius: 200px;
+  cursor: pointer;
+  position: fixed;
+  right: 20px;
+  bottom: 70px;
   z-index: 1;
 }
 
@@ -338,3 +355,34 @@ textarea {
 .challenge-card:hover .text-muted {
   color: var(--text-color) !important;
 }
+
+.modal-content,
+.btn-close {
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
+  --bs-btn-close-color: var(--text-color) !important;
+  --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='red'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+}
+
+.modal-content {
+  border: 1px solid var(--border-color) !important;
+}
+
+.guide-button {
+  background-color: var(--background-color);
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color) !important;
+  margin: 3px;
+  padding: 5px 10px;
+  height: 40px;
+}
+
+.guide-button-selected {
+  background-color: rgb(169, 89, 255)!important;
+  color: white!important;
+}
+
+#code-block-example>code.language-javascript {
+  margin-left: -40px;
+}
+

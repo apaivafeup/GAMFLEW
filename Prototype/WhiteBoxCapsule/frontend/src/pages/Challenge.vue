@@ -89,9 +89,9 @@ export default {
     this.board.attempt = new Attempt(user_id, this.id, this.challenge.timer_value, 0, 0, null, null)
 
     this.board.timer = this.challenge.timer_value
-    this.board.startTimer()
+
+    document.getElementById('guide-button').click()
   },
-  mounted() {},
 
   updated() {
     Prism.highlightAll()

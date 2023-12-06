@@ -147,6 +147,10 @@ def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: in
     db.commit()
     return db_challenge
 
+def get_passed_challenges(db: Session, user_id: int):
+    passed_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
+    passed_challenges_ids = [attempt.challenge_id for attempt in passed_attempts]
+    return passed_challenges_ids
 
 def delete_user(db: Session, user_id: int):
     user_to_delete = get_user(db, user_id)
@@ -161,12 +165,19 @@ def get_user_score(db: Session, user_id: int):
     user = get_user(db, user_id)
     if user is None:
         return None
+    
+    covered_challenges = get_passed_challenges(db, user_id) # Get all challenges that the user has passed, to help in finding the highscores.
 
     successful_attempts = db.query(schemas.Attempt).filter(
         schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
+
     user_score = 0
-    for attempt in successful_attempts:
-        user_score += attempt.score
+    for challenge_id in covered_challenges:
+        attempts = successful_attempts.filter(schemas.Attempt.challenge_id == challenge_id)
+
+        attempts.sort(key=lambda attempt: attempt.score, reverse=True)
+
+        user_score += attempts[0].score ## Only count the highest-scored attempt for each challenge.
 
     return user_score
 

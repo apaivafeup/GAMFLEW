@@ -110,7 +110,9 @@ export function find_blue_pieces(board, boardKey) {
     }
   }
 
-  vertices.sort((a, b) => { a.x - b.x == 0 ? a.y - b.y : a.x - b.x })
+  vertices.sort((a, b) => {
+    a.x - b.x == 0 ? a.y - b.y : a.x - b.x
+  })
   return vertices
 }
 
@@ -123,7 +125,9 @@ export function find_red_pieces(board, boardKey) {
       }
     }
   }
-  vertices.sort((a, b) => { a.x - b.x == 0 ? a.y - b.y : a.x - b.x })
+  vertices.sort((a, b) => {
+    a.x - b.x == 0 ? a.y - b.y : a.x - b.x
+  })
   return vertices
 }
 
@@ -136,7 +140,8 @@ export function find_stacks(board, boardKey) {
       }
     }
   }
-  vertices.sort((a, b) => { a.x - b.x == 0 ? a.y - b.y : a.x - b.x })
+  vertices.sort((a, b) => {
+    a.x - b.x == 0 ? a.y - b.y : a.x - b.x
+  })
   return vertices
 }
-

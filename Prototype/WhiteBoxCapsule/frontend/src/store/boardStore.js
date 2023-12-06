@@ -29,6 +29,7 @@ export const boardStore = defineStore('boardStore', {
       pause: Boolean,
       timeout: Boolean,
       submitted: Boolean,
+      started: Boolean,
 
       // Attempt state, for future submission.
       attempt: Attempt,
@@ -144,6 +145,7 @@ export const boardStore = defineStore('boardStore', {
       this.pause = false
       this.timeout = false
       this.submitted = false
+      this.started = false
     },
 
     generateState() {
@@ -348,18 +350,22 @@ export const boardStore = defineStore('boardStore', {
     },
 
     startTimer() {
-      this.interval = setInterval(() => {
-        this.timer--
+      if (!this.started) {
+        this.interval = setInterval(() => {
+          this.timer--
+  
+          if (this.timer == 0) {
+            clearInterval(this.interval)
+            this.gameOver()
+          }
+  
+          if (this.passed) {
+            clearInterval(this.interval)
+          }
+        }, 1000)
 
-        if (this.timer == 0) {
-          clearInterval(this.interval)
-          this.gameOver()
-        }
-
-        if (this.passed) {
-          clearInterval(this.interval)
-        }
-      }, 1000)
+        this.started = true
+      }
     },
 
     pauseMode() {
