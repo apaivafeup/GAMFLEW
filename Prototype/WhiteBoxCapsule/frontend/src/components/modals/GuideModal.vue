@@ -104,9 +104,9 @@
                 </p>
               </div>
             </div>
-            <div class="row" style="border: #ccc 1px solid; padding: 10px;"> 
+            <div class="row" style="border: #ccc 1px solid; padding: 10px; "> 
               <h6>Adding Pieces</h6>
-              <p style="text-align: justify; margin: 0px;">
+              <p style="text-align: justify; margin: 0px; margin-bottom: -10px;">
                 To add a piece, click the <button class="button is-primary is-fullwidth">
                   Add
                 </button> button and then click the spot you want to add it to.
@@ -137,7 +137,7 @@
               </button>
             </div>
             <div class="row">
-              <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="324px" data-line="1" :prismjs="true" :name="name"
+              <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="314.5px" data-line="1" :prismjs="true" :name="name"
                 :code="auxiliaryFunctions[selectedFunction]" lang="javascript"
                 prism-js
                 style="font-size: 16px; overflow: scroll;"
