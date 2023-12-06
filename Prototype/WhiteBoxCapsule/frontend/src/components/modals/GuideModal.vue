@@ -2,7 +2,7 @@
   <div ref="guideModal" class="modal fade" id="guide-modal" tabindex="-1" data-bs-keyboard="false" data-bs-backdrop="static">
     <div class="modal-dialog modal-xl">
       <div class="modal-content" style="padding: 0px 20px; border-radius: 50px;">
-        <div class="modal-header" style="border-color: transparent; text-align: center;">
+        <div class="modal-header" style="border-color: transparent; text-align: center; padding: 10px;">
           <h4 class="modal-title">Guide</h4>
           <button ref="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
         </div>
@@ -100,7 +100,7 @@
                 </div>
                 <p style="text-align: justify; margin: 0px;">
                   Then, click the spot you want to move it to. Stacks can also be moved, but only as a whole.
-                  Coordinates for movements follow an <em>(x, y)</em> pattern, where <em>x</em> is the row and <em>y</em> is the column.
+                  Coordinates follow an <em>(x, y)</em> pattern - <em>x</em> is the row and <em>y</em> is the column.
                 </p>
               </div>
             </div>
@@ -137,7 +137,7 @@
               </button>
             </div>
             <div class="row">
-              <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="288.5px" data-line="1" :prismjs="true" :name="name"
+              <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="324px" data-line="1" :prismjs="true" :name="name"
                 :code="auxiliaryFunctions[selectedFunction]" lang="javascript"
                 prism-js
                 style="font-size: 16px; overflow: scroll;"
