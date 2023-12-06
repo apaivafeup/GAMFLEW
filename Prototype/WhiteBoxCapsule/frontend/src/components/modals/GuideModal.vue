@@ -127,7 +127,7 @@
           <div v-if="tab == 'auxiliary_functions'" style="font-size: 13px !important;">
             <p style="text-align: justify; ">
               There are a bunch of auxiliary functions that may be used in challenges.
-              These functions' code is superfluous to the challenge's objective, but what the functions do is not.
+              These functions' code is superfluous to all challenge objectives, but what the functions do is not.
             </p>
 
             <div class="row" style="padding: 10px;">
