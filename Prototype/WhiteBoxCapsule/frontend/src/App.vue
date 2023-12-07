@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import GuideModal from './components/modals/GuideModal.vue';
+import GuideModal from './components/modals/GuideModal.vue'
 
 export default {
   beforeMount() {},

@@ -378,11 +378,19 @@ textarea {
 }
 
 .guide-button-selected {
-  background-color: rgb(169, 89, 255)!important;
-  color: white!important;
+  background-color: rgb(169, 89, 255) !important;
+  color: white !important;
 }
 
-#code-block-example>code.language-javascript {
+#code-block-example > code.language-javascript {
   margin-left: -40px;
 }
 
+.passed-badge {
+  background-color: var(--background-color);
+  color: var(--text-color-inv);
+  border-radius: 30px;
+  margin-top: 2.5px;
+  padding: 5px 10px;
+  border: var(--box-border);
+}

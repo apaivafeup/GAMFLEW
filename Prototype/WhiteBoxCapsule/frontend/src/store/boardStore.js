@@ -353,12 +353,12 @@ export const boardStore = defineStore('boardStore', {
       if (!this.started) {
         this.interval = setInterval(() => {
           this.timer--
-  
+
           if (this.timer == 0) {
             clearInterval(this.interval)
             this.gameOver()
           }
-  
+
           if (this.passed) {
             clearInterval(this.interval)
           }
