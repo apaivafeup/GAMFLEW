@@ -387,10 +387,10 @@ textarea {
 }
 
 .passed-badge {
-  background-color: var(--background-color);
-  color: var(--text-color-inv);
+  background-color: transparent;
+  color: var(--text-color);
   border-radius: 30px;
   margin-top: 2.5px;
   padding: 5px 10px;
-  border: var(--box-border);
+  border: 1px solid rgb(169, 89, 255);
 }
