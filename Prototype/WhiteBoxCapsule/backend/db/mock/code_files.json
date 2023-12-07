@@ -22,7 +22,7 @@
     {
         "id": 5,
         "name": "Test File 5: Making an Even-Numbered Stack (Pieces on Pieces on Pieces!)",
-        "content": "function making_an_even_numbered_stack(board) {\n\t// The following functions work with the board object.\n\t// It finds the first stack in the board and returns it.\n\t// Stack: a spot with more than one piece (at least 2).\n\tvar a = utils.find_first_stack(board)\n\n\t// A stack is divided into two parts: blue and red.\n\t// Each part counts the respective color's number of pieces in the stack.\n\tif (a.stack.red + a.stack.blue % 2 == 0 &&\n\t    a.stack.red + a.stack.blue > 2) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+        "content": "function making_an_even_numbered_stack(board) {\n\t// The following functions work with the board object.\n\t// It finds the first stack in the board and returns it.\n\t// Stack: a spot with more than one piece (at least 2).\n\tvar a = utils.find_first_stack(board)\n\n\t// A stack is divided into two parts: blue and red.\n\t// Each part counts the respective color's number of pieces in the stack.\n\tif ((a.stack.red + a.stack.blue) % 2 == 0 &&\n\t    a.stack.red + a.stack.blue > 2) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
     },
     {
         "id": 6,
