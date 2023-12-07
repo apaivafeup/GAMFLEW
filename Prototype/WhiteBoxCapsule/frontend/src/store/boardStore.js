@@ -134,6 +134,7 @@ export const boardStore = defineStore('boardStore', {
       this.selectedCoords = { x: -1, y: -1 }
     },
 
+    //TODO: fix the reset button when in add mode!!!
     emptyState() {
       this.state[this.currentKey] = []
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
