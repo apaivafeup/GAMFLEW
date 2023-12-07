@@ -7,6 +7,7 @@
       <div class="accordion-item" v-for="code_file in code_files">
         <h2 class="accordion-header" :id="'heading' + code_file.id">
           <button
+            :id="'accordion-button-' + code_file.id"
             class="accordion-button"
             type="button"
             data-bs-toggle="collapse"
