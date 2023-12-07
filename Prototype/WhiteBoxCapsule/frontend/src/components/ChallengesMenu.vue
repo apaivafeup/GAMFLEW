@@ -31,10 +31,15 @@
             <ul class="list-group">
               <li
                 class="list-group-item"
-                v-for="challenge in challenges[code_file.id].sort((a, b) => a.id - b.id)"
+                v-if="challenges[code_file.id]"
+
+                v-for="challenge in challenges[code_file.id].sort(sort_function)"
                 :key="challenge.id"
               >
-                <ChallengeCard :challenge="challenge" :passed="passed_challenges.includes(challenge.id)" />
+                <ChallengeCard
+                  :challenge="challenge"
+                  :passed="passed_challenges.includes(challenge.id)"
+                />
               </li>
             </ul>
           </div>
@@ -55,23 +60,31 @@ export default defineComponent({
   async beforeMount() {
     await axios.get('http://localhost:8000/code-files/').then((response) => {
       this.code_files = response.data
-    });
+    })
+
+    console.log(this.code_files)
 
     await axios.get('http://localhost:8000/challenges-by-code/').then((response) => {
       this.challenges = response.data
-    });
+    })
 
     //TODO: get logged user id when login is implemented
     await axios.get('http://localhost:8000/users/' + 1 + '/passed-challenges/').then((response) => {
       this.passed_challenges = response.data
-    });
+    })
   },
 
   data() {
     return {
       challenges: {},
       code_files: [],
-      passed_challenges: [],
+      passed_challenges: []
+    }
+  },
+
+  methods: {
+    sort_function(a, b) {
+      return a.id - b.id
     }
   }
 })
