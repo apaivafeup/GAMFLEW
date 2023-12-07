@@ -4,7 +4,7 @@
     v-if="main"
     style="display: flex; justify-content: center; align-items: center; flex-direction: column"
   >
-    <button class="menu-button" @click="switchMenu('challenges')" style="width: 500px">
+    <button class="menu-button" id="single-player-button" @click="switchMenu('challenges')" style="width: 500px">
       Single Player
     </button>
     <button class="menu-button" @click="switchMenu('howTo')" style="width: 500px">

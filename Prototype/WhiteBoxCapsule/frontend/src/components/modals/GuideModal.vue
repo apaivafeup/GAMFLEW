@@ -15,6 +15,7 @@
         >
           <h4 class="modal-title">Guide</h4>
           <button
+            id="guide-modal-close-button"
             ref="close"
             type="button"
             class="btn-close"
