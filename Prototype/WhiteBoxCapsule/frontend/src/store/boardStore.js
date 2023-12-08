@@ -350,8 +350,8 @@ export const boardStore = defineStore('boardStore', {
       this.submitted = true
     },
 
-    startTimer() {
-      if (!this.started) {
+    startTimer(pause = false) {
+      if (!this.started || pause) {
         this.interval = setInterval(() => {
           this.timer--
 
@@ -373,7 +373,7 @@ export const boardStore = defineStore('boardStore', {
       this.pause = !this.pause
 
       if (!this.pause) {
-        this.startTimer()
+        this.startTimer(true)
       } else {
         clearInterval(this.interval)
       }

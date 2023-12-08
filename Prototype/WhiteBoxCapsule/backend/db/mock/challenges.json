@@ -397,7 +397,8 @@
                 "utils.find_first_stack(input, case_num).position.x != -2"
             ],
             "tests": [
-                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.red < 2 || (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 != 0"
+                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue <= 2 && (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 == 0",
+                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue > 2 && (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 != 0"
             ]
         },
         "achievement_criteria": null,
@@ -411,7 +412,7 @@
         "test_cases_count": 1,
         "timer_value": 300,
         "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
-        "objective": "Statement coverage of line 25.",
+        "objective": "Statement coverage of line 31.",
         "initial_board": "empty",
         "code_file": 6,
         "passing_criteria": {
@@ -420,7 +421,7 @@
                 "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
             "tests": [
-                "Math.sqrt(Math.pow(utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), 2) + Math.pow(utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), 2)) == utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])"
+                "function six_one() { return Math.pow([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2); } six_one();"
             ]
         },
         "achievement_criteria": null,
@@ -434,7 +435,7 @@
         "test_cases_count": 1,
         "timer_value": 250,
         "hint": "Here, the comment in line 2 is not that help- Actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
-        "objective": "Statement coverage of line 27.",
+        "objective": "Statement coverage of line 33.",
         "initial_board": "empty",
         "code_file": 6,
         "passing_criteria": {
@@ -443,7 +444,7 @@
                 "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
             "tests": [
-                "Set([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])]).length == 3"
+                "new Set([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])]).size == 3"
             ]
         },
         "achievement_criteria": null,
@@ -457,7 +458,7 @@
         "test_cases_count": 1,
         "timer_value": 250,
         "hint": "An isosceles triangle has only two equal sides. It doesn't matter which ones you choose to be equal.",
-        "objective": "Statement coverage of line 29.",
+        "objective": "Statement coverage of line 35.",
         "initial_board": "empty",
         "code_file": 6,
         "passing_criteria": {
@@ -466,7 +467,7 @@
                 "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
             "tests": [
-                "Set([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])]).length == 2"
+                "new Set([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])]).size == 2"
             ]
         },
         "achievement_criteria": null,
@@ -480,7 +481,7 @@
         "test_cases_count": 1,
         "timer_value": 250,
         "hint": "No checks are performed on the triangle's sides, so you can make them equal. But how? ",
-        "objective": "Statement coverage of line 31.",
+        "objective": "Statement coverage of line 37.",
         "initial_board": "empty",
         "code_file": 6,
         "passing_criteria": {
@@ -488,7 +489,7 @@
             "preconditions": [
             ],
             "tests": [
-                "Set(utils.find_blue_pieces(input, input.currentKey)).length == 0"
+                "new Set(utils.find_blue_pieces(input, input.currentKey)).size == 0"
             ]
         },
         "achievement_criteria": null,
@@ -502,7 +503,7 @@
         "test_cases_count": 4,
         "timer_value": 400,
         "hint": "No checks are performed on the triangle's sides, here, but order CAN be relevant to your test cases in at least 2 of them!",
-        "objective": "Decision coverage of line 24.",
+        "objective": "Decision coverage of line 30.",
         "initial_board": "empty",
         "code_file": 6,
         "passing_criteria": {
@@ -510,10 +511,10 @@
             "preconditions": [
             ],
             "tests": [
-                "Math.sqrt(Math.pow(utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), 2) + Math.pow(utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), 2)) == utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])",
-                "Set([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])]).length == 3",
-                "Set([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])]).length == 2",
-                "Set(utils.find_blue_pieces(input, case_num)).length == 0"
+                "Math.pow([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1])].sort()[0], 2) + Math.pow([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1])].sort()[1], 2) == Math.pow([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1])].sort()[2], 2)",
+                "new Set([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])]).size == 3",
+                "new Set([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])]).size == 2",
+                "new Set(utils.find_blue_pieces(input, case_num)).size == 0"
             ]
         },
         "achievement_criteria": null,

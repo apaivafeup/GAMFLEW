@@ -1,6 +1,6 @@
 <template>
   <CodeBlock
-    class="line-numbers"
+    class="col line-numbers"
     theme="default"
     height="393px"
     data-line="1"
@@ -9,7 +9,7 @@
     lang="javascript"
     prism-plugin
     prism-js
-    style="font-size: 16px; overflow: scroll"
+    style="font-size: 16px; overflow: scroll; margin-bottom: 5px;"
     :copy-icon="false"
     :copy-button="false"
     :copy-tab="false"

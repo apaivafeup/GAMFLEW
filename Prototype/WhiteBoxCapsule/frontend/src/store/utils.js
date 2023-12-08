@@ -5,7 +5,7 @@ export function isTriangle(a, b, c) {
 }
 
 export function distance(a, b) {
-  return Math.ceil(Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2)))
+  return Math.round(Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2)))
 }
 
 export function count_blue_pieces(board, boardKey) {
