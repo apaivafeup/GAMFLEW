@@ -31,7 +31,7 @@ export default {
 
 <template>
   <div id="board-row" class="justify-content-between" style="display: flex; flex-direction: row">
-    <div class="col" style="width: 50%;">
+    <div class="col" style="width: 50%">
       <div class="alert alert-warning player-info" v-if="!board.timeout">
         {{ this.challenge.objective }}
       </div>

@@ -12,7 +12,9 @@
       <div class="modal-content">
         <div class="modal-body">
           <h2 style="text-align: center">You can't get 'em all!</h2>
-          <h5 style="text-align: center; font-weight: normal">Explain what you tried or state your doubts!</h5>
+          <h5 style="text-align: center; font-weight: normal">
+            Explain what you tried or state your doubts!
+          </h5>
 
           <textarea
             id="fail-modal-textarea"

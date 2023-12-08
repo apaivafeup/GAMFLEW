@@ -9,7 +9,7 @@
     lang="javascript"
     prism-plugin
     prism-js
-    style="font-size: 16px; overflow: scroll; margin-bottom: 5px;"
+    style="font-size: 16px; overflow: scroll; margin-bottom: 5px"
     :copy-icon="false"
     :copy-button="false"
     :copy-tab="false"

@@ -81,12 +81,12 @@ export const boardStore = defineStore('boardStore', {
         return
       }
 
-      if (x == -1 && y == -1) {
+      if (x < 0 || x > 7 || y < 0 || y > 7) {
         if (this.selectedPiece == null) {
           if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY) return
           else {
             this.selectedPiece = this.outOfBoundsState[this.currentKey]
-            this.selectedCoords = { x: -1, y: -1 }
+            this.selectedCoords = { x: -10, y: -10 }
             this.selectedPiece.select()
           }
         } else {
@@ -110,7 +110,7 @@ export const boardStore = defineStore('boardStore', {
 
     movePiece(x, y) {
       var logicalSpot
-      if (x == -1 && y == -1) {
+      if (x < 0 || x > 7 || y < 0 || y > 7) {
         logicalSpot = this.outOfBoundsState[this.currentKey]
       } else {
         logicalSpot = this.state[this.currentKey][x][y]
@@ -131,10 +131,10 @@ export const boardStore = defineStore('boardStore', {
       this.updateInfoState()
 
       this.selectedPiece = null
-      this.selectedCoords = { x: -1, y: -1 }
+      this.selectedCoords = { x: null, y: null }
     },
 
-    emptyState(reset = false) {
+    emptyState() {
       this.state[this.currentKey] = []
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
       this.log[this.currentKey] = []
@@ -146,13 +146,9 @@ export const boardStore = defineStore('boardStore', {
       this.timeout = false
       this.submitted = false
       this.started = false
-
-      if (reset) {
-        setState()
-      }
     },
 
-    generateState() {
+    generateState(reset = false) {
       console.log('generating state')
 
       this.emptyState()
@@ -170,6 +166,10 @@ export const boardStore = defineStore('boardStore', {
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
 
       this.log[this.currentKey] = []
+
+      if (reset) {
+        this.setState()
+      }
     },
 
     setState() {

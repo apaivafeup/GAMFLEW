@@ -7,7 +7,21 @@
         </div>
         <div class="game-board-out">
           <div class="box">
-            <PieceStack :id="'piece-stack-out'" :x="-1" :y="-1" />
+            <OutPieceStack />
+          </div>
+          <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
+            <input
+              id="piece-stack-out-x"
+              class="col box"
+              style="width: 30px; text-align: center; font-size: 12px"
+              type="number"
+            />
+            <input
+              id="piece-stack-out-y"
+              class="col box"
+              style="width: 30px; text-align: center; font-size: 12px"
+              type="number"
+            />
           </div>
         </div>
       </div>
@@ -16,7 +30,7 @@
         {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
 
-      <div class="buttons-grid" >
+      <div class="buttons-grid">
         <button
           class="button is-primary is-fullwidth"
           v-if="board.currentKey != 0 && !board.passed"
@@ -24,11 +38,7 @@
         >
           Previous
         </button>
-        <button
-          class="button is-primary is-fullwidth disabled"
-          v-else
-          style="cursor: default;"
-        >
+        <button class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
           Previous
         </button>
         <button
@@ -38,11 +48,7 @@
         >
           Next
         </button>
-        <button
-          class="button is-primary is-fullwidth disabled"
-          style="cursor: default;"
-          v-else
-        >
+        <button class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Next
         </button>
         <button
@@ -54,7 +60,7 @@
         </button>
         <button
           class="button is-primary is-fullwidth add-button disabled"
-          style="cursor: default;"
+          style="cursor: default"
           v-else
         >
           Add
@@ -66,13 +72,9 @@
         >
           Go!
         </button>
-        <button
-          class="button is-primary is-fullwidth disabled"
-          style="cursor: default;"
-          v-else
-        >
+        <button class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Go!
-        </button>   
+        </button>
         <button
           class="button is-primary is-fullwidth"
           v-if="!board.passed"
@@ -80,46 +82,36 @@
         >
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
-        <button
-          class="button is-primary is-fullwidth disabled"
-          v-else
-          style="cursor: default;"
-        >
+        <button class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
         <button
           class="button is-primary is-fullwidth"
           v-if="!board.passed && !board.pause && !board.add"
-          @click="board.generateState()"
+          @click="board.generateState(true)"
         >
           Reset
         </button>
-        <button
-          class="button is-primary is-fullwidth disabled"
-          style="cursor: default;"
-          v-else
-        >
+        <button class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Reset
-      </button>
-        
-        
+        </button>
       </div>
       <button
-          class="button is-primary is-fullwidth"
-          v-if="board.passed && !board.submitted"
-          data-bs-toggle="modal"
-          data-bs-target="#submit-modal"
-          style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255);"
-        >
-          Comment
+        class="button is-primary is-fullwidth"
+        v-if="board.passed && !board.submitted"
+        data-bs-toggle="modal"
+        data-bs-target="#submit-modal"
+        style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)"
+      >
+        Comment
       </button>
       <button
-          class="button is-primary is-fullwidth"
-          v-else
-          data-bs-toggle="modal"
-          data-bs-target="#fail-modal"
-        >
-          Comment
+        class="button is-primary is-fullwidth"
+        v-else
+        data-bs-toggle="modal"
+        data-bs-target="#fail-modal"
+      >
+        Comment
       </button>
       <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
         Retry
@@ -197,9 +189,10 @@ import { Challenge } from '../store/models/challenge'
 import { boardStore } from '../store/boardStore'
 
 import * as utils from '../store/utils.js'
+import OutPieceStack from './OutPieceStack.vue'
 
 export default {
-  components: { PieceStack, SubmitModal },
+  components: { PieceStack, OutPieceStack, SubmitModal },
   props: {
     challenge: Challenge
   },
@@ -218,7 +211,7 @@ export default {
         this.goUnique(input)
       } else if (type == 'decision') {
         this.goDecision(input)
-      } else if (type == 'condition') {
+      } else if (type == 'condition' || type == 'mcdc') {
         this.goCondition(input)
       } else {
         console.error('Invalid submit type')
@@ -328,6 +321,6 @@ export default {
       }
     }
   },
-  components: { PieceStack }
+  components: { PieceStack, OutPieceStack }
 }
 </script>

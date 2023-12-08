@@ -33,13 +33,11 @@
               <li
                 class="list-group-item"
                 v-if="challenges[code_file.id]"
-
                 v-for="challenge in challenges[code_file.id].sort(sort_function)"
                 :key="challenge.id"
               >
                 <ChallengeCard
-                  :id="'challenge-card-'+challenge.id"
-
+                  :id="'challenge-card-' + challenge.id"
                   :challenge="challenge"
                   :passed="passed_challenges.includes(challenge.id)"
                 />

@@ -8,8 +8,10 @@ export function distance(a, b) {
   if (!a || !b) {
     return 0
   }
-  
-  return Math.round(Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2)))
+
+  return Math.round(
+    Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2))
+  )
 }
 
 export function count_blue_pieces(board, boardKey) {

@@ -524,6 +524,32 @@
         "achievement_criteria": null,
         "difficulty": "Very Hard",
         "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.5: Drawing Triangles is Hard!",
+        "description": "The biggest challenge you'll face yet!",
+        "test_cases_count": 4,
+        "timer_value": 400,
+        "hint": "No checks are performed on the triangle's sides, here, but order CAN be relevant to your test cases in at least 2 of them!",
+        "objective": "Modified condition/decision coverage of line 3.",
+        "initial_board": "default",
+        "code_file": 7,
+        "passing_criteria": {
+            "type": "mcdc",
+            "preconditions": [
+                "input.log[case_num].length > 0",
+                "input.log[case_num][input.log[case_num].length - 1].type == 'move'"
+            ],
+            "tests": [
+                "input.log[case_num][input.log[case_num].length - 1].from.x >= 7 && input.log[case_num][input.log[case_num].length - 1].from.x <= 0",
+                "!(input.log[case_num][input.log[case_num].length - 1].from.x >= 7) && input.log[case_num][input.log[case_num].length - 1].from.x <= 0",
+                "input.log[case_num][input.log[case_num].length - 1].from.x >= 7 && !(input.log[case_num][input.log[case_num].length - 1].from.x <= 0)",
+                "!(input.log[case_num][input.log[case_num].length - 1].from.x >= 7) && !(input.log[case_num][input.log[case_num].length - 1].from.x <= 0)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
     }
 ]
-

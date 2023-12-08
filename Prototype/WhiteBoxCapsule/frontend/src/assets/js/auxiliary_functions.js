@@ -1,7 +1,7 @@
 export const auxiliaryFunctions = {
   isTriangle: 'function isTriangle(a, b, c) {\n\treturn a + b > c && a + c > b && b + c > a\n}',
   distance:
-    "function distance(a, b) {\n\tif (!a || !b) {\n\t\treturn 0\n\t}\n\t\n\treturn Math.round(Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2)))\n}",
+    'function distance(a, b) {\n\tif (!a || !b) {\n\t\treturn 0\n\t}\n\t\n\treturn Math.round(Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2)))\n}',
   count_blue_pieces:
     'function count_blue_pieces(board, boardKey) {\n  var count = 0\n  for (var i = 0; i < board.state[boardKey].length; i++) {\n    for (var j = 0; j < board.state[boardKey].length; j++) {\n      if (board.state[boardKey][i][j].color == Color.BLUE) {\n        count++\n      }\n    }\n  }\n  return count\n}',
   count_red_pieces:
