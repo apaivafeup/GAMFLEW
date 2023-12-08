@@ -64,4 +64,8 @@ export class Piece {
   select() {
     this.selected = !this.selected
   }
+
+  update(x, y) {
+    this.position = { x: x, y: y }
+  }
 }

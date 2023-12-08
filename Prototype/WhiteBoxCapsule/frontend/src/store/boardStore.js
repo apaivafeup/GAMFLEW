@@ -128,6 +128,11 @@ export const boardStore = defineStore('boardStore', {
       })
 
       //console.log(this.log[this.currentKey])
+      
+      if (logicalSpot == this.outOfBoundsState[this.currentKey]) {
+        logicalSpot.update(x, y)
+      }
+
       this.updateInfoState()
 
       this.selectedPiece = null

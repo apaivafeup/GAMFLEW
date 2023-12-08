@@ -11,16 +11,34 @@
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input
+              v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
               id="piece-stack-out-x"
               class="col box"
               style="width: 30px; text-align: center; font-size: 12px"
               type="number"
             />
             <input
+              v-else
+              id="piece-stack-out-x"
+              class="col box disabled"
+              style="width: 30px; text-align: center; font-size: 12px"
+              type="number"
+              disabled
+            />
+            <input
+              v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
               id="piece-stack-out-y"
               class="col box"
               style="width: 30px; text-align: center; font-size: 12px"
               type="number"
+            />
+            <input
+              v-else
+              id="piece-stack-out-y"
+              class="col box disabled"
+              style="width: 30px; text-align: center; font-size: 12px"
+              type="number"
+              disabled
             />
           </div>
         </div>
