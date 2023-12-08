@@ -5,6 +5,10 @@ export function isTriangle(a, b, c) {
 }
 
 export function distance(a, b) {
+  if (!a || !b) {
+    return 0
+  }
+  
   return Math.round(Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2)))
 }
 
