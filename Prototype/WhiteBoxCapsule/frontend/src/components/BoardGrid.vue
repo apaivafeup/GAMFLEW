@@ -16,21 +16,18 @@
         {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
 
-      <div class="buttons-grid">
-        <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
-          Retry
-        </button>
-        <button
-          class="button is-primary is-fullwidth"
-          v-if="!board.passed && !board.pause"
-          @click="board.generateState()"
-        >
-          Reset
-        </button>
+      <div class="buttons-grid" >
         <button
           class="button is-primary is-fullwidth"
           v-if="board.currentKey != 0 && !board.passed"
           @click="board.previous()"
+        >
+          Previous
+        </button>
+        <button
+          class="button is-primary is-fullwidth disabled"
+          v-else
+          style="cursor: default;"
         >
           Previous
         </button>
@@ -42,19 +39,11 @@
           Next
         </button>
         <button
-          class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed"
-          @click="go(this.board)"
+          class="button is-primary is-fullwidth disabled"
+          style="cursor: default;"
+          v-else
         >
-          Go!
-        </button>
-        <button
-          class="button is-primary is-fullwidth"
-          v-if="board.passed && !board.submitted"
-          data-bs-toggle="modal"
-          data-bs-target="#submit-modal"
-        >
-          Comment
+          Next
         </button>
         <button
           class="button is-primary is-fullwidth add-button"
@@ -63,7 +52,27 @@
         >
           Add
         </button>
-        <button class="button is-primary is-fullwidth" @click="board.exit()">Exit</button>
+        <button
+          class="button is-primary is-fullwidth add-button disabled"
+          style="cursor: default;"
+          v-else
+        >
+          Add
+        </button>
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed && !board.pause"
+          @click="go(this.board)"
+        >
+          Go!
+        </button>
+        <button
+          class="button is-primary is-fullwidth disabled"
+          style="cursor: default;"
+          v-else
+        >
+          Go!
+        </button>   
         <button
           class="button is-primary is-fullwidth"
           v-if="!board.passed"
@@ -71,7 +80,51 @@
         >
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
+        <button
+          class="button is-primary is-fullwidth disabled"
+          v-else
+          style="cursor: default;"
+        >
+          {{ !this.board.pause ? 'Pause' : 'Resume' }}
+        </button>
+        <button
+          class="button is-primary is-fullwidth"
+          v-if="!board.passed && !board.pause && !board.add"
+          @click="board.generateState()"
+        >
+          Reset
+        </button>
+        <button
+          class="button is-primary is-fullwidth disabled"
+          style="cursor: default;"
+          v-else
+        >
+          Reset
+      </button>
+        
+        
       </div>
+      <button
+          class="button is-primary is-fullwidth"
+          v-if="board.passed && !board.submitted"
+          data-bs-toggle="modal"
+          data-bs-target="#submit-modal"
+          style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255);"
+        >
+          Comment
+      </button>
+      <button
+          class="button is-primary is-fullwidth"
+          v-else
+          data-bs-toggle="modal"
+          data-bs-target="#fail-modal"
+        >
+          Comment
+      </button>
+      <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
+        Retry
+      </button>
+      <button class="button is-primary is-fullwidth" @click="board.exit()">Exit</button>
     </div>
     <div style="align-content: center">
       <div class="game-board-labels">

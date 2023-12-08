@@ -395,3 +395,7 @@ textarea {
   padding: 5px 10px;
   border: 1px solid rgb(169, 89, 255);
 }
+
+.disabled {
+  opacity: 0.5
+}
