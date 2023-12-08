@@ -15,7 +15,7 @@ export function distance(a, b) {
 export function count_blue_pieces(board, boardKey) {
   var count = 0
   for (var i = 0; i < board.state[boardKey].length; i++) {
-    for (var j = 0; j < board.state[boardKey][i].length; j++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
       if (board.state[boardKey][i][j].color == Color.BLUE) {
         count++
       }
@@ -27,7 +27,7 @@ export function count_blue_pieces(board, boardKey) {
 export function count_red_pieces(board, boardKey) {
   var count = 0
   for (var i = 0; i < board.state[boardKey].length; i++) {
-    for (var j = 0; j < board.state[boardKey][i].length; j++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
       if (board.state[boardKey][i][j].color == Color.RED) {
         count++
       }
@@ -39,7 +39,7 @@ export function count_red_pieces(board, boardKey) {
 export function count_empty_spaces(board, boardKey) {
   var count = 0
   for (var i = 0; i < board.state[boardKey].length; i++) {
-    for (var j = 0; j < board.state[boardKey][i].length; j++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
       if (board.state[boardKey][i][j].color == Color.EMPTY) {
         count++
       }
@@ -50,7 +50,7 @@ export function count_empty_spaces(board, boardKey) {
 
 export function find_first_red_piece(board, boardKey) {
   for (var i = 0; i < board.state[boardKey].length; i++) {
-    for (var j = 0; j < board.state[boardKey][i].length; j++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
       if (
         board.state[boardKey][i][j].color == Color.RED ||
         (board.state[boardKey][i][j].color == Color.STACK &&
@@ -70,7 +70,7 @@ export function find_first_red_piece(board, boardKey) {
 
 export function find_first_blue_piece(board, boardKey) {
   for (var i = 0; i < board.state[boardKey].length; i++) {
-    for (var j = 0; j < board.state[boardKey][i].length; j++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
       if (
         board.state[boardKey][i][j].color == Color.BLUE ||
         (board.state[boardKey][i][j].color == Color.STACK &&
@@ -90,7 +90,7 @@ export function find_first_blue_piece(board, boardKey) {
 
 export function find_first_stack(board, boardKey) {
   for (var i = 0; i < board.state[boardKey].length; i++) {
-    for (var j = 0; j < board.state[boardKey][i].length; j++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
       if (board.state[boardKey][i][j].color == Color.STACK) {
         return board.state[boardKey][i][j]
       }
@@ -107,7 +107,7 @@ export function find_first_stack(board, boardKey) {
 export function find_blue_pieces(board, boardKey) {
   var vertices = []
   for (var i = 0; i < board.state[boardKey].length; i++) {
-    for (var j = 0; j < board.state[boardKey][i].length; j++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
       if (board.state[boardKey][i][j].color == Color.BLUE) {
         vertices.push(board.state[boardKey][i][j])
       }
@@ -123,7 +123,7 @@ export function find_blue_pieces(board, boardKey) {
 export function find_red_pieces(board, boardKey) {
   var vertices = []
   for (var i = 0; i < board.state[boardKey].length; i++) {
-    for (var j = 0; j < board.state[boardKey][i].length; j++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
       if (board.state[boardKey][i][j].color == Color.RED) {
         vertices.push(board.state[boardKey][i][j])
       }
@@ -138,7 +138,7 @@ export function find_red_pieces(board, boardKey) {
 export function find_stacks(board, boardKey) {
   var vertices = []
   for (var i = 0; i < board.state[boardKey].length; i++) {
-    for (var j = 0; j < board.state[boardKey][i].length; j++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
       if (board.state[boardKey][i][j].color == Color.STACK) {
         vertices.push(board.state[boardKey][i][j])
       }

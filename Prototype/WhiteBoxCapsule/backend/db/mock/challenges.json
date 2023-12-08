@@ -151,7 +151,7 @@
         "test_cases_count": 2,
         "timer_value": 300,
         "hint": "Though it's all tested at once, you're dealing with two separate conditions. Each case needs to cover True-False state for each, across two tests! Notice how the variables' meaning (i.e., variable a will always count red pieces) never changes!",
-        "objective": "Condition coverage of line 11.",
+        "objective": "Condition coverage of line 10.",
         "initial_board": "empty",
         "code_file": 3,
         "passing_criteria": {
@@ -160,8 +160,10 @@
                 "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "utils.count_blue_pieces(input, case_num) < utils.count_empty_spaces(input, case_num) && !(utils.count_blue_pieces(input, case_num) > utils.count_red_pieces(input, case_num))",
-                "!(utils.count_blue_pieces(input, case_num) < utils.count_empty_spaces(input, case_num)) && utils.count_blue_pieces(input, case_num) > utils.count_red_pieces(input, case_num)"
+                "utils.count_blue_pieces(input, case_num) < utils.count_empty_spaces(input, case_num)",
+                "!(utils.count_blue_pieces(input, case_num) < utils.count_empty_spaces(input, case_num))",
+                "utils.count_blue_pieces(input, case_num) > utils.count_red_pieces(input, case_num)",
+                "!(utils.count_blue_pieces(input, case_num) > utils.count_red_pieces(input, case_num))"
             ]
         },
         "achievement_criteria": null,
@@ -184,8 +186,8 @@
                 "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "utils.count_blue_pieces(input, case_num) == utils.count_empty_spaces(input, case_num) || !(utils.count_blue_pieces(input, case_num) == utils.count_red_pieces(input, case_num))",
-                "!(utils.count_blue_pieces(input, case_num) == utils.count_empty_spaces(input, case_num)) && utils.count_blue_pieces(input, case_num) == utils.count_red_pieces(input, case_num)"
+                "utils.count_red_pieces(input, case_num) == utils.count_empty_spaces(input, case_num)",
+                "!(utils.count_empty_spaces(input, case_num) == utils.count_red_pieces(input, case_num))"
             ]
         },
         "achievement_criteria": null,
@@ -200,7 +202,7 @@
         "timer_value": 300,
         "hint": "Treat the first three If conditions as landmines - you can't cover them!",
         "objective": "Statement coverage of line 15.",
-        "initial_board": "full",
+        "initial_board": "empty",
         "code_file": 3,
         "passing_criteria": {
             "type": "statement",
@@ -208,7 +210,7 @@
                 "!utils.isTriangle(utils.count_red_pieces(input, input.currentKey), utils.count_blue_pieces(input, input.currentKey), utils.count_empty_spaces(input, input.currentKey))"
             ],
             "tests": [
-                "!(utils.count_blue_pieces(input, input.currentKey) == utils.count_empty_spaces(input, input.currentKey) || utils.count_blue_pieces(input, input.currentKey) == utils.count_red_pieces(input, input.currentKey)) && !(utils.count_blue_pieces(input, input.currentKey) < utils.count_empty_spaces(input, input.currentKey) && utils.count_blue_pieces(input, input.currentKey) > utils.count_red_pieces(input, input.currentKey))"
+                "!(utils.count_blue_pieces(input, input.currentKey) < utils.count_empty_spaces(input, input.currentKey)) || !(utils.count_blue_pieces(input, input.currentKey) > utils.count_red_pieces(input, input.currentKey)) && !(utils.count_red_pieces(input, input.currentKey) == utils.count_empty_spaces(input, input.currentKey))"
             ]
         },
         "achievement_criteria": null,
@@ -327,7 +329,7 @@
                 "utils.find_first_stack(input, input.currentKey).position.x != -2"
             ],
             "tests": [
-                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue > 2 && (utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) % 2 == 0"
+                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue < 6 && (utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) % 2 == 0"
             ]
         },
         "achievement_criteria": null,
@@ -350,8 +352,8 @@
                 "utils.find_first_stack(input, case_num).position.x != -2"
             ],
             "tests": [
-                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.red > 2 && (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 == 0",
-                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.red < 2 || (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 != 0"
+                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.red < 6 && (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 == 0",
+                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.red > 6 || (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 != 0"
             ]
         },
         "achievement_criteria": null,
@@ -374,7 +376,7 @@
                 "utils.find_first_stack(input, input.currentKey).position.x != -2"
             ],
             "tests": [
-                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.red < 2 || (utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) % 2 != 0"
+                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.red > 6 || (utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) % 2 != 0"
             ]
         },
         "achievement_criteria": null,
@@ -397,8 +399,10 @@
                 "utils.find_first_stack(input, case_num).position.x != -2"
             ],
             "tests": [
-                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue <= 2 && (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 == 0",
-                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue > 2 && (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 != 0"
+                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue < 6",
+                "(utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 == 0",
+                "!(utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue < 6)",
+                "!((utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 == 0)"
             ]
         },
         "achievement_criteria": null,

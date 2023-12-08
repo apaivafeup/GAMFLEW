@@ -135,7 +135,7 @@ export const boardStore = defineStore('boardStore', {
     },
 
     //TODO: fix the reset button when in add mode!!!
-    emptyState() {
+    emptyState(reset = false) {
       this.state[this.currentKey] = []
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
       this.log[this.currentKey] = []
@@ -147,6 +147,10 @@ export const boardStore = defineStore('boardStore', {
       this.timeout = false
       this.submitted = false
       this.started = false
+
+      if (reset) {
+        setState()
+      }
     },
 
     generateState() {

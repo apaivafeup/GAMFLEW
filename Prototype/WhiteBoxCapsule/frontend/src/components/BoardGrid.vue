@@ -163,8 +163,10 @@ export default {
 
       if (type == 'statement') {
         this.goUnique(input)
-      } else if (type == 'decision' || type == 'condition') {
-        this.goMultiple(input)
+      } else if (type == 'decision') {
+        this.goDecision(input)
+      } else if (type == 'condition') {
+        this.goCondition(input)
       } else {
         console.error('Invalid submit type')
       }
@@ -200,7 +202,7 @@ export default {
       }
     },
 
-    goMultiple(input) {
+    goDecision(input) {
       var preconditions = this.challenge.passing_criteria.preconditions,
         tests = this.challenge.passing_criteria.tests
 
@@ -226,6 +228,40 @@ export default {
           } else {
             passed[i] = true
             break
+          }
+        }
+      }
+
+      if (!passed.includes(false)) {
+        this.board.addMode = false
+        this.board.pauseMode()
+        this.board.pass()
+      } else {
+        this.board.fail()
+      }
+    },
+
+    goCondition(input) {
+      var preconditions = this.challenge.passing_criteria.preconditions,
+        tests = this.challenge.passing_criteria.tests
+
+      var passed = Array(tests.length).fill(false)
+      for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
+        for (var i = 0; i < preconditions.length; i++) {
+          var precondition = preconditions[i]
+          if (!eval(precondition)) {
+            this.board.fail()
+            return
+          }
+        }
+
+        for (var i = 0; i < tests.length; i++) {
+          var test = tests[i]
+
+          if (!eval(test)) {
+            continue
+          } else {
+            passed[i] = true
           }
         }
       }
