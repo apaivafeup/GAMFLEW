@@ -63,6 +63,7 @@
 <script>
 import { boardStore } from '../store/boardStore'
 
+
 export default {
   components: {},
 
@@ -75,24 +76,13 @@ export default {
   },
 
   beforeCreate() {
-    console.log("I'm in piece stack out.")
   },
 
   beforeMount() {
     this.board = boardStore()
-
-    console.log("I'm in piece stack out.")
   },
 
   mounted() {
-    console.log("I'm in piece stack out.")
-    // document.getElementById('piece-stack-out-x').addEventListener('input', () => {
-    //   this.x = this.getOutXCoordinate()
-    // })
-
-    // document.getElementById('piece-stack-out-y').addEventListener('input', () => {
-    //   this.y = this.getOutYCoordinate()
-    // })
   },
 
   methods: {

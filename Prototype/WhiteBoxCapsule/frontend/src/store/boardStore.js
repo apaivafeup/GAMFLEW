@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { Piece, Color } from './models/piece.js'
 import { Attempt } from './models/attempt.js'
+import { combinations } from './utils.js'
 
 export const redPos = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23]
 export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
@@ -21,6 +22,10 @@ export const boardStore = defineStore('boardStore', {
       selectedPiece: null,
       selectedCoords: { x: -1, y: -1 },
       lastAdd: { x: -1, y: -1 },
+      dataTable: {
+        headers: [],
+        rows: []
+      },
 
       // Flags, for game mechanics / button panel.
       passed: Boolean,
@@ -30,6 +35,7 @@ export const boardStore = defineStore('boardStore', {
       timeout: Boolean,
       submitted: Boolean,
       started: Boolean,
+      table: Boolean,
 
       // Attempt state, for future submission.
       attempt: Attempt,
@@ -128,7 +134,7 @@ export const boardStore = defineStore('boardStore', {
       })
 
       //console.log(this.log[this.currentKey])
-      
+
       if (logicalSpot == this.outOfBoundsState[this.currentKey]) {
         logicalSpot.update(x, y)
       }
@@ -151,6 +157,7 @@ export const boardStore = defineStore('boardStore', {
       this.timeout = false
       this.submitted = false
       this.started = false
+      this.table = false
     },
 
     generateState(reset = false) {
@@ -332,6 +339,47 @@ export const boardStore = defineStore('boardStore', {
     addMode() {
       this.add = !this.add
       document.body.classList.toggle('add-mode')
+    },
+
+    tableMode(challenge) {
+      this.table = !this.table
+
+      if (this.table && challenge != undefined) {
+        var headers = [], rows = []
+
+        var charCode = 'A'.charCodeAt(0)
+        for (var i = 0; i < challenge.passing_criteria.variable_count; i++) {
+          
+          headers.push({
+            "text": String.fromCharCode(charCode),
+            "value": String.fromCharCode(charCode++)
+          })
+        }
+
+        headers.push({
+          "text": "Outcome",
+          "value": "outcome"
+        })
+
+        var possible_values = [true, false]
+
+        var combs = combinations(possible_values, challenge.passing_criteria.variable_count)
+
+        var row = {}, rows = []
+        for (var i = 0; i < combs.length; i++) {
+          row = {}
+          for (var j = 0; j < headers.length - 1; j++) {
+            row[headers[j].value] = combs[i][j]
+          }
+          
+          row["outcome"] = '?'
+
+          rows.push(row)
+        }
+
+        this.dataTable.headers = headers
+        this.dataTable.rows = rows
+      }
     },
 
     pass() {
