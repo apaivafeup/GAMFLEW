@@ -149,7 +149,6 @@
     :maxPaginationNumber="10"
     v-if="board.table"
     :theme-color="'#A959FF'"
-    
   >
   </EasyDataTable>
     
