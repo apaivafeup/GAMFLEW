@@ -156,6 +156,7 @@
         "code_file": 3,
         "passing_criteria": {
             "type": "condition",
+            "variable_count": 2,
             "preconditions": [
                 "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
             ],
@@ -182,6 +183,7 @@
         "code_file": 3,
         "passing_criteria": {
             "type": "condition",
+            "variable_count": 1,
             "preconditions": [
                 "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
             ],
@@ -395,6 +397,7 @@
         "code_file": 5,
         "passing_criteria": {
             "type": "condition",
+            "variable_count": 2,
             "preconditions": [
                 "utils.find_first_stack(input, case_num).position.x != -2"
             ],
@@ -536,7 +539,34 @@
         "initial_board": "default",
         "code_file": 7,
         "passing_criteria": {
-            "type": "mcdc",
+            "type": "path",
+            "preconditions": [
+                "input.log[case_num].length > 0",
+                "input.log[case_num][input.log[case_num].length - 1].type == 'move'"
+            ],
+            "tests": [
+                "input.log[case_num][input.log[case_num].length - 1].from.x >= 7 && input.log[case_num][input.log[case_num].length - 1].to.x <= 0",
+                "!(input.log[case_num][input.log[case_num].length - 1].from.x >= 7) && input.log[case_num][input.log[case_num].length - 1].to.x <= 0",
+                "input.log[case_num][input.log[case_num].length - 1].from.x >= 7 && !(input.log[case_num][input.log[case_num].length - 1].to.x <= 0)",
+                "!(input.log[case_num][input.log[case_num].length - 1].from.x >= 7) && !(input.log[case_num][input.log[case_num].length - 1].to.x <= 0)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.2: Out of Bounds... Again!",
+        "description": "A new type of coverage is introduced in this challenge... it's more extensive than the others!",
+        "test_cases_count": 4,
+        "timer_value": 400,
+        "hint": "Read the code carefully. The If statement you're dealing with involves the from and the to, not just the first!",
+        "objective": "Modified condition/decision coverage of line 4.",
+        "initial_board": "default",
+        "code_file": 7,
+        "passing_criteria": {
+            "type": "path",
             "preconditions": [
                 "input.log[case_num].length > 0",
                 "input.log[case_num][input.log[case_num].length - 1].type == 'move'"

@@ -2,7 +2,7 @@
   <div style="display: flex; justify-content: right">
     <div style="flex-direction: column; justify-content: space-between; display: flex">
       <div class="col">
-        <div class="game-board-out-labels">
+        <div class="game-board-out-labels" v-if="!board.table">
           <div class="game-board-label col" style="display: flex; justify-content: center">Out</div>
         </div>
         <div class="game-board-out">
@@ -10,36 +10,14 @@
             <OutPieceStack />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-            <input
-              v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
-              id="piece-stack-out-x"
-              class="col box"
-              style="width: 30px; text-align: center; font-size: 12px"
-              type="number"
-            />
-            <input
-              v-else
-              id="piece-stack-out-x"
-              class="col box disabled"
-              style="width: 30px; text-align: center; font-size: 12px"
-              type="number"
-              disabled
-            />
-            <input
-              v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
-              id="piece-stack-out-y"
-              class="col box"
-              style="width: 30px; text-align: center; font-size: 12px"
-              type="number"
-            />
-            <input
-              v-else
-              id="piece-stack-out-y"
-              class="col box disabled"
-              style="width: 30px; text-align: center; font-size: 12px"
-              type="number"
-              disabled
-            />
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-x"
+              class="col box" style="width: 30px; text-align: center; font-size: 12px" type="number" />
+            <input v-else id="piece-stack-out-x" class="col box disabled"
+              style="width: 30px; text-align: center; font-size: 12px" type="number" disabled />
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-y"
+              class="col box" style="width: 30px; text-align: center; font-size: 12px" type="number" />
+            <input v-else id="piece-stack-out-y" class="col box disabled"
+              style="width: 30px; text-align: center; font-size: 12px" type="number" disabled />
           </div>
         </div>
       </div>
@@ -48,87 +26,61 @@
         {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
 
+      <button class="button is-primary is-fullwidth" v-if="!board.passed && !board.pause && !board.add" @click="board.tableMode(this.challenge)">
+        {{ !board.table ? 'Condition Table' : 'Game Board' }}
+      </button>
+      <button class="button is-primary is-fullwidth disabled" style="cursor: default;" v-else >
+        {{ !board.table ? 'Condition Table' : 'Game Board' }}
+      </button>
       <div class="buttons-grid">
-        <button
-          class="button is-primary is-fullwidth"
-          v-if="board.currentKey != 0 && !board.passed"
-          @click="board.previous()"
-        >
+        <button class="button is-primary is-fullwidth" v-if="board.currentKey != 0 && !board.passed"
+          @click="board.previous()">
           Previous
         </button>
         <button class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
           Previous
         </button>
-        <button
-          class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.passed"
-          @click="board.next()"
-        >
+        <button class="button is-primary is-fullwidth"
+          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.passed" @click="board.next()">
           Next
         </button>
         <button class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Next
         </button>
-        <button
-          class="button is-primary is-fullwidth add-button"
-          v-if="!board.passed && !board.pause"
-          @click="board.addMode()"
-        >
+        <button class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
+          @click="board.addMode()">
           Add
         </button>
-        <button
-          class="button is-primary is-fullwidth add-button disabled"
-          style="cursor: default"
-          v-else
-        >
+        <button class="button is-primary is-fullwidth add-button disabled" style="cursor: default" v-else>
           Add
         </button>
-        <button
-          class="button is-primary is-fullwidth"
+        <button class="button is-primary is-fullwidth"
           v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed && !board.pause"
-          @click="go(this.board)"
-        >
+          @click="go(this.board)">
           Go!
         </button>
         <button class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Go!
         </button>
-        <button
-          class="button is-primary is-fullwidth"
-          v-if="!board.passed"
-          @click="board.pauseMode()"
-        >
+        <button class="button is-primary is-fullwidth" v-if="!board.passed" @click="board.pauseMode()">
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
         <button class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
-        <button
-          class="button is-primary is-fullwidth"
-          v-if="!board.passed && !board.pause && !board.add"
-          @click="board.generateState(true)"
-        >
+        <button class="button is-primary is-fullwidth" v-if="!board.passed && !board.pause && !board.add"
+          @click="board.generateState(true)">
           Reset
         </button>
         <button class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Reset
         </button>
       </div>
-      <button
-        class="button is-primary is-fullwidth"
-        v-if="board.passed && !board.submitted"
-        data-bs-toggle="modal"
-        data-bs-target="#submit-modal"
-        style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)"
-      >
+      <button class="button is-primary is-fullwidth" v-if="board.passed && !board.submitted" data-bs-toggle="modal"
+        data-bs-target="#submit-modal" style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
         Comment
       </button>
-      <button
-        class="button is-primary is-fullwidth"
-        v-else
-        data-bs-toggle="modal"
-        data-bs-target="#fail-modal"
-      >
+      <button class="button is-primary is-fullwidth" v-else data-bs-toggle="modal" data-bs-target="#fail-modal">
         Comment
       </button>
       <button class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
@@ -136,12 +88,9 @@
       </button>
       <button class="button is-primary is-fullwidth" @click="board.exit()">Exit</button>
     </div>
-    <div style="align-content: center">
+    <div style="align-content: center" v-if="!board.table">
       <div class="game-board-labels">
-        <div
-          class="game-board-label col"
-          style="display: flex; justify-content: center; margin-top: 25px"
-        ></div>
+        <div class="game-board-label col" style="display: flex; justify-content: center; margin-top: 25px"></div>
       </div>
       <div class="game-board-row-labels">
         <div class="game-board-label row" style="align-self: center; justify-content: center">
@@ -170,7 +119,7 @@
         </div>
       </div>
     </div>
-    <div style="justify-self: right">
+    <div style="justify-self: right;" v-if="!board.table">
       <div class="game-board-col-labels">
         <div class="game-board-label col" style="display: flex; justify-content: center">0</div>
         <div class="game-board-label col" style="display: flex; justify-content: center">1</div>
@@ -181,20 +130,29 @@
         <div class="game-board-label col" style="display: flex; justify-content: center">6</div>
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
-      <div class="game-board" id="challenge-board">
-        <div
-          class="box"
-          v-for="index in 64"
-          :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-        >
-          <PieceStack
-            :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-            :x="Math.floor((index - 1) / 8).toString()"
-            :y="((index - 1) % 8).toString()"
-          />
+      <div class="game-board" id="challenge-board" >
+        <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
+          <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+            :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
         </div>
       </div>
     </div>
+
+    <EasyDataTable
+    style="width: 65%; height: 464px; margin-left: 10px; margin-right: 2.5px;"
+    :headers="board.dataTable.headers"
+    :items="board.dataTable.rows"
+    :fixed-checkbox="true"
+    :show-index="true"
+    :checkbox-column-width="36"
+    v-model:items-selected="itemsSelected"
+    :maxPaginationNumber="10"
+    v-if="board.table"
+    :theme-color="'#A959FF'"
+    
+  >
+  </EasyDataTable>
+    
   </div>
 </template>
 
@@ -206,22 +164,34 @@ import SubmitModal from './modals/SubmitModal.vue'
 import { Challenge } from '../store/models/challenge'
 import { boardStore } from '../store/boardStore'
 
+
 import * as utils from '../store/utils.js'
 import OutPieceStack from './OutPieceStack.vue'
+import "vue3-easy-data-table";
 
 export default {
-  components: { PieceStack, OutPieceStack, SubmitModal },
+  components: { PieceStack, OutPieceStack, SubmitModal, },
   props: {
     challenge: Challenge
+  },
+
+  data() {
+    return {
+      headers: [],
+      items: [],
+      itemsSelected: []
+    }
   },
 
   beforeMount() {
     this.board = boardStore()
   },
 
-  mounted() {},
+  mounted() { 
+  },
 
   methods: {
+    // Submit functions
     go(input) {
       var type = this.challenge.passing_criteria.type
 
@@ -339,6 +309,10 @@ export default {
       }
     }
   },
-  components: { PieceStack, OutPieceStack }
+  components: { PieceStack, OutPieceStack },
+
+  watch: {
+    
+  }
 }
 </script>

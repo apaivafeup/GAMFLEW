@@ -1,5 +1,30 @@
 import { Color, Piece } from './models/piece'
 
+export function combinations(array, k) {
+  var i,
+    subI,
+    ret = [],
+    sub,
+    next
+
+  for (i = 0; i < array.length; i++) {
+    if (k === 1) {
+      ret.push([array[i]])
+    } else {
+      sub = combinations(array, k - 1)
+      for (subI = 0; subI < sub.length; subI++) {
+        next = sub[subI]
+        next.unshift(array[i])
+        ret.push(next)
+      }
+    }
+  }
+
+  console.log(ret)
+  return ret
+}
+
+
 export function isTriangle(a, b, c) {
   return a + b > c && a + c > b && b + c > a
 }
