@@ -10,6 +10,22 @@ class AttemptType(str, Enum):
     PASS = "pass"
     FAIL = "fail"
 
+class ChallengeType(str, Enum):
+    """Enum for the type of challenge."""
+    STATEMENT = "statement"
+    DECISION = "decision"
+    CONDITION = "condition"
+    PATH = "path"
+    MCDC = "mcdc"
+
+class Difficulty(str, Enum):
+    """Enum for the difficulty of challenge."""
+    VERY_EASY = "Very Easy"
+    EASY = "Easy"
+    NORMAL = "Normal"
+    HARD = "Hard"
+    VERY_HARD = "Very Hard"
+
 class User(Base):
     __tablename__ = "users"
 
@@ -46,10 +62,11 @@ class Challenge(Base):
     timer_value = Column(Integer, index=True)
     initial_board = Column(String, index=True, nullable=True)
     code_file = Column(Integer, ForeignKey("code_file.id"), nullable=False, index=True)
+    challenge_type = Column(ENUM(ChallengeType), nullable=False, default=ChallengeType.STATEMENT, index=True)
     passing_criteria = Column(PickleType)
     achievement_criteria = Column(PickleType, nullable=True)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    difficulty = Column(String, index=True)
+    difficulty = Column(ENUM(Difficulty), index=True)
 
     user = relationship("User", back_populates="challenges")
     attempts = relationship("Attempt", back_populates="challenge")

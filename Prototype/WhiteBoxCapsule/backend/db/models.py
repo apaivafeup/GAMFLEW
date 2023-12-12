@@ -1,7 +1,16 @@
 import json
-from pydantic import Json, BaseModel
+from pydantic import BaseModel, field_validator
 from typing import Optional
-from schemas import AttemptType
+from schemas import AttemptType, ChallengeType, Difficulty
+
+class PassingCriteria(BaseModel):
+    preconditions: list[str]
+    tests: list[str]
+    variable_count: Optional[int] = None
+
+class AchievementCriteria(BaseModel):
+    preconditions: list[str]
+    tests: list[str]
 
 class Attempt(BaseModel):
     id: Optional[int]
@@ -26,10 +35,11 @@ class Challenge(BaseModel):
     timer_value: int
     initial_board: str
     code_file: int
-    passing_criteria: dict
-    achievement_criteria: Optional[dict]
+    passing_criteria: PassingCriteria
+    challenge_type: ChallengeType
+    achievement_criteria: Optional[dict] = None
     owner_id: int
-    difficulty: str
+    difficulty: Difficulty
 
     class Config:
         from_attributes = True
@@ -42,8 +52,9 @@ class ChallengeBasics(BaseModel):
     code_file: str
     passing_criteria: dict
     timer_value: int
+    challenge_type: ChallengeType
     owner_id: int
-    difficulty: str
+    difficulty: Difficulty
     initial_board: str
 
     class Config:

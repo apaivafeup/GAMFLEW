@@ -1,68 +1,67 @@
 <template>
-    <div
-      class="col piece-overlap"
-      v-if="this.board.outOfBoundsState[this.board.currentKey].pieceCount() > 1"
-      @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
-    >
-      <div class="overlap-box">
-        <div
-          class="square square-lg piece small red"
-          v-if="!this.board.outOfBoundsState[this.board.currentKey].selected"
-        ></div>
-        <div class="square square-lg piece small selected" v-else></div>
-      </div>
-      <div class="overlap-box">
-        <div>
-          {{ this.board.outOfBoundsState[this.board.currentKey].stack.red }}
-        </div>
-      </div>
-      <div class="overlap-box">
-        <div
-          class="square square-lg piece small blue"
-          v-if="!this.board.outOfBoundsState[this.board.currentKey].selected"
-        ></div>
-        <div class="square square-lg piece small selected" v-else></div>
-      </div>
-      <div class="overlap-box">
-        <div>
-          {{ this.board.outOfBoundsState[this.board.currentKey].stack.blue }}
-        </div>
+  <div
+    class="col piece-overlap"
+    v-if="this.board.outOfBoundsState[this.board.currentKey].pieceCount() > 1"
+    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+  >
+    <div class="overlap-box">
+      <div
+        class="square square-lg piece small red"
+        v-if="!this.board.outOfBoundsState[this.board.currentKey].selected"
+      ></div>
+      <div class="square square-lg piece small selected" v-else></div>
+    </div>
+    <div class="overlap-box">
+      <div>
+        {{ this.board.outOfBoundsState[this.board.currentKey].stack.red }}
       </div>
     </div>
-    <div
-      class="square square-lg piece selected"
-      v-else-if="this.board.outOfBoundsState[this.board.currentKey].selected"
-      @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
-    ></div>
-    <div
-      class="square square-lg piece red"
-      v-else-if="
-        this.board.outOfBoundsState[this.board.currentKey].stack.blue == 0 &&
-        this.board.outOfBoundsState[this.board.currentKey].stack.red != 0
-      "
-      @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
-    ></div>
-    <div
-      class="square square-lg piece blue"
-      v-else-if="
-        this.board.outOfBoundsState[this.board.currentKey].stack.blue != 0 &&
-        this.board.outOfBoundsState[this.board.currentKey].stack.red == 0
-      "
-      @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
-    ></div>
-    <div
-      class="square square-lg piece empty"
-      v-else-if="
-        this.board.outOfBoundsState[this.board.currentKey].stack.blue == 0 &&
-        this.board.outOfBoundsState[this.board.currentKey].stack.red == 0
-      "
-      @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
-    ></div>
+    <div class="overlap-box">
+      <div
+        class="square square-lg piece small blue"
+        v-if="!this.board.outOfBoundsState[this.board.currentKey].selected"
+      ></div>
+      <div class="square square-lg piece small selected" v-else></div>
+    </div>
+    <div class="overlap-box">
+      <div>
+        {{ this.board.outOfBoundsState[this.board.currentKey].stack.blue }}
+      </div>
+    </div>
+  </div>
+  <div
+    class="square square-lg piece selected"
+    v-else-if="this.board.outOfBoundsState[this.board.currentKey].selected"
+    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+  ></div>
+  <div
+    class="square square-lg piece red"
+    v-else-if="
+      this.board.outOfBoundsState[this.board.currentKey].stack.blue == 0 &&
+      this.board.outOfBoundsState[this.board.currentKey].stack.red != 0
+    "
+    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+  ></div>
+  <div
+    class="square square-lg piece blue"
+    v-else-if="
+      this.board.outOfBoundsState[this.board.currentKey].stack.blue != 0 &&
+      this.board.outOfBoundsState[this.board.currentKey].stack.red == 0
+    "
+    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+  ></div>
+  <div
+    class="square square-lg piece empty"
+    v-else-if="
+      this.board.outOfBoundsState[this.board.currentKey].stack.blue == 0 &&
+      this.board.outOfBoundsState[this.board.currentKey].stack.red == 0
+    "
+    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+  ></div>
 </template>
 
 <script>
 import { boardStore } from '../store/boardStore'
-
 
 export default {
   components: {},
@@ -75,15 +74,13 @@ export default {
     }
   },
 
-  beforeCreate() {
-  },
+  beforeCreate() {},
 
   beforeMount() {
     this.board = boardStore()
   },
 
-  mounted() {
-  },
+  mounted() {},
 
   methods: {
     getOutXCoordinate() {

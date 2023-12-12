@@ -345,34 +345,35 @@ export const boardStore = defineStore('boardStore', {
       this.table = !this.table
 
       if (this.table && challenge != undefined) {
-        var headers = [], rows = []
+        var headers = [],
+          rows = []
 
         var charCode = 'A'.charCodeAt(0)
         for (var i = 0; i < challenge.passing_criteria.variable_count; i++) {
-          
           headers.push({
-            "text": String.fromCharCode(charCode),
-            "value": String.fromCharCode(charCode++)
+            text: String.fromCharCode(charCode),
+            value: String.fromCharCode(charCode++)
           })
         }
 
         headers.push({
-          "text": "Outcome",
-          "value": "outcome"
+          text: 'Outcome',
+          value: 'outcome'
         })
 
         var possible_values = [true, false]
 
         var combs = combinations(possible_values, challenge.passing_criteria.variable_count)
 
-        var row = {}, rows = []
+        var row = {},
+          rows = []
         for (var i = 0; i < combs.length; i++) {
           row = {}
           for (var j = 0; j < headers.length - 1; j++) {
             row[headers[j].value] = combs[i][j]
           }
-          
-          row["outcome"] = '?'
+
+          row['outcome'] = '?'
 
           rows.push(row)
         }
@@ -390,7 +391,6 @@ export const boardStore = defineStore('boardStore', {
     },
 
     fail() {
-      this.infoState = 'You failed the level.'
       this.failed = true
     },
 

@@ -12,8 +12,8 @@ import { createPinia } from 'pinia'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Challenge from './pages/Challenge.vue'
 import Home from './pages/Home.vue'
-import Vue3EasyDataTable from 'vue3-easy-data-table';
-import 'vue3-easy-data-table/dist/style.css';
+import Vue3EasyDataTable from 'vue3-easy-data-table'
+import 'vue3-easy-data-table/dist/style.css'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -46,5 +46,5 @@ const router = createRouter({
 })
 
 app.use(router)
-app.component('EasyDataTable', Vue3EasyDataTable);
+app.component('EasyDataTable', Vue3EasyDataTable)
 app.component('CodeBlock', CodeBlock).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

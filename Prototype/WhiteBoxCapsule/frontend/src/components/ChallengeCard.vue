@@ -43,7 +43,7 @@
               justify-content: end;
             "
           >
-            {{ challenge.passing_criteria.type }}
+            {{ challenge.challenge_type }}
           </div>
           <div
             class="row"

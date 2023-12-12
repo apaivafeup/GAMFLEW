@@ -9,8 +9,9 @@
         "objective": "Statement coverage of line 10.",
         "initial_board": "default",
         "code_file": 1,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "input.log[input.currentKey].length > 0"
             ],
@@ -32,8 +33,9 @@
         "objective": "Decision coverage of line 10.",
         "initial_board": "default",
         "code_file": 1,
+        "challenge_type": "decision",
         "passing_criteria": {
-            "type": "decision",
+            "variable_count": null,
             "preconditions": [
                 "input.log[case_num].length > 0",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) > 2"
@@ -57,8 +59,9 @@
         "objective": "Statement coverage of line 12.",
         "initial_board": "empty",
         "code_file": 2,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.count_empty_spaces(input, input.currentKey) != 64"
             ],
@@ -80,8 +83,9 @@
         "objective": "Statement coverage of line 14.",
         "initial_board": "full",
         "code_file": 2,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.count_empty_spaces(input, input.currentKey) != 64",
                 "Math.abs(utils.count_blue_pieces(input, input.currentKey) - utils.count_red_pieces(input, input.currentKey)) != 0"
@@ -104,8 +108,9 @@
         "objective": "Decision coverage of line 10.",
         "initial_board": "empty",
         "code_file": 2,
+        "challenge_type": "decision",
         "passing_criteria": {
-            "type": "decision",
+            "variable_count": null,
             "preconditions": [
                 "utils.count_empty_spaces(input, case_num) != 64"
             ],
@@ -129,8 +134,9 @@
         "objective": "Statement coverage of line 8.",
         "initial_board": "thirds",
         "code_file": 3,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.count_red_pieces(input, input.currentKey) != 0",
                 "utils.count_blue_pieces(input, input.currentKey) != 0",
@@ -154,8 +160,8 @@
         "objective": "Condition coverage of line 10.",
         "initial_board": "empty",
         "code_file": 3,
+        "challenge_type": "condition",
         "passing_criteria": {
-            "type": "condition",
             "variable_count": 2,
             "preconditions": [
                 "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
@@ -181,8 +187,8 @@
         "objective": "Condition coverage of line 12.",
         "initial_board": "thirds",
         "code_file": 3,
+        "challenge_type": "condition",
         "passing_criteria": {
-            "type": "condition",
             "variable_count": 1,
             "preconditions": [
                 "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
@@ -206,8 +212,9 @@
         "objective": "Statement coverage of line 15.",
         "initial_board": "empty",
         "code_file": 3,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "!utils.isTriangle(utils.count_red_pieces(input, input.currentKey), utils.count_blue_pieces(input, input.currentKey), utils.count_empty_spaces(input, input.currentKey))"
             ],
@@ -229,8 +236,9 @@
         "objective": "Statement coverage of line 11.",
         "initial_board": "empty",
         "code_file": 4,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_first_blue_piece(input, input.currentKey).position.x != -2",
                 "utils.find_first_red_piece(input, input.currentKey).position.x != -2"
@@ -253,8 +261,9 @@
         "objective": "Statement coverage of line 13.",
         "initial_board": "empty",
         "code_file": 4,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_first_red_piece(input, input.currentKey).position.x != -2"
             ],
@@ -276,8 +285,9 @@
         "objective": "Statement coverage of line 15.",
         "initial_board": "empty",
         "code_file": 4,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_first_blue_piece(input, input.currentKey).position.x != -2"
             ],
@@ -299,8 +309,9 @@
         "objective": "Decision coverage of line 10.",
         "initial_board": "empty",
         "code_file": 4,
+        "challenge_type": "decision",
         "passing_criteria": {
-            "type": "decision",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_first_red_piece(input, case_num).position.x != -2 || utils.find_first_blue_piece(input, case_num).position.x != -2"
             ],
@@ -325,8 +336,9 @@
         "objective": "Statement coverage of line 11.",
         "initial_board": "empty",
         "code_file": 5,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_first_stack(input, input.currentKey).position.x != -2"
             ],
@@ -348,8 +360,9 @@
         "objective": "Decision coverage of line 9.",
         "initial_board": "empty",
         "code_file": 5,
+        "challenge_type": "decision",
         "passing_criteria": {
-            "type": "decision",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_first_stack(input, case_num).position.x != -2"
             ],
@@ -372,8 +385,9 @@
         "objective": "Statement coverage of line 13.",
         "initial_board": "empty",
         "code_file": 5,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_first_stack(input, input.currentKey).position.x != -2"
             ],
@@ -395,8 +409,8 @@
         "objective": "Condition coverage of line 9.",
         "initial_board": "empty",
         "code_file": 5,
+        "challenge_type": "condition",
         "passing_criteria": {
-            "type": "condition",
             "variable_count": 2,
             "preconditions": [
                 "utils.find_first_stack(input, case_num).position.x != -2"
@@ -422,8 +436,9 @@
         "objective": "Statement coverage of line 31.",
         "initial_board": "empty",
         "code_file": 6,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -445,8 +460,9 @@
         "objective": "Statement coverage of line 33.",
         "initial_board": "empty",
         "code_file": 6,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -468,8 +484,9 @@
         "objective": "Statement coverage of line 35.",
         "initial_board": "empty",
         "code_file": 6,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
                 "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -491,8 +508,9 @@
         "objective": "Statement coverage of line 37.",
         "initial_board": "empty",
         "code_file": 6,
+        "challenge_type": "statement",
         "passing_criteria": {
-            "type": "statement",
+            "variable_count": null,
             "preconditions": [
             ],
             "tests": [
@@ -513,8 +531,9 @@
         "objective": "Decision coverage of line 30.",
         "initial_board": "empty",
         "code_file": 6,
+        "challenge_type": "decision",
         "passing_criteria": {
-            "type": "decision",
+            "variable_count": null,
             "preconditions": [
             ],
             "tests": [
@@ -538,8 +557,8 @@
         "objective": "Modified condition/decision coverage of line 4.",
         "initial_board": "default",
         "code_file": 7,
+        "challenge_type": "path",
         "passing_criteria": {
-            "type": "path",
             "variable_count": 2,
             "preconditions": [
                 "input.log[case_num].length > 0",
@@ -566,8 +585,8 @@
         "objective": "Modified condition/decision coverage of line 4.",
         "initial_board": "default",
         "code_file": 7,
+        "challenge_type": "mcdc",
         "passing_criteria": {
-            "type": "mcdc",
             "variable_count": 2,
             "preconditions": [
                 "input.log[case_num].length > 0",

@@ -24,7 +24,6 @@ export function combinations(array, k) {
   return ret
 }
 
-
 export function isTriangle(a, b, c) {
   return a + b > c && a + c > b && b + c > a
 }

@@ -48,7 +48,7 @@ export default {
       </div>
       <div
         class="alert alert-secondary player-info"
-        v-else-if="!board.timeout && board.timer <= 100 && !board.passed"
+        v-else-if="!board.timeout && board.timer <= 100 && !board.passed && !board.failed"
       >
         {{ this.challenge.hint }}
       </div>

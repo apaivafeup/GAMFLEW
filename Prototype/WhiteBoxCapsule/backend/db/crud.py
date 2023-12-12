@@ -81,6 +81,7 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
         timer_value=challenge.timer_value,
         initial_board=challenge.initial_board,
         code_file=challenge.code_file,
+        challenge_type=challenge.challenge_type,
         passing_criteria=challenge.passing_criteria,
         achievement_criteria=challenge.achievement_criteria,
         owner_id=challenge.owner_id,
@@ -182,7 +183,7 @@ def get_user_score(db: Session, user_id: int):
     return user_score
 
 
-def update_user(db: Session, user_id: int):
+def update_user_stats(db: Session, user_id: int):
     user_to_update = get_user(db, user_id)
     if user_to_update is None:
         return None

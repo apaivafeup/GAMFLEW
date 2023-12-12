@@ -39,7 +39,7 @@ def create_challenge(challenge: models.Challenge, db: Session = Depends(get_db))
 @app.post("/create/attempt", response_model=models.Attempt)
 def create_attempt(attempt: models.Attempt, db: Session = Depends(get_db)):
     create_attempt = crud.create_attempt(db=db, attempt=attempt)
-    crud.update_user(db, attempt.player_id)
+    crud.update_user_stats(db, attempt.player_id)
     return create_attempt
 
 ## Get Users
