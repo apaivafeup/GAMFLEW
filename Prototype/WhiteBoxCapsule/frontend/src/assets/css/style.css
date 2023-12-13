@@ -46,14 +46,18 @@ body {
   padding: 10px;
 }
 
-#challenge-timer {
+.timer {
   text-align: right !important;
 }
 
-#challenge-timer-hurry {
-  text-align: right !important;
+.timer-hurry {
   font-weight: bold;
   color: red;
+}
+
+.timer-paused {
+  font-style: italic;
+  color: rgb(169, 89, 255);
 }
 
 #challenge-code {
