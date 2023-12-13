@@ -58,3 +58,4 @@ Checkers/*.unitypackage
 # Crashlytics generated file
 Checkers/crashlytics-build.properties
 *.pyc
+Prototype/WhiteBoxCapsule/frontend/cypress/e2e/maker.cy.js
