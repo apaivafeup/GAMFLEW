@@ -58,6 +58,7 @@ export default {
         response.data.timer_value,
         response.data.initial_board,
         response.data.code_file,
+        response.data.challenge_type,
         response.data.passing_criteria,
         response.data.achievement_criteria,
         response.data.owner_id

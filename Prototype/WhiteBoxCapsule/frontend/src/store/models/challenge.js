@@ -10,6 +10,7 @@ export class Challenge {
     timer_value,
     initial_board,
     code_file,
+    challenge_type,
     passing_criteria,
     achievement_criteria,
     owner
@@ -24,6 +25,7 @@ export class Challenge {
     this.timer_value = timer_value
     this.initial_board = initial_board
     this.code_file = code_file
+    this.challenge_type = challenge_type
     this.passing_criteria = passing_criteria
     this.achievement_criteria = achievement_criteria
     this.owner = owner

@@ -32,15 +32,6 @@ export default {
   },
 
   methods: {},
-
-  watch: {
-    board: {
-      handler: function () {
-        this.$forceUpdate()
-      },
-      deep: true
-    }
-  }
 }
 </script>
 
