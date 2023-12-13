@@ -6,7 +6,7 @@ from schemas import AttemptType, ChallengeType, Difficulty
 class PassingCriteria(BaseModel):
     preconditions: list[str]
     tests: list[str]
-    variable_count: Optional[int] = None
+    condition_count: Optional[int] = None
 
 class AchievementCriteria(BaseModel):
     preconditions: list[str]

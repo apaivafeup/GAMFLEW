@@ -11,7 +11,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "input.log[input.currentKey].length > 0"
             ],
@@ -35,7 +35,7 @@
         "code_file": 1,
         "challenge_type": "decision",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "input.log[case_num].length > 0",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) > 2"
@@ -61,7 +61,7 @@
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.count_empty_spaces(input, input.currentKey) != 64"
             ],
@@ -85,7 +85,7 @@
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.count_empty_spaces(input, input.currentKey) != 64",
                 "Math.abs(utils.count_blue_pieces(input, input.currentKey) - utils.count_red_pieces(input, input.currentKey)) != 0"
@@ -110,7 +110,7 @@
         "code_file": 2,
         "challenge_type": "decision",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.count_empty_spaces(input, case_num) != 64"
             ],
@@ -136,7 +136,7 @@
         "code_file": 3,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.count_red_pieces(input, input.currentKey) != 0",
                 "utils.count_blue_pieces(input, input.currentKey) != 0",
@@ -162,7 +162,7 @@
         "code_file": 3,
         "challenge_type": "condition",
         "passing_criteria": {
-            "variable_count": 2,
+            "condition_count": 2,
             "preconditions": [
                 "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
             ],
@@ -189,7 +189,7 @@
         "code_file": 3,
         "challenge_type": "condition",
         "passing_criteria": {
-            "variable_count": 1,
+            "condition_count": 1,
             "preconditions": [
                 "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
             ],
@@ -214,7 +214,7 @@
         "code_file": 3,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "!utils.isTriangle(utils.count_red_pieces(input, input.currentKey), utils.count_blue_pieces(input, input.currentKey), utils.count_empty_spaces(input, input.currentKey))"
             ],
@@ -238,7 +238,7 @@
         "code_file": 4,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_first_blue_piece(input, input.currentKey).position.x != -2",
                 "utils.find_first_red_piece(input, input.currentKey).position.x != -2"
@@ -263,7 +263,7 @@
         "code_file": 4,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_first_red_piece(input, input.currentKey).position.x != -2"
             ],
@@ -287,7 +287,7 @@
         "code_file": 4,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_first_blue_piece(input, input.currentKey).position.x != -2"
             ],
@@ -311,7 +311,7 @@
         "code_file": 4,
         "challenge_type": "decision",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_first_red_piece(input, case_num).position.x != -2 || utils.find_first_blue_piece(input, case_num).position.x != -2"
             ],
@@ -338,7 +338,7 @@
         "code_file": 5,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_first_stack(input, input.currentKey).position.x != -2"
             ],
@@ -362,7 +362,7 @@
         "code_file": 5,
         "challenge_type": "decision",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_first_stack(input, case_num).position.x != -2"
             ],
@@ -387,7 +387,7 @@
         "code_file": 5,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_first_stack(input, input.currentKey).position.x != -2"
             ],
@@ -411,7 +411,7 @@
         "code_file": 5,
         "challenge_type": "condition",
         "passing_criteria": {
-            "variable_count": 2,
+            "condition_count": 2,
             "preconditions": [
                 "utils.find_first_stack(input, case_num).position.x != -2"
             ],
@@ -438,7 +438,7 @@
         "code_file": 6,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -462,7 +462,7 @@
         "code_file": 6,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -486,7 +486,7 @@
         "code_file": 6,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
                 "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -510,7 +510,7 @@
         "code_file": 6,
         "challenge_type": "statement",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
             ],
             "tests": [
@@ -533,7 +533,7 @@
         "code_file": 6,
         "challenge_type": "decision",
         "passing_criteria": {
-            "variable_count": null,
+            "condition_count": null,
             "preconditions": [
             ],
             "tests": [
@@ -559,7 +559,7 @@
         "code_file": 7,
         "challenge_type": "path",
         "passing_criteria": {
-            "variable_count": 2,
+            "condition_count": 2,
             "preconditions": [
                 "input.log[case_num].length > 0",
                 "input.log[case_num][input.log[case_num].length - 1].type == 'move'"
@@ -587,7 +587,7 @@
         "code_file": 7,
         "challenge_type": "mcdc",
         "passing_criteria": {
-            "variable_count": 2,
+            "condition_count": 2,
             "preconditions": [
                 "input.log[case_num].length > 0",
                 "input.log[case_num][input.log[case_num].length - 1].type == 'move'"
