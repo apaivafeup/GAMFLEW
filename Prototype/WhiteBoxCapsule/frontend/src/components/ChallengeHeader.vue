@@ -8,7 +8,7 @@
       <div class="col timer" v-if="this.board.timer > 100">
         {{ this.board.timer }}
       </div>
-      <div class="col timer timer-paused" v-else-if="this.board.paused">
+      <div class="col timer timer-paused" v-else-if="this.board.pause">
         {{ this.board.timer }}
       </div>
       <div class="col timer timer-hurry" v-else-if="this.board.timer <= 100" >
@@ -31,7 +31,16 @@ export default {
     this.board = boardStore()
   },
 
-  methods: {}
+  methods: {},
+
+  watch: {
+    board: {
+      handler: function () {
+        this.$forceUpdate()
+      },
+      deep: true
+    }
+  }
 }
 </script>
 
