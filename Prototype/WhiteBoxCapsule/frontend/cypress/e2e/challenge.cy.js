@@ -512,5 +512,122 @@ describe("Board buttons", () => {
         
             cy.get('#board-box-0-0').find('.empty').should('exist')
         })
+    }),
+
+    describe('go! button', () => {
+        it('go! button (pass)', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click()
+            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            
+            cy.get('#guide-modal')
+                .should('be.visible')
+                .wait(500)
+            
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            
+            cy.get('#guide-modal')
+                .should('not.be.visible')
+        
+            cy.get('#board-box-2-0').click()
+        
+            cy.get('#board-box-5-4').click()
+        
+            cy.get('#go-button').click()
+        
+            cy.contains("You passed, congratulations! To submit your solution, click the Comment button. It's required for your score!").should('be.visible')
+        }),
+
+        it('go! button (fail)', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click()
+            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            
+            cy.get('#guide-modal')
+                .should('be.visible')
+                .wait(500)
+            
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            
+            cy.get('#guide-modal')
+                .should('not.be.visible')
+        
+            cy.get('#go-button').click()
+        
+            cy.contains("You didn't pass. There's still time, though! Keep trying. ").should('be.visible')
+        })
+    }),
+
+    it('exit button', () => {
+        cy.visit('http://localhost:5173/')
+        cy.get('#single-player-button').click()
+        cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+        
+        cy.get('#guide-modal')
+            .should('be.visible')
+            .wait(500)
+        
+        cy.get('#guide-modal-close-button').click().wait(1000)
+        
+        cy.get('#guide-modal')
+            .should('not.be.visible')
+    
+        cy.get('#exit-button').click()
+    
+        cy.contains('White-Box Capsule')
+    }),
+
+    describe('comment button', () => {
+        it('comment button (pass)', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click()
+            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+        
+            cy.get('#guide-modal')
+                .should('be.visible')
+                .wait(500)
+        
+            cy.get('#guide-modal-close-button').click().wait(1000)
+        
+            cy.get('#guide-modal')
+                .should('not.be.visible')
+        
+            cy.get('#board-box-2-0').click()
+        
+            cy.get('#board-box-5-4').click()
+        
+            cy.get('#go-button').click()
+        
+            cy.contains("You passed, congratulations! To submit your solution, click the Comment button. It's required for your score!").should('be.visible')
+        
+            cy.get('#submit-modal').should('not.be.visible')
+        
+            cy.get('#comment-button').click().wait(500)
+        
+            cy.get('#submit-modal').should('be.visible')
+        }),
+
+        it('comment button (not pass)', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click()
+            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+        
+            cy.get('#guide-modal')
+                .should('be.visible')
+                .wait(500)
+        
+            cy.get('#guide-modal-close-button').click().wait(1000)
+        
+            cy.get('#guide-modal')
+                .should('not.be.visible')
+        
+            cy.get('#go-button').click()
+        
+            cy.get('#fail-modal').should('not.be.visible')
+        
+            cy.get('#comment-button').click().wait(500)
+        
+            cy.get('#fail-modal').should('be.visible')
+        })
     })
 })
