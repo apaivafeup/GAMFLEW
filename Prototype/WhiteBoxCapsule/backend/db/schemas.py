@@ -1,7 +1,17 @@
-from sqlalchemy import PickleType, Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import PickleType, Boolean, Column, ForeignKey, Integer, TEXT
 from sqlalchemy.orm import relationship, declarative_base
-from sqlalchemy.dialects.postgresql import ENUM
+from dotenv import load_dotenv   #for python-dotenv method
+import os
 from enum import Enum
+
+load_dotenv()
+
+local = eval(os.environ.get('LOCAL'))
+
+if not local: 
+    from sqlalchemy.dialects.mysql import ENUM, TEXT
+else:
+    from sqlalchemy.dialects.postgresql import ENUM
 
 Base = declarative_base()
 
@@ -30,9 +40,9 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, unique=True, index=True)
-    email = Column(String, unique=True, index=True)
-    password = Column(String)
+    name = Column(TEXT, unique=True, index=True)
+    email = Column(TEXT, unique=True, index=True)
+    password = Column(TEXT)
     failed_attempts = Column(Integer, index=True)
     successful_attempts = Column(Integer, index=True)
     score = Column(Integer, index=True)
@@ -45,8 +55,8 @@ class CodeFile(Base):
     __tablename__ = "code_file"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, index=True)
-    content = Column(String, index=True)
+    name = Column(TEXT, index=True)
+    content = Column(TEXT, index=True)
 
     challenges = relationship("Challenge", back_populates="code_files")
 
@@ -54,13 +64,13 @@ class Challenge(Base):
     __tablename__ = "challenges"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, index=True)
-    description = Column(String, index=True)
-    hint = Column(String, index=True)
-    objective = Column(String, index=True)
+    name = Column(TEXT, index=True)
+    description = Column(TEXT, index=True)
+    hint = Column(TEXT, index=True)
+    objective = Column(TEXT, index=True)
     test_cases_count = Column(Integer, index=True)
     timer_value = Column(Integer, index=True)
-    initial_board = Column(String, index=True, nullable=True)
+    initial_board = Column(TEXT, index=True, nullable=True)
     code_file = Column(Integer, ForeignKey("code_file.id"), nullable=False, index=True)
     challenge_type = Column(ENUM(ChallengeType), nullable=False, default=ChallengeType.STATEMENT, index=True)
     passing_criteria = Column(PickleType)
@@ -81,7 +91,7 @@ class Attempt(Base):
     player_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     challenge_id = Column(Integer, ForeignKey("challenges.id"), nullable=False)
     attempt_type = Column(ENUM(AttemptType), nullable=False, default=AttemptType.PASS, index=True)
-    comment = Column(String, index=True)
+    comment = Column(TEXT, index=True)
     test_cases = Column(PickleType)
 
     user = relationship("User", back_populates="attempts")

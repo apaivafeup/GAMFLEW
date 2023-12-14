@@ -5,13 +5,14 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv   #for python-dotenv method
 import os
 
-local = True
-
 load_dotenv()
+
+local = eval(os.environ.get('LOCAL'))
+print('local', local)
 
 # Create a connection string
 TECH = 'postgresql' if local else os.environ.get('TECH')
-USERNAME = 'postgres' if local else os.environ.get('USERNAME')
+USERNAME = 'postgres' if local else 'feupptgamflew'
 PASSWORD = 'password' if local else os.environ.get('PASSWORD')
 HOST = 'localhost' if local else os.environ.get('HOST')
 DATABASE = 'prototype' if local else os.environ.get('DATABASE')
