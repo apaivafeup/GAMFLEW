@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Test File 1: First Steps in Movement",
-        "content": "function making_moves(from, to) {\n\t// Math.abs() gives you the absolute value of whatever you call it with.\n\t// Math.abs(-1) == 1\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
+        "content": "// from is the (row, col) position from where a piece is moved.\n// to is the (row, col) position to where a piece is moved.\nfunction making_moves(from, to) {\n\t// Math.abs() gives you the absolute value of whatever you call it with.\n\t// Math.abs(-1) == 1\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
     },
     {
         "id": 2,

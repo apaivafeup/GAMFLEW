@@ -8,7 +8,6 @@ import os
 load_dotenv()
 
 local = eval(os.environ.get('LOCAL'))
-print('local', local)
 
 # Create a connection string
 TECH = 'postgresql' if local else os.environ.get('TECH')
