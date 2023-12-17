@@ -1,6 +1,30 @@
 [
     {
         "id": 0,
+        "name": "Challenge 0: Challenge for Testing",
+        "description": "This challenge is a tutorial. It will teach you how to play the game!",
+        "test_cases_count": 1,
+        "timer_value": 103,
+        "hint": "Here is a hint.",
+        "objective": "Statement coverage of line 0.",
+        "initial_board": "default",
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                ""
+            ],
+            "tests": [
+                ""
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
         "name": "Challenge 1.1: Baby's First Statement Coverage Challenge",
         "description": "This challenge is a tutorial. It will teach you how to play the game!",
         "test_cases_count": 1,
@@ -115,9 +139,9 @@
                 "utils.count_empty_spaces(input, case_num) != 64"
             ],
             "tests": [
-                "Math.abs(utils.count_blue_pieces(input, input.case_num) - utils.count_red_pieces(input, input.case_num)) == 1",
-                "Math.abs(utils.count_blue_pieces(input, input.case_num) - utils.count_red_pieces(input, input.case_num)) == 2 || Math.abs(utils.count_blue_pieces(input, input.case_num) - utils.count_red_pieces(input, input.case_num)) == 3",
-                "Math.abs(utils.count_blue_pieces(input, input.case_num) - utils.count_red_pieces(input, input.case_num)) != 1 && Math.abs(utils.count_blue_pieces(input, input.case_num) - utils.count_red_pieces(input, input.case_num)) != 2 && Math.abs(utils.count_blue_pieces(input, input.case_num) - utils.count_red_pieces(input, input.case_num)) != 3"
+                "Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) == 1",
+                "Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) == 2 || Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) == 3",
+                "Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) != 1 && Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) != 2 && Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) != 3"
             ]
         },
         "achievement_criteria": null,

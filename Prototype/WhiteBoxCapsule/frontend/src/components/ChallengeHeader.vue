@@ -11,7 +11,7 @@
       <div class="col timer timer-paused" v-else-if="this.board.pause">
         {{ this.board.timer }}
       </div>
-      <div class="col timer timer-hurry" v-else-if="this.board.timer <= 100 && !this.board.pause" >
+      <div class="col timer timer-hurry" v-else-if="this.board.timer <= 100 && !this.board.pause">
         {{ this.board.timer }}
       </div>
     </div>
@@ -31,7 +31,7 @@ export default {
     this.board = boardStore()
   },
 
-  methods: {},
+  methods: {}
 }
 </script>
 

@@ -2,7 +2,7 @@ describe("Basic Functionality", () => {
     it('starts a challenge', () => {
         cy.visit('http://localhost:5173/')
         cy.get('#single-player-button').click()
-        cy.get('#challenge-card-1').click()
+        cy.get('#challenge-card-2').click()
 
         cy.get('#guide-modal')
             .should('be.visible')
@@ -15,12 +15,12 @@ describe("Basic Functionality", () => {
 
         cy.get('.button.is-primary.is-fullwidth').should('be.visible')
 
-    })
+    }),
 
     it('open guide modal manually', () => {
         cy.visit('http://localhost:5173/')
         cy.get('#single-player-button').click()
-        cy.get('#challenge-card-1').click()
+        cy.get('#challenge-card-2').click()
 
         cy.get('#guide-modal')
             .should('be.visible')
@@ -35,6 +35,71 @@ describe("Basic Functionality", () => {
         cy.get('#guide-modal')
             .wait(500)
             .should('be.visible')
+    }),
+
+    it('title appearance', () => {
+        cy.visit('http://localhost:5173/')
+        cy.get('#single-player-button').click()
+        cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+    
+        cy.get('#guide-modal')
+            .should('be.visible')
+            .wait(500)
+    
+        cy.get('#guide-modal-close-button').click().wait(1000)
+    
+        cy.get('#guide-modal')
+            .should('not.be.visible')
+    
+        cy.contains("Challenge 0: Challenge for Testing").should('be.visible')
+    }),
+
+    it('initial timer appearance', () => {
+        cy.visit('http://localhost:5173/')
+        cy.get('#single-player-button').click()
+        cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+    
+        cy.get('#guide-modal')
+            .should('be.visible')
+            .wait(500)
+    
+        cy.get('.timer').contains("103").should('exist')
+    }),
+
+    it('objective appearance', () => {
+        cy.visit('http://localhost:5173/')
+        cy.get('#single-player-button').click()
+        cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+    
+        cy.get('#guide-modal')
+            .should('be.visible')
+            .wait(500)
+    
+        cy.get('#guide-modal-close-button').click().wait(1000)
+    
+        cy.get('#guide-modal')
+            .should('not.be.visible')
+    
+        cy.contains("Statement coverage of line 0.").should('be.visible')
+    }),
+
+    it('hint appearance', () => {
+        cy.visit('http://localhost:5173/')
+        cy.get('#single-player-button').click()
+        cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+    
+        cy.get('#guide-modal')
+            .should('be.visible')
+            .wait(500)
+    
+        cy.get('#guide-modal-close-button').click().wait(1000)
+    
+        cy.get('#guide-modal')
+            .should('not.be.visible')
+    
+        cy.wait(2500)
+    
+        cy.contains("Here is a hint.").should('be.visible')
     })
 })
 
@@ -43,7 +108,7 @@ describe("Board Movement", () => {
         it('selects a red piece', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click()
+            cy.get('#challenge-card-2').click()
 
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -62,7 +127,7 @@ describe("Board Movement", () => {
         it('selects a blue piece', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click()
+            cy.get('#challenge-card-2').click()
 
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -85,7 +150,7 @@ describe("Board Movement", () => {
             it('moves a red piece', () => {
                 cy.visit('http://localhost:5173/')
                 cy.get('#single-player-button').click()
-                cy.get('#challenge-card-1').click()
+                cy.get('#challenge-card-2').click()
 
                 cy.get('#guide-modal')
                     .should('be.visible')
@@ -107,7 +172,7 @@ describe("Board Movement", () => {
             it('moves a blue piece', () => {
                 cy.visit('http://localhost:5173/')
                 cy.get('#single-player-button').click()
-                cy.get('#challenge-card-1').click()
+                cy.get('#challenge-card-2').click()
 
                 cy.get('#guide-modal')
                     .should('be.visible')
@@ -131,7 +196,7 @@ describe("Board Movement", () => {
             it('moves a red piece, making a stack', () => {
                 cy.visit('http://localhost:5173/')
                 cy.get('#single-player-button').click()
-                cy.get('#challenge-card-1').click()
+                cy.get('#challenge-card-2').click()
 
                 cy.get('#guide-modal')
                     .should('be.visible')
@@ -153,7 +218,7 @@ describe("Board Movement", () => {
             it('moves a blue piece, making a stack', () => {
                 cy.visit('http://localhost:5173/')
                 cy.get('#single-player-button').click()
-                cy.get('#challenge-card-1').click()
+                cy.get('#challenge-card-2').click()
 
                 cy.get('#guide-modal')
                     .should('be.visible')
@@ -176,7 +241,7 @@ describe("Board Movement", () => {
                 it('selects a stack', () => {
                     cy.visit('http://localhost:5173/')
                     cy.get('#single-player-button').click()
-                    cy.get('#challenge-card-1').click()
+                    cy.get('#challenge-card-2').click()
 
                     cy.get('#guide-modal')
                         .should('be.visible')
@@ -200,7 +265,7 @@ describe("Board Movement", () => {
                 it('moves a stack (to empty spot)', () => {
                     cy.visit('http://localhost:5173/')
                     cy.get('#single-player-button').click()
-                    cy.get('#challenge-card-1').click()
+                    cy.get('#challenge-card-2').click()
 
                     cy.get('#guide-modal')
                         .should('be.visible')
@@ -226,7 +291,7 @@ describe("Board Movement", () => {
                 it('moves a stack (to occupied spot)', () => {
                     cy.visit('http://localhost:5173/')
                     cy.get('#single-player-button').click()
-                    cy.get('#challenge-card-1').click()
+                    cy.get('#challenge-card-2').click()
 
                     cy.get('#guide-modal')
                         .should('be.visible')
@@ -261,7 +326,7 @@ describe("Board buttons", () => {
     it('pause button', () => {
         cy.visit('http://localhost:5173/')
         cy.get('#single-player-button').click()
-        cy.get('#challenge-card-1').click()
+        cy.get('#challenge-card-2').click()
 
         cy.get('#guide-modal')
             .should('be.visible')
@@ -280,7 +345,7 @@ describe("Board buttons", () => {
         it('reset button', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click()
+            cy.get('#challenge-card-2').click()
 
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -307,7 +372,7 @@ describe("Board buttons", () => {
             it('next button', () => {
                 cy.visit('http://localhost:5173/')
                 cy.get('#single-player-button').click()
-                cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
+                cy.get('#challenge-card-3').click() // challenge 2 has multiple test cases, so...
 
                 cy.get('#guide-modal')
                     .should('be.visible')
@@ -334,7 +399,7 @@ describe("Board buttons", () => {
                 it('previous button', () => {
                     cy.visit('http://localhost:5173/')
                     cy.get('#single-player-button').click()
-                    cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
+                    cy.get('#challenge-card-3').click() // challenge 2 has multiple test cases, so...
 
                     cy.get('#guide-modal')
                         .should('be.visible')
@@ -370,7 +435,7 @@ describe("Board buttons", () => {
                 it('previous and next buttons sequence', () => {
                     cy.visit('http://localhost:5173/')
                     cy.get('#single-player-button').click()
-                    cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
+                    cy.get('#challenge-card-3').click() // challenge 2 has multiple test cases, so...
 
                     cy.get('#guide-modal')
                         .should('be.visible')
@@ -418,7 +483,7 @@ describe("Board buttons", () => {
         it('add button (red)', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
             
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -441,7 +506,7 @@ describe("Board buttons", () => {
         it('add button (blue)', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
             
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -464,7 +529,7 @@ describe("Board buttons", () => {
         it('add button (empty)', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
             
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -487,7 +552,7 @@ describe("Board buttons", () => {
         it('add button (occupied spot)', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
             
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -518,7 +583,7 @@ describe("Board buttons", () => {
         it('go! button (pass)', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
             
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -541,7 +606,7 @@ describe("Board buttons", () => {
         it('go! button (fail)', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
             
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -561,7 +626,7 @@ describe("Board buttons", () => {
     it('exit button', () => {
         cy.visit('http://localhost:5173/')
         cy.get('#single-player-button').click()
-        cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+        cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
         
         cy.get('#guide-modal')
             .should('be.visible')
@@ -581,7 +646,7 @@ describe("Board buttons", () => {
         it('comment button (pass)', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
         
             cy.get('#guide-modal')
                 .should('be.visible')
@@ -610,7 +675,7 @@ describe("Board buttons", () => {
         it('comment button (not pass)', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
-            cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
+            cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
         
             cy.get('#guide-modal')
                 .should('be.visible')

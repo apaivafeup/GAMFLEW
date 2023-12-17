@@ -87,7 +87,8 @@ export function find_first_red_piece(board, boardKey) {
     }
   }
 
-  if (board.outOfBoundsState[boardKey].color == Color.RED) {
+  if (board.outOfBoundsState[boardKey].color == Color.RED || (board.outOfBoundsState[boardKey].color == Color.STACK &&
+    board.outOfBoundsState[boardKey].stack.red > 0)) {
     return board.outOfBoundsState[boardKey]
   }
 
@@ -107,7 +108,8 @@ export function find_first_blue_piece(board, boardKey) {
     }
   }
 
-  if (board.outOfBoundsState[boardKey].color == Color.BLUE) {
+  if (board.outOfBoundsState[boardKey].color == Color.BLUE || (board.outOfBoundsState[boardKey].color == Color.STACK &&
+    board.outOfBoundsState[boardKey].stack.blue > 0)) {
     return board.outOfBoundsState[boardKey]
   }
 

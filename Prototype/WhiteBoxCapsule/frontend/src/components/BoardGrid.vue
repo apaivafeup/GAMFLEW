@@ -56,7 +56,12 @@
       >
         {{ !board.table ? 'Condition Table' : 'Game Board' }}
       </button>
-      <button id="view-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
+      <button
+        id="view-button"
+        class="button is-primary is-fullwidth disabled"
+        style="cursor: default"
+        v-else
+      >
         {{ !board.table ? 'Condition Table' : 'Game Board' }}
       </button>
       <div class="buttons-grid">
@@ -68,18 +73,28 @@
         >
           Previous
         </button>
-        <button id="previous-button" class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
+        <button
+          id="previous-button"
+          class="button is-primary is-fullwidth disabled"
+          v-else
+          style="cursor: default"
+        >
           Previous
         </button>
         <button
           id="next-button"
           class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.passed"
+          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.passed && !board.add"
           @click="board.next()"
         >
           Next
         </button>
-        <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
+        <button
+          id="next-button"
+          class="button is-primary is-fullwidth disabled"
+          style="cursor: default"
+          v-else
+        >
           Next
         </button>
         <button
@@ -88,7 +103,7 @@
           v-if="!board.passed && !board.pause"
           @click="board.addMode()"
         >
-          Add
+          {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button
           id="add-button"
@@ -96,7 +111,7 @@
           style="cursor: default"
           v-else
         >
-          Add
+          {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button
           id="go-button"
@@ -106,7 +121,12 @@
         >
           Go!
         </button>
-        <button id="go-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
+        <button
+          id="go-button"
+          class="button is-primary is-fullwidth disabled"
+          style="cursor: default"
+          v-else
+        >
           Go!
         </button>
         <button
@@ -117,7 +137,12 @@
         >
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
-        <button id="pause-button" class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
+        <button
+          id="pause-button"
+          class="button is-primary is-fullwidth disabled"
+          v-else
+          style="cursor: default"
+        >
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
         <button
@@ -128,7 +153,12 @@
         >
           Reset
         </button>
-        <button id="reset-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
+        <button
+          id="reset-button"
+          class="button is-primary is-fullwidth disabled"
+          style="cursor: default"
+          v-else
+        >
           Reset
         </button>
       </div>
@@ -151,10 +181,17 @@
       >
         Comment
       </button>
-      <button id="retry-button" class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
+      <button
+        id="retry-button"
+        class="button is-primary is-fullwidth"
+        v-if="board.passed"
+        @click="board.retry()"
+      >
         Retry
       </button>
-      <button id="exit-button" class="button is-primary is-fullwidth" @click="board.exit()">Exit</button>
+      <button id="exit-button" class="button is-primary is-fullwidth" @click="board.exit()">
+        Exit
+      </button>
     </div>
     <div style="align-content: center" v-if="!board.table">
       <div class="game-board-labels">

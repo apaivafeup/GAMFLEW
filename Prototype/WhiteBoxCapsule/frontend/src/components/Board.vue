@@ -39,6 +39,7 @@ export default {
       <ChallengeCode :code_file="code_file" />
       <div
         class="alert alert-secondary player-info"
+        id="#challenge-hint"
         v-if="board.timer > 100 && !board.timeout && !board.passed"
       >
         <p style="margin: 0px">
@@ -47,6 +48,7 @@ export default {
         </p>
       </div>
       <div
+        id="#challenge-hint"
         class="alert alert-secondary player-info"
         v-else-if="!board.timeout && board.timer <= 100 && !board.passed && !board.failed"
       >
