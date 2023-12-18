@@ -50,7 +50,7 @@ export class Piece {
   }
 
   updateColor() {
-    if (this.stack.red >= 1 && this.stack.blue >= 1) {
+    if ((this.stack.red == 1 && this.stack.blue == 1) || (this.stack.red > 1 || this.stack.blue > 1)) {
       this.color = Color.STACK
     } else if (this.stack.red > 0) {
       this.color = Color.RED
