@@ -367,7 +367,7 @@
                 "utils.find_first_stack(input, input.currentKey).position.x != -2"
             ],
             "tests": [
-                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue < 6 && (utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) % 2 == 0"
+                "(utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) < 6 && (utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) % 2 == 0"
             ]
         },
         "achievement_criteria": null,
@@ -536,6 +536,7 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
+                "utils.find_blue_pieces(input, input.currentKey).length == 0"
             ],
             "tests": [
                 "new Set(utils.find_blue_pieces(input, input.currentKey)).size == 0"
@@ -578,7 +579,7 @@
         "test_cases_count": 4,
         "timer_value": 400,
         "hint": "Read the code carefully. The If statement you're dealing with involves the from and the to, not just the first!",
-        "objective": "Modified condition/decision coverage of line 4.",
+        "objective": "Path coverage of line 4.",
         "initial_board": "default",
         "code_file": 7,
         "challenge_type": "path",
