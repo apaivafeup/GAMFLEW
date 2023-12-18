@@ -68,7 +68,7 @@
         <button
           id="previous-button"
           class="button is-primary is-fullwidth"
-          v-if="board.currentKey != 0 && !board.passed"
+          v-if="board.currentKey != 0 && !board.add"
           @click="board.previous()"
         >
           Previous
@@ -84,7 +84,7 @@
         <button
           id="next-button"
           class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.passed && !board.add"
+          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.add"
           @click="board.next()"
         >
           Next
@@ -310,7 +310,7 @@ export default {
         this.goUnique(input)
       } else if (type == 'decision') {
         this.goDecision(input)
-      } else if (type == 'condition' || type == 'mcdc') {
+      } else if (type == 'condition' || type == 'mcdc' || type == 'path') {
         this.goCondition(input)
       } else {
         console.error('Invalid submit type')
