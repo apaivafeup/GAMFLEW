@@ -2,9 +2,12 @@ import { defineStore } from 'pinia'
 import { Piece, Color } from './models/piece.js'
 import { Attempt } from './models/attempt.js'
 import { combinations } from './utils.js'
+import { useToast } from "vue-toastification";
 
 export const redPos = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23]
 export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
+
+const toast = useToast()
 
 export const boardStore = defineStore('boardStore', {
   state: () => {
@@ -145,7 +148,7 @@ export const boardStore = defineStore('boardStore', {
         from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
         to: { x: parseInt(x), y: parseInt(y) }
       })
-      
+
       logicalSpot.update(x, y)
 
       this.updateInfoState()
@@ -411,8 +414,19 @@ export const boardStore = defineStore('boardStore', {
       window.location.href = '/'
     },
 
-    submit() {
+    submit(score = null) {
       this.submitted = true
+
+      if (score != null) {
+        toast.success("You just earned " + score + " points!")
+      }
+    },
+
+    achievements() {
+      toast.warning("You just won an achievement!", onclick="this.achievements()")
+      window.location.href = '/'
+      window.location.href = "/challenge/1"
+      window.location.reload()
     },
 
     startTimer(pause = false) {

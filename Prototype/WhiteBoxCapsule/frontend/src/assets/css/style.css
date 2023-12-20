@@ -407,3 +407,7 @@ textarea {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.Vue-Toastification__toast--warning {
+  background-color: rgb(169, 89, 255)!important;
+}

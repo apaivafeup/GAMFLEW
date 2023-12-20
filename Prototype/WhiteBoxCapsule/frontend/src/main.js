@@ -19,26 +19,30 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faTrophy, faListCheck, faAward, faClock, faEdit } from '@fortawesome/free-solid-svg-icons'
 
+import Toast, { POSITION } from "vue-toastification";
+import "vue-toastification/dist/index.css";
+
 import './store/utils.js'
 
-/* add icons to the library */
 library.add(faTrophy, faListCheck, faAward, faClock, faEdit)
 
 const pinia = createPinia()
 const app = createApp(App)
 app.use(pinia)
 
-// 2. Define some routes
-// Each route should map to a component.
-// We'll talk about nested routes later.
+const options = {
+  position: POSITION.BOTTOM_LEFT,
+  timeout: 7000
+};
+
+app.use(Toast, options);
+
+
 const routes = [
-  { path: '/', component: Home },
-  { path: '/challenge/:id', component: Challenge, props: true }
+  { name: 'home', path: '/', component: Home },
+  { name: 'challenge', path: '/challenge/:id', component: Challenge, props: true }
 ]
 
-// 3. Create the router instance and pass the `routes` option
-// You can pass in additional options here, but let's
-// keep it simple for now.
 const router = createRouter({
   // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
   history: createWebHashHistory(),

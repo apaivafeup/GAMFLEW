@@ -18,6 +18,8 @@ import Prism from 'prismjs'
   <Board :challenge="challenge" :code_file="code_file" :user="user" />
 
   <SubmitModal :placeholder="submit_placeholder" />
+
+  <SubmittedModal />
   <FailModal :placeholder="fail_placeholder" />
 </template>
 

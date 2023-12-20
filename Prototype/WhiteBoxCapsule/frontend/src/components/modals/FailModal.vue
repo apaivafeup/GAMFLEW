@@ -33,7 +33,6 @@
             id="close-fail-modal"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
-            @click="redirect()"
           >
             Cancel
           </button>
@@ -97,10 +96,10 @@ export default defineComponent({
         test_cases: this.board.state
       }
 
-      await axios.post('http://localhost:8000/create/attempt/', body).then((response) => {
-        //console.log(response)
+      await axios.post('http://localhost:8000/create/attempt/', body).then(async (response) =>  {
         this.board.submit()
         this.$refs.close.click()
+        this.$router.push({name:'home'})
       })
     }
   }

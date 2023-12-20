@@ -26,7 +26,7 @@
         {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
 
-      <button id="view-button" class="button is-primary is-fullwidth" v-if="!board.passed && !board.pause && !board.add"
+      <button id="view-button" class="button is-primary is-fullwidth" v-if="!board.passed && !board.pause && !board.add && needsTable()"
         @click="board.tableMode(this.challenge)">
         {{ !board.table ? 'Condition Table' : 'Game Board' }}
       </button>
@@ -201,6 +201,9 @@ export default {
     //   document.getElementById('#outcome-input').value = '';
     // },
 
+    needsTable() {
+      return this.challenge.challenge_type == 'condition' || this.challenge.challenge_type == 'mcdc' || this.challenge.challenge_type == 'path'
+    },
 
     // Submit functions
     go(input) {

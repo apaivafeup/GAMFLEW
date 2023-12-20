@@ -1,6 +1,10 @@
 import { Color, Piece } from './models/piece'
 
 export function combinations(array, k) {
+  if (array == null) {
+    return
+  }
+
   var i,
     subI,
     ret = [],
