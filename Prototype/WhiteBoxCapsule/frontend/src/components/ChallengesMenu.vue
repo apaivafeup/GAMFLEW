@@ -63,7 +63,7 @@ export default defineComponent({
       this.code_files = response.data
     })
 
-    console.log(this.code_files)
+    //console.log(this.code_files)
 
     await axios.get('http://localhost:8000/challenges-by-code/').then((response) => {
       this.challenges = response.data

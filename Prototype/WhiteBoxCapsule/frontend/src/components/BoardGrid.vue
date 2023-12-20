@@ -10,36 +10,14 @@
             <OutPieceStack />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-            <input
-              v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
-              id="piece-stack-out-x"
-              class="col box"
-              style="width: 30px; text-align: center; font-size: 12px"
-              type="number"
-            />
-            <input
-              v-else
-              id="piece-stack-out-x"
-              class="col box disabled"
-              style="width: 30px; text-align: center; font-size: 12px"
-              type="number"
-              disabled
-            />
-            <input
-              v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
-              id="piece-stack-out-y"
-              class="col box"
-              style="width: 30px; text-align: center; font-size: 12px"
-              type="number"
-            />
-            <input
-              v-else
-              id="piece-stack-out-y"
-              class="col box disabled"
-              style="width: 30px; text-align: center; font-size: 12px"
-              type="number"
-              disabled
-            />
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-x"
+              class="col box" style="width: 30px; text-align: center; font-size: 12px" type="number" />
+            <input v-else id="piece-stack-out-x" class="col box disabled"
+              style="width: 30px; text-align: center; font-size: 12px" type="number" disabled />
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-y"
+              class="col box" style="width: 30px; text-align: center; font-size: 12px" type="number" />
+            <input v-else id="piece-stack-out-y" class="col box disabled"
+              style="width: 30px; text-align: center; font-size: 12px" type="number" disabled />
           </div>
         </div>
       </div>
@@ -48,145 +26,67 @@
         {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
 
-      <button
-        id="view-button"
-        class="button is-primary is-fullwidth"
-        v-if="!board.passed && !board.pause && !board.add"
-        @click="board.tableMode(this.challenge)"
-      >
+      <button id="view-button" class="button is-primary is-fullwidth" v-if="!board.passed && !board.pause && !board.add"
+        @click="board.tableMode(this.challenge)">
         {{ !board.table ? 'Condition Table' : 'Game Board' }}
       </button>
-      <button
-        id="view-button"
-        class="button is-primary is-fullwidth disabled"
-        style="cursor: default"
-        v-else
-      >
+      <button id="view-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
         {{ !board.table ? 'Condition Table' : 'Game Board' }}
       </button>
       <div class="buttons-grid">
-        <button
-          id="previous-button"
-          class="button is-primary is-fullwidth"
-          v-if="board.currentKey != 0 && !board.add"
-          @click="board.previous()"
-        >
+        <button id="previous-button" class="button is-primary is-fullwidth" v-if="board.currentKey != 0 && !board.add"
+          @click="board.previous()">
           Previous
         </button>
-        <button
-          id="previous-button"
-          class="button is-primary is-fullwidth disabled"
-          v-else
-          style="cursor: default"
-        >
+        <button id="previous-button" class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
           Previous
         </button>
-        <button
-          id="next-button"
-          class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.add"
-          @click="board.next()"
-        >
+        <button id="next-button" class="button is-primary is-fullwidth"
+          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.add" @click="board.next()">
           Next
         </button>
-        <button
-          id="next-button"
-          class="button is-primary is-fullwidth disabled"
-          style="cursor: default"
-          v-else
-        >
+        <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Next
         </button>
-        <button
-          id="add-button"
-          class="button is-primary is-fullwidth add-button"
-          v-if="!board.passed && !board.pause"
-          @click="board.addMode()"
-        >
+        <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
+          @click="board.addMode()">
           {{ !board.add ? 'Add' : 'Move' }}
         </button>
-        <button
-          id="add-button"
-          class="button is-primary is-fullwidth add-button disabled"
-          style="cursor: default"
-          v-else
-        >
+        <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default" v-else>
           {{ !board.add ? 'Add' : 'Move' }}
         </button>
-        <button
-          id="go-button"
-          class="button is-primary is-fullwidth"
+        <button id="go-button" class="button is-primary is-fullwidth"
           v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed && !board.pause"
-          @click="go(this.board)"
-        >
+          @click="go(this.board)">
           Go!
         </button>
-        <button
-          id="go-button"
-          class="button is-primary is-fullwidth disabled"
-          style="cursor: default"
-          v-else
-        >
+        <button id="go-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Go!
         </button>
-        <button
-          id="pause-button"
-          class="button is-primary is-fullwidth"
-          v-if="!board.passed"
-          @click="board.pauseMode()"
-        >
+        <button id="pause-button" class="button is-primary is-fullwidth" v-if="!board.passed" @click="board.pauseMode()">
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
-        <button
-          id="pause-button"
-          class="button is-primary is-fullwidth disabled"
-          v-else
-          style="cursor: default"
-        >
+        <button id="pause-button" class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
           {{ !this.board.pause ? 'Pause' : 'Resume' }}
         </button>
-        <button
-          id="reset-button"
-          class="button is-primary is-fullwidth"
-          v-if="!board.passed && !board.pause && !board.add"
-          @click="board.generateState(true)"
-        >
+        <button id="reset-button" class="button is-primary is-fullwidth"
+          v-if="!board.passed && !board.pause && !board.add" @click="board.generateState(true)">
           Reset
         </button>
-        <button
-          id="reset-button"
-          class="button is-primary is-fullwidth disabled"
-          style="cursor: default"
-          v-else
-        >
+        <button id="reset-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Reset
         </button>
       </div>
-      <button
-        id="comment-button"
-        class="button is-primary is-fullwidth"
-        v-if="board.passed && !board.submitted"
-        data-bs-toggle="modal"
-        data-bs-target="#submit-modal"
-        style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)"
-      >
+      <button id="comment-button" class="button is-primary is-fullwidth" v-if="board.passed && !board.submitted"
+        data-bs-toggle="modal" data-bs-target="#submit-modal"
+        style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
         Comment
       </button>
-      <button
-        id="comment-button"
-        class="button is-primary is-fullwidth"
-        v-else
-        data-bs-toggle="modal"
-        data-bs-target="#fail-modal"
-      >
+      <button id="comment-button" class="button is-primary is-fullwidth" v-else data-bs-toggle="modal"
+        data-bs-target="#fail-modal">
         Comment
       </button>
-      <button
-        id="retry-button"
-        class="button is-primary is-fullwidth"
-        v-if="board.passed"
-        @click="board.retry()"
-      >
+      <button id="retry-button" class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
         Retry
       </button>
       <button id="exit-button" class="button is-primary is-fullwidth" @click="board.exit()">
@@ -195,10 +95,7 @@
     </div>
     <div style="align-content: center" v-if="!board.table">
       <div class="game-board-labels">
-        <div
-          class="game-board-label col"
-          style="display: flex; justify-content: center; margin-top: 25px"
-        ></div>
+        <div class="game-board-label col" style="display: flex; justify-content: center; margin-top: 25px"></div>
       </div>
       <div class="game-board-row-labels">
         <div class="game-board-label row" style="align-self: center; justify-content: center">
@@ -239,33 +136,28 @@
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
       <div class="game-board" id="challenge-board">
-        <div
-          class="box"
-          v-for="index in 64"
-          :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-        >
-          <PieceStack
-            :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
-            :x="Math.floor((index - 1) / 8).toString()"
-            :y="((index - 1) % 8).toString()"
-          />
+        <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
+          <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+            :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
         </div>
       </div>
     </div>
+    <div style="justify-self: right; justify-content: end;" v-else>
+      <EasyDataTable style="width: 525px; height: 465px; margin-left: 10px; margin-right: 2.5px; overflow: scroll;"
+      :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="10" :fixed-checkbox="true"
+      :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
+      :theme-color="'#A959FF'">
 
-    <EasyDataTable
-      style="width: 65%; height: 464px; margin-left: 10px; margin-right: 2.5px"
-      :headers="board.dataTable.headers"
-      :items="board.dataTable.rows"
-      :fixed-checkbox="true"
-      :show-index="true"
-      :checkbox-column-width="36"
-      v-model:items-selected="itemsSelected"
-      :maxPaginationNumber="10"
-      v-if="board.table"
-      :theme-color="'#A959FF'"
-    >
+      <!-- <template #item-outcome="item">
+        <div class="outcome-wrapper" :id="'outcome-item-' + item.key">
+          {{ item.outcome }}
+          <font-awesome-icon icon="fa-edit" style="cursor: pointer;" @click="editOutcome(item)"/>
+        </div>
+      </template> -->
     </EasyDataTable>
+    <!-- <input type="text" class="box" id="outcome-input" v-model="outcomeInput" style="width: 525px; margin-left: 10px; margin-right: 2.5px;"/> -->
+    </div>
+    
   </div>
 </template>
 
@@ -291,7 +183,8 @@ export default {
     return {
       headers: [],
       items: [],
-      itemsSelected: []
+      itemsSelected: [],
+      outcomeInput: ''
     }
   },
 
@@ -299,9 +192,16 @@ export default {
     this.board = boardStore()
   },
 
-  mounted() {},
+  mounted() { },
 
   methods: {
+    // editOutcome(item) {
+    //   var item = this.items.findIndex(item.key);
+    //   item.outcome = this.outcomeInput;
+    //   document.getElementById('#outcome-input').value = '';
+    // },
+
+
     // Submit functions
     go(input) {
       var type = this.challenge.challenge_type

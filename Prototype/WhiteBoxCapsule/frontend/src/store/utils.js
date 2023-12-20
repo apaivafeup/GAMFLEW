@@ -20,7 +20,7 @@ export function combinations(array, k) {
     }
   }
 
-  console.log(ret)
+  //console.log(ret)
   return ret
 }
 

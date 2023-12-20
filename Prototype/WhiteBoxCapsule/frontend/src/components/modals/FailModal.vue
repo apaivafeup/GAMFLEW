@@ -98,7 +98,7 @@ export default defineComponent({
       }
 
       await axios.post('http://localhost:8000/create/attempt/', body).then((response) => {
-        console.log(response)
+        //console.log(response)
         this.board.submit()
         this.$refs.close.click()
       })

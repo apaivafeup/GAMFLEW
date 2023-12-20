@@ -9,9 +9,9 @@
         "objective": "Statement coverage of line 0.",
         "initial_board": "default",
         "code_file": 1,
-        "challenge_type": "statement",
+        "challenge_type": "path",
         "passing_criteria": {
-            "condition_count": null,
+            "condition_count": 10,
             "preconditions": [
                 ""
             ],

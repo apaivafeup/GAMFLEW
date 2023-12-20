@@ -324,7 +324,7 @@ export const boardStore = defineStore('boardStore', {
       this.failed = false
 
       var lastLog = this.log[this.currentKey][this.log[this.currentKey].length - 1]
-      console.log(lastLog)
+      //console.log(lastLog)
 
       if (lastLog.type == 'move') {
         this.infoState =
