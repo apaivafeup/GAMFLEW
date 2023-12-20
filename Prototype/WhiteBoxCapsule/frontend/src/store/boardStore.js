@@ -87,7 +87,7 @@ export const boardStore = defineStore('boardStore', {
         return
       }
 
-      if (x < 0 || x > 7 || y < 0 || y > 7) {
+      if (this.isOutOfBounds(x, y)) {
         if (this.selectedPiece == null) {
           if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY) return
           else {
@@ -114,30 +114,39 @@ export const boardStore = defineStore('boardStore', {
       }
     },
 
+    isOutOfBounds(x, y) {
+      return x < 0 || x > 7 || y < 0 || y > 7
+    },
+
     movePiece(x, y) {
       var logicalSpot
-      if (x < 0 || x > 7 || y < 0 || y > 7) {
+      if (this.isOutOfBounds(x, y)) {
         logicalSpot = this.outOfBoundsState[this.currentKey]
       } else {
         logicalSpot = this.state[this.currentKey][x][y]
       }
 
-      logicalSpot.addStack(this.selectedPiece.stack, this.selectedColor)
-
-      this.selectedPiece.select()
-      this.selectedPiece.setEmpty()
+      if (!this.isOutOfBounds(this.selectedPiece.position.x, this.selectedPiece.position.y)) {
+        logicalSpot.addStack(this.selectedPiece.stack, this.selectedColor)
+        this.selectedPiece.select()
+        this.selectedPiece.setEmpty()
+      } else {
+        if (this.isOutOfBounds(x, y)) {
+          this.selectedPiece.select()
+        } else {
+          logicalSpot.addStack(this.selectedPiece.stack, this.selectedColor)
+          this.selectedPiece.select()
+          this.selectedPiece.setEmpty()
+        }
+      }
 
       this.log[this.currentKey].push({
         type: 'move',
         from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
         to: { x: parseInt(x), y: parseInt(y) }
       })
-
-      //console.log(this.log[this.currentKey])
-
-      if (logicalSpot == this.outOfBoundsState[this.currentKey]) {
-        logicalSpot.update(x, y)
-      }
+      
+      logicalSpot.update(x, y)
 
       this.updateInfoState()
 
