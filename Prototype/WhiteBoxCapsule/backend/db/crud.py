@@ -6,6 +6,75 @@ import schemas
 import models
 
 
+
+def create_user(db: Session, user: schemas.User):
+    db_user = schemas.User(
+        name=user.name,
+        email=user.email,
+        password=user.password,  # You may want to hash the password here
+        failed_attempts=0,
+        successful_attempts=0,
+        score=0,
+        achievements=0
+    )
+    db.add(db_user)
+    db.commit()
+    return db_user
+
+def create_challenge(db: Session, challenge: schemas.Challenge):
+    db_challenge = schemas.Challenge(
+        name=challenge.name,
+        description=challenge.description,
+        hint=challenge.hint,
+        objective=challenge.objective,
+        test_cases_count=challenge.test_cases_count,
+        timer_value=challenge.timer_value,
+        initial_board=challenge.initial_board,
+        code_file=challenge.code_file,
+        challenge_type=challenge.challenge_type,
+        passing_criteria=challenge.passing_criteria,
+        achievement_criteria=challenge.achievement_criteria,
+        owner_id=challenge.owner_id,
+        difficulty=challenge.difficulty
+    )
+    db.add(db_challenge)
+    db.commit()
+    return db_challenge
+
+def create_code_file(db: Session, code_file: schemas.CodeFile):
+    db_code_file = schemas.CodeFile(
+        name=code_file.name,
+        content=code_file.content
+    )
+    db.add(db_code_file)
+    db.commit()
+    return db_code_file
+
+def create_board_state(db: Session, board_state: schemas.BoardState):
+    db_board_state = schemas.BoardState(
+        name=board_state.name,
+        board_state=board_state.board_state,
+        out_of_bounds_state=board_state.out_of_bounds_state
+    )
+    db.add(db_board_state)
+    db.commit()
+    return db_board_state
+
+def create_attempt(db: Session, attempt: schemas.Attempt):
+    db_attempt = schemas.Attempt(
+        time_elapsed=attempt.time_elapsed,
+        score=attempt.score,
+        player_id=attempt.player_id,
+        challenge_id=attempt.challenge_id,
+        attempt_type=attempt.attempt_type,  # attempt.pass or attempt.fail
+        comment=attempt.comment,
+        test_cases=attempt.test_cases
+    )
+
+    db.add(db_attempt)
+    db.commit() # Save create attempt to db
+    return db_attempt
+
 def get_user_basics(db: Session, user_id: int):
     user = db.query(schemas.User).filter(schemas.User.id == user_id).first()
 
@@ -57,64 +126,6 @@ def get_users(db: Session, skip: int = 0, limit: int = 500):
 
     return user_basics
 
-def create_user(db: Session, user: schemas.User):
-    db_user = schemas.User(
-        name=user.name,
-        email=user.email,
-        password=user.password,  # You may want to hash the password here
-        failed_attempts=0,
-        successful_attempts=0,
-        score=0,
-        achievements=0
-    )
-    db.add(db_user)
-    db.commit()
-    return db_user
-
-def create_challenge(db: Session, challenge: schemas.Challenge):
-    db_challenge = schemas.Challenge(
-        name=challenge.name,
-        description=challenge.description,
-        hint=challenge.hint,
-        objective=challenge.objective,
-        test_cases_count=challenge.test_cases_count,
-        timer_value=challenge.timer_value,
-        initial_board=challenge.initial_board,
-        code_file=challenge.code_file,
-        challenge_type=challenge.challenge_type,
-        passing_criteria=challenge.passing_criteria,
-        achievement_criteria=challenge.achievement_criteria,
-        owner_id=challenge.owner_id,
-        difficulty=challenge.difficulty
-    )
-    db.add(db_challenge)
-    db.commit()
-    return db_challenge
-
-def create_code_file(db: Session, code_file: schemas.CodeFile):
-    db_code_file = schemas.CodeFile(
-        name=code_file.name,
-        content=code_file.content
-    )
-    db.add(db_code_file)
-    db.commit()
-    return db_code_file
-
-def create_attempt(db: Session, attempt: schemas.Attempt):
-    db_attempt = schemas.Attempt(
-        time_elapsed=attempt.time_elapsed,
-        score=attempt.score,
-        player_id=attempt.player_id,
-        challenge_id=attempt.challenge_id,
-        attempt_type=attempt.attempt_type,  # attempt.pass or attempt.fail
-        comment=attempt.comment,
-        test_cases=attempt.test_cases
-    )
-
-    db.add(db_attempt)
-    db.commit() # Save create attempt to db
-    return db_attempt
-
 def get_challenges(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Challenge).offset(skip).limit(limit).all()
 
@@ -141,6 +152,9 @@ def get_code_file(db: Session, code_file_id: int):
 def get_challenge(db: Session, challenge_id: int):
     return db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
 
+def get_board_state(db: Session, board_state_id: int):
+    return db.query(schemas.BoardState).filter(schemas.BoardState.id == board_state_id).first()
+
 def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: int):
     db_challenge = schemas.Challenge(
         **challenge.model_dump(), owner_id=user_id)
@@ -153,7 +167,6 @@ def get_passed_challenges(db: Session, user_id: int):
     passed_challenges_ids = [attempt.challenge_id for attempt in passed_attempts]
     return passed_challenges_ids
 
-
 def delete_user(db: Session, user_id: int):
     user_to_delete = get_user(db, user_id)
     if user_to_delete is None:
@@ -161,7 +174,6 @@ def delete_user(db: Session, user_id: int):
     db.delete(user_to_delete)
     db.commit()
     return user_to_delete
-
 
 def get_user_score(db: Session, user_id: int):
     user = get_user(db, user_id)

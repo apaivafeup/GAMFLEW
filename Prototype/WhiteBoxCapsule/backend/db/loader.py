@@ -11,6 +11,7 @@ from database import SessionLocal
 create_op = {
     str(models.User): crud.create_user,
     str(models.CodeFile): crud.create_code_file,
+    str(models.BoardState): crud.create_board_state,
     str(models.Challenge): crud.create_challenge,
     str(models.Attempt): crud.create_attempt,
 }

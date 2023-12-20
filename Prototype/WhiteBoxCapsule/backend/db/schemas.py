@@ -36,6 +36,13 @@ class Difficulty(str, Enum):
     HARD = "Hard"
     VERY_HARD = "Very Hard"
 
+class PieceColor(str, Enum):
+    """Enum for the piece colors."""
+    RED = "red"
+    BLUE = "blue"
+    EMPTY = "empty"
+    STACK = "stack"
+
 class User(Base):
     __tablename__ = "users"
 
@@ -60,6 +67,16 @@ class CodeFile(Base):
 
     challenges = relationship("Challenge", back_populates="code_files")
 
+class BoardState(Base):
+    __tablename__ = "board_state"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(TEXT, index=True)
+    board_state = Column(PickleType, index=True)
+    out_of_bounds_state = Column(PickleType, index=True)
+
+    challenges = relationship("Challenge", back_populates="board_states")
+
 class Challenge(Base):
     __tablename__ = "challenges"
 
@@ -70,7 +87,7 @@ class Challenge(Base):
     objective = Column(TEXT, index=True)
     test_cases_count = Column(Integer, index=True)
     timer_value = Column(Integer, index=True)
-    initial_board = Column(TEXT, index=True, nullable=True)
+    initial_board = Column(Integer, ForeignKey("board_state.id"), index=True, nullable=True)
     code_file = Column(Integer, ForeignKey("code_file.id"), nullable=False, index=True)
     challenge_type = Column(ENUM(ChallengeType), nullable=False, default=ChallengeType.STATEMENT, index=True)
     passing_criteria = Column(PickleType)
@@ -81,6 +98,7 @@ class Challenge(Base):
     user = relationship("User", back_populates="challenges")
     attempts = relationship("Attempt", back_populates="challenge")
     code_files = relationship("CodeFile", back_populates="challenges")
+    board_states = relationship("BoardState", back_populates="challenges")
 
 class Attempt(Base):
     __tablename__ = "attempts"

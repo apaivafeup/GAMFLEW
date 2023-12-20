@@ -1,0 +1,1130 @@
+[
+    {
+        "id": 0,
+        "name": "empty",
+        "board_state": [
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ]
+        ],
+        "out_of_bounds_state": {
+            "color": "empty",
+            "content": null
+        }
+    },
+    {
+        "id": 0,
+        "name": "default",
+        "board_state": [
+            [
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                }
+            ]
+        ],
+        "out_of_bounds_state": {
+            "color": "empty",
+            "content": null
+        }
+    },
+    {
+        "id": 0,
+        "name": "thirds",
+        "board_state": [
+            [
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                },
+                {
+                    "color": "empty",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                }
+            ]
+        ],
+        "out_of_bounds_state": {
+            "color": "empty",
+            "content": null
+        }
+    },
+    {
+        "id": 0,
+        "name": "full",
+        "board_state": [
+            [
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                },
+                {
+                    "color": "red",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                }
+            ],
+            [
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                },
+                {
+                    "color": "blue",
+                    "content": null
+                }
+            ]
+        ],
+        "out_of_bounds_state": {
+            "color": "empty",
+            "content": null
+        }
+    }
+]

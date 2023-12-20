@@ -3,6 +3,7 @@ import { Piece, Color } from './models/piece.js'
 import { Attempt } from './models/attempt.js'
 import { combinations } from './utils.js'
 import { useToast } from "vue-toastification";
+import { BoardState } from './models/board_state.js';
 
 export const redPos = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23]
 export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
@@ -42,7 +43,7 @@ export const boardStore = defineStore('boardStore', {
 
       // Attempt state, for future submission.
       attempt: Attempt,
-      boardState: String
+      initialState: BoardState
     }
   },
   actions: {
@@ -197,26 +198,25 @@ export const boardStore = defineStore('boardStore', {
     },
 
     setState() {
-      switch (this.boardState) {
-        case 'default':
-          this.defaultState()
-          break
-        case 'full':
-          this.fullState()
-          break
-        case 'thirds':
-          this.thirdsState()
-          break
-        default:
-          break
+      for (var i = 0; i < this.initialState.board_state.length; i++) {
+        for (var j = 0; j < this.initialState.board_state[i].length; j++) {
+          this.state[this.currentKey][i][j] = 
+            new Piece({x: i, y: j}, this.initialState.board_state[i][j].color, this.initialState.board_state[i][j].content)
+        }
       }
+
+      this.outOfBoundsState[this.currentKey] = new Piece({x: -1, y: -1}, this.initialState.out_of_bounds_state.color, this.initialState.out_of_bounds_state.stack)
     },
 
     defaultState() {
       this.emptyState()
 
+
+      var slay = [];
+
       for (let i = 1; i <= 8; i++) {
         this.state[this.currentKey].push([])
+        slay.push([])
       }
 
       var edge = true
@@ -224,6 +224,7 @@ export const boardStore = defineStore('boardStore', {
         for (let j = 0; j < 8; j++) {
           if (i == 3 || i == 4) {
             this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+            slay[i].push({color: 'empty', content: null})
             continue
           }
 
@@ -235,42 +236,61 @@ export const boardStore = defineStore('boardStore', {
           }
 
           if (edge) {
-            if (j % 2 == 0) this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
-            else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-          } else {
-            if (j % 2 == 0)
+            if (j % 2 == 0) {
+              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
+              slay[i].push({color: color, content: null})
+            } else {
               this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-            else this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
+              slay[i].push({color: Color.EMPTY, content: null})
+            }
+          } else {
+            if (j % 2 == 0) {
+              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+              slay[i].push({color: Color.EMPTY, content: null})
+            } else {
+              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
+              slay[i].push({color: color, content: null})
+            }
           }
         }
         edge = !edge
       }
 
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
+      console.log("default", slay);
 
       this.log[this.currentKey] = []
     },
 
     thirdsState() {
       this.emptyState()
+      var thirds = [], thirdsOut = {}
 
       for (let i = 1; i <= 8; i++) {
         this.state[this.currentKey].push([])
+        thirds.push([])
       }
 
       for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
           if (i < 3) {
             this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.RED))
+            thirds[i].push({color: 'red', content: null})
           } else if (i < 5) {
             this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
+            thirds[i].push({color: 'empty', content: null})
           } else {
             this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.BLUE))
+            thirds[i].push({color: 'blue', content: null})
           }
         }
       }
 
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
+      thirdsOut = {color: 'empty', content: null}
+
+      console.log("thirds", thirds)
+      console.log("thirds", thirdsOut)
 
       this.log[this.currentKey] = []
     },
@@ -278,8 +298,11 @@ export const boardStore = defineStore('boardStore', {
     fullState() {
       this.emptyState()
 
+      var full = [];
+
       for (let i = 1; i <= 8; i++) {
         this.state[this.currentKey].push([])
+        full.push([])
       }
 
       var count = 0
@@ -287,8 +310,10 @@ export const boardStore = defineStore('boardStore', {
         for (let j = 0; j < 8; j++) {
           if (count < 32) {
             this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.RED))
+            full[i].push({color: 'red', content: null})
           } else {
             this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.BLUE))
+            full[i].push({color: 'blue', content: null})
           }
 
           count++
@@ -296,6 +321,8 @@ export const boardStore = defineStore('boardStore', {
       }
 
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
+
+      console.log("full", full)
 
       this.log[this.currentKey] = []
     },

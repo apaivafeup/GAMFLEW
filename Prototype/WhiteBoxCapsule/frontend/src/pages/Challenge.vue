@@ -9,6 +9,7 @@ import { Challenge } from '../store/models/challenge.js'
 import { User } from '../store/models/user.js'
 import { Attempt } from '../store/models/attempt.js'
 import { CodeFile } from '../store/models/code_file.js'
+import { BoardState } from '../store/models/board_state.js'
 import Prism from 'prismjs'
 </script>
 
@@ -35,6 +36,7 @@ export default {
     return {
       code_file: CodeFile,
       challenge: Challenge,
+      board_state: BoardState,
       user: User,
       submit_placeholder:
         "Don't know what to write? Answer these: What was the specific objective to hit, beyond the target line? How did you hit it?",
@@ -79,14 +81,16 @@ export default {
       )
     })
 
-    await axios
-      .get('http://localhost:8000/code-files/' + this.challenge.code_file)
-      .then((response) => {
+    await axios.get('http://localhost:8000/code-files/' + this.challenge.code_file).then((response) => {
         this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
-      })
+    })
+
+    await axios.get('http://localhost:8000/board-states/' + this.challenge.initial_board).then((response) => {
+      this.board_state = new BoardState(response.data.id, response.data.name, response.data.board_state, response.data.out_of_bounds_state)
+    })
 
     this.board = boardStore()
-    this.board.boardState = this.challenge.initial_board
+    this.board.initialState = this.board_state
     this.board.setState()
 
     this.board.attempt = new Attempt(user_id, this.id, this.challenge.timer_value, 0, 0, null, null)
