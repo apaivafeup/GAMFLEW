@@ -420,10 +420,12 @@ export const boardStore = defineStore('boardStore', {
       if (score != null) {
         toast.success("You just earned " + score + " points!")
       }
+
+      toast.warning("You just won an achievement!", onclick="this.achievements()")
     },
 
     achievements() {
-      toast.warning("You just won an achievement!", onclick="this.achievements()")
+      
       window.location.href = '/'
       window.location.href = "/challenge/1"
       window.location.reload()
