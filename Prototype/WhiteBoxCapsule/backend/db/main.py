@@ -105,7 +105,7 @@ def read_passed_challenges(user_id: int, db: Session = Depends(get_db)):
     return passed_challenges
 
 ## Delete specific user
-@app.delete('/user/{user_id}', status_code=200)
+@app.delete(this.$api_link + '/user/{user_id}', status_code=200)
 def delete_user(user_id:int, db: Session = Depends(get_db)):
     user_to_delete = crud.get_user(db=db, user_id=user_id)
     if user_to_delete is None:

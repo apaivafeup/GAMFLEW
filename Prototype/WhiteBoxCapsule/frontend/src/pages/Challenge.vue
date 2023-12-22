@@ -4,7 +4,7 @@ import Board from '../components/Board.vue'
 import SubmitModal from '../components/modals/SubmitModal.vue'
 import FailModal from '../components/modals/FailModal.vue'
 import { boardStore } from '../store/boardStore'
-import axios from 'axios'
+
 import { Challenge } from '../store/models/challenge.js'
 import { User } from '../store/models/user.js'
 import { Attempt } from '../store/models/attempt.js'
@@ -48,7 +48,7 @@ export default {
   async beforeMount() {
     var user_id
 
-    await axios.get('http://localhost:8000/challenges/' + this.id).then((response) => {
+    await this.$axios.get('challenges/' + this.id).then((response) => {
       user_id = response.data.owner_id
 
       this.challenge = new Challenge(
@@ -69,7 +69,7 @@ export default {
       )
     })
 
-    await axios.get('http://localhost:8000/users/' + user_id).then((response) => {
+    await this.$axios.get('users/' + user_id).then((response) => {
       this.user = new User(
         response.data.name,
         response.data.email,
@@ -81,11 +81,11 @@ export default {
       )
     })
 
-    await axios.get('http://localhost:8000/code-files/' + this.challenge.code_file).then((response) => {
+    await this.$axios.get('code-files/' + this.challenge.code_file).then((response) => {
         this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
     })
 
-    await axios.get('http://localhost:8000/board-states/' + this.challenge.initial_board).then((response) => {
+    await this.$axios.get(this.$api_link + '/board-states/' + this.challenge.initial_board).then((response) => {
       this.board_state = new BoardState(response.data.id, response.data.name, response.data.board_state, response.data.out_of_bounds_state)
     })
 

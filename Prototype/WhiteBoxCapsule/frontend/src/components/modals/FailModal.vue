@@ -1,13 +1,7 @@
 <template>
   <button hidden id="timeout-button" data-bs-toggle="modal" data-bs-target="#fail-modal" />
-  <div
-    ref="failModal"
-    class="modal fade"
-    id="fail-modal"
-    tabindex="-1"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-  >
+  <div ref="failModal" class="modal fade" id="fail-modal" tabindex="-1" data-bs-backdrop="static"
+    data-bs-keyboard="false">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body">
@@ -16,32 +10,17 @@
             Explain what you tried or state your doubts!
           </h5>
 
-          <textarea
-            id="fail-modal-textarea"
-            style="width: 100%; resize: none"
-            rows="10"
-            :placeholder="placeholder"
-          />
+          <textarea id="fail-modal-textarea" style="width: 100%; resize: none" rows="10" :placeholder="placeholder" />
           <p style="text-align: center; font-size: 10px">
             <em> Do know that, without submitting this explanation, this attempt won't count! </em>
           </p>
         </div>
         <div class="modal-footer">
           <button ref="close" type="button" data-bs-dismiss="modal" hidden />
-          <button
-            type="button"
-            id="close-fail-modal"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
+          <button type="button" id="close-fail-modal" class="btn btn-secondary" data-bs-dismiss="modal">
             Cancel
           </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            id="fail-modal-button"
-            @click="submitAttempt"
-          >
+          <button type="button" class="btn btn-primary" id="fail-modal-button" @click="submitAttempt">
             Submit
           </button>
         </div>
@@ -51,9 +30,11 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 import { defineComponent } from 'vue'
 import { boardStore } from '../../store/boardStore'
+
+
 
 export default defineComponent({
   beforeMount() {
@@ -96,10 +77,10 @@ export default defineComponent({
         test_cases: this.board.state
       }
 
-      await axios.post('http://localhost:8000/create/attempt/', body).then(async (response) =>  {
+      await this.$axios.post(this.$api_link + '/create/attempt/', body).then(async (response) => {
         this.board.submit()
         this.$refs.close.click()
-        this.$router.push({name:'home'})
+        this.$router.push({ name: 'home' })
       })
     }
   }

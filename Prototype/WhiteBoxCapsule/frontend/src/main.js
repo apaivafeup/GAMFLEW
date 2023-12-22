@@ -23,12 +23,14 @@ import Toast, { POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
 import './store/utils.js'
+import axios from 'axios'
 
 library.add(faTrophy, faListCheck, faAward, faClock, faEdit)
 
 const pinia = createPinia()
 const app = createApp(App)
 app.use(pinia)
+app.config.globalProperties.$api_link = (import.meta.env.MODE == 'development' ? import.meta.env.VITE_API_LINK_LOCAL : import.meta.env.VITE_API_LINK_REMOTE);
 
 const options = {
   position: POSITION.BOTTOM_LEFT,
@@ -42,6 +44,8 @@ const routes = [
   { name: 'home', path: '/', component: Home },
   { name: 'challenge', path: '/challenge/:id', component: Challenge, props: true }
 ]
+
+app.config.globalProperties.$axios = axios;
 
 const router = createRouter({
   // 4. Provide the history implementation to use. We are using the hash history for simplicity here.

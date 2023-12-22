@@ -30,10 +30,12 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 import { defineComponent } from 'vue'
 import { boardStore } from '../../store/boardStore'
 import { useToast } from "vue-toastification";
+
+
 
 export default defineComponent({
 
@@ -80,9 +82,9 @@ export default defineComponent({
       }
 
       var flag = false, score = 0
-      await axios.post('http://localhost:8000/create/attempt/', body).then((response) => {
-        this.$refs.close.click()        
-        this.$router.push({name:'home'})
+      await this.$axios.post(this.$api_link + '/create/attempt/', body).then((response) => {
+        this.$refs.close.click()
+        this.$router.push({ name: 'home' })
         this.board.submit(response.data.score)
       })
 

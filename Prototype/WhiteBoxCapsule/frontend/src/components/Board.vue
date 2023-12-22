@@ -7,7 +7,8 @@ import PlayerBar from './PlayerBar.vue'
 import { Challenge } from '../store/models/challenge'
 import { User } from '../store/models/user.js'
 import { CodeFile } from '../store/models/code_file'
-import axios from 'axios'
+
+
 
 export default {
   props: {

@@ -81,7 +81,7 @@ export default defineComponent({
 
   methods: {
     goToChallenge(id) {
-      this.$router.push('/challenge/' + id)
+      this.$router.push(this.$api_link + '/challenge/' + id)
     }
   }
 })

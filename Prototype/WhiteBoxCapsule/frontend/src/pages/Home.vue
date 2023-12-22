@@ -3,11 +3,13 @@ import GameCredits from './GameCredits.vue'
 import Menu from '../components/Menu.vue'
 
 export default {
-  beforeMount() {},
+  beforeMount() {
+    console.log(this.$axios.defaults)
+  },
 
   methods: {
     goToChallenge(id) {
-      this.$router.push('/challenge/' + id)
+      this.$router.push(this.$api_link + '/challenge/' + id)
     }
   },
   components: { Menu }

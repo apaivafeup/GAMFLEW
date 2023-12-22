@@ -62,8 +62,10 @@
 
 <script>
 import { defineComponent } from 'vue'
-import axios from 'axios'
+
 import ChallengesMenu from './ChallengesMenu.vue'
+
+
 
 export default defineComponent({
   components: { ChallengesMenu },

@@ -52,25 +52,25 @@
 
 <script>
 import { defineComponent } from 'vue'
-import axios from 'axios'
+
 import ChallengeCard from './ChallengeCard.vue'
+
+
 
 export default defineComponent({
   components: { ChallengeCard },
 
   async beforeMount() {
-    await axios.get('http://localhost:8000/code-files/').then((response) => {
+    await this.$axios.get(this.$api_link + '/code-files/').then((response) => {
       this.code_files = response.data
     })
 
-    //console.log(this.code_files)
-
-    await axios.get('http://localhost:8000/challenges-by-code/').then((response) => {
+    await this.$axios.get(this.$api_link + '/challenges-by-code/').then((response) => {
       this.challenges = response.data
     })
 
     //TODO: get logged user id when login is implemented
-    await axios.get('http://localhost:8000/users/' + 1 + '/passed-challenges/').then((response) => {
+    await this.$axios.get(this.$api_link + '/users/' + 1 + '/passed-challenges/').then((response) => {
       this.passed_challenges = response.data
     })
   },
