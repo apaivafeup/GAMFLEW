@@ -9,7 +9,7 @@ export default {
 
   methods: {
     goToChallenge(id) {
-      this.$router.push(this.$api_link + '/challenge/' + id)
+      this.$router.push('/challenge/' + id)
     }
   },
   components: { Menu }

@@ -48,7 +48,7 @@ export default {
   async beforeMount() {
     var user_id
 
-    await this.$axios.get('challenges/' + this.id).then((response) => {
+    await this.$axios.get(this.$api_link + '/challenges/' + this.id).then((response) => {
       user_id = response.data.owner_id
 
       this.challenge = new Challenge(
@@ -69,7 +69,7 @@ export default {
       )
     })
 
-    await this.$axios.get('users/' + user_id).then((response) => {
+    await this.$axios.get(this.$api_link + '/users/' + user_id).then((response) => {
       this.user = new User(
         response.data.name,
         response.data.email,
@@ -81,7 +81,7 @@ export default {
       )
     })
 
-    await this.$axios.get('code-files/' + this.challenge.code_file).then((response) => {
+    await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file).then((response) => {
         this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
     })
 
