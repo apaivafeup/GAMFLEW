@@ -2,7 +2,7 @@
   <div
     class="col piece-overlap"
     v-if="this.board.outOfBoundsState[this.board.currentKey].pieceCount() > 1"
-    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+    @click.stop="this.board.selectPiece(this.x, this.y)"
   >
     <div class="overlap-box">
       <div
@@ -32,7 +32,7 @@
   <div
     class="square square-lg piece selected"
     v-else-if="this.board.outOfBoundsState[this.board.currentKey].selected"
-    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+    @click.stop="this.board.selectPiece(this.x, this.y)"
   ></div>
   <div
     class="square square-lg piece red"
@@ -40,7 +40,7 @@
       this.board.outOfBoundsState[this.board.currentKey].stack.blue == 0 &&
       this.board.outOfBoundsState[this.board.currentKey].stack.red != 0
     "
-    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+    @click.stop="this.board.selectPiece(this.x, this.y)"
   ></div>
   <div
     class="square square-lg piece blue"
@@ -48,7 +48,7 @@
       this.board.outOfBoundsState[this.board.currentKey].stack.blue != 0 &&
       this.board.outOfBoundsState[this.board.currentKey].stack.red == 0
     "
-    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+    @click.stop="this.board.selectPiece(this.x, this.y)"
   ></div>
   <div
     class="square square-lg piece empty"
@@ -56,7 +56,7 @@
       this.board.outOfBoundsState[this.board.currentKey].stack.blue == 0 &&
       this.board.outOfBoundsState[this.board.currentKey].stack.red == 0
     "
-    @click.stop="this.board.selectPiece(this.getOutXCoordinate(), this.getOutYCoordinate())"
+    @click.stop="this.board.selectPiece(this.x, this.y)"
   ></div>
 </template>
 
@@ -80,22 +80,20 @@ export default {
     this.board = boardStore()
   },
 
-  mounted() {},
+  mounted() {
+    document.getElementById('piece-stack-out-x').onchange = () => {
+      this.x = document.getElementById('piece-stack-out-x').value
+      this.board.outCoords.x = this.x
+    }
+
+    document.getElementById('piece-stack-out-y').onchange = () => {
+      this.y = document.getElementById('piece-stack-out-y').value
+      this.board.outCoords.y = this.y
+    }
+  },
 
   methods: {
-    getOutXCoordinate() {
-      if (document.getElementById('piece-stack-out-x') == null) return -1
-      return document.getElementById('piece-stack-out-x').value == ''
-        ? -1
-        : document.getElementById('piece-stack-out-x').value
-    },
 
-    getOutYCoordinate() {
-      if (document.getElementById('piece-stack-out-y') == null) return -1
-      return document.getElementById('piece-stack-out-y').value == ''
-        ? -1
-        : document.getElementById('piece-stack-out-y').value
-    }
   }
 }
 </script>

@@ -49,7 +49,7 @@
           Next
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
-          @click="board.addMode()">
+          @click="this.board.addMode()">
           {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default" v-else>
