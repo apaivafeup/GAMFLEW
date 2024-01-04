@@ -29,8 +29,8 @@ A command was defined to run Cypress:
 ```
 npm run test
 ```
-It will automatically open Cypress. **Note that you need to run both the backend and the frontend for it to work!**
-After this, select "End to End Testing" and click on any file ("spec") to run it.
+It will automatically open Cypress.  **Note that you need to run both the backend and the frontend for it to work!**
+After this, select "End to End Testing", your browser of choice, and click on any file ("spec") to run it.
 
 ## Troubleshooting
 - If the frontend runs but it's all white, you might've forgotten to run the backend.
