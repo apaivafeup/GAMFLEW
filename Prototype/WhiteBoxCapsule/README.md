@@ -15,7 +15,7 @@ python main.py
 Don't close this terminal - it needs to be active for the API to work.
 
 ## Running the frontend
-The frontend uses Vue, so *npm* is required. Install it, if needed!
+The frontend uses Vue, so *npm* is required. Install them if needed!
 In a new terminal, run the following commands (starting from the folder this README file is on):
 ```
 cd frontend
