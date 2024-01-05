@@ -6,6 +6,7 @@ Starting from the folder this README file is on, open a terminal and run the fol
 cd backend/db
 pip install -r requirements.txt
 ```
+postgres is also required. pgadmin is recommended for managing the database.
 
 ## Running the Backend API
 In the same folder as before, run the following command:
