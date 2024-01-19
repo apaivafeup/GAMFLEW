@@ -1,4 +1,8 @@
 <template>
+  <div class="col" style="text-align: center; margin-bottom: 15px;">
+    <h1>Challenges</h1>
+  </div>
+  
   <div
     class="col"
     style="display: flex; justify-content: center; align-items: center; flex-direction: column"
@@ -53,7 +57,7 @@
 <script>
 import { defineComponent } from 'vue'
 
-import ChallengeCard from './ChallengeCard.vue'
+import ChallengeCard from '../components/ChallengeCard.vue'
 
 
 

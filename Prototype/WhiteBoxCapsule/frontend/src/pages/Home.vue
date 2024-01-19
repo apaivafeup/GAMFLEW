@@ -17,8 +17,8 @@ export default {
 </script>
 
 <template>
-  <div class="row" style="text-align: center">
-    <h1>White-Box Capsule</h1>
+  <div class="row" style="text-align: center; justify-content: center;">
+    <img src="../assets/pictures/logo.png" style="width: 600px; margin-top: 30px;" />
   </div>
   <div class="row" style="justify-content: center; margin-top: 30px">
     <Menu />

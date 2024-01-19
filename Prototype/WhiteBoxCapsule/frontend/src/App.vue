@@ -1,4 +1,10 @@
 <template>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="svg" href="./assets/logo.svg"/>
+    <title>Gamflew</title>
+  </head>
+
   <router-view></router-view>
   <GuideModal />
   <button id="guide-button" data-bs-target="#guide-modal" data-bs-toggle="modal">📙 Guide</button>

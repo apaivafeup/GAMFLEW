@@ -12,11 +12,15 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+challenges = "./backend/db/mock/challenges.json"
+if (not eval(os.environ.get("LOCAL"))):
+    challenges = "./backend/db/mock/challenges_remote.json"
+
 models_entries = [
     (models.User, "./backend/db/mock/users.json"),
     (models.CodeFile, "./backend/db/mock/code_files.json"),
     (models.BoardState, "./backend/db/mock/board_states.json"),
-    (models.Challenge, "./backend/db/mock/challenges.json"),
+    (models.Challenge, challenges),
     (models.Attempt, "./backend/db/mock/attempts.json"),
 ]
  

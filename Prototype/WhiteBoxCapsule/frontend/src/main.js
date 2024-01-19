@@ -45,7 +45,10 @@ app.use(Toast, options);
 
 
 const routes = [
-  { name: 'home', path: '/', component: Home },
+  { name: 'home', path: '', component: Home },
+  { name: 'how-to', path: '/how-to', component: () => import('./pages/HowToPlay.vue') },
+  { name: 'credits', path: '/about', component: () => import('./pages/GameCredits.vue') },
+  { name: 'challenges', path: '/challenges', component: () => import('./pages/ChallengesMenu.vue') },
   { name: 'challenge', path: '/challenge/:id', component: Challenge, props: true }
 ]
 
