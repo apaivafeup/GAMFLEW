@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; justify-content: center">
+  <div style="display: flex; justify-content: right">
     <div style="flex-direction: column;
     display: flex;
     align-self: end;">
