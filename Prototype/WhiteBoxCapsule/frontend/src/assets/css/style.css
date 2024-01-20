@@ -96,6 +96,18 @@ pre {
   align-items: center;
 }
 
+.piece-creator {
+  border-radius: 100px;
+  border: 1px solid var(--border-color);
+  width: 62.5px;
+  height: 62.5px;
+}
+
+.creator, .game-board {
+  grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;
+}
+
 .button {
   background-color: var(--background-color);
   border: 1px solid var(--border-color);
@@ -133,6 +145,13 @@ pre {
   display: grid;
   grid-template-columns: 25px 25px;
   grid-template-rows: 25px 25px;
+  justify-content: center;
+}
+
+.creator-overlap {
+  display: grid;
+  grid-template-columns: 50px 50px;
+  grid-template-rows: 50px 50px;
   justify-content: center;
 }
 
@@ -197,6 +216,20 @@ pre {
   display: grid;
   grid-template-rows: 55px 55px 55px 55px 55px 55px 55px 55px;
   grid-template-columns: 25px;
+  justify-content: center;
+}
+
+.game-board-row-labels-creator {
+  display: grid;
+  grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-columns: 25px;
+  justify-content: center;
+}
+
+.game-board-col-labels-creator {
+  display: grid;
+  grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-rows: 25px;
   justify-content: center;
 }
 
