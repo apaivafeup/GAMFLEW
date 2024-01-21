@@ -49,7 +49,12 @@ export const boardStore = defineStore('boardStore', {
   },
   actions: {
     addPiece(x, y) {
-      var piece = this.state[this.currentKey][x][y]
+      var piece
+      if (this.isOutOfBounds(x, y)) {
+        piece = this.outOfBoundsState[this.currentKey]
+      } else {
+        piece = this.state[this.currentKey][x][y]
+      }
 
       if (piece.color == Color.EMPTY) {
         piece.setStack({ red: 1, blue: 0 })

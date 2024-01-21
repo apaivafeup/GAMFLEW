@@ -103,12 +103,14 @@ pre {
   height: 62.5px;
 }
 
-.creator, .game-board {
+.game-board-creator {
+  display: grid;
+  justify-content: center;
   grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px;
   grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;
 }
 
-.game-board-out {
+.game-board-out-creator {
   display: grid;
   grid-template-columns: 75px;
   grid-template-rows: 75px;
@@ -167,13 +169,6 @@ pre {
   justify-content: center;
   align-items: center;
   font-size: 14px;
-}
-
-.overlap-creator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
 }
 
 .piece {

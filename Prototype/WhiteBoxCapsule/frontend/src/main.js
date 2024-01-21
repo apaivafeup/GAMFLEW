@@ -9,7 +9,7 @@ import CodeBlock from 'vue3-code-block'
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Challenge from './pages/Challenge.vue'
 import Home from './pages/Home.vue'
 import Vue3EasyDataTable from 'vue3-easy-data-table'
@@ -57,7 +57,7 @@ app.config.globalProperties.$axios = axios;
 
 const router = createRouter({
   // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes // short for `routes: routes`
 })
 

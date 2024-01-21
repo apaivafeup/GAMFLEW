@@ -5,7 +5,7 @@
         <div class="game-board-out-labels" v-if="!board.table">
           <div class="game-board-label col" style="display: flex; justify-content: center">Out</div>
         </div>
-        <div class="game-board-out creator">
+        <div class="game-board-out-creator">
           <div class="box">
             <OutPieceStackCreator />
           </div>
@@ -87,7 +87,7 @@
         <div class="game-board-label col" style="display: flex; justify-content: center">6</div>
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
-      <div class="creator game-board" id="challenge-board">
+      <div class="game-board-creator" id="challenge-board">
         <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
           <PieceStackCreator :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
             :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
