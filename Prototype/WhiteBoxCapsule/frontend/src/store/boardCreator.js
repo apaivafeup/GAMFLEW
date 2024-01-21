@@ -21,6 +21,7 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
 
       selectedPiece: null,
       selectedCoords: { x: -1, y: -1 },
+      outCoords: { x: -1, y: -1 },
 
       // Flags, for game mechanics / button panel.
       add: Boolean
@@ -28,7 +29,13 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
   },
   actions: {
     addPiece(x, y) {
-      var piece = this.state[this.currentKey][x][y]
+      var piece
+      if (this.isOutOfBounds(x, y)) {
+        piece = this.outOfBoundsState[this.currentKey]
+      } else {
+        piece = this.state[this.currentKey][x][y]
+      }
+
 
       if (piece.color == Color.EMPTY) {
         piece.setStack({ red: 1, blue: 0 })

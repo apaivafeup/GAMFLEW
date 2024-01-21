@@ -108,6 +108,13 @@ pre {
   grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;
 }
 
+.game-board-out {
+  display: grid;
+  grid-template-columns: 75px;
+  grid-template-rows: 75px;
+  justify-content: center;
+}
+
 .button {
   background-color: var(--background-color);
   border: 1px solid var(--border-color);
@@ -150,8 +157,8 @@ pre {
 
 .creator-overlap {
   display: grid;
-  grid-template-columns: 50px 50px;
-  grid-template-rows: 50px 50px;
+  grid-template-columns: 32.5px 32.5px;
+  grid-template-rows: 32.5px 32.5px;
   justify-content: center;
 }
 
@@ -160,6 +167,13 @@ pre {
   justify-content: center;
   align-items: center;
   font-size: 14px;
+}
+
+.overlap-creator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
 
 .piece {
@@ -172,6 +186,11 @@ pre {
 .small {
   height: 16px;
   width: 16px;
+}
+
+.small-creator {
+  height: 26px;
+  width: 26px;
 }
 
 .red {

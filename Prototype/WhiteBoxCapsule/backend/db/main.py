@@ -42,6 +42,11 @@ def create_attempt(attempt: models.Attempt, db: Session = Depends(get_db)):
     crud.update_user_stats(db, attempt.player_id)
     return create_attempt
 
+## Create Board State
+@app.post("/create/board-state", response_model=models.BoardState)
+def create_board_state(board_state: models.BoardState, db: Session = Depends(get_db)):
+    return crud.create_board_state(db=db, board_state=board_state)
+
 ## Get Users
 @app.get("/users/", response_model=list[models.UserBasics])
 def read_users(skip: int = 0, limit: int = 500, db: Session = Depends(get_db)):

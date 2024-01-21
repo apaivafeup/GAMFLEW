@@ -1,29 +1,29 @@
 <template>
   <div
-    class="col piece-overlap"
+    class="col creator-overlap"
     v-if="this.board.state[this.board.currentKey][x][y].pieceCount() > 1"
     @click.stop="this.board.selectPiece(x, y)"
   >
-    <div class="overlap-box">
+    <div class="overlap-box creator">
       <div
-        class="square square-lg piece-creator small red"
+        class="square square-lg piece-creator small-creator red"
         v-if="!this.board.state[this.board.currentKey][x][y].selected"
       ></div>
-      <div class="square square-lg piece-creator small selected" v-else></div>
+      <div class="square square-lg piece-creator small-creator selected" v-else></div>
     </div>
-    <div class="overlap-box">
+    <div class="overlap-box creator">
       <div>
         {{ this.board.state[this.board.currentKey][x][y].stack.red }}
       </div>
     </div>
-    <div class="overlap-box">
+    <div class="overlap-box creator">
       <div
-        class="square square-lg piece-creator small blue"
+        class="square square-lg piece-creator small-creator blue"
         v-if="!this.board.state[this.board.currentKey][x][y].selected"
       ></div>
-      <div class="square square-lg piece-creator small selected" v-else></div>
+      <div class="square square-lg piece-creator small-creator selected" v-else></div>
     </div>
-    <div class="overlap-box">
+    <div class="overlap-box creator">
       <div>
         {{ this.board.state[this.board.currentKey][x][y].stack.blue }}
       </div>
