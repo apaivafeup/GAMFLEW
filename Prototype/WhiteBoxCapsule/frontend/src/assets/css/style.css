@@ -107,14 +107,14 @@ pre {
 .game-board-creator {
   display: grid;
   justify-content: center;
-  grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px;
-  grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-columns: 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px;
+  grid-template-rows: 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px;
 }
 
 .game-board-out-creator {
   display: grid;
-  grid-template-columns: 75px;
-  grid-template-rows: 75px;
+  grid-template-columns: 67.5px;
+  grid-template-rows: 67.5px;
   justify-content: center;
 }
 
@@ -201,6 +201,12 @@ pre {
   background-color: rgb(169, 89, 255);
 }
 
+.menu-button.selected {
+  background-color: rgb(169, 89, 255)!important;
+  color: white!important;
+  border: 1px solid var(--border-color);
+}
+
 .empty {
   background-color: transparent;
   border-color: transparent;
@@ -236,14 +242,14 @@ pre {
 
 .game-board-row-labels-creator {
   display: grid;
-  grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-rows: 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px;
   grid-template-columns: 25px;
   justify-content: center;
 }
 
 .game-board-col-labels-creator {
   display: grid;
-  grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px;
+  grid-template-columns: 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px;
   grid-template-rows: 25px;
   justify-content: center;
 }
@@ -306,8 +312,8 @@ button.menu-button {
 }
 
 .player-bar-avatar {
-  width: 75px;
-  height: 75px;
+  width: 67.5px;
+  height: 67.5px;
   border-radius: 100px;
   border: 1px solid #cdcdcd;
   object-fit: cover;

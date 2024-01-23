@@ -23,8 +23,7 @@ export function combinations(array, k) {
       }
     }
   }
-
-  //console.log(ret)
+  
   return ret
 }
 

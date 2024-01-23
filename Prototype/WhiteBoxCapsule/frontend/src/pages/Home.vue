@@ -4,7 +4,6 @@ import Menu from '../components/Menu.vue'
 
 export default {
   beforeMount() {
-    console.log(this.$axios.defaults)
   },
 
   methods: {

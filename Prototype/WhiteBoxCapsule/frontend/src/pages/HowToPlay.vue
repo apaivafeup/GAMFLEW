@@ -13,7 +13,6 @@
 
 export default {
     beforeMount() {
-        console.log(this.$axios.defaults)
     },
 
     methods: {

@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; justify-content: right">
+  <div style="display: flex; justify-content: center;">
     <div style="flex-direction: column; display: flex; justify-content: space-between;">
       <div class="col" style="">
         <div class="game-board-out-labels" v-if="!board.table">
@@ -36,10 +36,14 @@
           <button id="reset-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
             Reset
           </button>
+          <button id="submit-button" class="button is-primary is-fullwidth" @click="submit()">
+            Submit
+          </button>
+          <button id="exit-button" class="button is-primary is-fullwidth" @click="board.exit()">
+            Exit
+          </button>
         </div>
-        <button id="exit-button" class="button is-primary is-fullwidth" @click="board.exit()">
-          Exit
-        </button>
+        
       </div>
       </div>
 
@@ -104,10 +108,9 @@ import SubmitModal from './modals/SubmitModal.vue'
 // JS
 import { Challenge } from '../store/models/challenge'
 import { boardCreatorStore } from '../store/boardCreator'
-
-import * as utils from '../store/utils.js'
 import OutPieceStackCreator from './OutPieceStackCreator.vue'
 import 'vue3-easy-data-table'
+import { auxiliaryFunctions } from '../assets/js/auxiliary_functions'
 
 export default {
   components: { PieceStackCreator, OutPieceStackCreator, SubmitModal },
@@ -128,13 +131,32 @@ export default {
   beforeMount() {
     this.board = boardCreatorStore()
     this.board.generateState()
-
-    console.log(this.board.state)
   },
 
   mounted() { },
 
   methods: {
+    async submit() {
+      var state = this.board.state[this.board.currentKey],
+          outOfBoundsState = this.board.outOfBoundsState[this.board.currentKey];
+
+
+      var body = {
+        id: 0,
+        name: 'Test',
+        board_state: this.board.serializeState(),
+        out_of_bounds_state: {
+          color: outOfBoundsState.color,
+          content: (outOfBoundsState.color == "stack" ? outOfBoundsState.stack : null)
+        }
+      }
+      
+      await this.$axios.post(this.$api_link + '/create/board-state', body)
+        .then(response => {
+          console.log(response)
+          console.log(body)
+        });
+    },
 
   },
 

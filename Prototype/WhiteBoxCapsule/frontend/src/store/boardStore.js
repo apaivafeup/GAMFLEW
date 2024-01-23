@@ -187,8 +187,6 @@ export const boardStore = defineStore('boardStore', {
     },
 
     generateState(reset = false) {
-      console.log('generating state')
-
       this.emptyState()
 
       for (let i = 1; i <= 8; i++) {
@@ -221,125 +219,6 @@ export const boardStore = defineStore('boardStore', {
       this.outOfBoundsState[this.currentKey] = new Piece({x: -1, y: -1}, this.initialState.out_of_bounds_state.color, this.initialState.out_of_bounds_state.stack)
     },
 
-    defaultState() {
-      this.emptyState()
-
-
-      var slay = [];
-
-      for (let i = 1; i <= 8; i++) {
-        this.state[this.currentKey].push([])
-        slay.push([])
-      }
-
-      var edge = true
-      for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 8; j++) {
-          if (i == 3 || i == 4) {
-            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-            slay[i].push({color: 'empty', content: null})
-            continue
-          }
-
-          var color
-          if (i < 3) {
-            color = Color.RED
-          } else {
-            color = Color.BLUE
-          }
-
-          if (edge) {
-            if (j % 2 == 0) {
-              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
-              slay[i].push({color: color, content: null})
-            } else {
-              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-              slay[i].push({color: Color.EMPTY, content: null})
-            }
-          } else {
-            if (j % 2 == 0) {
-              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-              slay[i].push({color: Color.EMPTY, content: null})
-            } else {
-              this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, color))
-              slay[i].push({color: color, content: null})
-            }
-          }
-        }
-        edge = !edge
-      }
-
-      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
-      console.log("default", slay);
-
-      this.log[this.currentKey] = []
-    },
-
-    thirdsState() {
-      this.emptyState()
-      var thirds = [], thirdsOut = {}
-
-      for (let i = 1; i <= 8; i++) {
-        this.state[this.currentKey].push([])
-        thirds.push([])
-      }
-
-      for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 8; j++) {
-          if (i < 3) {
-            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.RED))
-            thirds[i].push({color: 'red', content: null})
-          } else if (i < 5) {
-            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.EMPTY))
-            thirds[i].push({color: 'empty', content: null})
-          } else {
-            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.BLUE))
-            thirds[i].push({color: 'blue', content: null})
-          }
-        }
-      }
-
-      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
-      thirdsOut = {color: 'empty', content: null}
-
-      console.log("thirds", thirds)
-      console.log("thirds", thirdsOut)
-
-      this.log[this.currentKey] = []
-    },
-
-    fullState() {
-      this.emptyState()
-
-      var full = [];
-
-      for (let i = 1; i <= 8; i++) {
-        this.state[this.currentKey].push([])
-        full.push([])
-      }
-
-      var count = 0
-      for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 8; j++) {
-          if (count < 32) {
-            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.RED))
-            full[i].push({color: 'red', content: null})
-          } else {
-            this.state[this.currentKey][i].push(new Piece({ x: i, y: j }, Color.BLUE))
-            full[i].push({color: 'blue', content: null})
-          }
-
-          count++
-        }
-      }
-
-      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
-
-      console.log("full", full)
-
-      this.log[this.currentKey] = []
-    },
-
     previous() {
       this.currentKey--
       this.selectedPiece = null
@@ -367,7 +246,6 @@ export const boardStore = defineStore('boardStore', {
       this.failed = false
 
       var lastLog = this.log[this.currentKey][this.log[this.currentKey].length - 1]
-      //console.log(lastLog)
 
       if (lastLog.type == 'move') {
         this.infoState =

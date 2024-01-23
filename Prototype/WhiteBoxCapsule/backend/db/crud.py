@@ -152,6 +152,9 @@ def get_code_file(db: Session, code_file_id: int):
 def get_challenge(db: Session, challenge_id: int):
     return db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
 
+def get_board_states(db: Session):
+    return db.query(schemas.BoardState).all()
+
 def get_board_state(db: Session, board_state_id: int):
     return db.query(schemas.BoardState).filter(schemas.BoardState.id == board_state_id).first()
 

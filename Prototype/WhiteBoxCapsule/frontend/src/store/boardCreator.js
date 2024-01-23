@@ -22,6 +22,7 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
       selectedPiece: null,
       selectedCoords: { x: -1, y: -1 },
       outCoords: { x: -1, y: -1 },
+      initialState: {},
 
       // Flags, for game mechanics / button panel.
       add: Boolean
@@ -112,7 +113,7 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
         this.selectedPiece.setEmpty()
       } else {
         if (this.isOutOfBounds(x, y)) {
-            this.selectedPiece.select()
+          this.selectedPiece.select()
         } else {
           logicalSpot.addStack(this.selectedPiece.stack, this.selectedColor)
           this.selectedPiece.select()
@@ -151,16 +152,43 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
         this.setState()
       }
     },
+    
+    changeState(board) {
+      this.emptyState()
+      this.generateState()
+
+      this.initialState.board_state = board.board_state
+      this.initialState.out_of_bounds_state = new Piece({ x: -1, y: -1 }, board.out_of_bounds_state.color, board.out_of_bounds_state.stack)
+
+      this.setState()
+    },
 
     setState() {
       for (var i = 0; i < this.initialState.board_state.length; i++) {
         for (var j = 0; j < this.initialState.board_state[i].length; j++) {
-          this.state[this.currentKey][i][j] = 
-            new Piece({x: i, y: j}, this.initialState.board_state[i][j].color, this.initialState.board_state[i][j].content)
+          this.state[this.currentKey][i][j] =
+            new Piece({ x: i, y: j }, this.initialState.board_state[i][j].color, this.initialState.board_state[i][j].content)
         }
       }
 
-      this.outOfBoundsState[this.currentKey] = new Piece({x: -1, y: -1}, this.initialState.out_of_bounds_state.color, this.initialState.out_of_bounds_state.stack)
+      this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, this.initialState.out_of_bounds_state.color, this.initialState.out_of_bounds_state.stack)
+    },
+
+    serializeState() {
+      var body = [[], [], [], [], [], [], [], []];
+
+      for (var i = 0; i < this.state[this.currentKey].length; i++) {
+        for (var j = 0; j < this.state[this.currentKey][i].length; j++) {
+          body[i].push({ 
+            color: this.state[this.currentKey][i][j].color,
+            content: (this.state[this.currentKey][i][j].color == "stack" ? this.state[this.currentKey][i][j].stack : null)
+          })
+        }
+      }
+
+      console.log(body);
+
+      return body
     },
 
     addMode() {

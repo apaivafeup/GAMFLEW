@@ -86,6 +86,11 @@ def read_code_files(code_file_id: int, db: Session = Depends(get_db)):
     code_files = crud.get_code_file(db, code_file_id)
     return code_files
 
+@app.get("/board-states/", response_model=list[models.BoardState])
+def read_board_state(db: Session = Depends(get_db)):
+    board_state = crud.get_board_states(db)
+    return board_state
+
 @app.get("/board-states/{board_state_id}", response_model=models.BoardState)
 def read_board_state(board_state_id: int, db: Session = Depends(get_db)):
     board_state = crud.get_board_state(db, board_state_id)
