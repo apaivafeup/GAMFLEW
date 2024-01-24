@@ -23,7 +23,8 @@ export default {
       details: false,
       code: false,
       boardStates: [],
-      selectedState: ''
+      selectedState: '',
+      stateName: ''
     }
   },
 
@@ -94,9 +95,9 @@ export default {
         <h3>Board States</h3>
       </div>
       <div class="row">
-        <h6>Existing States</h6>
+        <h6 style="margin-bottom: 2.5px;">Existing States</h6>
       </div>
-      <div class="row">
+      <div class="row" style="margin-bottom: 15px;">
         <div class="dropdown">
           <div v-if="this.selectedState != ''" style="font-size: 10px;">
             <p style="margin-bottom: 5px;"><strong>Selected: </strong>{{ this.selectedState }}</p>
@@ -111,7 +112,15 @@ export default {
           </div>
         </div>
       </div>
-
+      <div class="row">
+        <h6 style="margin-bottom: 2.5px;">State Name</h6>
+      </div>
+      <div class="row" style="font-size: 10px;">
+        <p style="margin-bottom: 5px;">Enter the name for a new state in the input below. If you click submit, this name will be used.</p>
+      </div>
+      <div class="row">
+        <input type="text" placeholder="Write name here." id="state-name" name="state-name" style="width: 700px; height: 30px; margin-bottom: 5px; margin-left: calc(0.5 * var(--bs-gutter-x));">
+      </div>
     </div>
     <div class="col" style="width: 50%;">
       <BoardCreator v-if="board" />

@@ -115,7 +115,7 @@ import { auxiliaryFunctions } from '../assets/js/auxiliary_functions'
 export default {
   components: { PieceStackCreator, OutPieceStackCreator, SubmitModal },
   props: {
-    challenge: Challenge
+    challenge: Challenge,
   },
 
   data() {
@@ -138,12 +138,14 @@ export default {
   methods: {
     async submit() {
       var state = this.board.state[this.board.currentKey],
-          outOfBoundsState = this.board.outOfBoundsState[this.board.currentKey];
-
+          outOfBoundsState = this.board.outOfBoundsState[this.board.currentKey],
+          stateName = document.getElementById('state-name').value
+      
+      //document.getElementById('state-name').value = ''
 
       var body = {
         id: 0,
-        name: 'Test',
+        name: stateName,
         board_state: this.board.serializeState(),
         out_of_bounds_state: {
           color: outOfBoundsState.color,

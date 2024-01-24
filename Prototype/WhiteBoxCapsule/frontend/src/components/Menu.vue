@@ -15,10 +15,10 @@
     <button
       class="menu-button"
       id="single-player-button"
-      @click="this.$router.push('create-challenge')"
+      @click="this.$router.push('content-challenge')"
       style="width: 500px"
     >
-      Challenge Creator
+      Challenge Content Creator
     </button>
     <button class="menu-button" @click="this.$router.push('how-to')" style="width: 500px">
       How To Play
