@@ -15,7 +15,7 @@
     <button
       class="menu-button"
       id="single-player-button"
-      @click="this.$router.push('content-challenge')"
+      @click="this.$router.push('content-creator')"
       style="width: 500px"
     >
       Challenge Content Creator

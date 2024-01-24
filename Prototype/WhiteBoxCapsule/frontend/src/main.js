@@ -53,7 +53,7 @@ const routes = [
   { name: 'credits', path: '/about', component: () => import('./pages/GameCredits.vue') },
   { name: 'challenges', path: '/challenges', component: () => import('./pages/ChallengesMenu.vue') },
   { name: 'challenge', path: '/challenge/:id', component: Challenge, props: true },
-  { name: 'challenge-content-creator', path: '/content-challenge', component: () => import('./pages/ChallengeContentCreator.vue') },
+  { name: 'challenge-content-creator', path: '/content-creator', component: () => import('./pages/ChallengeContentCreator.vue') },
 ]
 
 app.config.globalProperties.$axios = axios;
