@@ -90,7 +90,7 @@ export default {
     </button>
   </div>
   <div class="row" style="justify-content: center;">
-    <div class="col" style="width: 50%;">
+    <div class="col" style="width: 50%;" v-if="board">
       <div class="row">
         <h3>Board States</h3>
       </div>
