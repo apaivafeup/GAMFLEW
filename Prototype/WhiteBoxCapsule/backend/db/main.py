@@ -35,6 +35,11 @@ def create_user(user: models.User, db: Session = Depends(get_db)):
 def create_challenge(challenge: models.Challenge, db: Session = Depends(get_db)):
     return crud.create_challenge(db=db, challenge=challenge)
 
+## Create Code File
+@app.post("/create/code-file", response_model=models.CodeFile)
+def create_code_file(code_file: models.CodeFile, db: Session = Depends(get_db)):
+    return crud.create_code_file(db=db, code_file=code_file)
+
 ## Create Attempt
 @app.post("/create/attempt", response_model=models.Attempt)
 def create_attempt(attempt: models.Attempt, db: Session = Depends(get_db)):

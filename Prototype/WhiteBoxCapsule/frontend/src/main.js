@@ -25,11 +25,14 @@ import "vue-toastification/dist/index.css";
 import './store/utils.js'
 import axios from 'axios'
 
+import VueHighlightJS from 'vue3-highlightjs'
+
 library.add(faTrophy, faListCheck, faAward, faClock, faEdit)
 
 const pinia = createPinia()
 const app = createApp(App)
 app.use(pinia)
+app.use(VueHighlightJS)
 app.config.globalProperties.$api_link = (
   import.meta.env.MODE == 'development' ? 
   import.meta.env.VITE_API_LINK_LOCAL : 

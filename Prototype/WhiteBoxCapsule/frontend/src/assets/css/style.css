@@ -79,6 +79,11 @@ pre {
   background: hsl(30, 80%, 90%);
 }
 
+.code-area > textarea {
+  background-color: var(--bs-gray-100) !important;
+  color: var(--bs-black-200) !important;
+}
+
 .game-board {
   display: grid;
   grid-template-columns: 55px 55px 55px 55px 55px 55px 55px 55px;
