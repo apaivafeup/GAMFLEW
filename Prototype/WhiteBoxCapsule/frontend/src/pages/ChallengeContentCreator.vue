@@ -17,7 +17,7 @@ import CodeEditor from "simple-code-editor";
 
 export default {
   async beforeMount() {
-    this.board = boardCreatorStore()
+    this.boardCreator = boardCreatorStore()
 
     await this.$axios.get(this.$api_link + '/board-states').then((response) => {
       response.data.forEach((board_state) => {
@@ -29,6 +29,7 @@ export default {
 
   data() {
     return {
+      boardCreator: null,
       board: true,
       details: false,
       code: false,
@@ -78,7 +79,7 @@ export default {
         this.toggleDropdown()
       }
 
-      this.board.changeState(this.boardStates[id])
+      this.boardCreator.changeState(this.boardStates[id])
     },
 
     async submit() {
