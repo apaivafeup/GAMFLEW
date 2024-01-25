@@ -9,7 +9,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 <script>
 import GameCredits from './GameCredits.vue'
 import Menu from '../components/Menu.vue'
-import BoardCreator from '../components/BoardCreator.vue'
+import BoardChecker from '../components/BoardChecker.vue'
 import { boardCreatorStore } from '../store/boardCreator'
 
 import hljs from 'highlight.js';
@@ -51,11 +51,16 @@ export default {
         });
     },
 
+    selectState(id) {
+      this.selectedState = id
+      this.boardCreator.changeState(this.boardStates[id - 1])
+    }
+
   },
   components: {
     Menu,
-    BoardCreator,
-    'code-editor': CodeEditor
+    'code-editor': CodeEditor,
+    BoardChecker
   }
 }
 </script>
@@ -65,17 +70,25 @@ export default {
     <h2>Teacher View</h2>
   </div>
   <div class="container" style="display: flex; justify-content: center;">
-    <div class="row" style="width: 500px; justify-content: center; display: flex; flex-direction: column;">
-      <div class="row" style="width: 100%; margin: 0px;">
-        <h6 style="padding: 0px; margin-bottom: 5px;">Board State</h6>
+    <div class="row" style="width: 525px; justify-content: center; display: flex; flex-direction: column;">
+      <div class="col">
+
       </div>
-      <div class="row" style="font-size: 10px;">
-        <p style="margin-bottom: 5px;">Choose an existing board state below.</p>
-      </div>
-      <div class="row" style="width: 100%; margin-left: 0px;">
-        <select style="padding: 5px;">
-          <option v-for="state in boardStates" :value="state.id">{{state.name}}</option>
-        </select>
+      <div class="col">
+        <div class="row" style="width: 100%; margin: 0px;">
+          <h6 style="padding: 0px; margin-bottom: 5px;">Board State</h6>
+        </div>
+        <div class="row" style="font-size: 10px;">
+          <p style="margin-bottom: 5px;">Choose an existing board state below.</p>
+        </div>
+        <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
+          <select style="padding: 5px;">
+            <option @click="this.selectState(state.id)" v-for="state in boardStates" :value="state.id">{{state.name}}</option>
+          </select>
+        </div>
+        <div class="row" style="padding: 0px; margin: 0px;">
+          <BoardChecker />
+        </div>
       </div>
     </div>
   </div>

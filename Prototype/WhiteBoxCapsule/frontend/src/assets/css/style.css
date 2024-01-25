@@ -86,15 +86,15 @@ pre {
 
 .game-board {
   display: grid;
-  grid-template-columns: 55px 55px 55px 55px 55px 55px 55px 55px;
-  grid-template-rows: 55px 55px 55px 55px 55px 55px 55px 55px;
+  grid-template-columns: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
+  grid-template-rows: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
   justify-content: center;
 }
 
 .game-board-out {
   display: grid;
-  grid-template-columns: 55px;
-  grid-template-rows: 55px;
+  grid-template-columns: 52.5px;
+  grid-template-rows: 52.5px;
   justify-content: center;
 }
 
@@ -114,6 +114,20 @@ pre {
   height: 62.5px;
 }
 
+.piece-checker {
+  border-radius: 100px;
+  border: 1px solid var(--border-color);
+  width: 42.5px;
+  height: 42.5px;
+}
+
+.game-board-checker {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
+  grid-template-rows: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
+}
+
 .game-board-creator {
   display: grid;
   justify-content: center;
@@ -125,6 +139,13 @@ pre {
   display: grid;
   grid-template-columns: 67.5px;
   grid-template-rows: 67.5px;
+  justify-content: center;
+}
+
+.game-board-out-checker {
+  display: grid;
+  grid-template-columns: 52.5px;
+  grid-template-rows: 52.5px;
   justify-content: center;
 }
 
@@ -175,6 +196,13 @@ pre {
   justify-content: center;
 }
 
+.checker-overlap {
+  display: grid;
+  grid-template-columns: 20px 20px;
+  grid-template-rows: 20px 20px;
+  justify-content: center;
+}
+
 .overlap-box {
   display: flex;
   justify-content: center;
@@ -197,6 +225,11 @@ pre {
 .small-creator {
   height: 26px;
   width: 26px;
+}
+
+.small-checker {
+  height: 15px;
+  width: 15px;
 }
 
 .red {
@@ -238,14 +271,14 @@ pre {
 
 .game-board-col-labels {
   display: grid;
-  grid-template-columns: 55px 55px 55px 55px 55px 55px 55px 55px;
+  grid-template-columns: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
   grid-template-rows: 25px;
   justify-content: center;
 }
 
 .game-board-row-labels {
   display: grid;
-  grid-template-rows: 55px 55px 55px 55px 55px 55px 55px 55px;
+  grid-template-rows: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
   grid-template-columns: 25px;
   justify-content: center;
 }
@@ -257,9 +290,23 @@ pre {
   justify-content: center;
 }
 
+.game-board-row-labels-checker {
+  display: grid;
+  grid-template-rows: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
+  grid-template-columns: 25px;
+  justify-content: center;
+}
+
 .game-board-col-labels-creator {
   display: grid;
   grid-template-columns: 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px 67.5px;
+  grid-template-rows: 25px;
+  justify-content: center;
+}
+
+.game-board-col-labels-checker {
+  display: grid;
+  grid-template-columns: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
   grid-template-rows: 25px;
   justify-content: center;
 }
@@ -317,7 +364,7 @@ button.menu-button {
 
 .player-bar-box {
   width: 95.5%;
-  height: 150px;
+  height: 152.5px;
   border: 1px solid #cdcdcd;
 }
 
