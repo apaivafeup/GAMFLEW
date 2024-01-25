@@ -23,7 +23,7 @@ export default {
       response.data.forEach((board_state) => {
         this.boardStates.push(board_state)
       })
-      this.dropdownClick(0, true);
+      this.dropdownClick(0);
     })
   },
 
@@ -58,27 +58,10 @@ export default {
         this.details = false
         this.code = !this.code
       }
-
-      document.getElementById(current + '-button').classList.toggle('selected')
-      document.getElementById(state + '-button').classList.toggle('selected')
     },
 
-    toggleDropdown() {
-      document.getElementById('dropdown-menu-states').classList.toggle('show')
-      document.getElementById('dropdown-menu-states').style.display = (document.getElementById('dropdown-menu-states').style.display == '' ? 'block' : '')
-      document.getElementById('dropdown-menu-states').style.position = 'absolute'
-      document.getElementById('dropdown-menu-states').style.inset = '0px auto auto 0px'
-      document.getElementById('dropdown-menu-states').style.margin = '0px'
-      document.getElementById('dropdown-menu-states').style.transform = 'translate3d(12px, 57.6px, 0px)'
-    },
-
-    dropdownClick(id, firstTime = false) {
+    dropdownClick(id) {
       this.selectedState = this.boardStates[id].name
-
-      if (!firstTime) {
-        this.toggleDropdown()
-      }
-
       this.boardCreator.changeState(this.boardStates[id])
     },
 
@@ -127,18 +110,10 @@ export default {
         <h6 style="margin-bottom: 2.5px;">Existing States</h6>
       </div>
       <div class="row" style="margin-bottom: 15px;">
-        <div class="dropdown">
-          <div v-if="this.selectedState != ''" style="font-size: 10px;">
-            <p style="margin-bottom: 5px;"><strong>Selected: </strong>{{ this.selectedState }}</p>
-          </div>
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" @click="toggleDropdown()" style="margin: 0px;">
-            Load State
-          </button>
-          <div id="dropdown-menu-states" class="dropdown-menu">
-            <button class="dropdown-item" type="button" v-for="state in boardStates" v-bind:key="state.id - 1"
-              @click="dropdownClick(state.id - 1)">{{ state.name }}</button>
-          </div>
+        <div class="row" style="width: 100%; margin-left: 0px;">
+          <select style="padding: 5px;">
+            <option @click="dropdownClick(state.id - 1)" v-for="state in boardStates" :value="state.id">{{state.name}}</option>
+          </select>
         </div>
       </div>
       <div class="row">

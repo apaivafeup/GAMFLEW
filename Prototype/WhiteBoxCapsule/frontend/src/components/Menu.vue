@@ -20,6 +20,14 @@
     >
       Challenge Content Creator
     </button>
+    <button
+      class="menu-button"
+      id="single-player-button"
+      @click="this.$router.push('teacher-view')"
+      style="width: 500px"
+    >
+      Teacher View
+    </button>
     <button class="menu-button" @click="this.$router.push('how-to')" style="width: 500px">
       How To Play
     </button>
