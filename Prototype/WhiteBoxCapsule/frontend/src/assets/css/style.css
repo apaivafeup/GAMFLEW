@@ -121,6 +121,10 @@ pre {
   height: 42.5px;
 }
 
+.v-code-block {
+  padding: 0px;
+}
+
 .game-board-checker {
   display: grid;
   justify-content: center;
