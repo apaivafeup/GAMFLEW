@@ -526,3 +526,34 @@ input[type='number'] {
 .Vue-Toastification__toast--warning {
   background-color: rgb(169, 89, 255)!important;
 }
+
+.badge {
+  padding: 5px;
+  margin-right: 5px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.badge:hover:not(.text-bg-values) {
+  background-color: rgb(220, 53, 69)
+}
+
+.text-bg-input {
+  background-color: rgb(169, 89, 255);
+}
+
+.text-bg-operators {
+  background-color: rgb(255, 193, 7);
+}
+
+.text-bg-values {
+  background-color: rgb(13, 202, 240);
+}
+
+.text-bg-auxiliary {
+  background-color: rgb(25, 135, 84);
+}
+
+.text-bg-math {
+  background-color: rgb(42, 177, 159);
+}
