@@ -123,7 +123,7 @@ export default {
       input.setAttribute('class', 'box')
       input.setAttribute('style', 'width: 85%; max-width: auto;')
       input.value = placeholder
-    
+
       row.innerHTML = div.outerHTML + input.outerHTML
       col.appendChild(row)
     },
@@ -153,7 +153,7 @@ export default {
 
     addBadge(key, type) {
       var row = document.getElementById('validation-expression-row'),
-          badge = document.createElement('span')
+        badge = document.createElement('span')
 
       badge.setAttribute('class', 'badge text-bg-' + type)
 
@@ -164,7 +164,7 @@ export default {
 
       var html = this.dictionary[key]
 
-      if (html.includes('I') && html.includes('J')){
+      if (html.includes('I') && html.includes('J')) {
         html = html.replace('I', this.addValueBadge(this.badgeCount))
       } else {
         html = html.replace('I', this.addValueBadge(boardAccess))
@@ -176,7 +176,7 @@ export default {
 
       if (html.includes('M')) {
         html = html.replace('M', this.addValueBadge(this.badgeCount))
-      } 
+      }
 
       html = html.replace('X', this.addValueBadge(boardAccess))
       html = html.replace('L', this.addValueBadge('input'))
@@ -191,9 +191,12 @@ export default {
       row.appendChild(badge)
 
       document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
-        for (var c = 1; c < this.parentElement.children.length; c++) {
-          var child = this.parentElement.children[c]
-          document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
+        if (!this.parentElement.classList.contains('text-bg-input')) {
+          for (var c = 1; c < this.parentElement.children.length; c++) {
+            var child = this.parentElement.children[c]
+            if (!isNaN(child.innerHTML))
+              document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
+          }
         }
         this.parentElement.remove()
       }
@@ -298,12 +301,12 @@ export default {
           <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('out_of_bounds', 'input')">Out
             of Bounds Spot</button>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <h6 style="text-align: left; margin-bottom: 5px;">Mathematical Functions</h6>
         </div>
         <div class="row" style="font-size: 10px;">
           <p style="margin-bottom: 5px;">JavaScript functions. As they're quite extensive, one can simply write them.</p>
-        </div>
+        </div>-->
       </div>
     </div>
     <div class="row" style="margin-bottom: 5px;">
@@ -381,7 +384,8 @@ export default {
     </div>
     <div class="row">
       <div class="col" id="value-badges-inputs">
-        
+
       </div>
     </div>
-  </div></template>
+  </div>
+</template>

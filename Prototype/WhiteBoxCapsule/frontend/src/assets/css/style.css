@@ -105,6 +105,7 @@ pre {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--text-color);
 }
 
 .piece-creator {
@@ -542,7 +543,7 @@ input[type='number'] {
 }
 
 .text-bg-input {
-  background-color: rgb(169, 89, 255);
+  background-color: rgb(39, 39, 39);
 }
 
 .text-bg-operators {
