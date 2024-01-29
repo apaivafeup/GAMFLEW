@@ -528,14 +528,17 @@ input[type='number'] {
 }
 
 .badge {
-  padding: 5px;
+  padding: 5px 5px;
   margin-right: 5px;
+  margin-bottom: 5px;
   font-size: 16px;
   font-weight: normal;
+  align-items: center;
+  display: inline-flex;
 }
 
-.badge:hover:not(.text-bg-values) {
-  background-color: rgb(220, 53, 69)
+.badge.text-bg-values {
+  margin: 0px;
 }
 
 .text-bg-input {
@@ -556,4 +559,8 @@ input[type='number'] {
 
 .text-bg-math {
   background-color: rgb(42, 177, 159);
+}
+
+.btn-close:active {
+
 }
