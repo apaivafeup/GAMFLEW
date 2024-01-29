@@ -105,6 +105,43 @@ export default {
       this.codeString = this.codeFiles[id - 1].content
     },
 
+    addWildcardBadge() {
+      var row = document.getElementById('validation-expression-row'),
+          input = document.createElement('input')
+
+      input.setAttribute('id', 'value-badge-input-' + this.inputBadge)
+      input.setAttribute('type', 'text')
+      input.setAttribute('class', 'box')
+
+      var badge = document.createElement('span')
+      badge.setAttribute('id', 'value-badge-' + this.inputBadge)
+      badge.setAttribute('class', 'badge text-bg-wildcard')
+      badge.setAttribute('style', 'display: inline-flex; width: auto; align-self: center;')
+
+      var button = document.createElement('button')
+      button.setAttribute('type', 'button')
+      button.setAttribute('class', 'btn-close')
+      button.setAttribute('id', 'close-btn-' + this.badgeCount)
+      button.style = 'margin-right: 2.5px;'
+
+      badge.innerHTML = button.outerHTML + input.outerHTML
+      row.appendChild(badge)
+
+      document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
+        if (!this.parentElement.classList.contains('text-bg-input') && !this.parentElement.classList.contains('text-bg-wildcard')) {
+          for (var c = 1; c < this.parentElement.children.length; c++) {
+            var child = this.parentElement.children[c]
+            if (!isNaN(child.innerHTML))
+              document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
+          }
+        }
+        this.parentElement.remove()
+      }
+
+      this.badgeCount += 1
+
+    },
+
     addInputBadge(placeholder) {
       var col = document.getElementById('value-badges-inputs')
       var row = document.createElement('div')
@@ -152,8 +189,8 @@ export default {
     },
 
     addBadge(key, type) {
-      var row = document.getElementById('validation-expression-row'),
-        badge = document.createElement('span')
+      var row = document.getElementById('validation-expression-row'), 
+          badge = document.createElement('span')
 
       badge.setAttribute('class', 'badge text-bg-' + type)
 
@@ -293,7 +330,7 @@ export default {
         <div class="row" style="font-size: 10px;">
           <p style="margin-bottom: 5px;">Everything related to the board is accessible here.</p>
         </div>
-        <div class="row" style="margin: 0px; display: grid;">
+        <div class="row" style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px; grid-template-columns: 200px 200px 200px;">
           <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('board', 'input')">Board Grid
             (8x8)</button>
           <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('log', 'input')">Log
@@ -301,12 +338,17 @@ export default {
           <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('out_of_bounds', 'input')">Out
             of Bounds Spot</button>
         </div>
-        <!-- <div class="row">
-          <h6 style="text-align: left; margin-bottom: 5px;">Mathematical Functions</h6>
+        <div class="row">
+          <h6 style="text-align: left; margin-bottom: 5px;">Wildcards</h6>
         </div>
         <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">JavaScript functions. As they're quite extensive, one can simply write them.</p>
-        </div>-->
+          <p style="margin-bottom: 5px;">JavaScript functions. As they're quite extensive, one can simply write on the input after adding them.</p>
+        </div>
+        <div class="row" style="margin: 0px;">
+          <button style="margin-left: 0px; margin-right: 0px; width: auto; padding: 5px;" class="box" @click="addWildcardBadge()">
+            Add Wildcard
+          </button>
+        </div> 
       </div>
     </div>
     <div class="row" style="margin-bottom: 5px;">

@@ -538,6 +538,10 @@ input[type='number'] {
   display: inline-flex;
 }
 
+.badge:hover:not(.text-bg-values) {
+  background-color: rgb(169, 89, 255)!important;
+}
+
 .badge.text-bg-values {
   margin: 0px;
 }
@@ -558,7 +562,7 @@ input[type='number'] {
   background-color: rgb(25, 135, 84);
 }
 
-.text-bg-math {
+.text-bg-wildcard {
   background-color: rgb(42, 177, 159);
 }
 
