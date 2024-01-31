@@ -86,7 +86,7 @@ class Challenge(Base):
     hint = Column(TEXT, index=True)
     objective = Column(TEXT, index=True)
     test_cases_count = Column(Integer, index=True)
-    timer_value = Column(Integer, index=True)
+    score = Column(Integer, index=True)
     initial_board = Column(Integer, ForeignKey("board_state.id"), index=True, nullable=True)
     code_file = Column(Integer, ForeignKey("code_file.id"), nullable=False, index=True)
     challenge_type = Column(ENUM(ChallengeType), nullable=False, default=ChallengeType.STATEMENT, index=True)
@@ -104,7 +104,6 @@ class Attempt(Base):
     __tablename__ = "attempts"
 
     id = Column(Integer, primary_key=True)
-    time_elapsed = Column(Integer, index=True)
     score = Column(Integer, index=True)
     player_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     challenge_id = Column(Integer, ForeignKey("challenges.id"), nullable=False)

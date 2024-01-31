@@ -311,14 +311,16 @@ export const boardStore = defineStore('boardStore', {
       }
     },
 
-    pass() {
+    pass(score) {
       this.passed = !this.passed
       this.failed = false
       this.paused = true
+      this.attempt.setScore(score)
     },
 
     fail() {
       this.failed = true
+      this.attempt.setScore(0)
     },
 
     retry() {

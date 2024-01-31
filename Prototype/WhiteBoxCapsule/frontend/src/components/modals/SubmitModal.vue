@@ -66,13 +66,11 @@ export default defineComponent({
 
       this.board.attempt.comment = comment
 
-      this.board.attempt.setScore()
 
       this.board.timer
 
       var body = {
         id: 0,
-        time_elapsed: this.board.attempt.time_elapsed,
         score: this.board.attempt.score,
         player_id: this.board.attempt.player_id,
         challenge_id: this.board.attempt.challenge_id,

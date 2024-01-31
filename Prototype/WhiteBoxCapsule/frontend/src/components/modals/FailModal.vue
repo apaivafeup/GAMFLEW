@@ -68,7 +68,6 @@ export default defineComponent({
 
       var body = {
         id: 0,
-        time_elapsed: this.board.attempt.time_elapsed,
         score: 0,
         player_id: this.board.attempt.player_id,
         challenge_id: this.board.attempt.challenge_id,

@@ -54,18 +54,6 @@ describe("Basic Functionality", () => {
         cy.contains("Challenge 0: Challenge for Testing").should('be.visible')
     }),
 
-    it('initial timer appearance', () => {
-        cy.visit('http://localhost:5173/')
-        cy.get('#single-player-button').click()
-        cy.get('#challenge-card-1').click() // challenge 2 has multiple test cases, so...
-    
-        cy.get('#guide-modal')
-            .should('be.visible')
-            .wait(500)
-    
-        cy.get('.timer').contains("103").should('exist')
-    }),
-
     it('objective appearance', () => {
         cy.visit('http://localhost:5173/')
         cy.get('#single-player-button').click()
@@ -322,7 +310,6 @@ describe("Board Movement", () => {
 })
 
 describe("Board buttons", () => {
-
     it('pause button', () => {
         cy.visit('http://localhost:5173/')
         cy.get('#single-player-button').click()

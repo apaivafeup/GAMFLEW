@@ -239,7 +239,7 @@ export default {
 
       if (count == tests.length) {
         this.board.addMode = false
-        this.board.pass()
+        this.board.pass(this.challenge.score)
       }
     },
 
@@ -275,7 +275,7 @@ export default {
 
       if (!passed.includes(false)) {
         this.board.addMode = false
-        this.board.pass()
+        this.board.pass(this.challenge.score)
       } else {
         this.board.fail()
       }
@@ -308,7 +308,7 @@ export default {
 
       if (!passed.includes(false)) {
         this.board.addMode = false
-        this.board.pass()
+        this.board.pass(this.challenge.score)
       } else {
         this.board.fail()
       }
