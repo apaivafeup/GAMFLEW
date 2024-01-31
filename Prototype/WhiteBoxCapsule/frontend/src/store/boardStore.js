@@ -14,8 +14,6 @@ export const boardStore = defineStore('boardStore', {
   state: () => {
     return {
       // Actual game state.
-      timer: Number,
-      interval: null,
       log: {},
       state: {},
       outOfBoundsState: {},
@@ -315,7 +313,6 @@ export const boardStore = defineStore('boardStore', {
 
     pass() {
       this.passed = !this.passed
-      this.attempt.setTimeElapsed(this.timer)
       this.failed = false
       this.paused = true
     },
@@ -348,34 +345,5 @@ export const boardStore = defineStore('boardStore', {
       window.location.href = "/challenge/1"
       window.location.reload()
     },
-
-    startTimer(pause = false) {
-      if (!this.started || pause) {
-        this.interval = setInterval(() => {
-          this.timer--
-
-          if (this.timer == 0) {
-            clearInterval(this.interval)
-            this.gameOver()
-          }
-
-          if (this.passed) {
-            clearInterval(this.interval)
-          }
-        }, 1000)
-
-        this.started = true
-      }
-    },
-
-    pauseMode() {
-      this.pause = !this.pause
-
-      if (!this.pause) {
-        this.startTimer(true)
-      } else {
-        clearInterval(this.interval)
-      }
-    }
   }
 })

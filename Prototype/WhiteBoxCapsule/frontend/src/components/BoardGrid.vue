@@ -63,12 +63,6 @@
         <button id="go-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Go!
         </button>
-        <button id="pause-button" class="button is-primary is-fullwidth" v-if="!board.passed" @click="board.pauseMode()">
-          {{ !this.board.pause ? 'Pause' : 'Resume' }}
-        </button>
-        <button id="pause-button" class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
-          {{ !this.board.pause ? 'Pause' : 'Resume' }}
-        </button>
         <button id="reset-button" class="button is-primary is-fullwidth"
           v-if="!board.passed && !board.pause && !board.add" @click="board.generateState(true)">
           Reset
@@ -245,7 +239,6 @@ export default {
 
       if (count == tests.length) {
         this.board.addMode = false
-        this.board.pauseMode()
         this.board.pass()
       }
     },
@@ -282,7 +275,6 @@ export default {
 
       if (!passed.includes(false)) {
         this.board.addMode = false
-        this.board.pauseMode()
         this.board.pass()
       } else {
         this.board.fail()
@@ -316,7 +308,6 @@ export default {
 
       if (!passed.includes(false)) {
         this.board.addMode = false
-        this.board.pauseMode()
         this.board.pass()
       } else {
         this.board.fail()

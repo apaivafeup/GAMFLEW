@@ -269,11 +269,6 @@ export default defineComponent({
   beforeMount() {
     this.tab = 'board'
     this.board = boardStore()
-
-    addEventListener('hidden.bs.modal', () => {
-      this.board.startTimer()
-      removeEventListener('hidden.bs.modal', () => {})
-    })
   },
 
   mounted() {

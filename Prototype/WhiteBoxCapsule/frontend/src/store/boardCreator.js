@@ -14,7 +14,6 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
   state: () => {
     return {
       // Actual game state.
-      timer: Number,
       state: {},
       outOfBoundsState: {},
       currentKey: 0,
