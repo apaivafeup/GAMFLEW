@@ -4,12 +4,12 @@
         "name": "Challenge 8.2: Thorough Checking of Out of Bounds",
         "description": "Pieces can never leave the board.",
         "test_cases_count": 2,
-        "score": 100,
+        "score": 450,
         "hint": "Though the condition is made only using OR (||), you need to make sure that, across 2 board states, the condition yields both True and False.",
-        "objective": "Condition coverage of lines 7-8.",
+        "objective": "Path coverage of lines 7-8.",
         "initial_board": 2,
-        "code_file": 8,
-        "challenge_type": "condition",
+        "code_file": 1,
+        "challenge_type": "path",
         "passing_criteria": {
             "condition_count": 0,
             "preconditions": [
@@ -33,7 +33,7 @@
         "hint": "The condition guarding line 9 is made only using OR (||). What does that mean, logically?",
         "objective": "Statement coverage of line 9.",
         "initial_board": 2,
-        "code_file": 8,
+        "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
             "condition_count": 0,
@@ -46,6 +46,31 @@
         },
         "achievement_criteria": null,
         "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 8.2: Thorough Checking of Out of Bounds",
+        "description": "Pieces can never leave the board.",
+        "test_cases_count": 2,
+        "score": 200,
+        "hint": "Though the condition is made only using OR (||), you need to make sure that, across 2 board states, the condition yields both True and False.",
+        "objective": "Condition coverage of lines 7-8.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[case_num].length > 0"
+            ],
+            "tests": [
+                "(input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y < 8) && (input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x < 8)",
+                "!((input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y < 8) && (input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x < 8))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
         "owner_id": 1
     }
 ]

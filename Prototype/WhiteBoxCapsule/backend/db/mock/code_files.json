@@ -1,42 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Test File 1: First Steps in Movement",
-        "content": "// from is the (row, col) position from where a piece is moved.\n// to is the (row, col) position to where a piece is moved.\nfunction making_moves(from, to) {\n\t// Math.abs() gives you the absolute value of whatever you call it with.\n\t// Math.abs(-1) == 1\n\tvar a = Math.abs(from.x - to.x);\n\tvar b = Math.abs(from.y - to.y);\n\n\tif (a > 2) {\n\t\tif (b < 2) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
-    },
-    {
-        "id": 2,
-        "name": "Test File 2: Counting Pieces",
-        "content": "function counting_pieces(board) {\n\t// The following functions work with the board object.\n\t// Each counts the respective color's number of pieces in the board.\n\tvar a = count_red_pieces(board);\n\tvar b = count_blue_pieces(board);\n\n\t// Math.abs(-1) = 1\n\tlet diff = Math.abs(a - b);\n\n\tswitch (diff) {\n\t\tcase 1:\n\t\t\treturn true;\n\t\tcase 2, 3:\n\t\t\treturn false;\n\t\tdefault:\n\t\t\treturn true;\n\t}\n}"
-    },
-    {
-        "id": 3,
-        "name": "Test File 3: Build A Triangle, with Empty Spaces (...Wait, you can do that?)",
-        "content": "function build_a_triangle(board) {\n\tvar a = utils.count_red_pieces(board); // Counts the number of blue pieces.\n\tvar b = utils.count_blue_pieces(board); // Counts the number of red pieces.\n\tvar c = utils.count_empty_spaces(board); // Counts the number of empty spaces (no pieces).\n\t\n\t// Tests if the lengths of the sides of the triangle are valid.\n\tif (isTriangle(a, b, c)) {\n\t\treturn true;\n\t} else {\n\t\tif (b < c && b > a) {\n\t\t\treturn true;\n\t\t} else if (a == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
-    },
-    {
-        "id": 4,
-        "name": "Test File 4: Making a Stack (aka Pieces Where They Shouldn't Be)",
-        "content": "function making_a_stack(board) {\n\t// The following functions work with the board object.\n\t// They search the board by rows and columns, in order.\n\t// They return the first piece they find, or an invalid piece.\n\tvar a = utils.find_first_red_piece(board)\n\tvar b = utils.find_first_blue_piece(board)\n\t\n\t// Position is an object with x and y coordinates.\n\t// x is the row, y is the column.\n\tif (a.position == b.position) {\n\t\treturn true;\n\t} else if (a.position.x == -1 && a.position.y == -1) {\n\t\treturn true;\n\t} else if (b.position.x == -1 && b.position.y == -1) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
-    },
-    {
-        "id": 5,
-        "name": "Test File 5: Making an Even-Numbered Stack (Pieces on Pieces on Pieces!)",
-        "content": "function making_an_even_numbered_stack(board) {\n\t// The following functions work with the board object.\n\t// It finds the first stack in the board and returns it.\n\t// Stack: a spot with more than one piece (at least 2).\n\tvar a = utils.find_first_stack(board)\n\n\t// A stack is divided into two parts: blue and red.\n\t// Each part counts the respective color's number of pieces in the stack.\n\tif ((a.stack.red + a.stack.blue) % 2 == 0 &&\n\t    a.stack.red + a.stack.blue < 6) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
-    },
-    {
-        "id": 6,
-        "name": "Test File 6: Draw A Triangle",
-        "content": "function draw_a_triangle(board) {\n\t// This function finds all blue pieces in the board and\n\t// returns them in a list. The final list is ordered by\n\t// row and column - respectively, (x, y).\n\tvar vertices = utils.find_blue_pieces(board)\n\n\tif (vertices.length != 3) {\n\t\treturn;\n\t}\n\n\tvar side_1 = [vertices[0], vertices[1]],\n\t    side_2 = [vertices[1], vertices[2]],\n\t    side_3 = [vertices[2], vertices[0]];\n\n\t// This function calculates the Cartesian distance between\n\t// two (x, y) vertices. It rounds up to the nearest integer.\n\tvar length_1 = utils.distance(side_1[0], side_1[1]),\n\t    length_2 = utils.distance(side_2[0], side_2[1]),\n\t    length_3 = utils.distance(side_3[0], side_3[1]);\n\n\tvar ordered_sides = [length_1, length_2, length_3].sort();\n\n\tvar side_a = ordered_sides[0],\n\t    side_b = ordered_sides[1],\n\t    side_c = ordered_sides[2];\n\n\t// Math.sqrt() calculates the square root of a number.\n\t// Math.pow(number, power) calculates number^power.\n\t// Sets are like lists, but they contain no duplicates.\n\tif (Math.sqrt(Math.pow(side_a, 2) + Math.pow(side_b, 2)) == side_c) {\n\t\treturn true;\n\t} else if (new Set([side_a, side_b, side_c]).size == 3) {\n\t\treturn true;\n\t} else if (new Set([side_a, side_b, side_c]).size == 2) {\n\t\treturn true;\n\t} else if ((new Set([side_a, side_b, side_c])).size == 1 && side_a == 0) {\n\t\treturn false;\n\t}\n}"
-    },
-    {
-        "id": 7,
-        "name": "Test File 7: Never Out of Bounds",
-        "content": "// from: the (x, y) position of the piece moved.\n// to: the (x, y) position to where the piece moved.\nfunction never_out_of_bounds(from, to) {\n\tif (from.x >= 7 || to.x <= 0) {\n\t\treturn false;\n\t}"
-    },
-    {
-        "id": 8,
-        "name": "Test File 8: Checking Movement",
+        "name": "Test File 1: Checking Movement",
         "content": "// piece is the piece that is moving.\n// start: the (x, y) position from where the piece moved.\n// destination: the (x, y) position to where the piece moved.\nfunction is_valid_move(piece, start, destination) {\n\t// Math.abs() gives you the absolute value of whatever you call it with.\n\t// Math.abs(-1) == 1\n\tif (destination.x < 0 || destination.x > 7 ||\n\t\tdestination.y < 0 || destination.y > 7) {\n\t\treturn false;\n\t}\n\n\tvar lineDifference = Math.abs(start.x - destination.x);\n\tvar columnDifference = Math.abs(start.y - destination.y);\n\n\tif (lineDifference != columnDifference) {\n\t\treturn false;\n\t} else {\n\t\tif (lineDifference == 1) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\treturn true;\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else if (lineDifference == 2) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\tif (board[start.x + 1][start.y + 1].color == piece.color) {\n\t\t\t\t\treturn false;\n\t\t\t\t} else {\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
     }
 ]
