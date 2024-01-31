@@ -6,7 +6,7 @@ COPY requirements.txt ./
 
 RUN apt-get update
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r ./requirements.txt
 RUN pip install psycopg2-binary
 
 COPY . .
@@ -15,5 +15,4 @@ ENV PYTHONPATH "${PYTHONPATH}:/app"
 
 EXPOSE 80
 
-ENTRYPOINT [ "uvicorn" ]
-CMD [ "main:app", "--host", "0.0.0.0", "--port", "80", "--reload" ]
+CMD ["uvicorn", "app.main:app", "--host", "10.227.242.121", "--port", "8000"]

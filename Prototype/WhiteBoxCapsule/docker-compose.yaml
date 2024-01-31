@@ -1,23 +1,14 @@
 version: '1.0'
 
-name: gamflew
+name: gamflew-api
 
 services:
   backend:
     image: backend
     build:
-      context: ./backend/db
+      context: ./db
       dockerfile: Dockerfile
     ports:
       - 8000:80
     env_file:
-      - ./backend/db/.env
-  frontend:
-    image: frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - 5173:80
-    env_file:
-        - ./frontend/.env
+      - ./db/.env
