@@ -41,6 +41,18 @@ export function distance(a, b) {
   )
 }
 
+export function getPieces(board, boardKey) {
+  var pieces = []
+
+  for (var i = 0; i < board.state[boardKey].length; i++) {
+    for (var j = 0; j < board.state[boardKey].length; j++) {
+      if (board.state[boardKey][i][j].color != Color.EMPTY) {
+        pieces.push(board.state[boardKey][i][j])
+      }
+    }
+  }
+}
+
 export function count_blue_pieces(board, boardKey) {
   var count = 0
   for (var i = 0; i < board.state[boardKey].length; i++) {

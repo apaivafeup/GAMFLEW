@@ -33,5 +33,10 @@
         "id": 7,
         "name": "Test File 7: Never Out of Bounds",
         "content": "// from: the (x, y) position of the piece moved.\n// to: the (x, y) position to where the piece moved.\nfunction never_out_of_bounds(from, to) {\n\tif (from.x >= 7 || to.x <= 0) {\n\t\treturn false;\n\t}"
+    },
+    {
+        "id": 8,
+        "name": "Test File 8: Checking Movement",
+        "content": "// piece is the piece that is moving.\n// start: the (x, y) position from where the piece moved.\n// destination: the (x, y) position to where the piece moved.\nfunction is_valid_move(piece, start, destination) {\n\t// Math.abs() gives you the absolute value of whatever you call it with.\n\t// Math.abs(-1) == 1\n\tif (destination.x < 0 || destination.x > 7 ||\n\t\tdestination.y < 0 || destination.y > 7) {\n\t\treturn false;\n\t}\n\n\tvar lineDifference = Math.abs(start.x - destination.x);\n\tvar columnDifference = Math.abs(start.y - destination.y);\n\n\tif (lineDifference != columnDifference) {\n\t\treturn false;\n\t} else {\n\t\tif (lineDifference == 1) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\treturn true;\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else if (lineDifference == 2) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\tif (board[start.x + 1][start.y + 1].color == piece.color) {\n\t\t\t\t\treturn false;\n\t\t\t\t} else {\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
     }
 ]
