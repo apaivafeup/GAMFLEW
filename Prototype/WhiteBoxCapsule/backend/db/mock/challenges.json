@@ -1,27 +1,28 @@
 [
     {
         "id": 0,
-        "name": "Challenge 1.5: Valid and Invalid Movement",
-        "description": "In this challenge, you need to test both valid and invalid movement.",
-        "test_cases_count": 2,
-        "score": 200,
-        "hint": "Considering the function is testing for valid moves in Checkers, you only need to make one valid and one invalid move... but validity is dictated by the condition in line 15!",
-        "objective": "Decision coverage of line 15.",
+        "name": "Challenge 1.19: Capturing Pieces, Under Conditions",
+        "description": "Testing an illegal capture and a valid capture move.",
+        "test_cases_count": 16,
+        "score": 800,
+        "hint": "The condition in lines 7-8 has 4 different variables. That means you have 16 test cases to develop.",
+        "objective": "Path coverage of lines 7-8.",
         "initial_board": 2,
         "code_file": 1,
-        "challenge_type": "decision",
+        "challenge_type": "path",
         "passing_criteria": {
-            "condition_count": 0,
+            "condition_count": 4,
             "preconditions": [
-                "input.log[case_num].length > 0"
+                "input.log[case_num].length > 0",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y)",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == 2"
             ],
             "tests": [
-                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) != Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y)",
-                "!(Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) != Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y))"
+                "input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y < 8) && (input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x < 8)"
             ]
         },
         "achievement_criteria": null,
-        "difficulty": "Easy",
+        "difficulty": "Normal",
         "owner_id": 1
     },
     {
@@ -123,6 +124,366 @@
         },
         "achievement_criteria": null,
         "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.5: Valid and Invalid Movement",
+        "description": "In this challenge, you need to test both valid and invalid movement.",
+        "test_cases_count": 2,
+        "score": 200,
+        "hint": "Considering the function is testing for valid moves in Checkers, you only need to make one valid and one invalid move... but validity is dictated by the condition in line 15!",
+        "objective": "Decision coverage of line 15.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[case_num].length > 0"
+            ],
+            "tests": [
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) != Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y)",
+                "!(Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) != Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.6: A Valid Move",
+        "description": "In this challenge, you need to make a valid move.",
+        "test_cases_count": 1,
+        "score": 150,
+        "hint": "You need to make a valid move, as defined by a certain condition evaluated to false. What condition is it?",
+        "objective": "Statement coverage of line 18.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0"
+            ],
+            "tests": [
+                "!(Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) != Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.7: A Normal Move",
+        "description": "In this challenge, you need to make a normal Checkers move.",
+        "test_cases_count": 1,
+        "score": 150,
+        "hint": "If you're making a Checkers move, you always draw a square (as you follow one of its diagonals). Here, you're given the side of said square.",
+        "objective": "Statement coverage of line 19.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0"
+            ],
+            "tests": [
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == 1"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.8: (Almost) A Capture Move",
+        "description": "In this challenge, you need to make a capture move.",
+        "test_cases_count": 1,
+        "score": 150,
+        "hint": "If you're making a capture in Checkers, you always draw a square (as you follow one of its diagonals). If you have to go OVER a piece, what side does the square have?",
+        "objective": "Statement coverage of line 25.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0"
+            ],
+            "tests": [
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == 2"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.9: All Possible Moves",
+        "description": "In this challenge, you need to test all possible moves!",
+        "test_cases_count": 3,
+        "score": 350,
+        "hint": "If you're making a move in Checkers, you always draw a square (as you follow one of its diagonals). Each case corresponds to a difference side length of the square.",
+        "objective": "Decision coverage of line 18.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[case_num].length > 0"
+            ],
+            "tests": [
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == 2",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == 1",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) != 2 && Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) != 1"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.10: Moving to the Right Place",
+        "description": "In this challenge, you need to make an actual Checkers move!",
+        "test_cases_count": 1,
+        "score": 175,
+        "hint": "When you're making a normal movement (not a capture), you can only move to a spot that is one square away from your current position. What other condition must be true?",
+        "objective": "Statement coverage of line 20.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == 1"
+            ],
+            "tests": [
+                "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].stack.blue == 1"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.11: Moving to a Wrong Place",
+        "description": "In this challenge, you need to make an illegal Checkers move!",
+        "test_cases_count": 1,
+        "score": 175,
+        "hint": "Remember that you can do make things that aren't legal in Checkers! What condition must be false?",
+        "objective": "Statement coverage of line 22.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == 1"
+            ],
+            "tests": [
+                "!(input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].stack.blue == 1)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.12: Moving to Places",
+        "description": "In this challenge, you need to make an illegal and a totally valid Checkers move!",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "Remember that you can do make things that aren't legal in Checkers! There are two clear cases to test, here.",
+        "objective": "Decision coverage of line 19.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[case_num].length > 0",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y)",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == 1"
+            ],
+            "tests": [
+                "!(input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].stack.blue == 1)",
+                "(input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].stack.blue == 1)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.13: Not Capturing a Piece, but Very Close",
+        "description": "In this challenge, you need to make a potentially valid Checkers move!",
+        "test_cases_count": 1,
+        "score": 175,
+        "hint": "You don't have to have a piece in between your from and destination positions: notice the condition only cares about the destination!",
+        "objective": "Statement coverage of line 26.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == 2"
+            ],
+            "tests": [
+                "(input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].stack.blue == 1)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.14: An Illegal Capture",
+        "description": "To make sure captures work correctly.",
+        "test_cases_count": 1,
+        "score": 175,
+        "hint": "There's only one way to capture a piece in Checkers: you move over it. What does that mean, in terms of the condition in line 27? How can you make the condition true? Also, remember that only the last movement you made is considered.",
+        "objective": "Statement coverage of line 28.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == 2"
+            ],
+            "tests": [
+                "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].color == input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)/2)].color"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.15: Capture",
+        "description": "Testing a real capture move.",
+        "test_cases_count": 1,
+        "score": 225,
+        "hint": "There's only one way to capture a piece in Checkers: you move over it. What does that mean, in terms of the condition in line 27? How can you make the condition false? Also, remember that only the last movement you made is considered.",
+        "objective": "Statement coverage of line 30.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == 2"
+            ],
+            "tests": [
+                "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].color != input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)/2)].color && input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)/2)].color != 'empty'"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.16: Testing Captures",
+        "description": "Testing a real and an illegal capture move.",
+        "test_cases_count": 2,
+        "score": 225,
+        "hint": "There's only one way to capture a piece in Checkers: you move over it. What does that mean, in terms of the condition in line 27? How can you make the condition false and true, in different boards? Also, remember that only the last movement you made is considered.",
+        "objective": "Decision coverage of line 27.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[case_num].length > 0",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y)",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == 2"
+            ],
+            "tests": [
+                "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].color != input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].from.x + input.log[case_num][input.log[case_num].length - 1].to.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].from.y + input.log[case_num][input.log[case_num].length - 1].to.y)/2)].color && input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].from.x + input.log[case_num][input.log[case_num].length - 1].to.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].from.y + input.log[case_num][input.log[case_num].length - 1].to.y)/2)].color != 'empty'",
+                "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].color == input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].from.x + input.log[case_num][input.log[case_num].length - 1].to.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].from.y + input.log[case_num][input.log[case_num].length - 1].to.y)/2)].color"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.17: Illegal Capture, Under a Condition",
+        "description": "Testing an illegal capture move.",
+        "test_cases_count": 1,
+        "score": 175,
+        "hint": "There's only one way to capture a piece in Checkers: you move over it. In this case, you need to make sure a condition related to the destination is True.",
+        "objective": "Statement coverage of line 33.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)",
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) == 2"
+            ],
+            "tests": [
+                "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y].stack.blue >= 2"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.18: Capturing Pieces, Under Conditions",
+        "description": "Testing an illegal capture and a valid capture move.",
+        "test_cases_count": 2,
+        "score": 175,
+        "hint": "There's only one way to capture a piece in Checkers: you move over it. In this case, you need to make sure a condition related to the destination yields True and False in two different cases.",
+        "objective": "Decision coverage of line 25.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[case_num].length > 0",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y)",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) == 2"
+            ],
+            "tests": [
+                "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].stack.blue >= 2",
+                "!(input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].to.x][input.log[case_num][input.log[case_num].length - 1].to.y].stack.blue >= 2)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
         "owner_id": 1
     }
 ]

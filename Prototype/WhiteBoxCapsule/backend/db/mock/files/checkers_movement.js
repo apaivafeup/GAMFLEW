@@ -25,7 +25,8 @@ function is_valid_move(piece, start, destination) {
             }
         } else if (lineDifference == 2) {
             if (board[destination.x][destination.y].color == Color.EMPTY) {
-                if (board[start.x + 1][start.y + 1].color == piece.color) {
+                var middlePiece = board[Math.round((start.x + destination.x) / 2)][Math.round((start.y + destination.y) / 2)];
+                if (middlePiece.color == piece.color) {
                     return false;
                 } else {
                     return true;
