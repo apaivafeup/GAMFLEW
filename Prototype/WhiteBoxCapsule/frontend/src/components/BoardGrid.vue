@@ -7,17 +7,17 @@
         </div>
         <div class="game-board-out">
           <div class="box">
-            <OutPieceStack />
+            <OutPieceStack :x="this.outX" :y="this.outY" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-x"
-              class="col box" style="width: 30px; text-align: center; font-size: 12px" type="number" />
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outX" id="piece-stack-out-x"
+             @input="this.changeX()" class="col box" style="width: 30px; text-align: center; font-size: 12px" type="number" />
             <input v-else id="piece-stack-out-x" class="col box disabled"
-              style="width: 30px; text-align: center; font-size: 12px" type="number" disabled />
-            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-y"
+              style="width: 30px; text-align: center; font-size: 12px" type="number" />
+            <input @input="this.changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outY" id="piece-stack-out-y"
               class="col box" style="width: 30px; text-align: center; font-size: 12px" type="number" />
             <input v-else id="piece-stack-out-y" class="col box disabled"
-              style="width: 30px; text-align: center; font-size: 12px" type="number" disabled />
+              style="width: 30px; text-align: center; font-size: 12px" type="number" />
           </div>
         </div>
       </div>
@@ -141,15 +141,7 @@
       :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="10" :fixed-checkbox="true"
       :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
       :theme-color="'#A959FF'">
-
-      <!-- <template #item-outcome="item">
-        <div class="outcome-wrapper" :id="'outcome-item-' + item.key">
-          {{ item.outcome }}
-          <font-awesome-icon icon="fa-edit" style="cursor: pointer;" @click="editOutcome(item)"/>
-        </div>
-      </template> -->
     </EasyDataTable>
-    <!-- <input type="text" class="box" id="outcome-input" v-model="outcomeInput" style="width: 525px; margin-left: 10px; margin-right: 2.5px;"/> -->
     </div>
     
   </div>
@@ -178,7 +170,9 @@ export default {
       headers: [],
       items: [],
       itemsSelected: [],
-      outcomeInput: ''
+      outcomeInput: '',
+      outX: -1,
+      outY: -1
     }
   },
 
@@ -186,14 +180,24 @@ export default {
     this.board = boardStore()
   },
 
-  mounted() { },
+  mounted() {
+    
+  },
 
   methods: {
-    // editOutcome(item) {
-    //   var item = this.items.findIndex(item.key);
-    //   item.outcome = this.outcomeInput;
-    //   document.getElementById('#outcome-input').value = '';
-    // },
+    changeX() {
+      if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
+        this.outX = document.getElementById('piece-stack-out-x').value
+        console.log("changed x", this.outX)
+      }
+    },
+
+    changeY() {
+      if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
+        this.outY = document.getElementById('piece-stack-out-y').value
+        console.log("changed y", this.outY)
+      }
+    },
 
     needsTable() {
       return this.challenge.challenge_type == 'condition' || this.challenge.challenge_type == 'mcdc' || this.challenge.challenge_type == 'path'

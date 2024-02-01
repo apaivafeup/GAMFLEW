@@ -23,7 +23,6 @@ export const boardStore = defineStore('boardStore', {
       // Auxiliary state, for game mechanics (movement, selection, adding, etc).
       selectedPiece: null,
       selectedCoords: { x: -1, y: -1 },
-      outCoords: { x: -1, y: -1 },
       lastAdd: { x: -1, y: -1 },
       dataTable: {
         headers: [],
@@ -97,7 +96,8 @@ export const boardStore = defineStore('boardStore', {
 
       if (this.isOutOfBounds(x, y)) {
         if (this.selectedPiece == null) {
-          if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY) return
+          if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY)
+            return
           else {
             this.selectedPiece = this.outOfBoundsState[this.currentKey]
             this.selectedCoords = { x: -10, y: -10 }
@@ -105,7 +105,6 @@ export const boardStore = defineStore('boardStore', {
           }
         } else {
           this.movePiece(x, y)
-          this.outCoords = { x: x, y: y }
         }
       } else if (
         this.selectedPiece == null &&
@@ -132,11 +131,6 @@ export const boardStore = defineStore('boardStore', {
 
       if (this.isOutOfBounds(x, y)) {
         logicalSpot = this.outOfBoundsState[this.currentKey]
-
-        if (this.outCoords != {}) {
-          x = this.outCoords.x
-          y = this.outCoords.y
-        }
       } else {
         logicalSpot = this.state[this.currentKey][x][y]
       }
@@ -147,7 +141,7 @@ export const boardStore = defineStore('boardStore', {
         this.selectedPiece.setEmpty()
       } else {
         if (this.isOutOfBounds(x, y)) {
-            this.selectedPiece.select()
+          this.selectedPiece.select()
         } else {
           logicalSpot.addStack(this.selectedPiece.stack, this.selectedColor)
           this.selectedPiece.select()

@@ -20,7 +20,6 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
 
       selectedPiece: null,
       selectedCoords: { x: -1, y: -1 },
-      outCoords: { x: -1, y: -1 },
       initialState: {},
 
       // Flags, for game mechanics / button panel.
@@ -70,7 +69,6 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
           }
         } else {
           this.movePiece(x, y)
-          this.outCoords = { x: x, y: y }
         }
       } else if (
         this.selectedPiece == null &&
@@ -97,11 +95,6 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
 
       if (this.isOutOfBounds(x, y)) {
         logicalSpot = this.outOfBoundsState[this.currentKey]
-
-        if (this.outCoords != {}) {
-          x = this.outCoords.x
-          y = this.outCoords.y
-        }
       } else {
         logicalSpot = this.state[this.currentKey][x][y]
       }
