@@ -1,23 +1,23 @@
 [
     {
         "id": 0,
-        "name": "Challenge 8.2: Thorough Checking of Out of Bounds",
-        "description": "Pieces can never leave the board.",
+        "name": "Challenge 1.5: Valid and Invalid Movement",
+        "description": "In this challenge, you need to test both valid and invalid movement.",
         "test_cases_count": 2,
-        "score": 450,
-        "hint": "Though the condition is made only using OR (||), you need to make sure that, across 2 board states, the condition yields both True and False.",
-        "objective": "Path coverage of lines 7-8.",
+        "score": 200,
+        "hint": "Considering the function is testing for valid moves in Checkers, you only need to make one valid and one invalid move... but validity is dictated by the condition in line 15!",
+        "objective": "Decision coverage of line 15.",
         "initial_board": 2,
         "code_file": 1,
-        "challenge_type": "path",
+        "challenge_type": "decision",
         "passing_criteria": {
             "condition_count": 0,
             "preconditions": [
                 "input.log[case_num].length > 0"
             ],
             "tests": [
-                "(input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y < 8) && (input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x < 8)",
-                "!((input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y < 8) && (input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x < 8))"
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) != Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y)",
+                "!(Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) != Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y))"
             ]
         },
         "achievement_criteria": null,
@@ -50,8 +50,8 @@
     },
     {
         "id": 0,
-        "name": "Challenge 8.2: Thorough Checking of Out of Bounds",
-        "description": "Pieces can never leave the board.",
+        "name": "Challenge 1.2: Thorough Checking of Out of Bounds",
+        "description": "What if pieces could go out of bounds?",
         "test_cases_count": 2,
         "score": 200,
         "hint": "Though the condition is made only using OR (||), you need to make sure that, across 2 board states, the condition yields both True and False.",
@@ -71,6 +71,58 @@
         },
         "achievement_criteria": null,
         "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.3: Focus on the Destination",
+        "description": "In this challenge, only the destination is tested, as thoroughly as possible.",
+        "test_cases_count": 5,
+        "score": 500,
+        "hint": "You only need 5 test cases to pass this challenge. Use the condition table, if needed.",
+        "objective": "Modified condition/decision coverage of lines 7-8.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "mcdc",
+        "passing_criteria": {
+            "condition_count": 4,
+            "preconditions": [
+                "input.log[case_num].length > 0"
+            ],
+            "tests": [
+                "(input.log[case_num][input.log[case_num].length - 1].to.x < 0 && input.log[case_num][input.log[case_num].length - 1].to.x <= 7) && (input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y <= 7)",
+                "(input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x > 7) && (input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y <= 7)",
+                "(input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x <= 7) && (input.log[case_num][input.log[case_num].length - 1].to.y < 0 && input.log[case_num][input.log[case_num].length - 1].to.y <= 7)",
+                "(input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x <= 7) && (input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y > 7)",
+                "(input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x <= 7) && (input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y <= 7)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 1.4: (Not) Moving Diagonally",
+        "description": "Checkers only allows for diagonal movement. You need to avoid that, in this challenge.",
+        "test_cases_count": 1,
+        "score": 100,
+        "hint": "Think about what the condition in line 15 is testing. Knowing you can make all kinds of movements, can't you fulfill the condition?",
+        "objective": "Statement coverage of line 16.",
+        "initial_board": 2,
+        "code_file": 1,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 0,
+            "preconditions": [
+                "input.log[input.currentKey].length > 0"
+            ],
+            "tests": [
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) != Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
         "owner_id": 1
     }
 ]
