@@ -41,7 +41,7 @@ export function distance(a, b) {
   )
 }
 
-export function getPieces(board, boardKey) {
+export function get_pieces(board, boardKey) {
   var pieces = []
 
   for (var i = 0; i < board.state[boardKey].length; i++) {
@@ -51,6 +51,8 @@ export function getPieces(board, boardKey) {
       }
     }
   }
+
+  return pieces
 }
 
 export function count_blue_pieces(board, boardKey) {
