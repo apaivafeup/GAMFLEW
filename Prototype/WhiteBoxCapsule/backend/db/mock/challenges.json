@@ -1,35 +1,11 @@
 [
     {
         "id": 0,
-        "name": "Challenge ",
-        "description": "You need to cover all possible values in this challenge, with limited test cases.",
-        "test_cases_count": 1,
-        "score": 250,
-        "hint": "You have a lot of hurdles to get through, and the Add button is your friend - it adds AND removes pieces (check Guide, if needed).",
-        "objective": "Decision coverage of line 15.",
-        "initial_board": 4,
-        "code_file": 2,
-        "challenge_type": "statement",
-        "passing_criteria": {
-            "condition_count": 2,
-            "preconditions": [
-                
-            ],    
-            "tests": [
-                "utils.get_pieces(input, input.currentKey).every((piece) => (piece.position.x % 2 != 0 && [1, 3, 5, 7].includes(piece.position.y)) || (piece.position.x % 2 == 0 && [0, 2, 4, 6].includes(piece.position.y)))"
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Normal",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
         "name": "Challenge 1.1: Checking for Out of Bounds",
         "description": "Pieces can never leave the board.",
         "test_cases_count": 1,
         "score": 100,
-        "hint": "The condition guarding line 9 is made only using OR (||). What does that mean, logically?",
+        "hint": "The condition guarding line 9 is made only using AND (||). What does that mean, logically?",
         "objective": "Statement coverage of line 9.",
         "initial_board": 2,
         "code_file": 1,
@@ -40,7 +16,7 @@
                 "input.log[input.currentKey].length > 0"
             ],
             "tests": [
-                "(input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y >= 0 && input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y < 8) && (input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x >= 0 && input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x < 8)"
+                "input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].to.y > 7 || input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x > 7"
             ]
         },
         "achievement_criteria": null,
@@ -53,19 +29,19 @@
         "description": "What if pieces could go out of bounds?",
         "test_cases_count": 2,
         "score": 200,
-        "hint": "Though the condition is made only using OR (||), you need to make sure that, across 2 board states, the condition yields both True and False.",
-        "objective": "Condition coverage of lines 7-8.",
+        "hint": "The condition is made only using OR (||)! You need to make sure that the condition yields both True and False.",
+        "objective": "Decision coverage of lines 7-8.",
         "initial_board": 2,
         "code_file": 1,
-        "challenge_type": "condition",
+        "challenge_type": "decision",
         "passing_criteria": {
             "condition_count": 0,
             "preconditions": [
                 "input.log[case_num].length > 0"
             ],
             "tests": [
-                "(input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y < 8) && (input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x < 8)",
-                "!((input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y < 8) && (input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x < 8))"
+                "!(input.log[case_num][input.log[case_num].length - 1].to.y < 0 || input.log[case_num][input.log[case_num].length - 1].to.y > 7 || input.log[case_num][input.log[case_num].length - 1].to.x < 0 || input.log[case_num][input.log[case_num].length - 1].to.x > 7)",
+                "(input.log[case_num][input.log[case_num].length - 1].to.y < 0 || input.log[case_num][input.log[case_num].length - 1].to.y > 7 || input.log[case_num][input.log[case_num].length - 1].to.x < 0 || input.log[case_num][input.log[case_num].length - 1].to.x > 7)"
             ]
         },
         "achievement_criteria": null,
@@ -89,11 +65,11 @@
                 "input.log[case_num].length > 0"
             ],
             "tests": [
-                "(input.log[case_num][input.log[case_num].length - 1].to.x < 0 && input.log[case_num][input.log[case_num].length - 1].to.x <= 7) && (input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y <= 7)",
-                "(input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x > 7) && (input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y <= 7)",
-                "(input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x <= 7) && (input.log[case_num][input.log[case_num].length - 1].to.y < 0 && input.log[case_num][input.log[case_num].length - 1].to.y <= 7)",
-                "(input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x <= 7) && (input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y > 7)",
-                "(input.log[case_num][input.log[case_num].length - 1].to.x >= 0 && input.log[case_num][input.log[case_num].length - 1].to.x <= 7) && (input.log[case_num][input.log[case_num].length - 1].to.y >= 0 && input.log[case_num][input.log[case_num].length - 1].to.y <= 7)"
+                "(input.log[case_num][input.log[case_num].length - 1].to.y >= 0 || input.log[case_num][input.log[case_num].length - 1].to.y <= 7 || input.log[case_num][input.log[case_num].length - 1].to.x >= 0 || input.log[case_num][input.log[case_num].length - 1].to.x <= 7)",
+                "(input.log[case_num][input.log[case_num].length - 1].to.y < 0 || input.log[case_num][input.log[case_num].length - 1].to.y <= 7 || input.log[case_num][input.log[case_num].length - 1].to.x >= 0 || input.log[case_num][input.log[case_num].length - 1].to.x <= 7)",
+                "(input.log[case_num][input.log[case_num].length - 1].to.y >= 0 || input.log[case_num][input.log[case_num].length - 1].to.y > 7 || input.log[case_num][input.log[case_num].length - 1].to.x >= 0 || input.log[case_num][input.log[case_num].length - 1].to.x <= 7)",
+                "(input.log[case_num][input.log[case_num].length - 1].to.y >= 0 || input.log[case_num][input.log[case_num].length - 1].to.y <= 7 || input.log[case_num][input.log[case_num].length - 1].to.x < 0 || input.log[case_num][input.log[case_num].length - 1].to.x <= 7)",
+                "(input.log[case_num][input.log[case_num].length - 1].to.y >= 0 || input.log[case_num][input.log[case_num].length - 1].to.y <= 7 || input.log[case_num][input.log[case_num].length - 1].to.x >= 0 || input.log[case_num][input.log[case_num].length - 1].to.x > 7)"
             ]
         },
         "achievement_criteria": null,
