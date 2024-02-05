@@ -183,7 +183,7 @@
               </p>
               <div class="row" style="display: flex; justify-content: center">
                 <img
-                  src="../../assets/pictures/add_piece.gif"
+                  :src="addGif"
                   alt="add-piece"
                   style="width: 80px; margin: 5px 0px 5px 0px"
                 />
@@ -261,6 +261,7 @@
 </template>
 
 <script>
+import addGif from '../../assets/pictures/add_piece.gif'
 import { defineComponent } from 'vue'
 import { boardStore } from '../../store/boardStore'
 import { auxiliaryFunctions, auxiliaryFunctionsNames } from '../../assets/js/auxiliary_functions'
