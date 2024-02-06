@@ -1,12 +1,9 @@
-<script setup>
+<script >
 import 'prismjs'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 import 'prismjs/plugins/line-highlight/prism-line-highlight.js'
 import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
-</script>
-
-<script>
 import GameCredits from './GameCredits.vue'
 import Menu from '../components/Menu.vue'
 import BoardCreator from '../components/BoardCreator.vue'

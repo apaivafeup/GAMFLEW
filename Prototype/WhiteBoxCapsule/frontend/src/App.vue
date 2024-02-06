@@ -1,9 +1,4 @@
 <template>
-  <head>
-    <meta charset="utf-8">
-    <title>Gamflew</title>
-  </head>
-
   <router-view></router-view>
   <GuideModal />
   <button v-if="!url.includes('content-challenge')" id="guide-button" data-bs-target="#guide-modal"

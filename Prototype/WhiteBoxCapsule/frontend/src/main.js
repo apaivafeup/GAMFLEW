@@ -9,11 +9,9 @@ import CodeBlock from 'vue3-code-block'
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
-import { createRouter, createWebHistory } from 'vue-router'
-import Challenge from './pages/Challenge.vue'
-import Home from './pages/Home.vue'
 import Vue3EasyDataTable from 'vue3-easy-data-table'
 import 'vue3-easy-data-table/dist/style.css'
+import { Router } from './router.js'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -46,24 +44,8 @@ const options = {
 
 app.use(Toast, options);
 
-
-const routes = [
-  { name: 'home', path: '', component: Home },
-  { name: 'how-to', path: '/how-to', component: () => import('./pages/HowToPlay.vue') },
-  { name: 'credits', path: '/about', component: () => import('./pages/GameCredits.vue') },
-  { name: 'challenges', path: '/challenges', component: () => import('./pages/ChallengesMenu.vue') },
-  { name: 'challenge', path: '/challenge/:id', component: Challenge, props: true },
-  { name: 'challenge-content-creator', path: '/content-creator', component: () => import('./pages/ChallengeContentCreator.vue') },
-]
-
 app.config.globalProperties.$axios = axios;
 
-const router = createRouter({
-  // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
-  history: createWebHistory(),
-  routes
-})
-
-app.use(router)
+app.use(Router)
 app.component('EasyDataTable', Vue3EasyDataTable)
 app.component('CodeBlock', CodeBlock).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
