@@ -8,8 +8,10 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  base: './',
-  assetsPublicPath: './assets/',
-  publicPath: '',
-  transpileDependencies: true
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  base: ''
 })
