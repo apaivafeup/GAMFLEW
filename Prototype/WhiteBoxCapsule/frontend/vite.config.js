@@ -9,4 +9,7 @@ export default defineConfig({
     vue(),
   ],
   base: './',
+  assetsPublicPath: './assets/',
+  publicPath: '',
+  transpileDependencies: true
 })

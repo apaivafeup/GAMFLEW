@@ -9,7 +9,7 @@
           style="display: flex; align-content: center; align-items: start; flex-direction: column"
         >
           <div class="row" style="--bs-gutter-x: 0; --bs-gutter-y: 0; margin-bottom: 20px">
-            <img :src="avatarPicture" class="player-bar-avatar" />
+            <img src="https://i.ibb.co/10nwn7q/avatar.png" class="player-bar-avatar" />
             <div class="col">
               <div class="row">
                 <b style="font-size: 22px">{{ user.name }}</b>
@@ -88,7 +88,6 @@
 </template>
 
 <script>
-import avatarPicture from '../assets/pictures/avatar.png'
 import { Challenge } from '../store/models/challenge'
 import { boardStore } from '../store/boardStore'
 import { User } from '../store/models/user.js'
