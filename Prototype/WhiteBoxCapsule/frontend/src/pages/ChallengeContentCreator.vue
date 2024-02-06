@@ -106,13 +106,19 @@ export default {
     <h2>Challenge Content Creator</h2>
   </div>
   <div class="row" style="justify-content: center;">
-    <button class="menu-button selected" id="board-button" @click="this.change('board')"
-      style="width: 30%; padding: 5px;">
+    <button class="menu-button" id="board-button" v-if="!this.board" @click="this.change('board')" style="width: 30%; padding: 5px;">
       Board State
     </button>
-    <button class="menu-button" id="code-button" @click="this.change('code')" style="width: 30%;">
+    <button class="menu-button selected" id="board-button" v-else style="width: 30%; padding: 5px;">
+      Board State
+    </button>
+    <button class="menu-button" id="code-button" v-if="!this.code" @click="this.change('code')" style="width: 30%;">
       Code
     </button>
+    <button class="menu-button selected" id="code-button" v-else style="width: 30%;">
+      Code
+    </button>
+    
   </div>
   <div class="row" style="justify-content: center;">
     <div class="col" style="width: 50%;" v-if="board">
