@@ -1,10 +1,6 @@
 <template>
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="svg" href="./assets/logo.svg" />
-    <link rel="stylesheet" href="themes.css" />
-    <link rel="stylesheet" href="themes-base16.css" />
-    <link rel="stylesheet" href="simple-code-editor.css" />
     <title>Gamflew</title>
   </head>
 

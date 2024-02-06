@@ -41,12 +41,8 @@
 <script>
 import { defineComponent } from 'vue'
 
-import ChallengesMenu from '../pages/ChallengesMenu.vue'
-
-
-
 export default defineComponent({
-  components: { ChallengesMenu },
+  components: {},
 
   data() {
     return {

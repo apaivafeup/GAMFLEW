@@ -41,24 +41,13 @@ export default {
       <div
         class="alert alert-secondary player-info"
         id="#challenge-hint"
-        v-if="board.timer > 100 && !board.timeout && !board.passed"
+        v-if="!board.passed"
       >
         <p style="margin: 0px">
-          You will get a hint when the timer reaches <b>100 seconds</b>. Try your best, and if you
-          don't pass until then, know help is coming!
+          <b>Hint:</b> {{ this.challenge.hint }}
         </p>
       </div>
-      <div
-        id="#challenge-hint"
-        class="alert alert-secondary player-info"
-        v-else-if="!board.timeout && board.timer <= 100 && !board.passed && !board.failed"
-      >
-        {{ this.challenge.hint }}
-      </div>
       <PlayerInfo v-if="!board.passed && !board.timeout" />
-      <div v-if="board.timeout" class="alert alert-danger player-info">
-        Game over! You ran out of time. Try again!
-      </div>
       <div
         v-if="board.failed && !board.timeout && !board.passed"
         class="alert alert-danger player-info"

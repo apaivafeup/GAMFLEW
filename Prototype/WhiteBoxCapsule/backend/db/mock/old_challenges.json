@@ -1,34 +1,10 @@
 [
     {
         "id": 0,
-        "name": "Challenge 0: Challenge for Testing",
-        "description": "This challenge is a tutorial. It will teach you how to play the game!",
-        "test_cases_count": 1,
-        "timer_value": 103,
-        "hint": "Here is a hint.",
-        "objective": "Statement coverage of line 0.",
-        "initial_board": 2,
-        "code_file": 1,
-        "challenge_type": "path",
-        "passing_criteria": {
-            "condition_count": 10,
-            "preconditions": [
-                ""
-            ],
-            "tests": [
-                ""
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Very Easy",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
         "name": "Challenge 1.1: Baby's First Statement Coverage Challenge",
         "description": "This challenge is a tutorial. It will teach you how to play the game!",
         "test_cases_count": 1,
-        "timer_value": 300,
+        "score": 300,
         "hint": "You may cover the statement through the true or false branch - only one is needed!",
         "objective": "Statement coverage of line 10.",
         "initial_board": 2,
@@ -52,7 +28,7 @@
         "name": "Challenge 1.2: Baby's First Decision Coverage Challenge",
         "description": "This challenge is a bit more difficult than the first one... but you can take it, right?",
         "test_cases_count": 2,
-        "timer_value": 250,
+        "score": 250,
         "hint": "There are two branches to cover. You must cover both!",
         "objective": "Decision coverage of line 10.",
         "initial_board": 2,
@@ -78,7 +54,7 @@
         "name": "Challenge 2.1: Red vs. Blue, Round 1",
         "description": "In a game of Checkers, only one color can win. In this challenge, you'll explore a new way to interact with the board.",
         "test_cases_count": 1,
-        "timer_value": 180,
+        "score": 180,
         "hint": "You can only cover the objective in one way. Also: don't get hung up on the function calls - they mean exactly what their name says!",
         "objective": "Statement coverage of line 12.",
         "initial_board": 1,
@@ -87,10 +63,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "count_empty_spaces(input, input.currentKey) != 64"
+                "utils.count_empty_spaces(input, input.currentKey) != 64"
             ],
             "tests": [
-                "Math.abs(count_blue_pieces(input, input.currentKey) - count_red_pieces(input, input.currentKey)) == 1"
+                "Math.abs(utils.count_blue_pieces(input, input.currentKey) - utils.count_red_pieces(input, input.currentKey)) == 1"
             ]
         },
         "achievement_criteria": null,
@@ -102,7 +78,7 @@
         "name": "Challenge 2.2: Red vs. Blue, Round 2",
         "description": "Not exactly trickier, but everyone needs practice. Both sides have an army this time, which color will win this round?",
         "test_cases_count": 1,
-        "timer_value": 180,
+        "score": 180,
         "hint": "The objective can be covered in one of two ways, but remember you're dealing with a switch case, not True and False branches!",
         "objective": "Statement coverage of line 14.",
         "initial_board": 4,
@@ -111,11 +87,11 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "count_empty_spaces(input, input.currentKey) != 64",
-                "Math.abs(count_blue_pieces(input, input.currentKey) - count_red_pieces(input, input.currentKey)) != 0"
+                "utils.count_empty_spaces(input, input.currentKey) != 64",
+                "Math.abs(utils.count_blue_pieces(input, input.currentKey) - utils.count_red_pieces(input, input.currentKey)) != 0"
             ],
             "tests": [
-                "Math.abs(count_blue_pieces(input, input.currentKey) - count_red_pieces(input, input.currentKey)) == 2 || Math.abs(count_blue_pieces(input, input.currentKey) - count_red_pieces(input, input.currentKey)) == 3"
+                "Math.abs(utils.count_blue_pieces(input, input.currentKey) - utils.count_red_pieces(input, input.currentKey)) == 2 || Math.abs(utils.count_blue_pieces(input, input.currentKey) - utils.count_red_pieces(input, input.currentKey)) == 3"
             ]
         },
         "achievement_criteria": null,
@@ -127,7 +103,7 @@
         "name": "Challenge 2.3: Red vs. Blue, Round 3",
         "description": "This will look familiar... do you remember the last two rounds?",
         "test_cases_count": 3,
-        "timer_value": 300,
+        "score": 300,
         "hint": "There are a lot of ways to cover that default branch... but only one way to cover the objective!",
         "objective": "Decision coverage of line 10.",
         "initial_board": 1,
@@ -136,12 +112,12 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "count_empty_spaces(input, case_num) != 64"
+                "utils.count_empty_spaces(input, case_num) != 64"
             ],
             "tests": [
-                "Math.abs(count_blue_pieces(input, case_num) - count_red_pieces(input, case_num)) == 1",
-                "Math.abs(count_blue_pieces(input, case_num) - count_red_pieces(input, case_num)) == 2 || Math.abs(count_blue_pieces(input, case_num) - count_red_pieces(input, case_num)) == 3",
-                "Math.abs(count_blue_pieces(input, case_num) - count_red_pieces(input, case_num)) != 1 && Math.abs(count_blue_pieces(input, case_num) - count_red_pieces(input, case_num)) != 2 && Math.abs(count_blue_pieces(input, case_num) - count_red_pieces(input, case_num)) != 3"
+                "Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) == 1",
+                "Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) == 2 || Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) == 3",
+                "Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) != 1 && Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) != 2 && Math.abs(utils.count_blue_pieces(input, case_num) - utils.count_red_pieces(input, case_num)) != 3"
             ]
         },
         "achievement_criteria": null,
@@ -153,7 +129,7 @@
         "name": "Challenge 3.1: Build-a-Triangle",
         "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
         "test_cases_count": 1,
-        "timer_value": 300,
+        "score": 300,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You can pause the timer, if needed! Also, each triangle's side must be greater than 0 when measured.",
         "objective": "Statement coverage of line 8.",
         "initial_board": 3,
@@ -162,12 +138,12 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "count_red_pieces(input, input.currentKey) != 0",
-                "count_blue_pieces(input, input.currentKey) != 0",
-                "count_empty_spaces(input, input.currentKey) != 0"
+                "utils.count_red_pieces(input, input.currentKey) != 0",
+                "utils.count_blue_pieces(input, input.currentKey) != 0",
+                "utils.count_empty_spaces(input, input.currentKey) != 0"
             ],
             "tests": [
-                "isTriangle(count_red_pieces(input, input.currentKey), count_blue_pieces(input, input.currentKey), count_empty_spaces(input, input.currentKey))"
+                "utils.isTriangle(utils.count_red_pieces(input, input.currentKey), utils.count_blue_pieces(input, input.currentKey), utils.count_empty_spaces(input, input.currentKey))"
             ]
         },
         "achievement_criteria": null,
@@ -179,7 +155,7 @@
         "name": "Challenge 3.2: Not Quite a Scalene Triangle",
         "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle. That means one side can be equal to zero!",
         "test_cases_count": 2,
-        "timer_value": 300,
+        "score": 300,
         "hint": "Though it's all tested at once, you're dealing with two separate conditions. Each case needs to cover True-False state for each, across two tests! Notice how the variables' meaning (i.e., variable a will always count red pieces) never changes!",
         "objective": "Condition coverage of line 10.",
         "initial_board": 1,
@@ -188,13 +164,13 @@
         "passing_criteria": {
             "condition_count": 2,
             "preconditions": [
-                "!isTriangle(count_red_pieces(input, case_num), count_blue_pieces(input, case_num), count_empty_spaces(input, case_num))"
+                "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "count_blue_pieces(input, case_num) < count_empty_spaces(input, case_num)",
-                "!(count_blue_pieces(input, case_num) < count_empty_spaces(input, case_num))",
-                "count_blue_pieces(input, case_num) > count_red_pieces(input, case_num)",
-                "!(count_blue_pieces(input, case_num) > count_red_pieces(input, case_num))"
+                "utils.count_blue_pieces(input, case_num) < utils.count_empty_spaces(input, case_num)",
+                "!(utils.count_blue_pieces(input, case_num) < utils.count_empty_spaces(input, case_num))",
+                "utils.count_blue_pieces(input, case_num) > utils.count_red_pieces(input, case_num)",
+                "!(utils.count_blue_pieces(input, case_num) > utils.count_red_pieces(input, case_num))"
             ]
         },
         "achievement_criteria": null,
@@ -206,7 +182,7 @@
         "name": "Challenge 3.3: It's (NOT) an Isosceles Triangle!",
         "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 2,
-        "timer_value": 300,
+        "score": 300,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. You're dealing with two separate conditions, so cover True-False state for each, across two test cases! Also, notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
         "objective": "Condition coverage of line 12.",
         "initial_board": 3,
@@ -215,11 +191,11 @@
         "passing_criteria": {
             "condition_count": 1,
             "preconditions": [
-                "!isTriangle(count_red_pieces(input, case_num), count_blue_pieces(input, case_num), count_empty_spaces(input, case_num))"
+                "!utils.isTriangle(utils.count_red_pieces(input, case_num), utils.count_blue_pieces(input, case_num), utils.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "count_red_pieces(input, case_num) == count_empty_spaces(input, case_num)",
-                "!(count_empty_spaces(input, case_num) == count_red_pieces(input, case_num))"
+                "utils.count_red_pieces(input, case_num) == utils.count_empty_spaces(input, case_num)",
+                "!(utils.count_empty_spaces(input, case_num) == utils.count_red_pieces(input, case_num))"
             ]
         },
         "achievement_criteria": null,
@@ -231,7 +207,7 @@
         "name": "Challenge 3.4: If This Was A Triangle, We'd Be Concerned",
         "description": "We encourage creativity on this one. But we make no reservations about the results.",
         "test_cases_count": 1,
-        "timer_value": 300,
+        "score": 300,
         "hint": "Treat the first three If conditions as landmines - you can't cover them!",
         "objective": "Statement coverage of line 15.",
         "initial_board": 1,
@@ -240,10 +216,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "!isTriangle(count_red_pieces(input, input.currentKey), count_blue_pieces(input, input.currentKey), count_empty_spaces(input, input.currentKey))"
+                "!utils.isTriangle(utils.count_red_pieces(input, input.currentKey), utils.count_blue_pieces(input, input.currentKey), utils.count_empty_spaces(input, input.currentKey))"
             ],
             "tests": [
-                "!(count_blue_pieces(input, input.currentKey) < count_empty_spaces(input, input.currentKey)) || !(count_blue_pieces(input, input.currentKey) > count_red_pieces(input, input.currentKey)) && !(count_red_pieces(input, input.currentKey) == count_empty_spaces(input, input.currentKey))"
+                "!(utils.count_blue_pieces(input, input.currentKey) < utils.count_empty_spaces(input, input.currentKey)) || !(utils.count_blue_pieces(input, input.currentKey) > utils.count_red_pieces(input, input.currentKey)) && !(utils.count_red_pieces(input, input.currentKey) == utils.count_empty_spaces(input, input.currentKey))"
             ]
         },
         "achievement_criteria": null,
@@ -255,8 +231,8 @@
         "name": "Challenge 4.1: A 1v1 for the Ages",
         "description": "Red and Blue remains a classic. But... how can they settle their feel- We mean, differences?",
         "test_cases_count": 1,
-        "timer_value": 200,
-        "hint": "Even if you think you can't do something... you can. Come on, try it! However, you can't cover the objective by only using the Add function of the board. You need to make at least 1 move. Also: the functions work linearly (they search from top to bottom).",
+        "score": 200,
+        "hint": "Even if you think you can't do something... you can. Come on, try it! However, you can't cover the objective by only using the Add function of the board. You need to make at least 1 move. Also: the utils functions work linearly (they search from top to bottom).",
         "objective": "Statement coverage of line 11.",
         "initial_board": 1,
         "code_file": 4,
@@ -264,11 +240,11 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_first_blue_piece(input, input.currentKey).position.x != -2",
-                "find_first_red_piece(input, input.currentKey).position.x != -2"
+                "utils.find_first_blue_piece(input, input.currentKey).position.x != -2",
+                "utils.find_first_red_piece(input, input.currentKey).position.x != -2"
             ],
             "tests": [
-                "find_first_blue_piece(input, input.currentKey).position == find_first_red_piece(input, input.currentKey).position"
+                "utils.find_first_blue_piece(input, input.currentKey).position == utils.find_first_red_piece(input, input.currentKey).position"
             ]
         },
         "achievement_criteria": null,
@@ -280,7 +256,7 @@
         "name": "Challenge 4.2: God Help The Outcasts",
         "description": "The title's joke would be better in Portuguese, but one red piece has got to go! Which one will it be?",
         "test_cases_count": 1,
-        "timer_value": 150,
+        "score": 150,
         "hint": "That (-1, -1) spot looks mighty helpful, doesn't it?",
         "objective": "Statement coverage of line 13.",
         "initial_board": 1,
@@ -289,10 +265,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_first_red_piece(input, input.currentKey).position.x != -2"
+                "utils.find_first_red_piece(input, input.currentKey).position.x != -2"
             ],
             "tests": [
-                "find_first_red_piece(input, input.currentKey).position.x == -1 || find_first_red_piece(input, input.currentKey).position.y == -1"
+                "utils.find_first_red_piece(input, input.currentKey).position.x == -1 || utils.find_first_red_piece(input, input.currentKey).position.y == -1"
             ]
         },
         "achievement_criteria": null,
@@ -304,7 +280,7 @@
         "name": "Challenge 4.3: The Last Joke is Funnier The Second Time, Really",
         "description": "Blue pieces are the new red pieces. Or something like that.",
         "test_cases_count": 1,
-        "timer_value": 150,
+        "score": 150,
         "hint": "That (-1, -1) spot looks mighty helpful, doesn't it? If you saw the other hint before this one, this is probably unneeded.",
         "objective": "Statement coverage of line 15.",
         "initial_board": 1,
@@ -313,10 +289,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_first_blue_piece(input, input.currentKey).position.x != -2"
+                "utils.find_first_blue_piece(input, input.currentKey).position.x != -2"
             ],
             "tests": [
-                "find_first_blue_piece(input, input.currentKey).position.x == -1 || find_first_blue_piece(input, input.currentKey).position.y == -1"
+                "utils.find_first_blue_piece(input, input.currentKey).position.x == -1 || utils.find_first_blue_piece(input, input.currentKey).position.y == -1"
             ]
         },
         "achievement_criteria": null,
@@ -328,7 +304,7 @@
         "name": "Challenge 4.4: Third Time's the Charm",
         "description": "Ok, ok, this is the last time. But you have a bunch of cases to cover, so get to it! ",
         "test_cases_count": 4,
-        "timer_value": 300,
+        "score": 300,
         "hint": ".",
         "objective": "Decision coverage of line 10.",
         "initial_board": 1,
@@ -337,13 +313,13 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_first_red_piece(input, case_num).position.x != -2 || find_first_blue_piece(input, case_num).position.x != -2"
+                "utils.find_first_red_piece(input, case_num).position.x != -2 || utils.find_first_blue_piece(input, case_num).position.x != -2"
             ],
             "tests": [
-                "find_first_red_piece(input, case_num).position.x == -1 || find_first_red_piece(input, case_num).position.y == -1",
-                "find_first_blue_piece(input, case_num).position.x == -1 || find_first_blue_piece(input, case_num).position.y == -1",
-                "find_first_blue_piece(input, case_num).position == find_first_red_piece(input, case_num).position",
-                "find_first_blue_piece(input, case_num).position != find_first_red_piece(input, case_num).position && find_first_blue_piece(input, case_num).position != { x: -1, y: -1} && find_first_red_piece(input, case_num).position != { x: -1, y: -1}"
+                "utils.find_first_red_piece(input, case_num).position.x == -1 || utils.find_first_red_piece(input, case_num).position.y == -1",
+                "utils.find_first_blue_piece(input, case_num).position.x == -1 || utils.find_first_blue_piece(input, case_num).position.y == -1",
+                "utils.find_first_blue_piece(input, case_num).position == utils.find_first_red_piece(input, case_num).position",
+                "utils.find_first_blue_piece(input, case_num).position != utils.find_first_red_piece(input, case_num).position && utils.find_first_blue_piece(input, case_num).position != { x: -1, y: -1} && utils.find_first_red_piece(input, case_num).position != { x: -1, y: -1}"
             ]
         },
         "achievement_criteria": null,
@@ -355,7 +331,7 @@
         "name": "Challenge 5.1: Even Numbers Are Better",
         "description": "Stacking pieces starts with an even number... how many pieces will you stack?",
         "test_cases_count": 1,
-        "timer_value": 150,
+        "score": 150,
         "hint": "The number of pieces in the stack must be even AND it can't be equal to...?",
         "objective": "Statement coverage of line 11.",
         "initial_board": 1,
@@ -364,10 +340,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_first_stack(input, input.currentKey).position.x != -2"
+                "utils.find_first_stack(input, input.currentKey).position.x != -2"
             ],
             "tests": [
-                "(find_first_stack(input, input.currentKey).stack.red + find_first_stack(input, input.currentKey).stack.blue) < 6 && (find_first_stack(input, input.currentKey).stack.red + find_first_stack(input, input.currentKey).stack.blue) % 2 == 0"
+                "(utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) < 6 && (utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) % 2 == 0"
             ]
         },
         "achievement_criteria": null,
@@ -379,7 +355,7 @@
         "name": "Challenge 5.2: Even Numbers Aren't (Always) Better",
         "description": "Because odd numbers need love too... And stacking pieces is still fun, right?",
         "test_cases_count": 2,
-        "timer_value": 200,
+        "score": 200,
         "hint": "The number of pieces in the stack can't be even AND it can't be equal to...?",
         "objective": "Decision coverage of line 9.",
         "initial_board": 1,
@@ -388,11 +364,11 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_first_stack(input, case_num).position.x != -2"
+                "utils.find_first_stack(input, case_num).position.x != -2"
             ],
             "tests": [
-                "find_first_stack(input, case_num).stack.red + find_first_stack(input, case_num).stack.red < 6 && (find_first_stack(input, case_num).stack.red + find_first_stack(input, case_num).stack.blue) % 2 == 0",
-                "find_first_stack(input, case_num).stack.red + find_first_stack(input, case_num).stack.red > 6 || (find_first_stack(input, case_num).stack.red + find_first_stack(input, case_num).stack.blue) % 2 != 0"
+                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.red < 6 && (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 == 0",
+                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.red > 6 || (utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 != 0"
             ]
         },
         "achievement_criteria": null,
@@ -404,7 +380,7 @@
         "name": "Challenge 5.3: Odd Numbers, Let's Go!",
         "description": "But can a stack handle it?",
         "test_cases_count": 1,
-        "timer_value": 150,
+        "score": 150,
         "hint": "You're dealing with a conjunction - both sides of the condition must be true!",
         "objective": "Statement coverage of line 13.",
         "initial_board": 1,
@@ -413,10 +389,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_first_stack(input, input.currentKey).position.x != -2"
+                "utils.find_first_stack(input, input.currentKey).position.x != -2"
             ],
             "tests": [
-                "find_first_stack(input, input.currentKey).stack.red + find_first_stack(input, input.currentKey).stack.red > 6 || (find_first_stack(input, input.currentKey).stack.red + find_first_stack(input, input.currentKey).stack.blue) % 2 != 0"
+                "utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.red > 6 || (utils.find_first_stack(input, input.currentKey).stack.red + utils.find_first_stack(input, input.currentKey).stack.blue) % 2 != 0"
             ]
         },
         "achievement_criteria": null,
@@ -428,7 +404,7 @@
         "name": "Challenge 5.4: Stack... Overflow?",
         "description": "Shoutout! But a condition is a condition, and it must be covered.",
         "test_cases_count": 2,
-        "timer_value": 150,
+        "score": 150,
         "hint": "Remember: each side of the condition must be True and False at least once, across the test cases!",
         "objective": "Condition coverage of line 9.",
         "initial_board": 1,
@@ -437,13 +413,13 @@
         "passing_criteria": {
             "condition_count": 2,
             "preconditions": [
-                "find_first_stack(input, case_num).position.x != -2"
+                "utils.find_first_stack(input, case_num).position.x != -2"
             ],
             "tests": [
-                "find_first_stack(input, case_num).stack.red + find_first_stack(input, case_num).stack.blue < 6",
-                "(find_first_stack(input, case_num).stack.red + find_first_stack(input, case_num).stack.blue) % 2 == 0",
-                "!(find_first_stack(input, case_num).stack.red + find_first_stack(input, case_num).stack.blue < 6)",
-                "!((find_first_stack(input, case_num).stack.red + find_first_stack(input, case_num).stack.blue) % 2 == 0)"
+                "utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue < 6",
+                "(utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 == 0",
+                "!(utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue < 6)",
+                "!((utils.find_first_stack(input, case_num).stack.red + utils.find_first_stack(input, case_num).stack.blue) % 2 == 0)"
             ]
         },
         "achievement_criteria": null,
@@ -455,7 +431,7 @@
         "name": "Challenge 6.1: Draw A Right Triangle",
         "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
         "test_cases_count": 1,
-        "timer_value": 300,
+        "score": 300,
         "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
         "objective": "Statement coverage of line 31.",
         "initial_board": 1,
@@ -464,10 +440,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_blue_pieces(input, input.currentKey).length == 3"
+                "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
             "tests": [
-                "function six_one() { return Math.pow([distance(find_blue_pieces(input, input.currentKey)[0], find_blue_pieces(input, input.currentKey)[1]), distance(find_blue_pieces(input, input.currentKey)[1], find_blue_pieces(input, input.currentKey)[2]), distance(find_blue_pieces(input, input.currentKey)[2], find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([distance(find_blue_pieces(input, input.currentKey)[0], find_blue_pieces(input, input.currentKey)[1]), distance(find_blue_pieces(input, input.currentKey)[1], find_blue_pieces(input, input.currentKey)[2]), distance(find_blue_pieces(input, input.currentKey)[2], find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([distance(find_blue_pieces(input, input.currentKey)[0], find_blue_pieces(input, input.currentKey)[1]), distance(find_blue_pieces(input, input.currentKey)[1], find_blue_pieces(input, input.currentKey)[2]), distance(find_blue_pieces(input, input.currentKey)[2], find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2); } six_one();"
+                "function six_one() { return Math.pow([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2); } six_one();"
             ]
         },
         "achievement_criteria": null,
@@ -479,7 +455,7 @@
         "name": "Challenge 6.2: Draw A Scalene Triangle",
         "description": "You might have to Google this one. But it's not that hard, we promise!",
         "test_cases_count": 1,
-        "timer_value": 250,
+        "score": 250,
         "hint": "Here, the comment in line 2 is not that help- Actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
         "objective": "Statement coverage of line 33.",
         "initial_board": 1,
@@ -488,10 +464,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_blue_pieces(input, input.currentKey).length == 3"
+                "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
             "tests": [
-                "new Set([distance(find_blue_pieces(input, input.currentKey)[0], find_blue_pieces(input, input.currentKey)[1]), distance(find_blue_pieces(input, input.currentKey)[1], find_blue_pieces(input, input.currentKey)[2]), distance(find_blue_pieces(input, input.currentKey)[2], find_blue_pieces(input, input.currentKey)[0])]).size == 3"
+                "new Set([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])]).size == 3"
             ]
         },
         "achievement_criteria": null,
@@ -503,7 +479,7 @@
         "name": "Challenge 6.3: Draw An Isosceles Triangle",
         "description": "Be honest, did you remember these ones? We hope so! Once again, it's an easy challenge.",
         "test_cases_count": 1,
-        "timer_value": 250,
+        "score": 250,
         "hint": "An isosceles triangle has only two equal sides. It doesn't matter which ones you choose to be equal.",
         "objective": "Statement coverage of line 35.",
         "initial_board": 1,
@@ -512,10 +488,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_blue_pieces(input, input.currentKey).length == 3"
+                "utils.find_blue_pieces(input, input.currentKey).length == 3"
             ],
             "tests": [
-                "new Set([distance(find_blue_pieces(input, input.currentKey)[0], find_blue_pieces(input, input.currentKey)[1]), distance(find_blue_pieces(input, input.currentKey)[1], find_blue_pieces(input, input.currentKey)[2]), distance(find_blue_pieces(input, input.currentKey)[2], find_blue_pieces(input, input.currentKey)[0])]).size == 2"
+                "new Set([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])]).size == 2"
             ]
         },
         "achievement_criteria": null,
@@ -527,7 +503,7 @@
         "name": "Challenge 6.4: (Don't) Draw An Equilateral Triangle",
         "description": "Believe it or not, it's impossible... Unless we get creative!",
         "test_cases_count": 1,
-        "timer_value": 250,
+        "score": 250,
         "hint": "No checks are performed on the triangle's sides, so you can make them equal. But how? ",
         "objective": "Statement coverage of line 37.",
         "initial_board": 1,
@@ -536,10 +512,10 @@
         "passing_criteria": {
             "condition_count": null,
             "preconditions": [
-                "find_blue_pieces(input, input.currentKey).length == 0"
+                "utils.find_blue_pieces(input, input.currentKey).length == 0"
             ],
             "tests": [
-                "new Set(find_blue_pieces(input, input.currentKey)).size == 0"
+                "new Set(utils.find_blue_pieces(input, input.currentKey)).size == 0"
             ]
         },
         "achievement_criteria": null,
@@ -551,7 +527,7 @@
         "name": "Challenge 6.5: Drawing Triangles is Hard!",
         "description": "The biggest challenge you'll face yet!",
         "test_cases_count": 4,
-        "timer_value": 400,
+        "score": 400,
         "hint": "No checks are performed on the triangle's sides, here, but order CAN be relevant to your test cases in at least 2 of them!",
         "objective": "Decision coverage of line 30.",
         "initial_board": 1,
@@ -559,13 +535,12 @@
         "challenge_type": "decision",
         "passing_criteria": {
             "condition_count": null,
-            "preconditions": [
-            ],
+            "preconditions": [],
             "tests": [
-                "function six_one() { return Math.pow([distance(find_blue_pieces(input, input.currentKey)[0], find_blue_pieces(input, input.currentKey)[1]), distance(find_blue_pieces(input, input.currentKey)[1], find_blue_pieces(input, input.currentKey)[2]), distance(find_blue_pieces(input, input.currentKey)[2], find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([distance(find_blue_pieces(input, input.currentKey)[0], find_blue_pieces(input, input.currentKey)[1]), distance(find_blue_pieces(input, input.currentKey)[1], find_blue_pieces(input, input.currentKey)[2]), distance(find_blue_pieces(input, input.currentKey)[2], find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([distance(find_blue_pieces(input, input.currentKey)[0], find_blue_pieces(input, input.currentKey)[1]), distance(find_blue_pieces(input, input.currentKey)[1], find_blue_pieces(input, input.currentKey)[2]), distance(find_blue_pieces(input, input.currentKey)[2], find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2); } six_one();",
-                "new Set([distance(find_blue_pieces(input, case_num)[0], find_blue_pieces(input, case_num)[1]), distance(find_blue_pieces(input, case_num)[1], find_blue_pieces(input, case_num)[2]), distance(find_blue_pieces(input, case_num)[2], find_blue_pieces(input, case_num)[0])]).size == 3",
-                "new Set([distance(find_blue_pieces(input, case_num)[0], find_blue_pieces(input, case_num)[1]), distance(find_blue_pieces(input, case_num)[1], find_blue_pieces(input, case_num)[2]), distance(find_blue_pieces(input, case_num)[2], find_blue_pieces(input, case_num)[0])]).size == 2",
-                "new Set(find_blue_pieces(input, case_num)).size == 0"
+                "function six_one() { return Math.pow([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([utils.distance(utils.find_blue_pieces(input, input.currentKey)[0], utils.find_blue_pieces(input, input.currentKey)[1]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[1], utils.find_blue_pieces(input, input.currentKey)[2]), utils.distance(utils.find_blue_pieces(input, input.currentKey)[2], utils.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2); } six_one();",
+                "new Set([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])]).size == 3",
+                "new Set([utils.distance(utils.find_blue_pieces(input, case_num)[0], utils.find_blue_pieces(input, case_num)[1]), utils.distance(utils.find_blue_pieces(input, case_num)[1], utils.find_blue_pieces(input, case_num)[2]), utils.distance(utils.find_blue_pieces(input, case_num)[2], utils.find_blue_pieces(input, case_num)[0])]).size == 2",
+                "new Set(utils.find_blue_pieces(input, case_num)).size == 0"
             ]
         },
         "achievement_criteria": null,
@@ -577,7 +552,7 @@
         "name": "Challenge 7.1: Out of Bounds!",
         "description": "A new type of coverage is introduced in this challenge... it's more extensive than the others!",
         "test_cases_count": 4,
-        "timer_value": 400,
+        "score": 400,
         "hint": "Read the code carefully. The If statement you're dealing with involves the from and the to, not just the first!",
         "objective": "Path coverage of line 4.",
         "initial_board": 2,
@@ -605,7 +580,7 @@
         "name": "Challenge 7.2: Out of Bounds... Again!",
         "description": "A new type of coverage is introduced in this challenge... it's more extensive than the others!",
         "test_cases_count": 3,
-        "timer_value": 400,
+        "score": 400,
         "hint": "Read the code carefully. The If statement you're dealing with involves the from and the to, not just the first!",
         "objective": "Modified condition/decision coverage of line 4.",
         "initial_board": 2,

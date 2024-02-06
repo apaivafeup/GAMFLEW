@@ -16,7 +16,6 @@ class Attempt(BaseModel):
     id: Optional[int]
     player_id: int
     challenge_id: int
-    time_elapsed: int
     score: int
     attempt_type: AttemptType
     comment: str
@@ -32,7 +31,7 @@ class Challenge(BaseModel):
     test_cases_count: int
     hint: str
     objective: str
-    timer_value: int
+    score: int
     initial_board: int
     code_file: int
     passing_criteria: PassingCriteria
@@ -50,7 +49,7 @@ class ChallengeBasics(BaseModel):
     description: str
     code_file: str
     passing_criteria: dict
-    timer_value: int
+    score: int
     challenge_type: ChallengeType
     owner_id: int
     difficulty: Difficulty

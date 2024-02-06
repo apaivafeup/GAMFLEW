@@ -1,6 +1,7 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 import uvicorn
+from dotenv import load_dotenv
 
 import crud, models, schemas
 from db_op import init_db, get_db
@@ -129,5 +130,7 @@ def delete_user(user_id:int, db: Session = Depends(get_db)):
     crud.delete_user(db=db, user_id=user_id)
     return user_to_delete
 
+
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
+    #uvicorn.run(app, host="10.227.242.121", port=8000)

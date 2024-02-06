@@ -7,7 +7,7 @@ export class Challenge {
     hint,
     objective,
     test_cases_count,
-    timer_value,
+    score,
     initial_board,
     code_file,
     challenge_type,
@@ -22,7 +22,7 @@ export class Challenge {
     this.hint = hint
     this.objective = objective
     this.test_cases_count = test_cases_count
-    this.timer_value = timer_value
+    this.score = score
     this.initial_board = initial_board
     this.code_file = code_file
     this.challenge_type = challenge_type

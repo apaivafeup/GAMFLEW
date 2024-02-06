@@ -2,7 +2,6 @@
     "id": 0,
     "player_id": 1,
     "challenge_id": 1,
-    "time_elapsed": 100,
     "score": 100,
     "attempt_type": "pass",
     "comment": "Testing comments... I did very well!",

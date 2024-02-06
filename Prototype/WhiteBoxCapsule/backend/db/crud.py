@@ -28,7 +28,7 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
         hint=challenge.hint,
         objective=challenge.objective,
         test_cases_count=challenge.test_cases_count,
-        timer_value=challenge.timer_value,
+        score=challenge.score,
         initial_board=challenge.initial_board,
         code_file=challenge.code_file,
         challenge_type=challenge.challenge_type,
@@ -62,7 +62,6 @@ def create_board_state(db: Session, board_state: schemas.BoardState):
 
 def create_attempt(db: Session, attempt: schemas.Attempt):
     db_attempt = schemas.Attempt(
-        time_elapsed=attempt.time_elapsed,
         score=attempt.score,
         player_id=attempt.player_id,
         challenge_id=attempt.challenge_id,

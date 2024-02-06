@@ -183,7 +183,7 @@
               </p>
               <div class="row" style="display: flex; justify-content: center">
                 <img
-                  src="../../assets/pictures/add_piece.gif"
+                  src="https://i.ibb.co/nnQYcq2/add-piece.gif"
                   alt="add-piece"
                   style="width: 80px; margin: 5px 0px 5px 0px"
                 />
@@ -269,11 +269,6 @@ export default defineComponent({
   beforeMount() {
     this.tab = 'board'
     this.board = boardStore()
-
-    addEventListener('hidden.bs.modal', () => {
-      this.board.startTimer()
-      removeEventListener('hidden.bs.modal', () => {})
-    })
   },
 
   mounted() {

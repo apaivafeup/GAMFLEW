@@ -30,8 +30,7 @@
         </div>
         <div style="width: 10%; display: flex; flex-direction: column; padding-right: 25px">
           <div class="row" style="align-items: center; font-size: 15px; justify-content: end">
-            <font-awesome-icon icon="fa-clock" style="width: auto" />
-            {{ challenge.timer_value + 's' }}
+            {{ challenge.score + 'pts' }}
           </div>
           <div
             class="row"

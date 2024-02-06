@@ -59,7 +59,7 @@ export default {
         response.data.hint,
         response.data.objective,
         response.data.test_cases_count,
-        response.data.timer_value,
+        response.data.score,
         response.data.initial_board,
         response.data.code_file,
         response.data.challenge_type,
@@ -93,9 +93,7 @@ export default {
     this.board.initialState = this.board_state
     this.board.setState()
 
-    this.board.attempt = new Attempt(user_id, this.id, this.challenge.timer_value, 0, 0, null, null)
-
-    this.board.timer = this.challenge.timer_value
+    this.board.attempt = new Attempt(user_id, this.id, this.challenge.score, 0, 0, null, null)
 
     document.getElementById('guide-button').click()
   },

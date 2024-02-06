@@ -1,0 +1,22 @@
+{
+    "id": 0,
+    "name": "Challenge ",
+    "description": "You need to cover all possible values in this challenge, with limited test cases.",
+    "test_cases_count": 1,
+    "score": 250,
+    "hint": "You have a lot of hurdles to get through, and the Add button is your friend - it adds AND removes pieces (check Guide, if needed).",
+    "objective": "Decision coverage of line 15.",
+    "initial_board": 4,
+    "code_file": 2,
+    "challenge_type": "statement",
+    "passing_criteria": {
+        "condition_count": 2,
+        "preconditions": [],
+        "tests": [
+            "utils.get_pieces(input, input.currentKey).every((piece) => (piece.position.x % 2 != 0 && [1, 3, 5, 7].includes(piece.position.y)) || (piece.position.x % 2 == 0 && [0, 2, 4, 6].includes(piece.position.y)))"
+        ]
+    },
+    "achievement_criteria": null,
+    "difficulty": "Normal",
+    "owner_id": 1
+}

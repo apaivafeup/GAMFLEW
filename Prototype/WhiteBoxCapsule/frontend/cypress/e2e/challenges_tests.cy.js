@@ -2,1273 +2,1184 @@ describe("test file 1", () => {
     describe("challenge 1.1", () => {
         // Pass Test Case for Challenge 1.1
         it('pass challenge 1.1', () => {
-            // Step 1: Visit the specified URL
             cy.visit('http://localhost:5173/')
-
-            // Step 2: Click on the element with the ID #single-player-button
-            cy.get('#single-player-button').click()
-
-            // Step 3: Click on the element with the ID #challenge-card-4
-            cy.get('#challenge-card-2').click()
-
-            // Step 4: Wait for the guide modal to be visible, wait for 500 milliseconds, then close the modal
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-1').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
-
-            // Step 5: Verify that the guide modal is not visible
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Step 6: Move red piece from (2, 0) to (5, 4)
             cy.get('#board-box-2-0').click()
-            cy.get('#board-box-5-4').click()
-
-            // Step 7: Click on the element with the ID #go-button for "Go!"
+            cy.get('.game-board-out > .box').click()
             cy.get('#go-button').click()
-
-            // Step 8: Verify the expected message for a successful move
             cy.get('.alert-success').should('be.visible')
         })
 
         // Fail Test Case for Challenge 1.1
         it('fail challenge 1.1', () => {
-            // Step 1: Visit the specified URL
             cy.visit('http://localhost:5173/')
-
-            // Step 2: Click on the element with the ID #single-player-button
-            cy.get('#single-player-button').click()
-
-            // Step 3: Click on the element with the ID #challenge-card-4
-            cy.get('#challenge-card-2').click()
-
-            // Step 4: Wait for the guide modal to be visible, wait for 500 milliseconds, then close the modal
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-1').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
-
-            // Step 5: Verify that the guide modal is not visible
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Step 6: Move red piece from (2, 0) to (3, 4)
             cy.get('#board-box-2-0').click()
-            cy.get('#board-box-3-4').click()
-
-            // Step 7: Click on the element with the ID #go-button for "Go!"
+            cy.get('#board-box-3-1').click()
             cy.get('#go-button').click()
-
-            // Step 8: Verify the expected message for a failed move
             cy.get('.alert-danger').should('be.visible')
         })
 
     })
-
 
     describe("challenge 1.2", () => {
-        it('fail challenge 1.2', () => {
-            // Step 1: Visit the specified URL
-            cy.visit('http://localhost:5173/')
-
-            // Step 2: Click on the element with the ID #single-player-button
-            cy.get('#single-player-button').click()
-
-            // Step 3: Click on the element with the ID #challenge-card-4
-            cy.get('#challenge-card-3').click()
-
-            // Step 4: Wait for the guide modal to be visible, wait for 500 milliseconds, then close the modal
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-
-            // Step 5: Verify that the guide modal is not visible
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Step 6: Move red piece from (2, 0) to (3, 4)
-            cy.get('#board-box-2-0').click()
-            cy.get('#board-box-3-4').click()
-
-            // Step 7: Click on the element with the ID #next-button for "next"
-            cy.get('#next-button').click()
-
-            // Step 8: Move red piece from (2, 0) to (3, 4)
-            cy.get('#board-box-2-0').click()
-            cy.get('#board-box-3-4').click()
-
-            // Step 9: Click on the element with the ID #go-button for "Go!"
-            cy.get('#go-button').click()
-
-            // Step 10: Verify the expected message
-            cy.get('.alert-danger').should('be.visible')
-        })
-
-
-
+        // Pass Test Case for Challenge 1.1
         it('pass challenge 1.2', () => {
-            // Step 1: Visit the specified URL
             cy.visit('http://localhost:5173/')
-
-            // Step 2: Click on the element with the ID #single-player-button
-            cy.get('#single-player-button').click()
-
-            // Step 3: Click on the element with the ID #challenge-card-4
-            cy.get('#challenge-card-3').click()
-
-            // Step 4: Wait for the guide modal to be visible, wait for 500 milliseconds, then close the modal
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-2').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
-
-            // Step 5: Verify that the guide modal is not visible
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Step 6: Move red piece from (2, 0) to (5, 4)
             cy.get('#board-box-2-0').click()
-            cy.get('#board-box-5-4').click()
-
-            // Step 7: Click on the element with the ID #next-button for "next"
+            cy.get('.game-board-out > .box').click()
             cy.get('#next-button').click()
-
-            // Step 8: Move red piece from (2, 0) to (5, 0)
             cy.get('#board-box-2-0').click()
-            cy.get('#board-box-5-0').click()
-
-            // Step 9: Click on the element with the ID #go-button for "Go!"
+            cy.get('#board-box-3-1').click()
             cy.get('#go-button').click()
-
-            // Step 10: Verify the expected message
             cy.get('.alert-success').should('be.visible')
         })
 
+        // Fail Test Case for Challenge 1.1
+        it('fail challenge 1.2', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-2').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
 
     })
 
-});
-
-describe("test file 2", () => {
-    // Challenge 2.1
-    describe("challenge 2.1", () => {
-        // Pass Test Case for Challenge 2.1
-        it('pass challenge 2.1', () => {
-            // Step 1: Visit the specified URL
+    describe("challenge 1.3", () => {
+        it('pass challenge 1.3', () => {
             cy.visit('http://localhost:5173/')
-
-            // Step 2: Click on the element with the ID #single-player-button
-            cy.get('#single-player-button').click()
-
-            cy.get('#accordion-button-2').click()
-
-            // Step 3: Click on the element with the ID #challenge-card-x (replace x with the correct challenge ID)
-            cy.get('#challenge-card-4').click()
-
-            // Step 4: Wait for the guide modal to be visible, wait for 500 milliseconds, then close the modal
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-3').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
-
-            // Step 5: Verify that the guide modal is not visible
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Step 6: Add Click (0, 0) Go!
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('.game-board-out > .box').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#piece-stack-out-x').type('8')
+            cy.get('.game-board-out > .box').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('.game-board-out > .box').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#piece-stack-out-y').type('8')
+            cy.get('.game-board-out > .box').click()
             cy.get('#go-button').click()
-
-            // Step 7: Verify the expected message for a successful move
             cy.get('.alert-success').should('be.visible')
-        });
+        })
 
-        // Fail Test Case for Challenge 2.1
-        it('fail challenge 2.1', () => {
-            // Step 1: Visit the specified URL
+        it('fail challenge 1.3', () => {
             cy.visit('http://localhost:5173/')
-
-            // Step 2: Click on the element with the ID #single-player-button
-            cy.get('#single-player-button').click()
-
-            cy.get('#accordion-button-2').click()
-
-            // Step 3: Click on the element with the ID #challenge-card-x (replace x with the correct challenge ID)
-            cy.get('#challenge-card-4').click()
-
-            // Step 4: Wait for the guide modal to be visible, wait for 500 milliseconds, then close the modal
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-3').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
-
-            // Step 5: Verify that the guide modal is not visible
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Step 6: Add Click (0, 0) Go!
+            cy.get('#next-button').click().click().click().click()
             cy.get('#go-button').click()
-
-            // Step 7: Verify the expected message for a failed move
             cy.get('.alert-danger').should('be.visible')
-        });
-    });
+        })
+
+    })
+
+    describe("challenge 1.4", () => {
+        it('pass challenge 1.4', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-4').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-3').click()
+    
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.4', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-4').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    
+    })
+
+    describe("challenge 1.5", () => {
+        it('pass challenge 1.5', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-5').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-3').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+    
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.5', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-5').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.6", () => {
+        it('pass challenge 1.6', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-6').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+    
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.6', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-6').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.7", () => {
+        it('pass challenge 1.7', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-7').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+    
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.7', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-7').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.8", () => {
+        it('pass challenge 1.8', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-8').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-4-2').click()
+    
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.8', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-8').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.9", () => {
+        it('pass challenge 1.9', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-9').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-4-2').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-5-3').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.9', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-9').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click().click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.10", () => {
+        it('pass challenge 1.10', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-10').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.10', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-10').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.11", () => {
+        it('pass challenge 1.11', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-11').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-2').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.11', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-11').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.12", () => {
+        it('pass challenge 1.12', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-12').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-2').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-3-1').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.12', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-12').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.13", () => {
+        it('pass challenge 1.13', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-13').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-0').click()
+            cy.get('#board-box-4-2').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.13', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-13').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.14", () => {
+        it('pass challenge 1.14', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-14').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-1-1').click()
+            cy.get('#board-box-3-3').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.14', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-14').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.15", () => {
+        it('pass challenge 1.15', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-15').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-5-3').click()
+            cy.get('#board-box-3-3').click()
+            cy.get('#board-box-2-2').click()
+            cy.get('#board-box-4-4').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.15', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-15').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.16", () => {
+        it('pass challenge 1.16', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-16').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-1-1').click()
+            cy.get('#board-box-3-3').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-5-3').click()
+            cy.get('#board-box-3-3').click()
+            cy.get('#board-box-2-2').click()
+            cy.get('#board-box-4-4').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.16', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-16').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.17", () => {
+        it('pass challenge 1.17', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-17').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-0-0').click()
+            cy.get('#board-box-2-2').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.17', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-17').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 1.18", () => {
+        it('pass challenge 1.18', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-18').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-2-2').click()
+            cy.get('#board-box-4-4').click()
+            cy.get('#next-button').click()
+            cy.get('#board-box-0-0').click()
+            cy.get('#board-box-2-2').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 1.18', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#challenge-card-18').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+})
+
+describe('test file 2', () => {
+    describe("challenge 2.1", () => {
+        it('pass challenge 2.1', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-19').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#add-button').click()
+            cy.get('#board-box-0-1').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.1', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-19').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
 
     describe("challenge 2.2", () => {
-        // Pass Test Case for Challenge 2.2
         it('pass challenge 2.2', () => {
-            // Step 1: Visit the specified URL
             cy.visit('http://localhost:5173/')
-
-            // Step 2: Click on the element with the ID #single-player-button
-            cy.get('#single-player-button').click()
-
-            // Step 3: Click on the element with the ID #accordion-button-2
+            cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
-
-            // Step 4: Click on the element with the ID #challenge-card-5
-            cy.get('#challenge-card-5').click()
-
-            // Step 5: Wait for the guide modal to be visible, wait for 500 milliseconds, then close the modal
+            cy.get('#challenge-card-20').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
-
-            // Step 6: Verify that the guide modal is not visible
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Step 7: Add Click (0, 0) Go!
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
+    
+            for (let i = 5; i < 8; i = i + 1) {
+                if (i == 5 || i == 7) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+                
+                }
+            }
+    
             cy.get('#go-button').click()
-
-            // Step 8: Verify the expected message for a successful move
             cy.get('.alert-success').should('be.visible')
-        });
-
-        // Fail Test Case for Challenge 2.2
+        })
+    
         it('fail challenge 2.2', () => {
-            // Step 1: Visit the specified URL
             cy.visit('http://localhost:5173/')
-
-            // Step 2: Click on the element with the ID #single-player-button
-            cy.get('#single-player-button').click()
-
-            // Step 3: Click on the element with the ID #accordion-button-2
+            cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
-
-            // Step 4: Click on the element with the ID #challenge-card-5
-            cy.get('#challenge-card-5').click()
-
-            // Step 5: Wait for the guide modal to be visible, wait for 500 milliseconds, then close the modal
+            cy.get('#challenge-card-20').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
-
-            // Step 6: Verify that the guide modal is not visible
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Step 7: Add Click (0, 0) Go!
             cy.get('#go-button').click()
-
-            // Step 8: Verify the expected message for a failed move
             cy.get('.alert-danger').should('be.visible')
-        });
-    });
+        })
+    })
 
     describe("challenge 2.3", () => {
-        // Challenge 2.3
-        // Pass Test Case for Challenge 2.3
         it('pass challenge 2.3', () => {
-            // Step 1-6: Common steps for all test cases
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
+            cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
-            cy.get('#challenge-card-6').click()
+            cy.get('#challenge-card-21').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#add-button').click()
-            cy.get('#next-button').click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
             cy.get('#board-box-0-1').click()
             cy.get('#add-button').click()
             cy.get('#next-button').click()
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#board-box-0-2').click()
-            cy.get('#board-box-0-3').click()
-
+            for (let i = 5; i < 8; i = i + 1) {
+                if (i == 5 || i == 7) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+    
+                }
+            }
             cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-
-
-        // Fail Test Case for Challenge 2.3
+            cy.get('.alert-success').should('be.visible')
+        })
+    
         it('fail challenge 2.3', () => {
-            // Step 1: Visit the specified URL
             cy.visit('http://localhost:5173/')
-
-            // Step 2: Click on the element with the ID #single-player-button
-            cy.get('#single-player-button').click()
-
-            // Step 3: Click on the element with the ID #accordion-button-2
+            cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
-
-            // Step 4: Click on the element with the ID #challenge-card-6
-            cy.get('#challenge-card-6').click()
-
-            // Step 5: Wait for the guide modal to be visible, wait for 500 milliseconds, then close the modal
+            cy.get('#challenge-card-21').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
-
-            // Step 6: Verify that the guide modal is not visible
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Step 7: Next
             cy.get('#next-button').click()
-
-            // Step 8: Next
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+    
+    describe("challenge 2.4", () => {
+        it('pass challenge 2.4', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-22').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-0').click().click()
+            cy.get('#add-button').click()
             cy.get('#next-button').click()
-
-            // Step 9: Go!
-            cy.get('#go-button').click()
-
-            // Step 10: Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible')
-        });
-    });
-});
-
-describe("test file 3", () => {
-    describe("challenge 3.1", () => {
-        // Challenge 2.3
-        // Pass Test Case for Challenge 2.3
-        it('pass challenge 3.1', () => {
-            // Step 1-6: Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-3').click()
-            cy.get('#challenge-card-7').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-
-
-        // Fail Test Case for Challenge 2.3
-        it('fail challenge 3.1', () => {
-            // Step 1-6: Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-3').click()
-            cy.get('#challenge-card-7').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#add-button').click()
-            for (let x = 5; x <= 7; x++) {
-                for (let y = 0; y <= 7; y++) {
-                    cy.get(`#board-box-${x}-${y}`).click();
-                }
-            }
-
-            cy.get('#go-button').click()
-
-            // Step 10: Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible')
-        });
-    });
-
-    describe("challenge 3.2", () => {
-        // Assuming you have a loop to iterate over the coordinates
-        // Pass Test Case
-        it('pass challenge 3.2', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-3').click()
-            cy.get('#challenge-card-8').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#add-button').click();
-            for (let y = 0; y <= 7; y++) {
-                cy.get(`#board-box-0-${y}`).click();
-                cy.get(`#board-box-0-${y}`).click();
-            }
-
-            for (let x = 1; x <= 7; x++) {
-                for (let y = 0; y <= 7; y++) {
-                    cy.get(`#board-box-${x}-${y}`).click();
-                }
-            }
-
-            cy.get('#add-button').click();
-            cy.get('#next-button').click();
-            cy.get('#add-button').click();
-
-            for (let y = 0; y <= 1; y++) {
-                cy.get(`#board-box-0-${y}`).click();
-                cy.get(`#board-box-0-${y}`).click();
-            }
-
-            cy.get('#board-box-1-0').click()
-
-
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 3.2', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-3').click()
-            cy.get('#challenge-card-8').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#next-button').click();
-            cy.get('#next-button').click();
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible');
-        });
-
-    });
-
-    describe("challenge 3.3", () => {
-        // Assuming you have a loop to iterate over the coordinates
-        // Pass Test Case
-        it('pass challenge 3.3', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-3').click()
-            cy.get('#challenge-card-9').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#add-button').click();
-            for (let y = 0; y <= 7; y++) {
-                cy.get(`#board-box-2-${y}`).click();
-            }
-
-            cy.get('#add-button').click();
-            cy.get('#next-button').click();
-            cy.get('#add-button').click();
-
-            for (let y = 0; y <= 7; y++) {
-                cy.get(`#board-box-3-${y}`).click();
-            }
-
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 3.3', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-3').click()
-            cy.get('#challenge-card-9').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#next-button').click();
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible');
-        });
-
-    });
-
-    describe("challenge 3.4", () => {
-        // Assuming you have a loop to iterate over the coordinates
-        // Pass Test Case
-        it('pass challenge 3.4', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-3').click()
-            cy.get('#challenge-card-10').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 3.4', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-3').click()
-            cy.get('#challenge-card-10').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#add-button').click();
-
-            for (let x = 0; x <= 2; x++) {
-                for (let y = 0; y <= 7; y++) {
-                    cy.get(`#board-box-${x}-${y}`).click();
-                }
-            }
-
-            for (let x = 5; x <= 7; x++) {
-                for (let y = 0; y <= 7; y++) {
-                    cy.get(`#board-box-${x}-${y}`).click();
-                    cy.get(`#board-box-${x}-${y}`).click();
-                }
-            }
-
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible');
-        });
-    });
-});
-
-describe("test file 4", () => {
-    describe("challenge 4.1", () => {
-        // Assuming you have a loop to iterate over the coordinates
-        // Pass Test Case
-        it('pass challenge 4.1', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-4').click()
-            cy.get('#challenge-card-11').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click().click()
             cy.get('#add-button').click()
             cy.get('#board-box-0-1').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 4.1', () => {
-            // Common steps for all test cases
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.4', () => {
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-4').click()
-            cy.get('#challenge-card-11').click()
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-22').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click().click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
 
-            // Specific test case instructions
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible');
-        });
-
-    });
-
-    describe("challenge 4.2", () => {
-        // Assuming you have a loop to iterate over the coordinates
-        // Pass Test Case
-        it('pass challenge 4.2', () => {
-            // Common steps for all test cases
+    describe("challenge 2.5", () => {
+        it('pass challenge 2.5', () => {
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-4').click()
-            cy.get('#challenge-card-12').click()
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-23').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
-
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
+            for (let i = 0; i < 3; i = i + 1) {
+                if (i % 2 != 0) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click().click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click().click()
+                    }
+    
+                }
+            }
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('.game-board-out > .box').click()
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 4.2', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-4').click()
-            cy.get('#challenge-card-12').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible');
-        });
-
-    });
-
-    describe("challenge 4.3", () => {
-        // Assuming you have a loop to iterate over the coordinates
-        // Pass Test Case
-        it('pass challenge 4.3', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-4').click()
-            cy.get('#challenge-card-13').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click().click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('.game-board-out > .box').click()
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 4.3', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-4').click()
-            cy.get('#challenge-card-13').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible');
-        });
-    });
-
-    describe("challenge 4.4", () => {
-        // Assuming you have a loop to iterate over the coordinates
-        // Pass Test Case
-        it('pass challenge 4.4', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-4').click()
-            cy.get('#challenge-card-14').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click().click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#board-box-0-0').click()
             cy.get('#next-button').click()
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
+            for (let i = 5; i < 8; i = i + 1) {
+                if (i % 2 != 0) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+    
+                }
+            }
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('.game-board-out > .box').click()
-            cy.get('#next-button').click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click().click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('.game-board-out > .box').click()
-            cy.get('#next-button').click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 4.4', () => {
-            // Common steps for all test cases
+            cy.get('#next-button').click()        
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.5', () => {
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-4').click()
-            cy.get('#challenge-card-14').click()
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-23').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click().click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
 
-            // Specific test case instructions
+    describe("challenge 2.6", () => {
+        it('pass challenge 2.6', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-24').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#add-button').click()
+            for (let i = 0; i < 3; i = i + 1) {
+                if (i % 2 != 0) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click().click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click().click()
+                    }
+    
+                }
+            }
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            cy.get('#add-button').click()
+            for (let i = 5; i < 8; i = i + 1) {
+                if (i % 2 != 0) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+    
+                }
+            }
+            cy.get('#add-button').click()
+            cy.get('#next-button').click() 
+            cy.get('#add-button').click()
+            for (let i = 0; i < 3; i = i + 1) {
+                if (i % 2 != 0) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click().click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click().click()
+                    }
+    
+                }
+            }
+            for (let i = 5; i < 8; i = i + 1) {
+                if (i % 2 != 0) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+    
+                }
+            }
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.6', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-24').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
             cy.get('#next-button').click().click().click()
-            cy.get('#go-button').click();
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
 
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible');
-        });
-
-    });
-});
-
-describe("test file 5", () => {
-    describe("challenge 5.1", () => {
-        // Assuming you have a loop to iterate over the coordinates
-        // Pass Test Case
-        it('pass challenge 5.1', () => {
-            // Common steps for all test cases
+    describe("challenge 2.7", () => {
+        it('pass challenge 2.7', () => {
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-5').click()
-            cy.get('#challenge-card-15').click()
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-25').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
-
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
+            cy.get('#board-box-0-1').click().click()
+            cy.get('#board-box-4-0').click()
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            cy.get('#add-button').click()
             cy.get('#board-box-0-1').click().click()
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click()
-
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 5.1', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-5').click()
-            cy.get('#challenge-card-15').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible');
-        });
-
-    });
-
-    describe("challenge 5.2", () => {
-        // Assuming you have a loop to iterate over the coordinates
-        // Pass Test Case
-        it('pass challenge 5.2', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-5').click()
-            cy.get('#challenge-card-16').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click()
             cy.get('#next-button').click()
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#board-box-0-2').click()
+            cy.get('#board-box-4-0').click()
             cy.get('#add-button').click()
-            cy.get('#board-box-0-2').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#board-box-0-0').click()
-
+            cy.get('#next-button').click() 
             cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 5.2', () => {
-            // Common steps for all test cases
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.7', () => {
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-5').click()
-            cy.get('#challenge-card-16').click()
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-25').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#next-button').click()
-            cy.get('#go-button').click();
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible');
-        });
-
-    });
-
-    describe("challenge 5.3", () => {
-        it('pass challenge 5.3', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-5').click()
-            cy.get('#challenge-card-17').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#board-box-0-2').click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-2').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#board-box-0-0').click()
+            cy.get('#next-button').click().click().click()
             cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 5.3', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-5').click()
-            cy.get('#challenge-card-17').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a failed move
             cy.get('.alert-danger').should('be.visible')
-        });
+        })
+    })
 
-    });
-
-    describe("challenge 5.4", () => {
-        it('pass challenge 5.4', () => {
-            // Common steps for all test cases
+    describe("challenge 2.8", () => {
+        it('pass challenge 2.8', () => {
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-5').click()
-            cy.get('#challenge-card-18').click()
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-26').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
-
             cy.get('#add-button').click()
-            for (let y = 0; y <= 6; y++) {
-                cy.get(`#board-box-0-${y}`).click()
+            cy.get('#board-box-0-1').click().click()
+            cy.get('#board-box-4-0').click()
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.8', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-26').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 2.9", () => {
+        it('pass challenge 2.9', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-27').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#add-button').click()
+            for (let i = 0; i < 3; i = i + 1) {
+                if (i % 2 != 0) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click().click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click().click()
+                    }
+    
+                }
+            }
+            for (let i = 5; i < 8; i = i + 1) {
+                if (i % 2 != 0) {
+                    for (let j = 1; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+                } else {
+                    for (let j = 0; j <= 7; j = j + 2) {
+                        cy.get('#board-box-' + i + '-' + j).click()
+                    }
+    
+                }
             }
             cy.get('#add-button').click()
-            for (let y = 1; y <= 6; y++) {
-                cy.get(`#board-box-0-${y}`).click()
-                cy.get('#board-box-0-0').click()
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.9', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-27').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 2.10", () => {
+        it('pass challenge 2.10', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-28').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-1-1').click()
+            cy.get('#board-box-1-0').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.10', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-28').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 2.11", () => {
+        it('pass challenge 2.11', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-29').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#board-box-0-0').click()
+            cy.get('#board-box-0-1').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.11', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-29').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 2.12", () => {
+        it('pass challenge 2.12', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-30').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.12', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-30').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#add-button').click()
+    
+            for (let i = 1; i < 2; i = i + 2) {
+                for (let j = 1; j <= 7; j = j + 2) {
+                    cy.get(`#board-box-${i}-${j}`).click().click()
+                }
             }
-            cy.get('#next-button').click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#add-button').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#board-box-0-0').click()
+    
+            for (let i = 5; i <= 7; i = i + 2) {
+                for (let j = 1; j <= 7; j = j + 2) {
+                    cy.get(`#board-box-${i}-${j}`).click()
+                }
+            }
             cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 5.4', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-5').click()
-            cy.get('#challenge-card-18').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#next-button').click()
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a failed move
             cy.get('.alert-danger').should('be.visible')
-        });
+        })
+    })
 
-    });
-});
-
-describe("test file 6", () => {
-    describe("challenge 6.1", () => {
-        it('pass challenge 6.1', () => {
-            // Common steps for all test cases
+    describe("challenge 2.13", () => {
+        it('pass challenge 2.13', () => {
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-19').click()
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-31').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
-
             cy.get('#add-button').click()
-            cy.get('#board-box-2-1').click().click()
-            cy.get('#board-box-5-1').click().click()
-            cy.get('#board-box-5-5').click().click()
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 6.1', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-19').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible')
-        });
-
-    });
-
-    describe("challenge 6.2", () => {
-        it('pass challenge 6.2', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-20').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#add-button').click()
-            cy.get('#board-box-2-3').click().click()
-            cy.get('#board-box-5-1').click().click()
-            cy.get('#board-box-5-7').click().click()
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 6.2', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-20').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible')
-        });
-
-    });
-
-    describe("challenge 6.3", () => {
-        it('pass challenge 6.3', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-21').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#add-button').click()
-            cy.get('#board-box-3-3').click().click()
-            cy.get('#board-box-5-1').click().click()
-            cy.get('#board-box-5-5').click().click()
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 6.3', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-21').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible')
-        });
-
-    });
-
-    describe("challenge 6.4", () => {
-        it('pass challenge 6.4', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-22').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 6.4', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-22').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get('#add-button').click()
+            cy.get('#board-box-1-0').click()
             cy.get('#board-box-0-0').click().click()
             cy.get('#go-button').click()
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible')
-        });
-
-    });
-
-    describe("challenge 6.5", () => {
-        it('pass challenge 6.5', () => {
-            // Common steps for all test cases
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.13', () => {
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-23').click()
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-31').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
 
+    describe("challenge 2.14", () => {
+        it('pass challenge 2.14', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-32').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
             cy.get('#add-button').click()
+            cy.get('#board-box-1-0').click()
+            cy.get('#board-box-0-0').click().click()
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            cy.get('#add-button').click()
+            cy.get('#board-box-1-0').click()
+            cy.get('#board-box-0-0').click().click()
+            cy.get('#go-button').click()
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.14', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-32').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#next-button').click()
+            cy.get('#go-button').click()
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 2.15", () => {
+        it('pass challenge 2.15', () => {
+            cy.visit('http://localhost:5173/')
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-33').click()
+            cy.get('#guide-modal').should('be.visible').wait(500)
+            cy.get('#guide-modal-close-button').click().wait(1000)
+            cy.get('#guide-modal').should('not.be.visible')
+            cy.get('#add-button').click().wait(100)
+            cy.get('#board-box-0-1').click().click()
+            cy.get('#board-box-0-3').click().click()
+            cy.get('#board-box-0-5').click().click()
+            cy.get('#board-box-0-7').click().click()
+            cy.get('#board-box-1-0').click().click()
+            cy.get('#board-box-1-2').click().click()
+            cy.get('#board-box-1-4').click().click()
+            cy.get('#board-box-1-6').click().click()
             cy.get('#board-box-2-1').click().click()
-            cy.get('#board-box-5-1').click().click()
-            cy.get('#board-box-5-5').click().click()
-            cy.get('#add-button').click()
-            cy.get('#next-button').click()
-            cy.get('#add-button').click()
             cy.get('#board-box-2-3').click().click()
-            cy.get('#board-box-5-1').click().click()
-            cy.get('#board-box-5-7').click().click()
-            cy.get('#add-button').click()
-            cy.get('#next-button').click()
-            cy.get('#add-button').click()
+            cy.get('#board-box-2-5').click().click()
+            cy.get('#board-box-2-7').click().click()
+            cy.get('#board-box-3-0').click().click()
+            cy.get('#board-box-3-1').click().click()
+            cy.get('#board-box-3-2').click().click()
             cy.get('#board-box-3-3').click().click()
-            cy.get('#board-box-5-1').click().click()
-            cy.get('#board-box-5-5').click().click()
-            cy.get('#add-button').click()
-            cy.get('#next-button').click()
+            cy.get('#board-box-3-4').click().click()
+            cy.get('#board-box-3-5').click().click()
+            cy.get('#board-box-3-6').click().click()
+            cy.get('#board-box-3-7').click().click()
+            cy.get('#board-box-4-0').click()
+            cy.get('#board-box-4-1').click()
+            cy.get('#board-box-4-2').click()
+            cy.get('#board-box-4-3').click()
+            cy.get('#board-box-4-4').click()
+            cy.get('#board-box-4-5').click()
+            cy.get('#board-box-4-6').click()
+            cy.get('#board-box-4-7').click()
+            cy.get('#board-box-5-0').click()
+            cy.get('#board-box-5-2').click()
+            cy.get('#board-box-5-4').click()
+            cy.get('#board-box-5-6').click()
+            cy.get('#board-box-6-1').click()
+            cy.get('#board-box-6-3').click()
+            cy.get('#board-box-6-5').click()
+            cy.get('#board-box-6-7').click()
+            cy.get('#board-box-7-0').click()
+            cy.get('#board-box-7-2').click()
+            cy.get('#board-box-7-4').click()
+            cy.get('#board-box-7-6').click()
             cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 6.5', () => {
-            // Common steps for all test cases
+            cy.get('.alert-success').should('be.visible')
+        })
+    
+        it('fail challenge 2.15', () => {
             cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-6').click()
-            cy.get('#challenge-card-23').click()
+            cy.get('#single-player-button').click().wait(1000)
+            cy.get('#accordion-button-2').click()
+            cy.get('#challenge-card-33').click()
             cy.get('#guide-modal').should('be.visible').wait(500)
             cy.get('#guide-modal-close-button').click().wait(1000)
             cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get("#next-button").click().click().click()
             cy.get('#go-button').click()
-
-            // Verify the expected message for a failed move
             cy.get('.alert-danger').should('be.visible')
-        });
-
-    });
-});
-
-describe("test file 7", () => {
-    describe("challenge 7.1", () => {
-        it('pass challenge 7.1', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-7').click()
-            cy.get('#challenge-card-24').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#board-box-7-1').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#next-button').click()
-            cy.get('#board-box-7-1').click()
-            cy.get('#board-box-3-3').click()
-            cy.get('#next-button').click()
-            cy.get('#board-box-6-0').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#next-button').click()
-            cy.get('#board-box-6-0').click()
-            cy.get('#board-box-3-3').click()
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 7.1', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-7').click()
-            cy.get('#challenge-card-24').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get("#next-button").click().click().click()
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible')
-        });
-
-    });
-
-    describe("challenge 7.2", () => {
-        it('pass challenge 7.2', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-7').click()
-            cy.get('#challenge-card-25').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            cy.get('#board-box-7-1').click()
-            cy.get('#board-box-3-3').click()
-            cy.get('#next-button').click()
-            cy.get('#board-box-6-0').click()
-            cy.get('#board-box-0-1').click()
-            cy.get('#next-button').click()
-            cy.get('#board-box-6-0').click()
-            cy.get('#board-box-3-3').click()
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a successful move
-            cy.get('.alert-success').should('be.visible');
-        });
-
-        // Fail Test Case
-        it('fail challenge 7.2', () => {
-            // Common steps for all test cases
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('#accordion-button-7').click()
-            cy.get('#challenge-card-25').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
-
-            // Specific test case instructions
-            cy.get("#next-button").click().click()
-            cy.get('#go-button').click()
-
-            // Verify the expected message for a failed move
-            cy.get('.alert-danger').should('be.visible')
-        });
-
-    });
+        })
+    })
 })

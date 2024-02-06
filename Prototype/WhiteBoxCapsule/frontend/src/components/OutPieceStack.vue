@@ -45,15 +45,15 @@ export default {
   props: {
     creator: {
       type: Boolean,
-      default: false
+      default: false,
     },
+    x: Number,
+    y: Number
   },
 
   data() {
     return {
-      board: null,
-      x: -1,
-      y: -1
+      board: null
     }
   },
 
@@ -64,15 +64,6 @@ export default {
   },
 
   mounted() {
-    document.getElementById('piece-stack-out-x').onchange = () => {
-      this.x = document.getElementById('piece-stack-out-x').value
-      this.board.outCoords.x = this.x
-    }
-
-    document.getElementById('piece-stack-out-y').onchange = () => {
-      this.y = document.getElementById('piece-stack-out-y').value
-      this.board.outCoords.y = this.y
-    }
   },
 
   methods: {

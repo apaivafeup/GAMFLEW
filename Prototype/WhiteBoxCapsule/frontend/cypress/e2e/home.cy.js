@@ -18,7 +18,7 @@ describe('Home Page', () => {
   it('opens a challenge', () => {
     cy.visit('http://localhost:5173/')
     cy.get('#single-player-button').click()
-    cy.get('#challenge-card-' + Math.ceil(Math.random(15))).click()
+    cy.get('.challenge-card').first().click()
 
     cy.get('#guide-modal')  
     .should('be.visible')

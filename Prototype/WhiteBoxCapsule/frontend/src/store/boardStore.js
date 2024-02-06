@@ -14,8 +14,6 @@ export const boardStore = defineStore('boardStore', {
   state: () => {
     return {
       // Actual game state.
-      timer: Number,
-      interval: null,
       log: {},
       state: {},
       outOfBoundsState: {},
@@ -25,7 +23,6 @@ export const boardStore = defineStore('boardStore', {
       // Auxiliary state, for game mechanics (movement, selection, adding, etc).
       selectedPiece: null,
       selectedCoords: { x: -1, y: -1 },
-      outCoords: { x: -1, y: -1 },
       lastAdd: { x: -1, y: -1 },
       dataTable: {
         headers: [],
@@ -99,7 +96,8 @@ export const boardStore = defineStore('boardStore', {
 
       if (this.isOutOfBounds(x, y)) {
         if (this.selectedPiece == null) {
-          if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY) return
+          if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY)
+            return
           else {
             this.selectedPiece = this.outOfBoundsState[this.currentKey]
             this.selectedCoords = { x: -10, y: -10 }
@@ -107,7 +105,6 @@ export const boardStore = defineStore('boardStore', {
           }
         } else {
           this.movePiece(x, y)
-          this.outCoords = { x: x, y: y }
         }
       } else if (
         this.selectedPiece == null &&
@@ -134,11 +131,6 @@ export const boardStore = defineStore('boardStore', {
 
       if (this.isOutOfBounds(x, y)) {
         logicalSpot = this.outOfBoundsState[this.currentKey]
-
-        if (this.outCoords != {}) {
-          x = this.outCoords.x
-          y = this.outCoords.y
-        }
       } else {
         logicalSpot = this.state[this.currentKey][x][y]
       }
@@ -149,7 +141,7 @@ export const boardStore = defineStore('boardStore', {
         this.selectedPiece.setEmpty()
       } else {
         if (this.isOutOfBounds(x, y)) {
-            this.selectedPiece.select()
+          this.selectedPiece.select()
         } else {
           logicalSpot.addStack(this.selectedPiece.stack, this.selectedColor)
           this.selectedPiece.select()
@@ -313,15 +305,16 @@ export const boardStore = defineStore('boardStore', {
       }
     },
 
-    pass() {
+    pass(score) {
       this.passed = !this.passed
-      this.attempt.setTimeElapsed(this.timer)
       this.failed = false
       this.paused = true
+      this.attempt.setScore(score)
     },
 
     fail() {
       this.failed = true
+      this.attempt.setScore(0)
     },
 
     retry() {
@@ -348,34 +341,5 @@ export const boardStore = defineStore('boardStore', {
       window.location.href = "/challenge/1"
       window.location.reload()
     },
-
-    startTimer(pause = false) {
-      if (!this.started || pause) {
-        this.interval = setInterval(() => {
-          this.timer--
-
-          if (this.timer == 0) {
-            clearInterval(this.interval)
-            this.gameOver()
-          }
-
-          if (this.passed) {
-            clearInterval(this.interval)
-          }
-        }, 1000)
-
-        this.started = true
-      }
-    },
-
-    pauseMode() {
-      this.pause = !this.pause
-
-      if (!this.pause) {
-        this.startTimer(true)
-      } else {
-        clearInterval(this.interval)
-      }
-    }
   }
 })
