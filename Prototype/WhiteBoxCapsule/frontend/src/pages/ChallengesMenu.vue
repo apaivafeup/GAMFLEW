@@ -65,6 +65,8 @@ export default defineComponent({
   components: { ChallengeCard },
 
   async beforeMount() {
+    console.log(this.$api_link + '/code-files/')
+
     await this.$axios.get(this.$api_link + '/code-files/').then((response) => {
       this.code_files = response.data
     })
