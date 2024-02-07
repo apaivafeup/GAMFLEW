@@ -31,25 +31,49 @@
   </div>
   <div
     class="square square-lg piece selected"
+    style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
     v-else-if="this.board.state[this.board.currentKey][x][y].selected"
     @click.stop="this.board.selectPiece(x, y)"
-  ></div>
+  >
+  <font-awesome-icon
+  v-if="this.board.state[this.board.currentKey][x][y].king"
+  icon="crown"
+  fixed-width
+  style="color: white;"
+/>
+</div>
   <div
     class="square square-lg piece red"
+    style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
     v-else-if="
       this.board.state[this.board.currentKey][x][y].stack.blue == 0 &&
       this.board.state[this.board.currentKey][x][y].stack.red != 0
     "
     @click.stop="this.board.selectPiece(x, y)"
-  ></div>
+  >
+  <font-awesome-icon
+  v-if="this.board.state[this.board.currentKey][x][y].king"
+  icon="crown"
+  fixed-width
+  style="color: white;"
+/>
+</div>
   <div
     class="square square-lg piece blue"
+    style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
     v-else-if="
       this.board.state[this.board.currentKey][x][y].stack.blue != 0 &&
       this.board.state[this.board.currentKey][x][y].stack.red == 0
     "
     @click.stop="this.board.selectPiece(x, y)"
-  ></div>
+  >
+  <font-awesome-icon
+  v-if="this.board.state[this.board.currentKey][x][y].king"
+  icon="crown"
+  fixed-width
+  style="color: white;"
+/>
+</div>
   <div
     class="square square-lg piece empty"
     v-else-if="

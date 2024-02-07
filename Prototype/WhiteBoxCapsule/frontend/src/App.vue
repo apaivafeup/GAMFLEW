@@ -6,6 +6,7 @@
   <router-view></router-view>
   <button v-if="!url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode"
     id="theme-toggle">💡 Theme</button>
+
 </template>
 
 <script>

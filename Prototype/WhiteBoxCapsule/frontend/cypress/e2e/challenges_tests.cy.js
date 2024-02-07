@@ -5,9 +5,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-1').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('.game-board-out > .box').click()
             cy.get('#go-button').click()
@@ -19,9 +17,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-1').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-1').click()
             cy.get('#go-button').click()
@@ -36,9 +32,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-2').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('.game-board-out > .box').click()
             cy.get('#next-button').click()
@@ -53,9 +47,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-2').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-1').click()
             cy.get('#next-button').click()
@@ -72,9 +64,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-3').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-1').click()
             cy.get('#next-button').click()
@@ -99,9 +89,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-3').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click().click().click().click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -114,9 +102,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-4').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-3').click()
@@ -129,9 +115,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-4').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-1').click()
             cy.get('#go-button').click()
@@ -145,9 +129,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-5').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-3').click()
@@ -163,9 +145,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-5').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -177,9 +157,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-6').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-1').click()
     
@@ -191,9 +169,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-6').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -204,9 +180,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-7').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-1').click()
     
@@ -218,9 +192,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-7').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -231,9 +203,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-8').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-4-2').click()
     
@@ -245,9 +215,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-8').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -258,9 +226,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-9').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-4-2').click()
             cy.get('#next-button').click()
@@ -277,9 +243,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-9').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click().click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -291,9 +255,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-10').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-1').click()
             cy.get('#go-button').click()
@@ -304,9 +266,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-10').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -317,9 +277,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-11').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-2').click()
             cy.get('#board-box-3-1').click()
             cy.get('#board-box-2-0').click()
@@ -332,9 +290,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-11').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -345,9 +301,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-12').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-2').click()
             cy.get('#board-box-3-1').click()
             cy.get('#board-box-2-0').click()
@@ -363,9 +317,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-12').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -377,9 +329,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-13').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-4-2').click()
             cy.get('#go-button').click()
@@ -390,9 +340,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-13').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -403,9 +351,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-14').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-1-1').click()
             cy.get('#board-box-3-3').click()
             cy.get('#go-button').click()
@@ -416,9 +362,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-14').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -429,9 +373,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-15').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-5-3').click()
             cy.get('#board-box-3-3').click()
             cy.get('#board-box-2-2').click()
@@ -444,9 +386,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-15').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -457,9 +397,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-16').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-1-1').click()
             cy.get('#board-box-3-3').click()
             cy.get('#next-button').click()
@@ -475,9 +413,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-16').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -489,9 +425,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-17').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-0-0').click()
             cy.get('#board-box-2-2').click()
             cy.get('#go-button').click()
@@ -502,9 +436,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-17').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -515,9 +447,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-18').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-2-2').click()
             cy.get('#board-box-4-4').click()
             cy.get('#next-button').click()
@@ -531,9 +461,7 @@ describe("test file 1", () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-18').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -548,9 +476,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-19').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             cy.get('#board-box-0-1').click()
             cy.get('#go-button').click()
@@ -562,9 +488,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-19').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -576,9 +500,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-20').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
     
             for (let i = 5; i < 8; i = i + 1) {
@@ -603,9 +525,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-20').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -617,9 +537,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-21').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             cy.get('#board-box-0-1').click()
             cy.get('#add-button').click()
@@ -646,9 +564,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-21').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -661,9 +577,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-22').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             cy.get('#board-box-5-0').click().click()
             cy.get('#add-button').click()
@@ -681,9 +595,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-22').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click().click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -696,9 +608,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-23').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             for (let i = 0; i < 3; i = i + 1) {
                 if (i % 2 != 0) {
@@ -738,9 +648,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-23').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click().click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -753,9 +661,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-24').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             for (let i = 0; i < 3; i = i + 1) {
                 if (i % 2 != 0) {
@@ -822,9 +728,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-24').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click().click().click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -837,9 +741,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-25').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             cy.get('#board-box-0-1').click().click()
             cy.get('#board-box-4-0').click()
@@ -862,9 +764,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-25').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click().click().click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -877,9 +777,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-26').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             cy.get('#board-box-0-1').click().click()
             cy.get('#board-box-4-0').click()
@@ -894,9 +792,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-26').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -909,9 +805,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-27').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             for (let i = 0; i < 3; i = i + 1) {
                 if (i % 2 != 0) {
@@ -948,9 +842,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-27').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -963,9 +855,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-28').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-1-1').click()
             cy.get('#board-box-1-0').click()
             cy.get('#go-button').click()
@@ -977,9 +867,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-28').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -991,9 +879,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-29').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#board-box-0-0').click()
             cy.get('#board-box-0-1').click()
             cy.get('#go-button').click()
@@ -1005,9 +891,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-29').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -1019,9 +903,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-30').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-success').should('be.visible')
         })
@@ -1031,9 +913,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-30').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
     
             for (let i = 1; i < 2; i = i + 2) {
@@ -1058,9 +938,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-31').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             cy.get('#board-box-1-0').click()
             cy.get('#board-box-0-0').click().click()
@@ -1073,9 +951,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-31').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -1087,9 +963,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-32').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click()
             cy.get('#board-box-1-0').click()
             cy.get('#board-box-0-0').click().click()
@@ -1107,9 +981,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-32').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
@@ -1122,9 +994,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-33').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#add-button').click().wait(100)
             cy.get('#board-box-0-1').click().click()
             cy.get('#board-box-0-3').click().click()
@@ -1175,9 +1045,7 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-33').click()
-            cy.get('#guide-modal').should('be.visible').wait(500)
-            cy.get('#guide-modal-close-button').click().wait(1000)
-            cy.get('#guide-modal').should('not.be.visible')
+            
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })

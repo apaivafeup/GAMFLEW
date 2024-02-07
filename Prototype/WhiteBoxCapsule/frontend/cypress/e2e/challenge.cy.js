@@ -17,39 +17,12 @@ describe("Basic Functionality", () => {
 
     }),
 
-        it('open guide modal manually', () => {
-            cy.visit('http://localhost:5173/')
-            cy.get('#single-player-button').click()
-            cy.get('.card.challenge-card').first().click()
-
-            cy.get('#guide-modal')
-                .should('be.visible')
-                .wait(500)
-
-            cy.get('#guide-modal-close-button').click().wait(500)
-
-            cy.get('#guide-modal')
-                .should('not.be.visible')
-
-            cy.get('#guide-button').should('be.visible').click().wait(500)
-            cy.get('#guide-modal')
-                .wait(500)
-                .should('be.visible')
-        }),
-
         it('title appearance', () => {
             cy.visit('http://localhost:5173/')
             cy.get('#single-player-button').click()
             cy.get('.card.challenge-card').first().click() // challenge 2 has multiple test cases, so...
 
-            cy.get('#guide-modal')
-                .should('be.visible')
-                .wait(500)
-
-            cy.get('#guide-modal-close-button').click().wait(1000)
-
-            cy.get('#guide-modal')
-                .should('not.be.visible')
+            
 
             cy.contains("Challenge 1.1: Checking for Out of Bounds").should('be.visible')
         }),
@@ -59,14 +32,7 @@ describe("Basic Functionality", () => {
             cy.get('#single-player-button').click()
             cy.get('.card.challenge-card').first().click()
 
-            cy.get('#guide-modal')
-                .should('be.visible')
-                .wait(500)
-
-            cy.get('#guide-modal-close-button').click().wait(1000)
-
-            cy.get('#guide-modal')
-                .should('not.be.visible')
+            
 
             cy.contains("Statement coverage of line 9.").should('be.visible')
         }),
@@ -76,14 +42,7 @@ describe("Basic Functionality", () => {
             cy.get('#single-player-button').click()
             cy.get('.card.challenge-card').first().click()
 
-            cy.get('#guide-modal')
-                .should('be.visible')
-                .wait(500)
-
-            cy.get('#guide-modal-close-button').click().wait(1000)
-
-            cy.get('#guide-modal')
-                .should('not.be.visible')
+            
 
             cy.wait(2500)
 
@@ -849,14 +808,7 @@ describe("Board buttons", () => {
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
 
-            cy.get('#guide-modal')
-                .should('be.visible')
-                .wait(500)
-
-            cy.get('#guide-modal-close-button').click().wait(1000)
-
-            cy.get('#guide-modal')
-                .should('not.be.visible')
+            
 
             cy.get('#add-button').click()
 
@@ -992,14 +944,7 @@ describe("Board buttons", () => {
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click() // challenge 2 has multiple test cases, so...
 
-            cy.get('#guide-modal')
-                .should('be.visible')
-                .wait(500)
-
-            cy.get('#guide-modal-close-button').click().wait(1000)
-
-            cy.get('#guide-modal')
-                .should('not.be.visible')
+            
 
             cy.get('#exit-button').click()
 

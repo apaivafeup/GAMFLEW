@@ -1,7 +1,7 @@
 // piece is the piece that is moving.
 // start: the (x, y) position from where the piece moved.
 // destination: the (x, y) position to where the piece moved.
-function is_valid_move(piece, start, destination) {
+function is_valid_move(board, start, destination) {
     // Math.abs() gives you the absolute value of whatever you call it with.
     // Math.abs(-1) == 1
 	if (destination.x < 0 || destination.x > 7 ||
@@ -24,7 +24,7 @@ function is_valid_move(piece, start, destination) {
         } else if (lineDifference == 2) {
             if (board[destination.x][destination.y].color == Color.EMPTY) {
                 var middlePiece = board[Math.round((start.x + destination.x) / 2)][Math.round((start.y + destination.y) / 2)];
-                if (middlePiece.color == piece.color) {
+                if (middlePiece.color == board[start.x][start.y].color) {
                     return false;
                 } else {
                     return true;

@@ -155,7 +155,7 @@ export const boardStore = defineStore('boardStore', {
         to: { x: parseInt(x), y: parseInt(y) }
       })
 
-      logicalSpot.update(x, y)
+      logicalSpot.update(x, y, this.selectedPiece.king)
 
       this.updateInfoState()
 

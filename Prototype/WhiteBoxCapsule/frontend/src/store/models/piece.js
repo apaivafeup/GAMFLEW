@@ -19,6 +19,7 @@ export class Piece {
     }
     this.position = position
     this.selected = false
+    this.king = false
   }
 
   setEmpty() {
@@ -65,7 +66,17 @@ export class Piece {
     this.selected = !this.selected
   }
 
-  update(x, y) {
+  update(x, y, king) {
     this.position = { x: x, y: y }
+
+    console.log("here")
+
+    this.king = king;
+
+    if (this.color == Color.RED && this.position.x == 7) {
+      this.king = true
+    } else if (this.color == Color.BLUE && this.position.x == 0) {
+      this.king = true
+    }
   }
 }
