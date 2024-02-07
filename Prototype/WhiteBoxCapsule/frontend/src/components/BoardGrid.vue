@@ -3,7 +3,7 @@
     <div style="flex-direction: column; justify-content: space-between; display: flex">
       <div class="col">
         <div class="game-board-out-labels" v-if="!board.table">
-          <div class="game-board-label col" style="display: flex; justify-content: center">Out</div>
+          <div class="game-board-label col" style="display: flex; justify-content: center">Out of Bounds</div>
         </div>
         <div class="game-board-out">
           <div class="box">
