@@ -124,7 +124,7 @@ export default {
             style="width: 400px; height: 40px; margin-bottom: 5px; margin-left: calc(0.5 * var(--bs-gutter-x));">
         </div>
       </div>
-      <div class="col" style="width: 50%;" v-if="code">
+      <div class="col" style="flex: 0 0 0%;" v-if="code">
         <div class="row">
           <h3>Code Snippets</h3>
         </div>
@@ -159,14 +159,14 @@ export default {
         <div class="row">
           <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="390px" data-line="1"
             :prismjs="true" :name="name" :code="codeString" lang="javascript" prism-js
-            style="font-size: 16px; overflow: scroll; margin-left: 5.5px; margin-right: 5px;" :copy-icon="false"
+            style="width: 600px; font-size: 16px; overflow: scroll; margin-left: 5.5px; margin-right: 5px;" :copy-icon="false"
             :copy-button="false" :copy-tab="false" :tabs="false" />
         </div>
       </div>
       <div class="col" style="flex: 0 0 0%;">
         <BoardCreator v-if="board" />
         <code-editor id="code-editor" max-height="555px"
-          style="width: 100% !important; max-height: 555px; overflow: scroll; border-radius: 12px; border: var(--box-border); background: var(--bs-gray-100);"
+          style="width: 650px; !important; max-height: 555px; overflow: scroll; border-radius: 12px; border: var(--box-border); background: var(--bs-gray-100);"
           theme="stackoverflow-light" :line-nums="true" v-model="codeString" v-if="code">
         </code-editor>
       </div>
