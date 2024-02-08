@@ -56,10 +56,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-
 import ChallengeCard from '../components/ChallengeCard.vue'
-
-
 
 export default defineComponent({
   components: { ChallengeCard },

@@ -111,8 +111,8 @@ pre {
 .piece-creator {
   border-radius: 100px;
   border: 1px solid var(--border-color);
-  width: 62.5px;
-  height: 62.5px;
+  width: 57.5px;
+  height: 57.5px;
 }
 
 .piece-checker {
@@ -228,8 +228,8 @@ pre {
 }
 
 .small-creator {
-  height: 26px;
-  width: 26px;
+  height: 20px;
+  width: 20px;
 }
 
 .small-checker {
