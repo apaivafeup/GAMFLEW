@@ -94,8 +94,6 @@ export default {
     this.board.setState()
 
     this.board.attempt = new Attempt(user_id, this.id, this.challenge.score, 0, 0, null, null)
-
-    document.getElementById('guide-button').click()
   },
 
   updated() {
