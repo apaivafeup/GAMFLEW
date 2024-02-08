@@ -53,6 +53,7 @@ export class Piece {
   updateColor() {
     if ((this.stack.red == 1 && this.stack.blue == 1) || (this.stack.red > 1 || this.stack.blue > 1)) {
       this.color = Color.STACK
+      this.king = false
     } else if (this.stack.red > 0) {
       this.color = Color.RED
     } else if (this.stack.blue > 0) {
@@ -68,8 +69,6 @@ export class Piece {
 
   update(x, y, king) {
     this.position = { x: x, y: y }
-
-    console.log("here")
 
     this.king = king;
 

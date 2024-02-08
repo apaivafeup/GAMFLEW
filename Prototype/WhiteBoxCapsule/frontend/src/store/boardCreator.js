@@ -113,7 +113,7 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
         }
       }
 
-      logicalSpot.update(x, y)
+      logicalSpot.update(x, y, this.selectedPiece.king)
 
       this.selectedPiece = null
       this.selectedCoords = { x: null, y: null }

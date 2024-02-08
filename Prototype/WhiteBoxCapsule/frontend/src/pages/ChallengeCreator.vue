@@ -264,7 +264,7 @@ export default {
           <p style="margin-bottom: 5px;">Choose an existing code file below.</p>
         </div>
         <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
-          <select style="padding: 5px; width: 650px;">
+          <select class="button is-primary guide-button" style="width: 650px;">
             <option @click="this.selectCode(code.id)" v-for="code in codeFiles" :value="code.id">{{ code.name }}</option>
           </select>
         </div>
@@ -283,7 +283,7 @@ export default {
           <p style="margin-bottom: 5px;">Choose an existing board state below.</p>
         </div>
         <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
-          <select style="padding: 5px;">
+          <select class="button is-primary guide-button">
             <option @click="this.selectState(state.id)" v-for="state in boardStates" :value="state.id">{{ state.name }}
             </option>
           </select>

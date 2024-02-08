@@ -114,7 +114,7 @@ export default {
       </div>
       <div class="row" style="margin-bottom: 15px;">
         <div class="row" style="width: 100%; margin-left: 0px;">
-          <select style="padding: 5px;">
+          <select class="guide-button" style="padding: 5px;">
             <option @click="dropdownClick(state.id - 1)" v-for="state in boardStates" :value="state.id">{{state.name}}</option>
           </select>
         </div>
@@ -127,8 +127,8 @@ export default {
           will be used.</p>
       </div>
       <div class="row">
-        <input type="text" placeholder="Write name here." id="state-name" name="state-name"
-          style="width: 700px; height: 30px; margin-bottom: 5px; margin-left: calc(0.5 * var(--bs-gutter-x));">
+        <input type="text" placeholder="Write name here." class="is-primary" id="state-name" name="state-name"
+          style="width: 700px; height: 40px; margin-bottom: 5px; margin-left: calc(0.5 * var(--bs-gutter-x));">
       </div>
     </div>
     <div class="col" style="width: 50%;" v-if="code">
@@ -144,7 +144,7 @@ export default {
       </div>
       <div class="row" style="align-items: center; margin-bottom: 5px;">
         <div class="col" style="width: 80%!important; flex: 8;">
-          <input type="text" v-model="codeName" placeholder="Write name here." id="state-name" name="state-name"
+          <input type="text" class="is-primary guide-button" v-model="codeName" placeholder="Write name here." id="state-name" name="state-name"
             style="width: 100%; height: 31.1px;">
         </div>
         <div class="col" style="width: 20%!important; flex: 2;">
@@ -172,7 +172,7 @@ export default {
                 :code="codeString"
                 lang="javascript"
                 prism-js
-                style="font-size: 16px; overflow: scroll"
+                style="font-size: 16px; overflow: scroll; margin-left: 5.5px; margin-right: 5px;"
                 :copy-icon="false"
                 :copy-button="false"
                 :copy-tab="false"

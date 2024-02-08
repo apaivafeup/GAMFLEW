@@ -39,7 +39,7 @@
   v-if="this.board.state[this.board.currentKey][x][y].king"
   icon="crown"
   fixed-width
-  style="color: white;"
+  style="color: white; font-size: 28px;"
 />
 </div>
   <div
@@ -55,7 +55,7 @@
   v-if="this.board.state[this.board.currentKey][x][y].king"
   icon="crown"
   fixed-width
-  style="color: white;"
+  style="color: white; font-size: 28px;"
 />
 </div>
   <div
@@ -71,7 +71,7 @@
   v-if="this.board.state[this.board.currentKey][x][y].king"
   icon="crown"
   fixed-width
-  style="color: white;"
+  style="color: white; font-size: 28px;"
 />
 </div>
   <div
