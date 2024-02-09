@@ -42,12 +42,14 @@ export default {
     return {
       boardStates: [],
       codeFiles: [],
+      expressionBadges: {},
       selectedState: '',
       stateName: '',
       selectedCode: '',
       codeString: '',
       selectedInput: '',
       testCasesCount: 1,
+      selectedTestCase: 1,
       badgeCount: 1,
       inputBadge: 1,
       selectedBadge: '',
@@ -109,7 +111,7 @@ export default {
 
     addWildcardBadge() {
       var row = document.getElementById('validation-expression-row'),
-          badge = document.createElement('span')
+        badge = document.createElement('span')
 
       badge.setAttribute('id', 'value-badge-' + this.inputBadge)
       badge.setAttribute('class', 'badge text-bg-wildcard')
@@ -223,19 +225,25 @@ export default {
       row.appendChild(badge)
 
       document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
-          for (var c = 1; c < this.parentElement.children.length; c++) {
-            var child = this.parentElement.children[c]
-            if (!isNaN(child.innerHTML))
-              document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
-              if (this.selectedBadge == this.parentElement.getAttribute('id'))
-                this.selectedBadge = ''
-          }
+        
+        var id = 'close-btn-' + this.badgeCount
+        document.getElementById(id)
+        for (var c = 1; c < parentElement.children.length; c++) {
+          var child = parentElement.children[c]
+          if (!isNaN(child.innerHTML))
+            document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
+          if (this.selectedBadge == parentElement.getAttribute('id'))
+            this.selectedBadge = ''
+        }
         this.parentElement.remove()
       }
 
       badge.onclick = () => {
         this.selectSwitchBadge(badge)
       }
+
+      this.saveExpression()
+
       this.badgeCount += 1
     },
 
@@ -246,25 +254,28 @@ export default {
       }
 
       if (this.selectedBadge == '') {
-          this.selectedBadge = badge.getAttribute('id')
+        this.selectedBadge = badge.getAttribute('id')
       } else {
         var secondBadge = document.getElementById(badge.getAttribute('id')),
-            firstBadge = document.getElementById(this.selectedBadge),
-            parent = document.getElementById('validation-expression-row'),
-            temp = document.createComment('')
+          firstBadge = document.getElementById(this.selectedBadge),
+          parent = document.getElementById('validation-expression-row'),
+          temp = document.createComment('')
 
-        parent.insertBefore(temp, firstBadge) 
+        parent.insertBefore(temp, firstBadge)
         secondBadge.replaceWith(temp)
         firstBadge.replaceWith(secondBadge)
         temp.replaceWith(firstBadge)
 
         this.selectedBadge = ''
+
+        this.badgeManager()
       }
+
     },
 
     changeCount(event) {
       var holder = document.getElementById('validation-expression-row'),
-          newValue 
+        newValue
 
       this.testCasesCount = event.target.value
 
@@ -286,7 +297,7 @@ export default {
 
     makeExpression() {
       var expression = document.getElementById('validation-expression-row').textContent
-      
+
       for (let i = 1; i < this.badgeCount; i++) {
         if (document.getElementById('value-badge-input-' + i).value == '') {
           alert('Please fill Value ' + i + '.')
@@ -297,8 +308,20 @@ export default {
       }
 
       console.log(expression)
-    }
+    },
 
+    changeTestCase(val) {
+      this.selectedTestCase += val
+      
+      if (this.expressionBadges[this.selectedTestCase] != undefined) {
+        document.getElementById('validation-expression-row').innerHTML = this.expressionBadges[this.selectedTestCase]
+      }
+    },
+
+    saveExpression() {
+      this.expressionBadges[this.selectedTestCase] = document.getElementById('validation-expression-row').innerHTML
+      console.log(this.expressionBadges)
+    },
   },
   components: {
     Menu,
@@ -361,7 +384,7 @@ export default {
     </div>
     <div class="row">
       <div class="col">
-        <div class="box" id="validation-expression-row"
+        <div class="box" id="validation-expression-row" @change="this.badgeManager()"
           style="display: inline-block; padding: 5px; margin: 0px; margin-bottom: 5px; width: 100%; min-height: 600px;">
         </div>
       </div>
@@ -379,8 +402,10 @@ export default {
                 :v-model="this.testCasesCount" @change="this.changeCount($event)" />
             </div>
             <div class="row" style="font-size: 10px;">
-              <p style="margin-bottom: 5px; text-align: justify;">For challenges of only 1 test case, only 1 board is needed.
-                <em>currentKey</em> then represents the one existing board state. In challenges with more cases, <em>case_num</em>
+              <p style="margin-bottom: 5px; text-align: justify;">For challenges of only 1 test case, only 1 board is
+                needed.
+                <em>currentKey</em> then represents the one existing board state. In challenges with more cases,
+                <em>case_num</em>
                 is used as an iterator. All board states are covered in validation!
               </p>
             </div>
@@ -393,14 +418,17 @@ export default {
               <p style="margin-bottom: 5px;">Everything related to the board is accessible here.</p>
             </div>
             <div class="row" style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px;">
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('board', 'input')">Board Grid
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('board', 'input')">Board
+                Grid
                 (8x8)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('board_spot', 'input')">Board Grid
+              <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                @click="addBadge('board_spot', 'input')">Board Grid
                 (X, Y)
               </button>
               <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('log', 'input')">Log
                 (Last Movement)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('out_of_bounds', 'input')">Out
+              <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                @click="addBadge('out_of_bounds', 'input')">Out
                 of Bounds Spot</button>
             </div>
           </div>
@@ -410,36 +438,36 @@ export default {
             <h6 style="text-align: left; margin-bottom: 5px;">Auxiliary Functions</h6>
           </div>
           <div class="row" style="font-size: 10px;">
-            <p style="margin-bottom: 5px;">To provide computed values from the board's state. Check the Guide if needed.</p>
+            <p style="margin-bottom: 5px;">To provide computed values from the board's state. Check the Guide if needed.
+            </p>
           </div>
           <div class="row"
             style="margin: 0px; grid-gap: 5px; display: grid; grid-template-rows: 45px 45px; grid-template-columns: 100px 100px 100px 100px 100px 100px;">
             <button style="padding: 10px 5px;" class="box" @click="addBadge('isTriangle', 'auxiliary')">Triangle</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('distance', 'auxiliary')">Euclidean Distance</button>
-            <button style="padding: 10px 5px;" class="box"
-              @click="addBadge('count_blue_pieces', 'auxiliary')"># of Blue Pieces</button>
-            <button style="padding: 10px 5px;" class="box"
-              @click="addBadge('count_red_pieces', 'auxiliary')"># of Red Pieces</button>
-            <button style="padding: 10px 5px;" class="box"
-              @click="addBadge('count_empty_spaces', 'auxiliary')">Empty Spaces</button>
-            <button style="padding: 10px 5px;" class="box"
-              @click="addBadge('find_first_red_piece', 'auxiliary')">1st Red Piece</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('distance', 'auxiliary')">Euclidean
+              Distance</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('count_blue_pieces', 'auxiliary')"># of Blue
+              Pieces</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('count_red_pieces', 'auxiliary')"># of Red
+              Pieces</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('count_empty_spaces', 'auxiliary')">Empty
+              Spaces</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_first_red_piece', 'auxiliary')">1st Red
+              Piece</button>
             <!--TODO: add the piece accessors - like color and position and shit, same as going through the board, I guess? -->
             <!--TODO: validation of the expression logic (try catch, errors/exceptions, etc) -->
-            <button style="padding: 10px 5px;" class="box"
-              @click="addBadge('find_first_blue_piece', 'auxiliary')">1st Blue Piece</button>
-            <button style="padding: 10px 5px;" class="box"
-              @click="addBadge('find_first_stack', 'auxiliary')">1st Stack</button>
-            <button style="padding: 10px 5px;" class="box"
-              @click="addBadge('find_blue_pieces', 'auxiliary')">Blue Pieces</button>
-            <button style="padding: 10px 5px;" class="box"
-              @click="addBadge('find_red_pieces', 'auxiliary')">Red Pieces</button>
-            <button style="padding: 10px 5px;" class="box"
-              @click="addBadge('find_stacks', 'auxiliary')">Stacks</button>
-              <button style="padding: 10px 5px;" class="box"
-            @click="addWildcardBadge()">
-            Add Wildcard
-          </button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_first_blue_piece', 'auxiliary')">1st
+              Blue Piece</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_first_stack', 'auxiliary')">1st
+              Stack</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_blue_pieces', 'auxiliary')">Blue
+              Pieces</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_red_pieces', 'auxiliary')">Red
+              Pieces</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_stacks', 'auxiliary')">Stacks</button>
+            <button style="padding: 10px 5px;" class="box" @click="addWildcardBadge()">
+              Add Wildcard
+            </button>
           </div>
         </div>
         <div class="row" style="margin-bottom: 5px;">
@@ -454,31 +482,54 @@ export default {
               style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px 150px;">
               <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('less', 'operators')">
                 &lt; (LESS THAN)</button>
-                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('greater', 'operators')">>
-                    (GREATER THAN)</button>
-                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('equal', 'operators')">=
-                    (EQUAL)</button>
-                  <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                    @click="addBadge('equality', 'operators')">== (EQUALITY)</button>
-                  <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                    @click="addBadge('inequality', 'operators')">!= (INEQUALITY)</button>
-                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('not', 'operators')">!
-                    (NOT)</button>
-                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('and', 'operators')">&&
-                    (AND)</button>
-                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('or', 'operators')">||
-                    (OR)</button>
-                  <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                    @click="addBadge('open_par', 'operators')">( (OPEN PARENTHESIS)</button>
-                  <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                    @click="addBadge('close_par', 'operators')">) (CLOSE PARENTHESIS)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('greater', 'operators')">>
+                (GREATER THAN)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('equal', 'operators')">=
+                (EQUAL)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                @click="addBadge('equality', 'operators')">== (EQUALITY)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                @click="addBadge('inequality', 'operators')">!= (INEQUALITY)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('not', 'operators')">!
+                (NOT)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('and', 'operators')">&&
+                (AND)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('or', 'operators')">||
+                (OR)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                @click="addBadge('open_par', 'operators')">( (OPEN PARENTHESIS)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                @click="addBadge('close_par', 'operators')">) (CLOSE PARENTHESIS)</button>
             </div>
           </div>
         </div>
-        <div class="row" style="display: grid;">
-          <button class="box" style="text-align: left; padding: 5px;" @click="makeExpression()">
-            Validate
-          </button>
+        <div class="col">
+          <div class="row">
+            <h6 style="text-align: left; margin-bottom: 5px;">Validation & Submission</h6>
+          </div>
+          <div class="row" style="font-size: 10px;">
+            <p style="margin-bottom: 5px;">Validate and submit the expression.</p>
+          </div>
+          <div class="row"
+            style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px;">
+            <button class="box" style="text-align: left; padding: 5px;" @click="makeExpression()">
+              Validate
+            </button>
+            <button class="box" v-if="this.selectedTestCase != 1" style="text-align: left; padding: 5px;"
+              @click="changeTestCase(-1)">
+              Previous
+            </button>
+            <button class="box disabled" v-else style="text-align: left; padding: 5px;">
+              Previous
+            </button>
+            <button class="box" v-if="this.selectedTestCase < this.testCasesCount" style="text-align: left; padding: 5px;"
+              @click="changeTestCase(1)">
+              Next
+            </button>
+            <button class="box disabled" v-else style="text-align: left; padding: 5px;">
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -494,5 +545,4 @@ export default {
 
       </div>
     </div>
-  </div>
-</template>
+</div></template>
