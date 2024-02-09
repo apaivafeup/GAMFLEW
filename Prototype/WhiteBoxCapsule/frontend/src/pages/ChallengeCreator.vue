@@ -42,7 +42,9 @@ export default {
     return {
       boardStates: [],
       codeFiles: [],
-      expressionBadges: {},
+      expressionBadges: {
+        1: ''
+      },
       selectedState: '',
       stateName: '',
       selectedCode: '',
@@ -219,15 +221,15 @@ export default {
       button.setAttribute('type', 'button')
       button.setAttribute('class', 'btn-close')
       button.setAttribute('id', 'close-btn-' + this.badgeCount)
+      var id = 'close-btn-' + this.badgeCount
       button.style = 'margin-right: 2.5px;'
 
       badge.innerHTML = button.outerHTML + html
       row.appendChild(badge)
 
-      document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
-        
-        var id = 'close-btn-' + this.badgeCount
-        document.getElementById(id)
+      var closeButton = document.getElementById('close-btn-' + this.badgeCount)
+      closeButton.onclick = () => {
+        var parentElement = document.getElementById(id).parentElement
         for (var c = 1; c < parentElement.children.length; c++) {
           var child = parentElement.children[c]
           if (!isNaN(child.innerHTML))
@@ -235,7 +237,8 @@ export default {
           if (this.selectedBadge == parentElement.getAttribute('id'))
             this.selectedBadge = ''
         }
-        this.parentElement.remove()
+        parentElement.remove()
+        this.saveExpression()
       }
 
       badge.onclick = () => {
@@ -248,7 +251,7 @@ export default {
     },
 
     selectSwitchBadge(badge) {
-      if (this.selectedBadge == badge.getAttribute('id') || document.getElementById(badge.getAttribute('id')) == null || document.getElementById(this.selectedBadge) == null) {
+      if (document.getElementById(badge.getAttribute('id')) == null || (document.getElementById(this.selectedBadge) == null && this.selectedBadge != '')) {
         this.selectedBadge = ''
         return
       }
@@ -268,7 +271,7 @@ export default {
 
         this.selectedBadge = ''
 
-        this.badgeManager()
+        this.saveExpression()
       }
 
     },
@@ -307,7 +310,7 @@ export default {
         expression = expression.replaceAll(i, document.getElementById('value-badge-input-' + i).value)
       }
 
-      console.log(expression)
+      return expression
     },
 
     changeTestCase(val) {
@@ -315,19 +318,21 @@ export default {
       
       if (this.expressionBadges[this.selectedTestCase] != undefined) {
         document.getElementById('validation-expression-row').innerHTML = this.expressionBadges[this.selectedTestCase]
+      } else {
+        document.getElementById('validation-expression-row').innerHTML = ''
       }
     },
 
     saveExpression() {
       this.expressionBadges[this.selectedTestCase] = document.getElementById('validation-expression-row').innerHTML
-      console.log(this.expressionBadges)
+      console.log(this.expressionBadges[this.selectedTestCase])
     },
   },
   components: {
     Menu,
     'code-editor': CodeEditor,
     BoardChecker
-  }
+  },
 }
 </script>
 
@@ -385,7 +390,7 @@ export default {
     <div class="row">
       <div class="col">
         <div class="box" id="validation-expression-row" @change="this.badgeManager()"
-          style="display: inline-block; padding: 5px; margin: 0px; margin-bottom: 5px; width: 100%; min-height: 600px;">
+          style="display: inline-block; padding: 5px; margin: 0px; margin-bottom: 5px; width: 100%; min-height: 610px;">
         </div>
       </div>
       <div class="col">
@@ -418,16 +423,16 @@ export default {
               <p style="margin-bottom: 5px;">Everything related to the board is accessible here.</p>
             </div>
             <div class="row" style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px;">
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('board', 'input')">Board
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('board', 'input')">Board
                 Grid
                 (8x8)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
                 @click="addBadge('board_spot', 'input')">Board Grid
                 (X, Y)
               </button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('log', 'input')">Log
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('log', 'input')">Log
                 (Last Movement)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
                 @click="addBadge('out_of_bounds', 'input')">Out
                 of Bounds Spot</button>
             </div>
@@ -443,29 +448,27 @@ export default {
           </div>
           <div class="row"
             style="margin: 0px; grid-gap: 5px; display: grid; grid-template-rows: 45px 45px; grid-template-columns: 100px 100px 100px 100px 100px 100px;">
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('isTriangle', 'auxiliary')">Triangle</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('distance', 'auxiliary')">Euclidean
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('isTriangle', 'auxiliary')">Triangle</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('distance', 'auxiliary')">Euclidean
               Distance</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('count_blue_pieces', 'auxiliary')"># of Blue
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('count_blue_pieces', 'auxiliary')"># of Blue
               Pieces</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('count_red_pieces', 'auxiliary')"># of Red
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('count_red_pieces', 'auxiliary')"># of Red
               Pieces</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('count_empty_spaces', 'auxiliary')">Empty
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('count_empty_spaces', 'auxiliary')">Empty
               Spaces</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_first_red_piece', 'auxiliary')">1st Red
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_first_red_piece', 'auxiliary')">1st Red
               Piece</button>
-            <!--TODO: add the piece accessors - like color and position and shit, same as going through the board, I guess? -->
-            <!--TODO: validation of the expression logic (try catch, errors/exceptions, etc) -->
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_first_blue_piece', 'auxiliary')">1st
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_first_blue_piece', 'auxiliary')">1st
               Blue Piece</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_first_stack', 'auxiliary')">1st
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_first_stack', 'auxiliary')">1st
               Stack</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_blue_pieces', 'auxiliary')">Blue
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_blue_pieces', 'auxiliary')">Blue
               Pieces</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_red_pieces', 'auxiliary')">Red
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_red_pieces', 'auxiliary')">Red
               Pieces</button>
-            <button style="padding: 10px 5px;" class="box" @click="addBadge('find_stacks', 'auxiliary')">Stacks</button>
-            <button style="padding: 10px 5px;" class="box" @click="addWildcardBadge()">
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_stacks', 'auxiliary')">Stacks</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addWildcardBadge()">
               Add Wildcard
             </button>
           </div>
@@ -512,6 +515,7 @@ export default {
           </div>
           <div class="row"
             style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px;">
+            <!--TODO: validation of the expression logic (try catch, errors/exceptions, etc) -->
             <button class="box" style="text-align: left; padding: 5px;" @click="makeExpression()">
               Validate
             </button>
@@ -536,6 +540,7 @@ export default {
 
     <div class="row">
       <h6 style="text-align: left; margin-bottom: 5px;">Values</h6>
+      <!--TODO: add the piece accessors - like color and position and shit, same as going through the board, I guess? -->
     </div>
     <div class="row" style="font-size: 10px;">
       <p style="margin-bottom: 5px;">Fill the values here.</p>
