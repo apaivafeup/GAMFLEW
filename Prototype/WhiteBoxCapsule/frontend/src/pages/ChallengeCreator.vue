@@ -52,7 +52,7 @@ export default {
       inputBadge: 1,
       dictionary: {
         'board': 'input',
-        'log': 'input.log[X]',
+        'log': 'input.log[X][input.log[X].length - 1]',
         "less": '<',
         'greater': '>',
         'equal': '=',
@@ -103,6 +103,38 @@ export default {
     selectCode(id) {
       this.selectedCode = id
       this.codeString = this.codeFiles[id - 1].content
+    },
+
+    addWildcardBadge() {
+      var row = document.getElementById('validation-expression-row'),
+          badge = document.createElement('span')
+
+      badge.setAttribute('id', 'value-badge-' + this.inputBadge)
+      badge.setAttribute('class', 'badge text-bg-wildcard')
+      badge.setAttribute('style', 'display: inline-flex; width: auto; align-self: center;')
+
+      var button = document.createElement('button')
+      button.setAttribute('type', 'button')
+      button.setAttribute('class', 'btn-close')
+      button.setAttribute('id', 'close-btn-' + this.badgeCount)
+      button.style = 'margin-right: 2.5px;'
+
+      badge.innerHTML = button.outerHTML + this.addValueBadge(this.badgeCount)
+      row.appendChild(badge)
+
+      document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
+        if (!this.parentElement.classList.contains('text-bg-input') && !this.parentElement.classList.contains('text-bg-wildcard')) {
+          for (var c = 1; c < this.parentElement.children.length; c++) {
+            var child = this.parentElement.children[c]
+            if (!isNaN(child.innerHTML))
+              document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
+          }
+        }
+        this.parentElement.remove()
+      }
+
+      this.badgeCount += 1
+
     },
 
     addInputBadge(placeholder) {
@@ -177,7 +209,7 @@ export default {
         html = html.replace('M', this.addValueBadge(this.badgeCount))
       }
 
-      html = html.replace('X', this.addValueBadge(boardAccess))
+      html = html.replaceAll('X', this.addValueBadge(boardAccess))
       html = html.replace('L', this.addValueBadge('input'))
 
       var button = document.createElement('button')
@@ -224,29 +256,18 @@ export default {
       }
     },
 
-    addWildcard() {
-      var button = document.createElement('button')
-      button.setAttribute('type', 'button')
-      button.setAttribute('class', 'btn-close')
-      button.setAttribute('id', 'close-btn-' + this.badgeCount)
-      button.style = 'margin-right: 2.5px;'
-
-      document.getElementById('validation-expression-row').innerHTML += this.addValueBadge(button.outerHTML + this.badgeCount)
-
-      document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
-        if (!this.parentElement.classList.contains('text-bg-input')) {
-          for (var c = 1; c < this.parentElement.children.length; c++) {
-            var child = this.parentElement.children[c]
-            if (!isNaN(child.innerHTML))
-              document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
-          }
-        }
-        this.parentElement.remove()
-      }
-    },
-
     makeExpression() {
       var expression = document.getElementById('validation-expression-row').textContent
+      
+      for (let i = 1; i < this.badgeCount; i++) {
+        if (document.getElementById('value-badge-input-' + i).value == '') {
+          alert('Please fill Value ' + i + '.')
+          return
+        }
+
+        expression = expression.replaceAll(i, document.getElementById('value-badge-input-' + i).value)
+      }
+
       console.log(expression)
     }
 
@@ -344,7 +365,7 @@ export default {
           <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('board', 'input')">Board Grid
             (8x8)</button>
           <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('log', 'input')">Log
-            (Movements)</button>
+            (Last Movement)</button>
           <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('out_of_bounds', 'input')">Out
             of Bounds Spot</button>
         </div>
@@ -357,7 +378,7 @@ export default {
         </div>
         <div class="row" style="margin: 0px;">
           <button style="margin-left: 0px; margin-right: 0px; width: auto; padding: 5px;" class="box"
-            @click="addWildcard()">
+            @click="addWildcardBadge()">
             Add Wildcard
           </button>
           <button style="margin-left: 0px; margin-right: 0px; width: auto; padding: 5px;" class="box"
@@ -378,7 +399,7 @@ export default {
         <div class="row"
           style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px 150px;">
           <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('less', 'operators')">
-              < (LESS THAN)</button>
+            < (LESS THAN)</button>
               <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('greater', 'operators')">>
                 (GREATER THAN)</button>
               <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('equal', 'operators')">=
