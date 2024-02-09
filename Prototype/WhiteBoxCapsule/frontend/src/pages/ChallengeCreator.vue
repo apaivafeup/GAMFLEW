@@ -51,7 +51,8 @@ export default {
       badgeCount: 1,
       inputBadge: 1,
       dictionary: {
-        'board': 'input',
+        'board': 'input[X]',
+        'board_spot': 'input.state[X][I][J]',
         'log': 'input.log[X][input.log[X].length - 1]',
         "less": '<',
         'greater': '>',
@@ -123,7 +124,7 @@ export default {
       row.appendChild(badge)
 
       document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
-        if (!this.parentElement.classList.contains('text-bg-input') && !this.parentElement.classList.contains('text-bg-wildcard')) {
+        if (!this.parentElement.classList.contains('text-bg-input')) {
           for (var c = 1; c < this.parentElement.children.length; c++) {
             var child = this.parentElement.children[c]
             if (!isNaN(child.innerHTML))
@@ -173,9 +174,7 @@ export default {
       }
 
       badge.onclick = function () {
-        if (!this.classList.contains('text-bg-values')) {
-          this.remove()
-        }
+        this.remove()
       }
 
       badge.innerHTML = placeholder
@@ -222,13 +221,12 @@ export default {
       row.appendChild(badge)
 
       document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
-        if (!this.parentElement.classList.contains('text-bg-input')) {
+
           for (var c = 1; c < this.parentElement.children.length; c++) {
             var child = this.parentElement.children[c]
             if (!isNaN(child.innerHTML))
               document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
           }
-        }
         this.parentElement.remove()
       }
 
@@ -248,10 +246,11 @@ export default {
       }
 
       for (var badge of holder.children) {
-        var children = badge.children,
-          last = children[children.length - 1]
-        if (last.classList.contains('text-bg-values') && (last.innerHTML == 'input.currentKey' || last.innerHTML == 'case_num')) {
-          last.innerHTML = newValue
+        var children = badge.children
+        for (var child of children) {
+          if (child.classList.contains('text-bg-values') && (child.innerHTML == 'input.currentKey' || child.innerHTML == 'case_num')) {
+            child.innerHTML = newValue
+          }
         }
       }
     },
@@ -334,125 +333,126 @@ export default {
     <div class="row">
       <div class="col">
         <div class="box" id="validation-expression-row"
-          style="display: inline-block; padding: 5px; margin: 0px; margin-bottom: 5px; width: 100%; min-height: 300px;">
+          style="display: inline-block; padding: 5px; margin: 0px; margin-bottom: 5px; width: 100%; min-height: 600px;">
         </div>
       </div>
       <div class="col">
-        <div class="row">
-          <h6 style="text-align: left; margin-bottom: 5px;">Test Cases Count</h6>
+        <div class="row" style="margin-bottom: 5px;">
+          <div style="width: 50%;">
+            <div class="row">
+              <h6 style="text-align: left; margin-bottom: 5px;">Test Cases Count</h6>
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px;">Challenges with multiple cases require different function calls.</p>
+            </div>
+            <div class="row" style="margin: 0px;">
+              <input style="margin-left: 0px; margin-right: 0px;" class="box" type="number" min="1" max="10" value="1"
+                :v-model="this.testCasesCount" @change="this.changeCount($event)" />
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px; text-align: justify;">For challenges of only 1 test case, only 1 board is needed.
+                <em>currentKey</em> then represents the one existing board state. In challenges with more cases, <em>case_num</em>
+                is used as an iterator. All board states are covered in validation!
+              </p>
+            </div>
+          </div>
+          <div style="width: 50%">
+            <div class="row">
+              <h6 style="text-align: left; margin-bottom: 5px;">Board State</h6>
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px;">Everything related to the board is accessible here.</p>
+            </div>
+            <div class="row" style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px;">
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('board', 'input')">Board Grid
+                (8x8)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('board_spot', 'input')">Board Grid
+                (X, Y)
+              </button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('log', 'input')">Log
+                (Last Movement)</button>
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('out_of_bounds', 'input')">Out
+                of Bounds Spot</button>
+            </div>
+          </div>
         </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">Challenges with multiple cases require different function calls.</p>
-        </div>
-        <div class="row" style="margin: 0px;">
-          <input style="margin-left: 0px; margin-right: 0px;" class="box" type="number" min="1" max="10" value="1"
-            :v-model="this.testCasesCount" @change="this.changeCount($event)" />
-        </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px; text-align: justify;">For challenges of only 1 test case, only 1 board is needed.
-            <em>currentKey</em> then represents 1 existing board state. In challenges with more cases, <em>currentKey</em>
-            is used as an iterator. All board states are covered in validation!
-          </p>
-        </div>
-        <div class="row">
-          <h6 style="text-align: left; margin-bottom: 5px;">Board State</h6>
-        </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">Everything related to the board is accessible here.</p>
-        </div>
-        <div class="row"
-          style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px; grid-template-columns: 200px 200px 200px;">
-          <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('board', 'input')">Board Grid
-            (8x8)</button>
-          <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('log', 'input')">Log
-            (Last Movement)</button>
-          <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('out_of_bounds', 'input')">Out
-            of Bounds Spot</button>
-        </div>
-        <div class="row">
-          <h6 style="text-align: left; margin-bottom: 5px;">Wildcards</h6>
-        </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">JavaScript functions. As they're quite extensive, one can simply write on the
-            input after adding them.</p>
-        </div>
-        <div class="row" style="margin: 0px;">
-          <button style="margin-left: 0px; margin-right: 0px; width: auto; padding: 5px;" class="box"
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="row">
+            <h6 style="text-align: left; margin-bottom: 5px;">Auxiliary Functions</h6>
+          </div>
+          <div class="row" style="font-size: 10px;">
+            <p style="margin-bottom: 5px;">To provide computed values from the board's state. Check the Guide if needed.</p>
+          </div>
+          <div class="row"
+            style="margin: 0px; grid-gap: 5px; display: grid; grid-template-rows: 45px 45px; grid-template-columns: 100px 100px 100px 100px 100px 100px;">
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('isTriangle', 'auxiliary')">Triangle</button>
+            <button style="padding: 10px 5px;" class="box" @click="addBadge('distance', 'auxiliary')">Euclidean Distance</button>
+            <button style="padding: 10px 5px;" class="box"
+              @click="addBadge('count_blue_pieces', 'auxiliary')"># of Blue Pieces</button>
+            <button style="padding: 10px 5px;" class="box"
+              @click="addBadge('count_red_pieces', 'auxiliary')"># of Red Pieces</button>
+            <button style="padding: 10px 5px;" class="box"
+              @click="addBadge('count_empty_spaces', 'auxiliary')">Empty Spaces</button>
+            <button style="padding: 10px 5px;" class="box"
+              @click="addBadge('find_first_red_piece', 'auxiliary')">1st Red Piece</button>
+            <!--TODO: add the piece accessors - like color and position and shit, same as going through the board, I guess? -->
+            <!--TODO: validation of the expression logic (try catch, errors/exceptions, etc) -->
+            <button style="padding: 10px 5px;" class="box"
+              @click="addBadge('find_first_blue_piece', 'auxiliary')">1st Blue Piece</button>
+            <button style="padding: 10px 5px;" class="box"
+              @click="addBadge('find_first_stack', 'auxiliary')">1st Stack</button>
+            <button style="padding: 10px 5px;" class="box"
+              @click="addBadge('find_blue_pieces', 'auxiliary')">Blue Pieces</button>
+            <button style="padding: 10px 5px;" class="box"
+              @click="addBadge('find_red_pieces', 'auxiliary')">Red Pieces</button>
+            <button style="padding: 10px 5px;" class="box"
+              @click="addBadge('find_stacks', 'auxiliary')">Stacks</button>
+              <button style="padding: 10px 5px;" class="box"
             @click="addWildcardBadge()">
             Add Wildcard
           </button>
-          <button style="margin-left: 0px; margin-right: 0px; width: auto; padding: 5px;" class="box"
-            @click="makeExpression()">
-            Validate
-          </button>
+          </div>
         </div>
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="col">
+            <div class="row">
+              <h6 style="text-align: left; margin-bottom: 5px;">Operators</h6>
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px;">To create Boolean expressions.</p>
+            </div>
+            <div class="row"
+              style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px 150px;">
+              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('less', 'operators')">
+                < (LESS THAN)</button>
+                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('greater', 'operators')">>
+                    (GREATER THAN)</button>
+                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('equal', 'operators')">=
+                    (EQUAL)</button>
+                  <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                    @click="addBadge('equality', 'operators')">== (EQUALITY)</button>
+                  <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                    @click="addBadge('inequality', 'operators')">!= (INEQUALITY)</button>
+                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('not', 'operators')">!
+                    (NOT)</button>
+                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('and', 'operators')">&&
+                    (AND)</button>
+                  <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('or', 'operators')">||
+                    (OR)</button>
+                  <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                    @click="addBadge('open_par', 'operators')">( (OPEN PARENTHESIS)</button>
+                  <button style="margin-left: 0px; margin-right: 0px;" class="box"
+                    @click="addBadge('close_par', 'operators')">) (CLOSE PARENTHESIS)</button>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <button style="margin-left: 0px; margin-right: 0px; width: auto; padding: 5px;" class="box"
+          @click="makeExpression()">
+          Validate
+        </button>
       </div>
     </div>
-    <div class="row" style="margin-bottom: 5px;">
-      <div class="col">
-        <div class="row">
-          <h6 style="text-align: left; margin-bottom: 5px;">Operators</h6>
-        </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">To create Boolean expressions.</p>
-        </div>
-        <div class="row"
-          style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px 150px;">
-          <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('less', 'operators')">
-            < (LESS THAN)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('greater', 'operators')">>
-                (GREATER THAN)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('equal', 'operators')">=
-                (EQUAL)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                @click="addBadge('equality', 'operators')">== (EQUALITY)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                @click="addBadge('inequality', 'operators')">!= (INEQUALITY)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('not', 'operators')">!
-                (NOT)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('and', 'operators')">&&
-                (AND)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('or', 'operators')">||
-                (OR)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                @click="addBadge('open_par', 'operators')">( (OPEN PARENTHESIS)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                @click="addBadge('close_par', 'operators')">) (CLOSE PARENTHESIS)</button>
-        </div>
-      </div>
-      <div class="col">
-        <div class="row">
-          <h6 style="text-align: left; margin-bottom: 5px;">Auxiliary Functions</h6>
-        </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">To provide computed values from the board's state. Check the Guide if needed.</p>
-        </div>
-        <div class="row"
-          style="margin: 0px; grid-gap: 5px; display: grid; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px 150px;">
-          <button style="padding: 10px 5px;" class="box" @click="addBadge('isTriangle', 'auxiliary')">isTriangle</button>
-          <button style="padding: 10px 5px;" class="box" @click="addBadge('distance', 'auxiliary')">distance</button>
-          <button style="padding: 10px 5px;" class="box"
-            @click="addBadge('count_blue_pieces', 'auxiliary')">count_blue_pieces</button>
-          <button style="padding: 10px 5px;" class="box"
-            @click="addBadge('count_red_pieces', 'auxiliary')">count_red_pieces</button>
-          <button style="padding: 10px 5px;" class="box"
-            @click="addBadge('count_empty_spaces', 'auxiliary')">count_empty_spaces</button>
-          <button style="padding: 10px 5px;" class="box"
-            @click="addBadge('find_first_red_piece', 'auxiliary')">find_first_red_piece</button>
-          <!--TODO: add the piece accessors - like color and position and shit, same as going through the board, I guess? -->
-          <!--TODO: validation of the expression logic (try catch, errors/exceptions, etc) -->
-          <button style="padding: 10px 5px;" class="box"
-            @click="addBadge('find_first_blue_piece', 'auxiliary')">find_first_blue_piece</button>
-          <button style="padding: 10px 5px;" class="box"
-            @click="addBadge('find_first_stack', 'auxiliary')">find_first_stack</button>
-          <button style="padding: 10px 5px;" class="box"
-            @click="addBadge('find_blue_pieces', 'auxiliary')">find_blue_pieces</button>
-          <button style="padding: 10px 5px;" class="box"
-            @click="addBadge('find_red_pieces', 'auxiliary')">find_red_pieces</button>
-          <button style="padding: 10px 5px;" class="box"
-            @click="addBadge('find_stacks', 'auxiliary')">find_stacks</button>
-        </div>
-      </div>
     </div>
 
     <div class="row">
