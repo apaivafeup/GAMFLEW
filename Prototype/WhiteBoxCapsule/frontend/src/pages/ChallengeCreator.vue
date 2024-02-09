@@ -50,6 +50,7 @@ export default {
       testCasesCount: 1,
       badgeCount: 1,
       inputBadge: 1,
+      selectedBadge: '',
       dictionary: {
         'board': 'input[X]',
         'board_spot': 'input.state[X][I][J]',
@@ -186,6 +187,7 @@ export default {
         badge = document.createElement('span')
 
       badge.setAttribute('class', 'badge text-bg-' + type)
+      badge.setAttribute('id', 'expression-badge-' + this.badgeCount)
 
       var boardAccess = 'case_num'
       if (this.testCasesCount == 1) {
@@ -221,7 +223,6 @@ export default {
       row.appendChild(badge)
 
       document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
-
           for (var c = 1; c < this.parentElement.children.length; c++) {
             var child = this.parentElement.children[c]
             if (!isNaN(child.innerHTML))
@@ -230,7 +231,29 @@ export default {
         this.parentElement.remove()
       }
 
+      badge.onclick = () => {
+        this.selectSwitchBadge(badge)
+      }
       this.badgeCount += 1
+    },
+
+    selectSwitchBadge(badge) {
+      if (this.selectedBadge == '') {
+          this.selectedBadge = badge.getAttribute('id')
+          badge.classList.add('selected')
+      } else {
+        var secondBadge = document.getElementById(badge.getAttribute('id')),
+            firstBadge = document.getElementById(this.selectedBadge),
+            parent = document.getElementById('validation-expression-row'),
+            temp = document.createComment('')
+
+        parent.insertBefore(temp, firstBadge) 
+        secondBadge.replaceWith(temp)
+        firstBadge.replaceWith(secondBadge)
+        temp.replaceWith(firstBadge)
+
+        this.selectedBadge = ''
+      }
     },
 
     changeCount(event) {
@@ -424,7 +447,7 @@ export default {
             <div class="row"
               style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px 150px;">
               <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('less', 'operators')">
-                < (LESS THAN)</button>
+                &lt; (LESS THAN)</button>
                   <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('greater', 'operators')">>
                     (GREATER THAN)</button>
                   <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('equal', 'operators')">=
@@ -445,14 +468,13 @@ export default {
                     @click="addBadge('close_par', 'operators')">) (CLOSE PARENTHESIS)</button>
             </div>
           </div>
+        </div>
+        <div class="row" style="display: grid;">
+          <button class="box" style="text-align: left; padding: 5px;" @click="makeExpression()">
+            Validate
+          </button>
+        </div>
       </div>
-      <div class="row">
-        <button style="margin-left: 0px; margin-right: 0px; width: auto; padding: 5px;" class="box"
-          @click="makeExpression()">
-          Validate
-        </button>
-      </div>
-    </div>
     </div>
 
     <div class="row">
