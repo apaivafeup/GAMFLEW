@@ -227,6 +227,8 @@ export default {
             var child = this.parentElement.children[c]
             if (!isNaN(child.innerHTML))
               document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
+              if (this.selectedBadge == this.parentElement.getAttribute('id'))
+                this.selectedBadge = ''
           }
         this.parentElement.remove()
       }
@@ -238,9 +240,13 @@ export default {
     },
 
     selectSwitchBadge(badge) {
+      if (this.selectedBadge == badge.getAttribute('id') || document.getElementById(badge.getAttribute('id')) == null || document.getElementById(this.selectedBadge) == null) {
+        this.selectedBadge = ''
+        return
+      }
+
       if (this.selectedBadge == '') {
           this.selectedBadge = badge.getAttribute('id')
-          badge.classList.add('selected')
       } else {
         var secondBadge = document.getElementById(badge.getAttribute('id')),
             firstBadge = document.getElementById(this.selectedBadge),
