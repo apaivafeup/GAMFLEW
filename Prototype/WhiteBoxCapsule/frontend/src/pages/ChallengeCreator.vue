@@ -14,6 +14,7 @@ import { boardCreatorStore } from '../store/boardCreator'
 
 import hljs from 'highlight.js';
 import CodeEditor from "simple-code-editor";
+import * as utils from '../store/utils.js'
 
 export default {
   async beforeMount() {
@@ -81,7 +82,10 @@ export default {
         'find_blue_pieces': 'utils.find_blue_pieces(L, I)',
         'find_red_pieces': 'utils.find_red_pieces(L, I)',
         'find_stacks': 'utils.find_stacks(L, I)',
-      }
+      },
+      valid: true,
+      error: 'Errors will appear here.',
+      success: 'No errors found!'
     }
   },
 
@@ -96,8 +100,6 @@ export default {
 
       await this.$axios.post(this.$api_link + '/create/code-file', body)
         .then(response => {
-          console.log(response)
-          console.log(body)
         });
     },
 
@@ -304,7 +306,7 @@ export default {
       for (let i = 1; i < this.badgeCount; i++) {
         if (document.getElementById('value-badge-input-' + i).value == '') {
           alert('Please fill Value ' + i + '.')
-          return
+          return -1
         }
 
         expression = expression.replaceAll(i, document.getElementById('value-badge-input-' + i).value)
@@ -315,7 +317,7 @@ export default {
 
     changeTestCase(val) {
       this.selectedTestCase += val
-      
+
       if (this.expressionBadges[this.selectedTestCase] != undefined) {
         document.getElementById('validation-expression-row').innerHTML = this.expressionBadges[this.selectedTestCase]
       } else {
@@ -325,8 +327,24 @@ export default {
 
     saveExpression() {
       this.expressionBadges[this.selectedTestCase] = document.getElementById('validation-expression-row').innerHTML
-      console.log(this.expressionBadges[this.selectedTestCase])
     },
+
+    validateExpression() {
+      try {
+        var expression = this.makeExpression()
+        if (expression != -1) {
+          eval(expression)
+        }
+      }
+      catch (err) {
+        if (err instanceof SyntaxError || err instanceof TypeError || err instanceof ReferenceError) {
+          this.error = err + '.';
+          this.valid = false
+          return
+        }
+      }
+      this.valid = true
+    }
   },
   components: {
     Menu,
@@ -423,14 +441,16 @@ export default {
               <p style="margin-bottom: 5px;">Everything related to the board is accessible here.</p>
             </div>
             <div class="row" style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px;">
-              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('board', 'input')">Board
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('board', 'input')">Board
                 Grid
                 (8x8)</button>
               <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
                 @click="addBadge('board_spot', 'input')">Board Grid
                 (X, Y)
               </button>
-              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('log', 'input')">Log
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('log', 'input')">Log
                 (Last Movement)</button>
               <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
                 @click="addBadge('out_of_bounds', 'input')">Out
@@ -448,26 +468,37 @@ export default {
           </div>
           <div class="row"
             style="margin: 0px; grid-gap: 5px; display: grid; grid-template-rows: 45px 45px; grid-template-columns: 100px 100px 100px 100px 100px 100px;">
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('isTriangle', 'auxiliary')">Triangle</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('distance', 'auxiliary')">Euclidean
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('isTriangle', 'auxiliary')">Triangle</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('distance', 'auxiliary')">Euclidean
               Distance</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('count_blue_pieces', 'auxiliary')"># of Blue
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('count_blue_pieces', 'auxiliary')"># of Blue
               Pieces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('count_red_pieces', 'auxiliary')"># of Red
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('count_red_pieces', 'auxiliary')"># of Red
               Pieces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('count_empty_spaces', 'auxiliary')">Empty
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('count_empty_spaces', 'auxiliary')">Empty
               Spaces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_first_red_piece', 'auxiliary')">1st Red
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_first_red_piece', 'auxiliary')">1st Red
               Piece</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_first_blue_piece', 'auxiliary')">1st
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_first_blue_piece', 'auxiliary')">1st
               Blue Piece</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_first_stack', 'auxiliary')">1st
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_first_stack', 'auxiliary')">1st
               Stack</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_blue_pieces', 'auxiliary')">Blue
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_blue_pieces', 'auxiliary')">Blue
               Pieces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_red_pieces', 'auxiliary')">Red
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_red_pieces', 'auxiliary')">Red
               Pieces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addBadge('find_stacks', 'auxiliary')">Stacks</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_stacks', 'auxiliary')">Stacks</button>
             <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addWildcardBadge()">
               Add Wildcard
             </button>
@@ -515,8 +546,7 @@ export default {
           </div>
           <div class="row"
             style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px;">
-            <!--TODO: validation of the expression logic (try catch, errors/exceptions, etc) -->
-            <button class="box" style="text-align: left; padding: 5px;" @click="makeExpression()">
+            <button class="box" style="text-align: left; padding: 5px;" @click="validateExpression()">
               Validate
             </button>
             <button class="box" v-if="this.selectedTestCase != 1" style="text-align: left; padding: 5px;"
@@ -538,16 +568,39 @@ export default {
       </div>
     </div>
 
-    <div class="row">
-      <h6 style="text-align: left; margin-bottom: 5px;">Values</h6>
-      <!--TODO: add the piece accessors - like color and position and shit, same as going through the board, I guess? -->
-    </div>
-    <div class="row" style="font-size: 10px;">
-      <p style="margin-bottom: 5px;">Fill the values here.</p>
-    </div>
-    <div class="row">
-      <div class="col" id="value-badges-inputs">
+    <div style="margin-bottom: 10px;">
+      <div class="row">
+        <h6 style="text-align: left; margin-bottom: 5px;">Values</h6>
+      </div>
+      <div class="row" style="font-size: 10px;">
+        <p style="margin-bottom: 5px;">A piece (in any board spot) includes position <em>(x, y)</em> and color (empty,
+          red, blue, stack). You can use any JavaScript function to fill these values, as long as you follow syntax.</p>
+      </div>
+      <div class="row">
+        <div class="col" id="value-badges-inputs">
 
+        </div>
       </div>
     </div>
-</div></template>
+    <div>
+      <div class="row">
+        <h6 style="text-align: left; margin-bottom: 5px;">Errors</h6>
+      </div>
+      <div class="row" style="font-size: 10px;">
+        <p style="margin-bottom: 5px;">Potential validation errors will appear here. Know that semantic errors are yours
+          to catch!</p>
+      </div>
+      <div class="row" v-if="this.valid">
+        <div id="error-info" class="alert alert-success player-info" style="margin: 0px 10px; width: 98%">
+          {{ this.success }}
+        </div>
+      </div>
+      <div class="row" v-else>
+        <div id="error-info" class="alert alert-danger player-info" style="margin: 0px 10px; width: 98%;" >
+          {{ this.error }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>
