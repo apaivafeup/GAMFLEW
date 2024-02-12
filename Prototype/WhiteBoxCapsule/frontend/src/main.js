@@ -15,7 +15,7 @@ import { Router } from './router.js'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faTrophy, faListCheck, faAward, faClock, faEdit, faCrown } from '@fortawesome/free-solid-svg-icons'
+import { faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faRightLeft } from '@fortawesome/free-solid-svg-icons'
 
 import Toast, { POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";
@@ -25,7 +25,7 @@ import axios from 'axios'
 
 import VueHighlightJS from 'vue3-highlightjs'
 
-library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown)
+library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faRightLeft)
 
 const pinia = createPinia()
 const app = createApp(App)

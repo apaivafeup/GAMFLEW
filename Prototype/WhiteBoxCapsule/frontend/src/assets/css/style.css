@@ -15,7 +15,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   overflow: scroll;
-  padding: 15px!important;
+  padding: 15px !important;
 }
 
 .dark-theme {
@@ -71,7 +71,7 @@ body {
 
 input {
   border: var(--box-border);
-  padding-left: 5px!important;
+  padding-left: 5px !important;
 }
 
 pre {
@@ -79,7 +79,7 @@ pre {
   background: hsl(30, 80%, 90%);
 }
 
-.code-area > textarea {
+.code-area>textarea {
   background-color: var(--bs-gray-100) !important;
   color: var(--bs-black-200) !important;
 }
@@ -250,8 +250,8 @@ pre {
 }
 
 .menu-button.selected {
-  background-color: rgb(169, 89, 255)!important;
-  color: white!important;
+  background-color: rgb(169, 89, 255) !important;
+  color: white !important;
   border: 1px solid var(--border-color);
 }
 
@@ -503,7 +503,7 @@ textarea {
   color: white !important;
 }
 
-#code-block-example > code.language-javascript {
+#code-block-example>code.language-javascript {
   margin-left: -40px;
 }
 
@@ -526,7 +526,7 @@ input[type='number'] {
 }
 
 .Vue-Toastification__toast--warning {
-  background-color: rgb(169, 89, 255)!important;
+  background-color: rgb(169, 89, 255) !important;
 }
 
 .badge {
@@ -537,10 +537,6 @@ input[type='number'] {
   font-weight: normal;
   align-items: center;
   display: inline-flex;
-}
-
-.badge:hover:not(.text-bg-values) {
-  background-color: rgb(169, 89, 255)!important;
 }
 
 .badge.text-bg-values {
@@ -567,6 +563,20 @@ input[type='number'] {
   background-color: rgb(42, 177, 159);
 }
 
-.btn-close:active {
+.btn-close:active {}
 
+.btn-swap {
+  box-sizing: content-box;
+  width: 1em;
+  height: 1em;
+  padding: 0.25em 0.25em;
+  color: rgb(169, 89, 255);
+  background-color: var(--background-color) !important;
+  border: 0;
+  border-radius: 0.375rem;
+  opacity: 0.5;
+}
+
+.btn-swap:hover {
+  opacity: 0.75;
 }

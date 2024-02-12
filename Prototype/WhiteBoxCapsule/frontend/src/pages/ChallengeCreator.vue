@@ -1,3 +1,350 @@
+<template>
+  <div class="row" style="text-align: center;">
+    <h2>Challenge Creator</h2>
+  </div>
+  <div class="container" style="display: flex; justify-content: center; margin-bottom: 10px;">
+    <div class="row" style="justify-content: center; display: flex; flex-direction: row;">
+      <div class="col">
+        <div class="row" style="width: 100%; margin: 0px;">
+          <h5 style="padding: 0px; margin-bottom: 5px;">Code File</h5>
+        </div>
+        <div class="row" style="font-size: 10px;">
+          <p style="margin-bottom: 5px;">Choose an existing code file below.</p>
+        </div>
+        <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
+          <select class="button is-primary guide-button" style="width: 650px;">
+            <option @click="this.selectCode(code.id)" v-for="code in codeFiles" :value="code.id">{{ code.name }}</option>
+          </select>
+        </div>
+        <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
+          <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="440px" data-line="1"
+            :prismjs="true" :name="name" :code="codeString" lang="javascript" prism-js
+            style="font-size: 16px; width: 650px;" :copy-icon="false" :copy-button="false" :copy-tab="false"
+            :tabs="false" />
+        </div>
+      </div>
+      <div class="col">
+        <div class="row" style="width: 100%; margin: 0px;">
+          <h5 style="padding: 0px; margin-bottom: 5px;">Board State</h5>
+        </div>
+        <div class="row" style="font-size: 10px;">
+          <p style="margin-bottom: 5px;">Choose an existing board state below.</p>
+        </div>
+        <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
+          <select class="button is-primary guide-button">
+            <option @click="this.selectState(state.id)" v-for="state in boardStates" :value="state.id">{{ state.name }}
+            </option>
+          </select>
+        </div>
+        <div class="row" style="padding: 0px; margin: 0px;">
+          <BoardChecker />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="display: flex; justify-content: center; flex-direction: column;">
+    <div class="row" style="width: 100%; text-align: left; justify-content: start; display: flex;">
+      <h5 style="text-align: left; margin-bottom: 5px;">Validation Expression Maker</h5>
+    </div>
+    <div class="row" style="font-size: 10px;">
+      <p style="margin-bottom: 5px;">If a submission is correct, the expression must return True.</p>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="box" id="validation-expression-row" @change="this.badgeManager()"
+          style="display: inline-block; padding: 5px; margin: 0px; margin-bottom: 5px; width: 100%; min-height: 687.5px;">
+        </div>
+      </div>
+      <div class="col">
+        <div class="row" style="margin-bottom: 5px;">
+          <div style="width: 50%;">
+            <div class="row">
+              <h6 style="text-align: left; margin-bottom: 5px;">Test Cases Count</h6>
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px;">Challenges with multiple cases require different function calls.</p>
+            </div>
+            <div class="row" style="margin: 0px;">
+              <input style="margin-left: 0px; margin-right: 0px;" class="box" type="number" min="1" max="10" value="1"
+                :v-model="this.testCasesCount" @change="this.changeCount($event)" />
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px; text-align: justify;">For challenges of only 1 test case, only 1 board is
+                needed.
+                <em>currentKey</em> then represents the one existing board state. In challenges with more cases,
+                <em>case_num</em>
+                is used as an iterator. All board states are covered in validation!
+              </p>
+            </div>
+          </div>
+          <div style="width: 50%">
+            <div class="row">
+              <h6 style="text-align: left; margin-bottom: 5px;">Board State</h6>
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px;">Everything related to the board is accessible here.</p>
+            </div>
+            <div class="row" style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px;">
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('board', 'input')">Board
+                Grid
+                (8x8)</button>
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('board_spot', 'input')">Board Grid
+                (X, Y)
+              </button>
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('log', 'input')">Log
+                (Last Movement)</button>
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('out_of_bounds', 'input')">Out
+                of Bounds Spot</button>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="row">
+            <h6 style="text-align: left; margin-bottom: 5px;">Auxiliary Functions</h6>
+          </div>
+          <div class="row" style="font-size: 10px;">
+            <p style="margin-bottom: 5px;">To provide computed values from the board's state. Check the Guide if needed.
+            </p>
+          </div>
+          <div class="row"
+            style="margin: 0px; grid-gap: 6px; display: grid; grid-template-rows: 45px 45px; grid-template-columns: 100px 100px 100px 100px 100px 100px;">
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('isTriangle', 'auxiliary')">Triangle</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('distance', 'auxiliary')">Euclidean
+              Distance</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('count_blue_pieces', 'auxiliary')"># of Blue
+              Pieces</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('count_red_pieces', 'auxiliary')"># of Red
+              Pieces</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('count_empty_spaces', 'auxiliary')">Empty
+              Spaces</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_first_red_piece', 'auxiliary')">1st Red
+              Piece</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_first_blue_piece', 'auxiliary')">1st
+              Blue Piece</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_first_stack', 'auxiliary')">1st
+              Stack</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_blue_pieces', 'auxiliary')">Blue
+              Pieces</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_red_pieces', 'auxiliary')">Red
+              Pieces</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box"
+              @click="addBadge('find_stacks', 'auxiliary')">Stacks</button>
+            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addWildcardBadge()">
+              Add Wildcard
+            </button>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="col">
+            <div class="row">
+              <h6 style="text-align: left; margin-bottom: 5px;">Operators</h6>
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px;">To create Boolean expressions.</p>
+            </div>
+            <div class="row"
+              style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 35px 35px; grid-template-columns: 100px 100px 100px 100px 100px 100px;">
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('less', 'operators')">
+                &lt;</button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('greater', 'operators')">>
+                </button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('equal', 'operators')">=
+                </button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('equality', 'operators')">== (SAME AS)</button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('inequality', 'operators')">!= (DIFFERENT)</button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('not', 'operators')">!
+                (NOT)</button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('and', 'operators')">&&
+                (AND)</button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('or', 'operators')">||
+                (OR)</button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('open_par', 'operators')">(</button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('close_par', 'operators')">)</button>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="col">
+            <div class="row">
+              <h6 style="text-align: left; margin-bottom: 5px;">Precondition or Test</h6>
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px; text-align: justify;">Preconditions must pass along with tests (they're verified before tests).
+                In multiple test cases, <strong>they're applied before every test</strong>. They're not required.</p>
+            </div>
+            <div class="row"
+              style="margin: 0px;">
+              <button id="precondition-label" class="box" style="width: 100%; height: 45px; text-align: left; padding: 5px; background: rgb(169, 89, 255);" v-if="this.expressionType[this.selectedTestCase] != 'test'" @click="this.expressionType[this.selectedTestCase] = 'test'">
+                Precondition
+              </button>
+              <button id="test-label" class="box" style="width: 100%; height: 45px; text-align: left; padding: 5px; background: #8adc6d;" v-else @click="this.expressionType[this.selectedTestCase] = 'precondition'">
+                Test
+              </button>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <h6 style="text-align: left; margin-bottom: 5px;">Coverage & Difficulty</h6>
+            </div>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular coverage type associated.<br/>A difficulty level is also required.</p>
+            </div>
+            <div class="row"
+              style="margin: 0px;">
+              <select class="button is-primary guide-button">
+                <option @click="this.selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{ coverage }}
+                </option>
+              </select>
+              <select class="button is-primary guide-button">
+                <option @click="this.selectDifficulty(difficulty)" v-for="difficulty in difficulties" :value="difficulty">{{ difficulty }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="row">
+            <h6 style="text-align: left; margin-bottom: 5px;">Checking for Errors</h6>
+          </div>
+          <div class="row" style="font-size: 10px;">
+            <p style="margin-bottom: 5px;">Validate and submit the expression.</p>
+          </div>
+          <div class="row"
+            style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px; grid-template-columns: 150px 150px 150px 150px;">
+            <button class="box" style="text-align: left; padding: 5px;" @click="checkExpression()">
+              Check Errors
+            </button>
+            <button class="box" v-if="this.selectedTestCase != 1" style="text-align: left; padding: 5px;"
+              @click="changeTestCase(-1)">
+              Previous
+            </button>
+            <button class="box disabled" v-else style="text-align: left; padding: 5px;">
+              Previous
+            </button>
+            <button class="box" v-if="this.selectedTestCase < this.testCasesCount" style="text-align: left; padding: 5px;"
+              @click="changeTestCase(1)">
+              Next
+            </button>
+            <button class="box disabled" v-else style="text-align: left; padding: 5px;">
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <div class="row">
+        <h6 style="text-align: left; margin-bottom: 5px;">Values</h6>
+      </div>
+      <div class="row" style="font-size: 10px;">
+        <p style="margin-bottom: 5px;">A piece (in any board spot) includes position <em>(x, y)</em> and color (empty,
+          red, blue, stack). You can use any JavaScript function to fill these values, as long as you follow syntax.</p>
+      </div>
+      <div class="row">
+        <div class="col" id="value-badges-inputs">
+
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom: 7.5px;">
+      <div class="row">
+        <h6 style="text-align: left; margin-bottom: 5px;">Errors</h6>
+      </div>
+      <div class="row" style="font-size: 10px;">
+        <p style="margin-bottom: 5px;">Potential validation errors will appear here. Know that semantic errors are yours
+          to catch!</p>
+      </div>
+      <div class="row" v-if="this.valid[this.selectedTestCase]">
+        <div id="error-info" class="alert alert-success player-info" style="margin: 0px 10px; width: 98%">
+          {{ this.success }}
+        </div>
+      </div>
+      <div class="row" v-else>
+        <div id="error-info" class="alert alert-danger player-info" style="margin: 0px 10px; width: 98%;">
+          {{ this.errors[this.selectedTestCase] }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="row">
+        <h5 style="text-align: left; margin-bottom: 5px;">Challenge Details</h5>
+      </div>
+      <div class="row" style="font-size: 10px; margin-bottom: 7.5px;">
+        <p style="margin-bottom: 5px;">Fill out these details for the challenge.</p>
+      </div>
+      <div class="row" style="margin-bottom: 5px;">
+        <div class="col" id="name-input">
+          <h6 style="text-align: left; margin-bottom: 5px;">Name</h6>
+          <input id="input-name-box" class="box" @change="this.changeName($event)" type="text" placeholder="Challenge X.Y: Challenge Name" style="margin: 0px; width: 100%; font-size: 18px;"/>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 5px;">
+        <div class="col" id="description-input">
+          <h6 style="text-align: left; margin-bottom: 5px;">Description</h6>
+          <input id="input-description-box" @change="this.changeDescription($event)" class="box" type="text" placeholder="Anything about the challenge!" style="margin: 0px; width: 100%; font-size: 18px;"/>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 5px;">
+        <div class="col" id="hint-input" >
+          <h6 style="text-align: left; margin-bottom: 5px;">Hint</h6>
+          <input id="input-hint-box" @change="this.changeHint($event)" class="box" type="text" placeholder="Anything to help the player!" style="margin: 0px; width: 100%; font-size: 18px;"/>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 5px;">
+        <div class="col" id="objective-input">
+          <h6 style="text-align: left; margin-bottom: 5px;">Objective</h6>
+          <input id="input-objective-box" @change="this.changeObjective($event)" class="box" type="text" placeholder="[COVERAGE] coverage of line X." style="margin: 0px; width: 100%; font-size: 18px;"/>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 7.5px;">
+        <div class="col" id="score-input">
+          <h6 style="text-align: left; margin-bottom: 5px;">Score</h6>
+          <p style="font-size: 10px; margin-bottom: 5px;">The more test cases, the more points a player should get!</p>
+          <input id="input-score-box" inputmode="numeric" @change="this.changeScore($event)" class="box" type="number" max-length="5" min="100" pattern="[0-9]{5}" value="100" step="25" style="margin: 0px; width: 100%; font-size: 18px;"/>
+        </div>
+        <div class="col" id="condition-count-input" v-if="this.selectedCoverage == 'condition' || this.selectedCoverage == 'mcdc' || this.selectedCoverage == 'path'">
+          <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
+          <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup> possible test cases!</p>
+          <input id="input-condition-box" @change="this.changeConditionCount($event)" class="box" type="number" placeholder="Number of variables." value="1" min="0" max="5" style="margin: 0px; width: 100%; font-size: 18px;"/>
+        </div>
+        <div class="col disabled" id="condition-count-input" v-else>
+          <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
+          <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup> possible test cases!</p>
+          <input id="input-condition-box" @change="this.changeConditionCount($event)" class="box" type="number" max="10" placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;"/>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin: 5px; justify-content: center; display: flex;">
+      <button class="box" style="padding: 7.5px;" @click="validateExpression()">
+        Validate
+      </button>
+    </div>
+    
+
+  </div>
+</template>
+
 <script setup>
 import 'prismjs'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
@@ -23,7 +370,7 @@ export default {
     await this.$axios.get(this.$api_link + '/board-states').then((response) => {
       response.data.forEach((board_state) => {
         this.boardStates.push(board_state)
-        this.selectedState = 1
+        this.selectedBoard = 1
       })
     })
 
@@ -52,10 +399,23 @@ export default {
       inputsValues: {
         1: []
       },
-      selectedState: '',
+      expressionType: {
+        1: 'test'
+      },
+      selectedBoard: '',
+      selectedDifficulty: '',
+      selectedCoverage: '',
       stateName: '',
       selectedCode: '',
       codeString: '',
+      challengeName: '',
+      challengeDescription: '',
+      challengeHint: '',
+      challengeScore: 100,
+      challengeObjective: '',
+      conditionCount: 0,
+      coverageTypes: ['statement', 'decision', 'condition', 'mcdc', 'path'],
+      difficulties: ['Very Easy', 'Easy', 'Normal', 'Hard', 'Very Hard'],
       selectedInput: '',
       testCasesCount: 1,
       selectedTestCase: 1,
@@ -92,7 +452,6 @@ export default {
       valid: {
         1: true
       },
-      error: 'Errors will appear here.',
       errors: {
         1: 'Errors will appear here.'
       },
@@ -114,14 +473,49 @@ export default {
         });
     },
 
+    changeName(event) {
+      this.challengeName = event.target.value;
+    },
+
+    changeDescription(event) {
+      this.challengeDescription = event.target.value;
+    },
+
+    changeHint(event) {
+      this.challengeHint = event.target.value;
+    },
+
+    changeObjective(event) {
+      this.challengeObjective = event.target.value;
+    },
+
+    changeScore(event) {
+      if (isNaN(event.target.value)) {
+        event.target.value = 100
+      }
+      this.challengeScore = event.target.value;
+    },
+
+    changeConditionCount(event) {
+      this.conditionCount = event.target.value;
+    },
+
     selectState(id) {
-      this.selectedState = id
+      this.selectedBoard = id
       this.boardCreator.changeState(this.boardStates[id - 1])
     },
 
     selectCode(id) {
       this.selectedCode = id
       this.codeString = this.codeFiles[id - 1].content
+    },
+
+    selectCoverage(coverage) {
+      this.selectedCoverage = coverage
+    },
+
+    selectDifficulty(diff) {
+      this.selectedDifficulty = diff
     },
 
     addWildcardBadge() {
@@ -171,7 +565,7 @@ export default {
       input = document.createElement('input')
       input.setAttribute('id', 'value-badge-input-' + this.inputBadge)
       input.setAttribute('type', 'text')
-      input.setAttribute('class', 'box')
+      input.setAttribute('class', 'box value-badge-input')
       input.setAttribute('style', 'width: 85%; max-width: auto;')
       input.value = placeholder
 
@@ -237,7 +631,20 @@ export default {
       var id = 'close-btn-' + this.badgeCount
       button.style = 'margin-right: 2.5px;'
 
-      badge.innerHTML = button.outerHTML + html
+      var button2 = document.createElement('button')
+      button2.setAttribute('type', 'button')
+      button2.setAttribute('class', 'btn-swap')
+      button2.setAttribute('id', 'swap-btn-' + this.badgeCount)
+      var swapId = 'swap-btn-' + this.badgeCount
+      button2.style = 'margin-right: 2.5px;'
+
+      var icon = document.createElement('font-awesome-icon')
+      icon.setAttribute('icon', 'fa-right-left')
+      icon.setAttribute('style', 'color: rgb(169, 89, 255)!important')
+
+      button2.innerHTML = "<font-awesome-icon icon='fa-right-left' style='color: rgb(169, 89, 255)!important;'></font-awesome-icon>"
+
+      badge.innerHTML = button.outerHTML + button2.outerHTML + html
       row.appendChild(badge)
 
       var closeButton = document.getElementById('close-btn-' + this.badgeCount)
@@ -254,7 +661,8 @@ export default {
         this.saveExpression()
       }
 
-      badge.onclick = () => {
+      var swapButton = document.getElementById('swap-btn-' + this.badgeCount )
+      swapButton.onclick = () => {
         this.selectSwitchBadge(badge)
       }
 
@@ -264,6 +672,10 @@ export default {
     },
 
     selectSwitchBadge(badge) {
+      if (badge.tagName == 'BUTTON') {
+        badge = badge.parentElement
+      }
+
       if (document.getElementById(badge.getAttribute('id')) == null || (document.getElementById(this.selectedBadge) == null && this.selectedBadge != '')) {
         this.selectedBadge = ''
         return
@@ -314,14 +726,14 @@ export default {
     makeExpression() {
       var expression = document.getElementById('validation-expression-row').textContent
 
-      for (let i = 1; i < this.badgeCount; i++) {
-        if (document.getElementById('value-badge-input-' + i).value == '') {
-          alert('Please fill Value ' + i + '.')
+      Array.from(document.getElementsByClassName('value-badge-input')).forEach((element) => {
+        if (element.value == '') {
+          alert('Please fill Value ' + element.getAttribute('id').charAt(element.getAttribute('id').length - 1) + '.')
           return -1
         }
 
-        expression = expression.replaceAll(i, document.getElementById('value-badge-input-' + i).value)
-      }
+        expression = expression.replaceAll(element.getAttribute('id').charAt(element.getAttribute('id').length - 1), element.value)
+      })
 
       return expression
     },
@@ -339,9 +751,10 @@ export default {
         document.getElementById('validation-expression-row').innerHTML = ''
         document.getElementById('value-badges-inputs').innerHTML = ''
         this.valid[this.selectedTestCase] = true
+        this.expressionType[this.selectedTestCase] = 'test'
       }
 
-      console.log("here")
+      this.reinstateClickEvents()
     },
 
     saveExpression() {
@@ -351,7 +764,28 @@ export default {
       Array.from(document.getElementById('value-badges-inputs').children).forEach((element) => this.inputsValues[this.selectedTestCase].push(element.children[1].value))
     },
 
-    validateExpression() {
+    reinstateClickEvents() {
+      Array.from(document.getElementsByClassName('btn-swap')).forEach((badge) => badge.onclick = () => {
+        this.selectSwitchBadge(badge)
+      })
+
+      Array.from(document.getElementsByClassName('btn-close')).forEach((element) => element.onclick = () => {
+        var parentElement = document.getElementById(element.getAttribute('id')).parentElement
+        for (var c = 1; c < parentElement.children.length; c++) {
+          var child = parentElement.children[c]
+          if (!isNaN(child.innerHTML))
+            document.getElementById('value-badge-row-' + child.getAttribute('value-input')).remove()
+          if (this.selectedBadge == parentElement.getAttribute('id'))
+            this.selectedBadge = ''
+        }
+        parentElement.remove()
+        this.saveExpression()
+      });
+
+      
+    },
+
+    checkExpression() {
       try {
         var expression = this.makeExpression()
         if (expression != -1) {
@@ -368,29 +802,50 @@ export default {
       this.valid[this.selectedTestCase] = true
     },
 
-    validateAll() {
-      var initialValue = this.selectedTestCase;
+    setTestCase(testCase) {
+      document.getElementById('validation-expression-row').innerHTML = this.expressionBadges[testCase]
+      document.getElementById('value-badges-inputs').innerHTML = this.inputs[testCase]
+      this.inputsValues[testCase].forEach((val, index) => document.getElementById('value-badges-inputs').children[index].children[1].value = val)
+    },
 
-      for (var i = 1; i < this.testCasesCount; i++) {
-        this.selectedTestCase = i;
+    validateExpression() {
+      this.saveExpression()
 
-        try {
-          var expression = this.makeExpression()
-          if (expression != -1) {
-            eval(expression)
-          }
+      var tests = [], preconditions = [];
+      for (var i = 1; i <= this.testCasesCount; i++) {
+        this.setTestCase(i)
+        console.log("expression " + i, this.makeExpression())
+
+        if (this.expressionType[i] == 'precondition') {
+          preconditions.push(this.makeExpression())
+        } else {
+          tests.push(this.makeExpression())
         }
-        catch (err) {
-          if (err instanceof SyntaxError || err instanceof TypeError || err instanceof ReferenceError) {
-            this.errors[this.selectedTestCase] = err + '.';
-            this.valid[this.selectedTestCase] = false
-          }
-        }
-
       }
 
-      this.selectedTestCase = initialValue
-    }
+      this.setTestCase(this.selectedTestCase);
+      console.log(this.challengeValue)
+      var challenge = {
+        id: 0,
+        name: this.challengeName,
+        description: this.challengeDescription,
+        difficulty: this.selectedDifficulty,
+        hint: this.challengeHint,
+        objective: this.challengeObjective,
+        test_cases_count: this.testCasesCount,
+        score: this.challengeScore,
+        code_file: this.selectedCode,
+        initial_board: this.selectedBoard,
+        challenge_type: this.selectedCoverage,
+        passing_criteria: {
+          preconditions: preconditions,
+          tests: tests,
+          condition_count: 0,
+        },
+        achievement_criteria: null,
+        owner: 1
+      }
+    },
   },
   components: {
     Menu,
@@ -399,257 +854,3 @@ export default {
   },
 }
 </script>
-
-<template>
-  <div class="row" style="text-align: center;">
-    <h2>Challenge Creator</h2>
-  </div>
-  <div class="container" style="display: flex; justify-content: center; margin-bottom: 10px;">
-    <div class="row" style="justify-content: center; display: flex; flex-direction: row;">
-      <div class="col">
-        <div class="row" style="width: 100%; margin: 0px;">
-          <h5 style="padding: 0px; margin-bottom: 5px;">Code File</h5>
-        </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">Choose an existing code file below.</p>
-        </div>
-        <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
-          <select class="button is-primary guide-button" style="width: 650px;">
-            <option @click="this.selectCode(code.id)" v-for="code in codeFiles" :value="code.id">{{ code.name }}</option>
-          </select>
-        </div>
-        <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
-          <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="440px" data-line="1"
-            :prismjs="true" :name="name" :code="codeString" lang="javascript" prism-js
-            style="font-size: 16px; width: 650px;" :copy-icon="false" :copy-button="false" :copy-tab="false"
-            :tabs="false" />
-        </div>
-      </div>
-      <div class="col">
-        <div class="row" style="width: 100%; margin: 0px;">
-          <h5 style="padding: 0px; margin-bottom: 5px;">Board State</h5>
-        </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">Choose an existing board state below.</p>
-        </div>
-        <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
-          <select class="button is-primary guide-button">
-            <option @click="this.selectState(state.id)" v-for="state in boardStates" :value="state.id">{{ state.name }}
-            </option>
-          </select>
-        </div>
-        <div class="row" style="padding: 0px; margin: 0px;">
-          <BoardChecker />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container" style="display: flex; justify-content: center; flex-direction: column;">
-    <div class="row" style="width: 100%; text-align: left; justify-content: start; display: flex;">
-      <h5 style="text-align: left; margin-bottom: 5px;">Validation Expression Maker</h5>
-    </div>
-    <div class="row" style="font-size: 10px;">
-      <p style="margin-bottom: 5px;">If a submission is correct, the expression must return True.</p>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="box" id="validation-expression-row" @change="this.badgeManager()"
-          style="display: inline-block; padding: 5px; margin: 0px; margin-bottom: 5px; width: 100%; min-height: 610px;">
-        </div>
-      </div>
-      <div class="col">
-        <div class="row" style="margin-bottom: 5px;">
-          <div style="width: 50%;">
-            <div class="row">
-              <h6 style="text-align: left; margin-bottom: 5px;">Test Cases Count</h6>
-            </div>
-            <div class="row" style="font-size: 10px;">
-              <p style="margin-bottom: 5px;">Challenges with multiple cases require different function calls.</p>
-            </div>
-            <div class="row" style="margin: 0px;">
-              <input style="margin-left: 0px; margin-right: 0px;" class="box" type="number" min="1" max="10" value="1"
-                :v-model="this.testCasesCount" @change="this.changeCount($event)" />
-            </div>
-            <div class="row" style="font-size: 10px;">
-              <p style="margin-bottom: 5px; text-align: justify;">For challenges of only 1 test case, only 1 board is
-                needed.
-                <em>currentKey</em> then represents the one existing board state. In challenges with more cases,
-                <em>case_num</em>
-                is used as an iterator. All board states are covered in validation!
-              </p>
-            </div>
-          </div>
-          <div style="width: 50%">
-            <div class="row">
-              <h6 style="text-align: left; margin-bottom: 5px;">Board State</h6>
-            </div>
-            <div class="row" style="font-size: 10px;">
-              <p style="margin-bottom: 5px;">Everything related to the board is accessible here.</p>
-            </div>
-            <div class="row" style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px;">
-              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
-                @click="addBadge('board', 'input')">Board
-                Grid
-                (8x8)</button>
-              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
-                @click="addBadge('board_spot', 'input')">Board Grid
-                (X, Y)
-              </button>
-              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
-                @click="addBadge('log', 'input')">Log
-                (Last Movement)</button>
-              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
-                @click="addBadge('out_of_bounds', 'input')">Out
-                of Bounds Spot</button>
-            </div>
-          </div>
-        </div>
-        <div class="row" style="margin-bottom: 5px;">
-          <div class="row">
-            <h6 style="text-align: left; margin-bottom: 5px;">Auxiliary Functions</h6>
-          </div>
-          <div class="row" style="font-size: 10px;">
-            <p style="margin-bottom: 5px;">To provide computed values from the board's state. Check the Guide if needed.
-            </p>
-          </div>
-          <div class="row"
-            style="margin: 0px; grid-gap: 5px; display: grid; grid-template-rows: 45px 45px; grid-template-columns: 100px 100px 100px 100px 100px 100px;">
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('isTriangle', 'auxiliary')">Triangle</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('distance', 'auxiliary')">Euclidean
-              Distance</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('count_blue_pieces', 'auxiliary')"># of Blue
-              Pieces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('count_red_pieces', 'auxiliary')"># of Red
-              Pieces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('count_empty_spaces', 'auxiliary')">Empty
-              Spaces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('find_first_red_piece', 'auxiliary')">1st Red
-              Piece</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('find_first_blue_piece', 'auxiliary')">1st
-              Blue Piece</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('find_first_stack', 'auxiliary')">1st
-              Stack</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('find_blue_pieces', 'auxiliary')">Blue
-              Pieces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('find_red_pieces', 'auxiliary')">Red
-              Pieces</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box"
-              @click="addBadge('find_stacks', 'auxiliary')">Stacks</button>
-            <button style="padding: 10px 5px; font-size: 12px;" class="box" @click="addWildcardBadge()">
-              Add Wildcard
-            </button>
-          </div>
-        </div>
-        <div class="row" style="margin-bottom: 5px;">
-          <div class="col">
-            <div class="row">
-              <h6 style="text-align: left; margin-bottom: 5px;">Operators</h6>
-            </div>
-            <div class="row" style="font-size: 10px;">
-              <p style="margin-bottom: 5px;">To create Boolean expressions.</p>
-            </div>
-            <div class="row"
-              style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px 150px;">
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('less', 'operators')">
-                &lt; (LESS THAN)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('greater', 'operators')">>
-                (GREATER THAN)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('equal', 'operators')">=
-                (EQUAL)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                @click="addBadge('equality', 'operators')">== (EQUALITY)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                @click="addBadge('inequality', 'operators')">!= (INEQUALITY)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('not', 'operators')">!
-                (NOT)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('and', 'operators')">&&
-                (AND)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box" @click="addBadge('or', 'operators')">||
-                (OR)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                @click="addBadge('open_par', 'operators')">( (OPEN PARENTHESIS)</button>
-              <button style="margin-left: 0px; margin-right: 0px;" class="box"
-                @click="addBadge('close_par', 'operators')">) (CLOSE PARENTHESIS)</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="row">
-            <h6 style="text-align: left; margin-bottom: 5px;">Validation & Submission</h6>
-          </div>
-          <div class="row" style="font-size: 10px;">
-            <p style="margin-bottom: 5px;">Validate and submit the expression.</p>
-          </div>
-          <div class="row"
-            style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px 150px;">
-            <button class="box" style="text-align: left; padding: 5px;" @click="validateExpression()">
-              Validate
-            </button>
-            <button class="box" style="text-align: left; padding: 5px;" @click="validateAll()">
-              Validate All
-            </button>
-            <button class="box" v-if="this.selectedTestCase != 1" style="text-align: left; padding: 5px;"
-              @click="changeTestCase(-1)">
-              Previous
-            </button>
-            <button class="box disabled" v-else style="text-align: left; padding: 5px;">
-              Previous
-            </button>
-            <button class="box" v-if="this.selectedTestCase < this.testCasesCount" style="text-align: left; padding: 5px;"
-              @click="changeTestCase(1)">
-              Next
-            </button>
-            <button class="box disabled" v-else style="text-align: left; padding: 5px;">
-              Next
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-bottom: 10px;">
-      <div class="row">
-        <h6 style="text-align: left; margin-bottom: 5px;">Values</h6>
-      </div>
-      <div class="row" style="font-size: 10px;">
-        <p style="margin-bottom: 5px;">A piece (in any board spot) includes position <em>(x, y)</em> and color (empty,
-          red, blue, stack). You can use any JavaScript function to fill these values, as long as you follow syntax.</p>
-      </div>
-      <div class="row">
-        <div class="col" id="value-badges-inputs">
-
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="row">
-        <h6 style="text-align: left; margin-bottom: 5px;">Errors</h6>
-      </div>
-      <div class="row" style="font-size: 10px;">
-        <p style="margin-bottom: 5px;">Potential validation errors will appear here. Know that semantic errors are yours
-          to catch!</p>
-      </div>
-      <div class="row" v-if="this.valid[this.selectedTestCase]">
-        <div id="error-info" class="alert alert-success player-info" style="margin: 0px 10px; width: 98%">
-          {{ this.success }}
-        </div>
-      </div>
-      <div class="row" v-else>
-        <div id="error-info" class="alert alert-danger player-info" style="margin: 0px 10px; width: 98%;">
-          {{ this.errors[this.selectedTestCase] }}
-        </div>
-      </div>
-    </div>
-
-  </div>
-</template>
