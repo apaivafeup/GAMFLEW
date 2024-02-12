@@ -46,6 +46,12 @@ export default {
       expressionBadges: {
         1: ''
       },
+      inputs: {
+        1: ''
+      },
+      inputsValues: {
+        1: []
+      },
       selectedState: '',
       stateName: '',
       selectedCode: '',
@@ -83,8 +89,13 @@ export default {
         'find_red_pieces': 'utils.find_red_pieces(L, I)',
         'find_stacks': 'utils.find_stacks(L, I)',
       },
-      valid: true,
+      valid: {
+        1: true
+      },
       error: 'Errors will appear here.',
+      errors: {
+        1: 'Errors will appear here.'
+      },
       success: 'No errors found!'
     }
   },
@@ -316,17 +327,28 @@ export default {
     },
 
     changeTestCase(val) {
+      this.saveExpression()
+
       this.selectedTestCase += val
 
       if (this.expressionBadges[this.selectedTestCase] != undefined) {
         document.getElementById('validation-expression-row').innerHTML = this.expressionBadges[this.selectedTestCase]
+        document.getElementById('value-badges-inputs').innerHTML = this.inputs[this.selectedTestCase]
+        this.inputsValues[this.selectedTestCase].forEach((val, index) => document.getElementById('value-badges-inputs').children[index].children[1].value = val)
       } else {
         document.getElementById('validation-expression-row').innerHTML = ''
+        document.getElementById('value-badges-inputs').innerHTML = ''
+        this.valid[this.selectedTestCase] = true
       }
+
+      console.log("here")
     },
 
     saveExpression() {
       this.expressionBadges[this.selectedTestCase] = document.getElementById('validation-expression-row').innerHTML
+      this.inputs[this.selectedTestCase] = document.getElementById('value-badges-inputs').innerHTML
+      this.inputsValues[this.selectedTestCase] = []
+      Array.from(document.getElementById('value-badges-inputs').children).forEach((element) => this.inputsValues[this.selectedTestCase].push(element.children[1].value))
     },
 
     validateExpression() {
@@ -338,12 +360,36 @@ export default {
       }
       catch (err) {
         if (err instanceof SyntaxError || err instanceof TypeError || err instanceof ReferenceError) {
-          this.error = err + '.';
-          this.valid = false
+          this.errors[this.selectedTestCase] = err + '.';
+          this.valid[this.selectedTestCase] = false
           return
         }
       }
-      this.valid = true
+      this.valid[this.selectedTestCase] = true
+    },
+
+    validateAll() {
+      var initialValue = this.selectedTestCase;
+
+      for (var i = 1; i < this.testCasesCount; i++) {
+        this.selectedTestCase = i;
+
+        try {
+          var expression = this.makeExpression()
+          if (expression != -1) {
+            eval(expression)
+          }
+        }
+        catch (err) {
+          if (err instanceof SyntaxError || err instanceof TypeError || err instanceof ReferenceError) {
+            this.errors[this.selectedTestCase] = err + '.';
+            this.valid[this.selectedTestCase] = false
+          }
+        }
+
+      }
+
+      this.selectedTestCase = initialValue
     }
   },
   components: {
@@ -545,9 +591,12 @@ export default {
             <p style="margin-bottom: 5px;">Validate and submit the expression.</p>
           </div>
           <div class="row"
-            style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px;">
+            style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 45px 45px; grid-template-columns: 150px 150px 150px 150px;">
             <button class="box" style="text-align: left; padding: 5px;" @click="validateExpression()">
               Validate
+            </button>
+            <button class="box" style="text-align: left; padding: 5px;" @click="validateAll()">
+              Validate All
             </button>
             <button class="box" v-if="this.selectedTestCase != 1" style="text-align: left; padding: 5px;"
               @click="changeTestCase(-1)">
@@ -590,14 +639,14 @@ export default {
         <p style="margin-bottom: 5px;">Potential validation errors will appear here. Know that semantic errors are yours
           to catch!</p>
       </div>
-      <div class="row" v-if="this.valid">
+      <div class="row" v-if="this.valid[this.selectedTestCase]">
         <div id="error-info" class="alert alert-success player-info" style="margin: 0px 10px; width: 98%">
           {{ this.success }}
         </div>
       </div>
       <div class="row" v-else>
-        <div id="error-info" class="alert alert-danger player-info" style="margin: 0px 10px; width: 98%;" >
-          {{ this.error }}
+        <div id="error-info" class="alert alert-danger player-info" style="margin: 0px 10px; width: 98%;">
+          {{ this.errors[this.selectedTestCase] }}
         </div>
       </div>
     </div>
