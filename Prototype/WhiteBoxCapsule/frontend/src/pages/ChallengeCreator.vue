@@ -208,8 +208,12 @@
                 Precondition
               </button>
               <button id="test-label" class="box"
-                style="width: 100%; height: 45px; text-align: left; padding: 5px; background: #8adc6d;" v-else
+                style="width: 100%; height: 45px; text-align: left; padding: 5px; background: #8adc6d;" v-else-if="this.testCasesCount != 1"
                 @click="this.expressionType[this.selectedTestCase] = 'precondition'">
+                Test
+              </button>
+              <button id="test-label" class="box disabled"
+                style="width: 100%; height: 45px; text-align: left; padding: 5px; background: #8adc6d;" v-else>
                 Test
               </button>
             </div>
