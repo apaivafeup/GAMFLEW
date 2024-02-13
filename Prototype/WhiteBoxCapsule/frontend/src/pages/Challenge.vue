@@ -82,7 +82,7 @@ export default {
     })
 
     await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file).then((response) => {
-        this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
+      this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
     })
 
     await this.$axios.get(this.$api_link + '/board-states/' + this.challenge.initial_board).then((response) => {

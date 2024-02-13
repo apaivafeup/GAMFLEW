@@ -10,7 +10,7 @@ export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
 
 const toast = useToast()
 
-export const boardStore = defineStore('boardStore', {
+export const boardCheckerStore = defineStore('boardStore', {
   state: () => {
     return {
       // Actual game state.
@@ -33,14 +33,11 @@ export const boardStore = defineStore('boardStore', {
       passed: Boolean,
       failed: Boolean,
       add: Boolean,
-      pause: Boolean,
-      timeout: Boolean,
       submitted: Boolean,
       started: Boolean,
       table: Boolean,
 
       // Attempt state, for future submission.
-      attempt: Attempt,
       initialState: BoardState
     }
   },
@@ -87,10 +84,6 @@ export const boardStore = defineStore('boardStore', {
     selectPiece(x, y) {
       if (this.add) {
         this.addPiece(x, y)
-        return
-      }
-
-      if (this.pause) {
         return
       }
 
@@ -171,8 +164,6 @@ export const boardStore = defineStore('boardStore', {
       this.passed = false
       this.failed = false
       this.add = false
-      this.pause = false
-      this.timeout = false
       this.submitted = false
       this.started = false
       this.table = false
@@ -229,35 +220,6 @@ export const boardStore = defineStore('boardStore', {
       this.selectedCoords = { x: 0, y: 0 }
     },
 
-    gameOver() {
-      this.pause = true
-      document.getElementById('timeout-button').click()
-    },
-
-    updateInfoState() {
-      this.failed = false
-
-      var lastLog = this.log[this.currentKey][this.log[this.currentKey].length - 1]
-
-      if (lastLog.type == 'move') {
-        this.infoState =
-          'Moved (' +
-          lastLog.from.x +
-          ', ' +
-          lastLog.from.y +
-          ') to (' +
-          lastLog.to.x +
-          ', ' +
-          lastLog.to.y +
-          ').'
-      } else {
-        if (lastLog.color != 'empty')
-          this.infoState =
-            'Added ' + lastLog.color + ' piece to (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
-        else this.infoState = 'Removed piece from (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
-      }
-    },
-
     addMode() {
       this.add = !this.add
       document.body.classList.toggle('add-mode')
@@ -308,22 +270,10 @@ export const boardStore = defineStore('boardStore', {
     pass(score) {
       this.passed = !this.passed
       this.failed = false
-      this.paused = true
-
-      this.attempt.setScore(score)
     },
 
     fail() {
       this.failed = true
-      this.attempt.setScore(0)
-    },
-
-    retry() {
-      window.location.reload()
-    },
-
-    exit() {
-      window.location.href = '/'
     },
 
     submit(score = null) {
@@ -334,12 +284,6 @@ export const boardStore = defineStore('boardStore', {
       }
 
       toast.warning("You just won an achievement!", onclick="this.achievements()")
-    },
-
-    achievements() {
-      window.location.href = '/'
-      window.location.href = "/challenge/1"
-      window.location.reload()
     },
   }
 })

@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-  <div class="container" style="display: flex; justify-content: center; flex-direction: column;">
+  <div class="container" style="display: flex; justify-content: center; flex-direction: column; margin-bottom: 15px;">
     <div class="row" style="width: 100%; text-align: left; justify-content: start; display: flex;">
       <h5 style="text-align: left; margin-bottom: 5px;">Validation Expression Maker</h5>
     </div>
@@ -65,7 +65,7 @@
               <p style="margin-bottom: 5px;">Challenges with multiple cases require different function calls.</p>
             </div>
             <div class="row" style="margin: 0px;">
-              <input style="margin-left: 0px; margin-right: 0px;" class="box" type="number" min="1" max="10" value="1"
+              <input style="margin-left: 0px; margin-right: 0px;" class="box" type="number" min="1" max="16" value="1"
                 :v-model="this.testCasesCount" @change="this.changeCount($event)" />
             </div>
             <div class="row" style="font-size: 10px;">
@@ -84,7 +84,8 @@
             <div class="row" style="font-size: 10px;">
               <p style="margin-bottom: 5px;">Everything related to the board is accessible here.</p>
             </div>
-            <div class="row" style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px;">
+            <div class="row"
+              style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 30px; grid-template-columns: 150px 150px;">
               <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
                 @click="addBadge('board', 'input')">Board
                 Grid
@@ -94,7 +95,9 @@
                 (X, Y)
               </button>
               <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
-                @click="addBadge('log', 'input')">Log
+                @click="addBadge('log', 'input')">Log (All Movements)</button>
+              <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('log_last', 'input')">Log
                 (Last Movement)</button>
               <button style="margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
                 @click="addBadge('out_of_bounds', 'input')">Out
@@ -158,21 +161,27 @@
             </div>
             <div class="row"
               style="margin: 0px; display: grid; grid-gap: 5px; grid-template-rows: 35px 35px; grid-template-columns: 100px 100px 100px 100px 100px 100px;">
-              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('less', 'operators')">
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('less', 'operators')">
                 &lt;</button>
-              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('greater', 'operators')">>
-                </button>
-              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('equal', 'operators')">=
-                </button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('greater', 'operators')">>
+              </button>
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('equal', 'operators')">=
+              </button>
               <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
                 @click="addBadge('equality', 'operators')">== (SAME AS)</button>
               <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
                 @click="addBadge('inequality', 'operators')">!= (DIFFERENT)</button>
-              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('not', 'operators')">!
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('not', 'operators')">!
                 (NOT)</button>
-              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('and', 'operators')">&&
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('and', 'operators')">&&
                 (AND)</button>
-              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box" @click="addBadge('or', 'operators')">||
+              <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
+                @click="addBadge('or', 'operators')">||
                 (OR)</button>
               <button style="padding: 5px; margin-left: 0px; margin-right: 0px; font-size: 12px;" class="box"
                 @click="addBadge('open_par', 'operators')">(</button>
@@ -187,15 +196,20 @@
               <h6 style="text-align: left; margin-bottom: 5px;">Precondition or Test</h6>
             </div>
             <div class="row" style="font-size: 10px;">
-              <p style="margin-bottom: 5px; text-align: justify;">Preconditions must pass along with tests (they're verified before tests).
+              <p style="margin-bottom: 5px; text-align: justify;">Preconditions must pass along with tests (they're
+                verified before tests).
                 In multiple test cases, <strong>they're applied before every test</strong>. They're not required.</p>
             </div>
-            <div class="row"
-              style="margin: 0px;">
-              <button id="precondition-label" class="box" style="width: 100%; height: 45px; text-align: left; padding: 5px; background: rgb(169, 89, 255);" v-if="this.expressionType[this.selectedTestCase] != 'test'" @click="this.expressionType[this.selectedTestCase] = 'test'">
+            <div class="row" style="margin: 0px;">
+              <button id="precondition-label" class="box"
+                style="width: 100%; height: 45px; text-align: left; padding: 5px; background: rgb(169, 89, 255);"
+                v-if="this.expressionType[this.selectedTestCase] != 'test'"
+                @click="this.expressionType[this.selectedTestCase] = 'test'">
                 Precondition
               </button>
-              <button id="test-label" class="box" style="width: 100%; height: 45px; text-align: left; padding: 5px; background: #8adc6d;" v-else @click="this.expressionType[this.selectedTestCase] = 'precondition'">
+              <button id="test-label" class="box"
+                style="width: 100%; height: 45px; text-align: left; padding: 5px; background: #8adc6d;" v-else
+                @click="this.expressionType[this.selectedTestCase] = 'precondition'">
                 Test
               </button>
             </div>
@@ -205,22 +219,24 @@
               <h6 style="text-align: left; margin-bottom: 5px;">Coverage & Difficulty</h6>
             </div>
             <div class="row" style="font-size: 10px;">
-              <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular coverage type associated.<br/>A difficulty level is also required.</p>
+              <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular coverage type
+                associated.<br />A difficulty level is also required.</p>
             </div>
-            <div class="row"
-              style="margin: 0px;">
+            <div class="row" style="margin: 0px;">
               <select class="button is-primary guide-button">
-                <option @click="this.selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{ coverage }}
+                <option @click="this.selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{
+                  coverage }}
                 </option>
               </select>
               <select class="button is-primary guide-button">
-                <option @click="this.selectDifficulty(difficulty)" v-for="difficulty in difficulties" :value="difficulty">{{ difficulty }}
+                <option @click="this.selectDifficulty(difficulty)" v-for="difficulty in difficulties" :value="difficulty">
+                  {{ difficulty }}
                 </option>
               </select>
             </div>
           </div>
         </div>
-        
+
         <div class="col">
           <div class="row">
             <h6 style="text-align: left; margin-bottom: 5px;">Checking for Errors</h6>
@@ -296,42 +312,54 @@
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="name-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Name</h6>
-          <input id="input-name-box" class="box" @change="this.changeName($event)" type="text" placeholder="Challenge X.Y: Challenge Name" style="margin: 0px; width: 100%; font-size: 18px;"/>
+          <input id="input-name-box" class="box" @change="this.changeName($event)" type="text"
+            placeholder="Challenge X.Y: Challenge Name" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="description-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Description</h6>
-          <input id="input-description-box" @change="this.changeDescription($event)" class="box" type="text" placeholder="Anything about the challenge!" style="margin: 0px; width: 100%; font-size: 18px;"/>
+          <input id="input-description-box" @change="this.changeDescription($event)" class="box" type="text"
+            placeholder="Anything about the challenge!" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
-        <div class="col" id="hint-input" >
+        <div class="col" id="hint-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Hint</h6>
-          <input id="input-hint-box" @change="this.changeHint($event)" class="box" type="text" placeholder="Anything to help the player!" style="margin: 0px; width: 100%; font-size: 18px;"/>
+          <input id="input-hint-box" @change="this.changeHint($event)" class="box" type="text"
+            placeholder="Anything to help the player!" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="objective-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Objective</h6>
-          <input id="input-objective-box" @change="this.changeObjective($event)" class="box" type="text" placeholder="[COVERAGE] coverage of line X." style="margin: 0px; width: 100%; font-size: 18px;"/>
+          <input id="input-objective-box" @change="this.changeObjective($event)" class="box" type="text"
+            placeholder="[COVERAGE] coverage of line X." style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 7.5px;">
         <div class="col" id="score-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Score</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">The more test cases, the more points a player should get!</p>
-          <input id="input-score-box" inputmode="numeric" @change="this.changeScore($event)" class="box" type="number" max-length="5" min="100" pattern="[0-9]{5}" value="100" step="25" style="margin: 0px; width: 100%; font-size: 18px;"/>
+          <input id="input-score-box" inputmode="numeric" @change="this.changeScore($event)" class="box" type="number"
+            max-length="5" min="100" pattern="[0-9]{5}" value="100" step="25"
+            style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
-        <div class="col" id="condition-count-input" v-if="this.selectedCoverage == 'condition' || this.selectedCoverage == 'mcdc' || this.selectedCoverage == 'path'">
+        <div class="col" id="condition-count-input"
+          v-if="this.selectedCoverage == 'condition' || this.selectedCoverage == 'mcdc' || this.selectedCoverage == 'path'">
           <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
-          <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup> possible test cases!</p>
-          <input id="input-condition-box" @change="this.changeConditionCount($event)" class="box" type="number" placeholder="Number of variables." value="1" min="0" max="5" style="margin: 0px; width: 100%; font-size: 18px;"/>
+          <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup>
+            possible test cases!</p>
+          <input id="input-condition-box" @change="this.changeConditionCount($event)" class="box" type="number"
+            placeholder="Number of variables." value="1" min="0" max="5"
+            style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
         <div class="col disabled" id="condition-count-input" v-else>
           <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
-          <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup> possible test cases!</p>
-          <input id="input-condition-box" @change="this.changeConditionCount($event)" class="box" type="number" max="10" placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;"/>
+          <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup>
+            possible test cases!</p>
+          <input id="input-condition-box" @change="this.changeConditionCount($event)" class="box" type="number" max="10"
+            placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
     </div>
@@ -340,10 +368,83 @@
         Validate
       </button>
     </div>
-    
-
   </div>
-</template>
+  <div class="container" style="display: flex; justify-content: center; flex-direction: row;">
+    <div class="col" style="display: flex; flex-direction: column; max-height: 445px;">
+      <div style="margin-bottom: 10px;" v-if="preconditions.length != 0">
+        <div class="row">
+          <h6 style="padding-left: 0px; margin-bottom: 5px;">Preconditions</h6>
+        </div>
+        <div class="row" style="font-size: 10px;">
+          <p style="margin-bottom: 5px;">If a precondition fails, it's an immediate fail.</p>
+        </div>
+        <div class="row">
+          <div class="alert alert-info player-info" style="display: flex; justify-content: space-between;"
+            v-for="(precondition, index) in preconditions">
+            <div class="col">
+              <strong style="margin-right: 5px;">
+                {{ 'Precondition ' + (index + 1) + ': ' }}</strong>
+              <input class="box" :value="test" style="width: 100%;" @change="this.changeTestExpression($event, index)" />
+            </div>
+            <div class="col"
+              style="font-size: 12px; max-width: 75px; display: flex; margin-bottom: 0px; justify-content: end;">
+            <strong>Value: <p style="margin-bottom: 0px; padding-bottom: 0px;" :id="'precondition-info-' + index"></p>
+              </strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom: 10px;" class="disabled" v-else>
+      <div class="row">
+        <h6 style="padding-left: 0px; margin-bottom: 5px;">Preconditions</h6>
+      </div>
+      <div class="row" style="font-size: 10px;">
+        <p style="padding-left: 0px;">No preconditions defined. If a precondition fails, it's an immediate fail.</p>
+      </div>
+    </div>
+    <div style="margin-bottom: 10px;" v-if="tests.length != 0">
+      <div class="row">
+        <h6 style="padding-left: 0px; margin-bottom: 5px;">Tests</h6>
+      </div>
+      <div class="row">
+        <div class="alert alert-info player-info" style="display: flex; justify-content: space-between;"
+          v-for="(test, index) in tests">
+          <div class="col">
+            <strong style="margin-right: 2.5px;">{{ 'Test ' + (index + 1) + ':' }}</strong>
+            <input class="box" :value="test" style="width: 100%;" @change="this.changeTestExpression($event, index)" />
+          </div>
+          <div class="col"
+            style="font-size: 12px; max-width: 75px; display: flex; margin-bottom: 0px; justify-content: end;">
+            <strong style="margin-right: 2.5px;">Value:</strong>
+            <p style="margin-bottom: 0px; padding-bottom: 0px;" :id="'test-info-' + index">?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom: 10px;" class="disabled" v-else>
+      <div class="row">
+        <h6 style="padding-left: 0px; margin-bottom: 5px;">Tests</h6>
+      </div>
+      <div class="row" style="font-size: 10px;">
+        <p style="padding-left: 0px;">No tests defined... yet.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="alert alert-success player-info" v-if="this.boardChecker.passed">
+        OK! You passed the challenge you just made. Click the button below to submit the challenge!
+      </div>
+      <div class="alert alert-danger player-info" v-else-if="this.boardChecker.failed">
+        You didn't pass. Keep trying. You need to pass your own challenge to submit it.
+      </div>
+      <div class="alert alert-secondary player-info disabled" v-else>
+        When you try passing your challenge, the result will be here.
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <ChallengeChecker :challenge="this.challenge" />
+  </div>
+</div></template>
 
 <script setup>
 import 'prismjs'
@@ -358,6 +459,8 @@ import GameCredits from './GameCredits.vue'
 import Menu from '../components/Menu.vue'
 import BoardChecker from '../components/BoardChecker.vue'
 import { boardCreatorStore } from '../store/boardCreator'
+import { boardCheckerStore } from '../store/boardChecker'
+import ChallengeChecker from '../components/ChallengeChecker.vue'
 
 import hljs from 'highlight.js';
 import CodeEditor from "simple-code-editor";
@@ -366,6 +469,7 @@ import * as utils from '../store/utils.js'
 export default {
   async beforeMount() {
     this.boardCreator = boardCreatorStore()
+    this.boardChecker = boardCheckerStore()
 
     await this.$axios.get(this.$api_link + '/board-states').then((response) => {
       response.data.forEach((board_state) => {
@@ -403,11 +507,12 @@ export default {
         1: 'test'
       },
       selectedBoard: '',
-      selectedDifficulty: '',
-      selectedCoverage: '',
+      selectedDifficulty: 'Very Easy',
+      selectedCoverage: 'statement',
       stateName: '',
       selectedCode: '',
       codeString: '',
+      challenge: null,
       challengeName: '',
       challengeDescription: '',
       challengeHint: '',
@@ -416,6 +521,8 @@ export default {
       conditionCount: 0,
       coverageTypes: ['statement', 'decision', 'condition', 'mcdc', 'path'],
       difficulties: ['Very Easy', 'Easy', 'Normal', 'Hard', 'Very Hard'],
+      preconditions: [],
+      tests: [],
       selectedInput: '',
       testCasesCount: 1,
       selectedTestCase: 1,
@@ -425,7 +532,8 @@ export default {
       dictionary: {
         'board': 'input[X]',
         'board_spot': 'input.state[X][I][J]',
-        'log': 'input.log[X][input.log[X].length - 1]',
+        'log': 'input.log[X]',
+        'log_last': 'input.log[X][input.log[X].length - 1]',
         "less": '<',
         'greater': '>',
         'equal': '=',
@@ -461,16 +569,12 @@ export default {
 
   methods: {
     // 65 is A, 97 is a
-    async submit() {
-      var body = {
-        id: 0,
-        name: this.codeName,
-        content: this.codeString
-      }
+    changeTestExpression(event, index) {
+      this.challenge.passing_criteria.tests[index] = event.target.value
+    },
 
-      await this.$axios.post(this.$api_link + '/create/code-file', body)
-        .then(response => {
-        });
+    changePreconditionExpression(event, index) {
+      this.challenge.passing_criteria.preconditions[index] = event.target.value
     },
 
     changeName(event) {
@@ -532,7 +636,7 @@ export default {
       button.setAttribute('id', 'close-btn-' + this.badgeCount)
       button.style = 'margin-right: 2.5px;'
 
-      badge.innerHTML = button.outerHTML + this.addValueBadge(this.badgeCount)
+      badge.innerHTML = button.outerHTML + this.addValueBadge('(' + this.badgeCount + ')')
       row.appendChild(badge)
 
       document.getElementById('close-btn-' + this.badgeCount).onclick = function () {
@@ -578,10 +682,11 @@ export default {
       //badge.setAttribute('id', 'expression-badge-' + this.badgeCount)
       badge.setAttribute('class', 'badge text-bg-values')
 
-      if (!isNaN(placeholder)) {
+      var placeholderNum = placeholder.split('(').join('').split(')').join('')
+      if (!isNaN(placeholderNum)) {
         badge.setAttribute('value-input', this.inputBadge)
         this.addInputBadge(this.inputBadge)
-        placeholder = this.inputBadge
+        placeholder = '(' + this.inputBadge + ')'
         this.inputBadge += 1
       }
 
@@ -608,17 +713,17 @@ export default {
       var html = this.dictionary[key]
 
       if (html.includes('I') && html.includes('J')) {
-        html = html.replace('I', this.addValueBadge(this.badgeCount))
+        html = html.replace('I', this.addValueBadge('(' + this.badgeCount + ')'))
       } else {
         html = html.replace('I', this.addValueBadge(boardAccess))
       }
 
       if (html.includes('J')) {
-        html = html.replace('J', this.addValueBadge(this.badgeCount))
+        html = html.replace('J', this.addValueBadge('(' + this.badgeCount + ')'))
       }
 
       if (html.includes('M')) {
-        html = html.replace('M', this.addValueBadge(this.badgeCount))
+        html = html.replace('M', this.addValueBadge('(' + this.badgeCount + ')'))
       }
 
       html = html.replaceAll('X', this.addValueBadge(boardAccess))
@@ -661,7 +766,7 @@ export default {
         this.saveExpression()
       }
 
-      var swapButton = document.getElementById('swap-btn-' + this.badgeCount )
+      var swapButton = document.getElementById('swap-btn-' + this.badgeCount)
       swapButton.onclick = () => {
         this.selectSwitchBadge(badge)
       }
@@ -728,11 +833,11 @@ export default {
 
       Array.from(document.getElementsByClassName('value-badge-input')).forEach((element) => {
         if (element.value == '') {
-          alert('Please fill Value ' + element.getAttribute('id').charAt(element.getAttribute('id').length - 1) + '.')
+          alert('Please fill Value ' + element.getAttribute('id').split('-')[element.getAttribute('id').split('-').length - 1] + '.')
           return -1
         }
 
-        expression = expression.replaceAll(element.getAttribute('id').charAt(element.getAttribute('id').length - 1), element.value)
+        expression = expression.replaceAll('(' + element.getAttribute('id').split('-')[element.getAttribute('id').split('-').length - 1] + ')', element.value)
       })
 
       return expression
@@ -782,7 +887,7 @@ export default {
         this.saveExpression()
       });
 
-      
+
     },
 
     checkExpression() {
@@ -793,7 +898,7 @@ export default {
         }
       }
       catch (err) {
-        if (err instanceof SyntaxError || err instanceof TypeError || err instanceof ReferenceError) {
+        if (err instanceof SyntaxError || err instanceof TypeError) {
           this.errors[this.selectedTestCase] = err + '.';
           this.valid[this.selectedTestCase] = false
           return
@@ -814,7 +919,6 @@ export default {
       var tests = [], preconditions = [];
       for (var i = 1; i <= this.testCasesCount; i++) {
         this.setTestCase(i)
-        console.log("expression " + i, this.makeExpression())
 
         if (this.expressionType[i] == 'precondition') {
           preconditions.push(this.makeExpression())
@@ -824,7 +928,7 @@ export default {
       }
 
       this.setTestCase(this.selectedTestCase);
-      console.log(this.challengeValue)
+
       var challenge = {
         id: 0,
         name: this.challengeName,
@@ -832,25 +936,54 @@ export default {
         difficulty: this.selectedDifficulty,
         hint: this.challengeHint,
         objective: this.challengeObjective,
-        test_cases_count: this.testCasesCount,
+        test_cases_count: tests.length,
         score: this.challengeScore,
         code_file: this.selectedCode,
-        initial_board: this.selectedBoard,
+        initial_board: this.boardStates[this.selectedBoard - 1],
         challenge_type: this.selectedCoverage,
         passing_criteria: {
           preconditions: preconditions,
           tests: tests,
-          condition_count: 0,
+          condition_count: this.conditionCount,
         },
         achievement_criteria: null,
-        owner: 1
+        owner_id: 1
+      };
+
+      for (var key in challenge) {
+        if (key == 'id') {
+          continue
+        }
+
+        if (challenge[key] == '') {
+          alert('Please fill out the ' + key + ' field.')
+          return
+        }
       }
+
+      this.challenge = challenge;
+      this.preconditions = preconditions;
+      this.tests = tests;
+
+      this.challengeValidation();
     },
+
+    challengeValidation() {
+      this.boardChecker.initialState = this.challenge.initial_board
+      this.boardChecker.setState()
+    },
+
+    async submitChallenge(challenge) {
+      await this.$axios.post(this.$api_link + '/create/challenge', this.challenge)
+        .then((response) => {
+        })
+    }
   },
   components: {
     Menu,
     'code-editor': CodeEditor,
-    BoardChecker
+    BoardChecker,
+    ChallengeChecker
   },
 }
 </script>
