@@ -435,7 +435,7 @@
         </div>
       </div>
       <div class="row">
-        <div style="padding: 0px;">
+        <div style="padding: 0px; margin-bottom: 10px;">
           <div class="alert alert-success player-info" v-if="this.boardChecker.passed">
             OK! You passed the challenge you just made. Click the button below to submit the challenge!
           </div>
@@ -447,7 +447,7 @@
           </div>
         </div>
         <div class="row">
-          <button class="box is-primary" style="width: 100%; padding: 5px;" v-if="this.boardChecker.passed" @click="this.submitChallenge()">
+          <button class="box is-primary" style="min-width: 100%; padding: 10px; margin: 10px;" v-if="this.boardChecker.passed" @click="this.submitChallenge()">
             Submit Challenge
           </button>
         </div>
