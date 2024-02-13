@@ -312,28 +312,28 @@
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="name-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Name</h6>
-          <input id="input-name-box" class="box" @change="this.changeName($event)" type="text"
+          <input id="input-name-box" class="box" @input="this.changeName($event)" type="text"
             placeholder="Challenge X.Y: Challenge Name" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="description-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Description</h6>
-          <input id="input-description-box" @change="this.changeDescription($event)" class="box" type="text"
+          <input id="input-description-box" @input="this.changeDescription($event)" class="box" type="text"
             placeholder="Anything about the challenge!" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="hint-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Hint</h6>
-          <input id="input-hint-box" @change="this.changeHint($event)" class="box" type="text"
+          <input id="input-hint-box" @input="this.changeHint($event)" class="box" type="text"
             placeholder="Anything to help the player!" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="objective-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Objective</h6>
-          <input id="input-objective-box" @change="this.changeObjective($event)" class="box" type="text"
+          <input id="input-objective-box" @input="this.changeObjective($event)" class="box" type="text"
             placeholder="[COVERAGE] coverage of line X." style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
@@ -341,7 +341,7 @@
         <div class="col" id="score-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Score</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">The more test cases, the more points a player should get!</p>
-          <input id="input-score-box" inputmode="numeric" @change="this.changeScore($event)" class="box" type="number"
+          <input id="input-score-box" inputmode="numeric" @input="this.changeScore($event)" class="box" type="number"
             max-length="5" min="100" pattern="[0-9]{5}" value="100" step="25"
             style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
@@ -350,7 +350,7 @@
           <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup>
             possible test cases!</p>
-          <input id="input-condition-box" @change="this.changeConditionCount($event)" class="box" type="number"
+          <input id="input-condition-box" @input="this.changeConditionCount($event)" class="box" type="number"
             placeholder="Number of variables." value="1" min="0" max="5"
             style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
@@ -358,7 +358,7 @@
           <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup>
             possible test cases!</p>
-          <input id="input-condition-box" @change="this.changeConditionCount($event)" class="box" type="number" max="10"
+          <input id="input-condition-box" @input="this.changeConditionCount($event)" class="box" type="number" max="10"
             placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
@@ -430,6 +430,9 @@
       </div>
     </div>
     <div class="row">
+      <button class="box is-primary" v-if="this.boardChecker.passed" @click="this.submitChallenge()">
+        Submit Challenge
+      </button>
       <div class="alert alert-success player-info" v-if="this.boardChecker.passed">
         OK! You passed the challenge you just made. Click the button below to submit the challenge!
       </div>
@@ -595,9 +598,10 @@ export default {
 
     changeScore(event) {
       if (isNaN(event.target.value)) {
-        event.target.value = 100
+        this.challengeScore = this.challengeScore
+        return
       }
-      this.challengeScore = event.target.value;
+      this.challengeScore = event.target.value
     },
 
     changeConditionCount(event) {
@@ -939,7 +943,7 @@ export default {
         test_cases_count: tests.length,
         score: this.challengeScore,
         code_file: this.selectedCode,
-        initial_board: this.boardStates[this.selectedBoard - 1],
+        initial_board: this.selectedBoard,
         challenge_type: this.selectedCoverage,
         passing_criteria: {
           preconditions: preconditions,
@@ -969,13 +973,19 @@ export default {
     },
 
     challengeValidation() {
-      this.boardChecker.initialState = this.challenge.initial_board
+      this.boardChecker.initialState = this.boardStates[this.challenge.initial_board - 1]
       this.boardChecker.setState()
     },
 
     async submitChallenge(challenge) {
       await this.$axios.post(this.$api_link + '/create/challenge', this.challenge)
         .then((response) => {
+          if (response.status == 200) {
+            alert('Challenge submitted successfully!')
+            window.location.href = '/'
+          } else {
+            alert('There was an error submitting the challenge. Try again.')
+          }
         })
     }
   },
