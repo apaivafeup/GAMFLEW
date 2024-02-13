@@ -369,84 +369,90 @@
       </button>
     </div>
   </div>
-  <div class="container" style="display: flex; justify-content: center; flex-direction: row;">
-    <div class="col" style="display: flex; flex-direction: column; max-height: 445px;">
-      <div style="margin-bottom: 10px;" v-if="preconditions.length != 0">
+  <div class="container" style="display: flex; justify-content: center; flex-direction: column;">
+    <div class="row">
+      <h5 style="padding: 0px; margin-bottom: 5px;">Challenge Validation</h5>
+    </div>
+    <div class="row" style="font-size: 10px;">
+      <p style="padding: 0px; margin-bottom: 10px;">Check if the challenge is ready to be submitted. Green means True, red means False.</p>
+    </div>
+    <div class="row">
+      <div class="col" style="display: flex; flex-direction: column; max-height: 445px;">
+        <div style="margin-bottom: 10px;" v-if="preconditions.length != 0">
+          <div class="row">
+            <h6 style="padding-left: 0px; margin-bottom: 5px;">Preconditions</h6>
+          </div>
+          <div class="row" style="font-size: 10px;">
+            <p style="margin-bottom: 5px;">If a precondition fails, it's an immediate fail.</p>
+          </div>
+          <div class="row">
+            <div :id="'precondition-info-' + index" class="alert alert-info player-info" style="display: flex; justify-content: space-between;"
+              v-for="(precondition, index) in preconditions">
+              <div class="col" style="max-width: 20%;">  
+              <strong style="margin-right: 5px; align-self: center;">
+                  {{ 'Precondition ' + (index + 1) + ': ' }}</strong>
+                  </div>
+                  <div class="col" style="max-width: 80%">
+                    <input class="box" :value="precondition" style="width: 100%;" @input="this.changePreconditionExpression($event, index)" />
+                  </div>
+            </div>
+          </div>
+      </div>
+      <div style="margin-bottom: 10px;" class="disabled" v-else>
         <div class="row">
           <h6 style="padding-left: 0px; margin-bottom: 5px;">Preconditions</h6>
         </div>
         <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">If a precondition fails, it's an immediate fail.</p>
+          <p style="padding-left: 0px;">No preconditions defined. If a precondition doesn't yield True, it's an immediate fail.</p>
+        </div>
+      </div>
+      <div style="margin-bottom: 10px;" v-if="tests.length != 0">
+        <div class="row">
+          <h6 style="padding-left: 0px; margin-bottom: 5px;">Tests</h6>
         </div>
         <div class="row">
-          <div class="alert alert-info player-info" style="display: flex; justify-content: space-between;"
-            v-for="(precondition, index) in preconditions">
-            <div class="col">
-              <strong style="margin-right: 5px;">
-                {{ 'Precondition ' + (index + 1) + ': ' }}</strong>
-              <input class="box" :value="test" style="width: 100%;" @change="this.changeTestExpression($event, index)" />
-            </div>
-            <div class="col"
-              style="font-size: 12px; max-width: 75px; display: flex; margin-bottom: 0px; justify-content: end;">
-            <strong>Value: <p style="margin-bottom: 0px; padding-bottom: 0px;" :id="'precondition-info-' + index"></p>
-              </strong>
+          <div class="alert alert-info player-info" style="display: flex; justify-content: start;" :id="'test-info-' + index" v-for="(test, index) in tests">
+              <div class="col" style="max-width: 10%; align-self: center;">
+                <strong style="margin-right: 2.5px;">{{ 'Test ' + (index + 1) + ':' }}</strong>
+              </div>
+              <div class="col" style="max-width: 90%">
+                <input class="box" :value="test" style="width: 100%;" @input="this.changeTestExpression($event, index)" />
+              </div>
+                
           </div>
         </div>
       </div>
-    </div>
-    <div style="margin-bottom: 10px;" class="disabled" v-else>
-      <div class="row">
-        <h6 style="padding-left: 0px; margin-bottom: 5px;">Preconditions</h6>
-      </div>
-      <div class="row" style="font-size: 10px;">
-        <p style="padding-left: 0px;">No preconditions defined. If a precondition fails, it's an immediate fail.</p>
-      </div>
-    </div>
-    <div style="margin-bottom: 10px;" v-if="tests.length != 0">
-      <div class="row">
-        <h6 style="padding-left: 0px; margin-bottom: 5px;">Tests</h6>
-      </div>
-      <div class="row">
-        <div class="alert alert-info player-info" style="display: flex; justify-content: space-between;"
-          v-for="(test, index) in tests">
-          <div class="col">
-            <strong style="margin-right: 2.5px;">{{ 'Test ' + (index + 1) + ':' }}</strong>
-            <input class="box" :value="test" style="width: 100%;" @change="this.changeTestExpression($event, index)" />
-          </div>
-          <div class="col"
-            style="font-size: 12px; max-width: 75px; display: flex; margin-bottom: 0px; justify-content: end;">
-            <strong style="margin-right: 2.5px;">Value:</strong>
-            <p style="margin-bottom: 0px; padding-bottom: 0px;" :id="'test-info-' + index">?</p>
-          </div>
+      <div style="margin-bottom: 10px;" class="disabled" v-else>
+        <div class="row">
+          <h6 style="padding-left: 0px; margin-bottom: 5px;">Tests</h6>
+        </div>
+        <div class="row" style="font-size: 10px;">
+          <p style="padding-left: 0px;">No tests defined... yet.</p>
         </div>
       </div>
-    </div>
-    <div style="margin-bottom: 10px;" class="disabled" v-else>
       <div class="row">
-        <h6 style="padding-left: 0px; margin-bottom: 5px;">Tests</h6>
+        <div style="padding: 0px;">
+          <div class="alert alert-success player-info" v-if="this.boardChecker.passed">
+            OK! You passed the challenge you just made. Click the button below to submit the challenge!
+          </div>
+          <div class="alert alert-danger player-info" v-else-if="this.boardChecker.failed">
+            You didn't pass. Keep trying. You need to pass your own challenge to submit it.
+          </div>
+          <div class="alert alert-secondary player-info disabled" v-else>
+            When you try passing your challenge, the result will be here.
+          </div>
+        </div>
+        <div class="row">
+          <button class="box is-primary" style="width: 100%; padding: 5px;" v-if="this.boardChecker.passed" @click="this.submitChallenge()">
+            Submit Challenge
+          </button>
+        </div>
       </div>
-      <div class="row" style="font-size: 10px;">
-        <p style="padding-left: 0px;">No tests defined... yet.</p>
+      </div>
+      <div class="col">
+        <ChallengeChecker :challenge="this.challenge" />
       </div>
     </div>
-    <div class="row">
-      <button class="box is-primary" v-if="this.boardChecker.passed" @click="this.submitChallenge()">
-        Submit Challenge
-      </button>
-      <div class="alert alert-success player-info" v-if="this.boardChecker.passed">
-        OK! You passed the challenge you just made. Click the button below to submit the challenge!
-      </div>
-      <div class="alert alert-danger player-info" v-else-if="this.boardChecker.failed">
-        You didn't pass. Keep trying. You need to pass your own challenge to submit it.
-      </div>
-      <div class="alert alert-secondary player-info disabled" v-else>
-        When you try passing your challenge, the result will be here.
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <ChallengeChecker :challenge="this.challenge" />
-  </div>
 </div></template>
 
 <script setup>

@@ -76,8 +76,6 @@ export const boardCheckerStore = defineStore('boardStore', {
         })
       }
 
-      this.updateInfoState()
-
       this.lastAdd = { x: parseInt(x), y: parseInt(y) }
     },
 
@@ -149,8 +147,6 @@ export const boardCheckerStore = defineStore('boardStore', {
       })
 
       logicalSpot.update(x, y, this.selectedPiece.king)
-
-      this.updateInfoState()
 
       this.selectedPiece = null
       this.selectedCoords = { x: null, y: null }
