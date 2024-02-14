@@ -317,9 +317,9 @@ export default {
 
       for (var i = 0; i < preconditions.length; i++) {
         var precondition = preconditions[i]
-        document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
-        document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
-        document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
+        //document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
+        //document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
+        //document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
         if (!eval(precondition)) {
           this.board.fail()
           return
@@ -329,9 +329,9 @@ export default {
       var count = 0
       for (var i = 0; i < tests.length; i++) {
         var test = tests[i]
-        document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
-        document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
-        document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
+        //document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
+        //document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
+        //document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
         if (!eval(test)) {
           this.board.fail()
           return

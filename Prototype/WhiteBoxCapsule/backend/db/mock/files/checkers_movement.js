@@ -1,7 +1,5 @@
 import PieceStackCreatorVue from "../../../../frontend/src/components/PieceStackCreator.vue";
 
-
-
 function can_piece_move(piece) {
     // Checking diagonals, clockwise, starting top left.
     var directions = [

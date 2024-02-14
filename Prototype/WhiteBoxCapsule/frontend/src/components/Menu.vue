@@ -34,9 +34,9 @@
     <button class="menu-button" @click="this.$router.push({name: 'credits'})" style="width: 500px">
       Credits
     </button>
-    <button class="menu-button" @click="this.$router.push({name: 'challenge-editor', params: {id: 1}})" style="width: 500px">
+    <!-- <button class="menu-button" @click="this.$router.push({name: 'challenge-editor', params: {id: 1}})" style="width: 500px">
       Challenge Editor
-    </button>
+    </button> -->
   </div>
 
 </template>
