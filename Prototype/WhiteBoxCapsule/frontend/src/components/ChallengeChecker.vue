@@ -295,6 +295,11 @@ export default {
     go(input) {
       var type = this.challenge.challenge_type
 
+      if (this.challenge.passing_criteria.tests.length == 0) {
+        console.error('No tests found! You need more than preconditions.')
+        return
+      }
+
       if (type == 'statement') {
         this.goUnique(input)
       } else if (type == 'decision') {
@@ -312,9 +317,9 @@ export default {
 
       for (var i = 0; i < preconditions.length; i++) {
         var precondition = preconditions[i]
-        document.getElementById('precondition-info-' + i).classList = ['alert alert-info player-info']
-        document.getElementById('precondition-info-' + i).classList.remove('alert-info')
-        document.getElementById('precondition-info-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
+        document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
+        document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
+        document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
         if (!eval(precondition)) {
           this.board.fail()
           return
@@ -324,9 +329,9 @@ export default {
       var count = 0
       for (var i = 0; i < tests.length; i++) {
         var test = tests[i]
-        document.getElementById('test-info-' + i).classList = ['alert alert-info player-info']
-        document.getElementById('test-info-' + i).classList.remove('alert-info')
-        document.getElementById('test-info-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
+        document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
+        document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
+        document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
         if (!eval(test)) {
           this.board.fail()
           return

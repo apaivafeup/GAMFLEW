@@ -204,12 +204,12 @@
               <button id="precondition-label" class="box"
                 style="width: 100%; height: 45px; text-align: left; padding: 5px; background: rgb(169, 89, 255);"
                 v-if="this.expressionType[this.selectedTestCase] != 'test'"
-                @click="this.expressionType[this.selectedTestCase] = 'test'">
+                @click="this.changeCurrentExpressionType('test')">
                 Precondition
               </button>
               <button id="test-label" class="box"
                 style="width: 100%; height: 45px; text-align: left; padding: 5px; background: #8adc6d;" v-else-if="this.testCasesCount != 1"
-                @click="this.expressionType[this.selectedTestCase] = 'precondition'">
+                @click="this.changeCurrentExpressionType('precondition')">
                 Test
               </button>
               <button id="test-label" class="box disabled"
@@ -630,6 +630,10 @@ export default {
 
     selectCoverage(coverage) {
       this.selectedCoverage = coverage
+
+      if (coverage == "decision" || coverage == "condition" || coverage == "mcdc" || coverage == "path") {
+        alert('This coverage type requires at least 2 test cases. Please be sure to add the appropriate amount.')
+      }
     },
 
     selectDifficulty(diff) {
@@ -720,7 +724,7 @@ export default {
       badge.setAttribute('id', 'expression-badge-' + this.badgeCount)
 
       var boardAccess = 'case_num'
-      if (this.testCasesCount == 1) {
+      if (Object.entries(this.expressionType).filter(([k,v]) => v == 'test').length == 1) {
         boardAccess = 'input.currentKey'
       }
 
@@ -820,15 +824,46 @@ export default {
 
     },
 
+    changeCurrentExpressionType(type) {
+      this.expressionType[this.selectedTestCase] = type
+
+      var holder = document.getElementById('validation-expression-row'),
+        newValue
+
+      if (Object.entries(this.expressionType).filter(([k,v]) => v == 'test').length > 1) {
+        newValue = 'case_num'
+      } else if (Object.entries(this.expressionType).filter(([k,v]) => v == 'precondition').length == 1) {
+        newValue = 'input.currentKey'
+      } else {
+        alert('You need at least one test case to submit a challenge.')
+        return
+      }
+
+      for (var badge of holder.children) {
+        var children = badge.children
+        for (var child of children) {
+          if (child.classList.contains('text-bg-values') && (child.innerHTML == 'input.currentKey' || child.innerHTML == 'case_num')) {
+            child.innerHTML = newValue
+          }
+        }
+      }
+    },
+
     changeCount(event) {
       var holder = document.getElementById('validation-expression-row'),
         newValue
 
+      if (event.target.value > this.testCasesCount) {
+        this.expressionType[event.target.value] = 'test'
+      } else if (event.target.value < this.testCasesCount) {
+        Object.entries(this.expressionType).filter(([k, v]) => k > event.target.value).forEach(([k, v]) => delete this.expressionType[k])
+      }
+
       this.testCasesCount = event.target.value
 
-      if (this.testCasesCount > 1) {
+      if (Object.entries(this.expressionType).filter(([k,v]) => v == 'test').length > 1) {
         newValue = 'case_num'
-      } else if (this.testCasesCount == 1) {
+      } else {
         newValue = 'input.currentKey'
       }
 
@@ -870,7 +905,6 @@ export default {
         document.getElementById('validation-expression-row').innerHTML = ''
         document.getElementById('value-badges-inputs').innerHTML = ''
         this.valid[this.selectedTestCase] = true
-        this.expressionType[this.selectedTestCase] = 'test'
       }
 
       this.reinstateClickEvents()
@@ -942,6 +976,11 @@ export default {
           tests.push(this.makeExpression())
           test++
         }
+      }
+
+      if (this.selectedCoverage != 'statement' && test < 2) {
+        alert('You need at least two test cases to submit a challenge. You now have ' + test + ', and ' + prec + ' preconditions.')
+        return
       }
 
       if (test == 0) {
