@@ -387,7 +387,7 @@
             <h6 style="padding-left: 0px; margin-bottom: 5px;">Preconditions</h6>
           </div>
           <div class="row" style="font-size: 10px;">
-            <p style="margin-bottom: 5px;">If a precondition fails, it's an immediate fail.</p>
+            <p style="margin-bottom: 5px; padding-left: 0px;">If a precondition fails, it's an immediate fail.</p>
           </div>
           <div class="row">
             <div :id="'precondition-info-' + index" class="alert alert-info player-info" style="display: flex; justify-content: space-between;"
@@ -931,14 +931,22 @@ export default {
       this.saveExpression()
 
       var tests = [], preconditions = [];
+      var prec = 0, test = 0;
       for (var i = 1; i <= this.testCasesCount; i++) {
         this.setTestCase(i)
 
         if (this.expressionType[i] == 'precondition') {
           preconditions.push(this.makeExpression())
+          prec++
         } else {
           tests.push(this.makeExpression())
+          test++
         }
+      }
+
+      if (test == 0) {
+        alert('You need at least one test case to submit a challenge.')
+        return
       }
 
       this.setTestCase(this.selectedTestCase);
