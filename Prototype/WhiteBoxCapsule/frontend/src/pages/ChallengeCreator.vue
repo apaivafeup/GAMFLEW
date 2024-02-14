@@ -423,11 +423,10 @@ export default {
       var dict = this.codeFiles[this.challenge.code_file - 1].dictionary
 
       for (var key in dict) {
-        console.log(key)
         expression = expression.replaceAll(key, dict[key].replacement)
       }
 
-      console.log(expression)
+      return expression
     },
 
     // 65 is A, 97 is a
