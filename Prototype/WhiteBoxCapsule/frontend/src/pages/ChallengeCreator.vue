@@ -392,12 +392,12 @@
           <div class="row">
             <div :id="'precondition-info-' + index" class="alert alert-info player-info" style="display: flex; justify-content: space-between;"
               v-for="(precondition, index) in preconditions">
-              <div class="col" style="max-width: 20%;">  
-              <strong style="margin-right: 5px; align-self: center;">
+              <div class="col" style="max-width: 20%; align-self: center;">  
+              <strong style="margin-right: 5px; ">
                   {{ 'Precondition ' + (index + 1) + ': ' }}</strong>
                   </div>
                   <div class="col" style="max-width: 80%">
-                    <input class="box" :value="precondition" style="width: 100%;" @input="this.changePreconditionExpression($event, index)" />
+                    <textarea class="box" rows="5" :value="precondition" style="width: 100%;" @input="this.changePreconditionExpression($event, index)" />
                   </div>
             </div>
           </div>
@@ -420,7 +420,7 @@
                 <strong style="margin-right: 2.5px;">{{ 'Test ' + (index + 1) + ':' }}</strong>
               </div>
               <div class="col" style="max-width: 90%">
-                <input class="box" :value="test" style="width: 100%;" @input="this.changeTestExpression($event, index)" />
+                <textarea class="box" rows="5" :value="test" style="width: 100%;" @input="this.changeTestExpression($event, index)" />
               </div>
                 
           </div>
