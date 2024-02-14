@@ -2,11 +2,63 @@
     {
         "id": 1,
         "name": "Test File 1: Is Move Valid?",
-        "content": "// board includes the board's state.\n// start: the (x, y) position from where the piece moved.\n// destination: the (x, y) position to where the piece moved.\nfunction is_valid_move(board, start, destination) {\n\t// Math.abs() gives you the absolute value of whatever you call it with.\n\t// Math.abs(-1) == 1\n\tif (destination.x < 0 || destination.x > 7 ||\n\t\tdestination.y < 0 || destination.y > 7) {\n\t\treturn false;\n\t}\n\n\tvar lineDifference = Math.abs(start.x - destination.x);\n\tvar columnDifference = Math.abs(start.y - destination.y);\n\n\tif (lineDifference != columnDifference) {\n\t\treturn false;\n\t} else {\n\t\tif (lineDifference == 1) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\treturn true;\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else if (lineDifference == 2) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\tvar middlePiece = board[Math.round((start.x + destination.x) / 2)][Math.round((start.y + destination.y) / 2)];\n\t\t\t\tif (middlePiece.color == board[start.x][start.y].color) {\n\t\t\t\t\treturn false;\n\t\t\t\t} else if (middlePiece.color != Color.EMPTY) {\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
+        "content": "// board includes the board's state.\n// start: the (x, y) position from where a piece last moved.\n// destination: the (x, y) position to where a piece last moved.\nfunction is_valid_move(board, start, destination) {\n\t// Math.abs() gives you the absolute value of whatever you call it with.\n\t// Math.abs(-1) == 1\n\tif (destination.x < 0 || destination.x > 7 ||\n\t\tdestination.y < 0 || destination.y > 7) {\n\t\treturn false;\n\t}\n\n\tvar lineDifference = Math.abs(start.x - destination.x);\n\tvar columnDifference = Math.abs(start.y - destination.y);\n\n\tif (lineDifference != columnDifference) {\n\t\treturn false;\n\t} else {\n\t\tif (lineDifference == 1) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\treturn true;\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else if (lineDifference == 2) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\tvar middlePiece = board[Math.round((start.x + destination.x) / 2)][Math.round((start.y + destination.y) / 2)];\n\t\t\t\tif (middlePiece.color == board[start.x][start.y].color) {\n\t\t\t\t\treturn false;\n\t\t\t\t} else if (middlePiece.color != Color.EMPTY) {\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
+        "dictionary": {
+            "board": {
+                "replacement": "input[X]",
+                "accessing": ".log for interaction log, [I][J] for piece in position (I, J)."
+            },
+            "board.log": {
+                "replacement": "input.log[X]",
+                "accessing": "[I] for interaction I."
+            },
+            "board.log[I]": {
+                "replacement": "input.log[X][I]",
+                "accessing": ".start for start, .destination for destination, .type for 'add' or 'move'"
+            },
+            "board[I][J]": {
+                "replacement": "input[X][I][J]",
+                "accessing": ".color for color, .stack for stack (divided in .red and .blue)."
+            },
+            "board.log[board.log.length - 1]": {
+                "replacement": "input.log[X][input.log[X].length - 1]",
+                "accessing": ".start for start, .destination for destination, .type for 'add' or 'move'"
+            },
+            "start": {
+                "replacement": "input.log[X][input.log[X].length - 1].start",
+                "accessing": ".x for x, .y for y, .color for color"
+            },
+            "destination": {
+                "replacement": "input.log[X][input.log[X].length - 1].destination",
+                "accessing": ".x for x, .y for y, .color for color"
+            }
+        }
     },
     {
         "id": 2,
         "name": "Test File 2: Is Board Valid?",
-        "content": "function is_board_valid(board) { // board is the board's state.\n\tvar bluePieces = utils.count_blue_pieces(board);\n\tvar redPieces = utils.count_red_pieces(board);\n\n\tif (bluePieces > 12 || redPieces > 12) {\n\t\treturn false;\n\t} else if (bluePieces == 0 || redPieces == 0) {\n\t\treturn false;\n\t}\n\n\tvar pieces = utils.get_pieces(board);\n\tvar odd = [1, 3, 5, 7], even = [0, 2, 4, 6];\n\n\tfor (p in pieces) {\n\t\tif (p.position.x % 2 != 0) {\n\t\t\tif (!odd.includes(p.position.y)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\tif (!even.includes(p.position.y)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t}\n\n\treturn true;\n}"
+        "content": "function is_board_valid(board) { // board is the board's state.\n\tvar bluePieces = utils.count_blue_pieces(board);\n\tvar redPieces = utils.count_red_pieces(board);\n\n\tif (bluePieces > 12 || redPieces > 12) {\n\t\treturn false;\n\t} else if (bluePieces == 0 || redPieces == 0) {\n\t\treturn false;\n\t}\n\n\tvar pieces = utils.get_pieces(board);\n\tvar odd = [1, 3, 5, 7], even = [0, 2, 4, 6];\n\n\tfor (p in pieces) {\n\t\tif (p.position.x % 2 != 0) {\n\t\t\tif (!odd.includes(p.position.y)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\tif (!even.includes(p.position.y)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t}\n\n\treturn true;\n}",
+        "dictionary": {
+            "board": {
+                "replacement": "input[X]",
+                "accessing": ".log for interaction log, [I][J] for piece in position (I, J)."
+            },
+            "board.log": {
+                "replacement": "input.log[X]",
+                "accessing": "[I] for interaction I."
+            },
+            "board.log[I]": {
+                "replacement": "input.log[X][I]",
+                "accessing": ".start for start, .destination for destination, .type for 'add' or 'move'"
+            },
+            "board[I][J]": {
+                "replacement": "input[X][I][J]",
+                "accessing": ".color for color, .stack for stack (divided in .red and .blue)."
+            },
+            "board.log[board.log.length - 1]": {
+                "replacement": "input.log[X][input.log[X].length - 1]",
+                "accessing": ".start for start, .destination for destination, .type for 'add' or 'move'"
+            }
+        }
     }
 ]

@@ -87,6 +87,7 @@ class CodeFile(BaseModel):
     id: Optional[int]
     name: str
     content: str
+    dictionary: dict
 
     class Config:
         from_attributes = True

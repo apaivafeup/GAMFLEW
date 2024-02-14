@@ -64,6 +64,7 @@ class CodeFile(Base):
     id = Column(Integer, primary_key=True)
     name = Column(TEXT, index=True)
     content = Column(TEXT, index=True)
+    dictionary = Column(PickleType, index=True)
 
     challenges = relationship("Challenge", back_populates="code_files")
 

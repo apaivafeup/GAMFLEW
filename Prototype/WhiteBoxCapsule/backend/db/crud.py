@@ -44,7 +44,8 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
 def create_code_file(db: Session, code_file: schemas.CodeFile):
     db_code_file = schemas.CodeFile(
         name=code_file.name,
-        content=code_file.content
+        content=code_file.content,
+        dictionary=code_file.dictionary
     )
     db.add(db_code_file)
     db.commit()

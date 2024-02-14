@@ -187,15 +187,15 @@ export const boardCheckerStore = defineStore('boardStore', {
       }
     },
 
-    setState() {
-      for (var i = 0; i < this.initialState.board_state.length; i++) {
-        for (var j = 0; j < this.initialState.board_state[i].length; j++) {
+    changeState(initialState) {
+      for (var i = 0; i < initialState.board_state.length; i++) {
+        for (var j = 0; j < initialState.board_state[i].length; j++) {
           this.state[this.currentKey][i][j] = 
-            new Piece({x: i, y: j}, this.initialState.board_state[i][j].color, this.initialState.board_state[i][j].content)
+            new Piece({x: i, y: j}, initialState.board_state[i][j].color, initialState.board_state[i][j].content)
         }
       }
 
-      this.outOfBoundsState[this.currentKey] = new Piece({x: -1, y: -1}, this.initialState.out_of_bounds_state.color, this.initialState.out_of_bounds_state.stack)
+      this.outOfBoundsState[this.currentKey] = new Piece({x: -1, y: -1}, initialState.out_of_bounds_state.color, initialState.out_of_bounds_state.stack)
     },
 
     previous() {

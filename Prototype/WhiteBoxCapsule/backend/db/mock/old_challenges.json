@@ -16,7 +16,7 @@
                 "input.log[input.currentKey].length > 0"
             ],
             "tests": [
-                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].from.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].to.x) > 2"
+                "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) > 2"
             ]
         },
         "achievement_criteria": null,
@@ -38,11 +38,11 @@
             "condition_count": null,
             "preconditions": [
                 "input.log[case_num].length > 0",
-                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.x - input.log[case_num][input.log[case_num].length - 1].to.x) > 2"
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) > 2"
             ],
             "tests": [
-                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y) < 2",
-                "Math.abs(input.log[case_num][input.log[case_num].length - 1].from.y - input.log[case_num][input.log[case_num].length - 1].to.y) >= 2"
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y) < 2",
+                "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y) >= 2"
             ]
         },
         "achievement_criteria": null,
@@ -565,10 +565,10 @@
                 "input.log[case_num][input.log[case_num].length - 1].type == 'move'"
             ],
             "tests": [
-                "input.log[case_num][input.log[case_num].length - 1].from.x >= 7 && input.log[case_num][input.log[case_num].length - 1].to.x <= 0",
-                "!(input.log[case_num][input.log[case_num].length - 1].from.x >= 7) && input.log[case_num][input.log[case_num].length - 1].to.x <= 0",
-                "input.log[case_num][input.log[case_num].length - 1].from.x >= 7 && !(input.log[case_num][input.log[case_num].length - 1].to.x <= 0)",
-                "!(input.log[case_num][input.log[case_num].length - 1].from.x >= 7) && !(input.log[case_num][input.log[case_num].length - 1].to.x <= 0)"
+                "input.log[case_num][input.log[case_num].length - 1].start.x >= 7 && input.log[case_num][input.log[case_num].length - 1].destination.x <= 0",
+                "!(input.log[case_num][input.log[case_num].length - 1].start.x >= 7) && input.log[case_num][input.log[case_num].length - 1].destination.x <= 0",
+                "input.log[case_num][input.log[case_num].length - 1].start.x >= 7 && !(input.log[case_num][input.log[case_num].length - 1].destination.x <= 0)",
+                "!(input.log[case_num][input.log[case_num].length - 1].start.x >= 7) && !(input.log[case_num][input.log[case_num].length - 1].destination.x <= 0)"
             ]
         },
         "achievement_criteria": null,
@@ -593,9 +593,9 @@
                 "input.log[case_num][input.log[case_num].length - 1].type == 'move'"
             ],
             "tests": [
-                "!(input.log[case_num][input.log[case_num].length - 1].from.x >= 7) && input.log[case_num][input.log[case_num].length - 1].to.x <= 0",
-                "input.log[case_num][input.log[case_num].length - 1].from.x >= 7 && !(input.log[case_num][input.log[case_num].length - 1].to.x <= 0)",
-                "!(input.log[case_num][input.log[case_num].length - 1].from.x >= 7) && !(input.log[case_num][input.log[case_num].length - 1].to.x <= 0)"
+                "!(input.log[case_num][input.log[case_num].length - 1].start.x >= 7) && input.log[case_num][input.log[case_num].length - 1].destination.x <= 0",
+                "input.log[case_num][input.log[case_num].length - 1].start.x >= 7 && !(input.log[case_num][input.log[case_num].length - 1].destination.x <= 0)",
+                "!(input.log[case_num][input.log[case_num].length - 1].start.x >= 7) && !(input.log[case_num][input.log[case_num].length - 1].destination.x <= 0)"
             ]
         },
         "achievement_criteria": null,

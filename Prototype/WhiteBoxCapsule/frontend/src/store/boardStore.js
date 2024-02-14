@@ -66,7 +66,7 @@ export const boardStore = defineStore('boardStore', {
       if (this.lastAdd.x != x && this.lastAdd.y != y) {
         this.log[this.currentKey].push({
           type: 'add',
-          to: { x: parseInt(x), y: parseInt(y) },
+          destination: { x: parseInt(x), y: parseInt(y) },
           color: piece.color
         })
       } else {
@@ -74,7 +74,7 @@ export const boardStore = defineStore('boardStore', {
 
         this.log[this.currentKey].push({
           type: 'add',
-          to: { x: parseInt(x), y: parseInt(y) },
+          destination: { x: parseInt(x), y: parseInt(y) },
           color: piece.color
         })
       }
@@ -151,8 +151,8 @@ export const boardStore = defineStore('boardStore', {
 
       this.log[this.currentKey].push({
         type: 'move',
-        from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
-        to: { x: parseInt(x), y: parseInt(y) }
+        start: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
+        destination: { x: parseInt(x), y: parseInt(y) }
       })
 
       logicalSpot.update(x, y, this.selectedPiece.king)
@@ -242,19 +242,19 @@ export const boardStore = defineStore('boardStore', {
       if (lastLog.type == 'move') {
         this.infoState =
           'Moved (' +
-          lastLog.from.x +
+          lastLog.start.x +
           ', ' +
-          lastLog.from.y +
+          lastLog.start.y +
           ') to (' +
-          lastLog.to.x +
+          lastLog.destination.x +
           ', ' +
-          lastLog.to.y +
+          lastLog.destination.y +
           ').'
       } else {
         if (lastLog.color != 'empty')
           this.infoState =
-            'Added ' + lastLog.color + ' piece to (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
-        else this.infoState = 'Removed piece from (' + lastLog.to.x + ', ' + lastLog.to.y + ').'
+            'Added ' + lastLog.color + ' piece to (' + lastLog.destination.x + ', ' + lastLog.destination.y + ').'
+        else this.infoState = 'Removed piece from (' + lastLog.destination.x + ', ' + lastLog.destination.y + ').'
       }
     },
 
