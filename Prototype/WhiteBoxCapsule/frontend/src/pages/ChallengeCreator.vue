@@ -43,40 +43,6 @@
     </div>
   </div>
   <div class="container" style="display: flex; justify-content: center; flex-direction: column; margin-bottom: 15px;">
-    <div class="row">
-      <div class="col">
-        <div class="row" style="margin-bottom: 5px;">
-          <div class="col">
-            <div class="row">
-              <h6 style="text-align: left; margin-bottom: 5px;">Coverage & Difficulty</h6>
-            </div>
-            <div class="row" style="font-size: 10px;">
-              <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular coverage type
-                associated.<br />A difficulty level is also required.</p>
-            </div>
-            <div class="row" style="margin: 0px;">
-              <div class="col" style="padding: 0px; margin-right: 5px;">
-                <select class="button is-primary guide-button" id="coverage-select" style="width: 100%;"
-                  :value="this.challenge?.challenge_type">
-                  <option @click="this.selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{
-                    coverage }}
-                  </option>
-                </select>
-              </div>
-              <div class="col" style="padding: 0px;">
-                <select class="button is-primary guide-button" id="difficulty-select" style="width: 100%;"
-                  :value="this.challenge?.difficulty">
-                  <option @click="this.selectDifficulty(difficulty)" v-for="difficulty in difficulties"
-                    :value="difficulty">
-                    {{ difficulty }}
-                  </option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div style="margin-top: 10px;">
       <div class="row">
         <h5 style="text-align: left; margin-bottom: 5px;">Challenge Details</h5>
@@ -135,6 +101,36 @@
             possible test cases!</p>
           <input id="input-condition-box" @input="this.changeConditionCount($event)" class="box" type="number" max="10"
             placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;" />
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 5px;">
+        <div class="col">
+          <div class="row">
+            <h6 style="text-align: left; margin-bottom: 5px;">Coverage & Difficulty</h6>
+          </div>
+          <div class="row" style="font-size: 10px;">
+            <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular coverage type
+              associated.<br />A difficulty level is also required.</p>
+          </div>
+          <div class="row" style="margin: 0px;">
+            <div class="col" style="padding: 0px; margin-right: 5px;">
+              <select class="button is-primary guide-button" id="coverage-select" style="width: 100%;"
+                :value="this.challenge?.challenge_type">
+                <option @click="this.selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{
+                  coverage }}
+                </option>
+              </select>
+            </div>
+            <div class="col" style="padding: 0px;">
+              <select class="button is-primary guide-button" id="difficulty-select" style="width: 100%;"
+                :value="this.challenge?.difficulty">
+                <option @click="this.selectDifficulty(difficulty)" v-for="difficulty in difficulties"
+                  :value="difficulty">
+                  {{ difficulty }}
+                </option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
