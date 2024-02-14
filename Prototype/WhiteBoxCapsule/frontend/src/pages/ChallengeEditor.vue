@@ -162,11 +162,6 @@
         </div>
       </div>
     </div>
-    <div class="row" style="margin: 5px; justify-content: center; display: flex;">
-      <button class="box" style="padding: 7.5px;" @click="validateExpression()">
-        Validate
-      </button>
-    </div>
   </div>
   <div class="container" style="display: flex; justify-content: center; flex-direction: column;">
     <div class="row">
@@ -406,6 +401,8 @@ export default {
     selectState(id) {
       this.selectedBoard = id
       this.boardCreator.changeState(this.boardStates[id - 1])
+      this.boardChecker.initialState = this.boardStates[this.challenge.initial_board - 1]
+      this.boardChecker.setState()
     },
 
     selectCode(id) {
@@ -431,20 +428,6 @@ export default {
       } else {
         newValue = 'input.currentKey'
       }
-    },
-
-    validateExpression() {
-      this.boardChecker.initialState = this.boardStates[this.challenge.initial_board - 1]
-      this.boardChecker.setState()
-
-      // Precondition and test cases.
-      this.preconditions = [], this.tests = []
-      this.challenge.passing_criteria.preconditions.forEach((precondition) => {
-        this.preconditions.push(precondition)
-      })
-      this.challenge.passing_criteria.tests.forEach((test) => {
-        this.tests.push(test)
-      })
     },
 
     async submitChallenge(challenge) {
