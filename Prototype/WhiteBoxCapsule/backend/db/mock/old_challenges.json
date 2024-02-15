@@ -554,7 +554,7 @@
         "test_cases_count": 4,
         "score": 400,
         "hint": "Read the code carefully. The If statement you're dealing with involves the from and the to, not just the first!",
-        "objective": "Path coverage of line 4.",
+        "objective": "Condition/decision coverage of line 4.",
         "initial_board": 2,
         "code_file": 7,
         "challenge_type": "path",

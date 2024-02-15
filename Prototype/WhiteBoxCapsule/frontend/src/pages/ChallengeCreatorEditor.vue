@@ -89,7 +89,7 @@
             style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
         <div class="col" id="condition-count-input"
-          v-if="this.challenge?.challenge_type == 'condition' || this.challenge?.challenge_type == 'mcdc' || this.challenge?.challenge_type == 'path'">
+          v-if="this.challenge?.challenge_type == 'condition' || this.challenge?.challenge_type == 'mcdc' || this.challenge?.challenge_type == 'condition/decision'">
           <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup>
             possible test cases!</p>
@@ -397,7 +397,7 @@ export default {
       preconditions: [''],
       tests: [''],
       codeString: '',
-      coverageTypes: ['statement', 'decision', 'condition', 'mcdc', 'path'],
+      coverageTypes: ['statement', 'decision', 'condition', 'mcdc', 'condition/decision'],
       difficulties: ['Very Easy', 'Easy', 'Normal', 'Hard', 'Very Hard'],
       selectedInput: '',
       expressionType: {

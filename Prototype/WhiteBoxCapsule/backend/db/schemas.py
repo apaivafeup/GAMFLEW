@@ -25,7 +25,7 @@ class ChallengeType(str, Enum):
     STATEMENT = "statement"
     DECISION = "decision"
     CONDITION = "condition"
-    PATH = "path"
+    CONDITION_DECISION = "condition/decision"
     MCDC = "mcdc"
 
 class Difficulty(str, Enum):

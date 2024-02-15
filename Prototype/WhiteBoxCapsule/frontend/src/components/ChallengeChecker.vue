@@ -290,7 +290,7 @@ export default {
     },
 
     needsTable() {
-      return this.challenge.challenge_type == 'condition' || this.challenge.challenge_type == 'mcdc' || this.challenge.challenge_type == 'path'
+      return this.challenge.challenge_type == 'condition' || this.challenge.challenge_type == 'mcdc' || this.challenge.challenge_type == 'condition/decision'
     },
 
     // Submit functions
@@ -307,7 +307,7 @@ export default {
           this.goUnique(input)
         } else if (type == 'decision') {
           this.goDecision(input)
-        } else if (type == 'condition' || type == 'mcdc' || type == 'path') {
+        } else if (type == 'condition' || type == 'mcdc' || type == 'condition/decision') {
           this.goCondition(input)
         } else {
           console.error('Invalid submit type')
