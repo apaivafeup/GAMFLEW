@@ -71,7 +71,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default defineComponent({
   props: {
     challenge: Challenge,
-    passed: Boolean
+    passed: Boolean,
+    editor: Boolean
   },
 
   data() {
@@ -80,7 +81,10 @@ export default defineComponent({
 
   methods: {
     goToChallenge(id) {
-      this.$router.push({name: 'challenge', params: {id: id}})
+      if (this.editor)
+        this.$router.push({name: 'challenge-editor', params: {id: id}})
+      else
+        this.$router.push({name: 'challenge', params: {id: id}})
     }
   }
 })

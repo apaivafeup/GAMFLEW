@@ -210,7 +210,7 @@ export const boardCheckerStore = defineStore('boardStore', {
 
       if (this.state[this.currentKey] == undefined) {
         this.generateState()
-        this.setState()
+        this.changeState(this.initialState)
       }
 
       this.selectedPiece = null

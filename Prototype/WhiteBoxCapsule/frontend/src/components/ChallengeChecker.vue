@@ -364,7 +364,9 @@ export default {
       for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
         for (var i = 0; i < preconditions.length; i++) {
           var precondition = preconditions[i]
-          document.getElementById('precondition-info-' + i).innerHTML = eval(precondition)
+          document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
+          document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
+          document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
           if (!eval(precondition)) {
             this.board.fail()
             return
@@ -378,7 +380,9 @@ export default {
             continue
           }
 
-          document.getElementById('test-info-' + i).innerHTML = eval(test)
+          document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
+          document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
+          document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
           if (!eval(test)) {
             continue
           } else {
@@ -404,7 +408,9 @@ export default {
       for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
         for (var i = 0; i < preconditions.length; i++) {
           var precondition = preconditions[i]
-          document.getElementById('precondition-info-' + i).innerHTML = eval(precondition)
+          document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
+          document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
+          document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
           if (!eval(precondition)) {
             this.board.fail()
             return
@@ -414,7 +420,9 @@ export default {
         for (var i = 0; i < tests.length; i++) {
           var test = tests[i]
 
-          document.getElementById('test-info-' + i).innerHTML = eval(test)
+          document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
+          document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
+          document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
           if (!eval(test)) {
             continue
           } else {
