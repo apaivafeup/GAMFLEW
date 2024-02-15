@@ -63,7 +63,7 @@ export const boardCheckerStore = defineStore('boardStore', {
       if (this.lastAdd.x != x && this.lastAdd.y != y) {
         this.log[this.currentKey].push({
           type: 'add',
-          to: { x: parseInt(x), y: parseInt(y) },
+          destination: { x: parseInt(x), y: parseInt(y) },
           color: piece.color
         })
       } else {
@@ -71,7 +71,7 @@ export const boardCheckerStore = defineStore('boardStore', {
 
         this.log[this.currentKey].push({
           type: 'add',
-          to: { x: parseInt(x), y: parseInt(y) },
+          destination: { x: parseInt(x), y: parseInt(y) },
           color: piece.color
         })
       }
@@ -142,8 +142,8 @@ export const boardCheckerStore = defineStore('boardStore', {
 
       this.log[this.currentKey].push({
         type: 'move',
-        from: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
-        to: { x: parseInt(x), y: parseInt(y) }
+        start: { x: this.selectedPiece.position.x, y: this.selectedPiece.position.y },
+        destination: { x: parseInt(x), y: parseInt(y) }
       })
 
       logicalSpot.update(x, y, this.selectedPiece.king)
@@ -183,11 +183,12 @@ export const boardCheckerStore = defineStore('boardStore', {
       this.log[this.currentKey] = []
 
       if (reset) {
-        this.setState()
+        this.changeState(this.initialState)
       }
     },
 
     changeState(initialState) {
+      this.initialState = initialState
       for (var i = 0; i < initialState.board_state.length; i++) {
         for (var j = 0; j < initialState.board_state[i].length; j++) {
           this.state[this.currentKey][i][j] = 

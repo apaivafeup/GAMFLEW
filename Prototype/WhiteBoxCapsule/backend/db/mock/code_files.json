@@ -4,10 +4,6 @@
         "name": "Test File 1: Is Move Valid?",
         "content": "// board includes the board's state.\n// start: the (x, y) position from where a piece last moved.\n// destination: the (x, y) position to where a piece last moved.\nfunction is_valid_move(board, start, destination) {\n\t// Math.abs() gives you the absolute value of whatever you call it with.\n\t// Math.abs(-1) == 1\n\tif (destination.x < 0 || destination.x > 7 ||\n\t\tdestination.y < 0 || destination.y > 7) {\n\t\treturn false;\n\t}\n\n\tvar lineDifference = Math.abs(start.x - destination.x);\n\tvar columnDifference = Math.abs(start.y - destination.y);\n\n\tif (lineDifference != columnDifference) {\n\t\treturn false;\n\t} else {\n\t\tif (lineDifference == 1) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\treturn true;\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else if (lineDifference == 2) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\tvar middlePiece = board[Math.round((start.x + destination.x) / 2)][Math.round((start.y + destination.y) / 2)];\n\t\t\t\tif (middlePiece.color == board[start.x][start.y].color) {\n\t\t\t\t\treturn false;\n\t\t\t\t} else if (middlePiece.color != Color.EMPTY) {\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
         "dictionary": {
-            "board": {
-                "replacement": "input[X]",
-                "accessing": ".log for interaction log, [I][J] for piece in position (I, J)."
-            },
             "board.log": {
                 "replacement": "input.log[X]",
                 "accessing": "[I] for interaction I."
@@ -17,12 +13,12 @@
                 "accessing": ".start for start, .destination for destination, .type for 'add' or 'move'"
             },
             "board[I][J]": {
-                "replacement": "input[X][I][J]",
+                "replacement": "input.state[X][I][J]",
                 "accessing": ".color for color, .stack for stack (divided in .red and .blue)."
             },
             "board.log[board.log.length - 1]": {
                 "replacement": "input.log[X][input.log[X].length - 1]",
-                "accessing": ".start for start, .destination for destination, .type for 'add' or 'move'"
+                "accessing": ".type for 'add' or 'move'"
             },
             "start": {
                 "replacement": "input.log[X][input.log[X].length - 1].start",

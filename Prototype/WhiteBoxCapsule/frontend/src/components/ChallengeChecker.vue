@@ -31,7 +31,7 @@
         <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default">
           Next
         </button>
-        <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default" >
+        <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default">
           {{ 'Add' }}
         </button>
         <button id="go-button" class="button is-primary is-fullwidth disabled" style="cursor: default">
@@ -93,12 +93,12 @@
     </div>
     <div style="justify-self: right; justify-content: end;" v-else>
       <EasyDataTable style="width: 525px; height: 465px; margin-left: 10px; margin-right: 2.5px; overflow: scroll;"
-      :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="10" :fixed-checkbox="true"
-      :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
-      :theme-color="'#A959FF'">
-    </EasyDataTable>
+        :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="10" :fixed-checkbox="true"
+        :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
+        :theme-color="'#A959FF'">
+      </EasyDataTable>
     </div>
-    
+
   </div>
   <div style="display: flex; justify-content: right" v-else>
     <div style="flex-direction: column; justify-content: space-between; display: flex">
@@ -111,12 +111,14 @@
             <OutPieceStack :x="this.outX" :y="this.outY" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outX" id="piece-stack-out-x"
-             @input="this.changeX()" class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x"/>
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outX"
+              id="piece-stack-out-x" @input="this.changeX()" class="col box"
+              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
             <input v-else id="piece-stack-out-x" class="col box disabled"
               style="width: 30px; text-align: center; font-size: 12px" type="number" />
-            <input @input="this.changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outY" id="piece-stack-out-y"
-              class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
+            <input @input="this.changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
+              :v-model="this.outY" id="piece-stack-out-y" class="col box"
+              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
             <input v-else id="piece-stack-out-y" class="col box disabled"
               style="width: 30px; text-align: center; font-size: 12px" type="number" />
           </div>
@@ -127,8 +129,8 @@
         {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
 
-      <button id="view-button" class="button is-primary is-fullwidth" v-if="!board.passed && !board.pause && !board.add && needsTable()"
-        @click="board.tableMode(this.challenge)">
+      <button id="view-button" class="button is-primary is-fullwidth"
+        v-if="!board.passed && !board.pause && !board.add && needsTable()" @click="board.tableMode(this.challenge)">
         {{ !board.table ? 'Condition Table' : 'Game Board' }}
       </button>
       <button id="view-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
@@ -224,12 +226,12 @@
     </div>
     <div style="justify-self: right; justify-content: end;" v-else>
       <EasyDataTable style="width: 525px; height: 465px; margin-left: 10px; margin-right: 2.5px; overflow: scroll;"
-      :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="10" :fixed-checkbox="true"
-      :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
-      :theme-color="'#A959FF'">
-    </EasyDataTable>
+        :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="10" :fixed-checkbox="true"
+        :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
+        :theme-color="'#A959FF'">
+      </EasyDataTable>
     </div>
-    
+
   </div>
 </template>
 
@@ -269,7 +271,7 @@ export default {
   },
 
   mounted() {
-    
+
   },
 
   methods: {
@@ -293,21 +295,29 @@ export default {
 
     // Submit functions
     go(input) {
-      var type = this.challenge.challenge_type
+      try {
+        var type = this.challenge.challenge_type
 
-      if (this.challenge.passing_criteria.tests.length == 0) {
-        console.error('No tests found! You need more than preconditions.')
-        return
-      }
+        if (this.challenge.passing_criteria.tests.length == 0) {
+          console.error('No tests found! You need more than preconditions.')
+          return
+        }
 
-      if (type == 'statement') {
-        this.goUnique(input)
-      } else if (type == 'decision') {
-        this.goDecision(input)
-      } else if (type == 'condition' || type == 'mcdc' || type == 'path') {
-        this.goCondition(input)
-      } else {
-        console.error('Invalid submit type')
+        if (type == 'statement') {
+          this.goUnique(input)
+        } else if (type == 'decision') {
+          this.goDecision(input)
+        } else if (type == 'condition' || type == 'mcdc' || type == 'path') {
+          this.goCondition(input)
+        } else {
+          console.error('Invalid submit type')
+        }
+      } catch (error) {
+        console.error(error)
+        Array.from(document.getElementsByClassName('alert player-info')).forEach((element) => {
+          element.classList = ['alert alert-info player-info']
+        })
+        alert("An invalid expression caused an error. Try again.")
       }
     },
 
@@ -317,9 +327,9 @@ export default {
 
       for (var i = 0; i < preconditions.length; i++) {
         var precondition = preconditions[i]
-        //document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
-        //document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
-        //document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
+        document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
+        document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
+        document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
         if (!eval(precondition)) {
           this.board.fail()
           return
@@ -329,9 +339,9 @@ export default {
       var count = 0
       for (var i = 0; i < tests.length; i++) {
         var test = tests[i]
-        //document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
-        //document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
-        //document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
+        document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
+        document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
+        document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
         if (!eval(test)) {
           this.board.fail()
           return

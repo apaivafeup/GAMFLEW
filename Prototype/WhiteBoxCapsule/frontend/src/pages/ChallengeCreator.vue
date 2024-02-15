@@ -18,7 +18,7 @@
         </div>
         <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
           <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="440px" data-line="1"
-            :prismjs="true" :name="name" :code="this.codeFiles[this.challenge?.code_file]?.content" lang="javascript" prism-js
+            :prismjs="true" :name="name" :code="this.codeFiles[this.challenge?.code_file - 1]?.content" lang="javascript" prism-js
             style="font-size: 16px; width: 650px;" :copy-icon="false" :copy-button="false" :copy-tab="false"
             :tabs="false" />
         </div>
@@ -150,19 +150,27 @@
         v-if="!this.boardChecker.passed">
         Add Test
       </button>
-      <button class="box" style="width: 150px; padding: 20px;" @click="this.addPrecondition(index)"
+      <button class="box disabled" style="width: 150px; padding: 20px;"
+        v-else>
+        Add Test
+      </button>
+      <button class="box disabled" style="width: 150px; padding: 20px;" @click="this.addPrecondition(index)"
         v-if="!this.boardChecker.passed">
+        Add Precondition
+      </button>
+      <button class="box disabled" style="width: 150px; padding: 20px;"
+        v-else>
         Add Precondition
       </button>
       <div class="row" style="text-align: center;">
         <p style="margin: 0px; margin-bottom: 5px;">Preconditions: <strong>
-            {{ this.challenge?.passing_criteria.preconditions.length }}
+            {{ this.preconditions.length }}
           </strong>
         </p>
       </div>
       <div class="row" style="text-align: center;">
         <p style="margin: 0px; margin-top: 5px; ">Tests: <strong>
-            {{ this.challenge?.passing_criteria.tests.length }}
+            {{ this.tests.length }}
           </strong>
         </p>
       </div>
@@ -181,9 +189,9 @@
     </div>
     <div class="row">
       <div class="col" style="display: flex; flex-direction: column; max-height: 445px; overflow-y: scroll;">
-        <div v-if="this.challenge?.passing_criteria.preconditions.length != 0">
+        <div v-if="this.preconditions.length != 0">
           <div class="row" style="margin-bottom: 10px;" :id="'precondition-info-' + index"
-            v-for="(precondition, index) in this.challenge?.passing_criteria.preconditions">
+            v-for="(precondition, index) in this.preconditions">
             <div class="col" style="max-width: 90%; padding: 0px;">
               <div class="alert alert-info player-info precondition-alert" :id="'precondition-info-alert-' + index"
                 style="display: flex; justify-content: start;">
@@ -216,9 +224,9 @@
             </div>
           </div>
         </div>
-        <div style="margin-bottom: 10px;" id="tests-row" v-if="this.challenge?.passing_criteria.tests.length != 0">
+        <div style="margin-bottom: 10px;" id="tests-row" v-if="this.tests.length != 0">
           <div class="row" style="margin-bottom: 10px;" :id="'test-info-' + index"
-            v-for="(test, index) in this.challenge?.passing_criteria.tests">
+            v-for="(test, index) in this.tests">
             <div class="col" style="max-width: 90%; padding: 0px;">
               <div class="alert alert-info player-info test-alert" :id="'test-info-alert-' + index"
                 style="display: flex; justify-content: start;">
@@ -369,6 +377,8 @@ export default {
           tests: ['']
         }
       },
+      preconditions: [''],
+      tests: [''],
       codeString: '',
       coverageTypes: ['statement', 'decision', 'condition', 'mcdc', 'path'],
       difficulties: ['Very Easy', 'Easy', 'Normal', 'Hard', 'Very Hard'],
@@ -389,32 +399,37 @@ export default {
   },
 
   methods: {
-    boardAccess(event) {
-      if (Object.entries(this.expressionType).filter(([k, v]) => v == 'test').length > 1) {
-        this.boardAccess = 'case_num'
-      } else {
-        this.boardAccess = 'input.currentKey'
-      }
-    },
-
     addTest(index) {
+      if (this.challenge.test_cases_count > 1 && this.challenge.challenge_type == 'statement') {
+        alert('For statement coverage, you can only have one test case. Did you meant to add a precondition?')
+        return
+      }
+
+      this.tests.splice(index + 1, 0, '')
       this.challenge.passing_criteria.tests.splice(index + 1, 0, '')
       this.expressionType[index] = 'test'
       this.challenge.test_cases_count += 1
     },
 
     removeTest(index) {
+      if (this.challenge.test_cases_count - 1 < 1) {
+        alert('At least one test is required. Did you mean to remove a precondition?')
+        return
+      }
+
+      this.tests.splice(index, 1)
       this.challenge.passing_criteria.tests.splice(index, 1)
       delete this.expressionType[index + 1]
       this.challenge.test_cases_count -= 1
     },
 
     addPrecondition(index) {
-      this.challenge.passing_criteria.preconditions.splice(index + 1, 0, '')
+      this.preconditions.splice(index + 1, 0, '')
       this.expressionType[index] = 'precondition'
     },
 
     removePrecondition(index) {
+      this.preconditions.splice(index, 1)
       this.challenge.passing_criteria.preconditions.splice(index, 1)
       delete this.expressionType[index + 1]
     },
@@ -422,20 +437,41 @@ export default {
     makeExpression(expression) {
       var dict = this.codeFiles[this.challenge.code_file - 1].dictionary
 
+
       for (var key in dict) {
+        var regex = new RegExp('board.log[[A-z]+].start||board.log[[A-z]+].destination')
+        if (key == 'start' || key == 'destination') {
+          if (regex.test(expression)) {
+            console.log(regex.test(expression))
+            continue
+          }
+        }
         expression = expression.replaceAll(key, dict[key].replacement)
       }
+
+      var boardAccess
+      if (Object.entries(this.expressionType).filter(([k, v]) => v == 'test').length > 1) {
+        boardAccess = 'case_num'
+      } else {
+        boardAccess = 'input.currentKey'
+      }
+
+      expression = expression.replaceAll('X',boardAccess)
+
+      console.log(expression)
 
       return expression
     },
 
     // 65 is A, 97 is a
     changeTestExpression(event, index) {
-      this.challenge.passing_criteria.tests[index] = this.makeExpression(event.target.value)
+      this.tests[index] = event.target.value
+      this.challenge.passing_criteria.tests[index] = this.makeExpression(this.tests[index])
     },
 
     changePreconditionExpression(event, index) {
-      this.challenge.passing_criteria.preconditions[index] = this.makeExpression(event.target.value)
+      this.preconditions[index] = event.target.value
+      this.challenge.passing_criteria.preconditions[index] = this.makeExpression(this.preconditions[index])
     },
 
     changeName(event) {
