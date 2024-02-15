@@ -18,11 +18,24 @@
             <option @click="this.selectCode(code.id)" v-for="code in codeFiles" :value="code.id">{{ code.name }}</option>
           </select>
         </div>
+        
         <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
-          <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="440px" data-line="1"
-            :prismjs="true" :name="name" :code="this.codeFiles[this.challenge?.code_file - 1]?.content" lang="javascript"
-            prism-js style="font-size: 16px; width: 650px;" :copy-icon="false" :copy-button="false" :copy-tab="false"
-            :tabs="false" />
+          <CodeBlock
+    class="col line-numbers"
+    theme="default"
+    height="445px"
+    data-line="1"
+    :prismjs="true"
+    :code="this.codeFiles[this.challenge?.code_file - 1]?.content"
+    lang="javascript"
+    prism-plugin
+    prism-js
+    style="font-size: 16px; overflow: scroll; margin-bottom: 5px; width: 650px;"
+    :copy-icon="false"
+    :copy-button="false"
+    :copy-tab="false"
+    :tabs="false"
+  />
         </div>
       </div>
       <div class="col">
