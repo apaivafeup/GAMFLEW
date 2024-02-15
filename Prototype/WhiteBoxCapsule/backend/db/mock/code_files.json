@@ -82,11 +82,6 @@
                 "replacement": "utils.find_first_stack(input, X)",
                 "accessing": "First stack."
             },
-            "isTriangle(":
-            {
-                "replacement": "utils.isTriangle(",
-                "accessing": "True if the sum of any two sides is greater than or equal to the third."
-            },
             "distance(":
             {
                 "replacement": "utils.distance(",
@@ -176,11 +171,6 @@
             {
                 "replacement": "utils.find_first_stack(input, X)",
                 "accessing": "First stack."
-            },
-            "isTriangle(":
-            {
-                "replacement": "utils.isTriangle(",
-                "accessing": "True if the sum of any two sides is greater than or equal to the third."
             },
             "distance(":
             {
