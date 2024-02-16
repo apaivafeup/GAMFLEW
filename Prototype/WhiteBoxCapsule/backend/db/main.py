@@ -1,12 +1,14 @@
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi_jwt_auth import AuthJWT
 from sqlalchemy.orm import Session
-import uvicorn
 from dotenv import load_dotenv
-
-import crud, models, schemas
 from db_op import init_db, get_db
 
-from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
+import crud, models, schemas, auth
+
+
 
 app = FastAPI()
 origins = ["*"]
@@ -22,6 +24,47 @@ init_db()
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
+
+@AuthJWT.load_config
+def get_config():
+    return models.Settings() # I think the issue is here, not what you deleted
+
+@app.post('/login')
+def login(user: models.UserLogin, Authorize: AuthJWT = Depends()):
+    if auth.login(user):
+        access_token = Authorize.create_access_token(subject=user.email)
+        refresh_token = Authorize.create_refresh_token(subject=user.email)
+        return {"access_token": access_token, "refresh_token": refresh_token}
+    raise HTTPException(status_code=401, detail="Invalid email or password.")
+
+@app.get('/protected')
+def get_logged_in_user(Authorize: AuthJWT = Depends()):
+    try:
+        Authorize.jwt_required()
+    except Exception as e:
+        raise HTTPException(status_code=401, detail="Invalid authentication token.")
+    
+    current_user = Authorize.get_jwt_subject()
+    return {"current_user": current_user}
+
+@app.post('/refresh')
+def refresh(Authorize: AuthJWT = Depends()):
+    try:
+        Authorize.jwt_refresh_token_required()
+    except Exception as e:
+        raise HTTPException(status_code=401, detail="Invalid refresh token.")
+    
+    current_user = Authorize.get_jwt_subject()
+    access_token = Authorize.create_access_token(subject=current_user)
+
+    return {"access_token": access_token}
+
+@app.post('/logout')
+def logout(Authorize: AuthJWT = Depends()):
+    Authorize.jwt_required()
+    Authorize.jwt_refresh_token_required()
+    Authorize.jwt_blacklist.add(Authorize.get_raw_jwt()['jti'])
+    return {"message": "Successfully logged out."}
 
 ## Create User
 @app.post("/create/user", response_model=models.User)

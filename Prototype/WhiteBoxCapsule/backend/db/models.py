@@ -1,7 +1,11 @@
 import json
 from pydantic import BaseModel, field_validator
 from typing import Optional
-from schemas import AttemptType, ChallengeType, Difficulty, PieceColor
+from schemas import AttemptType, ChallengeType, Difficulty, PieceColor, UserType
+
+class Settings(BaseModel):
+    authjwt_secret_key: str = '8908b123cf7557c25430ac0c6e86a21c29061d3152b328f8163b8de394e0fb8f'
+
 
 class PassingCriteria(BaseModel):
     preconditions: list[str]
@@ -63,6 +67,7 @@ class User(BaseModel):
     name: str
     email: str
     password: str
+    user_type: UserType
     failed_attempts: int
     successful_attempts: int
     score: int
@@ -75,6 +80,7 @@ class UserBasics(BaseModel):
     id: Optional[int]
     name: str
     email: str
+    user_type: UserType
     failed_attempts: int
     successful_attempts: int
     score: int
@@ -82,6 +88,10 @@ class UserBasics(BaseModel):
 
     class Config:
         from_attributes = True
+
+class UserLogin(BaseModel):
+    email: str
+    password: str
 
 class CodeFile(BaseModel):
     id: Optional[int]
