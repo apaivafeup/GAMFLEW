@@ -16,7 +16,7 @@
               </div>
               <div class="row">
                 <em style="font-size: 10px">
-                  {{ user.email }}
+                  {{ user.username }}
                 </em>
               </div>
             </div>

@@ -1,7 +1,7 @@
 export class User {
-  constructor(name, email, avatar, score, failedAttempts, successfulAttempts, achievements) {
+  constructor(name, username, avatar, score, failedAttempts, successfulAttempts, achievements) {
     this.name = name
-    this.email = email
+    this.username = username
     this.avatar = avatar
     this.score = score
     this.failedAttempts = failedAttempts

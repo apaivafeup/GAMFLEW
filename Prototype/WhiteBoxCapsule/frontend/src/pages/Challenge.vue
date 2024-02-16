@@ -72,7 +72,7 @@ export default {
     await this.$axios.get(this.$api_link + '/users/' + user_id).then((response) => {
       this.user = new User(
         response.data.name,
-        response.data.email,
+        response.data.username,
         '../assets/pictures/avatar.png',
         response.data.score,
         response.data.failed_attempts,

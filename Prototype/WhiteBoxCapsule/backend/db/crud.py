@@ -10,13 +10,14 @@ def create_user(db: Session, user: schemas.User):
     hashed_password = auth.get_password_hash(user.password)
     db_user = schemas.User(
         name=user.name,
-        email=user.email,
+        username=user.username,
         password=hashed_password,
         user_type=user.user_type,  # You may want to hash the password here
         failed_attempts=0,
         successful_attempts=0,
         score=0,
-        achievements=0
+        achievements=0,
+        auth = True
     )
     db.add(db_user)
     db.commit()
@@ -82,7 +83,7 @@ def get_user_basics(db: Session, user_id: int):
     user_basics = models.UserBasics(
         id=user.id,
         name=user.name,
-        email=user.email,
+        username=user.username,
         failed_attempts=user.failed_attempts,
         successful_attempts=user.successful_attempts,
         score=user.score,
@@ -94,17 +95,19 @@ def get_user_basics(db: Session, user_id: int):
 def get_user(db: Session, user_id: int):
     return db.query(schemas.User).filter(schemas.User.id == user_id).first()
 
-def get_user_by_email(db: Session, email: str):
-    user = db.query(schemas.User).filter(schemas.User.email == email).first()
+def get_user_by_username(db: Session, username: str):
+    user = db.query(schemas.User).filter(schemas.User.username == username).first()
 
     user_basics = models.UserBasics(
         id=user.id,
         name=user.name,
-        email=user.email,
+        username=user.username,
+        user_type=user.user_type,
         failed_attempts=user.failed_attempts,
         successful_attempts=user.successful_attempts,
         score=user.score,
-        achievements=user.achievements
+        achievements=user.achievements,
+        auth=user.auth
     )
 
     return user_basics
@@ -117,7 +120,7 @@ def get_users(db: Session, skip: int = 0, limit: int = 500):
         user_basics_inst = models.UserBasics(
             id=user.id,
             name=user.name,
-            email=user.email,
+            username=user.username,
             failed_attempts=user.failed_attempts,
             successful_attempts=user.successful_attempts,
             score=user.score,
@@ -199,7 +202,6 @@ def get_user_score(db: Session, user_id: int):
 
     return user_score
 
-
 def update_user_stats(db: Session, user_id: int):
     user_to_update = get_user(db, user_id)
     if user_to_update is None:
@@ -215,6 +217,17 @@ def update_user_stats(db: Session, user_id: int):
     user_to_update.successful_attempts = successful_attempts
     user_to_update.failed_attempts = failed_attempts
     user_to_update.score = score
+
+    db.commit()
+
+    return user_to_update
+
+def update_user_auth(db: Session, user_id: int, auth: bool):
+    user_to_update = get_user(db, user_id)
+    if user_to_update is None:
+        return None
+
+    user_to_update.auth = auth
 
     db.commit()
 

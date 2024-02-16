@@ -3,8 +3,8 @@ from pydantic import BaseModel, field_validator
 from typing import Optional
 from schemas import AttemptType, ChallengeType, Difficulty, PieceColor, UserType
 
-class Settings(BaseModel):
-    authjwt_secret_key: str = '8908b123cf7557c25430ac0c6e86a21c29061d3152b328f8163b8de394e0fb8f'
+# class Settings(BaseModel):
+#     authjwt_secret_key: str = '8908b123cf7557c25430ac0c6e86a21c29061d3152b328f8163b8de394e0fb8f'
 
 
 class PassingCriteria(BaseModel):
@@ -65,13 +65,14 @@ class ChallengeBasics(BaseModel):
 class User(BaseModel):
     id: Optional[int]
     name: str
-    email: str
+    username: str
     password: str
     user_type: UserType
     failed_attempts: int
     successful_attempts: int
     score: int
     achievements: int
+    auth: bool
 
     class Config:
         from_attributes = True
@@ -79,18 +80,19 @@ class User(BaseModel):
 class UserBasics(BaseModel):
     id: Optional[int]
     name: str
-    email: str
+    username: str
     user_type: UserType
     failed_attempts: int
     successful_attempts: int
     score: int
     achievements: int
+    auth: bool
 
     class Config:
         from_attributes = True
 
 class UserLogin(BaseModel):
-    email: str
+    username: str
     password: str
 
 class CodeFile(BaseModel):
@@ -128,3 +130,14 @@ class BoardState(BaseModel):
     name: str
     board_state: list[list[Piece]]
     out_of_bounds_state: Piece
+
+# Token 
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenData(BaseModel):
+    username: str | None = None
+
+class UserInDB(User):
+    hashed_password: str

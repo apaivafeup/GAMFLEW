@@ -1,11 +1,12 @@
 [{
     "id": 0,
     "name": "Professor",
-    "email": "professor@prototype.com",
+    "username": "professor@prototype.com",
     "password": "password",
     "user_type": "admin",
     "failed_attempts": 0,
     "successful_attempts": 0,
     "score": 0,
-    "achievements": 0
+    "achievements": 0,
+    "auth": false
 }]
