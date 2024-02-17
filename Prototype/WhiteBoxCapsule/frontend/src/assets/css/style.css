@@ -591,3 +591,11 @@ input[type='number'] {
 #board-box-7-1, #board-box-7-3, #board-box-7-5, #board-box-7-7 {
   background-color: #dadada;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(169, 89, 255);
+}

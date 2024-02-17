@@ -45,6 +45,7 @@ const options = {
 app.use(Toast, options);
 
 app.config.globalProperties.$axios = axios;
+app.config.globalProperties.window = window;
 
 app.use(Router)
 app.component('EasyDataTable', Vue3EasyDataTable)

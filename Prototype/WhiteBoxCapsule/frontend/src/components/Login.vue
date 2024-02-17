@@ -1,0 +1,76 @@
+<template>
+  <div class="row" style="display: flex; justify-content: center; margin-bottom: 15px;">
+    <h4 style="text-align: center;">Login</h4>
+  </div>
+  <div class="row" style="display: flex; justify-content: center;">
+    <form style="max-width: 500px;">
+      <div class="form-group" style="margin-bottom: 10px;">
+        <label for="exampleInputUsername">Username</label>
+        <input name="username" type="text" class="form-control" @input="setUsername($event)" id="exampleInputUsername" aria-describedby="usernameHelp" placeholder="username">
+        <small id="usernameHelp" class="form-text text-muted" style="margin-top: 0px; padding-top: 0px; font-size: 10px;">A username may be an e-mail.</small>
+      </div>
+      <div class="form-group" style="margin-bottom: 10px;">
+        <label for="exampleInputPassword">Password</label>
+        <input name="password" type="password" class="form-control" @input="setPassword($event)" id="exampleInputPassword" placeholder="password">
+        <small id="passwordHelp" class="form-text text-muted" style="margin-top: 0px; padding-top: 0px; font-size: 10px;">We'll never share your password with anyone else.</small>
+      </div>
+      <div class="form-group row" style="display: flex; justify-content: center;">
+        <button type="submit" @click="submitLoginForm()" class="btn btn-primary" style="padding: 10px; max-width: 100px; border-radius: 15px; margin-bottom: 10px;">Login</button>
+        <small id="passwordHelp" class="form-text text-muted" style="margin-top: 0px; padding-top: 0px; font-size: 10px; text-align: center;">Don't have an account? You can <a href="#" @click="goToRegister()">register</a>!</small>
+      </div>
+    </form>
+  </div>
+
+</template>
+
+<script>
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  components: {},
+
+  data() {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+
+  methods: {
+    setUsername(event) {
+      this.username = event.target.value
+    },
+
+    setPassword(event) {
+      this.password = event.target.value
+    },
+
+    async submitLoginForm() {
+      //TODO: make the route not show the information??? WHAT?
+      var formData = new FormData()
+      formData.append('username', this.username)
+      formData.append('password', this.password)
+      await this.$axios({
+          method: 'post',
+          url: this.$api_link + '/login',
+          data: formData,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          }
+        }
+      ).then((response) => {
+          console.log(response)
+          if (response.status === 200) {
+            window.sessionStorage.setItem('access_token', response.data.access_token)
+            window.location.reload()
+          }
+        })
+    },
+
+    goToRegister() {
+      //TODO: implement the register page + route and add it here.
+      //this.$router.push({ name: 'Register' })
+    }
+  }
+})
+</script>

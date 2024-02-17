@@ -1,17 +1,15 @@
 <script>
 import GameCredits from './GameCredits.vue'
 import Menu from '../components/Menu.vue'
+import Login from '../components/Login.vue'
 
 export default {
   beforeMount() {
   },
 
   methods: {
-    goToChallenge(id) {
-      this.$router.push('/challenge/' + id)
-    }
   },
-  components: { Menu }
+  components: { Menu, Login }
 }
 </script>
 
@@ -19,7 +17,10 @@ export default {
   <div class="row" style="text-align: center; justify-content: center;">
     <img src="https://i.ibb.co/BnR2dGP/logo.png" style="width: 600px; margin-top: 30px;" />
   </div>
-  <div class="row" style="justify-content: center; margin-top: 30px">
+  <div class="row" style="justify-content: center; margin-top: 30px" v-if="window.sessionStorage.getItem('access_token') == undefined">
+    <Login />
+  </div>
+  <div class="row" style="justify-content: center; margin-top: 30px" v-else>
     <Menu />
   </div>
 </template>
