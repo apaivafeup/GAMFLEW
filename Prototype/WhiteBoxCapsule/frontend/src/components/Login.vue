@@ -4,18 +4,18 @@
   </div>
   <div class="row" style="display: flex; justify-content: center;">
     <form style="max-width: 500px;">
-      <div class="form-group" style="margin-bottom: 10px;">
+      <div style="margin-bottom: 10px;">
         <label for="exampleInputUsername">Username</label>
         <input name="username" type="text" class="form-control" @input="setUsername($event)" id="exampleInputUsername" aria-describedby="usernameHelp" placeholder="username">
         <small id="usernameHelp" class="form-text text-muted" style="margin-top: 0px; padding-top: 0px; font-size: 10px;">A username may be an e-mail.</small>
       </div>
-      <div class="form-group" style="margin-bottom: 10px;">
+      <div style="margin-bottom: 10px;">
         <label for="exampleInputPassword">Password</label>
         <input name="password" type="password" class="form-control" @input="setPassword($event)" id="exampleInputPassword" placeholder="password">
         <small id="passwordHelp" class="form-text text-muted" style="margin-top: 0px; padding-top: 0px; font-size: 10px;">We'll never share your password with anyone else.</small>
       </div>
-      <div class="form-group row" style="display: flex; justify-content: center;">
-        <button type="submit" @click="submitLoginForm()" class="btn btn-primary" style="padding: 10px; max-width: 100px; border-radius: 15px; margin-bottom: 10px;">Login</button>
+      <div class="row" style="display: flex; justify-content: center;">
+        <button @click="sendLoginForm($event)" class="btn btn-primary" style="padding: 10px; max-width: 100px; border-radius: 15px; margin-bottom: 10px;">Login</button>
         <small id="passwordHelp" class="form-text text-muted" style="margin-top: 0px; padding-top: 0px; font-size: 10px; text-align: center;">Don't have an account? You can <a href="#" @click="goToRegister()">register</a>!</small>
       </div>
     </form>
@@ -45,7 +45,9 @@ export default defineComponent({
       this.password = event.target.value
     },
 
-    async submitLoginForm() {
+    async sendLoginForm(event) {
+      event.preventDefault()
+
       //TODO: make the route not show the information??? WHAT?
       var formData = new FormData()
       formData.append('username', this.username)
@@ -63,6 +65,9 @@ export default defineComponent({
           if (response.status === 200) {
             window.sessionStorage.setItem('access_token', response.data.access_token)
             window.location.reload()
+            //this.$axios.headers.common['Authorization'] = 'Bearer ' + response.data.access_token
+            //window.location.href = '/'
+            //window.location.reload()
           }
         })
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="col" v-if="main"
+  <div class="col" v-if="main && window.sessionStorage.getItem('access_token') != undefined" 
     style="display: flex; justify-content: center; align-items: center; flex-direction: column">
     <button class="menu-button" id="single-player-button" @click="this.$router.push('challenges')" style="width: 500px">
       Single Player
@@ -42,8 +42,6 @@ export default defineComponent({
 
   methods: {
     logout() {
-      this.$axios.defaults.headers.common = {'Authorization': `Bearer ${window.sessionStorage.getItem('access_token')}`}
-
       this.$axios.post(this.$api_link + '/logout')
         .then((response) => {
           if (response.status === 200) {
