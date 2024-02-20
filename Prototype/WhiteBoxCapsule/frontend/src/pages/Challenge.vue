@@ -27,10 +27,6 @@ import { authStore } from '../store/authStore'
 
 <script>
 export default {
-  beforeMount() {
-    this.auth = authStore()
-  },
-
   components: { ChallengeHeader, Board, SubmitModal, FailModal },
 
   props: {
@@ -51,6 +47,8 @@ export default {
   },
 
   async beforeMount() {
+    this.auth = authStore()
+
     var user_id
 
     await this.$axios.get(this.$api_link + '/challenges/' + this.id, this.auth.config).then((response) => {

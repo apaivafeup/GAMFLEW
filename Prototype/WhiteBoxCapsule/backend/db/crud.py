@@ -84,6 +84,8 @@ def get_user_basics(db: Session, user_id: int):
         id=user.id,
         name=user.name,
         username=user.username,
+        user_type=user.user_type,
+        auth=user.auth,
         failed_attempts=user.failed_attempts,
         successful_attempts=user.successful_attempts,
         score=user.score,
