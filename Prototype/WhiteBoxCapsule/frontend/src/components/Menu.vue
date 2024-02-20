@@ -1,5 +1,5 @@
 <template>
-  <div class="col" v-if="main && window.sessionStorage.getItem('access_token') != undefined" 
+  <div class="col" v-if="main"
     style="display: flex; justify-content: center; align-items: center; flex-direction: column">
     <button class="menu-button" id="single-player-button" @click="this.$router.push('challenges')" style="width: 500px">
       Single Player
@@ -18,7 +18,7 @@
     <button class="menu-button" @click="this.$router.push({ name: 'credits' })" style="width: 500px">
       Credits
     </button>
-    <button class="menu-button" @click="this.logout()" style="width: 500px">
+    <button class="menu-button" @click="this.logout($event)" style="width: 500px">
       Logout
     </button>
 
@@ -27,8 +27,13 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { authStore } from '../store/authStore'
 
 export default defineComponent({
+  beforeMount() {
+    this.authStore = authStore()
+  },
+
   components: {},
 
   data() {
@@ -41,14 +46,10 @@ export default defineComponent({
   },
 
   methods: {
-    logout() {
-      this.$axios.post(this.$api_link + '/logout')
-        .then((response) => {
-          if (response.status === 200) {
-            window.sessionStorage.removeItem('access_token')
-            window.location.reload()
-          }
-        })
+    async logout(event) {
+      event.preventDefault()
+      
+      this.authStore.logout()
     },
 
     switchMenu(target) {

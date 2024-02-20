@@ -33,12 +33,12 @@
 
 import { defineComponent } from 'vue'
 import { boardStore } from '../../store/boardStore'
-
-
+import { authStore } from '../../store/authStore'
 
 export default defineComponent({
   beforeMount() {
     this.board = boardStore()
+    this.auth = authStore()
   },
 
   data() {
@@ -76,7 +76,7 @@ export default defineComponent({
         test_cases: this.board.state
       }
 
-      await this.$axios.post(this.$api_link + '/create/attempt/', body).then(async (response) => {
+      await this.$axios.post(this.$api_link + '/create/attempt/', body, this.auth.config).then(async (response) => {
         this.board.submit()
         this.$refs.close.click()
         this.$router.push({ name: 'home' })

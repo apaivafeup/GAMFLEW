@@ -310,26 +310,28 @@ import ChallengeChecker from '../components/ChallengeChecker.vue'
 import hljs from 'highlight.js';
 import CodeEditor from "simple-code-editor";
 import * as utils from '../store/utils.js'
+import { authStore } from '../store/authStore'
 
 export default {
   async beforeMount() {
     this.boardCreator = boardCreatorStore()
     this.boardChecker = boardCheckerStore()
+    this.auth = authStore()
 
-    await this.$axios.get(this.$api_link + '/board-states/').then((response) => {
+    await this.$axios.get(this.$api_link + '/board-states/', this.auth.config).then((response) => {
       response.data.forEach((board_state) => {
         this.boardStates.push(board_state)
       })
     })
 
-    await this.$axios.get(this.$api_link + '/code-files/').then((response) => {
+    await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
       response.data.forEach((codeFile) => {
         this.codeFiles.push(codeFile)
       })
     })
 
     if (this.id != null) {
-      await this.$axios.get(this.$api_link + '/challenges/' + this.id).then((response) => {
+      await this.$axios.get(this.$api_link + '/challenges/' + this.id, this.auth.config).then((response) => {
         this.challenge = response.data
       })
 
@@ -547,7 +549,7 @@ export default {
     },
 
     async submitChallenge(challenge) {
-      await this.$axios.post(this.$api_link + '/create/challenge', this.challenge)
+      await this.$axios.post(this.$api_link + '/create/challenge', this.challenge, this.auth.config)
         .then((response) => {
           if (response.status == 200) {
             alert('Challenge submitted successfully!')

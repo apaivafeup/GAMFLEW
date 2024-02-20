@@ -10,10 +10,14 @@
 </template>
 
 <script>
+import { authStore } from './store/authStore';
 
 export default {
   beforeMount() {
+    this.authStore = authStore()
+    this.authStore.checkAuth()
   },
+  
   components: { },
   data: () => {
     return {

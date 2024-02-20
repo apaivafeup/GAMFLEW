@@ -11,12 +11,15 @@ import { boardCreatorStore } from '../store/boardCreator'
 
 import hljs from 'highlight.js';
 import CodeEditor from "simple-code-editor";
+import { authStore } from '../store/authStore'
 
 export default {
   async beforeMount() {
     this.boardCreator = boardCreatorStore()
+    this.auth = authStore()
 
-    await this.$axios.get(this.$api_link + '/board-states').then((response) => {
+
+    await this.$axios.get(this.$api_link + '/board-states', this.auth.config).then((response) => {
       response.data.forEach((board_state) => {
         this.boardStates.push(board_state)
       })
@@ -69,7 +72,7 @@ export default {
         content: this.codeString
       }
 
-      await this.$axios.post(this.$api_link + '/create/code-file', body)
+      await this.$axios.post(this.$api_link + '/create/code-file', body, this.auth.config)
         .then(response => {
           console.log(response)
           console.log(body)

@@ -40,23 +40,24 @@
 <script>
 import { defineComponent } from 'vue'
 import ChallengeCard from '../components/ChallengeCard.vue'
+import { authStore } from '../store/authStore'
 
 export default defineComponent({
   components: { ChallengeCard },
 
   async beforeMount() {
-    console.log(this.$api_link + '/code-files/')
+    this.auth = authStore()
 
-    await this.$axios.get(this.$api_link + '/code-files/').then((response) => {
+    await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
       this.code_files = response.data
     })
 
-    await this.$axios.get(this.$api_link + '/challenges-by-code/').then((response) => {
+    await this.$axios.get(this.$api_link + '/challenges-by-code/', this.auth.config).then((response) => {
       this.challenges = response.data
     })
 
     //TODO: get logged user id when login is implemented
-    await this.$axios.get(this.$api_link + '/users/' + 1 + '/passed-challenges/').then((response) => {
+    await this.$axios.get(this.$api_link + '/users/' + 1 + '/passed-challenges/', this.auth.config).then((response) => {
       this.passed_challenges = response.data
     })
   },

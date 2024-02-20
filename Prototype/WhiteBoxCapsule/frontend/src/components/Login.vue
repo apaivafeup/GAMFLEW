@@ -6,27 +6,39 @@
     <form style="max-width: 500px;">
       <div style="margin-bottom: 10px;">
         <label for="exampleInputUsername">Username</label>
-        <input name="username" type="text" class="form-control" @input="setUsername($event)" id="exampleInputUsername" aria-describedby="usernameHelp" placeholder="username">
-        <small id="usernameHelp" class="form-text text-muted" style="margin-top: 0px; padding-top: 0px; font-size: 10px;">A username may be an e-mail.</small>
+        <input name="username" type="text" class="form-control" @input="setUsername($event)" id="exampleInputUsername"
+          aria-describedby="usernameHelp" placeholder="username">
+        <small id="usernameHelp" class="form-text text-muted"
+          style="margin-top: 0px; padding-top: 0px; font-size: 10px;">A username may be an e-mail.</small>
       </div>
       <div style="margin-bottom: 10px;">
         <label for="exampleInputPassword">Password</label>
-        <input name="password" type="password" class="form-control" @input="setPassword($event)" id="exampleInputPassword" placeholder="password">
-        <small id="passwordHelp" class="form-text text-muted" style="margin-top: 0px; padding-top: 0px; font-size: 10px;">We'll never share your password with anyone else.</small>
+        <input name="password" type="password" class="form-control" @input="setPassword($event)" id="exampleInputPassword"
+          placeholder="password">
+        <small id="passwordHelp" class="form-text text-muted"
+          style="margin-top: 0px; padding-top: 0px; font-size: 10px;">We'll never share your password with anyone
+          else.</small>
       </div>
       <div class="row" style="display: flex; justify-content: center;">
-        <button @click="sendLoginForm($event)" class="btn btn-primary" style="padding: 10px; max-width: 100px; border-radius: 15px; margin-bottom: 10px;">Login</button>
-        <small id="passwordHelp" class="form-text text-muted" style="margin-top: 0px; padding-top: 0px; font-size: 10px; text-align: center;">Don't have an account? You can <a href="#" @click="goToRegister()">register</a>!</small>
+        <button @click="sendLoginForm($event)" class="btn btn-primary"
+          style="padding: 10px; max-width: 100px; border-radius: 15px; margin-bottom: 10px;">Login</button>
+        <small id="passwordHelp" class="form-text text-muted"
+          style="margin-top: 0px; padding-top: 0px; font-size: 10px; text-align: center;">Don't have an account? You can
+          <a href="#" @click="goToRegister()">register</a>!</small>
       </div>
     </form>
   </div>
-
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import { authStore } from '../store/authStore'
 
 export default defineComponent({
+  beforeMount() {
+    this.authStore = authStore()
+  },
+
   components: {},
 
   data() {
@@ -52,24 +64,8 @@ export default defineComponent({
       var formData = new FormData()
       formData.append('username', this.username)
       formData.append('password', this.password)
-      await this.$axios({
-          method: 'post',
-          url: this.$api_link + '/login',
-          data: formData,
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          }
-        }
-      ).then((response) => {
-          console.log(response)
-          if (response.status === 200) {
-            window.sessionStorage.setItem('access_token', response.data.access_token)
-            window.location.reload()
-            //this.$axios.headers.common['Authorization'] = 'Bearer ' + response.data.access_token
-            //window.location.href = '/'
-            //window.location.reload()
-          }
-        })
+      
+      this.authStore.login(formData)
     },
 
     goToRegister() {

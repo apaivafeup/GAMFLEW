@@ -45,6 +45,10 @@ const options = {
 app.use(Toast, options);
 
 app.config.globalProperties.$axios = axios;
+pinia.use(({ store }) => {
+  store.$axios = app.config.globalProperties.$axios;
+  store.$api_link = app.config.globalProperties.$api_link;
+});
 app.config.globalProperties.window = window;
 
 app.use(Router)

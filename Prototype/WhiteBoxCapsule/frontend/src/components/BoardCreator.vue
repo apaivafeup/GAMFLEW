@@ -111,6 +111,7 @@ import { boardCreatorStore } from '../store/boardCreator'
 import OutPieceStackCreator from './OutPieceStackCreator.vue'
 import 'vue3-easy-data-table'
 import { auxiliaryFunctions } from '../assets/js/auxiliary_functions'
+import { authStore } from '../store/authStore'
 
 export default {
   components: { PieceStackCreator, OutPieceStackCreator, SubmitModal },
@@ -131,6 +132,7 @@ export default {
   beforeMount() {
     this.board = boardCreatorStore()
     this.board.generateState()
+    this.auth = authStore()
   },
 
   mounted() { },
@@ -153,7 +155,7 @@ export default {
         }
       }
       
-      await this.$axios.post(this.$api_link + '/create/board-state', body)
+      await this.$axios.post(this.$api_link + '/create/board-state', body, this.auth.config)
         .then(response => {
           console.log(response)
           console.log(body)

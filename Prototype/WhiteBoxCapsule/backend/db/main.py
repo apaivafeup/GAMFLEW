@@ -30,6 +30,7 @@ def read_root():
     return {"Hello": "World"}
 
 # their post/token will be your login
+# doesn't work in docs, you have to change the endpoint to /token
 @app.post('/login')
 def login_for_access_token(db: Session = Depends(get_db), form_data: OAuth2PasswordRequestForm = Depends()):
     user = auth.login(db=db, username=form_data.username, password=form_data.password)
@@ -69,7 +70,6 @@ async def get_current_active_user(current_user: Annotated[models.User, Depends(g
 
 @app.post("/logout")
 async def logout(db: Session = Depends(get_db), token: str = Depends(auth.oauth2_scheme), user: models.User = Depends(get_current_user)) :
-
     crud.update_user_auth(db, user.id, False)
     # Add the token to a blacklist?
     """

@@ -11,6 +11,7 @@ import { Attempt } from '../store/models/attempt.js'
 import { CodeFile } from '../store/models/code_file.js'
 import { BoardState } from '../store/models/board_state.js'
 import Prism from 'prismjs'
+import { authStore } from '../store/authStore'
 </script>
 
 <template style="overflow: hidden">
@@ -26,6 +27,10 @@ import Prism from 'prismjs'
 
 <script>
 export default {
+  beforeMount() {
+    this.auth = authStore()
+  },
+
   components: { ChallengeHeader, Board, SubmitModal, FailModal },
 
   props: {
@@ -48,7 +53,7 @@ export default {
   async beforeMount() {
     var user_id
 
-    await this.$axios.get(this.$api_link + '/challenges/' + this.id).then((response) => {
+    await this.$axios.get(this.$api_link + '/challenges/' + this.id, this.auth.config).then((response) => {
       user_id = response.data.owner_id
 
       this.challenge = new Challenge(
@@ -69,7 +74,7 @@ export default {
       )
     })
 
-    await this.$axios.get(this.$api_link + '/users/' + user_id).then((response) => {
+    await this.$axios.get(this.$api_link + '/users/' + user_id, this.auth.config).then((response) => {
       this.user = new User(
         response.data.name,
         response.data.username,
@@ -81,11 +86,11 @@ export default {
       )
     })
 
-    await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file).then((response) => {
+    await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
       this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
     })
 
-    await this.$axios.get(this.$api_link + '/board-states/' + this.challenge.initial_board).then((response) => {
+    await this.$axios.get(this.$api_link + '/board-states/' + this.challenge.initial_board, this.auth.config).then((response) => {
       this.board_state = new BoardState(response.data.id, response.data.name, response.data.board_state, response.data.out_of_bounds_state)
     })
 
