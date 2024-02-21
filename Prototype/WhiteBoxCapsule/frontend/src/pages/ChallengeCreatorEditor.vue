@@ -230,8 +230,8 @@
               <strong>count_red_pieces</strong>, <strong>count_blue_pieces</strong>, <strong>get_pieces</strong>,
               <strong>find_stacks</strong>, <strong>find_red_pieces</strong>, <strong>find_blue_pieces</strong>,
               <strong>find_first_blue_piece</strong>, <strong>find_first_red_piece</strong>,
-              <strong>find_first_stack</strong>, <strong>distance(pos1, pos2)</strong>.
-            </p>
+              <strong>find_first_stack</strong>, <strong>distance(pos1, pos2)</strong>. <br/>
+            Beware what each function returns!</p>
           </div>
         </div>
       </div>
