@@ -107,9 +107,14 @@ async def logout(db: Session = Depends(get_db), token: str = Depends(auth.oauth2
 ## Create User
 @app.post("/create/user", response_model=models.User)
 def create_user(user: models.User, db: Session = Depends(get_db)):
-    db_user = crud.get_user_by_email(db, username=user.username)
+    db_user = crud.get_user_by_username(db, username=user.username)
     if db_user:
-        raise HTTPException(status_code=400, detail="Email already registered")
+        raise HTTPException(status_code=400, detail="Username already registered")
+    
+    db_user = crud.get_user_by_email(db, email=user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Username already registered")
+    
     return crud.create_user(db=db, user=user)
 
 ## Create Challenge

@@ -53,6 +53,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(TEXT, unique=True, index=True)
+    email = Column(TEXT, unique=True, index=True)
     username = Column(TEXT, unique=True, index=True)
     user_type = Column(ENUM(UserType), nullable=False, default=UserType.PLAYER, index=True)
     password = Column(TEXT)

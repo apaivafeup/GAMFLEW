@@ -66,6 +66,7 @@ class User(BaseModel):
     id: Optional[int]
     name: str
     username: str
+    email: str
     password: str
     user_type: UserType
     failed_attempts: int

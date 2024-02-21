@@ -11,13 +11,14 @@ def create_user(db: Session, user: schemas.User):
     db_user = schemas.User(
         name=user.name,
         username=user.username,
+        email = user.email,
         password=hashed_password,
-        user_type=user.user_type,  # You may want to hash the password here
+        user_type=user.user_type,
         failed_attempts=0,
         successful_attempts=0,
         score=0,
         achievements=0,
-        auth = True
+        auth = False
     )
     db.add(db_user)
     db.commit()
@@ -113,6 +114,9 @@ def get_user_by_username(db: Session, username: str):
     )
 
     return user_basics
+
+def get_user_by_email(db: Session, email: str):
+    return db.query(schemas.User).filter(schemas.User.email == email).first()
 
 def get_users(db: Session, skip: int = 0, limit: int = 500):
     users = db.query(schemas.User).offset(skip).limit(limit).all()
