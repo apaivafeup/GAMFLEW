@@ -72,6 +72,13 @@ export default defineComponent({
   methods: {
     sort_function(a, b) {
       return a.id - b.id
+    },
+
+    goToChallenge(id) {
+      if (id == null)
+        this.$router.push({ name: 'challenge-creator' })
+      else
+        this.$router.push({ name: 'challenge-editor', params: { id: id } })
     }
   }
 })
