@@ -141,7 +141,10 @@ export default {
           outOfBoundsState = this.board.outOfBoundsState[this.board.currentKey],
           stateName = document.getElementById('state-name').value
       
-      //document.getElementById('state-name').value = ''
+      if (stateName == '') {
+        alert('Please enter a name for the state.')
+        return
+      }
 
       var body = {
         id: 0,
@@ -155,8 +158,8 @@ export default {
       
       await this.$axios.post(this.$api_link + '/create/board-state', body)
         .then(response => {
-          console.log(response)
-          console.log(body)
+          alert('Board state created successfully!')
+          this.$router.push({name: 'home'})
         });
     },
 

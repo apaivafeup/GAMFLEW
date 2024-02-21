@@ -14,7 +14,7 @@
     </button>
     <button
       class="menu-button"
-      id="single-player-button"
+      id="content-creator-button"
       @click="this.$router.push('content-creator')"
       style="width: 500px"
     >
@@ -22,7 +22,7 @@
     </button>
     <button
       class="menu-button"
-      id="single-player-button"
+      id="manager-button"
       @click="this.$router.push('challenge-manager')"
       style="width: 500px"
     >

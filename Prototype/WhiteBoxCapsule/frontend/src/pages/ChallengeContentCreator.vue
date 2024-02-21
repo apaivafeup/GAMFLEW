@@ -66,13 +66,23 @@ export default {
       var body = {
         id: 0,
         name: this.codeName,
-        content: this.codeString
+        content: this.codeString,
+        dictionary: {}
+      }
+
+      if (this.codeName == '') {
+        alert('Please enter a name for the code file.')
+        return
+      }
+
+      if (this.codeString == '') {
+        alert('Please enter code for the code file.')
+        return
       }
 
       await this.$axios.post(this.$api_link + '/create/code-file', body)
         .then(response => {
-          console.log(response)
-          console.log(body)
+          this.$router.push({name: 'home'})
         });
     },
 
@@ -111,8 +121,8 @@ export default {
       <div class="col" style="flex: 0 0 0%;" v-if="board">
         <div class="row" style="width: 450px; margin-bottom: 15px;">
           <h6 style="margin-bottom: 2.5px;">Existing States</h6>
-          <select class="guide-button" style="margin-left: 12px; padding: 5px; width: 400px;">
-            <option @click="dropdownClick(state.id - 1)" v-for="state in boardStates" :value="state.id">{{ state.name }}
+          <select id="board-state-select" class="guide-button" style="margin-left: 12px; padding: 5px; width: 400px;">
+            <option @click="dropdownClick(state.id - 1)" v-for="state in boardStates" :value="state.id" :id="'board-state-'+state.name">{{ state.name }}
             </option>
           </select>
         </div>
@@ -139,7 +149,7 @@ export default {
         <div class="row" style="align-items: center; margin-bottom: 5px;">
           <div class="col" style="width: 80%!important; flex: 8;">
             <input type="text" class="is-primary guide-button" v-model="codeName" placeholder="Write name here."
-              id="state-name" name="state-name" style="width: 100%; height: 31.1px;">
+              id="code-file-name" name="code-file-name" style="width: 100%; height: 31.1px;">
           </div>
           <div class="col" style="width: 20%!important; flex: 2;">
             <button style="margin-left: 0px; width: 90%; margin-right: calc(var(--bs-gutter-x) * 0.5);"
