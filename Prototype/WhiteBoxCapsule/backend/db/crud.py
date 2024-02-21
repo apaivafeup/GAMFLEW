@@ -4,15 +4,14 @@ from sqlalchemy.exc import SQLAlchemyError
 
 import schemas
 import models
-import auth
+
+
 
 def create_user(db: Session, user: schemas.User):
-    hashed_password = auth.get_password_hash(user.password)
     db_user = schemas.User(
         name=user.name,
         email=user.email,
-        password=hashed_password,
-        user_type=user.user_type,  # You may want to hash the password here
+        password=user.password,  # You may want to hash the password here
         failed_attempts=0,
         successful_attempts=0,
         score=0,

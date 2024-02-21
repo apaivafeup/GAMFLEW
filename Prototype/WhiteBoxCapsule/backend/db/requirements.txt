@@ -3,4 +3,3 @@ pydantic
 python-dotenv
 SQLAlchemy
 uvicorn
-bcrypt==4.0.1
