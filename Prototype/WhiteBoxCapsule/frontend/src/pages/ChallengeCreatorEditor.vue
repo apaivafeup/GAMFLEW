@@ -20,8 +20,8 @@
         </div>
 
         <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
-          <CodeBlock id="code-file-block" class="line-numbers" theme="default" height="445px" data-line="1" :prismjs="true"
-            :code="codeFiles[challenge?.code_file - 1]?.content" lang="javascript" prism-plugin prism-js
+          <CodeBlock id="code-file-block" class="line-numbers" theme="default" height="445px" data-line="1"
+            :prismjs="true" :code="codeFiles[challenge?.code_file - 1]?.content" lang="javascript" prism-plugin prism-js
             style="font-size: 16px; overflow: scroll; margin-bottom: 5px; width: 650px;" :copy-icon="false"
             :copy-button="false" :copy-tab="false" :tabs="false" />
         </div>
@@ -56,28 +56,28 @@
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="name-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Name</h6>
-          <input id="input-name-box" class="box" @input="changeName($event)" type="text"
+          <input id="input-name-box" class="box" @change="changeName($event)" type="text"
             placeholder="Challenge X.Y: Challenge Name" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="description-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Description</h6>
-          <input id="input-description-box" @input="changeDescription($event)" class="box" type="text"
+          <input id="input-description-box" @change="changeDescription($event)" class="box" type="text"
             placeholder="Anything about the challenge!" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="hint-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Hint</h6>
-          <input id="input-hint-box" @input="changeHint($event)" class="box" type="text"
+          <input id="input-hint-box" @change="changeHint($event)" class="box" type="text"
             placeholder="Anything to help the player!" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="objective-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Objective</h6>
-          <input id="input-objective-box" @input="changeObjective($event)" class="box" type="text"
+          <input id="input-objective-box" @change="changeObjective($event)" class="box" type="text"
             placeholder="[COVERAGE] coverage of line X." style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
@@ -85,7 +85,7 @@
         <div class="col" id="score-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Score</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">The more test cases, the more points a player should get!</p>
-          <input id="input-score-box" inputmode="numeric" @input="changeScore($event)" class="box" type="number"
+          <input id="input-score-box" inputmode="numeric" @change="changeScore($event)" class="box" type="number"
             max-length="5" min="100" pattern="[0-9]{5}" value="100" step="25"
             style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
@@ -94,7 +94,7 @@
           <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup>
             possible test cases!</p>
-          <input id="input-condition-box" @input="changeConditionCount($event)" class="box" type="number"
+          <input id="input-condition-box" @change="changeConditionCount($event)" class="box" type="number"
             placeholder="Number of variables." value="1" min="0" max="5"
             style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
@@ -102,7 +102,7 @@
           <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup>
             possible test cases!</p>
-          <input id="input-condition-box" @input="changeConditionCount($event)" class="box" type="number" max="10"
+          <input id="input-condition-box" @change="changeConditionCount($event)" class="box" type="number" max="10"
             placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
@@ -148,18 +148,18 @@
     </div>
     <div class="row" style="margin-bottom: 10px;">
       <div class="col" style="padding: 0px; margin-right: 5px;min-width: 150px; max-width: 150px;">
-        <button class="box" style="width: 150px; padding: 20px;" @click="addTest(index)"
+        <button class="box" style="width: 150px; padding: 20px; margin-bottom: 10px;" @click="addTest(index)"
           v-if="!boardChecker.passed">
           Add Test
         </button>
-        <button class="box disabled" style="width: 150px; padding: 20px;" v-else>
+        <button class="box disabled" style="width: 150px; padding: 20px; margin-bottom: 10px;" v-else>
           Add Test
         </button>
-        <button class="box" style="width: 150px; padding: 20px;" @click="addPrecondition(index)"
+        <button class="box" style="width: 150px; padding: 20px; margin-bottom: 20px;" @click="addPrecondition(index)"
           v-if="!boardChecker.passed">
           Add Precondition
         </button>
-        <button class="box disabled" style="width: 150px; padding: 20px;" v-else>
+        <button class="box disabled" style="width: 150px; padding: 20px; margin-bottom: 20px;" v-else>
           Add Precondition
         </button>
         <div class="row" style="text-align: center;">
@@ -175,16 +175,64 @@
           </p>
         </div>
       </div>
-      <div class="col">
-        <div class="alert alert-secondary player-info"
-          style="display: grid; grid-gap: 2.5px 10px; grid-template-columns: 350px 350px 350px; width: 100%; font-size: 12px;">
-          <p style="display: inline-block; flex-direction: row; margin: 0px; margin-bottom: 2.5px;"
-            v-if="codeFiles[challenge.code_file - 1] != undefined"><em>(I, J)</em> can be any position!</p>
-          <p v-if="codeFiles[challenge.code_file - 1] == undefined">No help here... yet.</p>
-          <p v-else class="row" style="display: inline-block; flex-direction: row; margin: 0px; margin-bottom: 2.5px;"
-            v-for="(value, key) in codeFiles[challenge.code_file - 1].dictionary">
-            <strong style="padding: 0px;">{{ key + ': ' }}</strong>{{ value.accessing }}
+      <div class="col" style="display: grid; grid-template-columns: 35% 27.5% 37.5%; grid-gap: 10px;">
+        <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
+          <h6 style="margin: 2px; text-align: justify;">Board Log (<strong><em>board.log</em></strong>)</h6>
+          <p style="margin: 2px; text-align: justify;">The <strong>board</strong> has a <strong>log</strong> of
+            interactions.</p>
+          <p style="margin: 2px; text-align: justify;">For the most recent movement, use <strong>last_log</strong>
+            (<strong>last_</strong> followed by a variable name can be used for shortcuts).
+          <ul style="margin-bottom: -15px;">
+            <li style="text-align: justify;"><strong>type</strong>: it's either "add" (a piece) or "move" (a piece).</li>
+            <ul>
+              <li style="text-align: justify;">For each <em>"add"</em>:</li>
+              <ul>
+                <li style="text-align: justify;"><strong>color</strong>: the color of the piece.</li>
+                <li style="text-align: justify;"><strong>destination</strong>: where the piece was added.</li>
+              </ul>
+              <li>For each <em>"move"</em>:</li>
+              <ul style="margin-bottom: 0px;">
+                <li style="text-align: justify;"><strong>start</strong>: the initial position.</li>
+                <li style="text-align: justify;"><strong>destination</strong>: the final position.</li>
+              </ul>
+            </ul>
+          </ul>
           </p>
+        </div>
+        <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
+          <h6 style="margin: 2px; text-align: justify;">Board Pieces (<strong><em>board[I][J]</em></strong>)</h6>
+          <p style="margin: 2px; text-align: justify;">Any piece of the 8x8 board can be accessed.</p>
+          <p style="margin: 2px; text-align: justify;">
+            Each spot has:
+          <ul style="margin-bottom: -15px;">
+            <li style="text-align: justify;"><strong>color</strong>: the color of the piece (string "empty", "red", "blue"
+              or "stack").</li>
+            <li style="text-align: justify;"><strong>position</strong>: separated into <strong>x</strong> and
+              <strong>y</strong> (integers).
+            </li>
+            <li style="text-align: justify;"><strong>stack</strong>: separated into <strong>red</strong> and
+              <strong>blue</strong> (integers).
+            </li>
+            <li style="text-align: justify;"><strong>king</strong>: the piece is a King if true (boolean).</li>
+          </ul>
+          </p>
+
+        </div>
+        <div class="col" style="display: grid; grid-gap: 1px; grid-template-rows: 37.5% 62.5%;">
+          <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
+            <h6 style="margin: 2px; text-align: justify;">Out of Bounds Spot (<strong><em>board.out</em></strong>)</h6>
+            <p style="margin: 2px; text-align: justify;">Treat it like any other piece, but <em>position is
+                unbounded</em>.</p>
+          </div>
+          <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
+            <h6 style="margin: 2px; text-align: justify;">Special Functions</h6>
+            <p style="margin: 2px; text-align: justify;">Check how to play if needed: <strong>count_empty_spaces</strong>,
+              <strong>count_red_pieces</strong>, <strong>count_blue_pieces</strong>, <strong>get_pieces</strong>,
+              <strong>find_stacks</strong>, <strong>find_red_pieces</strong>, <strong>find_blue_pieces</strong>,
+              <strong>find_first_blue_piece</strong>, <strong>find_first_red_piece</strong>,
+              <strong>find_first_stack</strong>, <strong>distance(pos1, pos2)</strong>.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -202,7 +250,7 @@
                 </div>
                 <div class="col" style="max-width: 90%">
                   <textarea class="box" rows="5" :value="precondition" style="width: 100%; text-align: start;"
-                    @input="changePreconditionExpression($event, index)" />
+                    @change="changePreconditionExpression($event, index)" />
                 </div>
               </div>
             </div>
@@ -211,16 +259,16 @@
                 v-if="!boardChecker.passed">
                 <font-awesome-icon icon="plus" style="color: rgb(169, 89, 255)" />
               </button>
-              <button class="box disabled" style="padding: 10px; border-radius: 50px; "
-                @click="addPrecondition(index)" v-else>
+              <button class="box disabled" style="padding: 10px; border-radius: 50px; " @click="addPrecondition(index)"
+                v-else>
                 <font-awesome-icon icon="plus" style="color: rgb(169, 89, 255)" />
               </button>
               <button class="box" style="padding: 10px; border-radius: 50px; " @click="removePrecondition(index)"
                 v-if="!boardChecker.passed">
                 <font-awesome-icon icon="trash" style="color: rgb(169, 89, 255)" />
               </button>
-              <button class="box disabled" style="padding: 10px; border-radius: 50px; "
-                @click="removePrecondition(index)" v-else>
+              <button class="box disabled" style="padding: 10px; border-radius: 50px; " @click="removePrecondition(index)"
+                v-else>
                 <font-awesome-icon icon="trash" style="color: rgb(169, 89, 255)" />
               </button>
             </div>
@@ -236,7 +284,7 @@
                 </div>
                 <div class="col" style="max-width: 90%">
                   <textarea class="box" rows="5" :value="test" style="width: 100%; text-align: start;"
-                    @input="changeTestExpression($event, index)" />
+                    @change="changeTestExpression($event, index)" />
                 </div>
               </div>
             </div>
@@ -245,16 +293,14 @@
                 v-if="!boardChecker.passed">
                 <font-awesome-icon icon="plus" style="color: rgb(169, 89, 255)" />
               </button>
-              <button class="box disabled" style="padding: 10px; border-radius: 50px; " @click="addTest(index)"
-                v-else>
+              <button class="box disabled" style="padding: 10px; border-radius: 50px; " @click="addTest(index)" v-else>
                 <font-awesome-icon icon="plus" style="color: rgb(169, 89, 255)" />
               </button>
               <button class="box" style="padding: 10px; border-radius: 50px; " @click="removeTest(index)"
                 v-if="!boardChecker.passed">
                 <font-awesome-icon icon="trash" style="color: rgb(169, 89, 255)" />
               </button>
-              <button class="box disabled" style="padding: 10px; border-radius: 50px; " @click="removeTest(index)"
-                v-else>
+              <button class="box disabled" style="padding: 10px; border-radius: 50px; " @click="removeTest(index)" v-else>
                 <font-awesome-icon icon="trash" style="color: rgb(169, 89, 255)" />
               </button>
             </div>
@@ -279,8 +325,8 @@
         </div>
       </div>
       <div class="row">
-        <button class="box is-primary" style="min-width: 100%; padding: 10px; margin: 10px;"
-          v-if="boardChecker.passed" @click="submitChallenge()">
+        <button class="box is-primary" style="min-width: 100%; padding: 10px; margin: 10px;" v-if="boardChecker.passed"
+          @click="submitChallenge()">
           Submit Challenge
         </button>
         <button class="box is-primary disabled" style="min-width: 100%; padding: 10px; margin: 10px;" v-else>
@@ -472,23 +518,23 @@ export default {
       if (reverse) {
         expression = expression.replaceAll(boardAccess, 'X')
 
-        var array = Object.entries(dict).sort((a, b) => b[1].replacement.length - a[1].replacement.length)
+        var array = Object.entries(dict).sort((a, b) => b[1].length - a[1].length)
         for (var entry in array) {
-          expression = expression.replaceAll(array[entry][1].replacement, array[entry][0])
+          expression = expression.replaceAll(array[entry][1], array[entry][0])
         }
 
         return expression
-      }
-
-      for (var key in dict) {
-        var regex = new RegExp('board.log[[A-z]+].start||board.log[[A-z]+].destination')
-        if (key == 'start' || key == 'destination') {
-          if (regex.test(expression)) {
-            console.log(regex.test(expression))
-            continue
+      } else {
+        var array = Object.entries(dict).sort((a, b) => b[0].length > a[0].length)
+        for (var entry in array) {
+          var regex = new RegExp('board.log[[A-z]+].start|board.log[[A-z]+].destination')
+          if (array[entry][0] == 'start' || array[entry][0] == 'destination') {
+            if (regex.test(expression)) {
+              continue
+            }
           }
+          expression = expression.replaceAll(array[entry][0], array[entry][1])
         }
-        expression = expression.replaceAll(key, dict[key].replacement)
       }
 
       expression = expression.replaceAll('X', boardAccess)

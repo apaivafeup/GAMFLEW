@@ -80,6 +80,10 @@ export const boardCheckerStore = defineStore('boardStore', {
     },
 
     selectPiece(x, y) {
+      if (this.passed) {
+        return
+      }
+
       if (this.add) {
         this.addPiece(x, y)
         return
@@ -281,6 +285,6 @@ export const boardCheckerStore = defineStore('boardStore', {
       }
 
       toast.warning("You just won an achievement!", onclick="this.achievements()")
-    },
+    }
   }
 })
