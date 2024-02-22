@@ -3,9 +3,9 @@
     <h2 v-if="id == null">Challenge Creator</h2>
     <h2 v-else>Challenge Editor</h2>
   </div>
-  <div class="container" style="display: flex; margin-bottom: 10px;">
-    <div class="row" style="display: grid; grid-template-columns: 60% 40%; grid-gap: 6%; grid-template-rows: 100%;">
-      <div class="col">
+  <div class="container" style="margin-bottom: 10px;">
+    <div class="row" style="display: grid; grid-template-columns: 60% 40%; grid-template-rows: 100%;">
+      <div class="col" style="width: 100%">
         <div class="row" style="width: 100%; margin: 0px;">
           <h5 style="padding: 0px; margin-bottom: 5px;">Code File</h5>
         </div>
@@ -13,7 +13,7 @@
           <p style="margin-bottom: 5px;">Choose an existing code file below.</p>
         </div>
         <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
-          <select class="button is-primary guide-button" id="code-file-select" style="width: 650px;"
+          <select class="button is-primary guide-button" id="code-file-select" style="width: 100%;"
             :value="challenge?.code_file">
             <option @click="selectCode(code.id)" v-for="code in codeFiles" :value="code.id">{{ code.name }}</option>
           </select>
@@ -22,7 +22,7 @@
         <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
           <CodeBlock id="code-file-block" class="line-numbers" theme="default" height="445px" data-line="1"
             :prismjs="true" :code="codeFiles[challenge?.code_file - 1]?.content" lang="javascript" prism-plugin prism-js
-            style="font-size: 16px; overflow: scroll; margin-bottom: 5px; width: 650px;" :copy-icon="false"
+            style="font-size: 16px; overflow: scroll; margin-bottom: 5px;" :copy-icon="false"
             :copy-button="false" :copy-tab="false" :tabs="false" />
         </div>
       </div>
