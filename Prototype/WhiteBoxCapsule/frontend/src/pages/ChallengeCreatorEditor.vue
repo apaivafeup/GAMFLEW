@@ -3,8 +3,8 @@
     <h2 v-if="id == null">Challenge Creator</h2>
     <h2 v-else>Challenge Editor</h2>
   </div>
-  <div class="container" style="display: flex; justify-content: center; margin-bottom: 10px;">
-    <div class="row" style="justify-content: center; display: flex; flex-direction: row;">
+  <div class="container" style="display: flex; margin-bottom: 10px;">
+    <div class="row" style="display: grid; grid-template-columns: 60% 40%; grid-gap: 6%; grid-template-rows: 100%;">
       <div class="col">
         <div class="row" style="width: 100%; margin: 0px;">
           <h5 style="padding: 0px; margin-bottom: 5px;">Code File</h5>
@@ -56,85 +56,87 @@
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="name-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Name</h6>
-          <input id="input-name-box" class="box" @change="changeName($event)" type="text"
+          <input id="input-name-box" class="box guide-button" @change="changeName($event)" type="text"
             placeholder="Challenge X.Y: Challenge Name" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
-      </div>
-      <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="description-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Description</h6>
-          <input id="input-description-box" @change="changeDescription($event)" class="box" type="text"
+          <input id="input-description-box" @change="changeDescription($event)" class="box guide-button" type="text"
             placeholder="Anything about the challenge!" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
       <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="hint-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Hint</h6>
-          <input id="input-hint-box" @change="changeHint($event)" class="box" type="text"
+          <input id="input-hint-box" @change="changeHint($event)" class="box guide-button" type="text"
             placeholder="Anything to help the player!" style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
-      </div>
-      <div class="row" style="margin-bottom: 5px;">
         <div class="col" id="objective-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Objective</h6>
-          <input id="input-objective-box" @change="changeObjective($event)" class="box" type="text"
+          <input id="input-objective-box" @change="changeObjective($event)" class="box guide-button" type="text"
             placeholder="[COVERAGE] coverage of line X." style="margin: 0px; width: 100%; font-size: 18px;" />
         </div>
       </div>
-      <div class="row" style="margin-bottom: 7.5px;">
+      <div class="row" style="margin-bottom: 5px; align-items: center;">
         <div class="col" id="score-input">
           <h6 style="text-align: left; margin-bottom: 5px;">Score</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">The more test cases, the more points a player should get!</p>
-          <input id="input-score-box" inputmode="numeric" @change="changeScore($event)" class="box" type="number"
-            max-length="5" min="100" pattern="[0-9]{5}" value="100" step="25"
+          <input id="input-score-box" inputmode="numeric" @change="changeScore($event)" class="box guide-button"
+            type="number" max-length="5" min="100" pattern="[0-9]{5}" value="100" step="25"
             style="margin: 0px; width: 100%; font-size: 18px;" />
+        </div>
+        <div class="col">
+          <div class="row">
+            <h6 style="text-align: left; margin-bottom: 5px;">Difficulty</h6>
+          </div>
+          <div class="row" style="font-size: 10px;">
+            <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular difficulty level.</p>
+          </div>
+          <div class="row" style="margin: 0px;">
+            <select class="button is-primary guide-button" id="difficulty-select" style="width: 100%;"
+              :value="challenge?.difficulty">
+              <option @click="selectDifficulty(difficulty)" v-for="difficulty in difficulties" :value="difficulty">
+                {{ difficulty }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 7.5px; align-items: center;">
+        <div class="col">
+          <div class="row">
+            <h6 style="text-align: left; margin-bottom: 5px;">Coverage</h6>
+          </div>
+          <div class="row" style="font-size: 10px;">
+            <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular code coverage type.
+            </p>
+          </div>
+          <div class="row" style="margin: 0px;">
+            <select class="button is-primary guide-button" id="coverage-select" style="width: 100%;"
+              :value="challenge?.challenge_type">
+              <option @click="selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{
+                coverage }}
+              </option>
+            </select>
+          </div>
         </div>
         <div class="col" id="condition-count-input"
           v-if="challenge?.challenge_type == 'condition' || challenge?.challenge_type == 'mcdc' || challenge?.challenge_type == 'condition/decision'">
           <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup>
             possible test cases!</p>
-          <input id="input-condition-box" @change="changeConditionCount($event)" class="box" type="number"
-            placeholder="Number of variables." value="1" min="0" max="5"
-            style="margin: 0px; width: 100%; font-size: 18px;" />
+          <input id="input-condition-box" @change="changeConditionCount($event)" class="box guide-button" type="number"
+            placeholder="Number of variables." value="1" min="0" max="5" style="margin: 0px; width: 100%;" />
         </div>
         <div class="col disabled" id="condition-count-input" v-else>
           <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
           <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get 2<sup>x</sup>
             possible test cases!</p>
-          <input id="input-condition-box" @change="changeConditionCount($event)" class="box" type="number" max="10"
-            placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;" />
+          <input id="input-condition-box" class="box guide-button" type="number" max="10"
+            placeholder="Number of variables." style="margin: 0px; width: 100%;" />
         </div>
       </div>
-      <div class="row" style="margin-bottom: 5px;">
-        <div class="col">
-          <div class="row">
-            <h6 style="text-align: left; margin-bottom: 5px;">Coverage & Difficulty</h6>
-          </div>
-          <div class="row" style="font-size: 10px;">
-            <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular coverage type
-              associated.<br />A difficulty level is also required.</p>
-          </div>
-          <div class="row" style="margin: 0px;">
-            <div class="col" style="padding: 0px; margin-right: 5px;">
-              <select class="button is-primary guide-button" id="coverage-select" style="width: 100%;"
-                :value="challenge?.challenge_type">
-                <option @click="selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{
-                  coverage }}
-                </option>
-              </select>
-            </div>
-            <div class="col" style="padding: 0px;">
-              <select class="button is-primary guide-button" id="difficulty-select" style="width: 100%;"
-                :value="challenge?.difficulty">
-                <option @click="selectDifficulty(difficulty)" v-for="difficulty in difficulties" :value="difficulty">
-                  {{ difficulty }}
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
   <div class="container" style="display: flex; justify-content: center; flex-direction: column;">
@@ -176,64 +178,7 @@
         </div>
       </div>
       <div class="col" style="display: grid; grid-template-columns: 35% 27.5% 37.5%; grid-gap: 10px;">
-        <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
-          <h6 style="margin: 2px; text-align: justify;">Board Log (<strong><em>board.log</em></strong>)</h6>
-          <p style="margin: 2px; text-align: justify;">The <strong>board</strong> has a <strong>log</strong> of
-            interactions.</p>
-          <p style="margin: 2px; text-align: justify;">For the most recent movement, use <strong>last_log</strong>
-            (<strong>last_</strong> followed by a variable name can be used for shortcuts).
-          <ul style="margin-bottom: -15px;">
-            <li style="text-align: justify;"><strong>type</strong>: it's either "add" (a piece) or "move" (a piece).</li>
-            <ul>
-              <li style="text-align: justify;">For each <em>"add"</em>:</li>
-              <ul>
-                <li style="text-align: justify;"><strong>color</strong>: the color of the piece.</li>
-                <li style="text-align: justify;"><strong>destination</strong>: where the piece was added.</li>
-              </ul>
-              <li>For each <em>"move"</em>:</li>
-              <ul style="margin-bottom: 0px;">
-                <li style="text-align: justify;"><strong>start</strong>: the initial position.</li>
-                <li style="text-align: justify;"><strong>destination</strong>: the final position.</li>
-              </ul>
-            </ul>
-          </ul>
-          </p>
-        </div>
-        <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
-          <h6 style="margin: 2px; text-align: justify;">Board Pieces (<strong><em>board[I][J]</em></strong>)</h6>
-          <p style="margin: 2px; text-align: justify;">Any piece of the 8x8 board can be accessed.</p>
-          <p style="margin: 2px; text-align: justify;">
-            Each spot has:
-          <ul style="margin-bottom: -15px;">
-            <li style="text-align: justify;"><strong>color</strong>: the color of the piece (string "empty", "red", "blue"
-              or "stack").</li>
-            <li style="text-align: justify;"><strong>position</strong>: separated into <strong>x</strong> and
-              <strong>y</strong> (integers).
-            </li>
-            <li style="text-align: justify;"><strong>stack</strong>: separated into <strong>red</strong> and
-              <strong>blue</strong> (integers).
-            </li>
-            <li style="text-align: justify;"><strong>king</strong>: the piece is a King if true (boolean).</li>
-          </ul>
-          </p>
-
-        </div>
-        <div class="col" style="display: grid; grid-gap: 1px; grid-template-rows: 37.5% 62.5%;">
-          <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
-            <h6 style="margin: 2px; text-align: justify;">Out of Bounds Spot (<strong><em>board.out</em></strong>)</h6>
-            <p style="margin: 2px; text-align: justify;">Treat it like any other piece, but <em>position is
-                unbounded</em>.</p>
-          </div>
-          <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
-            <h6 style="margin: 2px; text-align: justify;">Special Functions</h6>
-            <p style="margin: 2px; text-align: justify;">Check how to play if needed: <strong>count_empty_spaces</strong>,
-              <strong>count_red_pieces</strong>, <strong>count_blue_pieces</strong>, <strong>get_pieces</strong>,
-              <strong>find_stacks</strong>, <strong>find_red_pieces</strong>, <strong>find_blue_pieces</strong>,
-              <strong>find_first_blue_piece</strong>, <strong>find_first_red_piece</strong>,
-              <strong>find_first_stack</strong>, <strong>distance(pos1, pos2)</strong>. <br/>
-            Beware what each function returns!</p>
-          </div>
-        </div>
+        <ChallengeCreatorInfo />
       </div>
 
     </div>
@@ -352,6 +297,7 @@ import BoardChecker from '../components/BoardChecker.vue'
 import { boardCreatorStore } from '../store/boardCreator'
 import { boardCheckerStore } from '../store/boardChecker'
 import ChallengeChecker from '../components/ChallengeChecker.vue'
+import ChallengeCreatorInfo from '../components/ChallengeCreatorInfo.vue'
 
 import hljs from 'highlight.js';
 import CodeEditor from "simple-code-editor";
@@ -616,7 +562,8 @@ export default {
     Menu,
     'code-editor': CodeEditor,
     BoardChecker,
-    ChallengeChecker
+    ChallengeChecker,
+    ChallengeCreatorInfo
   },
 }
 </script>
