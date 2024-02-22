@@ -69,8 +69,7 @@ export default defineComponent({
     },
 
     goToRegister() {
-      //TODO: implement the register page + route and add it here.
-      //this.$router.push({ name: 'Register' })
+      this.$router.push({ name: 'register' })
     }
   }
 })
