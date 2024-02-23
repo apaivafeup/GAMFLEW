@@ -5,6 +5,7 @@
     "username": "professor@prototype.com",
     "password": "password",
     "user_type": "admin",
+    "picture": "photo.png",
     "failed_attempts": 0,
     "successful_attempts": 0,
     "score": 0,

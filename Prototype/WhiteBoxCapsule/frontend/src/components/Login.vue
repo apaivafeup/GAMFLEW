@@ -24,7 +24,7 @@
           style="padding: 10px; max-width: 100px; border-radius: 15px; margin-bottom: 10px;">Login</button>
         <small id="passwordHelp" class="form-text text-muted"
           style="margin-top: 0px; padding-top: 0px; font-size: 10px; text-align: center;">Don't have an account? You can
-          <a href="#" @click="goToRegister()">register</a>!</small>
+          <RouterLink to="/register">register</RouterLink>!</small>
       </div>
     </form>
   </div>
@@ -33,13 +33,16 @@
 <script>
 import { defineComponent } from 'vue'
 import { authStore } from '../store/authStore'
+import { RouterLink } from 'vue-router'
 
 export default defineComponent({
   beforeMount() {
     this.authStore = authStore()
   },
 
-  components: {},
+  components: {
+    RouterLink
+  },
 
   data() {
     return {
@@ -68,8 +71,9 @@ export default defineComponent({
       this.authStore.login(formData)
     },
 
-    goToRegister() {
-      this.$router.push({ name: 'register' })
+    goToRegister(event) {
+      event.preventDefault()
+      this.$router.push('/register')
     }
   }
 })

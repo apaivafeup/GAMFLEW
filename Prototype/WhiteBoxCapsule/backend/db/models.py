@@ -68,6 +68,7 @@ class User(BaseModel):
     username: str
     email: str
     password: str
+    picture: str
     user_type: UserType
     failed_attempts: int
     successful_attempts: int
@@ -83,6 +84,7 @@ class UserBasics(BaseModel):
     name: str
     username: str
     user_type: UserType
+    picture: str
     failed_attempts: int
     successful_attempts: int
     score: int
@@ -95,6 +97,21 @@ class UserBasics(BaseModel):
 class UserLogin(BaseModel):
     username: str
     password: str
+
+class UserRegister(BaseModel):
+    name: str
+    username: str
+    email: str
+    password: str
+    picture: str
+    user_type: UserType
+
+class UserResponse(BaseModel):
+    name: str
+    username: str
+    email: str
+    picture: str
+    user_type: UserType
 
 class CodeFile(BaseModel):
     id: Optional[int]

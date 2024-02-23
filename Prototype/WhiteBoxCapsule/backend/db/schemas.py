@@ -55,6 +55,7 @@ class User(Base):
     name = Column(TEXT, unique=True, index=True)
     email = Column(TEXT, unique=True, index=True)
     username = Column(TEXT, unique=True, index=True)
+    picture = Column(TEXT, index=True, nullable=True)
     user_type = Column(ENUM(UserType), nullable=False, default=UserType.PLAYER, index=True)
     password = Column(TEXT)
     failed_attempts = Column(Integer, index=True)

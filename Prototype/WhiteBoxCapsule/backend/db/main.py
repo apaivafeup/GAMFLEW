@@ -104,16 +104,16 @@ async def logout(db: Session = Depends(get_db), token: str = Depends(auth.oauth2
         status_code=status.HTTP_200_OK,
     )
 
-## Create User
-@app.post("/create/user", response_model=models.User)
-def create_user(user: models.User, db: Session = Depends(get_db)):
+## Register (create user)
+@app.post("/register", response_model=models.UserBasics)
+def create_user(user: models.UserRegister, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_username(db, username=user.username)
     if db_user:
-        raise HTTPException(status_code=400, detail="Username already registered")
+        raise HTTPException(status_code=400, detail="Username already registered.")
     
     db_user = crud.get_user_by_email(db, email=user.email)
     if db_user:
-        raise HTTPException(status_code=400, detail="Username already registered")
+        raise HTTPException(status_code=400, detail="E-mail already registered.")
     
     return crud.create_user(db=db, user=user)
 

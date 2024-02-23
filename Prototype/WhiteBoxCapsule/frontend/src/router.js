@@ -10,7 +10,7 @@ const routes = [
     { name: 'challenge-manager', path: '/challenge-manager', component: () => import('./pages/ChallengeManager.vue')},
     { name: 'challenge-creator', path: '/challenge-creator', component: () => import('./pages/ChallengeCreatorEditor.vue'), props: false },
     { name: 'challenge-editor', path: '/challenge-editor/:id', component: () => import('./pages/ChallengeCreatorEditor.vue'), props: true },
-    { name: 'register', path: '/register', component: () => import('./pages/Register.vue') }
+    { name: 'register', path: '/register', component: () => import('./pages/Register.vue'), props: false }
 ];
 
 export const Router = createRouter({

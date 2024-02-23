@@ -12,6 +12,7 @@ def create_user(db: Session, user: schemas.User):
         name=user.name,
         username=user.username,
         email = user.email,
+        picture=user.picture,
         password=hashed_password,
         user_type=user.user_type,
         failed_attempts=0,
@@ -101,19 +102,16 @@ def get_user(db: Session, user_id: int):
 def get_user_by_username(db: Session, username: str):
     user = db.query(schemas.User).filter(schemas.User.username == username).first()
 
-    user_basics = models.UserBasics(
-        id=user.id,
-        name=user.name,
-        username=user.username,
-        user_type=user.user_type,
-        failed_attempts=user.failed_attempts,
-        successful_attempts=user.successful_attempts,
-        score=user.score,
-        achievements=user.achievements,
-        auth=user.auth
-    )
+    if user is not None:
+        user = models.UserResponse(
+            name=user.name,
+            username=user.username,
+            email=user.email,
+            user_type=user.user_type,
+            picture=user.picture,
+        )
 
-    return user_basics
+    return user
 
 def get_user_by_email(db: Session, email: str):
     return db.query(schemas.User).filter(schemas.User.email == email).first()
