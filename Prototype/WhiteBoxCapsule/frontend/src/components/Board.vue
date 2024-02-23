@@ -7,8 +7,7 @@ import PlayerBar from './PlayerBar.vue'
 import { Challenge } from '../store/models/challenge'
 import { User } from '../store/models/user.js'
 import { CodeFile } from '../store/models/code_file'
-
-
+import { authStore } from '../store/authStore'
 
 export default {
   props: {
@@ -66,8 +65,8 @@ export default {
     </div>
 
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
-      <BoardGrid :challenge="this.challenge" />
-      <PlayerBar :user="this.user" />
+      <BoardGrid :challenge="challenge" />
+      <PlayerBar :user="user" />
     </div>
   </div>
 </template>

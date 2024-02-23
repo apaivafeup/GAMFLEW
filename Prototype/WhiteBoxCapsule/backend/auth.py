@@ -16,7 +16,10 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 def get_user(db: Session, username: str):
-    user = db.query(schemas.User).filter(schemas.User.username == username).first()
+    try:
+        user = db.query(schemas.User).filter(schemas.User.username == username).first()
+    except:
+        return None
 
     if user != None:
         return user

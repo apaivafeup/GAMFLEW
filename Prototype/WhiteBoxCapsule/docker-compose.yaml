@@ -6,9 +6,9 @@ services:
   backend:
     image: backend
     build:
-      context: ./db
+      context: .
       dockerfile: Dockerfile
     ports:
       - 8000:80
     env_file:
-      - ./db/.env
+      - ./.env

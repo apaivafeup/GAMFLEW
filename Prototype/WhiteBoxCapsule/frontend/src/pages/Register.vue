@@ -3,7 +3,7 @@ import { authStore } from '../store/authStore'
 
 export default {
     beforeMount() {
-        this.authStore = authStore()
+        this.auth = authStore()
     },
 
     methods: {
@@ -15,7 +15,7 @@ export default {
             const password = document.getElementById('password').value
             const passwordConfirm = document.getElementById('password-confirm').value
             const email = document.getElementById('email').value
-            const picture = document.getElementById('picture').files[0].name
+            const picture = document.getElementById('picture').files[0]
 
             if (username === '' || password === '' || passwordConfirm === '' || email === '' || picture === undefined) {
                 alert('Please fill all the fields.')
@@ -27,18 +27,30 @@ export default {
                 return
             }
 
-            const formData = {
+            const formData = new FormData()
+            formData.append('file', picture)
+            var picture_path
+
+            await this.$axios.post(this.$api_link + '/upload', formData)
+                .then(response => {
+                    picture_path = response.data.file_url
+                })
+                .catch(error => {
+                    alert('An error occurred while uploading your picture. Please try again later.')
+                })
+
+            const formData2 = {
                 name: name,
                 username: username,
                 password: password,
                 email: email,
-                picture: picture,
+                picture: picture_path,
                 user_type: 'player'
             }
 
-            await this.$axios.post(this.$api_link + '/register', formData)
+            await this.$axios.post(this.$api_link + '/register', formData2)
                 .then(response => {
-                    if (response.data.status === 200) {
+                    if (response.status === 200) {
                         alert('You have successfully registered. You can now login.')
                         this.$router.push({name: 'home'})
                     } else {
@@ -47,7 +59,6 @@ export default {
                 })
                 .catch(error => {
                     alert('An error occurred while registering. Please try again later.')
-                    console.log(error)
                 })
         }
 

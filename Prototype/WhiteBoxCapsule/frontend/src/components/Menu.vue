@@ -31,7 +31,7 @@ import { authStore } from '../store/authStore'
 
 export default defineComponent({
   beforeMount() {
-    this.authStore = authStore()
+    this.auth = authStore()
   },
 
   components: {},
@@ -49,7 +49,7 @@ export default defineComponent({
     async logout(event) {
       event.preventDefault()
       
-      this.authStore.logout()
+      this.auth.logout()
     },
 
     switchMenu(target) {

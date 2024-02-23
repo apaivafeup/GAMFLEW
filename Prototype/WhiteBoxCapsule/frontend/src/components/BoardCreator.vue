@@ -157,8 +157,6 @@ export default {
       
       await this.$axios.post(this.$api_link + '/create/board-state', body, this.auth.config)
         .then(response => {
-          console.log(response)
-          console.log(body)
         });
     },
 

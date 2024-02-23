@@ -17,7 +17,7 @@ import { authStore } from '../store/authStore'
 <template style="overflow: hidden">
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
 
-  <Board :challenge="challenge" :code_file="code_file" :user="user" />
+  <Board :challenge="challenge" :code_file="code_file" :user="auth.user" />
 
   <SubmitModal :placeholder="submit_placeholder" />
 
@@ -38,7 +38,6 @@ export default {
       code_file: CodeFile,
       challenge: Challenge,
       board_state: BoardState,
-      user: User,
       submit_placeholder:
         "Don't know what to write? Answer these: What was the specific objective to hit, beyond the target line? How did you hit it?",
       fail_placeholder:
@@ -48,6 +47,7 @@ export default {
 
   async beforeMount() {
     this.auth = authStore()
+    this.auth.checkAuth()
 
     var user_id
 
@@ -69,18 +69,6 @@ export default {
         response.data.passing_criteria,
         response.data.achievement_criteria,
         response.data.owner_id
-      )
-    })
-
-    await this.$axios.get(this.$api_link + '/users/' + user_id, this.auth.config).then((response) => {
-      this.user = new User(
-        response.data.name,
-        response.data.username,
-        '../assets/pictures/avatar.png',
-        response.data.score,
-        response.data.failed_attempts,
-        response.data.successful_attempts,
-        response.data.achievements
       )
     })
 

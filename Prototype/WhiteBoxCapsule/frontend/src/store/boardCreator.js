@@ -178,8 +178,6 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
         }
       }
 
-      console.log(body);
-
       return body
     },
 

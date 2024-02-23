@@ -74,8 +74,7 @@ export default {
 
       await this.$axios.post(this.$api_link + '/create/code-file', body, this.auth.config)
         .then(response => {
-          console.log(response)
-          console.log(body)
+
         });
     },
 

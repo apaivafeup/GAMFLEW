@@ -1,5 +1,5 @@
 import json
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, FilePath
 from typing import Optional
 from schemas import AttemptType, ChallengeType, Difficulty, PieceColor, UserType
 
@@ -83,13 +83,11 @@ class UserBasics(BaseModel):
     id: Optional[int]
     name: str
     username: str
-    user_type: UserType
     picture: str
     failed_attempts: int
     successful_attempts: int
     score: int
     achievements: int
-    auth: bool
 
     class Config:
         from_attributes = True
@@ -102,8 +100,8 @@ class UserRegister(BaseModel):
     name: str
     username: str
     email: str
-    password: str
     picture: str
+    password: str
     user_type: UserType
 
 class UserResponse(BaseModel):
@@ -112,6 +110,10 @@ class UserResponse(BaseModel):
     email: str
     picture: str
     user_type: UserType
+
+class UserAuth(BaseModel):
+    username: str
+    auth: bool
 
 class CodeFile(BaseModel):
     id: Optional[int]
@@ -153,6 +155,7 @@ class BoardState(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+    user_id: int
 
 class TokenData(BaseModel):
     username: str | None = None

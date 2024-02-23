@@ -1,8 +1,9 @@
 export class User {
-  constructor(name, username, avatar, score, failedAttempts, successfulAttempts, achievements) {
+  constructor(id, name, username, picture, score, failedAttempts, successfulAttempts, achievements) {
+    this.id = id
     this.name = name
     this.username = username
-    this.avatar = avatar
+    this.picture = picture
     this.score = score
     this.failedAttempts = failedAttempts
     this.successfulAttempts = successfulAttempts

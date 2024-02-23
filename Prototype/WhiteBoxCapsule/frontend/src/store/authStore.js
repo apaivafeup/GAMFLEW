@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
+import { User } from './models/user.js'
 
 export const authStore = defineStore('authStore', {
     state: () => {
         return {
             // Actual game state.
             config: {},
-            username: String,
+            user: User,
             authenticated: Boolean
         }
     },
@@ -30,16 +31,16 @@ export const authStore = defineStore('authStore', {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 }
             }).then((response) => {
-                console.log(response)
                 if (response.status === 200) {
                     this.config = {
                         headers: { 'Authorization': 'Bearer ' + response.data.access_token }
                     }
-                    this.username = form.get('username')
                     this.auth = true;
 
                     window.sessionStorage.setItem('access_token', response.data.access_token)
                     window.sessionStorage.setItem('username', form.get('username'))
+
+                    this.getUserData(response.data.user_id)
                 }
             })
         },
@@ -54,6 +55,24 @@ export const authStore = defineStore('authStore', {
                         window.sessionStorage.removeItem('access_token')
                         window.sessionStorage.removeItem('username')
                         window.location.reload()
+                    }
+                })
+        },
+
+        async getUserData(id) {
+            await this.$axios.get(this.$api_link + '/users/' + id, this.config)
+                .then((response) => {
+                    if (response.status === 200) {
+                        this.user = new User(
+                            response.data.id,
+                            response.data.name,
+                            response.data.username,
+                            response.data.picture,
+                            response.data.score,
+                            response.data.failed_attempts,
+                            response.data.successful_attempts,
+                            response.data.achievements
+                        )
                     }
                 })
         }

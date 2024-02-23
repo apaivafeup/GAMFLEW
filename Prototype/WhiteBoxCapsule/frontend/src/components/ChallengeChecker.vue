@@ -278,14 +278,12 @@ export default {
     changeX() {
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
         this.outX = document.getElementById('piece-stack-out-x').value
-        console.log("changed x", this.outX)
       }
     },
 
     changeY() {
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
         this.outY = document.getElementById('piece-stack-out-y').value
-        console.log("changed y", this.outY)
       }
     },
 

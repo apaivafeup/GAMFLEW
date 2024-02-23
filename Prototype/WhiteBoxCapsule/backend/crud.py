@@ -1,5 +1,6 @@
 import json
 from sqlalchemy.orm import Session
+from fastapi import File
 from sqlalchemy.exc import SQLAlchemyError
 
 import schemas
@@ -79,15 +80,14 @@ def create_attempt(db: Session, attempt: schemas.Attempt):
     db.commit() # Save create attempt to db
     return db_attempt
 
-def get_user_basics(db: Session, user_id: int):
+def get_user_basics(db: Session, user_id: str):
     user = db.query(schemas.User).filter(schemas.User.id == user_id).first()
 
     user_basics = models.UserBasics(
         id=user.id,
         name=user.name,
+        picture=user.picture,
         username=user.username,
-        user_type=user.user_type,
-        auth=user.auth,
         failed_attempts=user.failed_attempts,
         successful_attempts=user.successful_attempts,
         score=user.score,

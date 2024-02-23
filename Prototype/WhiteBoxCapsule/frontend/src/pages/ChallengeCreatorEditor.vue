@@ -317,6 +317,7 @@ export default {
     this.boardCreator = boardCreatorStore()
     this.boardChecker = boardCheckerStore()
     this.auth = authStore()
+    this.auth.checkAuth()
 
     await this.$axios.get(this.$api_link + '/board-states/', this.auth.config).then((response) => {
       response.data.forEach((board_state) => {
@@ -479,7 +480,6 @@ export default {
         var regex = new RegExp('board.log[[A-z]+].start||board.log[[A-z]+].destination')
         if (key == 'start' || key == 'destination') {
           if (regex.test(expression)) {
-            console.log(regex.test(expression))
             continue
           }
         }

@@ -25,6 +25,9 @@ import axios from 'axios'
 
 import VueHighlightJS from 'vue3-highlightjs'
 
+import {LoadingPlugin} from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
+
 library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash)
 
 const pinia = createPinia()
@@ -52,5 +55,6 @@ pinia.use(({ store }) => {
 app.config.globalProperties.window = window;
 
 app.use(Router)
+app.use(LoadingPlugin);
 app.component('EasyDataTable', Vue3EasyDataTable)
 app.component('CodeBlock', CodeBlock).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

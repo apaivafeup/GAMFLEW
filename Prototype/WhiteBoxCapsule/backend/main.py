@@ -1,10 +1,12 @@
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, status, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 from db_op import init_db, get_db
 from jose import JWTError, jwt
 from fastapi.responses import JSONResponse
+import shutil, os
+from fastapi.staticfiles import StaticFiles
 
 # New stuff
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -14,6 +16,14 @@ from typing import Annotated
 import uvicorn
 import crud, models, schemas, auth
 
+# Check if file directories exist, if not create them
+if not os.path.exists('static'):
+    os.mkdir('static')
+if not os.path.exists('static/docs'):
+    os.mkdir('static/docs')
+if not os.path.exists('static/images'):
+    os.mkdir('static/images')
+
 app = FastAPI()
 origins = ["*"]
 app.add_middleware(
@@ -22,6 +32,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 #
 init_db()
 
@@ -37,12 +49,13 @@ def login_for_access_token(db: Session = Depends(get_db), form_data: OAuth2Passw
 
     if user is None:
         raise HTTPException(status_code=401, detail="Incorrect username or password")
+        return
     
     access_token_expires = timedelta(minutes=auth.ACCESS_TOKEN_EXPIRE_MINUTES)    
     access_token = auth.create_access_token(data={"sub": user.username}, expires_delta=access_token_expires)
     crud.update_user_auth(db, user.id, True)
 
-    return models.Token(access_token=access_token, token_type="bearer")
+    return models.Token(access_token=access_token, token_type="bearer", user_id=user.id)
 
 async def get_current_user(db: Session = Depends(get_db), token: str =  Depends(auth.oauth2_scheme)):
     credentials_exception = HTTPException(
@@ -104,8 +117,29 @@ async def logout(db: Session = Depends(get_db), token: str = Depends(auth.oauth2
         status_code=status.HTTP_200_OK,
     )
 
+@app.post('/upload')
+async def upload_file(file: UploadFile = File(...)):
+    filepath_images="./static/images/"
+    # filepath_docs = "./static/docs/"
+    filename = file.filename
+    extension = filename.split(".")[-1] 
+
+    if extension not in ("jpg", "jpeg", "png"): # "pdf", "gif", "doc", "docx", "rtf", "csv", "xls", "xlsx", "txt", "ppt", "pptx"
+        raise HTTPException(status_code=400, detail="Invalid file extension")
+    else:
+        generated_name = filepath_images + filename
+
+    # if extension in ("pdf", "gif", "doc", "docx", "rtf", "csv", "xls", "xlsx", "txt", "ppt", "pptx"):
+    #     generated_name = filepath_docs + filename
+
+    with open(generated_name, "wb") as f_test:
+        shutil.copyfileobj(file.file, f_test)
+
+    file_url = generated_name[1:]
+    return {"status": "ok", "file_url": file_url}
+
 ## Register (create user)
-@app.post("/register", response_model=models.UserBasics)
+@app.post("/register", response_model=models.UserResponse)
 def create_user(user: models.UserRegister, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_username(db, username=user.username)
     if db_user:

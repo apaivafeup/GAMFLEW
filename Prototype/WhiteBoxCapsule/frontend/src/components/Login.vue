@@ -37,7 +37,7 @@ import { RouterLink } from 'vue-router'
 
 export default defineComponent({
   beforeMount() {
-    this.authStore = authStore()
+    this.auth = authStore()
   },
 
   components: {
@@ -68,7 +68,7 @@ export default defineComponent({
       formData.append('username', this.username)
       formData.append('password', this.password)
       
-      this.authStore.login(formData)
+      this.auth.login(formData)
     },
 
     goToRegister(event) {

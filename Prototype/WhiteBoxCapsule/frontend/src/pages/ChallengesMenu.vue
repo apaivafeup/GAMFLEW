@@ -64,6 +64,7 @@ export default defineComponent({
 
   async beforeMount() {
     this.auth = authStore()
+    this.auth.checkAuth()
 
     await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
       this.code_files = response.data
