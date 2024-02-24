@@ -13,11 +13,27 @@ import hljs from 'highlight.js';
 import CodeEditor from "simple-code-editor";
 import { authStore } from '../store/authStore'
 
+import { h, resolveComponent } from 'vue'
+import LoadingIcon from '../components/LoadingIcon.vue';
+
 export default {
   async beforeMount() {
+    let loader = this.$loading.show({
+      color: '#A959FF',
+      container: this.fullPage ? null : this.$refs.formContainer,
+      transition: 'fade',
+      canCancel: true,
+      freezeScroll: true,
+      onCancel: this.onCancel,
+      opacity: 0.9,
+      blur: '50px'
+    },
+      {
+        default: h(resolveComponent('LoadingIcon'))
+      });
+
     this.boardCreator = boardCreatorStore()
     this.auth = authStore()
-
 
     await this.$axios.get(this.$api_link + '/board-states', this.auth.config).then((response) => {
       response.data.forEach((board_state) => {
@@ -25,6 +41,8 @@ export default {
       })
       this.dropdownClick(0);
     })
+
+    loader.hide()
   },
 
   data() {

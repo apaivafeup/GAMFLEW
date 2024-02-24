@@ -312,8 +312,25 @@ import CodeEditor from "simple-code-editor";
 import * as utils from '../store/utils.js'
 import { authStore } from '../store/authStore'
 
+import { h, resolveComponent } from 'vue'
+import LoadingIcon from '../components/LoadingIcon.vue';
+
 export default {
   async beforeMount() {
+    let loader = this.$loading.show({
+      color: '#A959FF',
+      container: this.fullPage ? null : this.$refs.formContainer,
+      transition: 'fade',
+      canCancel: true,
+      freezeScroll: true,
+      onCancel: this.onCancel,
+      opacity: 0.9,
+      blur: '50px'
+    },
+      {
+        default: h(resolveComponent('LoadingIcon'))
+      });
+
     this.boardCreator = boardCreatorStore()
     this.boardChecker = boardCheckerStore()
     this.auth = authStore()
@@ -365,6 +382,8 @@ export default {
     document.getElementById('input-objective-box').value = this.challenge.objective
     document.getElementById('input-score-box').value = this.challenge.score
     document.getElementById('input-condition-box').value = this.challenge.passing_criteria.condition_count
+
+    loader.hide()
   },
 
   props: {

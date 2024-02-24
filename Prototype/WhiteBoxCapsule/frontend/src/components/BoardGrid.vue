@@ -70,8 +70,7 @@
         <button id="reset-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Reset
         </button>
-      </div>
-      <button id="comment-button" class="button is-primary is-fullwidth" v-if="board.passed && !board.submitted"
+        <button id="comment-button" class="button is-primary is-fullwidth" v-if="board.passed && !board.submitted"
         data-bs-toggle="modal" data-bs-target="#submit-modal"
         style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
         Comment
@@ -80,6 +79,8 @@
         data-bs-target="#fail-modal">
         Comment
       </button>
+      </div>
+      
       <button id="retry-button" class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
         Retry
       </button>

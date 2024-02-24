@@ -5,3 +5,8 @@
 
   font-weight: normal;
 }
+
+@font-face {
+  font-family: 'Lemon Milk';
+  src: url('@/assets/fonts/LEMONMILK-Bold.otf');
+}

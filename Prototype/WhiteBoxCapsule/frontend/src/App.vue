@@ -6,19 +6,24 @@
   <router-view></router-view>
   <button v-if="!url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode"
     id="theme-toggle">💡 Theme</button>
-  <LoadingIcon />
 </template>
+
+<style>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+</style>
+
 
 <script>
 import { authStore } from './store/authStore';
-import LoadingIcon from './components/LoadingIcon.vue';
-import {h} from 'vue';
+import LoadingIcon from './components/LoadingIcon.vue'
+import { h, resolveComponent } from 'vue'
+import { faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default {
   beforeMount() {
-    this.auth = authStore()
-    this.auth.checkAuth()
-
     let loader = this.$loading.show({
       color: '#A959FF',
       container: this.fullPage ? null : this.$refs.formContainer,
@@ -26,13 +31,16 @@ export default {
       canCancel: true,
       freezeScroll: true,
       onCancel: this.onCancel,
-    });
-
-    setTimeout(() => {
-      loader.hide()
-    }, 5000)
+      opacity: 0.9,
+      blur: '50px'
+    },
+      {
+        default: h(resolveComponent('LoadingIcon'))
+      });
+    this.auth = authStore()
+    this.auth.checkAuth()
+    loader.hide()
   },
-
   components: { LoadingIcon },
   data: () => {
     return {

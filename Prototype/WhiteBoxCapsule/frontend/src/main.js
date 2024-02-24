@@ -56,5 +56,7 @@ app.config.globalProperties.window = window;
 
 app.use(Router)
 app.use(LoadingPlugin);
+
+
 app.component('EasyDataTable', Vue3EasyDataTable)
 app.component('CodeBlock', CodeBlock).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

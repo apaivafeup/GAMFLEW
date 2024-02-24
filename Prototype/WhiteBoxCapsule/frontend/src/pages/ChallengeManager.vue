@@ -42,10 +42,27 @@ import { defineComponent } from 'vue'
 import ChallengeCard from '../components/ChallengeCard.vue'
 import { authStore } from '../store/authStore'
 
+import { h, resolveComponent } from 'vue'
+import LoadingIcon from '../components/LoadingIcon.vue';
+
 export default defineComponent({
   components: { ChallengeCard },
 
   async beforeMount() {
+    let loader = this.$loading.show({
+      color: '#A959FF',
+      container: this.fullPage ? null : this.$refs.formContainer,
+      transition: 'fade',
+      canCancel: true,
+      freezeScroll: true,
+      onCancel: this.onCancel,
+      opacity: 0.9,
+      blur: '50px'
+    },
+      {
+        default: h(resolveComponent('LoadingIcon'))
+      });
+
     this.auth = authStore()
     this.auth.checkAuth()
 
@@ -61,6 +78,8 @@ export default defineComponent({
     await this.$axios.get(this.$api_link + '/users/' + 1 + '/passed-challenges/', this.auth.config).then((response) => {
       this.passed_challenges = response.data
     })
+
+    loader.hide()
   },
 
   data() {
