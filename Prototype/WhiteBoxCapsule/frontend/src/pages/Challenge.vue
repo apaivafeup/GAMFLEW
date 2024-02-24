@@ -115,7 +115,13 @@ export default {
         this.$forceUpdate()
       },
       deep: true
-    }
+    },
+    auth: {
+      handler: function () {
+        this.$forceUpdate()
+      },
+      deep: true
+    },
   }
 }
 </script>

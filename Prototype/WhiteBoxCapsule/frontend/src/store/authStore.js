@@ -12,12 +12,14 @@ export const authStore = defineStore('authStore', {
     },
     actions: {
         async checkAuth() {
-            const token = window.sessionStorage.getItem('access_token')
-            if (token) {
+            console.log('Checking auth...')
+            const username = window.sessionStorage.getItem('username')
+            if (username != null) {
+                console.log(window.sessionStorage)
                 this.config = {
-                    headers: { 'Authorization': 'Bearer ' + token }
+                    headers: { 'Authorization': 'Bearer ' + window.sessionStorage.getItem('access_token') }
                 }
-                this.username = window.sessionStorage.getItem('username')
+                this.user = JSON.parse(window.sessionStorage.getItem('user_data'))
                 this.authenticated = true
             }
         },
@@ -60,6 +62,7 @@ export const authStore = defineStore('authStore', {
         },
 
         async getUserData(id) {
+            console.log('Getting user data...')
             await this.$axios.get(this.$api_link + '/users/' + id, this.config)
                 .then((response) => {
                     if (response.status === 200) {
@@ -73,6 +76,8 @@ export const authStore = defineStore('authStore', {
                             response.data.successful_attempts,
                             response.data.achievements
                         )
+
+                        window.sessionStorage.setItem('user_data', JSON.stringify(this.user))
                     }
                 })
         }

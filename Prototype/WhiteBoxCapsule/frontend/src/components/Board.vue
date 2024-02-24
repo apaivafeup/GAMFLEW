@@ -30,8 +30,8 @@ export default {
 </script>
 
 <template>
-  <div id="board-row" class="justify-content-between" style="display: flex; flex-direction: row">
-    <div class="col" style="width: 50%">
+  <div id="board-row" class="justify-content-between" style="display: grid; grid-gap: 15px; grid-template-rows: 100%; grid-template-columns: 50% 50%;">
+    <div class="col">
       <div class="alert alert-warning player-info" v-if="!board.timeout">
         {{ this.challenge.objective }}
       </div>
@@ -63,7 +63,6 @@ export default {
         <p style="margin: 0px">A <b>special achievement</b> hint will be here!</p>
       </div>
     </div>
-
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
       <BoardGrid :challenge="challenge" />
       <PlayerBar :user="user" />
