@@ -3,7 +3,7 @@
     <h2 v-if="this.id == null">Challenge Creator</h2>
     <h2 v-else>Challenge Editor</h2>
   </div>
-  <div class="container" style="display: flex; justify-content: center; margin-bottom: 10px;">
+  <div style="display: flex; justify-content: center; margin-bottom: 10px;">
     <div class="row" style="justify-content: center; display: flex; flex-direction: row;">
       <div class="col">
         <div class="row" style="width: 100%; margin: 0px;">
@@ -45,7 +45,7 @@
       </div>
     </div>
   </div>
-  <div class="container" style="display: flex; justify-content: center; flex-direction: column; margin-bottom: 15px;">
+  <div style="display: flex; justify-content: center; flex-direction: column; margin-bottom: 15px;">
     <div style="margin-top: 10px;">
       <div class="row">
         <h5 style="text-align: left; margin-bottom: 5px;">Challenge Details</h5>
@@ -137,7 +137,7 @@
       </div>
     </div>
   </div>
-  <div class="container" style="display: flex; justify-content: center; flex-direction: column;">
+  <div style="display: flex; justify-content: center; flex-direction: column;">
     <div class="row">
       <h5 style="padding: 0px; margin-bottom: 5px;">Challenge Validation</h5>
     </div>

@@ -86,7 +86,7 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <div>
         <div class="row" style="text-align: center; justify-content: center;">
             <img src="https://i.ibb.co/BnR2dGP/logo.png" style="width: 600px; margin-top: 30px;" />
         </div>

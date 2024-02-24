@@ -19,11 +19,8 @@ import LoadingIcon from '../components/LoadingIcon.vue';
 
 <template style="overflow: hidden">
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
-
   <Board :challenge="challenge" :code_file="code_file" :user="auth.user" />
-
   <SubmitModal :placeholder="submit_placeholder" />
-
   <SubmittedModal />
   <FailModal :placeholder="fail_placeholder" />
 </template>

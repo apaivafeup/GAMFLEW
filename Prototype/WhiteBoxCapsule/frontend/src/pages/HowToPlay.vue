@@ -1,6 +1,6 @@
 <template>
     <h2 class="modal-title" style="text-align: center;">How To Play</h2>
-    <div class="container">
+    <div>
         <div class="row" style="padding: 10px 20px">
             <button id="guide-button-1" class="col button is-primary is-fullwidth guide-button guide-button-selected"
                 @click="changeTab('board', '1')">

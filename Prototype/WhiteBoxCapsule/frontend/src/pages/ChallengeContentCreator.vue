@@ -106,8 +106,6 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-
     <div class="row" style="text-align: center;">
       <h2>Challenge Content Creator</h2>
     </div>
