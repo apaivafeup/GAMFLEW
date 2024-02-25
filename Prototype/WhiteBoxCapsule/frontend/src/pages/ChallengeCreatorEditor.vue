@@ -340,18 +340,32 @@ export default {
       response.data.forEach((board_state) => {
         this.boardStates.push(board_state)
       })
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } });
+      this.$error = true
     })
 
     await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
       response.data.forEach((codeFile) => {
         this.codeFiles.push(codeFile)
       })
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
+      this.$error = true
     })
 
     if (this.id != null) {
       await this.$axios.get(this.$api_link + '/challenges/' + this.id, this.auth.config).then((response) => {
         this.challenge = response.data
+      }).catch((error) => {
+        this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
+        this.$error = true
       })
+    
+      if (this.$error) {
+        loader.hide()
+        return
+      }
 
       this.preconditions = [], this.tests = [], this.expressionType = {}
       var j = 1;

@@ -59,6 +59,9 @@ export const authStore = defineStore('authStore', {
                         window.location.reload()
                     }
                 })
+                .catch((error) => {
+                    alert('An error occurred while logging out.')
+                })
         },
 
         async getUserData(id) {
@@ -79,6 +82,9 @@ export const authStore = defineStore('authStore', {
 
                         window.sessionStorage.setItem('user_data', JSON.stringify(this.user))
                     }
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
                 })
         }
     }

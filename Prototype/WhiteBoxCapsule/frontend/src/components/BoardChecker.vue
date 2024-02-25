@@ -104,28 +104,6 @@ export default {
   mounted() { },
 
   methods: {
-    async submit() {
-      var state = this.board.state[this.board.currentKey],
-          outOfBoundsState = this.board.outOfBoundsState[this.board.currentKey],
-          stateName = document.getElementById('state-name').value
-      
-      //document.getElementById('state-name').value = ''
-
-      var body = {
-        id: 0,
-        name: stateName,
-        board_state: this.board.serializeState(),
-        out_of_bounds_state: {
-          color: outOfBoundsState.color,
-          content: (outOfBoundsState.color == "stack" ? outOfBoundsState.stack : null)
-        }
-      }
-      
-      await this.$axios.post(this.$api_link + '/create/board-state', body, this.auth.config)
-        .then(response => {
-        });
-    },
-
   },
 
   watch: {}

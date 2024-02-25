@@ -84,15 +84,30 @@ export default {
         response.data.achievement_criteria,
         response.data.owner_id
       )
+    }).catch((error) => {
+      console.log(error.response)
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
+      this.$error = true
     })
 
     await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
       this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
+      this.$error = true
     })
 
     await this.$axios.get(this.$api_link + '/board-states/' + this.challenge.initial_board, this.auth.config).then((response) => {
       this.board_state = new BoardState(response.data.id, response.data.name, response.data.board_state, response.data.out_of_bounds_state)
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
+      return
     })
+
+    if (this.$error) {
+      loader.hide()
+      return
+    }
 
     this.board = boardStore()
     this.board.initialState = this.board_state

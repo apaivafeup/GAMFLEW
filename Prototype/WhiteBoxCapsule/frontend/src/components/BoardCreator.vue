@@ -157,7 +157,12 @@ export default {
       
       await this.$axios.post(this.$api_link + '/create/board-state', body, this.auth.config)
         .then(response => {
-        });
+          alert('Board state created successfully!')
+        })
+        .catch(error => {
+          this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }});
+          return
+        })
     },
 
   },

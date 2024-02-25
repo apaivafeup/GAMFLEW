@@ -84,6 +84,8 @@ export default defineComponent({
         this.$refs.close.click()
         this.$router.push({ name: 'home' })
         this.board.submit(response.data.score)
+      }).catch((error) => {
+        this.toast.error('An error occurred while submitting your attempt. Please try again later.')
       })
 
     }

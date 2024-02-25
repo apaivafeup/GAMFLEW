@@ -337,8 +337,6 @@ export const boardStore = defineStore('boardStore', {
     },
 
     achievements() {
-      window.location.href = '/'
-      window.location.href = "/challenge/1"
       window.location.reload()
     },
   }

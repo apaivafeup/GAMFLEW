@@ -68,16 +68,30 @@ export default defineComponent({
 
     await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
       this.code_files = response.data
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})
+      this.$error = true
     })
 
     await this.$axios.get(this.$api_link + '/challenges-by-code/', this.auth.config).then((response) => {
       this.challenges = response.data
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})
+      this.$error = true
     })
 
     //TODO: get logged user id when login is implemented
     await this.$axios.get(this.$api_link + '/users/' + 1 + '/passed-challenges/', this.auth.config).then((response) => {
       this.passed_challenges = response.data
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})
+      this.$error = true
     })
+
+    if (this.$error) {
+      loader.hide()
+      return
+    }
 
     loader.hide()
   },

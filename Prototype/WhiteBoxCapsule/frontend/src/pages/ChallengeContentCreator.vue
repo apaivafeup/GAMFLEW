@@ -40,7 +40,15 @@ export default {
         this.boardStates.push(board_state)
       })
       this.dropdownClick(0);
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }});
+      this.$error = true
     })
+
+    if (this.$error) {
+      loader.hide()
+      return
+    }
 
     loader.hide()
   },
@@ -92,8 +100,11 @@ export default {
 
       await this.$axios.post(this.$api_link + '/create/code-file', body, this.auth.config)
         .then(response => {
-
-        });
+          alert('Code file created successfully!')
+        })
+        .catch(error => {
+          alert('An error occurred when creating the code file. Please try again later.')
+        }
     },
 
   },

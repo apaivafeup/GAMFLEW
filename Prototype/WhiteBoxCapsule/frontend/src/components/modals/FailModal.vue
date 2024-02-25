@@ -80,6 +80,8 @@ export default defineComponent({
         this.board.submit()
         this.$refs.close.click()
         this.$router.push({ name: 'home' })
+      }).catch((error) => {
+        alert('An error occurred while submitting your attempt! Please try again later.')
       })
     }
   }

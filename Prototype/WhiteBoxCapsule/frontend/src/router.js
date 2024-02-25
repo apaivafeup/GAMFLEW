@@ -1,4 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import Error from './pages/Error.vue'
+import StaticError from './pages/StaticError.vue'
 
 const routes = [
     { name: 'home', path: '/', component: () => import('./pages/Home.vue') },
@@ -10,7 +12,9 @@ const routes = [
     { name: 'challenge-manager', path: '/challenge-manager', component: () => import('./pages/ChallengeManager.vue')},
     { name: 'challenge-creator', path: '/challenge-creator', component: () => import('./pages/ChallengeCreatorEditor.vue'), props: false },
     { name: 'challenge-editor', path: '/challenge-editor/:id', component: () => import('./pages/ChallengeCreatorEditor.vue'), props: true },
-    { name: 'register', path: '/register', component: () => import('./pages/Register.vue'), props: false }
+    { name: 'register', path: '/register', component: () => import('./pages/Register.vue'), props: false },
+    { name: 'error', path: '/:code:afterCode(_):message', component: Error, props: true },
+    { name: 'wildcard', path: '/:pathMatch(.*)*', component: StaticError}
 ];
 
 export const Router = createRouter({
