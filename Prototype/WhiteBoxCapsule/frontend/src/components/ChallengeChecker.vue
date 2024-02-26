@@ -173,6 +173,12 @@
         <button id="reset-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Reset
         </button>
+        <button id="retry-button" class="button is-primary is-fullwidth disabled" v-if="!board.passed">
+          Retry
+        </button>
+        <button id="retry-button" class="button is-primary is-fullwidth" v-else @click="retry()">
+          Retry
+        </button>
       </div>
     </div>
     <div style="align-content: center" v-if="!board.table">
@@ -219,7 +225,9 @@
       </div>
       <div class="game-board" id="challenge-board">
         <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
-          <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+          <PieceStack v-if="!board.passed" :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+            :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
+            <PieceStack v-else class="disabled" :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
             :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
         </div>
       </div>
@@ -319,15 +327,33 @@ export default {
       }
     },
 
+    preconditionAlerts(i, precondition, input) {
+      document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
+      document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
+      document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
+    },
+
+    testAlerts(i, test, input) {
+      console.log(test)
+      document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
+      document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
+      document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
+    },
+
+    retry() {
+      this.board.generateState(true)
+      document.querySelectorAll('.alert-success').forEach((element) => {
+        element.classList = ['alert alert-info player-info']
+      })
+    },
+
     goUnique(input) {
       var preconditions = this.challenge.passing_criteria.preconditions,
         tests = this.challenge.passing_criteria.tests
 
       for (var i = 0; i < preconditions.length; i++) {
         var precondition = preconditions[i]
-        document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
-        document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
-        document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
+        this.preconditionAlerts(i, precondition, input)
         if (!eval(precondition)) {
           this.board.fail()
           return
@@ -337,9 +363,9 @@ export default {
       var count = 0
       for (var i = 0; i < tests.length; i++) {
         var test = tests[i]
-        document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
-        document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
-        document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
+
+        this.testAlerts(i, test, input)
+
         if (!eval(test)) {
           this.board.fail()
           return
@@ -362,9 +388,8 @@ export default {
       for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
         for (var i = 0; i < preconditions.length; i++) {
           var precondition = preconditions[i]
-          document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
-          document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
-          document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
+          this.preconditionAlerts(i, precondition, input)
+
           if (!eval(precondition)) {
             this.board.fail()
             return
@@ -378,9 +403,8 @@ export default {
             continue
           }
 
-          document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
-          document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
-          document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
+          this.testAlerts(i, test, input)
+
           if (!eval(test)) {
             continue
           } else {
@@ -406,9 +430,8 @@ export default {
       for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
         for (var i = 0; i < preconditions.length; i++) {
           var precondition = preconditions[i]
-          document.getElementById('precondition-info-alert-' + i).classList = ['alert alert-info player-info']
-          document.getElementById('precondition-info-alert-' + i).classList.remove('alert-info')
-          document.getElementById('precondition-info-alert-' + i).classList.add(eval(precondition) ? 'alert-success' : 'alert-danger')
+          this.preconditionAlerts(i, precondition, input)
+
           if (!eval(precondition)) {
             this.board.fail()
             return
@@ -417,10 +440,8 @@ export default {
 
         for (var i = 0; i < tests.length; i++) {
           var test = tests[i]
+          this.testAlerts(i, test, input)
 
-          document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
-          document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
-          document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')
           if (!eval(test)) {
             continue
           } else {

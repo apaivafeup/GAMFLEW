@@ -38,4 +38,27 @@ describe('Home Page', () => {
     cy.contains('Out of Bounds').should('be.visible')
 
   })
+
+  it('opens the challenge content creator', () => {
+    cy.visit('http://localhost:5173/')
+    cy.get('#challenge-content-button').click()
+
+    cy.contains('Test File')
+  })
+
+  it('submitting a code file', () => {
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      return false;
+    });
+
+    cy.visit('http://localhost:5173/')
+    cy.get('#content-creator-button').click()
+    cy.contains('Existing States')
+    cy.get('#code-button').click()
+    cy.get('textarea').clear()
+    cy.get('textarea').type('console.log("slay")')
+    cy.get('#code-file-name').type('Code File Test')
+    cy.get('#submit-code-file-button').click()
+    cy.contains('Challenge Content Creator')
+  })
 })

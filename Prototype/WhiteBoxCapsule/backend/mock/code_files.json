@@ -4,89 +4,25 @@
         "name": "Test File 1: Is Move Valid?",
         "content": "// board includes the board's state.\n// start: the (x, y) position from where a piece last moved.\n// destination: the (x, y) position to where a piece last moved.\nfunction is_valid_move(board, start, destination) {\n\t// Math.abs() gives you the absolute value of whatever you call it with.\n\t// Math.abs(-1) == 1\n\tif (destination.x < 0 || destination.x > 7 ||\n\t\tdestination.y < 0 || destination.y > 7) {\n\t\treturn false;\n\t}\n\n\tvar lineDifference = Math.abs(start.x - destination.x);\n\tvar columnDifference = Math.abs(start.y - destination.y);\n\n\tif (lineDifference != columnDifference) {\n\t\treturn false;\n\t} else {\n\t\tif (lineDifference == 1) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\treturn true;\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else if (lineDifference == 2) {\n\t\t\tif (board[destination.x][destination.y].color == Color.EMPTY) {\n\t\t\t\tvar middlePiece = board[Math.round((start.x + destination.x) / 2)][Math.round((start.y + destination.y) / 2)];\n\t\t\t\tif (middlePiece.color == board[start.x][start.y].color) {\n\t\t\t\t\treturn false;\n\t\t\t\t} else if (middlePiece.color != Color.EMPTY) {\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}",
         "dictionary": {
-            "board": {
-                "replacement": "input",
-                "accessing": "See below."
-            },
-            "board.log": {
-                "replacement": "input.log[X]",
-                "accessing": "[I] for interaction I."
-            },
-            "board.log[I]": {
-                "replacement": "input.log[X][I]",
-                "accessing": ".type for 'add' or 'move', 'add' having .color and .destination, 'move' having .start and .destination."
-            },
-            "board[I][J]": {
-                "replacement": "input.state[X][I][J]",
-                "accessing": ".color for color, .stack for stack (divided in .red and .blue), .position for current position (divided in .x and .y)."
-            },
-            "board.log[board.log.length - 1]": {
-                "replacement": "input.log[X][input.log[X].length - 1]",
-                "accessing": ".type for 'add' or 'move'"
-            },
-            "start": {
-                "replacement": "input.log[X][input.log[X].length - 1].start",
-                "accessing": ".x for x, .y for y"
-            },
-            "destination": {
-                "replacement": "input.log[X][input.log[X].length - 1].destination",
-                "accessing": ".x for x, .y for y"
-            },
-            "count_empty_spaces":
-            {
-                "replacement": "utils.count_empty_spaces(input, X)",
-                "accessing": "Number of empty spots."
-            },
-            "count_red_pieces":
-            {
-                "replacement": "utils.count_red_pieces(input, X)",
-                "accessing": "Number of red pieces."
-            },
-            "count_blue_pieces":
-            {
-                "replacement": "utils.count_blue_pieces(input, X)",
-                "accessing": "Number of blue pieces."
-            },
-            "get_pieces":
-            {
-                "replacement": "utils.get_pieces(input, X)",
-                "accessing": "Array of pieces."
-            },
-            "find_stacks":
-            {
-                "replacement": "utils.find_stacks(input, X)",
-                "accessing": "Array of stacks."
-            },
-            "find_red_pieces":
-            {
-                "replacement": "utils.find_red_pieces(input, X)",
-                "accessing": "Array of red pieces."
-            },   
-            "find_blue_pieces":
-            {
-                "replacement": "utils.find_blue_pieces(input, X)",
-                "accessing": "Array of blue pieces."
-            },
-            "find_first_blue_piece":
-            {
-                "replacement": "utils.find_first_blue_piece(input, X)",
-                "accessing": "First blue piece."
-            },
-            "find_first_red_piece":
-            {
-                "replacement": "utils.find_first_red_piece(input, X)",
-                "accessing": "First red piece."
-            },
-            "find_first_stack":
-            {
-                "replacement": "utils.find_first_stack(input, X)",
-                "accessing": "First stack."
-            },
-            "distance(":
-            {
-                "replacement": "utils.distance(",
-                "accessing": "Distance between two points."
-            }
+            "board": "input.state[X]",
+            "board.out": "input.outOfBoundsState[X]",
+            "board.log": "input.log[X]",
+            "last_type": "input.log[X][input.log[X].length - 1].type",
+            "last_color": "input.log[X][input.log[X].length - 1].color",
+            "last_log": "input.log[X][input.log[X].length - 1]",
+            "last_start": "input.log[X][input.log[X].length - 1].start",
+            "last_destination": "input.log[X][input.log[X].length - 1].destination",
+            "count_empty_spaces": "utils.count_empty_spaces(input, X)",
+            "count_red_pieces": "utils.count_red_pieces(input, X)",
+            "count_blue_pieces": "utils.count_blue_pieces(input, X)",
+            "get_pieces": "utils.get_pieces(input, X)",
+            "find_stacks": "utils.find_stacks(input, X)",
+            "find_red_pieces": "utils.find_red_pieces(input, X)",
+            "find_blue_pieces": "utils.find_blue_pieces(input, X)",
+            "find_first_blue_piece": "utils.find_first_blue_piece(input, X)",
+            "find_first_red_piece": "utils.find_first_red_piece(input, X)",
+            "find_first_stack": "utils.find_first_stack(input, X)",
+            "distance(": "utils.distance("
         }
     },
     {
@@ -94,89 +30,25 @@
         "name": "Test File 2: Is Board Valid?",
         "content": "function is_board_valid(board) { // board is the board's state.\n\tvar bluePieces = utils.count_blue_pieces(board);\n\tvar redPieces = utils.count_red_pieces(board);\n\n\tif (bluePieces > 12 || redPieces > 12) {\n\t\treturn false;\n\t} else if (bluePieces == 0 || redPieces == 0) {\n\t\treturn false;\n\t}\n\n\tvar pieces = utils.get_pieces(board);\n\tvar odd = [1, 3, 5, 7], even = [0, 2, 4, 6];\n\n\tfor (p in pieces) {\n\t\tif (p.position.x % 2 != 0) {\n\t\t\tif (!odd.includes(p.position.y)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\tif (!even.includes(p.position.y)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t}\n\n\treturn true;\n}",
         "dictionary": {
-            "board": {
-                "replacement": "input",
-                "accessing": "See below."
-            },
-            "board.log": {
-                "replacement": "input.log[X]",
-                "accessing": "[I] for interaction I."
-            },
-            "board.log[I]": {
-                "replacement": "input.log[X][I]",
-                "accessing": ".type for 'add' or 'move', 'add' having .color and .destination, 'move' having .start and .destination."
-            },
-            "board[I][J]": {
-                "replacement": "input.state[X][I][J]",
-                "accessing": ".color for color, .stack for stack (divided in .red and .blue), .position for current position (divided in .x and .y)."
-            },
-            "board.log[board.log.length - 1]": {
-                "replacement": "input.log[X][input.log[X].length - 1]",
-                "accessing": ".type for 'add' or 'move'"
-            },
-            "start": {
-                "replacement": "input.log[X][input.log[X].length - 1].start",
-                "accessing": ".x for x, .y for y"
-            },
-            "destination": {
-                "replacement": "input.log[X][input.log[X].length - 1].destination",
-                "accessing": ".x for x, .y for y"
-            },
-            "count_empty_spaces":
-            {
-                "replacement": "utils.count_empty_spaces(input, X)",
-                "accessing": "Number of empty spots."
-            },
-            "count_red_pieces":
-            {
-                "replacement": "utils.count_red_pieces(input, X)",
-                "accessing": "Number of red pieces."
-            },
-            "count_blue_pieces":
-            {
-                "replacement": "utils.count_blue_pieces(input, X)",
-                "accessing": "Number of blue pieces."
-            },
-            "get_pieces":
-            {
-                "replacement": "utils.get_pieces(input, X)",
-                "accessing": "Array of pieces."
-            },
-            "find_stacks":
-            {
-                "replacement": "utils.find_stacks(input, X)",
-                "accessing": "Array of stacks."
-            },
-            "find_red_pieces":
-            {
-                "replacement": "utils.find_red_pieces(input, X)",
-                "accessing": "Array of red pieces."
-            },   
-            "find_blue_pieces":
-            {
-                "replacement": "utils.find_blue_pieces(input, X)",
-                "accessing": "Array of blue pieces."
-            },
-            "find_first_blue_piece":
-            {
-                "replacement": "utils.find_first_blue_piece(input, X)",
-                "accessing": "First blue piece."
-            },
-            "find_first_red_piece":
-            {
-                "replacement": "utils.find_first_red_piece(input, X)",
-                "accessing": "First red piece."
-            },
-            "find_first_stack":
-            {
-                "replacement": "utils.find_first_stack(input, X)",
-                "accessing": "First stack."
-            },
-            "distance(":
-            {
-                "replacement": "utils.distance(",
-                "accessing": "Distance between two points."
-            }
+            "board": "input.state[X]",
+            "board.out": "input.outOfBoundsState[X]",
+            "board.log": "input.log[X]",
+            "last_log": "input.log[X][input.log[X].length - 1]",
+            "last_type": "input.log[X][input.log[X].length - 1].type",
+            "last_color": "input.log[X][input.log[X].length - 1].color",
+            "last_start": "input.log[X][input.log[X].length - 1].start",
+            "last_destination": "input.log[X][input.log[X].length - 1].destination",
+            "count_empty_spaces": "utils.count_empty_spaces(input, X)",
+            "count_red_pieces": "utils.count_red_pieces(input, X)",
+            "count_blue_pieces": "utils.count_blue_pieces(input, X)",
+            "get_pieces": "utils.get_pieces(input, X)",
+            "find_stacks": "utils.find_stacks(input, X)",
+            "find_red_pieces": "utils.find_red_pieces(input, X)",
+            "find_blue_pieces": "utils.find_blue_pieces(input, X)",
+            "find_first_blue_piece": "utils.find_first_blue_piece(input, X)",
+            "find_first_red_piece": "utils.find_first_red_piece(input, X)",
+            "find_first_stack": "utils.find_first_stack(input, X)",
+            "distance(": "utils.distance("
         }
     }
 ]

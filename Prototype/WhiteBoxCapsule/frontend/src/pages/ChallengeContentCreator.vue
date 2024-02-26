@@ -95,7 +95,18 @@ export default {
       var body = {
         id: 0,
         name: this.codeName,
-        content: this.codeString
+        content: this.codeString,
+        dictionary: {}
+      }
+
+      if (this.codeName == '') {
+        alert('Please enter a name for the code file.')
+        return
+      }
+
+      if (this.codeString == '') {
+        alert('Please enter code for the code file.')
+        return
       }
 
       if (this.codeName == '') {

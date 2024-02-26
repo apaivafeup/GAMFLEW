@@ -143,7 +143,10 @@ export default {
           outOfBoundsState = this.board.outOfBoundsState[this.board.currentKey],
           stateName = document.getElementById('state-name').value
       
-      //document.getElementById('state-name').value = ''
+      if (stateName == '') {
+        alert('Please enter a name for the state.')
+        return
+      }
 
       var body = {
         id: 0,

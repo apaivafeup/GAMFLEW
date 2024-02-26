@@ -43,11 +43,6 @@ class PieceColor(str, Enum):
     EMPTY = "empty"
     STACK = "stack"
 
-class UserType(str, Enum):
-    """Enum for the type of user."""
-    ADMIN = "admin"
-    PLAYER = "player"
-
 class User(Base):
     __tablename__ = "users"
 
