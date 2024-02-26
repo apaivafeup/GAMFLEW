@@ -43,6 +43,11 @@ class PieceColor(str, Enum):
     EMPTY = "empty"
     STACK = "stack"
 
+class UserType(str, Enum):
+    """Enum for the type of user."""
+    PLAYER = "player"
+    ADMIN = "admin"
+
 class User(Base):
     __tablename__ = "users"
 
@@ -68,7 +73,7 @@ class CodeFile(Base):
     id = Column(Integer, primary_key=True)
     name = Column(TEXT, index=True)
     content = Column(TEXT, index=True)
-    dictionary = Column(PickleType, index=True)
+    dictionary = Column(PickleType, index=True, nullable=True)
 
     challenges = relationship("Challenge", back_populates="code_files")
 

@@ -5,11 +5,11 @@
   
   <div class="col" style="display: flex; justify-content: center; align-items: center; flex-direction: column">
     <div class="row" style="display: flex; justify-content: end; margin-bottom: 10px;">
-      <button class="is-primary box" style="max-width: 200px; padding: 15px; font-size: 15px;" @click="goToChallenge(null)">
+      <button class="is-primary box" id="create-challenge-button" style="max-width: 200px; padding: 15px; font-size: 15px;" @click="goToChallenge(null)">
         Create Challenge
       </button>
     </div>
-    <div class="accordion" id="accordionExample" style="width: 1000px">
+    <div class="accordion" id="accordionExample" style="width: 1000px;">
       <div class="accordion-item" v-for="code_file in code_files">
         <h2 class="accordion-header" :id="'heading' + code_file.id">
           <button :id="'accordion-button-' + code_file.id" class="accordion-button" type="button"

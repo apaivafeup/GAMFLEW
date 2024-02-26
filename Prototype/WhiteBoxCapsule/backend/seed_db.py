@@ -12,14 +12,14 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-challenges = "./backend/mock/challenges.json"
+challenges = "./mock/challenges.json"
 
 models_entries = [
-    (models.User, "./backend/mock/users.json"),
-    (models.CodeFile, "./backend/mock/code_files.json"),
-    (models.BoardState, "./backend/mock/board_states.json"),
+    (models.User, "./mock/users.json"),
+    (models.CodeFile, "./mock/code_files.json"),
+    (models.BoardState, "./mock/board_states.json"),
     (models.Challenge, challenges),
-    (models.Attempt, "./backend/mock/attempts.json"),
+    (models.Attempt, "./mock/attempts.json"),
 ]
  
 def main():

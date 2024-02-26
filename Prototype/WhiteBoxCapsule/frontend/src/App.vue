@@ -1,5 +1,4 @@
 <template>
-  
   <head>
     <meta charset="utf-8">
     <title>Gamflew</title>

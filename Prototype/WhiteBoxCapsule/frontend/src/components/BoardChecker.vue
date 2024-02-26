@@ -58,8 +58,8 @@
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
       <div class="game-board-checker" id="challenge-board">
-        <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
-          <PieceStackChecker :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+        <div class="box" v-for="index in 64" >
+          <PieceStackChecker 
             :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
         </div>
       </div>

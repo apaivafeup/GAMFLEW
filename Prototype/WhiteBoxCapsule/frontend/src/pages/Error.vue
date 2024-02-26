@@ -22,15 +22,9 @@ export default {
 }
 </script>
 
-<style>
-body {
-  height: 100%;
-  overflow-y: hidden;
-}
-</style>
-
 <template>
-  <div class="col" style="display: inline-grid; grid-template-rows: 50% 50%; place-self: center; height: 100vh; width: 100%; overflow: hidden;">
+  <div class="col" style="height: 100%;
+  overflow-y: hidden; display: inline-grid; grid-template-rows: 50% 50%; place-self: center; height: 100vh; width: 100%; overflow: hidden;">
     <div class="row" style="display: inline-grid; grid-template-columns:50% 50%; place-self: center; grid-template-rows: 100% 100%; align-content:center; vertical-align:middle; justify-content: center;min-width: 100%;">
       <div class="col" style="display: flex; flex-direction: column;">
         <h1 style="font-size: 72px; font-family:'Lemon Milk';color:#8647d4;"> <strong>{{this.code == ''? 'Error' : this.code}}</strong> </h1>
