@@ -257,7 +257,7 @@ def get_blacklisted_tokens(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Token).offset(skip).limit(limit).all()
 
 def add_blacklisted_token(db: Session, token: str):
-    expiration_date = datetime.datetime.now() + relativedelta(months=+1)
+    expiration_date = datetime.datetime.now() + relativedelta(weeks=+1)
     db_token = schemas.Token(token=token, date=expiration_date)
     db.add(db_token)
     db.commit()
