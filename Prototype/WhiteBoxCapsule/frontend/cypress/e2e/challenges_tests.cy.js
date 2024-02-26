@@ -1,8 +1,17 @@
+beforeEach('login', () => {
+    cy.visit('http://localhost:5173/')
+    cy.get('#exampleInputUsername').type('professor@prototype.com')
+    cy.get('#exampleInputPassword').type('password')
+    cy.get('#login-button').click({force: true})
+    cy.viewport(1920, 1080)
+    cy.wait(1000)
+})
+
 describe("test file 1", () => {
     describe("challenge 1.1", () => {
         // Pass Test Case for Challenge 1.1
         it('pass challenge 1.1', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-1').click()
             
@@ -14,7 +23,7 @@ describe("test file 1", () => {
 
         // Fail Test Case for Challenge 1.1
         it('fail challenge 1.1', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-1').click()
             
@@ -29,7 +38,7 @@ describe("test file 1", () => {
     describe("challenge 1.2", () => {
         // Pass Test Case for Challenge 1.1
         it('pass challenge 1.2', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-2').click()
             
@@ -44,7 +53,7 @@ describe("test file 1", () => {
 
         // Fail Test Case for Challenge 1.1
         it('fail challenge 1.2', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-2').click()
             
@@ -61,7 +70,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.3", () => {
         it('pass challenge 1.3', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-3').click()
             
@@ -86,7 +95,7 @@ describe("test file 1", () => {
         })
 
         it('fail challenge 1.3', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-3').click()
             
@@ -99,7 +108,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.4", () => {
         it('pass challenge 1.4', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-4').click()
             
@@ -112,7 +121,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.4', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-4').click()
             
@@ -126,7 +135,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.5", () => {
         it('pass challenge 1.5', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-5').click()
             
@@ -142,7 +151,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.5', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-5').click()
             
@@ -154,7 +163,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.6", () => {
         it('pass challenge 1.6', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-6').click()
             
@@ -166,7 +175,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.6', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-6').click()
             
@@ -177,7 +186,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.7", () => {
         it('pass challenge 1.7', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-7').click()
             
@@ -189,7 +198,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.7', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-7').click()
             
@@ -200,7 +209,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.8", () => {
         it('pass challenge 1.8', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-8').click()
             
@@ -212,7 +221,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.8', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-8').click()
             
@@ -223,7 +232,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.9", () => {
         it('pass challenge 1.9', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-9').click()
             
@@ -240,7 +249,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.9', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-9').click()
             
@@ -252,7 +261,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.10", () => {
         it('pass challenge 1.10', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-10').click()
             
@@ -263,7 +272,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.10', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-10').click()
             
@@ -274,7 +283,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.11", () => {
         it('pass challenge 1.11', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-11').click()
             
@@ -287,7 +296,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.11', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-11').click()
             
@@ -298,7 +307,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.12", () => {
         it('pass challenge 1.12', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-12').click()
             
@@ -314,7 +323,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.12', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-12').click()
             
@@ -326,7 +335,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.13", () => {
         it('pass challenge 1.13', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-13').click()
             
@@ -337,7 +346,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.13', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-13').click()
             
@@ -348,7 +357,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.14", () => {
         it('pass challenge 1.14', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-14').click()
             
@@ -359,7 +368,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.14', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-14').click()
             
@@ -370,7 +379,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.15", () => {
         it('pass challenge 1.15', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-15').click()
             
@@ -383,7 +392,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.15', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-15').click()
             
@@ -394,7 +403,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.16", () => {
         it('pass challenge 1.16', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-16').click()
             
@@ -410,7 +419,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.16', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-16').click()
             
@@ -422,7 +431,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.17", () => {
         it('pass challenge 1.17', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-17').click()
             
@@ -433,7 +442,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.17', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-17').click()
             
@@ -444,7 +453,7 @@ describe("test file 1", () => {
 
     describe("challenge 1.18", () => {
         it('pass challenge 1.18', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-18').click()
             
@@ -458,7 +467,7 @@ describe("test file 1", () => {
         })
     
         it('fail challenge 1.18', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-18').click()
             
@@ -472,7 +481,7 @@ describe("test file 1", () => {
 describe('test file 2', () => {
     describe("challenge 2.1", () => {
         it('pass challenge 2.1', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-19').click()
@@ -484,7 +493,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.1', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-19').click()
@@ -496,7 +505,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.2", () => {
         it('pass challenge 2.2', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-20').click()
@@ -521,7 +530,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.2', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-20').click()
@@ -533,7 +542,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.3", () => {
         it('pass challenge 2.3', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-21').click()
@@ -560,7 +569,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.3', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-21').click()
@@ -573,7 +582,7 @@ describe('test file 2', () => {
     
     describe("challenge 2.4", () => {
         it('pass challenge 2.4', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-22').click()
@@ -591,7 +600,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.4', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-22').click()
@@ -604,7 +613,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.5", () => {
         it('pass challenge 2.5', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-23').click()
@@ -644,7 +653,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.5', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-23').click()
@@ -657,7 +666,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.6", () => {
         it('pass challenge 2.6', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-24').click()
@@ -694,7 +703,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.6', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-24').click().wait(1000)
@@ -707,7 +716,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.7", () => {
         it('pass challenge 2.7', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-25').click().wait(1000)
@@ -747,7 +756,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.7', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-25').click().wait(1000)
@@ -760,7 +769,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.8", () => {
         it('pass challenge 2.8', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-26').click()
@@ -775,7 +784,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.8', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-26').click()
@@ -788,7 +797,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.9", () => {
         it('pass challenge 2.9', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-27').click()
@@ -825,7 +834,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.9', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-27').click()
@@ -838,7 +847,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.10", () => {
         it('pass challenge 2.10', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-28').click()
@@ -850,7 +859,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.10', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-28').click()
@@ -862,7 +871,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.11", () => {
         it('pass challenge 2.11', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-29').click()
@@ -874,7 +883,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.11', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-29').click()
@@ -886,7 +895,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.12", () => {
         it('pass challenge 2.12', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-30').click()
@@ -896,7 +905,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.12', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-30').click()
@@ -921,7 +930,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.13", () => {
         it('pass challenge 2.13', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-31').click()
@@ -934,7 +943,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.13', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-31').click()
@@ -946,7 +955,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.14", () => {
         it('pass challenge 2.14', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-32').click()
@@ -964,7 +973,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.14', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-32').click()
@@ -977,7 +986,7 @@ describe('test file 2', () => {
 
     describe("challenge 2.15", () => {
         it('pass challenge 2.15', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-33').click()
@@ -1028,7 +1037,7 @@ describe('test file 2', () => {
         })
     
         it('fail challenge 2.15', () => {
-            cy.visit('http://localhost:5173/')
+            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-33').click()

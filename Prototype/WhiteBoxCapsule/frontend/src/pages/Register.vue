@@ -131,7 +131,7 @@ export default {
                 </div>
 
                 <div class="form-group" style="justify-content: center; margin-top: 20px;">
-                    <button type="submit" class="btn btn-primary" style="width: 100%;" @click="register($event)">Register</button>
+                    <button type="submit" id="register-button" class="btn btn-primary" style="width: 100%;" @click="register($event)">Register</button>
                 </div>
             </form>
         </div>

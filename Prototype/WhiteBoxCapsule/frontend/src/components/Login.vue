@@ -20,11 +20,11 @@
           else.</small>
       </div>
       <div class="row" style="display: flex; justify-content: center;">
-        <button @click="sendLoginForm($event)" class="btn btn-primary"
+        <button @click="sendLoginForm($event)" class="btn btn-primary" id="login-button"
           style="padding: 10px; max-width: 100px; border-radius: 15px; margin-bottom: 10px;">Login</button>
         <small id="passwordHelp" class="form-text text-muted"
           style="margin-top: 0px; padding-top: 0px; font-size: 10px; text-align: center;">Don't have an account? You can
-          <RouterLink to="/register">register</RouterLink>!</small>
+          <RouterLink id="register-link" to="/register">register</RouterLink>!</small>
       </div>
     </form>
   </div>

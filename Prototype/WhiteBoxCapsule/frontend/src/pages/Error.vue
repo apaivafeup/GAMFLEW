@@ -49,7 +49,7 @@ body {
         Please go somewhere else or try again later.
       </p>
       <p style="margin-top: 22.5vh; font-size: 12px;">
-        You can also go Home by clicking <a href="/">here</a>.
+        You can also go Home by clicking <a id="home-button" href="/">here</a>.
       </p>
     </div>
   </div>

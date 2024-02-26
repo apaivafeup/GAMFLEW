@@ -14,7 +14,8 @@ const routes = [
     { name: 'challenge-editor', path: '/challenge-editor/:id', component: () => import('./pages/ChallengeCreatorEditor.vue'), props: true },
     { name: 'register', path: '/register', component: () => import('./pages/Register.vue'), props: false },
     { name: 'error', path: '/:code:afterCode(_):message', component: Error, props: true },
-    { name: 'wildcard', path: '/:pathMatch(.*)*', component: StaticError}
+    { name: 'wildcard', path: '/:pathMatch(.*)*', component: StaticError},
+    { name: 'loading', path: '/loading', component: () => import('./pages/Loading.vue')}
 ];
 
 export const Router = createRouter({

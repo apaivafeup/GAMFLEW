@@ -4,21 +4,21 @@
     <button class="menu-button" id="single-player-button" @click="this.$router.push('challenges')" style="width: 500px">
       Single Player
     </button>
-    <button class="menu-button" id="single-player-button" @click="this.$router.push('content-creator')"
+    <button class="menu-button" id="challenge-content-button" @click="this.$router.push('content-creator')"
       style="width: 500px">
       Challenge Content Creator
     </button>
-    <button class="menu-button" id="single-player-button" @click="this.$router.push('challenge-manager')"
+    <button class="menu-button" id="challenge-manager-button" @click="this.$router.push('challenge-manager')"
       style="width: 500px">
       Challenge Manager
     </button>
-    <button class="menu-button" @click="this.$router.push('how-to')" style="width: 500px">
+    <button class="menu-button" @click="this.$router.push('how-to')" id="how-to-button" style="width: 500px">
       How To Play
     </button>
-    <button class="menu-button" @click="this.$router.push({ name: 'credits' })" style="width: 500px">
+    <button class="menu-button" @click="this.$router.push({ name: 'credits' })" id="credits-button" style="width: 500px">
       Credits
     </button>
-    <button class="menu-button" @click="this.logout($event)" style="width: 500px">
+    <button class="menu-button" @click="this.logout($event)" id="logout-button" style="width: 500px">
       Logout
     </button>
 

@@ -1,27 +1,38 @@
+beforeEach('login', () => {
+    cy.visit('http://localhost:5173/')
+    cy.get('#exampleInputUsername').type('professor@prototype.com')
+    cy.get('#exampleInputPassword').type('password')
+    cy.get('#login-button').click()
+    cy.viewport(1920, 1080)
+    cy.wait(1000)
+})
+
 describe("Basic Functionality", () => {
+
+
     it('starts a challenge', () => {
-        cy.visit('http://localhost:5173/')
+
         cy.get('#single-player-button').click()
         cy.get('.card.challenge-card').first().click().wait(1000)
         cy.get('.button.is-primary.is-fullwidth').should('be.visible')
     }),
 
         it('title appearance', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('.card.challenge-card').first().click().wait(1000)
             cy.contains("Challenge 1.1: Checking for Out of Bounds").should('be.visible')
         }),
 
         it('objective appearance', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('.card.challenge-card').first().click().wait(1000)
             cy.contains("Statement coverage of line 9.").should('be.visible')
         }),
 
         it('hint appearance', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('.card.challenge-card').first().click().wait(1000)
 
@@ -32,7 +43,7 @@ describe("Basic Functionality", () => {
 describe("Board Movement", () => {
     describe("Selecting pieces", () => {
         it('selects a red piece', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click().wait(1000)
             cy.get('#board-box-0-0').click()
@@ -40,7 +51,7 @@ describe("Board Movement", () => {
         })
 
         it('selects a blue piece', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click().wait(1000)
             cy.get('#board-box-6-0').click()
@@ -52,7 +63,7 @@ describe("Board Movement", () => {
     describe("Within the board", () => {
         describe("No stacking", () => {
             it('moves a red piece', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
                 cy.get('#board-box-0-0').click()
@@ -61,7 +72,7 @@ describe("Board Movement", () => {
             })
 
             it('moves a blue piece', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
                 cy.get('#board-box-7-1').click()
@@ -72,7 +83,7 @@ describe("Board Movement", () => {
 
         describe("With stacking", () => {
             it('moves a red piece, making a stack', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
                 cy.get('#board-box-0-0').click()
@@ -81,7 +92,7 @@ describe("Board Movement", () => {
             })
 
             it('moves a blue piece, making a stack', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
                 cy.get('#board-box-7-1').click()
@@ -91,7 +102,7 @@ describe("Board Movement", () => {
 
             describe('Stack movement', () => {
                 it('selects a stack', () => {
-                    cy.visit('http://localhost:5173/')
+
                     cy.get('#single-player-button').click()
                     cy.get('#challenge-card-2').click().wait(1000)
                     cy.get('#board-box-7-1').click()
@@ -101,7 +112,7 @@ describe("Board Movement", () => {
                 })
 
                 it('moves a stack (to empty spot)', () => {
-                    cy.visit('http://localhost:5173/')
+
                     cy.get('#single-player-button').click()
                     cy.get('#challenge-card-2').click().wait(1000)
                     cy.get('#board-box-7-1').click()
@@ -112,7 +123,7 @@ describe("Board Movement", () => {
                 })
 
                 it('moves a stack (to occupied spot)', () => {
-                    cy.visit('http://localhost:5173/')
+
                     cy.get('#single-player-button').click()
                     cy.get('#challenge-card-2').click().wait(1000)
                     cy.get('#board-box-7-1').click()
@@ -131,7 +142,7 @@ describe("Board Movement", () => {
 describe("Outside the board", () => {
     describe("No stacking", () => {
         it('moves a red piece', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click().wait(1000)
             cy.get('#board-box-0-0').click()
@@ -142,7 +153,7 @@ describe("Outside the board", () => {
         })
 
         it('moves a blue piece', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click().wait(1000)
 
@@ -156,7 +167,7 @@ describe("Outside the board", () => {
 
     describe("With stacking", () => {
         it('moves a red piece, making a stack', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click().wait(1000)
 
@@ -174,7 +185,7 @@ describe("Outside the board", () => {
         })
 
         it('moves a blue piece, making a stack', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click().wait(1000)
 
@@ -193,7 +204,7 @@ describe("Outside the board", () => {
 
         describe('Stack movement', () => {
             it('selects a stack', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
 
@@ -215,7 +226,7 @@ describe("Outside the board", () => {
             })
 
             it('moves a stack (to empty spot)', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
 
@@ -239,7 +250,7 @@ describe("Outside the board", () => {
             })
 
             it('moves a stack (to occupied spot)', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
 
@@ -268,7 +279,7 @@ describe("Outside the board", () => {
 
     describe("Writing on input", () => {
         it('only row', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click().wait(1000)
 
@@ -294,7 +305,7 @@ describe("Outside the board", () => {
         }),
 
             it('only column', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
 
@@ -320,7 +331,7 @@ describe("Outside the board", () => {
             }),
 
             it('both row and column', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
 
@@ -344,7 +355,7 @@ describe("Outside the board", () => {
             }),
 
             it('move from stack, after writing', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
 
@@ -374,7 +385,7 @@ describe("Outside the board", () => {
             }),
 
             it('disabling input when occupied', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000)
 
@@ -405,7 +416,7 @@ describe("Outside the board", () => {
 
 describe("Board buttons", () => {
     it('reset button', () => {
-        cy.visit('http://localhost:5173/')
+
         cy.get('#single-player-button').click()
         cy.get('.card.challenge-card').first().click().wait(1000)
 
@@ -423,7 +434,7 @@ describe("Board buttons", () => {
 
         describe('previous and next buttons', () => {
             it('next button', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-3').click().wait(1000) // challenge 2 has multiple test cases, so...
 
@@ -441,7 +452,7 @@ describe("Board buttons", () => {
             }),
 
                 it('previous button', () => {
-                    cy.visit('http://localhost:5173/')
+
                     cy.get('#single-player-button').click()
                     cy.get('#challenge-card-3').click().wait(1000) // challenge 2 has multiple test cases, so...
 
@@ -468,7 +479,7 @@ describe("Board buttons", () => {
                 }),
 
                 it('previous and next buttons sequence', () => {
-                    cy.visit('http://localhost:5173/')
+
                     cy.get('#single-player-button').click()
                     cy.get('#challenge-card-3').click().wait(1000) // challenge 2 has multiple test cases, so...
 
@@ -507,7 +518,7 @@ describe("Board buttons", () => {
 
     describe('add button', () => {
         it('add button (red)', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-2').click().wait(1000) // challenge 2 has multiple test cases, so...
             cy.get('#add-button').click()
@@ -517,7 +528,7 @@ describe("Board buttons", () => {
         }),
 
             it('add button (blue)', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000) // challenge 2 has multiple test cases, so...
                 cy.get('#add-button').click()
@@ -527,7 +538,7 @@ describe("Board buttons", () => {
             }),
 
             it('add button (empty)', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000) // challenge 2 has multiple test cases, so...
                 cy.get('#add-button').click()
@@ -537,7 +548,7 @@ describe("Board buttons", () => {
             }),
 
             it('add button (occupied spot)', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-2').click().wait(1000) // challenge 2 has multiple test cases, so..
                 cy.get('#add-button').click()
@@ -556,7 +567,7 @@ describe("Board buttons", () => {
 
         describe('go! button', () => {
             it('go! button (pass)', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-1').click().wait(1000) // challenge 2 has multiple test cases, so...
                 cy.get('#board-box-2-0').click()
@@ -566,7 +577,7 @@ describe("Board buttons", () => {
             }),
 
                 it('go! button (fail)', () => {
-                    cy.visit('http://localhost:5173/')
+
                     cy.get('#single-player-button').click()
                     cy.get('#challenge-card-1').click().wait(1000) // challenge 2 has multiple test cases, so...
                     cy.get('#go-button').click()
@@ -575,17 +586,17 @@ describe("Board buttons", () => {
         }),
 
         it('exit button', () => {
-            cy.visit('http://localhost:5173/')
+
             cy.get('#single-player-button').click()
             cy.get('#challenge-card-1').click().wait(1000) // challenge 2 has multiple test cases, so...
             cy.get('#exit-button').click()
 
-            cy.contains('Single Player')
+            cy.contains('username')
         }),
 
         describe('comment button', () => {
             it('comment button (pass)', () => {
-                cy.visit('http://localhost:5173/')
+
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-card-1').click().wait(1000) // challenge 2 has multiple test cases, so...
                 cy.get('#board-box-0-0').click()
@@ -598,7 +609,7 @@ describe("Board buttons", () => {
             }),
 
                 it('comment button (not pass)', () => {
-                    cy.visit('http://localhost:5173/')
+
                     cy.get('#single-player-button').click()
                     cy.get('#challenge-card-1').click().wait(1000) // challenge 2 has multiple test cases, so...
 

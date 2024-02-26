@@ -1,6 +1,21 @@
+beforeEach('login', () => {
+  cy.visit('http://localhost:5173/')
+  cy.get('#exampleInputUsername').type('professor@prototype.com')
+  cy.get('#exampleInputPassword').type('password')
+  cy.get('#login-button').click({ force: true })
+  cy.viewport(1920, 1080)
+  cy.wait(1000)
+})
+
 describe('Home Page', () => {
+  it('shows loading page', () => {
+    cy.visit('http://localhost:5173/#/loading')
+    cy.wait(1000)
+    cy.contains('Loading...')
+  })
+
   it('opens the challenge menu', () => {
-    cy.visit('http://localhost:5173/')
+
     cy.get('#single-player-button').click()
 
     cy.contains('Test File')
@@ -8,7 +23,7 @@ describe('Home Page', () => {
 
   it('opens a challenge module', () => {
     var module = Math.ceil(Math.random(6))
-    cy.visit('http://localhost:5173/')
+
     cy.get('#single-player-button').click()
     cy.get('#accordion-button-' + module).click().wait(500)
 
@@ -16,14 +31,11 @@ describe('Home Page', () => {
   })
 
   it('opens a challenge', () => {
-    cy.visit('http://localhost:5173/')
+
     cy.get('#single-player-button').click()
     cy.get('.challenge-card').first().click()
 
-    cy.get('#guide-modal')  
-    .should('be.visible')
-
-    cy.contains('When you click the')
+    cy.contains('Out of Bounds').should('be.visible')
 
   })
 })
