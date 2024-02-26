@@ -98,6 +98,11 @@ export default {
         content: this.codeString
       }
 
+      if (this.codeName == '') {
+        alert('Please enter a name for the code file.')
+        return
+      }
+
       await this.$axios.post(this.$api_link + '/create/code-file', body, this.auth.config)
         .then(response => {
           alert('Code file created successfully!')
@@ -169,7 +174,7 @@ export default {
       <div class="row" style="align-items: center; margin-bottom: 5px;">
         <div class="col" style="width: 80%!important; flex: 8;">
           <input type="text" class="is-primary guide-button" v-model="codeName" placeholder="Write name here."
-            id="state-name" name="state-name" style="width: 100%; height: 31.1px;">
+            id="code-file-name" name="state-name" style="width: 100%; height: 31.1px;">
         </div>
         <div class="col" style="width: 20%!important; flex: 2;">
           <button style="margin-left: 0px; width: 90%; margin-right: calc(var(--bs-gutter-x) * 0.5);"

@@ -10,6 +10,15 @@ beforeEach('login', () => {
 it('create new code file', () => {
     cy.get('#challenge-content-button').click()
     cy.get('#code-button').click()
-    cy.get('textarea').clear().
+    cy.get('textarea').clear().type('console.log("Hello, World!")')
+    cy.on('uncaught:exception', (err, runnable) => {
+        return false
+    })
+    cy.get('.language-javascript').contains('console.log("Hello, World!').should('be.visible')
+    cy.get('#code-file-name').type('Test File 0')
+    cy.get('#submit-code-file-button').click()
+    cy.on('window:alert', (str) => {
+        expect(str).to.equal('Code file created successfully!')
+      })
 })
 
