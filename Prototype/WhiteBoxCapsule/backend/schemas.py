@@ -1,4 +1,4 @@
-from sqlalchemy import PickleType, Boolean, Column, ForeignKey, Integer, TEXT
+from sqlalchemy import PickleType, Boolean, Column, ForeignKey, Integer, TEXT, DateTime
 from sqlalchemy.orm import relationship, declarative_base
 from dotenv import load_dotenv   #for python-dotenv method
 import os
@@ -123,3 +123,10 @@ class Attempt(Base):
 
     user = relationship("User", back_populates="attempts")
     challenge = relationship("Challenge", back_populates="attempts")
+
+class Token(Base):
+    __tablename__ = "tokens"
+
+    id = Column(Integer, primary_key=True)
+    token = Column(TEXT, index=True)
+    date = Column(DateTime, index=True)

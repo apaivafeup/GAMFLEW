@@ -1,6 +1,7 @@
 from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
+from typing import List
 from jose import JWTError, jwt
 from datetime import datetime, timedelta, timezone # you might prefer not to have this, it's for the token to have a time limit so it also functions as a logout
 
@@ -42,13 +43,16 @@ def login(db: Session, username: str, password: str):
     
     return user
 
-def create_access_token(data: dict, expires_delta: timedelta | None = None):
+def create_access_token(data: dict, blacklisted_token_strings: List[str], expires_delta: timedelta | None = None):
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
     else:
         expire = datetime.now(timezone.utc) + timedelta(minutes=15)
     to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
+
+    while True:
+        encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+        if encoded_jwt not in blacklisted_token_strings:
+            return encoded_jwt
 

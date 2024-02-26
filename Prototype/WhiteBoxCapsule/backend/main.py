@@ -7,6 +7,7 @@ from jose import JWTError, jwt
 from fastapi.responses import JSONResponse
 import shutil, os
 from fastapi.staticfiles import StaticFiles
+from fastapi import BackgroundTasks
 
 # New stuff
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -37,6 +38,12 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 #
 init_db()
 
+def cleanup_expired_tokens(db: Session):
+    expired_tokens = crud.get_expired_blacklisted_tokens(db)
+
+    for token in expired_tokens:
+        crud.delete_blacklisted_token(db, token.id)
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
@@ -51,8 +58,10 @@ def login_for_access_token(db: Session = Depends(get_db), form_data: OAuth2Passw
         raise HTTPException(status_code=401, detail="Incorrect username or password")
         return
     
-    access_token_expires = timedelta(minutes=auth.ACCESS_TOKEN_EXPIRE_MINUTES)    
-    access_token = auth.create_access_token(data={"sub": user.username}, expires_delta=access_token_expires)
+    access_token_expires = timedelta(minutes=auth.ACCESS_TOKEN_EXPIRE_MINUTES)   
+    blacklisted_tokens = crud.get_blacklisted_tokens(db)
+    blacklisted_token_strings = [token_obj.token for token_obj in blacklisted_tokens]
+    access_token = auth.create_access_token(data={"sub": user.username}, blacklisted_token_strings=blacklisted_token_strings, expires_delta=access_token_expires)
     crud.update_user_auth(db, user.id, True)
 
     return models.Token(access_token=access_token, token_type="bearer", user_id=user.id)
@@ -82,35 +91,24 @@ async def get_current_active_user(current_user: Annotated[models.User, Depends(g
     return current_user
 
 @app.post("/logout")
-async def logout(db: Session = Depends(get_db), token: str = Depends(auth.oauth2_scheme), user: models.User = Depends(get_current_user)) :
-    crud.update_user_auth(db, user.id, False)
-    # Add the token to a blacklist?
-    """
-        try:
-        # Decode the token to get the username
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
-    except JWTError:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
-
+async def logout(background_tasks: BackgroundTasks, db: Session = Depends(get_db), token: str = Depends(auth.oauth2_scheme), user: models.User = Depends(get_current_user)) :
     # Check if the token is already in the blacklist (do this with the db)
-    if token in blacklisted_tokens:
+    blacklisted_tokens = crud.get_blacklisted_tokens(db)
+    blacklisted_token_strings = [token_obj.token for token_obj in blacklisted_tokens]
+    if token in blacklisted_token_strings:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token has already been revoked",
             headers={"WWW-Authenticate": "Bearer"},
-        )
+    )
+    
+    crud.update_user_auth(db, user.id, False)
 
     # Add the token to the blacklist -> add to db table
-
-    # Update user status to be logged out?
+    crud.add_blacklisted_token(db, token=token)
 
     # Figure out how to periodically clean up expired tokens from the blacklist to avoid unnecessary storage consumption
-    """
+    background_tasks.add_task(cleanup_expired_tokens, db)
 
     return JSONResponse(
         content={"message": "Logout successful"},
