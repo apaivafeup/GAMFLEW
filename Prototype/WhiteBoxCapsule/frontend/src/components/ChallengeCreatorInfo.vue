@@ -1,5 +1,5 @@
 <template>
-    <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
+    <div class="alert alert-special" style="display: flex; flex-direction: column; font-size: 12px;">
         <h6 style="margin: 2px; text-align: justify;">Board Log (<strong><em>board.log</em></strong>)</h6>
         <p style="margin: 2px; text-align: justify;">The <strong>board</strong> has a <strong>log</strong> of
             interactions.</p>
@@ -23,7 +23,7 @@
         </ul>
         </p>
     </div>
-    <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
+    <div class="alert alert-special" style="display: flex; flex-direction: column; font-size: 12px;">
         <h6 style="margin: 2px; text-align: justify;">Board Pieces (<strong><em>board[I][J]</em></strong>)</h6>
         <p style="margin: 2px; text-align: justify;">Any piece of the 8x8 board can be accessed.</p>
         <p style="margin: 2px; text-align: justify;">
@@ -42,12 +42,12 @@
         </p>
     </div>
     <div class="col" style="display: grid; grid-gap: 1px; grid-template-rows: 37.5% 62.5%;">
-        <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
+        <div class="alert alert-special" style="display: flex; flex-direction: column; font-size: 12px;">
             <h6 style="margin: 2px; text-align: justify;">Out of Bounds Spot (<strong><em>board.out</em></strong>)</h6>
             <p style="margin: 2px; text-align: justify;">Treat it like any other piece, but <em>position is
                     unbounded</em>.</p>
         </div>
-        <div class="alert alert-special player-info" style="display: flex; flex-direction: column; font-size: 12px;">
+        <div class="alert alert-special" style="display: flex; flex-direction: column; font-size: 12px;">
             <h6 style="margin: 2px; text-align: justify;">Special Functions</h6>
             <p style="margin: 2px; text-align: justify;">Check how to play if needed:
                 <strong>count_empty_spaces</strong>,
