@@ -21,7 +21,7 @@
           </div>
 
           <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
-            <CodeBlock class="col line-numbers" theme="default" height="445px" data-line="1" :prismjs="true"
+            <CodeBlock @change="Prism.highlightAll()" class="col line-numbers" theme="default" height="445px" data-line="1" :prismjs="true"
               :code="this.codeFiles[this.challenge?.code_file - 1]?.content" lang="javascript" prism-plugin prism-js
               style="font-size: 16px; overflow: scroll; margin-bottom: 5px; width: 650px;" :copy-icon="false"
               :copy-button="false" :copy-tab="false" :tabs="false" />
@@ -311,8 +311,9 @@ import CodeEditor from "simple-code-editor";
 import * as utils from '../store/utils.js'
 import { authStore } from '../store/authStore'
 
-import { h, resolveComponent } from 'vue'
+import { h, resolveComponent, getCurrentInstance } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';
+import Prism from 'prismjs'
 
 export default {
   async beforeMount() {
@@ -397,6 +398,7 @@ export default {
     document.getElementById('input-condition-box').value = this.challenge.passing_criteria.condition_count
 
     loader.hide()
+    Prism.highlightAll()
   },
 
   props: {
@@ -500,22 +502,23 @@ export default {
       if (reverse) {
         expression = expression.replaceAll(boardAccess, 'X')
 
-        var array = Object.entries(dict).sort((a, b) => b[1].replacement.length - a[1].replacement.length)
+        var array = Object.entries(dict).sort((a, b) => b[1].length - a[1].length)
         for (var entry in array) {
-          expression = expression.replaceAll(array[entry][1].replacement, array[entry][0])
+          expression = expression.replaceAll(array[entry][1], array[entry][0])
         }
 
         return expression
       }
 
-      for (var key in dict) {
+      var array = Object.entries(dict).sort((a, b) => b[0].length - a[0].length)
+      for (var item in array) {
         var regex = new RegExp('board.log[[A-z]+].start||board.log[[A-z]+].destination')
-        if (key == 'start' || key == 'destination') {
+        if (array[item][0] == 'start' || array[item][0] == 'destination') {
           if (regex.test(expression)) {
             continue
           }
         }
-        expression = expression.replaceAll(key, dict[key].replacement)
+        expression = expression.replaceAll(array[item][0], array[item][1])
       }
 
       expression = expression.replaceAll('X', boardAccess)
@@ -570,6 +573,7 @@ export default {
 
     selectCode(id) {
       this.challenge.code_file = id
+      this.$forceUpdate();
     },
 
     selectCoverage(coverage) {
@@ -581,7 +585,8 @@ export default {
     },
 
     async submitChallenge(challenge) {
-      await this.$axios.post(this.$api_link + '/create/challenge', this.challenge, this.auth.config)
+      if (this.id == null) {
+        await this.$axios.post(this.$api_link + '/create/challenge', this.challenge, this.auth.config)
         .then((response) => {
           if (response.status == 200) {
             alert('Challenge submitted successfully!')
@@ -590,8 +595,25 @@ export default {
             alert('There was an error submitting the challenge. Try again.')
           }
         })
+      } else {
+        await this.$axios.post(this.$api_link + '/update/challenge/' + this.id, this.challenge, this.auth.config)
+        .then((response) => {
+          if (response.status == 200) {
+            alert('Challenge updated successfully!')
+            window.location.href = '/'
+          } else {
+            alert('There was an error updating the challenge. Try again.')
+          }
+        })
+      }
+      
     }
   },
+
+  updated() {
+    Prism.highlightAll()
+  },
+
   components: {
     Menu,
     'code-editor': CodeEditor,

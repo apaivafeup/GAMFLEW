@@ -15,7 +15,6 @@ export const authStore = defineStore('authStore', {
             console.log('Checking auth...')
             const username = window.sessionStorage.getItem('username')
             if (username != null) {
-                console.log(window.sessionStorage)
                 this.config = {
                     headers: { 'Authorization': 'Bearer ' + window.sessionStorage.getItem('access_token') }
                 }

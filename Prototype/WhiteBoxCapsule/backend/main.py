@@ -154,6 +154,11 @@ def create_user(user: models.UserRegister, db: Session = Depends(get_db)):
 def create_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge: models.Challenge, db: Session = Depends(get_db)):
     return crud.create_challenge(db=db, challenge=challenge)
 
+## Update Challenge
+@app.post("/update/challenge/{challenge_id}", response_model=models.Challenge)
+def update_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, challenge: models.Challenge, db: Session = Depends(get_db)):
+    return crud.update_challenge(db=db, challenge_id=challenge_id, challenge=challenge)
+
 ## Create Code File
 @app.post("/create/code-file", response_model=models.CodeFile)
 def create_code_file(current_user: Annotated[models.User, Depends(get_current_active_user)], code_file: models.CodeFile, db: Session = Depends(get_db)):

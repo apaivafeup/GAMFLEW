@@ -301,6 +301,8 @@ export default {
 
     // Submit functions
     go(input) {
+      console.log(this.challenge)
+
       try {
         var type = this.challenge.challenge_type
 

@@ -59,10 +59,34 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
     db.commit()
     return db_challenge
 
+def update_challenge(db: Session, challenge_id: int, challenge: schemas.Challenge):
+    db_challenge = db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
+
+    if db_challenge is None:
+        return None
+
+    db_challenge.name = challenge.name
+    db_challenge.description = challenge.description
+    db_challenge.hint = challenge.hint
+    db_challenge.objective = challenge.objective
+    db_challenge.test_cases_count = challenge.test_cases_count
+    db_challenge.score = challenge.score
+    db_challenge.initial_board = challenge.initial_board
+    db_challenge.code_file = challenge.code_file
+    db_challenge.challenge_type = challenge.challenge_type
+    db_challenge.passing_criteria = challenge.passing_criteria
+    db_challenge.achievement_criteria = challenge.achievement_criteria
+    db_challenge.owner_id = challenge.owner_id
+    db_challenge.difficulty = challenge.difficulty
+
+    db.commit()
+    return db_challenge
+
 def create_code_file(db: Session, code_file: schemas.CodeFile):
     db_code_file = schemas.CodeFile(
         name=code_file.name,
-        content=code_file.content
+        content=code_file.content,
+        dictionary=code_file.dictionary
     )
     db.add(db_code_file)
     db.commit()
