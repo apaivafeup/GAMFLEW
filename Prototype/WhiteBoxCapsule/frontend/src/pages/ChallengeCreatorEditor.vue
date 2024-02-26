@@ -1,5 +1,4 @@
 <template>
-  <div style="overflow-y: scroll;">
     <div class="row" style="text-align: center;">
       <h2 v-if="this.id == null">Challenge Creator</h2>
       <h2 v-else>Challenge Editor</h2>
@@ -151,50 +150,45 @@
           Precondition, T for Test. Green means True, red
           means False.</p>
       </div>
-      <div class="row" style="margin-bottom: 10px;">
-        <div class="col" style="padding: 0px; margin-right: 5px;min-width: 150px; max-width: 150px;">
-          <button class="box" style="width: 150px; padding: 20px;" @click="this.addTest(index)"
+      <div class="row" style="margin-bottom: 10px; justify-content: start; display: flex;">
+        <div class="col" style="padding: 0px; max-width: 10%; display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;">
+          <button class="box" style="width: 100%; padding: 20px;" @click="this.addTest(index)"
             v-if="!this.boardChecker.passed">
             Add Test
           </button>
-          <button class="box disabled" style="width: 150px; padding: 20px;" v-else>
+          <button class="box disabled" style="width: 100%; padding: 20px;" v-else>
             Add Test
           </button>
-          <button class="box" style="width: 150px; padding: 20px;" @click="this.addPrecondition(index)"
+          <button class="box" style="width: 100%; padding: 20px;" @click="this.addPrecondition(index)"
             v-if="!this.boardChecker.passed">
             Add Precondition
           </button>
-          <button class="box disabled" style="width: 150px; padding: 20px;" v-else>
+          <button class="box disabled" style="width: 100%; padding: 20px;" v-else>
             Add Precondition
           </button>
-          <div class="row" style="text-align: center;">
+          <div class="row" style="text-align: center; font-size: 15px;">
             <p style="margin: 0px;">Preconditions: <strong>
                 {{ this.preconditions.length }}
               </strong>
             </p>
           </div>
-          <div class="row" style="text-align: center;">
+          <div class="row" style="text-align: center; font-size: 15px;">
             <p style="margin: 0px;">Tests: <strong>
                 {{ this.tests.length }}
               </strong>
             </p>
           </div>
         </div>
-        <div class="col">
-          <div class="alert alert-secondary player-info"
-            style="display: grid; grid-gap: 2.5px 10px; grid-template-columns: 350px 350px 350px; width: 100%; font-size: 12px;">
-            <p style="display: inline-block; flex-direction: row; margin: 0px; margin-bottom: 2.5px;"
-              v-if="this.codeFiles[this.challenge.code_file - 1] != undefined"><em>(I, J)</em> can be any position!</p>
-            <p v-if="this.codeFiles[this.challenge.code_file - 1] == undefined">No help here... yet.</p>
-            <p v-else class="row" style="display: inline-block; flex-direction: row; margin: 0px; margin-bottom: 2.5px;"
-              v-for="(value, key) in this.codeFiles[this.challenge.code_file - 1].dictionary">
-              <strong style="padding: 0px;">{{ key + ': ' }}</strong>{{ value.accessing }}
-            </p>
-          </div>
+        <div class="col" style="max-width: 90%; display: grid; grid-template-columns: 35% 27.5% 37.5%; grid-gap: 5px; padding-left: -12px;">
+          <ChallengeCreatorInfo />
         </div>
 
       </div>
-      <div class="row">
+      <div class="row" style="display: grid: grid-template-columns: 60% 40%; grid-gap: 10px;">
         <div class="col" style="display: flex; flex-direction: column; max-height: 445px; overflow-y: scroll;">
           <div v-if="this.preconditions.length != 0">
             <div class="row" style="margin-bottom: 10px;" :id="'precondition-info-' + index"
@@ -202,7 +196,7 @@
               <div class="col" style="max-width: 90%; padding: 0px;">
                 <div class="alert alert-info player-info precondition-alert" :id="'precondition-info-alert-' + index"
                   style="display: flex; justify-content: start;">
-                  <div class="col" style="max-width: 10%; align-self: center;">
+                  <div class="col" style="max-width: 10%; align-self: center; text-align: center;">
                     <strong style="margin-right: 2.5px;">{{ 'P' + (index + 1) + ':' }}</strong>
                   </div>
                   <div class="col" style="max-width: 90%">
@@ -236,7 +230,7 @@
               <div class="col" style="max-width: 90%; padding: 0px;">
                 <div class="alert alert-info player-info test-alert" :id="'test-info-alert-' + index"
                   style="display: flex; justify-content: start;">
-                  <div class="col" style="max-width: 10%; align-self: center;">
+                  <div class="col" style="max-width: 10%; align-self: center; text-align: center;">
                     <strong style="margin-right: 2.5px;">{{ 'T' + (index + 1) + ':' }}</strong>
                   </div>
                   <div class="col" style="max-width: 90%">
@@ -266,8 +260,7 @@
             </div>
           </div>
         </div>
-
-        <div class="col">
+        <div class="col" style="display: flex; justify-content: end; flex-direction: row; padding: 0px;">
           <ChallengeChecker :challenge="this.challenge" />
         </div>
       </div>
@@ -294,8 +287,6 @@
         </div>
       </div>
     </div>
-
-  </div>
 </template>
 
 <script setup>
@@ -313,6 +304,7 @@ import BoardChecker from '../components/BoardChecker.vue'
 import { boardCreatorStore } from '../store/boardCreator'
 import { boardCheckerStore } from '../store/boardChecker'
 import ChallengeChecker from '../components/ChallengeChecker.vue'
+import ChallengeCreatorInfo from '../components/ChallengeCreatorInfo.vue'
 
 import hljs from 'highlight.js';
 import CodeEditor from "simple-code-editor";
@@ -604,7 +596,8 @@ export default {
     Menu,
     'code-editor': CodeEditor,
     BoardChecker,
-    ChallengeChecker
+    ChallengeChecker,
+    ChallengeCreatorInfo
   },
 }
 </script>
