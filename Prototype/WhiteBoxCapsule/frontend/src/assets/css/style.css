@@ -369,8 +369,9 @@ button.menu-button {
 
 .player-bar-box {
   width: 95.5%;
-  height: 152.5px;
+  height: auto;
   border: 1px solid #cdcdcd;
+  margin-top: 1vh;
 }
 
 .player-bar-avatar {

@@ -1,9 +1,9 @@
 <template>
-  <div class="row" style="padding: 15px; justify-content: right">
+  <div class="row" style="padding: 0px 15px; justify-content: right">
     <div class="player-bar-box" style="display: flex; flex-direction: column">
-      <div style="display: flex; align-items: top; margin-top: 10px; justify-content: space-between">
-        <div class="col-md-8" style="display: flex; align-content: center; align-items: start; flex-direction: column">
-          <div class="row" style="--bs-gutter-x: 0; --bs-gutter-y: 0; margin-bottom: 20px">
+      <div style="display: grid; grid-template-columns: 80% 20%; grid-template-rows: 100%; padding: 3px 5px;">
+        <div style="display: flex; align-content: center; align-items: start; flex-direction: column; justify-content: center;">
+          <div class="row" style="--bs-gutter-x: 0; --bs-gutter-y: 0;">
             <img :src="this.$api_link + user.picture" class="player-bar-avatar" />
             <div class="col">
               <div class="row">
@@ -17,7 +17,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2" id="player-stats">
+        <div id="player-stats">
           <span class="badge badge-warning" style="
               display: flex;
               flex-direction: row;
