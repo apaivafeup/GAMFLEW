@@ -1,11 +1,11 @@
 <template>
   <div style="display: flex; justify-content: right">
     <div style="flex-direction: column; justify-content: space-between; display: flex">
-      <div class="col">
-        <div class="game-board-out-labels" v-if="!board.table">
+      <div class="col" v-if="!board.table">
+        <div class="game-board-out-labels">
           <div class="game-board-label col" style="display: flex; justify-content: center">Out of Bounds</div>
         </div>
-        <div class="game-board-out">
+        <div class="game-board-out" >
           <div class="box">
             <OutPieceStack :x="this.outX" :y="this.outY" />
           </div>
@@ -20,6 +20,9 @@
               style="width: 30px; text-align: center; font-size: 12px" type="number" />
           </div>
         </div>
+      </div>
+      <div class="col" style="height: 315.5px;" v-else>
+
       </div>
 
       <div class="progress-bar">
@@ -88,7 +91,7 @@
         Exit
       </button>
     </div>
-    <div style="align-content: center" v-if="!board.table">
+    <div style="align-content: center;" v-if="!board.table">
       <div class="game-board-labels">
         <div class="game-board-label col" style="display: flex; justify-content: center; margin-top: 25px"></div>
       </div>
@@ -119,7 +122,7 @@
         </div>
       </div>
     </div>
-    <div style="justify-self: right" v-if="!board.table">
+    <div style="justify-self: right;" v-if="!board.table">
       <div class="game-board-col-labels">
         <div class="game-board-label col" style="display: flex; justify-content: center">0</div>
         <div class="game-board-label col" style="display: flex; justify-content: center">1</div>
@@ -138,8 +141,8 @@
       </div>
     </div>
     <div style="justify-self: right; justify-content: end;" v-else>
-      <EasyDataTable style="width: 525px; height: 465px; margin-left: 10px; margin-right: 2.5px; overflow: scroll;"
-      :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="10" :fixed-checkbox="true"
+      <EasyDataTable style="width: 525px; height: 537px; margin-left: 10px; margin-right: 2.5px; overflow: scroll;"
+      :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="11" :fixed-checkbox="true"
       :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
       :theme-color="'#A959FF'">
     </EasyDataTable>

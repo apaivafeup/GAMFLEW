@@ -86,15 +86,15 @@ pre {
 
 .game-board {
   display: grid;
-  grid-template-columns: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
-  grid-template-rows: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
+  grid-template-columns: 64px 64px 64px 64px 64px 64px 64px 64px;
+  grid-template-rows: 64px 64px 64px 64px 64px 64px 64px 64px;
   justify-content: center;
 }
 
 .game-board-out {
   display: grid;
-  grid-template-columns: 52.5px;
-  grid-template-rows: 52.5px;
+  grid-template-columns: 64px;
+  grid-template-rows: 64px;
   justify-content: center;
 }
 
@@ -217,8 +217,8 @@ pre {
 
 .piece {
   border-radius: 100px;
-  height: 45px;
-  width: 45px;
+  height: 52.5px;
+  width: 52.5px;
   border: 1px solid var(--border-color);
 }
 
@@ -276,14 +276,14 @@ pre {
 
 .game-board-col-labels {
   display: grid;
-  grid-template-columns: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
+  grid-template-columns: 64px 64px 64px 64px 64px 64px 64px 64px;
   grid-template-rows: 25px;
   justify-content: center;
 }
 
 .game-board-row-labels {
   display: grid;
-  grid-template-rows: 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px 52.5px;
+  grid-template-rows: 64px 64px 64px 64px 64px 64px 64px 64px;
   grid-template-columns: 25px;
   justify-content: center;
 }
@@ -598,4 +598,9 @@ a {
 
 a:hover {
   color: rgb(169, 89, 255);
+}
+
+.container {
+  min-width: 95% !important;
+  max-width: none !important;
 }
