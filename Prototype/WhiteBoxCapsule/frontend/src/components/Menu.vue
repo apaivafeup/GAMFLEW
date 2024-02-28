@@ -4,11 +4,11 @@
     <button class="menu-button" id="single-player-button" @click="this.$router.push('challenges')" style="width: 500px">
       Single Player
     </button>
-    <button class="menu-button" id="challenge-content-button" @click="this.$router.push('content-creator')"
+    <button class="menu-button" id="challenge-content-button" v-if="this.auth.user.user_type == 'admin'" @click="this.$router.push('content-creator')"
       style="width: 500px">
       Challenge Content Creator
     </button>
-    <button class="menu-button" id="challenge-manager-button" @click="this.$router.push('challenge-manager')"
+    <button class="menu-button" id="challenge-manager-button" v-if="this.auth.user.user_type == 'admin'" @click="this.$router.push('challenge-manager')"
       style="width: 500px">
       Challenge Manager
     </button>

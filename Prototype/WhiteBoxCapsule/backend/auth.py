@@ -10,7 +10,7 @@ import models, schemas
 # to get a string like this run: openssl rand -hex 32
 SECRET_KEY = "daf4160d13aab760e4059bcf9089cb9b77e10cac9bafe4234612848f3515a9db"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 10080
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -43,16 +43,12 @@ def login(db: Session, username: str, password: str):
     
     return user
 
-def create_access_token(data: dict, blacklisted_token_strings: List[str], expires_delta: timedelta | None = None):
+def create_access_token(data: dict, blacklisted_token_strings: List[str]):
     to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.now(timezone.utc) + expires_delta
-    else:
-        expire = datetime.now(timezone.utc) + timedelta(minutes=15)
+    expire = datetime.now() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
 
     while True:
         encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
         if encoded_jwt not in blacklisted_token_strings:
             return encoded_jwt
-

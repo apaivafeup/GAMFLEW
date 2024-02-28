@@ -8,6 +8,7 @@ from fastapi.responses import JSONResponse
 import shutil, os
 from fastapi.staticfiles import StaticFiles
 from fastapi import BackgroundTasks
+import datetime
 
 # New stuff
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -58,25 +59,46 @@ def login_for_access_token(db: Session = Depends(get_db), form_data: OAuth2Passw
         raise HTTPException(status_code=401, detail="Incorrect username or password")
         return
     
-    access_token_expires = timedelta(minutes=auth.ACCESS_TOKEN_EXPIRE_MINUTES)   
+
     blacklisted_tokens = crud.get_blacklisted_tokens(db)
     blacklisted_token_strings = [token_obj.token for token_obj in blacklisted_tokens]
-    access_token = auth.create_access_token(data={"sub": user.username}, blacklisted_token_strings=blacklisted_token_strings, expires_delta=access_token_expires)
+    access_token = auth.create_access_token(data={"sub": user.username}, blacklisted_token_strings=blacklisted_token_strings)
     crud.update_user_auth(db, user.id, True)
 
     return models.Token(access_token=access_token, token_type="bearer", user_id=user.id)
 
 async def get_current_user(db: Session = Depends(get_db), token: str =  Depends(auth.oauth2_scheme)):
+    # Check if the token is expired + if it's in the blacklist
+    blacklisted_tokens = crud.get_blacklisted_tokens(db)
+    blacklisted_token_strings = [token_obj.token for token_obj in blacklisted_tokens]
+    if token in blacklisted_token_strings:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token has already been revoked",
+            headers={"WWW-Authenticate": "Bearer"},
+    )
+    
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
+    credentials_expired = HTTPException(
+        status_code = status.HTTP_401_UNAUTHORIZED,
+        detail= "Expired Token",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
     try:
         payload = jwt.decode(token, auth.SECRET_KEY, algorithms=[auth.ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
             raise credentials_exception
+        date = payload.get("exp")
+
+        current_time = datetime.datetime.now()
+        if current_time >= datetime.datetime.utcfromtimestamp(date):
+            raise credentials_expired
         token_data = models.TokenData(username=username)
     except JWTError:
         raise credentials_exception
@@ -91,17 +113,7 @@ async def get_current_active_user(current_user: Annotated[models.User, Depends(g
     return current_user
 
 @app.post("/logout")
-async def logout(background_tasks: BackgroundTasks, db: Session = Depends(get_db), token: str = Depends(auth.oauth2_scheme), user: models.User = Depends(get_current_user)) :
-    # Check if the token is already in the blacklist (do this with the db)
-    blacklisted_tokens = crud.get_blacklisted_tokens(db)
-    blacklisted_token_strings = [token_obj.token for token_obj in blacklisted_tokens]
-    if token in blacklisted_token_strings:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token has already been revoked",
-            headers={"WWW-Authenticate": "Bearer"},
-    )
-    
+async def logout(background_tasks: BackgroundTasks, db: Session = Depends(get_db), token: str = Depends(auth.oauth2_scheme), user: models.User = Depends(get_current_user)) :    
     crud.update_user_auth(db, user.id, False)
 
     # Add the token to the blacklist -> add to db table

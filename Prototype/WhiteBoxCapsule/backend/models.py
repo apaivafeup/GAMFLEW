@@ -88,6 +88,7 @@ class UserBasics(BaseModel):
     successful_attempts: int
     score: int
     achievements: int
+    user_type: UserType
 
     class Config:
         from_attributes = True

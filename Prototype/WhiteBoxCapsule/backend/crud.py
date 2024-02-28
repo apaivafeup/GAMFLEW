@@ -127,7 +127,8 @@ def get_user_basics(db: Session, user_id: str):
         failed_attempts=user.failed_attempts,
         successful_attempts=user.successful_attempts,
         score=user.score,
-        achievements=user.achievements
+        achievements=user.achievements,
+        user_type=user.user_type
     )
 
     return user_basics
