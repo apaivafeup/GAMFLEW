@@ -47,6 +47,7 @@ const options = {
 
 app.use(Toast, options);
 
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 app.config.globalProperties.$axios = axios;
 app.config.globalProperties.$http_names = {
   '200' : 'OK',

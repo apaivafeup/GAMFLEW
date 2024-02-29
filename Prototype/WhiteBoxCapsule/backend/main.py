@@ -33,6 +33,7 @@ app.add_middleware(
     allow_origins=origins,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"]
 )
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -45,7 +46,7 @@ def cleanup_expired_tokens(db: Session):
     for token in expired_tokens:
         crud.delete_blacklisted_token(db, token.id)
 
-@app.get("/")
+@app.api_route('/', methods=['GET', 'HEAD'])
 def read_root():
     return {"Hello": "World"}
 
@@ -267,3 +268,4 @@ def delete_user(current_user: Annotated[models.User, Depends(get_current_active_
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
     #uvicorn.run(app, host="10.227.242.121", port=8000)
+
