@@ -48,6 +48,20 @@ class UserType(str, Enum):
     PLAYER = "player"
     ADMIN = "admin"
 
+class GameState(str, Enum):
+    """Enum for the state of the game."""
+    WAITING = "waiting"
+    READY = "ready"
+    PLAYING = "playing"
+    FINISHED = "finished"
+
+class GameMessage(str, Enum):
+    """Enum for the messages of the game."""
+    ENTER = "enter"
+    LEAVE = "leave"
+    START = "start"
+    END = "end"
+
 class User(Base):
     __tablename__ = "users"
 
@@ -66,6 +80,11 @@ class User(Base):
 
     attempts = relationship("Attempt", back_populates="user")
     challenges = relationship("Challenge", back_populates="user")
+    game_winner = relationship("GameRoom", back_populates="winner", foreign_keys="GameRoom.game_winner")
+    first_player = relationship("GameRoom", back_populates="player_1", foreign_keys="GameRoom.player_1_id")
+    second_player = relationship("GameRoom", back_populates="player_2", foreign_keys="GameRoom.player_2_id")
+    third_player = relationship("GameRoom", back_populates="player_3", foreign_keys="GameRoom.player_3_id")
+    game_logs = relationship("GameLog", back_populates="users")
 
 class CodeFile(Base):
     __tablename__ = "code_file"
@@ -130,3 +149,34 @@ class Token(Base):
     id = Column(Integer, primary_key=True)
     token = Column(TEXT, index=True)
     date = Column(DateTime, index=True)
+
+class GameRoom(Base):
+    __tablename__ = "game_rooms"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(TEXT, index=True)
+    rounds = Column(Integer, nullable=False, index=True)
+    player_number = Column(Integer, nullable=False, index=True)
+    player_1_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    player_2_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+    player_3_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+    game_state = Column(ENUM(GameState), index=True)
+    game_over = Column(Boolean, default=False, index=True)
+    game_winner = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+
+    game_logs = relationship("GameLog", back_populates="game_rooms") # this is the correct way
+    winner = relationship("User", back_populates="game_winner", foreign_keys="GameRoom.game_winner")
+    player_1 = relationship("User", back_populates="first_player", foreign_keys="GameRoom.player_1_id")
+    player_2 = relationship("User", back_populates="second_player", foreign_keys="GameRoom.player_2_id")
+    player_3 = relationship("User", back_populates="third_player", foreign_keys="GameRoom.player_3_id")
+
+class GameLog(Base):
+    __tablename__ = "game_logs"
+
+    id = Column(Integer, primary_key=True)
+    message = Column(ENUM(GameMessage), index=True)
+    game_room_id = Column(Integer, ForeignKey("game_rooms.id"), nullable=False, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+
+    game_rooms = relationship("GameRoom", back_populates="game_logs")
+    users = relationship("User", back_populates="game_logs")

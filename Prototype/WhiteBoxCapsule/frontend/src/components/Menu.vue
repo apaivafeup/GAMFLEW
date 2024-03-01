@@ -4,6 +4,9 @@
     <button class="menu-button" id="single-player-button" @click="this.$router.push('challenges')" style="width: 500px">
       Single Player
     </button>
+    <button class="menu-button" id="multiplayer-button" @click="this.$router.push('multiplayer')" style="width: 500px">
+      Multiplayer
+    </button>
     <button class="menu-button" id="challenge-content-button" v-if="this.auth.user.user_type == 'admin'" @click="this.$router.push('content-creator')"
       style="width: 500px">
       Challenge Content Creator

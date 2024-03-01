@@ -1,0 +1,20 @@
+[
+    {
+        "id": 0,
+        "name": "Game Room 1",
+        "player_1_id": 2,
+        "player_2_id": 3,
+        "player_3_id": 4,
+        "rounds": 3,
+        "player_number": 3,
+        "game_state": "waiting"
+    },
+    {
+        "id": 0,
+        "name": "Game Room 2",
+        "player_1_id": 2,
+        "player_2_id": 3,
+        "rounds": 3,
+        "player_number": 2
+    }
+]

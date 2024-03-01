@@ -1,12 +1,19 @@
 {
 	"justMyCode": false,
 	"configurations": [
-		{ "name": "Python Debugger: FastAPI", 
+		{ "name": "API", 
 		"type": "debugpy", 
 		"request": "launch", 
 		"module": "uvicorn",
 		"cwd": "${fileDirname}",
-		"args": ["main:app", "--reload"], 
+		"args": ["main:app", "--host", "localhost", "--port", "8000", "--reload"], 
+		"jinja": true },
+		{ "name": "Update DB", 
+		"type": "debugpy", 
+		"request": "launch", 
+		"module": "refresh_db",
+		"cwd": "${fileDirname}",
+		"args": [], 
 		"jinja": true }
 	]
 }

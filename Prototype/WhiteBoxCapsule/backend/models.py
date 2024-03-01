@@ -1,7 +1,7 @@
 import json
-from pydantic import BaseModel, field_validator, FilePath
+from pydantic import BaseModel, field_validator, FilePath, model_validator
 from typing import Optional
-from schemas import AttemptType, ChallengeType, Difficulty, PieceColor, UserType
+from schemas import AttemptType, ChallengeType, Difficulty, PieceColor, UserType, GameState, GameMessage
 
 # class Settings(BaseModel):
 #     authjwt_secret_key: str = '8908b123cf7557c25430ac0c6e86a21c29061d3152b328f8163b8de394e0fb8f'
@@ -12,9 +12,11 @@ class PassingCriteria(BaseModel):
     tests: list[str]
     condition_count: Optional[int] = None
 
+
 class AchievementCriteria(BaseModel):
     preconditions: list[str]
     tests: list[str]
+
 
 class Attempt(BaseModel):
     id: Optional[int]
@@ -27,6 +29,7 @@ class Attempt(BaseModel):
 
     class Config:
         from_attributes = True
+
 
 class Challenge(BaseModel):
     id: Optional[int]
@@ -47,6 +50,7 @@ class Challenge(BaseModel):
     class Config:
         from_attributes = True
 
+
 class ChallengeBasics(BaseModel):
     id: Optional[int]
     name: str
@@ -61,6 +65,7 @@ class ChallengeBasics(BaseModel):
 
     class Config:
         from_attributes = True
+
 
 class User(BaseModel):
     id: Optional[int]
@@ -79,6 +84,7 @@ class User(BaseModel):
     class Config:
         from_attributes = True
 
+
 class UserBasics(BaseModel):
     id: Optional[int]
     name: str
@@ -93,9 +99,11 @@ class UserBasics(BaseModel):
     class Config:
         from_attributes = True
 
+
 class UserLogin(BaseModel):
     username: str
     password: str
+
 
 class UserRegister(BaseModel):
     name: str
@@ -105,6 +113,7 @@ class UserRegister(BaseModel):
     password: str
     user_type: UserType
 
+
 class UserResponse(BaseModel):
     name: str
     username: str
@@ -112,9 +121,11 @@ class UserResponse(BaseModel):
     picture: str
     user_type: UserType
 
+
 class UserAuth(BaseModel):
     username: str
     auth: bool
+
 
 class CodeFile(BaseModel):
     id: Optional[int]
@@ -125,9 +136,11 @@ class CodeFile(BaseModel):
     class Config:
         from_attributes = True
 
+
 class Stack(BaseModel):
     red: int
     blue: int
+
 
 class Piece(BaseModel):
     color: PieceColor
@@ -146,13 +159,14 @@ class Piece(BaseModel):
                 raise ValueError("Only stacks can have their content defined.")
         return content
 
+
 class BoardState(BaseModel):
     id: Optional[int]
     name: str
     board_state: list[list[Piece]]
     out_of_bounds_state: Piece
 
-# Token 
+# Token
 class Token(BaseModel):
     access_token: str
     token_type: str
@@ -163,3 +177,55 @@ class TokenData(BaseModel):
 
 class UserInDB(User):
     hashed_password: str
+
+class GameRoom(BaseModel):
+    id: Optional[int]
+    name: str
+    rounds: int
+    player_number: int
+    player_1_id: int
+    player_2_id: Optional[int] = None
+    player_3_id: Optional[int] = None
+    game_state: Optional[GameState] = GameState.WAITING
+    game_over: bool = False
+    game_winner: Optional[int] = None
+
+    class Config:
+        from_attributes = True
+
+    @field_validator("rounds")
+    @classmethod
+    def validate_rounds(cls, rounds):
+        if rounds < 1:
+            raise ValueError("A game must have at least 1 round.")
+        elif rounds > 5:
+            raise ValueError("A game must have at most 5 rounds.")
+        return rounds
+
+    @model_validator(mode='after')
+    @classmethod
+    def validate_players(cls, self):
+        if (self.player_3_id is None):
+            if (self.player_1_id == self.player_2_id):
+                raise ValueError("A game must have at least 2 and at most 3 different players.")
+        else:
+            if self.player_1_id == self.player_2_id or self.player_1_id == self.player_3_id or self.player_2_id == self.player_3_id:
+                raise ValueError("A game must have at least 2 and at most 3 different players.")
+        return self
+
+    
+class GameRoomState(BaseModel):
+    id: int
+    game_state: GameState
+    game_over: bool
+    game_winner: Optional[int]
+    
+class GameLog(BaseModel):
+    id: Optional[int]
+    game_room_id: int
+    user_id: int
+    message: GameMessage
+
+    class Config:
+        from_attributes = True
+

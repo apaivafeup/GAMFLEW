@@ -15,7 +15,8 @@ const routes = [
     { name: 'register', path: '/register', component: () => import('./pages/Register.vue'), props: false },
     { name: 'error', path: '/:code:afterCode(_):message', component: Error, props: true },
     { name: 'wildcard', path: '/:pathMatch(.*)*', component: StaticError},
-    { name: 'loading', path: '/loading', component: () => import('./pages/Loading.vue')}
+    { name: 'loading', path: '/loading', component: () => import('./pages/Loading.vue')},
+    { name: 'multiplayer', path: '/multiplayer', component: () => import('./pages/MultiplayerRooms.vue')},
 ];
 
 export const Router = createRouter({

@@ -60,7 +60,6 @@ def login_for_access_token(db: Session = Depends(get_db), form_data: OAuth2Passw
         raise HTTPException(status_code=401, detail="Incorrect username or password")
         return
     
-
     blacklisted_tokens = crud.get_blacklisted_tokens(db)
     blacklisted_token_strings = [token_obj.token for token_obj in blacklisted_tokens]
     access_token = auth.create_access_token(data={"sub": user.username}, blacklisted_token_strings=blacklisted_token_strings)
@@ -98,7 +97,7 @@ async def get_current_user(db: Session = Depends(get_db), token: str =  Depends(
         date = payload.get("exp")
 
         current_time = datetime.datetime.now()
-        if current_time >= datetime.datetime.utcfromtimestamp(date):
+        if current_time >= datetime.datetime.fromtimestamp(date):
             raise credentials_expired
         token_data = models.TokenData(username=username)
     except JWTError:
@@ -264,6 +263,39 @@ def delete_user(current_user: Annotated[models.User, Depends(get_current_active_
     crud.delete_user(db=db, user_id=user_id)
     return user_to_delete
 
+## Create game room
+@app.post("/create/game-room", response_model=models.GameRoom)
+def create_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room: models.GameRoom, db: Session = Depends(get_db)):
+    crud.send_game_log(db=db, game_room_id=game_room.id, user_id=current_user.id, message=schemas.GameMessage.ENTER)
+    return crud.create_game_room(db=db, game_room=game_room)
+
+## Get game rooms
+@app.get("/game-rooms/", response_model=list[models.GameRoom])
+def read_game_rooms(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
+    game_rooms = crud.get_game_rooms(db)
+    return game_rooms
+
+## Join game room
+@app.post("/enter/game-room/{game_room_id}", response_model=models.GameLog)
+def enter_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    crud.send_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id, message=schemas.GameMessage.ENTER)
+    return crud.join_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id)
+
+## Leave game room
+@app.post("/leave/game-room/{game_room_id}", response_model=models.GameLog)
+def leave_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    crud.send_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id, message=schemas.GameMessage.LEAVE)
+    return crud.leave_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id)
+
+## Start game room
+@app.post("/start/game-room/{game_room_id}", response_model=models.GameLog)
+def start_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    return crud.send_start_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id)
+
+## Check game room state
+@app.get("/game-room/{game_room_id}", response_model=models.GameRoomState)
+def read_game_room_state(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    return crud.get_game_room_state(db=db, game_room_id=game_room_id, user_id=current_user.id)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

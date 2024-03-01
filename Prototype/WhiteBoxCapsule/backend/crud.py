@@ -5,8 +5,9 @@ from fastapi import File
 from sqlalchemy.exc import SQLAlchemyError
 from dateutil.relativedelta import *
 
-import schemas
 import models
+import schemas
+
 import auth
 
 def at_least_one_month_after(token_date):
@@ -154,7 +155,7 @@ def get_user_by_email(db: Session, email: str):
     return db.query(schemas.User).filter(schemas.User.email == email).first()
 
 def get_users(db: Session, skip: int = 0, limit: int = 500):
-    users = db.query(schemas.User).offset(skip).limit(limit).all()
+    users = db.query(schemas.User).offset(skip).limit(limit).filter(user_type=schemas.UserType.PLAYER).all()
 
     user_basics = []
     for user in users:
@@ -162,8 +163,10 @@ def get_users(db: Session, skip: int = 0, limit: int = 500):
             id=user.id,
             name=user.name,
             username=user.username,
+            user_type=user.user_type,
             failed_attempts=user.failed_attempts,
             successful_attempts=user.successful_attempts,
+            picture=user.picture,
             score=user.score,
             achievements=user.achievements
         )
@@ -299,3 +302,140 @@ def delete_blacklisted_token(db: Session, token_id: int):
     db.delete(token_to_delete)
     db.commit()
     return token_to_delete
+
+def create_game_room(db: Session, game_room: schemas.GameRoom):
+    db_game_room = schemas.GameRoom(
+        name=game_room.name,
+        rounds=game_room.rounds,
+        player_1_id=game_room.player_1_id,
+        player_number=game_room.player_number,
+        game_state=schemas.GameState.WAITING
+    )
+    db.add(db_game_room)
+    db.commit()
+    return db_game_room
+
+def get_game_room(db: Session, game_room_id: int):
+    return db.query(schemas.GameRoom).filter(schemas.GameRoom.id == game_room_id).first()
+
+def get_game_rooms(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(schemas.GameRoom).offset(skip).limit(limit).all()
+
+def get_game_room_by_name(db: Session, name: str):
+    return db.query(schemas.GameRoom).filter(schemas.GameRoom.name == name).first()
+
+def check_game_room_full(game_room: schemas.GameRoom):
+    if (game_room.player_number == 2):
+        return game_room.player_2 is not None
+    elif (game_room.player_number == 3):
+        return game_room.player_2 is not None and game_room.player_3 is not None
+    return False
+
+def get_game_room_state(db: Session, game_room_id: int, user_id: int):
+    game_room = get_game_room(db, game_room_id)
+
+    if game_room is None:
+        return ValueError("Game room does not exist.")
+    
+    if (game_room.player_1 != user_id and game_room.player_2 != user_id and game_room.player_3 != user_id):
+        raise ValueError("User is not in the game room.")
+
+    game_room_state = models.GameRoomState(
+        id=game_room.id,
+        game_state=game_room.game_state,
+        game_over=game_room.game_over,
+        game_winner=game_room.game_winner
+    )
+
+    return game_room_state
+
+def send_game_log(db: Session, game_log: schemas.GameLog):
+    db_game_message = schemas.GameLog(
+        message=game_log.message,
+        game_room_id=game_log.game_room_id,
+        user_id=game_log.user_id
+    )
+    db.add(db_game_message)
+    db.commit()
+    return db_game_message
+
+def send_game_start_log(db: Session, game_room_id: int, user_id: int):
+    game_room_to_log = get_game_room(db, game_room_id)
+
+    if game_room_to_log is None:
+        raise ValueError("Game room does not exist.")
+    
+    if (game_room_to_log.player_1 != user_id and game_room_to_log.player_2 != user_id and game_room_to_log.player_3 != user_id):
+        raise ValueError("User is not in the game room.")
+
+    db_game_log = schemas.GameLog(
+        message=schemas.GameMessage.START,
+        game_room_id=game_room_id,
+        user_id=user_id
+    )
+
+    db.add(db_game_log)
+    db.commit()
+    return db_game_log
+
+def join_game_room(db: Session, game_room_id: int, user_id: int):
+    game_room_to_join = get_game_room(db, game_room_id)
+
+    if game_room_to_join is None:
+        return None
+    
+    if game_room_to_join.player_2 is None:
+        game_room_to_join.player2 = user_id
+    elif game_room_to_join.player_3 is None:
+        game_room_to_join.player3 = user_id
+
+    if (check_game_room_full(game_room_to_join)):
+        ready_game_room(db, game_room_id)
+    
+    db.commit()
+    return game_room_to_join
+
+def leave_game_room(db: Session, game_room_id: int, user_id: int):
+    game_room_to_leave = get_game_room(db, game_room_id)
+
+    if game_room_to_leave is None:
+        return None
+    
+    if game_room_to_leave.player_2 == user_id:
+        game_room_to_leave.player_2 = None
+    elif game_room_to_leave.player_3 == user_id:
+        game_room_to_leave.player_3 = None
+
+    game_room_to_leave.game_state = schemas.GameState.WAITING
+    db.commit()
+    return game_room_to_leave
+
+def ready_game_room(db: Session, game_room_id: int):
+    game_room_to_ready = get_game_room(db, game_room_id)
+
+    if game_room_to_ready is None:
+        return None
+    
+    game_room_to_ready.game_state = schemas.GameState.READY
+    db.commit()
+    return game_room_to_ready
+
+def start_game_room(db: Session, game_room_id: int):
+    game_room_to_start = get_game_room(db, game_room_id)
+
+    if game_room_to_start is None:
+        return None
+    
+    game_room_to_start.game_state = schemas.GameState.STARTED
+    db.commit()
+    return game_room_to_start
+
+def finish_game_room(db: Session, game_room_id: int):
+    game_room_to_close = get_game_room(db, game_room_id)
+
+    if game_room_to_close is None:
+        return None
+    
+    game_room_to_close.game_state = schemas.GameState.FINISHED
+    db.commit()
+    return game_room_to_close
