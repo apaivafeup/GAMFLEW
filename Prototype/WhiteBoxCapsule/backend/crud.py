@@ -378,16 +378,27 @@ def send_game_start_log(db: Session, game_room_id: int, user_id: int):
     db.commit()
     return db_game_log
 
+def is_in_game_room(db: Session, game_room_id: int, user_id: int):
+    game_room = get_game_room(db, game_room_id)
+
+    if game_room is None:
+        return False
+    
+    return (game_room.player_1_id == user_id or game_room.player_2_id == user_id or game_room.player_3_id == user_id)
+
 def enter_game_room(db: Session, game_room_id: int, user_id: int):
     game_room_to_join = get_game_room(db, game_room_id)
 
     if game_room_to_join is None:
         return None
     
-    if game_room_to_join.player_2 is None:
-        game_room_to_join.player2 = user_id
-    elif game_room_to_join.player_3 is None:
-        game_room_to_join.player3 = user_id
+    if is_in_game_room(db, game_room_id, user_id):
+        return None
+
+    if game_room_to_join.player_2_id is None:
+        game_room_to_join.player2_id = user_id
+    elif game_room_to_join.player_3_id is None:
+        game_room_to_join.player3_id = user_id
 
     if (check_game_room_full(game_room_to_join)):
         ready_game_room(db, game_room_id)
@@ -401,10 +412,10 @@ def leave_game_room(db: Session, game_room_id: int, user_id: int):
     if game_room_to_leave is None:
         return None
     
-    if game_room_to_leave.player_2 == user_id:
-        game_room_to_leave.player_2 = None
-    elif game_room_to_leave.player_3 == user_id:
-        game_room_to_leave.player_3 = None
+    if game_room_to_leave.player_2_id == user_id:
+        game_room_to_leave.player_2_id = None
+    elif game_room_to_leave.player_3_id == user_id:
+        game_room_to_leave.player_3_id = None
 
     game_room_to_leave.game_state = schemas.GameState.WAITING
     db.commit()

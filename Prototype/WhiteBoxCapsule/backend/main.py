@@ -278,6 +278,7 @@ def read_game_rooms(current_user: Annotated[models.User, Depends(get_current_act
 ## Enter game room
 @app.post("/enter/game-room/{game_room_id}", response_model=models.GameLog)
 def enter_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    print(current_user.id)
     crud.enter_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id)
     return crud.send_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id, message=schemas.GameMessage.ENTER)
 
