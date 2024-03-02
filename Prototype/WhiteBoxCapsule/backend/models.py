@@ -215,7 +215,7 @@ class GameRoom(BaseModel):
 
     
 class GameRoomState(BaseModel):
-    id: int
+    id: Optional[int]
     game_state: GameState
     game_over: bool
     game_winner: Optional[int]

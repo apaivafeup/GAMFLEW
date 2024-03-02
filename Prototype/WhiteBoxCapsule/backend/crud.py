@@ -155,7 +155,7 @@ def get_user_by_email(db: Session, email: str):
     return db.query(schemas.User).filter(schemas.User.email == email).first()
 
 def get_users(db: Session, skip: int = 0, limit: int = 500):
-    users = db.query(schemas.User).offset(skip).limit(limit).filter(user_type=schemas.UserType.PLAYER).all()
+    users = db.query(schemas.User).limit(limit).offset(skip).all()
 
     user_basics = []
     for user in users:
@@ -349,11 +349,11 @@ def get_game_room_state(db: Session, game_room_id: int, user_id: int):
 
     return game_room_state
 
-def send_game_log(db: Session, game_log: schemas.GameLog):
+def send_game_log(db: Session, game_room_id: int, user_id: int, message: schemas.GameMessage):
     db_game_message = schemas.GameLog(
-        message=game_log.message,
-        game_room_id=game_log.game_room_id,
-        user_id=game_log.user_id
+        message=message,
+        game_room_id=game_room_id,
+        user_id=user_id
     )
     db.add(db_game_message)
     db.commit()
@@ -378,7 +378,7 @@ def send_game_start_log(db: Session, game_room_id: int, user_id: int):
     db.commit()
     return db_game_log
 
-def join_game_room(db: Session, game_room_id: int, user_id: int):
+def enter_game_room(db: Session, game_room_id: int, user_id: int):
     game_room_to_join = get_game_room(db, game_room_id)
 
     if game_room_to_join is None:
