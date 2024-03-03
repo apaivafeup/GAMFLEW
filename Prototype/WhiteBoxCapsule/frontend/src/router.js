@@ -17,6 +17,7 @@ const routes = [
     { name: 'wildcard', path: '/:pathMatch(.*)*', component: StaticError},
     { name: 'loading', path: '/loading', component: () => import('./pages/Loading.vue')},
     { name: 'multiplayer', path: '/multiplayer', component: () => import('./pages/MultiplayerRooms.vue')},
+    { name: 'multiplayer-room', path: '/multiplayer/:id', component: () => import('./pages/MultiplayerRoom.vue'), props: true},
 ];
 
 export const Router = createRouter({

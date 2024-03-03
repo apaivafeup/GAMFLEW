@@ -331,17 +331,43 @@ def check_game_room_full(game_room: schemas.GameRoom):
         return game_room.player_2 is not None and game_room.player_3 is not None
     return False
 
+def get_players_in(db: Session, game_room_id: int):
+    players_in = []
+    game_room = get_game_room(db, game_room_id)
+
+    if game_room is None:
+        return None
+    
+    start_messages = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.START).all()
+
+    player_1_in = False
+    player_2_in = False
+    player_3_in = False
+    for message in start_messages:
+        if (message.user_id == game_room.player_1_id and not player_1_in):
+            players_in.append(game_room.player_1_id)
+            player_1_in = True
+        elif (message.user_id == game_room.player_2_id and not player_2_in):
+            players_in.append(game_room.player_2_id)
+            player_2_in = True
+        elif (message.user_id == game_room.player_3_id and not player_3_in):
+            players_in.append(game_room.player_3_id)
+            player_3_in = True
+    
+    return players_in
+
 def get_game_room_state(db: Session, game_room_id: int, user_id: int):
     game_room = get_game_room(db, game_room_id)
 
     if game_room is None:
         return ValueError("Game room does not exist.")
     
-    if (game_room.player_1 != user_id and game_room.player_2 != user_id and game_room.player_3 != user_id):
+    if (game_room.player_1_id != user_id and game_room.player_2_id != user_id and game_room.player_3_id != user_id):
         raise ValueError("User is not in the game room.")
 
     game_room_state = models.GameRoomState(
         id=game_room.id,
+        players_in=get_players_in(db, game_room_id),
         game_state=game_room.game_state,
         game_over=game_room.game_over,
         game_winner=game_room.game_winner
@@ -359,13 +385,13 @@ def send_game_log(db: Session, game_room_id: int, user_id: int, message: schemas
     db.commit()
     return db_game_message
 
-def send_game_start_log(db: Session, game_room_id: int, user_id: int):
+def send_start_game_log(db: Session, game_room_id: int, user_id: int):
     game_room_to_log = get_game_room(db, game_room_id)
 
     if game_room_to_log is None:
         raise ValueError("Game room does not exist.")
     
-    if (game_room_to_log.player_1 != user_id and game_room_to_log.player_2 != user_id and game_room_to_log.player_3 != user_id):
+    if (game_room_to_log.player_1_id != user_id and game_room_to_log.player_2_id != user_id and game_room_to_log.player_3_id != user_id):
         raise ValueError("User is not in the game room.")
 
     db_game_log = schemas.GameLog(
@@ -396,9 +422,9 @@ def enter_game_room(db: Session, game_room_id: int, user_id: int):
         return None
 
     if game_room_to_join.player_2_id is None:
-        game_room_to_join.player2_id = user_id
+        setattr(game_room_to_join, 'player_2_id', user_id)
     elif game_room_to_join.player_3_id is None:
-        game_room_to_join.player3_id = user_id
+        setattr(game_room_to_join, 'player_3_id', user_id)
 
     if (check_game_room_full(game_room_to_join)):
         ready_game_room(db, game_room_id)

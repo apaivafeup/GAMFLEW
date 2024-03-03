@@ -64,8 +64,7 @@ export default {
         async enterRoom(id) {
             await this.$axios.post(this.$api_link + '/enter/game-room/' + id, {}, this.auth.config)
                 .then(response => {
-                    alert('Success!')
-                    //this.$router.push({ name: 'multiplayer-room', params: { id: id } })
+                    this.$router.push({ name: 'multiplayer-room', params: { id: id } })
                 })
                 .catch(error => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -110,50 +109,50 @@ export default {
                                 <h6 style="font-size: 15px; font-style: italic;">Players</h6>
                                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 1vw;">
                                     <div class="badge bg-info" v-if="room.player_1_id != null"
-                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px);">
+                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
                                         <img :src="this.$api_link + this.users[room.player_1_id].picture"
                                             style="width: 40px; height: 40px;" />
-                                        <p style="margin: 0px;">
+                                        <p style="margin: 0px; padding-right: 5px;">
                                             {{ this.users[room.player_1_id] ? this.users[room.player_1_id].username :
                                                 'Empty' }}
                                         </p>
                                     </div>
                                     <div class="badge bg-info" v-if="room.player_2_id != null"
-                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px);">
+                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
                                         <img :src="this.$api_link + users[room.player_2_id].picture"
                                             style="width: 40px; height: 40px;" />
-                                        <p style="margin: 0px;">
+                                        <p style="margin: 0px; padding-right: 5px;">
                                             {{ users[room.player_2_id] ? this.users[room.player_2_id].username : 'Empty' }}
                                         </p>
                                     </div>
                                     <div class="badge bg-secondary" v-else
-                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px);">
+                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
                                         <div
-                                            style="width: 40px; height: 40px; background-color: white; border-radius: 100px;">
+                                            style="width: 40px; height: 40px; background-color: white; border-radius: 100px; ">
                                         </div>
-                                        <p style="margin: 0px;">
+                                        <p style="margin: 0px; padding-right: 5px;">
                                             Empty
                                         </p>
                                     </div>
                                     <div class="badge bg-info" v-if="room.player_3_id != null"
-                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px);">
+                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
                                         <img :src="this.$api_link + this.users[room.player_3_id].picture"
                                             style="width: 40px; height: 40px;" />
-                                        <p style="margin: 0px;">
+                                        <p style="margin: 0px; padding-right: 5px;">
                                             {{ this.users[room.player_3_id] ? this.users[room.player_3_id].username :
                                                 'Empty' }}
                                         </p>
                                     </div>
                                     <div class="badge bg-secondary" v-else-if="room.player_number == 3"
-                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px);">
+                                        style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
                                         <div
-                                            style="width: 40px; height: 40px; background-color: white; border-radius: 100px;">
+                                            style="width: 40px; height: 40px; background-color: white; border-radius: 100px; ">
                                         </div>
-                                        <p style="margin: 0px;">
+                                        <p style="margin: 0px; padding-right: 5px;">
                                             Empty
                                         </p>
                                     </div>
-                                    <div class="badge bg-secondary disabled" style="justify-content: center;" v-else>
+                                    <div class="badge bg-secondary disabled" style="justify-content: center; grid-gap: 5px; padding: 5px;" v-else>
                                         N/A
                                     </div>
                                 </div>
