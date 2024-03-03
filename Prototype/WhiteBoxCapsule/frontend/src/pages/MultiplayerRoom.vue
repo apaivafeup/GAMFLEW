@@ -15,6 +15,8 @@ import { authStore } from '../store/authStore'
 
 import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';
+import ChallengeMultiplayerHeader from '../components/ChallengeMultiplayerHeader.vue'
+import MultiplayerBoard from '../components/MultiplayerBoard.vue'
 </script>
 
 <style>
@@ -29,8 +31,8 @@ import LoadingIcon from '../components/LoadingIcon.vue';
 
 <template style="overflow: hidden">
     <div v-if="loaded">
-        <ChallengeHeaderMultiplayer :room_name="room.name" :challenge_name="challenge.name" />
-        <Board :challenge="challenge" :code_file="code_file" :user="auth.user" />
+        <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name" :playable="this.playable" />
+        <MultiplayerBoard :challenge="challenge" :code_file="code_file" :user="auth.user" :playable="this.playable" />
         <SubmitModal :placeholder="submit_placeholder" />
         <SubmittedModal />
         <FailModal :placeholder="fail_placeholder" />
@@ -57,11 +59,14 @@ export default {
 
     data() {
         return {
-            first_time: true,
+            not_first_time: false,
+            is_ready: false,
             interval: Number,
             loaded: false,
             room: {},
             room_state: {},
+            round: {},
+            playable: Boolean,
             code_file: CodeFile,
             challenge: Challenge,
             board_state: BoardState,
@@ -116,20 +121,21 @@ export default {
         loader.hide()
 
         this.interval = setInterval(() => { this.checkState() }, 5000)
+    },
 
-        window.onhashchange = function () {
-            if (!confirm('Are you sure you want to leave the room? You will have to enter again to play.'))
-                return
+    async mounted() {
+        window.onpopstate = () => {
             this.leaveRoom()
         }
     },
 
-    updated() {
+    update() {
         Prism.highlightAll()
     },
 
     methods: {
         async leaveRoom() {
+            console.log('Leaving...')
             if (!confirm('Are you sure you want to leave the room?'))
                 return
 
@@ -144,7 +150,6 @@ export default {
         },
 
         async checkState() {
-            console.log('Checking state...')
             await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/state', this.auth.config)
                 .then(response => {
                     this.room_state = response.data
@@ -154,23 +159,45 @@ export default {
                     return
                 })
 
-            if (this.room_state.players_in.length === this.room.player_number && this.first_time) {
-                this.first_time = false
+            if (this.room_state.players_in.length === this.room.player_number && !this.not_first_time) {
+                this.not_first_time = true
                 clearInterval(this.interval)
-                console.log('Cleared!')
-                this.getChallenge()
+                this.stateChecking()
+            }
+
+            if (this.room_state.game_state == 'ready' && !this.is_ready) {
+                this.getRound()
+                this.is_ready = true
+            }
+
+            if (this.room_state.game_state == 'waiting') {
+                this.loaded = false
+                this.is_ready = false
+                this.not_first_time = false
+                this.$forceUpdate()
             }
         },
 
-        async getChallenge() {
+        stateChecking() {
             this.interval = setInterval(() => { this.checkState() }, 10 * 1000)
-            // GET CHALLENGE ID
+        },
+
+        async getRound() {
+            await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/round', this.auth.config)
+                .then(response => {
+                    this.round = response.data
+                    console.log(this.round)
+                    this.challenge_id = this.round.challenge_id
+                    this.playable = (this.round.user_id == this.auth.user.id)
+                    console.log('playable?', this.playable)
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
 
 
-            var user_id
-
-            return
-
+            var user_id = 0
             await this.$axios.get(this.$api_link + '/challenges/' + this.challenge_id, this.auth.config).then((response) => {
                 user_id = response.data.owner_id
 
@@ -191,7 +218,6 @@ export default {
                     response.data.owner_id
                 )
             }).catch((error) => {
-                console.log(error.response)
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
                 this.$error = true
             })
@@ -211,10 +237,15 @@ export default {
             })
 
             this.board = boardStore()
+            this.board.generateState()
             this.board.initialState = this.board_state
             this.board.setState()
 
             this.board.attempt = new Attempt(this.auth.user.id, this.challenge_id, this.challenge.score, 0, 0, null, null)
+
+            this.loaded = true
+            Prism.highlightAll()
+            this.$forceUpdate()
         }
     },
 
@@ -231,6 +262,21 @@ export default {
             },
             deep: true
         },
+        room_state: {
+            handler: function () {
+                this.$forceUpdate()
+            },
+            deep: true
+        }
+    },
+
+    components: {
+        ChallengeHeader,
+        Board,
+        SubmitModal,
+        FailModal,
+        LoadingIcon,
+        ChallengeMultiplayerHeader
     }
 }
 </script>

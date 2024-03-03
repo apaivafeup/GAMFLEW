@@ -62,6 +62,11 @@ class GameMessage(str, Enum):
     START = "start"
     END = "end"
 
+class GameRoundState(str, Enum):
+    """Enum for the state of the game round."""
+    ONGOING = "ongoing"
+    FINISHED = "finished"
+
 class User(Base):
     __tablename__ = "users"
 
@@ -85,6 +90,7 @@ class User(Base):
     second_player = relationship("GameRoom", back_populates="player_2", foreign_keys="GameRoom.player_2_id")
     third_player = relationship("GameRoom", back_populates="player_3", foreign_keys="GameRoom.player_3_id")
     game_logs = relationship("GameLog", back_populates="users")
+    game_rounds = relationship("GameRound", back_populates="users")
 
 class CodeFile(Base):
     __tablename__ = "code_file"
@@ -165,6 +171,7 @@ class GameRoom(Base):
     game_winner = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
 
     game_logs = relationship("GameLog", back_populates="game_rooms") # this is the correct way
+    game_rounds = relationship("GameRound", back_populates="game_rooms")
     winner = relationship("User", back_populates="game_winner", foreign_keys="GameRoom.game_winner")
     player_1 = relationship("User", back_populates="first_player", foreign_keys="GameRoom.player_1_id")
     player_2 = relationship("User", back_populates="second_player", foreign_keys="GameRoom.player_2_id")
@@ -180,3 +187,17 @@ class GameLog(Base):
 
     game_rooms = relationship("GameRoom", back_populates="game_logs")
     users = relationship("User", back_populates="game_logs")
+
+class GameRound(Base):
+    __tablename__ = "game_rounds"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    game_room_id = Column(Integer, ForeignKey("game_rooms.id"), nullable=False, index=True)
+    challenge_id = Column(Integer, ForeignKey("challenges.id"), nullable=False, index=True)
+    round_number = Column(Integer, nullable=False, index=True)
+    max_rounds = Column(Integer, nullable=False, index=True)
+    state = Column(ENUM(GameRoundState), index=True)
+
+    game_rooms = relationship("GameRoom", back_populates="game_rounds")
+    users = relationship("User", back_populates="game_rounds")

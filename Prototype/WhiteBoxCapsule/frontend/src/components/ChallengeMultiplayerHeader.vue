@@ -4,6 +4,10 @@
       <div class="col" id="challenge-id">
         <strong>{{room_name + ': '}}</strong><em>{{ challenge_name.includes(':') ? challenge_name.split(':')[1] : challenge_name }}</em>
       </div>
+      <div class="col">
+        <p v-if="playable" style="margin: 0px; text-align: right; font-weight: bold; font-style: italic; color: rgb(169, 89, 255);">It's your turn! Go at it!</p>
+        <p v-else style="margin: 0px; text-align: right; font-weight: bold; font-style: italic;">It's not your turn. If you want, get a submission ready!</p>
+      </div>
     </div>
   </header>
 </template>
@@ -15,6 +19,7 @@ export default {
   props: {
     room_name: String,
     challenge_name: String,
+    playable: Boolean
   },
 
   beforeMount() {

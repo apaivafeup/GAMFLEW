@@ -290,8 +290,8 @@ def enter_game_room(current_user: Annotated[models.User, Depends(get_current_act
 ## Leave game room
 @app.post("/leave/game-room/{game_room_id}", response_model=models.GameLog)
 def leave_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
-    crud.send_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id, message=schemas.GameMessage.LEAVE)
-    return crud.leave_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id)
+    crud.leave_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id)
+    return crud.send_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id, message=schemas.GameMessage.LEAVE)
 
 ## Start game room
 @app.post("/start/game-room/{game_room_id}", response_model=models.GameLog)
@@ -302,6 +302,12 @@ def start_game_room(current_user: Annotated[models.User, Depends(get_current_act
 @app.get("/game-room/{game_room_id}/state", response_model=models.GameRoomState)
 def read_game_room_state(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     return crud.get_game_room_state(db=db, game_room_id=game_room_id, user_id=current_user.id)
+
+## Make round
+@app.get("/game-room/{game_room_id}/round", response_model=models.GameRound)
+def random_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    challenge = crud.get_random_challenge(db=db, game_room_id=game_room_id)
+    return crud.add_game_round(db=db, challenge_id=challenge.id, game_room_id=game_room_id)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

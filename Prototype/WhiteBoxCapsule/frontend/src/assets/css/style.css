@@ -338,8 +338,9 @@ button.menu-button {
 #theme-toggle {
   background-color: var(--button-color);
   color: var(--toggle-color);
-  width: 77.5px;
-  height: 40px;
+  padding: 5px;
+  height: 30px;
+  width: 30px;
   border: none;
   border-radius: 200px;
   cursor: pointer;

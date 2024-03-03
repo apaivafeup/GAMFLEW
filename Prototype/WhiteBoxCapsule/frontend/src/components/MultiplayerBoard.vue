@@ -8,6 +8,7 @@ import { Challenge } from '../store/models/challenge'
 import { User } from '../store/models/user.js'
 import { CodeFile } from '../store/models/code_file'
 import { authStore } from '../store/authStore'
+import MultiplayerBoardGrid from './MultiplayerBoardGrid.vue'
 
 export default {
   props: {
@@ -21,11 +22,10 @@ export default {
     return {}
   },
 
-  components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar },
+  components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar, MultiplayerBoardGrid },
 
   async beforeMount() {
     this.board = boardStore()
-    this.board.generateState()
   }
 }
 </script>
@@ -65,7 +65,7 @@ export default {
       </div>
     </div>
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
-      <MultiplayerBoardGrid :challenge="challenge" :playable="playable"/>
+      <MultiplayerBoardGrid :challenge="challenge" :playable="playable "/>
       <PlayerBar :user="user" />
     </div>
   </div>

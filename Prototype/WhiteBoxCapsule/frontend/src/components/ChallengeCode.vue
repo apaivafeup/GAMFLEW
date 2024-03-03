@@ -27,6 +27,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 
 <script>
 import { CodeFile } from '../store/models/code_file.js'
+import Prism from 'prismjs'
 
 export default {
   components: {},
@@ -34,6 +35,8 @@ export default {
     code_file: CodeFile
   },
 
-  async beforeMount() {}
+  async beforeMount() {
+    Prism.highlightAll()
+  }
 }
 </script>

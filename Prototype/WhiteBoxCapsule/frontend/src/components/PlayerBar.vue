@@ -5,7 +5,7 @@
         <div style="display: flex; align-content: center; align-items: start; flex-direction: column; justify-content: center;">
           <div class="row" style="--bs-gutter-x: 0; --bs-gutter-y: 0;">
             <img :src="this.$api_link + user.picture" class="player-bar-avatar" />
-            <div class="col">
+            <div class="col" style="justify-content: center; display: flex; flex-direction: column;">
               <div class="row">
                 <b style="font-size: 22px">{{ user.name }}</b>
               </div>

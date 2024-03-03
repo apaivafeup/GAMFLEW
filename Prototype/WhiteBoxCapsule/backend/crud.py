@@ -5,9 +5,10 @@ from fastapi import File
 from sqlalchemy.exc import SQLAlchemyError
 from dateutil.relativedelta import *
 
+import random
+
 import models
 import schemas
-
 import auth
 
 def at_least_one_month_after(token_date):
@@ -200,6 +201,24 @@ def get_code_file(db: Session, code_file_id: int):
 def get_challenge(db: Session, challenge_id: int):
     return db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
 
+def get_random_challenge(db: Session, game_room_id: int):
+    challenge_count = int(db.query(schemas.Challenge).count())
+    random_id = random.randint(1, challenge_count)
+    random_challenge = db.query(schemas.Challenge).filter(schemas.Challenge.id == random_id).first()
+
+    game_rounds = db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).all()
+
+    if (len(game_rounds) == 0):
+        return random_challenge
+
+    for round in game_rounds:
+        if round.challenge_id == random_challenge.id:
+            return get_random_challenge(db, game_room_id)
+        else:
+            continue
+
+    return random_challenge
+
 def get_board_states(db: Session):
     return db.query(schemas.BoardState).all()
 
@@ -338,19 +357,22 @@ def get_players_in(db: Session, game_room_id: int):
     if game_room is None:
         return None
     
-    start_messages = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.START).all()
+    start_messages = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.START).order_by(schemas.GameLog.id).limit(3).all()
+    leave_messages_p1 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id==game_room.player_1_id).order_by(schemas.GameLog.id.desc()).first()
+    leave_messages_p2 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id==game_room.player_2_id).order_by(schemas.GameLog.id.desc()).first()
+    leave_messages_p3 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id==game_room.player_3_id).order_by(schemas.GameLog.id.desc()).first()
 
     player_1_in = False
     player_2_in = False
     player_3_in = False
     for message in start_messages:
-        if (message.user_id == game_room.player_1_id and not player_1_in):
+        if (message.user_id == game_room.player_1_id and not player_1_in and message.id > (leave_messages_p1.id if leave_messages_p1 is not None else 0)):
             players_in.append(game_room.player_1_id)
             player_1_in = True
-        elif (message.user_id == game_room.player_2_id and not player_2_in):
+        elif (message.user_id == game_room.player_2_id and not player_2_in and message.id > (leave_messages_p2.id if leave_messages_p2 is not None else 0)):
             players_in.append(game_room.player_2_id)
             player_2_in = True
-        elif (message.user_id == game_room.player_3_id and not player_3_in):
+        elif (message.user_id == game_room.player_3_id and not player_3_in and message.id > (leave_messages_p3.id if leave_messages_p3 is not None else 0)):
             players_in.append(game_room.player_3_id)
             player_3_in = True
     
@@ -358,12 +380,6 @@ def get_players_in(db: Session, game_room_id: int):
 
 def get_game_room_state(db: Session, game_room_id: int, user_id: int):
     game_room = get_game_room(db, game_room_id)
-
-    if game_room is None:
-        return ValueError("Game room does not exist.")
-    
-    if (game_room.player_1_id != user_id and game_room.player_2_id != user_id and game_room.player_3_id != user_id):
-        raise ValueError("User is not in the game room.")
 
     game_room_state = models.GameRoomState(
         id=game_room.id,
@@ -476,3 +492,41 @@ def finish_game_room(db: Session, game_room_id: int):
     game_room_to_close.game_state = schemas.GameState.FINISHED
     db.commit()
     return game_room_to_close
+
+def get_random_player(db: Session, game_room_id: int):
+    game_room = get_game_room(db, game_room_id)
+
+    if game_room is None:
+        return None
+    
+    if (game_room.player_number == 2):
+        return random.choice([game_room.player_1_id, game_room.player_2_id])
+    elif (game_room.player_number == 3):
+        return random.choice([game_room.player_1_id, game_room.player_2_id, game_room.player_3_id])
+    
+    return game_room.player_1_id
+
+def add_game_round(db: Session, game_room_id: int, challenge_id: int):
+    game_round = db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).order_by(schemas.GameRound.id.desc()).first()
+
+    if (game_round is not None and game_round.state == schemas.GameRoundState.ONGOING):
+        return game_round
+
+    game_room = get_game_room(db, game_room_id)
+
+    if game_round is None:
+        round_number = 1
+    else:
+        round_number = game_round.round_number + 1
+    
+    db_game_round = schemas.GameRound(
+        game_room_id=game_room_id,
+        user_id=get_random_player(db, game_room_id),
+        challenge_id=challenge_id,
+        round_number=round_number,
+        max_rounds=game_room.rounds,
+        state=schemas.GameRoundState.ONGOING
+    )
+    db.add(db_game_round)
+    db.commit()
+    return db_game_round

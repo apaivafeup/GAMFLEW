@@ -230,3 +230,22 @@ class GameLog(BaseModel):
     class Config:
         from_attributes = True
 
+class GameRound(BaseModel):
+    id: Optional[int]
+    user_id: int
+    game_room_id: int
+    challenge_id: int
+    max_rounds: int
+    round_number: int
+
+    class Config:
+        from_attributes = True
+    
+    @model_validator(mode='after')
+    @classmethod
+    def validate_round_number(cls, self):
+        if (self.round_number < 1):
+            raise ValueError("A round number must be at least 1.")
+        elif (self.round_number > self.max_rounds):
+            raise ValueError("A round number must be at most the maximum number of rounds.")
+        return self
