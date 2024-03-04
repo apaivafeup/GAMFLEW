@@ -60,6 +60,7 @@ class GameMessage(str, Enum):
     ENTER = "enter"
     LEAVE = "leave"
     START = "start"
+    NEXT_ROUND = "next_round"
     END = "end"
 
 class GameRoundState(str, Enum):

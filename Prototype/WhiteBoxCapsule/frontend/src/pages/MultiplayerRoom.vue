@@ -17,6 +17,7 @@ import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';
 import ChallengeMultiplayerHeader from '../components/ChallengeMultiplayerHeader.vue'
 import MultiplayerBoard from '../components/MultiplayerBoard.vue'
+import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.vue'
 </script>
 
 <style>
@@ -33,8 +34,7 @@ import MultiplayerBoard from '../components/MultiplayerBoard.vue'
     <div v-if="loaded">
         <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name" :playable="this.playable" />
         <MultiplayerBoard :challenge="challenge" :code_file="code_file" :user="auth.user" :playable="this.playable" />
-        <SubmitModal :placeholder="submit_placeholder" />
-        <SubmittedModal />
+        <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" />
         <FailModal :placeholder="fail_placeholder" />
     </div>
     <div style="display: flex; justify-content: center;" v-else>
@@ -51,7 +51,7 @@ import MultiplayerBoard from '../components/MultiplayerBoard.vue'
 
 <script>
 export default {
-    components: { ChallengeHeader, Board, SubmitModal, FailModal },
+    components: { ChallengeHeader, Board, MultiplayerSubmitModal, FailModal },
 
     props: {
         id: Number
@@ -59,13 +59,12 @@ export default {
 
     data() {
         return {
-            not_first_time: false,
-            is_ready: false,
             interval: Number,
             loaded: false,
             room: {},
             room_state: {},
             round: {},
+            is_ready: false,
             playable: Boolean,
             code_file: CodeFile,
             challenge: Challenge,
@@ -104,15 +103,6 @@ export default {
                 return
             })
 
-        await this.$axios.post(this.$api_link + '/start/game-room/' + this.id, {}, this.auth.config)
-            .then((response) => {
-                this.game_started = true
-            })
-            .catch((error) => {
-                this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
-                return
-            })
-
         if (this.$error) {
             loader.hide()
             return
@@ -120,13 +110,15 @@ export default {
 
         loader.hide()
 
-        this.interval = setInterval(() => { this.checkState() }, 5000)
     },
 
     async mounted() {
         window.onpopstate = () => {
             this.leaveRoom()
         }
+
+        this.stateChecking()
+        this.sendStart()
     },
 
     update() {
@@ -170,6 +162,14 @@ export default {
                 this.is_ready = true
             }
 
+            if (this.room_state.game_state == 'playing') {
+                if (!this.is_ready) {
+                    this.getRound()
+                    this.is_ready = true
+                }
+                this.loaded = true
+            }
+
             if (this.room_state.game_state == 'waiting') {
                 this.loaded = false
                 this.is_ready = false
@@ -179,7 +179,7 @@ export default {
         },
 
         stateChecking() {
-            this.interval = setInterval(() => { this.checkState() }, 10 * 1000)
+            this.interval = setInterval(() => { this.checkState() }, 5000)
         },
 
         async getRound() {
@@ -242,10 +242,19 @@ export default {
             this.board.setState()
 
             this.board.attempt = new Attempt(this.auth.user.id, this.challenge_id, this.challenge.score, 0, 0, null, null)
-
-            this.loaded = true
             Prism.highlightAll()
             this.$forceUpdate()
+        },
+
+        async sendStart() {
+            await this.$axios.post(this.$api_link + '/start/game-room/' + this.id, {}, this.auth.config)
+            .then((response) => {
+                this.game_started = true
+            })
+            .catch((error) => {
+                this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                return
+            })
         }
     },
 

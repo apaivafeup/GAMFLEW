@@ -16,7 +16,7 @@ from datetime import timedelta # you might prefer not to have this, it's for the
 from typing import Annotated
 
 import uvicorn
-import crud, models, schemas, auth
+import models, schemas, crud, auth
 
 # Check if file directories exist, if not create them
 if not os.path.exists('static'):
@@ -296,18 +296,25 @@ def leave_game_room(current_user: Annotated[models.User, Depends(get_current_act
 ## Start game room
 @app.post("/start/game-room/{game_room_id}", response_model=models.GameLog)
 def start_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
-    return crud.send_start_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id)
+    game_log = crud.send_start_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id)
+    return game_log
 
 ## Check game room state
 @app.get("/game-room/{game_room_id}/state", response_model=models.GameRoomState)
 def read_game_room_state(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
-    return crud.get_game_room_state(db=db, game_room_id=game_room_id, user_id=current_user.id)
+    return crud.set_game_room_state(db=db, game_room_id=game_room_id)
 
 ## Make round
 @app.get("/game-room/{game_room_id}/round", response_model=models.GameRound)
 def random_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     challenge = crud.get_random_challenge(db=db, game_room_id=game_room_id)
     return crud.add_game_round(db=db, challenge_id=challenge.id, game_room_id=game_room_id)
+
+## Finish game round
+@app.post("/round/{game_round}/finish", response_model=models.GameRound)
+def finish_game_round(current_user: Annotated[models.User, Depends(get_current_active_user)], game_round: int, db: Session = Depends(get_db)):
+    game_log = crud.send_game_log(db=db, game_round_id=game_round, user_id=current_user.id, message=schemas.GameMessage.NEXT_ROUND)
+    return crud.finish_game_round(db=db, game_round_id=game_round)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

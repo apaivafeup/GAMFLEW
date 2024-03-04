@@ -357,7 +357,7 @@ def get_players_in(db: Session, game_room_id: int):
     if game_room is None:
         return None
     
-    start_messages = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.START).order_by(schemas.GameLog.id).limit(3).all()
+    start_messages = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.START).order_by(schemas.GameLog.id.desc()).limit(3).all()
     leave_messages_p1 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id==game_room.player_1_id).order_by(schemas.GameLog.id.desc()).first()
     leave_messages_p2 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id==game_room.player_2_id).order_by(schemas.GameLog.id.desc()).first()
     leave_messages_p3 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id==game_room.player_3_id).order_by(schemas.GameLog.id.desc()).first()
@@ -378,7 +378,7 @@ def get_players_in(db: Session, game_room_id: int):
     
     return players_in
 
-def get_game_room_state(db: Session, game_room_id: int, user_id: int):
+def get_game_room_state(db: Session, game_room_id: int):
     game_room = get_game_room(db, game_room_id)
 
     game_room_state = models.GameRoomState(
@@ -390,6 +390,27 @@ def get_game_room_state(db: Session, game_room_id: int, user_id: int):
     )
 
     return game_room_state
+
+def set_game_room_state(db: Session, game_room_id: int):
+    game_room = get_game_room(db, game_room_id)
+
+    if game_room is None:
+        return None
+    
+    players_in = get_players_in(db, game_room_id)
+    game_room.players_in = players_in
+
+    if (len(players_in) < game_room.player_number):
+        game_room.game_state = schemas.GameState.WAITING
+    elif (len(players_in) == game_room.player_number and game_room.game_state == schemas.GameState.WAITING):
+        game_room.game_state = schemas.GameState.READY
+        print('Game room ready')
+    elif (game_room.game_state == schemas.GameState.READY):
+        game_room.game_state = schemas.GameState.PLAYING
+        print('Game room playing')
+
+    db.commit()
+    return get_game_room_state(db=db, game_room_id=game_room_id)
 
 def send_game_log(db: Session, game_room_id: int, user_id: int, message: schemas.GameMessage):
     db_game_message = schemas.GameLog(
@@ -473,16 +494,6 @@ def ready_game_room(db: Session, game_room_id: int):
     db.commit()
     return game_room_to_ready
 
-def start_game_room(db: Session, game_room_id: int):
-    game_room_to_start = get_game_room(db, game_room_id)
-
-    if game_room_to_start is None:
-        return None
-    
-    game_room_to_start.game_state = schemas.GameState.STARTED
-    db.commit()
-    return game_room_to_start
-
 def finish_game_room(db: Session, game_room_id: int):
     game_room_to_close = get_game_room(db, game_room_id)
 
@@ -506,7 +517,7 @@ def get_random_player(db: Session, game_room_id: int):
     
     return game_room.player_1_id
 
-def add_game_round(db: Session, game_room_id: int, challenge_id: int):
+def add_game_round(db: Session, game_room_id: int, challenge_id: int, next: bool = False):
     game_round = db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).order_by(schemas.GameRound.id.desc()).first()
 
     if (game_round is not None and game_round.state == schemas.GameRoundState.ONGOING):
@@ -530,3 +541,16 @@ def add_game_round(db: Session, game_room_id: int, challenge_id: int):
     db.add(db_game_round)
     db.commit()
     return db_game_round
+
+def finish_game_round(db: Session, game_round_id: int):
+    game_round_to_finish = db.query(schemas.GameRound).filter(schemas.GameRound.id == game_round_id).first()
+    game_room = get_game_room(db, game_round_to_finish.game_room_id)
+
+    if game_round_to_finish is None:
+        return None
+    
+    game_round_to_finish.state = schemas.GameRoundState.FINISHED
+    game_room.game_state = schemas.GameState.READY
+
+    db.commit()
+    return game_round_to_finish
