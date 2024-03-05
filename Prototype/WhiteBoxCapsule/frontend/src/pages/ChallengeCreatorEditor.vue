@@ -1,4 +1,5 @@
 <template>
+  <div class="container" style="max-width: 95% !important;">
   <div class="row" style="text-align: center;">
     <h2 v-if="this.id == null">Challenge Creator</h2>
     <h2 v-else>Challenge Editor</h2>
@@ -142,7 +143,7 @@
       </div>
     </div>
   </div>
-  <div class="container" style="max-width: 95% !important;">
+
     <div style="display: flex; justify-content: center; flex-direction: column;">
       <div class="row">
         <h5 style="padding: 0px; margin-bottom: 5px;">Challenge Validation</h5>
