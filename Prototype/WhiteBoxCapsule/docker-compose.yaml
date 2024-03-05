@@ -1,14 +1,45 @@
 version: '1.0'
 
-name: gamflew-api
+name: gamflew
 
 services:
+  database:
+    image: postgres
+    restart: always
+    container_name: database
+    environment:
+      POSTGRES_HOST: localhost
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: prototype
+      POSTGRES_USER: postgres
+    expose:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
   backend:
     image: backend
+    links:
+      - database
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     ports:
-      - 8000:80
+      - "8000:80"
     env_file:
-      - ./.env
+      - ./backend/.env
+    depends_on: 
+      - database
+
+  #  frontend:
+  #   build: 
+  #     context: ./frontend
+  #   image: vue-frontend
+  #   container_name: frontend
+  #   ports:
+  #     - "8080:80"
+  #   env_file:
+  #     - .env
+
+volumes:
+  postgres_data:

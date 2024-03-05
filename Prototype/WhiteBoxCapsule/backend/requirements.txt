@@ -1,8 +1,10 @@
 fastapi
 pydantic
 python-dotenv
+psycopg2-binary
 sqlalchemy
 uvicorn
-dotenv
 python-jose
-uvicorn
+python-dateutil
+passlib
+python-multipart
