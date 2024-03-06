@@ -31,15 +31,17 @@ services:
     depends_on: 
       - database
 
-  #  frontend:
-  #   build: 
-  #     context: ./frontend
-  #   image: vue-frontend
-  #   container_name: frontend
-  #   ports:
-  #     - "8080:80"
-  #   env_file:
-  #     - .env
+  frontend:
+    build: 
+      context: ./frontend
+    image: vue-frontend
+    container_name: frontend
+    ports:
+      - "5473:80"
+    depends_on:
+      - backend
+    env_file:
+      - ./frontend/.env
 
 volumes:
   postgres_data:
