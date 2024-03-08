@@ -18,7 +18,9 @@ export const boardStore = defineStore('boardStore', {
       state: {},
       outOfBoundsState: {},
       currentKey: 0,
-      infoState: String, // Displayables for the user
+      infoState: {
+        0: []
+      }, // Displayables for the user
 
       // Auxiliary state, for game mechanics (movement, selection, adding, etc).
       selectedPiece: null,
@@ -32,6 +34,7 @@ export const boardStore = defineStore('boardStore', {
       // Flags, for game mechanics / button panel.
       passed: Boolean,
       failed: Boolean,
+      hint: Boolean,
       add: Boolean,
       pause: Boolean,
       timeout: Boolean,
@@ -167,7 +170,6 @@ export const boardStore = defineStore('boardStore', {
       this.state[this.currentKey] = []
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
       this.log[this.currentKey] = []
-      this.infoState = ''
       this.passed = false
       this.failed = false
       this.add = false
@@ -192,8 +194,6 @@ export const boardStore = defineStore('boardStore', {
       }
 
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
-
-      this.log[this.currentKey] = []
 
       if (reset) {
         this.setState()
@@ -225,6 +225,10 @@ export const boardStore = defineStore('boardStore', {
         this.setState()
       }
 
+      if (this.infoState[this.currentKey] == undefined) {
+        this.infoState[this.currentKey] = []
+      }
+
       this.selectedPiece = null
       this.selectedCoords = { x: 0, y: 0 }
     },
@@ -240,22 +244,15 @@ export const boardStore = defineStore('boardStore', {
       var lastLog = this.log[this.currentKey][this.log[this.currentKey].length - 1]
 
       if (lastLog.type == 'move') {
-        this.infoState =
-          'Moved (' +
-          lastLog.start.x +
-          ', ' +
-          lastLog.start.y +
-          ') to (' +
-          lastLog.destination.x +
-          ', ' +
-          lastLog.destination.y +
-          ').'
+        this.infoState[this.currentKey].push('Moved (' + lastLog.start.x + ', ' + lastLog.start.y + ') to (' + lastLog.destination.x + ', ' + lastLog.destination.y + ').')
       } else {
         if (lastLog.color != 'empty')
-          this.infoState =
-            'Added ' + lastLog.color + ' piece to (' + lastLog.destination.x + ', ' + lastLog.destination.y + ').'
-        else this.infoState = 'Removed piece from (' + lastLog.destination.x + ', ' + lastLog.destination.y + ').'
+          this.infoState[this.currentKey].push('Added ' + lastLog.color + ' piece to (' + lastLog.destination.x + ', ' + lastLog.destination.y + ').')
+        else
+          this.infoState[this.currentKey].push('Removed piece from (' + lastLog.destination.x + ', ' + lastLog.destination.y + ').')
       }
+
+      console.log(this.infoState)
     },
 
     addMode() {

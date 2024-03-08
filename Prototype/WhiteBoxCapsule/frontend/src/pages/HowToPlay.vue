@@ -188,7 +188,7 @@
                             style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px;">
                             <div class="game-board-out-labels">
                                 <div class="game-board-label col"
-                                    style="display: flex; justify-content: center; font-size: 16px;">Out</div>
+                                    style="display: flex; justify-content: center; font-size: 16px;">Out of Bounds</div>
                             </div>
                             <div class="game-board-out">
                                 <div class="box">
@@ -204,7 +204,7 @@
                         </div>
                         <p style="text-align: justify; margin: 0px">
                             You can use the two input boxes below to provide <em>(x, y)</em> coordinates of where to move.
-                            The piece will be moved to the spot with the given coordinates.
+                            The piece will be moved to the spot with the given coordinates. If you don't write anything, the coordinates default to <em>(-1, -1)</em>.
                             <strong>When the spot is occupied,</strong> the input boxes are disabled (see above). Clear the
                             spot to write in them again.
                         </p>

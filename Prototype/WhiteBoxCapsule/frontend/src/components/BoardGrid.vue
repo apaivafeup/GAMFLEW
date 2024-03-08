@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; justify-content: right">
+  <div style="display: flex; justify-content: right; padding: 0px;">
     <div style="flex-direction: column; justify-content: space-between; display: flex">
       <div class="col" v-if="!board.table">
         <div class="game-board-out-labels">
@@ -12,11 +12,11 @@
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outX" id="piece-stack-out-x"
              @input="this.changeX()" class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x"/>
-             <input v-else id="piece-stack-out-x"
+             <input v-else id="piece-stack-out-x" :value="this.outX"
              class="col box disabled" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x"/>
             <input @input="this.changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outY" id="piece-stack-out-y"
               class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
-              <input v-else id="piece-stack-out-y" class="col box disabled" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
+              <input v-else id="piece-stack-out-y" :value="this.outY" class="col box disabled" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
           </div>
         </div>
       </div>
