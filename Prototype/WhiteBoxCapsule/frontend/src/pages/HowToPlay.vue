@@ -1,5 +1,5 @@
 <template>
-    <h2 class="modal-title" style="text-align: center;">How To Play</h2>
+    <h2 class="modal-title" style="text-align: center; margin-bottom: 7.5px;">How To Play</h2>
     <div class="container" style="display: flex; align-items: center; flex-direction: column;">
         <div class="row" style="display: flex; gap: 10px; margin-bottom: 10px; justify-content: center; align-items: center; flex-direction: row; width: 100%; ">
             <button id="guide-button-1" class="col button is-primary is-fullwidth guide-button guide-button-selected" style="margin: 0px;"
@@ -12,7 +12,12 @@
             </button>
         </div>
         <div v-if="tab == 'board'" class="display: grid; grid-template-rows: 50% 50%; grid-template-columns: 100%;" style="font-size: 12px !important">
-            <div class="row" style="justify-content: center;">
+            <div class="row" style="justify-content: center;
+            width: 100%;
+            display: flex;
+            align-content: center;
+            flex-direction: row;
+            margin: 0px;">
                 <div class="col" style="
                         margin-bottom: 10px;
                         margin-right: 7.5px;
