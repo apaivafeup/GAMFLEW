@@ -131,7 +131,7 @@
                         Movement isn't affected, but its appearance changes.
                         See below how it looks.
                     </p>
-                    <div class="row" style="justify-content: center;">
+                    <div class="row" style="justify-content: center; margin-top: 5px;">
                         <div class="box" style="width: 50px; height: 50px; padding: 0px;">
                             <div class="square square-lg piece selected"
                                 style="display: flex; justify-content: center; align-items: center; font-size: 20px; width: 45px; height: 45px;">
@@ -201,9 +201,9 @@
                                 </div>
                                 <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
                                     <input id="piece-stack-out-x" class="col box disabled"
-                                        style="width: 30px; text-align: center; font-size: 12px" type="number" />
+                                        style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
                                     <input id="piece-stack-out-y" class="col box disabled"
-                                        style="width: 30px; text-align: center; font-size: 12px" type="number" />
+                                        style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
                                 </div>
                             </div>
                         </div>
