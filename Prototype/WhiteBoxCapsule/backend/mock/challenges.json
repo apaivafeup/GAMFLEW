@@ -602,7 +602,7 @@
         "id": 0,
         "name": "Challenge 2.7: Counting Pieces, But Thoroughly",
         "description": "You need to submit all possible test cases in this challenge.",
-        "test_cases_count": 3,
+        "test_cases_count": 2,
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
         "objective": "Condition/decision coverage of line 5.",
@@ -613,9 +613,8 @@
             "condition_count": 2,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, case_num) > 12 || utils.count_red_pieces(input, case_num) > 12", 
-                "utils.count_blue_pieces(input, case_num) <= 12 && utils.count_red_pieces(input, case_num) <= 12 && (utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0)",
-                "utils.count_blue_pieces(input, case_num) <= 12 && utils.count_red_pieces(input, case_num) <= 12 && !(utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0)"
+                "!(utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0) && (utils.count_blue_pieces(input, case_num) > 12 || utils.count_red_pieces(input, case_num) > 12)", 
+                "(utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0) && !(utils.count_blue_pieces(input, case_num) > 12 || utils.count_red_pieces(input, case_num) > 12)"
             ]
         },
         "achievement_criteria": null,
