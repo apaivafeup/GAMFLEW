@@ -590,8 +590,8 @@
             "condition_count": 2,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, case_num) <= 12 && utils.count_red_pieces(input, case_num) <= 12 && (utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0)",
-                "utils.count_blue_pieces(input, case_num) <= 12 && utils.count_red_pieces(input, case_num) <= 12 && !(utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0)"
+                "utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0",
+                "!(utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0)"
             ]
         },
         "achievement_criteria": null,
