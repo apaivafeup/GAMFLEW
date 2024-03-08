@@ -201,7 +201,7 @@
         "id": 0,
         "name": "Challenge 1.9: All Possible Moves",
         "description": "In this challenge, you need to test all possible moves!",
-        "test_cases_count": 3,
+        "test_cases_count": 2,
         "score": 350,
         "hint": "If you're making a move in Checkers, you always draw a square (as you follow one of its diagonals). Each case corresponds to a difference side length of the square.",
         "objective": "Decision coverage of line 18.",
@@ -215,8 +215,7 @@
             ],
             "tests": [
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 2",
-                "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 1",
-                "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) != 2 && Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) != 1"
+                "!(Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 2)"
             ]
         },
         "achievement_criteria": null,

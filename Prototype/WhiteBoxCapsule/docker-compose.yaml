@@ -17,6 +17,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'user@pgadmin.com'
+      PGADMIN_DEFAULT_PASSWORD: 'password'
+    ports:
+      - "4321:80"
+    depends_on:
+      - database
+
   backend:
     image: backend
     links:
