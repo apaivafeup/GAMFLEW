@@ -47,3 +47,9 @@ After that, you can use the application as a teacher. Check the instruction guid
 
 ### New Player User
 You can register your own user if you so wish. You cannot register a user with an already existing username.
+
+
+## Form Links
+- Questionnaire 1: [Link](https://forms.gle/anp1wVzVkfi7wfm5A)
+- Questionnaire 2: [Link](https://forms.gle/X9wsmWyTdSo11xcb9)
+- Short Exam: [Link](https://forms.gle/Qhb3QK1Zo6RSC8qi7)
