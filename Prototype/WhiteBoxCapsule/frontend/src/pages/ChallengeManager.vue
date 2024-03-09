@@ -80,8 +80,7 @@ export default defineComponent({
       this.$error = true
     })
 
-    //TODO: get logged user id when login is implemented
-    await this.$axios.get(this.$api_link + '/users/' + 1 + '/passed-challenges/', this.auth.config).then((response) => {
+    await this.$axios.get(this.$api_link + '/users/' + this.auth.user.id + '/passed-challenges/', this.auth.config).then((response) => {
       this.passed_challenges = response.data
     }).catch((error) => {
       this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})

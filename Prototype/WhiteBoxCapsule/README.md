@@ -13,7 +13,7 @@
    docker-compose up
    ```
 4. The application should be running now. You can access it by opening a web browser and going to `http://localhost:5473`.
-    - You can also access it via the docker desktop GUI, by accessing the frontend port.
+    - You can also access it via the Docker Desktop GUI.
 
 ## Configuring pgAdmin4 (required for experiment)
 One of the containers that is created when running the `docker-compose up` command is a pgAdmin4 container. This container is used to manage the database. To access it, you need to open a web browser and go to `http://localhost:4321`. You can log in using the following credentials:
