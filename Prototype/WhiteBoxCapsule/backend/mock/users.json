@@ -2,7 +2,7 @@
     "id": 0,
     "name": "Professor",
     "email": "professor@prototype.com",
-    "username": "professor@prototype.com",
+    "username": "professor",
     "password": "password",
     "user_type": "admin",
     "picture": "/static/images/avatar.png",

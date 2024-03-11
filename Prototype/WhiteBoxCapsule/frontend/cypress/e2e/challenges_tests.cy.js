@@ -1,6 +1,6 @@
 beforeEach('login', () => {
     cy.visit('http://localhost:5173/')
-    cy.get('#exampleInputUsername').type('professor@prototype.com')
+    cy.get('#exampleInputUsername').type('professor')
     cy.get('#exampleInputPassword').type('password')
     cy.get('#login-button').click({force: true})
     cy.viewport(1920, 1080)
@@ -232,28 +232,21 @@ describe("test file 1", () => {
 
     describe("challenge 1.9", () => {
         it('pass challenge 1.9', () => {
-            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-9').click()
-            
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-4-2').click()
             cy.get('#next-button').click()
             cy.get('#board-box-2-0').click()
             cy.get('#board-box-3-1').click()
-            cy.get('#next-button').click()
-            cy.get('#board-box-2-0').click()
-            cy.get('#board-box-5-3').click()
             cy.get('#go-button').click()
             cy.get('.alert-success').should('be.visible')
         })
     
         it('fail challenge 1.9', () => {
-            
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#challenge-card-9').click()
-            
-            cy.get('#next-button').click().click()
+            cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })
@@ -720,37 +713,11 @@ describe('test file 2', () => {
             cy.get('#single-player-button').click().wait(1000)
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-25').click().wait(1000)
-    
+            cy.get('#next-button').click()
             cy.get('#add-button').click()
             cy.get('#board-box-0-1').click()
             cy.get('#board-box-0-3').click().click()
             cy.get('#add-button').click()
-            cy.get('#next-button').click()
-            cy.get('#add-button').click()
-            for (let i = 0; i < 8; i = i + 1) {
-                if (i == 3 || i == 4) {
-                    continue;
-                }
-    
-                if (i % 2 != 0) {
-                    for (let j = 1; j <= 7; j = j + 2) {
-                        if (i > 4)
-                            cy.get('#board-box-' + i + '-' + j).click()
-                        else
-                            cy.get('#board-box-' + i + '-' + j).click().click()
-                    }
-                } else {
-                    for (let j = 0; j <= 7; j = j + 2) {
-                        if (i > 4)
-                            cy.get('#board-box-' + i + '-' + j).click()
-                        else
-                            cy.get('#board-box-' + i + '-' + j).click().click()
-                    }
-    
-                }
-            }
-            cy.get('#add-button').click()
-            cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-success').should('be.visible')
         })
@@ -761,7 +728,7 @@ describe('test file 2', () => {
             cy.get('#accordion-button-2').click()
             cy.get('#challenge-card-25').click().wait(1000)
     
-            cy.get('#next-button').click().click()
+            cy.get('#next-button').click()
             cy.get('#go-button').click()
             cy.get('.alert-danger').should('be.visible')
         })

@@ -1,18 +1,23 @@
 <template>
-    <h2 class="modal-title" style="text-align: center;">How To Play</h2>
-    <div>
-        <div class="row" style="padding: 10px 20px">
-            <button id="guide-button-1" class="col button is-primary is-fullwidth guide-button guide-button-selected"
+    <h2 class="modal-title" style="text-align: center; margin-bottom: 7.5px;">How To Play</h2>
+    <div class="container" style="display: flex; align-items: center; flex-direction: column;">
+        <div class="row" style="display: flex; gap: 10px; margin-bottom: 10px; justify-content: center; align-items: center; flex-direction: row; width: 100%; ">
+            <button id="guide-button-1" class="col button is-primary is-fullwidth guide-button guide-button-selected" style="margin: 0px;"
                 @click="changeTab('board', '1')">
                 Board
             </button>
-            <button id="guide-button-2" class="col button is-primary is-fullwidth guide-button"
+            <button id="guide-button-2" class="col button is-primary is-fullwidth guide-button" style="margin: 0px;"
                 @click="changeTab('auxiliary_functions', '2')">
                 Auxiliary Functions
             </button>
         </div>
-        <div v-if="tab == 'board'" style="font-size: 12px !important">
-            <div class="row" style="justify-content: center;">
+        <div v-if="tab == 'board'" class="display: grid; grid-template-rows: 50% 50%; grid-template-columns: 100%;" style="font-size: 12px !important">
+            <div class="row" style="justify-content: center;
+            width: 100%;
+            display: flex;
+            align-content: center;
+            flex-direction: row;
+            margin: 0px;">
                 <div class="col" style="
                         margin-bottom: 10px;
                         margin-right: 7.5px;
@@ -131,28 +136,33 @@
                         Movement isn't affected, but its appearance changes.
                         See below how it looks.
                     </p>
-                    <div class="row" style="justify-content: center;">
+                    <div class="row" style="justify-content: center; margin-top: 5px;">
                         <div class="box" style="width: 50px; height: 50px; padding: 0px;">
                             <div class="square square-lg piece selected"
-                                style="display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                                style="display: flex; justify-content: center; align-items: center; font-size: 20px; width: 45px; height: 45px;">
                                 <font-awesome-icon icon="crown" fixed-width style="color: white;" />
                             </div>
                         </div>
                         <div class="box" style="width: 50px; height: 50px; padding: 0px;">
                             <div class="square square-lg piece red"
-                                style="display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                                style="display: flex; justify-content: center; align-items: center; font-size: 20px; width: 45px; height: 45px;">
                                 <font-awesome-icon icon="crown" fixed-width style="color: white;" />
                             </div>
                         </div>
                         <div class="box" style="width: 50px; height: 50px; padding: 0px;">
                             <div class="square square-lg piece blue"
-                                style="display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                                style="display: flex; justify-content: center; align-items: center; font-size: 20px; width: 45px; height: 45px;">
                                 <font-awesome-icon icon="crown" fixed-width style="color: white;" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" style="display: flex; justify-content: space-between">
+            </div>
+                <div class="row" style="display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin: 0px;
+                align-content: center;">
                     <div class="col" style="
                         margin-bottom: 10px;
                         border: #ccc 1px solid;
@@ -185,10 +195,10 @@
                             You can move a piece out of bounds by moving it to the following spot.
                         </p>
                         <div class="row"
-                            style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px;">
+                            style="display: flex; justify-content: center; width: 100%; margin-top: 10px; margin-bottom: 10px;">
                             <div class="game-board-out-labels">
                                 <div class="game-board-label col"
-                                    style="display: flex; justify-content: center; font-size: 16px;">Out</div>
+                                    style="display: flex; justify-content: center; font-size: 16px;">Out of Bounds</div>
                             </div>
                             <div class="game-board-out">
                                 <div class="box">
@@ -196,21 +206,20 @@
                                 </div>
                                 <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
                                     <input id="piece-stack-out-x" class="col box disabled"
-                                        style="width: 30px; text-align: center; font-size: 12px" type="number" />
+                                        style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
                                     <input id="piece-stack-out-y" class="col box disabled"
-                                        style="width: 30px; text-align: center; font-size: 12px" type="number" />
+                                        style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
                                 </div>
                             </div>
                         </div>
                         <p style="text-align: justify; margin: 0px">
                             You can use the two input boxes below to provide <em>(x, y)</em> coordinates of where to move.
-                            The piece will be moved to the spot with the given coordinates.
+                            The piece will be moved to the spot with the given coordinates. If you don't write anything, the coordinates default to <em>(-1, -1)</em>.
                             <strong>When the spot is occupied,</strong> the input boxes are disabled (see above). Clear the
                             spot to write in them again.
                         </p>
                     </div>
                 </div>
-            </div>
         </div>
         <div v-if="tab == 'auxiliary_functions'" style="font-size: 13px !important; justify-content: center;">
             <p style="text-align: justify;">

@@ -323,7 +323,7 @@ pre {
   display: flex;
   height: auto;
   overflow: auto;
-  margin-bottom: 5px;
+  margin: 0px;
 }
 
 button.menu-button {

@@ -1,6 +1,6 @@
 beforeEach('login', () => {
     cy.visit('http://localhost:5173/')
-    cy.get('#exampleInputUsername').type('professor@prototype.com')
+    cy.get('#exampleInputUsername').type('professor')
     cy.get('#exampleInputPassword').type('password')
     cy.on('uncaught:exception', (err, runnable) => {
         return false

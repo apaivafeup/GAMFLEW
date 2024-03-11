@@ -2,7 +2,7 @@
   <div class="card challenge-card" @click="goToChallenge(challenge.id)">
     <div class="card-body" style="">
       <div class="row" style="display: flex; justify-content: space-between">
-        <div style="width: 90%">
+        <div style="width: 85%">
           <div class="row" style="align-items: center">
             <h5 class="card-title" style="width: auto">{{ challenge.name.split(':')[0] }}</h5>
             <div
@@ -28,7 +28,7 @@
             <h6 class="card-subtitle mb-2 text-muted">{{ challenge.name.split(':')[1] }}</h6>
           </div>
         </div>
-        <div style="width: 10%; display: flex; flex-direction: column; padding-right: 25px">
+        <div style="width: 15%; display: flex; flex-direction: column; padding-right: 25px">
           <div class="row" style="align-items: center; font-size: 15px; justify-content: end">
             {{ challenge.score + 'pts' }}
           </div>
