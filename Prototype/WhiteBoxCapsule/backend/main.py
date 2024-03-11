@@ -16,7 +16,7 @@ from datetime import timedelta # you might prefer not to have this, it's for the
 from typing import Annotated
 
 import uvicorn
-import models, schemas, crud, auth
+import crud, models, schemas, auth
 
 # Check if file directories exist, if not create them
 if not os.path.exists('static'):
@@ -285,14 +285,14 @@ def read_game_rooms(current_user: Annotated[models.User, Depends(get_current_act
 @app.post("/enter/game-room/{game_room_id}", response_model=models.GameLog)
 def enter_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     crud.enter_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id)
-    return crud.send_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id, message=schemas.GameMessage.ENTER)
+    return crud.send_enter_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id)
 
 ## Leave game room
 @app.post("/leave/game-room/{game_room_id}", response_model=models.GameLog)
 def leave_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     crud.leave_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id)
-    return crud.send_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id, message=schemas.GameMessage.LEAVE)
-
+    return crud.send_leave_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id
+                                    )
 ## Start game room
 @app.post("/start/game-room/{game_room_id}", response_model=models.GameLog)
 def start_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
@@ -310,11 +310,18 @@ def random_challenge(current_user: Annotated[models.User, Depends(get_current_ac
     challenge = crud.get_random_challenge(db=db, game_room_id=game_room_id)
     return crud.add_game_round(db=db, challenge_id=1, game_room_id=game_room_id)
 
+## Start round
+@app.post("/round/{game_round_id}/start", response_model=models.GameLog)
+def start_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_round_id: int, db: Session = Depends(get_db)):
+    game_log = crud.send_start_game_log(db=db, game_round_id=game_round_id, user_id=current_user.id)
+    return game_log
+
 ## Finish game round
-@app.post("/round/{game_round}/finish", response_model=models.GameRound)
-def finish_game_round(current_user: Annotated[models.User, Depends(get_current_active_user)], game_round: int, db: Session = Depends(get_db)):
-    crud.finish_game_round(db=db, game_round_id=game_round)
-    return crud.send_game_log(db=db, game_round_id=game_round, user_id=current_user.id, message=schemas.GameMessage.NEW_ROUND)
+@app.post("/round/{game_round_id}/finish", response_model=models.GameLog)
+def finish_game_round(current_user: Annotated[models.User, Depends(get_current_active_user)], game_round_id: int, db: Session = Depends(get_db)):
+    game_log = crud.send_next_round_log(db=db, game_round_id=game_round_id, user_id=current_user.id)
+    crud.finish_game_round(db=db, game_round_id=game_round_id)
+    return game_log
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

@@ -249,4 +249,6 @@ class GameRound(BaseModel):
             raise ValueError("A round number must be at least 1.")
         elif (self.round_number > self.max_rounds):
             raise ValueError("A round number must be at most the maximum number of rounds.")
+        elif self is None:
+            return self
         return self

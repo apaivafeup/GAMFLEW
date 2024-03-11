@@ -1,8 +1,9 @@
 from sqlalchemy import PickleType, Boolean, Column, ForeignKey, Integer, TEXT, DateTime
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship, declarative_base, backref
 from dotenv import load_dotenv   #for python-dotenv method
 import os
 from enum import Enum
+
 
 load_dotenv()
 
@@ -51,9 +52,10 @@ class UserType(str, Enum):
 class GameState(str, Enum):
     """Enum for the state of the game."""
     WAITING = "waiting"
-    READY = "ready"
     NEW_ROUND = "new_round"
+    READY = "ready"
     PLAYING = "playing"
+    NEXT_ROUND = "next_round"
     FINISHED = "finished"
 
 class GameMessage(str, Enum):
@@ -61,7 +63,7 @@ class GameMessage(str, Enum):
     ENTER = "enter"
     LEAVE = "leave"
     START = "start"
-    NEW_ROUND = "new_round"
+    NEXT_ROUND = "next_round"
     END = "end"
 
 class GameRoundState(str, Enum):
@@ -191,7 +193,6 @@ class GameLog(Base):
     game_rooms = relationship("GameRoom", back_populates="game_logs")
     users = relationship("User", back_populates="game_logs")
     game_rounds = relationship("GameRound", back_populates="game_logs")
-
 
 class GameRound(Base):
     __tablename__ = "game_rounds"

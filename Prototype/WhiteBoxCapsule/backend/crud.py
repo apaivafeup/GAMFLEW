@@ -11,6 +11,7 @@ import models
 import schemas
 import auth
 
+
 def at_least_one_month_after(token_date):
     current_date = datetime.datetime.now()
 
@@ -22,12 +23,13 @@ def at_least_one_month_after(token_date):
 
     return months_difference >= 1
 
+
 def create_user(db: Session, user: schemas.User):
     hashed_password = auth.get_password_hash(user.password)
     db_user = schemas.User(
         name=user.name,
         username=user.username,
-        email = user.email,
+        email=user.email,
         picture=user.picture,
         password=hashed_password,
         user_type=user.user_type,
@@ -35,11 +37,12 @@ def create_user(db: Session, user: schemas.User):
         successful_attempts=0,
         score=0,
         achievements=0,
-        auth = False
+        auth=False
     )
     db.add(db_user)
     db.commit()
     return db_user
+
 
 def create_challenge(db: Session, challenge: schemas.Challenge):
     db_challenge = schemas.Challenge(
@@ -61,8 +64,10 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
     db.commit()
     return db_challenge
 
+
 def update_challenge(db: Session, challenge_id: int, challenge: schemas.Challenge):
-    db_challenge = db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
+    db_challenge = db.query(schemas.Challenge).filter(
+        schemas.Challenge.id == challenge_id).first()
 
     if db_challenge is None:
         return None
@@ -84,6 +89,7 @@ def update_challenge(db: Session, challenge_id: int, challenge: schemas.Challeng
     db.commit()
     return db_challenge
 
+
 def create_code_file(db: Session, code_file: schemas.CodeFile):
     db_code_file = schemas.CodeFile(
         name=code_file.name,
@@ -94,6 +100,7 @@ def create_code_file(db: Session, code_file: schemas.CodeFile):
     db.commit()
     return db_code_file
 
+
 def create_board_state(db: Session, board_state: schemas.BoardState):
     db_board_state = schemas.BoardState(
         name=board_state.name,
@@ -103,6 +110,7 @@ def create_board_state(db: Session, board_state: schemas.BoardState):
     db.add(db_board_state)
     db.commit()
     return db_board_state
+
 
 def create_attempt(db: Session, attempt: schemas.Attempt):
     db_attempt = schemas.Attempt(
@@ -115,8 +123,9 @@ def create_attempt(db: Session, attempt: schemas.Attempt):
     )
 
     db.add(db_attempt)
-    db.commit() # Save create attempt to db
+    db.commit()  # Save create attempt to db
     return db_attempt
+
 
 def get_user_basics(db: Session, user_id: str):
     user = db.query(schemas.User).filter(schemas.User.id == user_id).first()
@@ -135,11 +144,14 @@ def get_user_basics(db: Session, user_id: str):
 
     return user_basics
 
+
 def get_user(db: Session, user_id: int):
     return db.query(schemas.User).filter(schemas.User.id == user_id).first()
 
+
 def get_user_by_username(db: Session, username: str):
-    user = db.query(schemas.User).filter(schemas.User.username == username).first()
+    user = db.query(schemas.User).filter(
+        schemas.User.username == username).first()
 
     if user is not None:
         user = models.UserResponse(
@@ -152,8 +164,10 @@ def get_user_by_username(db: Session, username: str):
 
     return user
 
+
 def get_user_by_email(db: Session, email: str):
     return db.query(schemas.User).filter(schemas.User.email == email).first()
+
 
 def get_users(db: Session, skip: int = 0, limit: int = 500):
     users = db.query(schemas.User).limit(limit).offset(skip).all()
@@ -175,11 +189,14 @@ def get_users(db: Session, skip: int = 0, limit: int = 500):
 
     return user_basics
 
+
 def get_challenges(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Challenge).offset(skip).limit(limit).all()
 
+
 def get_challenges_by_code(db: Session):
-    challenges = db.query(schemas.Challenge).order_by(schemas.Challenge.code_file).all()
+    challenges = db.query(schemas.Challenge).order_by(
+        schemas.Challenge.code_file).all()
 
     code_file = ''
     challenges_by_code = {}
@@ -187,26 +204,32 @@ def get_challenges_by_code(db: Session):
         if (code_file != v.code_file):
             code_file = v.code_file
             challenges_by_code[code_file] = []
-        
+
         challenges_by_code[code_file].append(v)
-    
+
     return challenges_by_code
+
 
 def get_code_files(db: Session):
     return db.query(schemas.CodeFile).all()
 
+
 def get_code_file(db: Session, code_file_id: int):
     return db.query(schemas.CodeFile).filter(schemas.CodeFile.id == code_file_id).first()
+
 
 def get_challenge(db: Session, challenge_id: int):
     return db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
 
+
 def get_random_challenge(db: Session, game_room_id: int):
     challenge_count = int(db.query(schemas.Challenge).count())
     random_id = random.randint(1, challenge_count)
-    random_challenge = db.query(schemas.Challenge).filter(schemas.Challenge.id == random_id).first()
+    random_challenge = db.query(schemas.Challenge).filter(
+        schemas.Challenge.id == random_id).first()
 
-    game_rounds = db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).all()
+    game_rounds = db.query(schemas.GameRound).filter(
+        schemas.GameRound.game_room_id == game_room_id).all()
 
     if (len(game_rounds) == 0):
         return random_challenge
@@ -219,11 +242,14 @@ def get_random_challenge(db: Session, game_room_id: int):
 
     return random_challenge
 
+
 def get_board_states(db: Session):
     return db.query(schemas.BoardState).all()
 
+
 def get_board_state(db: Session, board_state_id: int):
     return db.query(schemas.BoardState).filter(schemas.BoardState.id == board_state_id).first()
+
 
 def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: int):
     db_challenge = schemas.Challenge(
@@ -232,10 +258,14 @@ def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: in
     db.commit()
     return db_challenge
 
+
 def get_passed_challenges(db: Session, user_id: int):
-    passed_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
-    passed_challenges_ids = [attempt.challenge_id for attempt in passed_attempts]
+    passed_attempts = db.query(schemas.Attempt).filter(
+        schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
+    passed_challenges_ids = [
+        attempt.challenge_id for attempt in passed_attempts]
     return passed_challenges_ids
+
 
 def delete_user(db: Session, user_id: int):
     user_to_delete = get_user(db, user_id)
@@ -245,25 +275,30 @@ def delete_user(db: Session, user_id: int):
     db.commit()
     return user_to_delete
 
+
 def get_user_score(db: Session, user_id: int):
     user = get_user(db, user_id)
     if user is None:
         return None
-    
-    covered_challenges = get_passed_challenges(db, user_id) # Get all challenges that the user has passed, to help in finding the highscores.
+
+    # Get all challenges that the user has passed, to help in finding the highscores.
+    covered_challenges = get_passed_challenges(db, user_id)
 
     successful_attempts = db.query(schemas.Attempt).filter(
         schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
 
     user_score = 0
     for challenge_id in covered_challenges:
-        attempts = successful_attempts.filter(schemas.Attempt.challenge_id == challenge_id)
+        attempts = successful_attempts.filter(
+            schemas.Attempt.challenge_id == challenge_id)
 
         attempts.order_by(schemas.Attempt.score.desc())
 
-        user_score += attempts[0].score ## Only count the highest-scored attempt for each challenge.
+        # Only count the highest-scored attempt for each challenge.
+        user_score += attempts[0].score
 
     return user_score
+
 
 def update_user_stats(db: Session, user_id: int):
     user_to_update = get_user(db, user_id)
@@ -285,6 +320,7 @@ def update_user_stats(db: Session, user_id: int):
 
     return user_to_update
 
+
 def update_user_auth(db: Session, user_id: int, auth: bool):
     user_to_update = get_user(db, user_id)
     if user_to_update is None:
@@ -296,11 +332,14 @@ def update_user_auth(db: Session, user_id: int, auth: bool):
 
     return user_to_update
 
+
 def get_blacklisted_token(db: Session, token_id: int):
     return db.query(schemas.Token).filter(schemas.Token.id == token_id).first()
 
+
 def get_blacklisted_tokens(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Token).offset(skip).limit(limit).all()
+
 
 def add_blacklisted_token(db: Session, token: str):
     expiration_date = datetime.datetime.now() + relativedelta(weeks=+1)
@@ -309,10 +348,13 @@ def add_blacklisted_token(db: Session, token: str):
     db.commit()
     return db_token
 
+
 def get_expired_blacklisted_tokens(db: Session):
     current_date = datetime.datetime.now()
-    expired_tokens = db.query(schemas.Token).filter(schemas.Token.date <= current_date).all()
+    expired_tokens = db.query(schemas.Token).filter(
+        schemas.Token.date <= current_date).all()
     return expired_tokens
+
 
 def delete_blacklisted_token(db: Session, token_id: int):
     token_to_delete = get_blacklisted_token(db, token_id)
@@ -321,6 +363,7 @@ def delete_blacklisted_token(db: Session, token_id: int):
     db.delete(token_to_delete)
     db.commit()
     return token_to_delete
+
 
 def create_game_room(db: Session, game_room: schemas.GameRoom):
     db_game_room = schemas.GameRoom(
@@ -356,11 +399,15 @@ def get_players_in(db: Session, game_room_id: int):
 
     if game_room is None:
         return None
-    
-    start_messages = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.START).order_by(schemas.GameLog.id.desc()).limit(3).all()
-    leave_messages_p1 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id==game_room.player_1_id).order_by(schemas.GameLog.id.desc()).first()
-    leave_messages_p2 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id==game_room.player_2_id).order_by(schemas.GameLog.id.desc()).first()
-    leave_messages_p3 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message==schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id==game_room.player_3_id).order_by(schemas.GameLog.id.desc()).first()
+
+    start_messages = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(
+        schemas.GameLog.message == schemas.GameMessage.START).order_by(schemas.GameLog.id.desc()).limit(3).all()
+    leave_messages_p1 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(
+        schemas.GameLog.message == schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id == game_room.player_1_id).order_by(schemas.GameLog.id.desc()).first()
+    leave_messages_p2 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(
+        schemas.GameLog.message == schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id == game_room.player_2_id).order_by(schemas.GameLog.id.desc()).first()
+    leave_messages_p3 = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(
+        schemas.GameLog.message == schemas.GameMessage.LEAVE).filter(schemas.GameLog.user_id == game_room.player_3_id).order_by(schemas.GameLog.id.desc()).first()
 
     player_1_in = False
     player_2_in = False
@@ -375,7 +422,7 @@ def get_players_in(db: Session, game_room_id: int):
         elif (message.user_id == game_room.player_3_id and not player_3_in and message.id > (leave_messages_p3.id if leave_messages_p3 is not None else 0)):
             players_in.append(game_room.player_3_id)
             player_3_in = True
-    
+
     return players_in
 
 def get_game_room_state(db: Session, game_room_id: int):
@@ -391,33 +438,61 @@ def get_game_room_state(db: Session, game_room_id: int):
 
     return game_room_state
 
+def get_game_round(db: Session, game_round_id: int):
+    return db.query(schemas.GameRound).filter(schemas.GameRound.id == game_round_id).first()
+
 def set_game_room_state(db: Session, game_room_id: int):
     game_room = get_game_room(db, game_room_id)
+    game_round = db.query(schemas.GameRound).filter(
+        schemas.GameRound.game_room_id == game_room_id).order_by(schemas.GameRound.id.desc()).first()
 
     if game_room is None:
         return None
-    
+
     players_in = get_players_in(db, game_room_id)
     game_room.players_in = players_in
 
+    if (game_round is not None):
+        if (game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state != schemas.GameState.NEXT_ROUND and game_room.game_state != schemas.GameState.READY):
+            print('next round 1')
+            game_room.game_state = schemas.GameState.NEXT_ROUND
+            db.commit()
+            return get_game_room_state(db=db, game_room_id=game_room_id)
+    
     if (len(players_in) < game_room.player_number):
         game_room.game_state = schemas.GameState.WAITING
     elif (len(players_in) == game_room.player_number and game_room.game_state == schemas.GameState.WAITING):
         game_room.game_state = schemas.GameState.READY
-        print('Game room ready')
-    elif (game_room.game_state == schemas.GameState.READY):
-        game_room.game_state = schemas.GameState.PLAYING
-        print('Game room playing')
+        print('ready 1')
+    elif (game_room.game_state == schemas.GameState.NEXT_ROUND):
+        game_logs = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).order_by(schemas.GameLog.id.desc()).all()
+        next_round_logs = [log for log in game_logs if log.message == schemas.GameMessage.NEXT_ROUND]
+        players = set([log.user_id for log in game_logs if log.message == schemas.GameMessage.NEXT_ROUND])
+
+        if len(players) != game_room.player_number:
+            print('next round 2')
+            game_room.game_state = schemas.GameState.NEXT_ROUND
+            db.commit()
+            return get_game_room_state(db=db, game_room_id=game_room_id)
+
+        if next_round_logs is not None:
+            if (all([schemas.GameMessage.NEXT_ROUND == log.message and log.game_round_id == game_round.id for log in next_round_logs])):
+                # You need to make sure the starts are more recent than the NEXT_ROUND
+                if len(players) < game_room.player_number:
+                    print('next round 3 ')
+                    game_room.game_state = schemas.GameState.NEXT_ROUND
+                else:
+                    print('ready 2')
+                    game_room.game_state = schemas.GameState.READY
+    elif (game_round is not None):
+        if (game_room.game_state == schemas.GameState.READY and game_round.state == schemas.GameRoundState.ONGOING):
+            game_room.game_state = schemas.GameState.PLAYING
+            print('playing')
 
     db.commit()
     return get_game_room_state(db=db, game_room_id=game_room_id)
 
-def send_game_log(db: Session, user_id: int, message: schemas.GameMessage, game_room_id: int = None, game_round_id: int = None):
-    game_round = db.query(schemas.GameRound).filter(schemas.GameRound.id == game_round_id).first()
-
-    if (game_room_id == None):
-        game_room_id = game_round.game_room_id
-
+def send_game_log(db: Session, game_room_id: int, user_id: int, message: schemas.GameMessage):
     db_game_message = schemas.GameLog(
         message=message,
         game_room_id=game_room_id,
@@ -427,16 +502,76 @@ def send_game_log(db: Session, user_id: int, message: schemas.GameMessage, game_
     db.commit()
     return db_game_message
 
-def send_start_game_log(db: Session, game_room_id: int, user_id: int):
+def send_next_round_log(db: Session, user_id: int, game_room_id: int = None, game_round_id: int = None):
+    game_room_to_log = get_game_room(db, game_room_id)
+
+    if game_room_to_log is None:
+        game_round = db.query(schemas.GameRound).filter(schemas.GameRound.id == game_round_id).first()
+        game_room_to_log = get_game_room(db, game_round.game_room_id)
+
+    db_game_log = schemas.GameLog(
+        game_round_id=game_round_id,
+        message=schemas.GameMessage.NEXT_ROUND,
+        game_room_id=game_room_to_log.id,
+        user_id=user_id
+    )
+
+    db.add(db_game_log)
+    db.commit()
+    return db_game_log
+
+def send_enter_game_log(db: Session, game_room_id: int, user_id: int):
     game_room_to_log = get_game_room(db, game_room_id)
 
     if game_room_to_log is None:
         raise ValueError("Game room does not exist.")
-    
+
     if (game_room_to_log.player_1_id != user_id and game_room_to_log.player_2_id != user_id and game_room_to_log.player_3_id != user_id):
         raise ValueError("User is not in the game room.")
 
     db_game_log = schemas.GameLog(
+        message=schemas.GameMessage.ENTER,
+        game_room_id=game_room_id,
+        user_id=user_id
+    )
+
+    db.add(db_game_log)
+    db.commit()
+    return db_game_log
+
+def send_leave_game_log(db: Session, game_room_id: int, user_id: int):
+    game_room_to_log = get_game_room(db, game_room_id)
+
+    if game_room_to_log is None:
+        raise ValueError("Game room does not exist.")
+
+    if (game_room_to_log.player_1_id != user_id and game_room_to_log.player_2_id != user_id and game_room_to_log.player_3_id != user_id):
+        raise ValueError("User is not in the game room.")
+
+    db_game_log = schemas.GameLog(
+        message=schemas.GameMessage.LEAVE,
+        game_room_id=game_room_id,
+        user_id=user_id
+    )
+
+    db.add(db_game_log)
+    db.commit()
+    return db_game_log
+
+def send_start_game_log(db: Session, user_id: int, game_round_id: int = None,  game_room_id: int = None):
+    game_room_to_log = get_game_room(db, game_room_id)
+
+    if game_room_to_log is None:
+        raise ValueError("Game room does not exist.")
+
+    if (game_room_to_log.player_1_id != user_id and game_room_to_log.player_2_id != user_id and game_room_to_log.player_3_id != user_id):
+        raise ValueError("User is not in the game room.")
+
+    if (game_room_id is None):
+        game_room_id = get_game_round(db, game_round_id).game_room_id
+
+    db_game_log = schemas.GameLog(
+        game_round_id=game_round_id,
         message=schemas.GameMessage.START,
         game_room_id=game_room_id,
         user_id=user_id
@@ -451,7 +586,7 @@ def is_in_game_room(db: Session, game_room_id: int, user_id: int):
 
     if game_room is None:
         return False
-    
+
     return (game_room.player_1_id == user_id or game_room.player_2_id == user_id or game_room.player_3_id == user_id)
 
 def enter_game_room(db: Session, game_room_id: int, user_id: int):
@@ -459,7 +594,7 @@ def enter_game_room(db: Session, game_room_id: int, user_id: int):
 
     if game_room_to_join is None:
         return None
-    
+
     if is_in_game_room(db, game_room_id, user_id):
         return None
 
@@ -470,7 +605,7 @@ def enter_game_room(db: Session, game_room_id: int, user_id: int):
 
     if (check_game_room_full(game_room_to_join)):
         ready_game_room(db, game_room_id)
-    
+
     db.commit()
     return game_room_to_join
 
@@ -479,7 +614,7 @@ def leave_game_room(db: Session, game_room_id: int, user_id: int):
 
     if game_room_to_leave is None:
         return None
-    
+
     if game_room_to_leave.player_2_id == user_id:
         game_room_to_leave.player_2_id = None
     elif game_room_to_leave.player_3_id == user_id:
@@ -494,7 +629,7 @@ def ready_game_room(db: Session, game_room_id: int):
 
     if game_room_to_ready is None:
         return None
-    
+
     game_room_to_ready.game_state = schemas.GameState.READY
     db.commit()
     return game_room_to_ready
@@ -504,7 +639,7 @@ def finish_game_room(db: Session, game_room_id: int):
 
     if game_room_to_close is None:
         return None
-    
+
     game_room_to_close.game_state = schemas.GameState.FINISHED
     db.commit()
     return game_room_to_close
@@ -514,30 +649,44 @@ def get_random_player(db: Session, game_room_id: int):
 
     if game_room is None:
         return None
-    
+
     if (game_room.player_number == 2):
         return random.choice([game_room.player_1_id, game_room.player_2_id])
     elif (game_room.player_number == 3):
         return random.choice([game_room.player_1_id, game_room.player_2_id, game_room.player_3_id])
-    
+
     return game_room.player_1_id
 
-def add_game_round(db: Session, game_room_id: int, challenge_id: int, next: bool = False):
+def add_game_round(db: Session, game_room_id: int, challenge_id: int):
     game_round = db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).order_by(schemas.GameRound.id.desc()).first()
+    next_user = None
 
-    if (game_round is not None and game_round.state == schemas.GameRoundState.ONGOING):
-        return game_round
+    if (game_round is not None):
+        if (game_round.state == schemas.GameRoundState.ONGOING):
+            return game_round
+
+        next_user = get_random_player(db, game_room_id)
+
+        while (next_user == game_round.user_id):
+            next_user = get_random_player(db, game_room_id)
 
     game_room = get_game_room(db, game_room_id)
 
     if game_round is None:
         round_number = 1
-    else:
+    elif (game_round.round_number + 1 <= game_room.rounds):
         round_number = game_round.round_number + 1
-    
+    else:
+        print('final round')
+        return None
+
+    last_start = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).filter(schemas.GameLog.message == schemas.GameMessage.START).order_by(schemas.GameLog.id.desc()).first()
+
+    last_game_round = db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).order_by(schemas.GameRound.id.desc()).first()
+
     db_game_round = schemas.GameRound(
         game_room_id=game_room_id,
-        user_id=get_random_player(db, game_room_id),
+        user_id=next_user if next_user is not None else get_random_player(db, game_room_id),
         challenge_id=challenge_id,
         round_number=round_number,
         max_rounds=game_room.rounds,
@@ -547,15 +696,34 @@ def add_game_round(db: Session, game_room_id: int, challenge_id: int, next: bool
     db.commit()
     return db_game_round
 
+
+def get_players(db: Session, game_room_id: int):
+    game_room = get_game_room(db, game_room_id)
+
+    if game_room is None:
+        return None
+
+    players = []
+
+    if (game_room.player_1_id is not None):
+        players.append(game_room.player_1_id)
+    if (game_room.player_2_id is not None):
+        players.append(game_room.player_2_id)
+    if (game_room.player_3_id is not None):
+        players.append(game_room.player_3_id)
+
+    return players
+
+
 def finish_game_round(db: Session, game_round_id: int):
-    game_round_to_finish = db.query(schemas.GameRound).filter(schemas.GameRound.id == game_round_id).first()
+    game_round_to_finish = db.query(schemas.GameRound).filter(
+        schemas.GameRound.id == game_round_id).first()
     game_room = get_game_room(db, game_round_to_finish.game_room_id)
 
     if game_round_to_finish is None:
         return None
-    
+
     game_round_to_finish.state = schemas.GameRoundState.FINISHED
-    game_room.game_state = schemas.GameState.NEW_ROUND
 
     db.commit()
     return game_round_to_finish
