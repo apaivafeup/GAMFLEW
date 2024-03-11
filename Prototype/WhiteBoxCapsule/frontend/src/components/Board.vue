@@ -53,16 +53,18 @@ export default {
 
         <PlayerInfo v-if="!board.passed && !board.timeout" style="width: 100%;"/>
         <div v-if="board.failed && !board.timeout && !board.passed" class="alert alert-danger player-info">
-          You didn't pass. There's still time, though! Keep trying.
+          <p style="margin: 0px; padding: 0px; align-self: center;">
+            You didn't pass. There's still time, though! Keep trying.
+          </p>
         </div>
         <div v-else-if="board.passed && !board.timeout" class="alert alert-success player-info">
-          <p style="margin: 0px">
+          <p style="margin: 0px; padding: 0px; align-self: center;">
             You passed, congratulations! To submit your solution, click the <b>Comment</b> button.
             <em>It's required for your score!</em>
           </p>
         </div>
         <div v-if="board.passed && !board.timeout" class="alert alert-special player-info">
-          <p style="margin: 0px">A <b>special achievement</b> hint will be here!</p>
+          <p style="margin: 0px; padding: 0px; align-self: center;">A <b>special achievement</b> hint will be here!</p>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@
 {
     "id": 1,
     "name": "Student",
-    "email": "student@prototype.com",
+    "email": "student",
     "username": "student",
     "password": "password",
     "user_type": "player",
