@@ -308,13 +308,13 @@ def read_game_room_state(current_user: Annotated[models.User, Depends(get_curren
 @app.get("/game-room/{game_room_id}/round", response_model=models.GameRound)
 def random_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     challenge = crud.get_random_challenge(db=db, game_room_id=game_room_id)
-    return crud.add_game_round(db=db, challenge_id=challenge.id, game_room_id=game_room_id)
+    return crud.add_game_round(db=db, challenge_id=1, game_room_id=game_room_id)
 
 ## Finish game round
 @app.post("/round/{game_round}/finish", response_model=models.GameRound)
 def finish_game_round(current_user: Annotated[models.User, Depends(get_current_active_user)], game_round: int, db: Session = Depends(get_db)):
-    game_log = crud.send_game_log(db=db, game_round_id=game_round, user_id=current_user.id, message=schemas.GameMessage.NEXT_ROUND)
-    return crud.finish_game_round(db=db, game_round_id=game_round)
+    crud.finish_game_round(db=db, game_round_id=game_round)
+    return crud.send_game_log(db=db, game_round_id=game_round, user_id=current_user.id, message=schemas.GameMessage.NEW_ROUND)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

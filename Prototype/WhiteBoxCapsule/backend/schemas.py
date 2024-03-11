@@ -52,6 +52,7 @@ class GameState(str, Enum):
     """Enum for the state of the game."""
     WAITING = "waiting"
     READY = "ready"
+    NEW_ROUND = "new_round"
     PLAYING = "playing"
     FINISHED = "finished"
 
@@ -60,7 +61,7 @@ class GameMessage(str, Enum):
     ENTER = "enter"
     LEAVE = "leave"
     START = "start"
-    NEXT_ROUND = "next_round"
+    NEW_ROUND = "new_round"
     END = "end"
 
 class GameRoundState(str, Enum):
@@ -185,9 +186,12 @@ class GameLog(Base):
     message = Column(ENUM(GameMessage), index=True)
     game_room_id = Column(Integer, ForeignKey("game_rooms.id"), nullable=False, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    game_round_id = Column(Integer, ForeignKey("game_rounds.id"), nullable=True, index=True)
 
     game_rooms = relationship("GameRoom", back_populates="game_logs")
     users = relationship("User", back_populates="game_logs")
+    game_rounds = relationship("GameRound", back_populates="game_logs")
+
 
 class GameRound(Base):
     __tablename__ = "game_rounds"
@@ -202,3 +206,4 @@ class GameRound(Base):
 
     game_rooms = relationship("GameRoom", back_populates="game_rounds")
     users = relationship("User", back_populates="game_rounds")
+    game_logs = relationship("GameLog", back_populates="game_rounds")

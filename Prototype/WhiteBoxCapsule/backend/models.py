@@ -226,6 +226,7 @@ class GameLog(BaseModel):
     game_room_id: int
     user_id: int
     message: GameMessage
+    game_round_id: Optional[int] = None
 
     class Config:
         from_attributes = True

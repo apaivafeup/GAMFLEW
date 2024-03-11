@@ -82,14 +82,16 @@ export default defineComponent({
 
       var flag = false, score = 0
       await this.$axios.post(this.$api_link + '/create/attempt/', body, this.auth.config).then((response) => {
-        this.$refs.close.click()
-        this.$router.push({ name: 'home' })
-        this.board.submit(response.data.score)
+        alert('Your attempt was submitted successfully!\nStarting next round...')
       }).catch((error) => {
         this.toast.error('An error occurred while submitting your attempt. Please try again later.')
       })
 
-      await this.$axios.post(this.$api_link + '/')
+      await this.$axios.post(this.$api_link + '/round/' + this.round_id + '/finish/', {}, this.auth.config).then((response) => {
+        this.$refs.close.click()
+      }).catch((error) => {
+        this.toast.error('An error occurred while finishing the round. Please try again later.')
+      })
     }
   }
 })

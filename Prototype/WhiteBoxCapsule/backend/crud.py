@@ -412,7 +412,12 @@ def set_game_room_state(db: Session, game_room_id: int):
     db.commit()
     return get_game_room_state(db=db, game_room_id=game_room_id)
 
-def send_game_log(db: Session, game_room_id: int, user_id: int, message: schemas.GameMessage):
+def send_game_log(db: Session, user_id: int, message: schemas.GameMessage, game_room_id: int = None, game_round_id: int = None):
+    game_round = db.query(schemas.GameRound).filter(schemas.GameRound.id == game_round_id).first()
+
+    if (game_room_id == None):
+        game_room_id = game_round.game_room_id
+
     db_game_message = schemas.GameLog(
         message=message,
         game_room_id=game_room_id,
@@ -550,7 +555,7 @@ def finish_game_round(db: Session, game_round_id: int):
         return None
     
     game_round_to_finish.state = schemas.GameRoundState.FINISHED
-    game_room.game_state = schemas.GameState.READY
+    game_room.game_state = schemas.GameState.NEW_ROUND
 
     db.commit()
     return game_round_to_finish
