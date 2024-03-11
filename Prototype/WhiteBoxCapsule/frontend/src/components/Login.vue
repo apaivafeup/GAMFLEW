@@ -62,8 +62,7 @@ export default defineComponent({
 
     async sendLoginForm(event) {
       event.preventDefault()
-
-      //TODO: make the route not show the information??? WHAT?
+      
       var formData = new FormData()
       formData.append('username', this.username)
       formData.append('password', this.password)

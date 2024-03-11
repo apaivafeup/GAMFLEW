@@ -16,7 +16,7 @@ PASSWORD = 'password' if local else os.environ.get('PASSWORD')
 HOST = 'localhost' if local else os.environ.get('HOST')
 DATABASE = 'prototype' if local else os.environ.get('DATABASE')
 
-if True:
+if False:
     SQLALCHEMY_DATABASE_URL = "postgresql://postgres:password@database:5432/prototype"
 else:
     SQLALCHEMY_DATABASE_URL = f"{TECH}://{USERNAME}:%s@{HOST}/{DATABASE}" % quote(PASSWORD)

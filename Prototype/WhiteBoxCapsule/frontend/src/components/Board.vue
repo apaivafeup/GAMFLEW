@@ -70,7 +70,7 @@ export default {
       </div>
     </div>
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
-      <MultiplayerBoardGrid :challenge="challenge" :playable="playable"/>
+      <BoardGrid :challenge="challenge" :playable="playable"/>
       <PlayerBar :user="user" />
     </div>
   </div>
