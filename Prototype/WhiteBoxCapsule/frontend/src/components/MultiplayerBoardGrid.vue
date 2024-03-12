@@ -25,7 +25,12 @@
       </div>
 
       <div class="progress-bar">
-        {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
+        <div class="row">
+          
+        </div>
+        <div class="row">
+          {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
+        </div>
       </div>
 
       <button id="view-button" class="button is-primary is-fullwidth" v-if="!board.passed && !board.pause && !board.add && needsTable()"
@@ -76,10 +81,10 @@
         data-bs-toggle="modal" data-bs-target="#submit-modal">
         Comment
       </button>
-      <button id="comment-button" class="button is-primary is-fullwidth" v-else-if="playable && !board.passed"
+      <!-- <button id="comment-button" class="button is-primary is-fullwidth" v-else-if="playable && !board.passed"
       @click="pass()">
       Pass
-    </button>
+    </button> -->
         <button id="comment-button" class="button is-primary is-fullwidth" v-else-if="board.passed && !board.submitted"
         data-bs-toggle="modal" data-bs-target="#submit-modal"
         style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">

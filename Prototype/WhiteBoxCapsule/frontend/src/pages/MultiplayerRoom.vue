@@ -39,11 +39,13 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
     </div>
     <div style="display: flex; justify-content: center;" v-else>
         <div class="vertical-center" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
-            <h2 style="text-align: center;">You've entered <em>{{ room.name }}</em></h2>
-            <p style="text-align: center; margin-bottom: 5px;">When all players get in the room, the game will start.
-            </p>
-            <p style="text-align: center;">Leaving this page means the game won't start.</p>
-            <button class="btn btn-primary" style="justify-self: center; width: 125px;" @click="leaveRoom()">Leave
+            <h2 style="text-align: center;" v-if="!this.round_loading">You've entered <em>{{ room.name }}</em></h2>
+            <h2 style="text-align: center;" v-else><em>{{ room.name }}</em></h2>
+            <p style="text-align: center; margin-bottom: 5px;" v-if="!this.round_loading">When all players get in the room, the game will start.</p>
+            <p style="text-align: center; margin-bottom: 5px;" v-else>New round is loading...</p>
+            <p style="text-align: center;" v-if="!this.round_loading">Leaving this page means the game won't start.</p>
+            <p style="text-align: center;" v-else>Leaving this page means the game won't continue.</p>
+            <button class="btn btn-primary" style="justify-self: center; width: 125px;" v-if="!this.round_loading" @click="leaveRoom()">Leave
                 Room</button>
         </div>
     </div>
@@ -65,7 +67,8 @@ export default {
             room_state: {},
             round: {},
             current_round: 0,
-            sent_finish: false,
+            got_round: false,
+            round_loading: false,
             is_ready: false,
             playable: Boolean,
             code_file: CodeFile,
@@ -171,37 +174,47 @@ export default {
 
             if (this.room_state.game_state == 'ready' && !this.is_ready) {
                 this.getRound()
-
-                if (this.round.state == 'finished') {
-                    if (this.round.round_number <= this.round.max_rounds) {
-                        console.log('Next round is starting...')
-                    } else {
-                        confirm('The game has finished!')
-                    }
-                }
-
                 this.is_ready = true
             }
 
             if (this.room_state.game_state == 'playing') {
                 if (!this.is_ready) {
+                    this.round_loading = true
+                    this.loaded = false
                     this.getRound()
                     this.is_ready = true
                 }
                 this.loaded = true
+                this.round_loading = false
+                this.got_round = false
             }
 
             if (this.room_state.game_state == 'waiting') {
                 this.loaded = false
+                
+                if (this.round != null) {
+                    this.round_loading = true
+                }
+
                 this.is_ready = false
                 this.not_first_time = false
                 this.startGameRoom()
                 this.$forceUpdate()
             }
 
-            if (this.room_state.game_state == 'next_round' && !this.sent_finish) {
-                this.finishRound()
-                console.log("finishing round")
+            if (this.room_state.game_state == 'next_round') {
+                this.is_ready = false;
+                this.round_loading = true
+                this.loaded = false
+                this.getRound()
+            }
+
+            if (this.round.state == 'finished' && this.round.round_number != -1) {
+                console.log('Next round is starting...')
+                this.round_loading = true
+                this.loaded = false
+            } else if (this.round.state == 'finished' && this.round.round_number == -1) {
+                confirm('The game has finished!')
             }
         },
 
@@ -209,28 +222,16 @@ export default {
             this.interval = setInterval(() => { this.checkState() }, 5000)
         },
 
-        async finishRound() {
-            if (!this.sent_finish) {
-            await this.$axios.post(this.$api_link + '/round/' + this.round.id + '/finish', {}, this.auth.config)
-                .then(response => {
-                    this.getRound()
-                    this.sent_finish = true
-                })
-                .catch((error) => {
-                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
-                    return
-                })
-            }
-        },
-
         async getRound() {
             await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/round', this.auth.config)
                 .then(response => {
+                    if (this.round.id == response.data.id) {
+                        return
+                    }
                     this.round = response.data
                     this.current_round = this.round.round_number
                     this.challenge_id = this.round.challenge_id
                     this.playable = (this.round.user_id == this.auth.user.id)
-                    this.sent_finish = false
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -312,12 +313,6 @@ export default {
             },
             deep: true
         },
-        room_state: {
-            handler: function () {
-                this.$forceUpdate()
-            },
-            deep: true
-        }
     },
 
     components: {

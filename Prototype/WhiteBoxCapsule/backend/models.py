@@ -1,7 +1,7 @@
 import json
 from pydantic import BaseModel, field_validator, FilePath, model_validator
 from typing import Optional
-from schemas import AttemptType, ChallengeType, Difficulty, PieceColor, UserType, GameState, GameMessage
+from schemas import AttemptType, ChallengeType, Difficulty, GameRoundState, PieceColor, UserType, GameState, GameMessage
 
 # class Settings(BaseModel):
 #     authjwt_secret_key: str = '8908b123cf7557c25430ac0c6e86a21c29061d3152b328f8163b8de394e0fb8f'
@@ -239,17 +239,16 @@ class GameRound(BaseModel):
     challenge_id: int
     max_rounds: int
     round_number: int
-
+    state: GameRoundState
+    
     class Config:
         from_attributes = True
     
     @model_validator(mode='after')
     @classmethod
     def validate_round_number(cls, self):
-        if (self.round_number < 1):
+        if (self.round_number < 1 and self.round_number != -1):
             raise ValueError("A round number must be at least 1.")
         elif (self.round_number > self.max_rounds):
             raise ValueError("A round number must be at most the maximum number of rounds.")
-        elif self is None:
-            return self
         return self
