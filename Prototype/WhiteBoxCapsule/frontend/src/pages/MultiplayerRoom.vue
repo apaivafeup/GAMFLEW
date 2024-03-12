@@ -174,7 +174,7 @@ export default {
 
                 if (this.round.state == 'finished') {
                     if (this.round.round_number <= this.round.max_rounds) {
-                        this.sendStart()
+                        console.log('Next round is starting...')
                     } else {
                         confirm('The game has finished!')
                     }
@@ -201,7 +201,6 @@ export default {
 
             if (this.room_state.game_state == 'next_round' && !this.sent_finish) {
                 this.finishRound()
-                this.sent_finish = true
                 console.log("finishing round")
             }
         },
@@ -211,17 +210,17 @@ export default {
         },
 
         async finishRound() {
+            if (!this.sent_finish) {
             await this.$axios.post(this.$api_link + '/round/' + this.round.id + '/finish', {}, this.auth.config)
                 .then(response => {
-                    if (this.round.state == 'finished' && this.round.round_number <= this.round.max_rounds) {
-                        this.getRound()
-                    }
+                    this.getRound()
                     this.sent_finish = true
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
+            }
         },
 
         async getRound() {
@@ -229,13 +228,9 @@ export default {
                 .then(response => {
                     this.round = response.data
                     this.current_round = this.round.round_number
-                    this.sent_finish = false
                     this.challenge_id = this.round.challenge_id
                     this.playable = (this.round.user_id == this.auth.user.id)
-
-                    if (this.round.state == 'ongoing') {
-                        this.sendStart()
-                    }
+                    this.sent_finish = false
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -293,7 +288,6 @@ export default {
         },
 
         async sendStart() {
-
             await this.$axios.post(this.$api_link + '/round/' + this.round.id + '/start', {}, this.auth.config)
                 .then((response) => {
 

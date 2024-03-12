@@ -26,6 +26,7 @@ class Attempt(BaseModel):
     attempt_type: AttemptType
     comment: str
     test_cases: dict
+    game_round_id: Optional[int] = None
 
     class Config:
         from_attributes = True

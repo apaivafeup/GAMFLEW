@@ -146,12 +146,14 @@ class Attempt(Base):
     score = Column(Integer, index=True)
     player_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     challenge_id = Column(Integer, ForeignKey("challenges.id"), nullable=False)
+    game_round_id = Column(Integer, ForeignKey("game_rounds.id"), nullable=True, index=True)
     attempt_type = Column(ENUM(AttemptType), nullable=False, default=AttemptType.PASS, index=True)
     comment = Column(TEXT, index=True)
     test_cases = Column(PickleType)
 
     user = relationship("User", back_populates="attempts")
     challenge = relationship("Challenge", back_populates="attempts")
+    game_rounds = relationship("GameRound", back_populates="attempts")
 
 class Token(Base):
     __tablename__ = "tokens"
@@ -208,3 +210,4 @@ class GameRound(Base):
     game_rooms = relationship("GameRoom", back_populates="game_rounds")
     users = relationship("User", back_populates="game_rounds")
     game_logs = relationship("GameLog", back_populates="game_rounds")
+    attempts = relationship("Attempt", back_populates="game_rounds")
