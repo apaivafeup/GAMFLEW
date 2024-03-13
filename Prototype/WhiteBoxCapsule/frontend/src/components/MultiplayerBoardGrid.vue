@@ -25,8 +25,8 @@
       </div>
 
       <div class="progress-bar">
-        <div class="row">
-          
+        <div class="row" v-if="this.round != {}">
+          {{ 'Round ' + this.round.round_number + 'of' + this.round.max_rounds}}
         </div>
         <div class="row">
           {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
