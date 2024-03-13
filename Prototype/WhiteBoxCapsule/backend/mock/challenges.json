@@ -558,7 +558,7 @@
         "score": 300,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table is probably your best friend, here.",
         "objective": "Modified condition/decision coverage of line 7.",
-        "initial_board": 2,
+        "initial_board": 1,
         "code_file": 2,
         "challenge_type": "mcdc",
         "passing_criteria": {
@@ -582,7 +582,7 @@
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
         "objective": "Condition/decision coverage of line 7.",
-        "initial_board": 2,
+        "initial_board": 1,
         "code_file": 2,
         "challenge_type": "condition/decision",
         "passing_criteria": {
@@ -796,7 +796,7 @@
         "score": 250,
         "hint": "You have a lot of hurdles to get through, and the Add button is your friend - it adds AND removes pieces (check Guide, if needed).",
         "objective": "Statement coverage of line 26.",
-        "initial_board": 4,
+        "initial_board": 1,
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
@@ -804,7 +804,7 @@
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 0",
                 "this.count_blue_pieces(input, input.currentKey) <= 12 && this.count_red_pieces(input, input.currentKey) <= 12",
-                "this.count_blue_pieces(input, input.currentKey) != 0 || this.count_red_pieces(input, input.currentKey) != 0"
+                "this.count_blue_pieces(input, input.currentKey) != 0 && this.count_red_pieces(input, input.currentKey) != 0"
             ],    
             "tests": [
                 "this.get_pieces(input, input.currentKey).every((piece) => (piece.position.x % 2 != 0 && [1, 3, 5, 7].includes(piece.position.y)) || (piece.position.x % 2 == 0 && [0, 2, 4, 6].includes(piece.position.y)))"
