@@ -398,7 +398,7 @@
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 2"
             ],
             "tests": [
-                "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color != input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].start.x + input.log[case_num][input.log[case_num].length - 1].destination.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].start.y + input.log[case_num][input.log[case_num].length - 1].destination.y)/2)].color && input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].start.x + input.log[case_num][input.log[case_num].length - 1].destination.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].start.y + input.log[case_num][input.log[case_num].length - 1].destination.y)/2)].color != 'empty'",
+                "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color != input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].start.x + input.log[case_num][input.log[case_num].length - 1].destination.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].start.y + input.log[case_num][input.log[case_num].length - 1].destination.y)/2)].color",
                 "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color == input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].start.x + input.log[case_num][input.log[case_num].length - 1].destination.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].start.y + input.log[case_num][input.log[case_num].length - 1].destination.y)/2)].color"
             ]
         },
@@ -474,7 +474,7 @@
             "condition_count": 0,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, input.currentKey) > 12 || utils.count_red_pieces(input, input.currentKey) > 12"
+                "this.count_blue_pieces(input, input.currentKey) > 12 || this.count_red_pieces(input, input.currentKey) > 12"
             ]
         },
         "achievement_criteria": null,
@@ -496,7 +496,7 @@
             "condition_count": 0,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, input.currentKey) == 0 || utils.count_red_pieces(input, input.currentKey) == 0"
+                "this.count_blue_pieces(input, input.currentKey) == 0 || this.count_red_pieces(input, input.currentKey) == 0"
             ]
         },
         "achievement_criteria": null,
@@ -518,8 +518,8 @@
             "condition_count": 0,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0",
-                "utils.count_blue_pieces(input, case_num) > 12 || utils.count_red_pieces(input, case_num) > 12"
+                "!(this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12)",
+                "this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12"
             ]
         },
         "achievement_criteria": null,
@@ -541,9 +541,9 @@
             "condition_count": 2,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, case_num) > 12 && utils.count_red_pieces(input, case_num) <= 12",
-                "utils.count_blue_pieces(input, case_num) <= 12 && utils.count_red_pieces(input, case_num) > 12",
-                "utils.count_blue_pieces(input, case_num) <= 12 && utils.count_red_pieces(input, case_num) <= 12"
+                "this.count_blue_pieces(input, case_num) > 12 && this.count_red_pieces(input, case_num) <= 12",
+                "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) > 12",
+                "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) <= 12"
             ]
         },
         "achievement_criteria": null,
@@ -565,9 +565,9 @@
             "condition_count": 2,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, case_num) == 0 && utils.count_red_pieces(input, case_num) != 0",
-                "utils.count_blue_pieces(input, case_num) != 0 && utils.count_red_pieces(input, case_num) == 0",
-                "utils.count_blue_pieces(input, case_num) != 0 && utils.count_red_pieces(input, case_num) != 0"
+                "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) != 0",
+                "this.count_blue_pieces(input, case_num) != 0 && this.count_red_pieces(input, case_num) == 0",
+                "this.count_blue_pieces(input, case_num) != 0 && this.count_red_pieces(input, case_num) != 0"
             ]
         },
         "achievement_criteria": null,
@@ -589,8 +589,8 @@
             "condition_count": 2,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0",
-                "!(utils.count_blue_pieces(input, case_num) == 0 || utils.count_red_pieces(input, case_num) == 0)"
+                "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) == 0",
+                "!(this.count_blue_pieces(input, case_num) == 0) && !(this.count_red_pieces(input, case_num) == 0)"
             ]
         },
         "achievement_criteria": null,
@@ -612,8 +612,8 @@
             "condition_count": 2,
             "preconditions": [],    
             "tests": [
-                "!(utils.count_blue_pieces(input, case_num) > 12 || utils.count_red_pieces(input, case_num) > 12)", 
-                "(utils.count_blue_pieces(input, case_num) > 12 || utils.count_red_pieces(input, case_num) > 12)"
+                "!(this.count_blue_pieces(input, case_num) > 12) && !(this.count_red_pieces(input, case_num) > 12)", 
+                "this.count_blue_pieces(input, case_num) > 12 && this.count_red_pieces(input, case_num) > 12"
             ]
         },
         "achievement_criteria": null,
@@ -635,8 +635,8 @@
             "condition_count": 2,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, case_num) > 12 && utils.count_red_pieces(input, case_num) > 12", 
-                "utils.count_blue_pieces(input, case_num) <= 12 && utils.count_red_pieces(input, case_num) <= 12"
+                "this.count_blue_pieces(input, case_num) > 12 && this.count_red_pieces(input, case_num) > 12", 
+                "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) <= 12"
             ]
         },
         "achievement_criteria": null,
@@ -658,8 +658,8 @@
             "condition_count": 2,
             "preconditions": [],    
             "tests": [
-                "utils.count_blue_pieces(input, case_num) == 0 && utils.count_red_pieces(input, case_num) == 0", 
-                "utils.count_blue_pieces(input, case_num) != 0 && utils.count_red_pieces(input, case_num) != 0"
+                "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) == 0", 
+                "this.count_blue_pieces(input, case_num) != 0 && this.count_red_pieces(input, case_num) != 0"
             ]
         },
         "achievement_criteria": null,
@@ -683,7 +683,7 @@
                 
             ],    
             "tests": [
-                "utils.get_pieces(input, input.currentKey).some((piece) => ![1, 3, 5, 7].includes(piece.position.y) && piece.position.x % 2 != 0)" 
+                "this.get_pieces(input, input.currentKey).some((piece) => ![1, 3, 5, 7].includes(piece.position.y) && piece.position.x % 2 != 0)" 
             ]
         },
         "achievement_criteria": null,
@@ -707,7 +707,7 @@
                 
             ],    
             "tests": [
-                "utils.get_pieces(input, input.currentKey).some((piece) => ![0, 2, 4, 6].includes(piece.position.y) && piece.position.x % 2 == 0)" 
+                "this.get_pieces(input, input.currentKey).some((piece) => ![0, 2, 4, 6].includes(piece.position.y) && piece.position.x % 2 == 0)" 
             ]
         },
         "achievement_criteria": null,
@@ -730,7 +730,7 @@
             "preconditions": [
             ],    
             "tests": [
-                "utils.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)" 
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)" 
             ]
         },
         "achievement_criteria": null,
@@ -751,11 +751,11 @@
         "passing_criteria": {
             "condition_count": 0,
             "preconditions": [
-                "utils.count_blue_pieces(input, input.currentKey) != 0 && utils.count_red_pieces(input, input.currentKey) != 0",
-                "utils.count_empty_spaces(input, input.currentKey) != 64"
+                "this.count_blue_pieces(input, input.currentKey) != 0 && this.count_red_pieces(input, input.currentKey) != 0",
+                "this.count_empty_spaces(input, input.currentKey) != 64"
             ],    
             "tests": [
-                "utils.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)" 
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)" 
             ]
         },
         "achievement_criteria": null,
@@ -776,12 +776,12 @@
         "passing_criteria": {
             "condition_count": 0,
             "preconditions": [
-                "utils.count_empty_spaces(input, input.currentKey) != 64",
-                "utils.count_blue_pieces(input, input.currentKey) != 0 && utils.count_red_pieces(input, input.currentKey) != 0"
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.count_blue_pieces(input, input.currentKey) != 0 && this.count_red_pieces(input, input.currentKey) != 0"
             ],    
             "tests": [
-                "utils.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)",
-                "utils.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 == 0)"  
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 == 0)"  
             ]
         },
         "achievement_criteria": null,
@@ -802,12 +802,12 @@
         "passing_criteria": {
             "condition_count": 2,
             "preconditions": [
-                "utils.count_empty_spaces(input, input.currentKey) != 0",
-                "utils.count_blue_pieces(input, input.currentKey) <= 12 && utils.count_red_pieces(input, input.currentKey) <= 12",
-                "utils.count_blue_pieces(input, input.currentKey) != 0 || utils.count_red_pieces(input, input.currentKey) != 0"
+                "this.count_empty_spaces(input, input.currentKey) != 0",
+                "this.count_blue_pieces(input, input.currentKey) <= 12 && this.count_red_pieces(input, input.currentKey) <= 12",
+                "this.count_blue_pieces(input, input.currentKey) != 0 || this.count_red_pieces(input, input.currentKey) != 0"
             ],    
             "tests": [
-                "utils.get_pieces(input, input.currentKey).every((piece) => (piece.position.x % 2 != 0 && [1, 3, 5, 7].includes(piece.position.y)) || (piece.position.x % 2 == 0 && [0, 2, 4, 6].includes(piece.position.y)))"
+                "this.get_pieces(input, input.currentKey).every((piece) => (piece.position.x % 2 != 0 && [1, 3, 5, 7].includes(piece.position.y)) || (piece.position.x % 2 == 0 && [0, 2, 4, 6].includes(piece.position.y)))"
             ]
         },
         "achievement_criteria": null,

@@ -84,6 +84,7 @@ export default defineComponent({
         this.$refs.close.click()
         this.$router.push({ name: 'home' })
         this.board.submit(response.data.score)
+        this.auth.getUserData(this.auth.user.id) // update user data
       }).catch((error) => {
         this.toast.error('An error occurred while submitting your attempt. Please try again later.')
       })

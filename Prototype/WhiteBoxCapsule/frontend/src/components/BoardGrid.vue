@@ -5,18 +5,21 @@
         <div class="game-board-out-labels">
           <div class="game-board-label col" style="display: flex; justify-content: center">Out of Bounds</div>
         </div>
-        <div class="game-board-out" >
+        <div class="game-board-out">
           <div class="box">
             <OutPieceStack :x="this.outX" :y="this.outY" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outX" id="piece-stack-out-x"
-             @input="this.changeX()" class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x"/>
-             <input v-else id="piece-stack-out-x" :value="this.outX"
-             class="col box disabled" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x"/>
-            <input @input="this.changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outY" id="piece-stack-out-y"
-              class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
-              <input v-else id="piece-stack-out-y" :value="this.outY" class="col box disabled" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outX"
+              id="piece-stack-out-x" @input="this.changeX()" class="col box"
+              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
+            <input v-else id="piece-stack-out-x" :value="this.outX" class="col box disabled"
+              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
+            <input @input="this.changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
+              :v-model="this.outY" id="piece-stack-out-y" class="col box"
+              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
+            <input v-else id="piece-stack-out-y" :value="this.outY" class="col box disabled"
+              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
           </div>
         </div>
       </div>
@@ -28,8 +31,8 @@
         {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
 
-      <button id="view-button" class="button is-primary is-fullwidth" v-if="!board.passed && !board.pause && !board.add && needsTable()"
-        @click="board.tableMode(this.challenge)">
+      <button id="view-button" class="button is-primary is-fullwidth"
+        v-if="!board.passed && !board.pause && !board.add && needsTable()" @click="board.tableMode(this.challenge)">
         {{ !board.table ? 'Condition Table' : 'Game Board' }}
       </button>
       <button id="view-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
@@ -54,7 +57,8 @@
           @click="this.board.addMode()">
           {{ !board.add ? 'Add' : 'Move' }}
         </button>
-        <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default" v-else>
+        <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default"
+          v-else>
           {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button id="go-button" class="button is-primary is-fullwidth"
@@ -73,16 +77,16 @@
           Reset
         </button>
         <button id="comment-button" class="button is-primary is-fullwidth" v-if="board.passed && !board.submitted"
-        data-bs-toggle="modal" data-bs-target="#submit-modal"
-        style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
-        Comment
-      </button>
-      <button id="comment-button" class="button is-primary is-fullwidth" v-else data-bs-toggle="modal"
-        data-bs-target="#fail-modal">
-        Comment
-      </button>
+          data-bs-toggle="modal" data-bs-target="#submit-modal"
+          style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
+          Comment
+        </button>
+        <button id="comment-button" class="button is-primary is-fullwidth" v-else data-bs-toggle="modal"
+          data-bs-target="#fail-modal">
+          Comment
+        </button>
       </div>
-      
+
       <button id="retry-button" class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
         Retry
       </button>
@@ -141,12 +145,12 @@
     </div>
     <div style="justify-self: right; justify-content: end;" v-else>
       <EasyDataTable style="width: 525px; height: 537px; margin-left: 10px; margin-right: 2.5px; overflow: scroll;"
-      :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="11" :fixed-checkbox="true"
-      :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
-      :theme-color="'#A959FF'">
-    </EasyDataTable>
+        :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="11" :fixed-checkbox="true"
+        :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
+        :theme-color="'#A959FF'">
+      </EasyDataTable>
     </div>
-    
+
   </div>
 </template>
 
@@ -158,7 +162,7 @@ import SubmitModal from './modals/SubmitModal.vue'
 import { Challenge } from '../store/models/challenge'
 import { boardStore } from '../store/boardStore'
 
-import * as utils from '../store/utils.js'
+import { Color, Piece } from '../store/models/piece'
 import OutPieceStack from './OutPieceStack.vue'
 import 'vue3-easy-data-table'
 
@@ -181,13 +185,182 @@ export default {
 
   beforeMount() {
     this.board = boardStore()
+    console.log(this.isTriangle(3, 4, 5))
   },
 
   mounted() {
-    
+
   },
 
   methods: {
+    isTriangle(a, b, c) {
+      return a + b > c && a + c > b && b + c > a
+    },
+
+    distance(a, b) {
+      if (!a || !b) {
+        return 0
+      }
+
+      return Math.round(
+        Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2))
+      )
+    },
+
+    get_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
+    count_blue_pieces(board, boardKey) {
+      var count = 0
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.BLUE) {
+            count++
+          }
+        }
+      }
+      return count
+    },
+
+    count_red_pieces(board, boardKey) {
+      var count = 0
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.RED) {
+            count++
+          }
+        }
+      }
+      return count
+    },
+
+    count_empty_spaces(board, boardKey) {
+      var count = 0
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.EMPTY) {
+            count++
+          }
+        }
+      }
+      return count
+    },
+
+    find_first_red_piece(board, boardKey) {
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (
+            board.state[boardKey][i][j].color == Color.RED ||
+            (board.state[boardKey][i][j].color == Color.STACK &&
+              board.state[boardKey][i][j].stack.red > 0)
+          ) {
+            return board.state[boardKey][i][j]
+          }
+        }
+      }
+
+      if (board.outOfBoundsState[boardKey].color == Color.RED || (board.outOfBoundsState[boardKey].color == Color.STACK &&
+        board.outOfBoundsState[boardKey].stack.red > 0)) {
+        return board.outOfBoundsState[boardKey]
+      }
+
+      return new Piece({ x: -2, y: -2 }, Color.EMPTY)
+    },
+
+    find_first_blue_piece(board, boardKey) {
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (
+            board.state[boardKey][i][j].color == Color.BLUE ||
+            (board.state[boardKey][i][j].color == Color.STACK &&
+              board.state[boardKey][i][j].stack.blue > 0)
+          ) {
+            return board.state[boardKey][i][j]
+          }
+        }
+      }
+
+      if (board.outOfBoundsState[boardKey].color == Color.BLUE || (board.outOfBoundsState[boardKey].color == Color.STACK &&
+        board.outOfBoundsState[boardKey].stack.blue > 0)) {
+        return board.outOfBoundsState[boardKey]
+      }
+
+      return new Piece({ x: -2, y: -2 }, Color.EMPTY)
+    },
+
+    find_first_stack(board, boardKey) {
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.STACK) {
+            return board.state[boardKey][i][j]
+          }
+        }
+      }
+
+      if (board.outOfBoundsState[boardKey].color == Color.STACK) {
+        return board.outOfBoundsState[boardKey]
+      }
+
+      return new Piece({ x: -2, y: -2 }, Color.EMPTY)
+    },
+
+    find_blue_pieces(board, boardKey) {
+      var vertices = []
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.BLUE) {
+            vertices.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      vertices.sort((a, b) => {
+        a.x - b.x == 0 ? a.y - b.y : a.x - b.x
+      })
+      return vertices
+    },
+
+    find_red_pieces(board, boardKey) {
+      var vertices = []
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.RED) {
+            vertices.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+      vertices.sort((a, b) => {
+        a.x - b.x == 0 ? a.y - b.y : a.x - b.x
+      })
+      return vertices
+    },
+
+    find_stacks(board, boardKey) {
+      var vertices = []
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.STACK) {
+            vertices.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+      vertices.sort((a, b) => {
+        a.x - b.x == 0 ? a.y - b.y : a.x - b.x
+      })
+      return vertices
+    },
+
     changeX() {
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
         this.outX = document.getElementById('piece-stack-out-x').value
