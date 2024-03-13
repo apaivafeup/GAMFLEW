@@ -52,10 +52,6 @@ export default defineComponent({
   },
 
   methods: {
-    redirect() {
-      window.location.reload()
-    },
-
     async submitAttempt() {
       var comment = document.getElementById('fail-modal-textarea').value
 
@@ -79,7 +75,6 @@ export default defineComponent({
       await this.$axios.post(this.$api_link + '/create/attempt/', body, this.auth.config).then(async (response) => {
         this.board.submit()
         this.$refs.close.click()
-        this.$router.push({ name: 'home' })
         this.auth.getUserData(this.auth.user.id)
       }).catch((error) => {
         alert('An error occurred while submitting your attempt! Please try again later.')

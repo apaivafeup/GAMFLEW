@@ -328,6 +328,9 @@ export const boardStore = defineStore('boardStore', {
 
       if (score != null) {
         toast.success("You just earned " + score + " points!")
+      } else {
+        this.failed = false;
+        this.submitted = false;
       }
 
       //toast.warning("You just won an achievement!", onclick="this.achievements()")

@@ -81,6 +81,11 @@
           style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
           Comment
         </button>
+        <button id="comment-button" class="button is-primary is-fullwidth" v-else-if="board.failed && !board.submitted"
+          data-bs-toggle="modal" data-bs-target="#fail-modal"
+          style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
+          Comment
+        </button>
         <button id="comment-button" class="button is-primary is-fullwidth" v-else data-bs-toggle="modal"
           data-bs-target="#fail-modal">
           Comment
