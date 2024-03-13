@@ -330,7 +330,7 @@ export const boardStore = defineStore('boardStore', {
         toast.success("You just earned " + score + " points!")
       }
 
-      toast.warning("You just won an achievement!", onclick="this.achievements()")
+      //toast.warning("You just won an achievement!", onclick="this.achievements()")
     },
 
     achievements() {

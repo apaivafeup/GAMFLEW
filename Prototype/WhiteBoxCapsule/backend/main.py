@@ -181,7 +181,7 @@ def create_code_file(current_user: Annotated[models.User, Depends(get_current_ac
 @app.post("/create/attempt", response_model=models.Attempt)
 def create_attempt(current_user: Annotated[models.User, Depends(get_current_active_user)], attempt: models.Attempt, db: Session = Depends(get_db)):
     create_attempt = crud.create_attempt(db=db, attempt=attempt)
-    crud.update_user_stats(db, attempt.player_id)
+    crud.update_user_stats(db, current_user.id)
     return create_attempt
 
 ## Create Board State

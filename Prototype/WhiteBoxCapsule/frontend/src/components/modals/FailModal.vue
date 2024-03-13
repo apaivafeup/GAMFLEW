@@ -69,7 +69,7 @@ export default defineComponent({
       var body = {
         id: 0,
         score: 0,
-        player_id: this.board.attempt.player_id,
+        player_id: this.auth.user.id,
         challenge_id: this.board.attempt.challenge_id,
         attempt_type: 'fail',
         comment: this.board.attempt.comment,
@@ -80,6 +80,7 @@ export default defineComponent({
         this.board.submit()
         this.$refs.close.click()
         this.$router.push({ name: 'home' })
+        this.auth.getUserData(this.auth.user.id)
       }).catch((error) => {
         alert('An error occurred while submitting your attempt! Please try again later.')
       })
