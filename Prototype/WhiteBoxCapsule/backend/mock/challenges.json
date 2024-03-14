@@ -635,7 +635,7 @@
             "condition_count": 2,
             "preconditions": [],    
             "tests": [
-                "this.count_blue_pieces(input, case_num) > 12 && this.count_red_pieces(input, case_num) > 12", 
+                "this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12", 
                 "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) <= 12"
             ]
         },

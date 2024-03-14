@@ -1,0 +1,16 @@
+"id","score","player_id","challenge_id","attempt_type","comment","test_cases"
+1,100,1,1,"PASS","Testing comments... I did very well!","binary data"
+2,100,1,1,"PASS","Moved piece out of board so that coordinates are outside of the bounds
+","binary data"
+3,250,2,26,"PASS","Did a try with both colors with 12 pieces, and another with both colors with 13 pieces. Therefore, the condition will evaluate to both false and true, while each condition inside will be covered for both true and false","binary data"
+4,250,2,25,"PASS","First, made condition be false, with each atomic condition being false, because both colors had only 12 pieces.
+Then, made condition be true, with each atomic condition being true, because both colors had 13 pieces.","binary data"
+5,200,2,2,"PASS","First, moved piece within bounds.
+Then moevd piece outside of bounds","binary data"
+6,300,2,22,"PASS","First, true condition, with first atomic condition true and second false
+Then, true condition, with first atomic condition false and second true
+Finally, false condition, with bost atomic conditions false","binary data"
+7,100,2,1,"PASS","Moved piece out of bounds","binary data"
+8,250,2,27,"PASS","Guarantee pieces are always below 13.
+First, condition is false, by making both atomic conditions false. (Keep the initial board)
+Second, contion is true, by making both atomic conditions false (Delete every piece)","binary data"
