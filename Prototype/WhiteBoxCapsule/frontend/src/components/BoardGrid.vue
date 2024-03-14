@@ -70,7 +70,7 @@
           Go!
         </button>
         <button id="reset-button" class="button is-primary is-fullwidth"
-          v-if="!board.passed && !board.pause && !board.add" @click="board.generateState(true)">
+          v-if="!board.passed && !board.pause && !board.add" @click="board.generateState(true, true)">
           Reset
         </button>
         <button id="reset-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
@@ -95,7 +95,7 @@
       <button id="retry-button" class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
         Retry
       </button>
-      <button id="exit-button" class="button is-primary is-fullwidth" @click="board.exit()">
+      <button id="exit-button" class="button is-primary is-fullwidth" @click="this.exit()">
         Exit
       </button>
     </div>
@@ -190,7 +190,6 @@ export default {
 
   beforeMount() {
     this.board = boardStore()
-    console.log(this.isTriangle(3, 4, 5))
   },
 
   mounted() {
@@ -421,7 +420,7 @@ export default {
       }
 
       if (count == tests.length) {
-        this.board.addMode = false
+        this.board.add = false
         this.board.pass(this.challenge.score)
       }
     },
@@ -457,7 +456,7 @@ export default {
       }
 
       if (!passed.includes(false)) {
-        this.board.addMode = false
+        this.board.add = false
         this.board.pass(this.challenge.score)
       } else {
         this.board.fail()
@@ -490,13 +489,18 @@ export default {
       }
 
       if (!passed.includes(false)) {
-        this.board.addMode = false
+        this.board.add = false
         this.board.pass(this.challenge.score)
       } else {
         this.board.fail()
       }
-    }
+    },
+
+    exit() {
+      this.$router.back()
+    },
   },
+
   components: { PieceStack, OutPieceStack },
 
   watch: {}
