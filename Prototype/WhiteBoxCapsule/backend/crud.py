@@ -311,7 +311,6 @@ def update_user_stats(db: Session, user_id: int):
     failed_attempts = db.query(schemas.Attempt).filter(
         schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "fail").count()
     score = get_user_score(db, user_id)
-    # TODO: Add achievements
 
     user_to_update.successful_attempts = successful_attempts
     user_to_update.failed_attempts = failed_attempts

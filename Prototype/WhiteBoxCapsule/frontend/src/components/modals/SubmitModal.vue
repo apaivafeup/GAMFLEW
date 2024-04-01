@@ -72,7 +72,7 @@ export default defineComponent({
       var body = {
         id: 0,
         score: this.board.attempt.score,
-        player_id: this.board.attempt.player_id,
+        player_id: this.auth.user.id,
         challenge_id: this.board.attempt.challenge_id,
         attempt_type: 'pass',
         comment: this.board.attempt.comment,
@@ -84,6 +84,7 @@ export default defineComponent({
         this.$refs.close.click()
         this.$router.push({ name: 'home' })
         this.board.submit(response.data.score)
+        this.auth.getUserData(this.auth.user.id) // update user data
       }).catch((error) => {
         this.toast.error('An error occurred while submitting your attempt. Please try again later.')
       })

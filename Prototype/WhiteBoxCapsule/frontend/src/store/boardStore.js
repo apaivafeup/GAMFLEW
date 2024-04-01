@@ -166,7 +166,14 @@ export const boardStore = defineStore('boardStore', {
       this.selectedCoords = { x: null, y: null }
     },
 
-    emptyState() {
+    emptyState(new_state = false) {
+      if (!new_state) {
+        this.currentKey = 0
+        this.state = {}
+        this.outOfBoundsState = {}
+        this.log = {}
+      }
+      
       this.state[this.currentKey] = []
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
       this.log[this.currentKey] = []
@@ -180,8 +187,8 @@ export const boardStore = defineStore('boardStore', {
       this.table = false
     },
 
-    generateState(reset = false) {
-      this.emptyState()
+    generateState(reset = false, new_state = false) {
+      this.emptyState(new_state)
 
       for (let i = 1; i <= 8; i++) {
         this.state[this.currentKey].push([])
@@ -221,7 +228,7 @@ export const boardStore = defineStore('boardStore', {
       this.currentKey++
 
       if (this.state[this.currentKey] == undefined) {
-        this.generateState()
+        this.generateState(false, true)
         this.setState()
       }
 
@@ -319,18 +326,17 @@ export const boardStore = defineStore('boardStore', {
       window.location.reload()
     },
 
-    exit() {
-      window.location.href = '/'
-    },
-
     submit(score = null) {
       this.submitted = true
 
       if (score != null) {
         toast.success("You just earned " + score + " points!")
+      } else {
+        this.failed = false;
+        this.submitted = false;
       }
 
-      toast.warning("You just won an achievement!", onclick="this.achievements()")
+      //toast.warning("You just won an achievement!", onclick="this.achievements()")
     },
 
     achievements() {

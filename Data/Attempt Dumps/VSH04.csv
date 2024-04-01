@@ -1,0 +1,6 @@
+"id","score","player_id","challenge_id","attempt_type","comment","test_cases"
+1,100,1,1,"PASS","Testing comments... I did very well!","binary data"
+2,100,2,1,"PASS","I moved the red piece (0;6) to the ""out of bound"" position (-1;8)","binary data"
+3,250,2,26,"PASS","One test case that covers the first condition (13;12) and one test case that covers the second condition (12; 0)","binary data"
+4,250,2,25,"PASS","Provided two test cases. One that covers both conditions (13;13) and one that do not cover (12;12)","binary data"
+5,200,2,2,"PASS","Provided one test case that a red piece goes out of bound (-1;-1) and one test case that a piece move in a valid position (4;2)","binary data"
