@@ -37,7 +37,7 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
         <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" />
         <FailModal :placeholder="fail_placeholder" />
     </div>
-    <div style="display: flex; justify-content: center;" v-else>
+    <div style="display: flex; justify-content: center;" v-else-if="!loaded">
         <div class="vertical-center" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
             <h2 style="text-align: center;" v-if="!this.round_loading">You've entered <em>{{ room.name }}</em></h2>
             <h2 style="text-align: center;" v-else><em>{{ room.name }}</em></h2>
@@ -48,6 +48,9 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
             <button class="btn btn-primary" style="justify-self: center; width: 125px;" v-if="!this.round_loading" @click="leaveRoom()">Leave
                 Room</button>
         </div>
+    </div>
+    <div style="display: flex; justify-content: center;" v-else-if="this.winner != null">
+        <EndScreen :winner="this.winner"/>
     </div>
 </template>
 
@@ -62,15 +65,16 @@ export default {
     data() {
         return {
             interval: Number,
-            loaded: false,
-            room: {},
-            room_state: {},
-            round: {},
-            current_round: 0,
-            got_round: false,
-            round_loading: false,
-            is_ready: false,
-            playable: Boolean,
+            loaded: false, // if the page is loaded (before getting rounds - step 1)
+            room: {}, // room information
+            room_state: {}, // room state info
+            round: {}, // round info
+            current_round: 0, // current round number
+            got_round: false, // if we (the player) have the round (step 2)
+            round_loading: false, // if all players have the round (step 3)
+            is_ready: false, // if we can play (step 4)
+            playable: Boolean, // if it's our turn to play (step 5),
+            winner: null,
             code_file: CodeFile,
             challenge: Challenge,
             board_state: BoardState,
@@ -209,12 +213,21 @@ export default {
                 this.getRound()
             }
 
+            if (this.room_state.game_state == 'finished') {
+                this.loaded = false
+                this.round_loading = false
+                this.getWinner()
+            }
+
             if (this.round.state == 'finished' && this.round.round_number != -1) {
-                console.log('Next round is starting...')
+                console.log('The next round is starting...')
                 this.round_loading = true
                 this.loaded = false
             } else if (this.round.state == 'finished' && this.round.round_number == -1) {
-                confirm('The game has finished!')
+                this.loaded = false
+                this.round_loading = false
+                this.finishRoom()
+                this.getWinner()
             }
         },
 
@@ -292,6 +305,35 @@ export default {
             await this.$axios.post(this.$api_link + '/round/' + this.round.id + '/start', {}, this.auth.config)
                 .then((response) => {
 
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
+        },
+
+        async finishRoom() {
+            await this.$axios.post(this.$api_link + '/finish/game-room/' + this.id, {}, this.auth.config)
+                .then((response) => {
+                    clearInterval(this.interval)
+                    this.room_state.game_state = 'finished'
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
+        },
+
+        async getWinner() {
+            await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/winner', this.auth.config)
+                .then(response => {
+                    if (response.data.length == 1 || response.data.length > 1) {
+                        // someone won or a tie
+                        this.winner = response.data;
+                    } else {
+                        // no winner yet
+                        this.winner = null;
+                    }
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })

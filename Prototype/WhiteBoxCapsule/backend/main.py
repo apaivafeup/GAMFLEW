@@ -323,6 +323,20 @@ def finish_game_round(current_user: Annotated[models.User, Depends(get_current_a
     crud.finish_game_round(db=db, game_round_id=game_round_id)
     return game_log
 
+## Finish game room
+@app.post("/finish/game-room/{game_room_id}", response_model=models.GameLog)
+def finish_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    game_log = crud.send_finish_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id)
+    crud.finish_game_room(db=db, game_room_id=game_room_id)
+    return game_log
+
+## Get winner
+@app.get("/game-room/{game_room_id}/winner", response_model=list[models.UserBasics])
+def get_winner(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    return crud.get_winner(db=db, game_room_id=game_room_id)
+
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
     #uvicorn.run(app, host="10.227.242.121", port=8000)

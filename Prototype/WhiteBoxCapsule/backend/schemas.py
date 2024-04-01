@@ -89,7 +89,9 @@ class User(Base):
 
     attempts = relationship("Attempt", back_populates="user")
     challenges = relationship("Challenge", back_populates="user")
-    game_winner = relationship("GameRoom", back_populates="winner", foreign_keys="GameRoom.game_winner")
+    game_winner_1 = relationship("GameRoom", back_populates="winner_1", foreign_keys="GameRoom.game_winner_1_id")
+    game_winner_2 = relationship("GameRoom", back_populates="winner_2", foreign_keys="GameRoom.game_winner_2_id")
+    game_winner_3 = relationship("GameRoom", back_populates="winner_3", foreign_keys="GameRoom.game_winner_3_id")
     first_player = relationship("GameRoom", back_populates="player_1", foreign_keys="GameRoom.player_1_id")
     second_player = relationship("GameRoom", back_populates="player_2", foreign_keys="GameRoom.player_2_id")
     third_player = relationship("GameRoom", back_populates="player_3", foreign_keys="GameRoom.player_3_id")
@@ -174,11 +176,15 @@ class GameRoom(Base):
     player_3_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
     game_state = Column(ENUM(GameState), index=True)
     game_over = Column(Boolean, default=False, index=True)
-    game_winner = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+    game_winner_1_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+    game_winner_2_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+    game_winner_3_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
 
     game_logs = relationship("GameLog", back_populates="game_rooms") # this is the correct way
     game_rounds = relationship("GameRound", back_populates="game_rooms")
-    winner = relationship("User", back_populates="game_winner", foreign_keys="GameRoom.game_winner")
+    winner_1 = relationship("User", back_populates="game_winner_1", foreign_keys="GameRoom.game_winner_1_id")
+    winner_2 = relationship("User", back_populates="game_winner_2", foreign_keys="GameRoom.game_winner_2_id")
+    winner_3 = relationship("User", back_populates="game_winner_3", foreign_keys="GameRoom.game_winner_3_id")
     player_1 = relationship("User", back_populates="first_player", foreign_keys="GameRoom.player_1_id")
     player_2 = relationship("User", back_populates="second_player", foreign_keys="GameRoom.player_2_id")
     player_3 = relationship("User", back_populates="third_player", foreign_keys="GameRoom.player_3_id")

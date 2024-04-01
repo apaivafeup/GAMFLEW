@@ -25,11 +25,13 @@
       </div>
 
       <div class="progress-bar">
-        <div class="row" v-if="this.round != {}">
+        <div class="row" v-if="this.round != undefined">
           {{ 'Round ' + this.round.round_number + 'of' + this.round.max_rounds}}
         </div>
-        <div class="row">
-          {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
+        <div class="row" style="text-align: center;" v-else-if="this.round == undefined">
+          <p style="text-align: center;"> 
+            Loading...
+          </p>
         </div>
       </div>
 

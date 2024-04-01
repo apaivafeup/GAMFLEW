@@ -189,7 +189,7 @@ class GameRoom(BaseModel):
     player_3_id: Optional[int] = None
     game_state: Optional[GameState] = GameState.WAITING
     game_over: bool = False
-    game_winner: Optional[int] = None
+    game_winner: Optional[list[int]] = None
 
     class Config:
         from_attributes = True
@@ -220,7 +220,9 @@ class GameRoomState(BaseModel):
     players_in: list[int]
     game_state: GameState
     game_over: bool
-    game_winner: Optional[int]
+    game_winner_1_id: Optional[int]
+    game_winner_2_id: Optional[int]
+    game_winner_3_id: Optional[int]
     
 class GameLog(BaseModel):
     id: Optional[int]
