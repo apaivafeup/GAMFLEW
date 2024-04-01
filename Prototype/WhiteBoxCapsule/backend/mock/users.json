@@ -15,8 +15,8 @@
 {
     "id": 0,
     "name": "Student 1",
-    "email": "student1@prototype.com",
-    "username": "student1",
+    "email": "student@prototype.com",
+    "username": "student",
     "password": "password",
     "user_type": "player",
     "picture": "/static/images/avatar.png",
