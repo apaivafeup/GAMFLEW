@@ -612,5 +612,26 @@ a:hover {
   color: white;
   padding: 5px;
   border-radius: 40px;
-  width: 400px;
+  width: 500px;
+}
+
+.round-bar {
+  background-color: rgb(169, 89, 255);
+  color: white;
+  padding: 5px;
+  border-radius: 40px;
+  width: 375px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.round-summary-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 0px;
 }

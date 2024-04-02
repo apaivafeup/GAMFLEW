@@ -55,8 +55,8 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
                 Room</button>
         </div>
     </div>
-    <div style="display: flex; justify-content: center;" v-else-if="this.winner.length > 0">
-        <EndScreen :winner="this.winner" :id="this.id" style="position: absolute; top: 50%; transform: translate(0, -50%);"/>
+    <div style="display: flex; flex-direction: row; justify-content: center;" v-else-if="this.winner.length > 0">
+        <EndScreen :winner="this.winner" :id="this.id" :room="this.room" style="position: absolute; top: 50%; transform: translate(0, -50%);"/>
     </div>
 </template>
 

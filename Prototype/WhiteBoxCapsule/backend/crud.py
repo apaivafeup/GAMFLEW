@@ -193,6 +193,25 @@ def get_users(db: Session, skip: int = 0, limit: int = 500):
 
     return user_basics
 
+def get_users_by_id(db: Session, user_ids: list[int]):
+    users = db.query(schemas.User).filter(schemas.User.id.in_(user_ids)).all()
+
+    user_basics = []
+    for user in users:
+        user_basics_inst = models.UserBasics(
+            id=user.id,
+            name=user.name,
+            username=user.username,
+            user_type=user.user_type,
+            failed_attempts=user.failed_attempts,
+            successful_attempts=user.successful_attempts,
+            picture=user.picture,
+            score=user.score,
+            achievements=user.achievements
+        )
+        user_basics.append(user_basics_inst)
+
+    return user_basics if len(user_basics) > 0 else None
 
 def get_challenges(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Challenge).offset(skip).limit(limit).all()
@@ -837,9 +856,12 @@ def get_game_results(db: Session, game_room_id: int):
             results.append(
                 {
                     "round_id": round.id,
-                    "winner_id": attempt.player_id,
-                    "score": attempt.score
+                    "player_id": attempt.player_id,
+                    "score": attempt.score,
+                    "challenge": get_challenge(db, round.challenge_id).name
                 }
             )
+
+    results.sort(key=lambda x: x['round_id'])
 
     return results

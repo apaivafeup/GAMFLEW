@@ -257,5 +257,6 @@ class GameRound(BaseModel):
     
 class GameRoomSummary(BaseModel):
     round_id: int
-    winner_id: int
+    player_id: int
     score: int
+    challenge: str

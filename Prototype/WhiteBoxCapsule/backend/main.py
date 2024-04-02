@@ -202,6 +202,14 @@ def read_user(current_user: Annotated[models.User, Depends(get_current_active_us
         raise HTTPException(status_code=404, detail="User not found")
     return db_user
 
+## Get specific users
+@app.post("/users/", response_model=list[models.UserBasics])
+def read_users(current_user: Annotated[models.User, Depends(get_current_active_user)], user_ids: list[int], db: Session = Depends(get_db)):
+    users = crud.get_users_by_id(db, user_ids=user_ids)
+    if users is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return users
+
 ## Get specific user's challenges
 @app.post("/users/{user_id}/challenges/", response_model=models.Challenge)
 def create_challenge_for_user(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, challenge: models.Challenge, db: Session = Depends(get_db)):
