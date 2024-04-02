@@ -606,3 +606,11 @@ a:hover {
   min-width: 95% !important;
   max-width: none !important;
 }
+
+.winner-bar {
+  background-color: #8adc6d;
+  color: white;
+  padding: 5px;
+  border-radius: 40px;
+  width: 400px;
+}

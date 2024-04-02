@@ -37,26 +37,34 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
         <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" />
         <FailModal :placeholder="fail_placeholder" />
     </div>
-    <div style="display: flex; justify-content: center;" v-else-if="!loaded">
+    <div style="display: flex; justify-content: center;" v-else-if="!loaded && this.winner.length <= 0">
         <div class="vertical-center" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
             <h2 style="text-align: center;" v-if="!this.round_loading">You've entered <em>{{ room.name }}</em></h2>
             <h2 style="text-align: center;" v-else><em>{{ room.name }}</em></h2>
-            <p style="text-align: center; margin-bottom: 5px;" v-if="!this.round_loading">When all players get in the room, the game will start.</p>
-            <p style="text-align: center; margin-bottom: 5px;" v-else>New round is loading...</p>
+            <p style="text-align: center; margin-bottom: 5px;" v-if="!this.round_loading">When all players get in the
+                room, the game will start.</p>
+            <p style="text-align: center; margin-bottom: 5px;" v-else-if="this.round_loading && this.winner.length <= 0">New
+                round is loading...</p>
+            <p style="text-align: center; margin-bottom: 5px;" v-else>The game is over.</p>
             <p style="text-align: center;" v-if="!this.round_loading">Leaving this page means the game won't start.</p>
-            <p style="text-align: center;" v-else>Leaving this page means the game won't continue.</p>
-            <button class="btn btn-primary" style="justify-self: center; width: 125px;" v-if="!this.round_loading" @click="leaveRoom()">Leave
+            <p style="text-align: center;" v-else-if="this.round_loading && this.winner.length <= 0">Leaving this page means
+                the game won't continue.</p>
+            <p style="text-align: center;" v-else>If you wish, you can wait for the End Screen to load.</p>
+            <button class="btn btn-primary" style="justify-self: center; width: 125px;" v-if="!this.round_loading"
+                @click="leaveRoom()">Leave
                 Room</button>
         </div>
     </div>
-    <div style="display: flex; justify-content: center;" v-else-if="this.winner != null">
-        <EndScreen :winner="this.winner"/>
+    <div style="display: flex; justify-content: center;" v-else-if="this.winner.length > 0">
+        <EndScreen :winner="this.winner" :id="this.id" style="position: absolute; top: 50%; transform: translate(0, -50%);"/>
     </div>
 </template>
 
 <script>
+import EndScreen from '../components/EndScreen.vue'
+
 export default {
-    components: { ChallengeHeader, Board, MultiplayerSubmitModal, FailModal },
+    components: { ChallengeHeader, Board, MultiplayerSubmitModal, FailModal, EndScreen },
 
     props: {
         id: Number
@@ -74,7 +82,7 @@ export default {
             round_loading: false, // if all players have the round (step 3)
             is_ready: false, // if we can play (step 4)
             playable: Boolean, // if it's our turn to play (step 5),
-            winner: null,
+            winner: [],
             code_file: CodeFile,
             challenge: Challenge,
             board_state: BoardState,
@@ -135,14 +143,16 @@ export default {
 
     methods: {
         async startGameRoom() {
-            await this.$axios.post(this.$api_link + '/start/game-room/' + this.id, {}, this.auth.config)
-                .then((response) => {
+            if (this.room_state.game_state == undefined) {
+                await this.$axios.post(this.$api_link + '/start/game-room/' + this.id, {}, this.auth.config)
+                    .then((response) => {
 
-                })
-                .catch((error) => {
-                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
-                    return
-                })
+                    })
+                    .catch((error) => {
+                        this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                        return
+                    })
+            }
         },
 
         async leaveRoom() {
@@ -195,7 +205,7 @@ export default {
 
             if (this.room_state.game_state == 'waiting') {
                 this.loaded = false
-                
+
                 if (this.round != null) {
                     this.round_loading = true
                 }
@@ -213,7 +223,7 @@ export default {
                 this.getRound()
             }
 
-            if (this.room_state.game_state == 'finished') {
+            if (this.room_state.game_state == 'finished' && this.winner.length <= 0) {
                 this.loaded = false
                 this.round_loading = false
                 this.getWinner()
@@ -330,6 +340,7 @@ export default {
                     if (response.data.length == 1 || response.data.length > 1) {
                         // someone won or a tie
                         this.winner = response.data;
+                        clearInterval(this.interval)
                     } else {
                         // no winner yet
                         this.winner = null;
@@ -355,6 +366,12 @@ export default {
             },
             deep: true
         },
+        winner: {
+            handler: function () {
+                this.$forceUpdate()
+            },
+            deep: true
+        }
     },
 
     components: {

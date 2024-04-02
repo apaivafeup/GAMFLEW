@@ -265,7 +265,7 @@ def delete_user(current_user: Annotated[models.User, Depends(get_current_active_
 
 ## Create game room
 @app.post("/create/game-room", response_model=models.GameLog)
-def create_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room: models.GameRoom, db: Session = Depends(get_db)):
+def create_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room: int, db: Session = Depends(get_db)):
     db_game_room = crud.create_game_room(db=db, game_room=game_room)
     return crud.send_game_log(db=db, game_room_id=db_game_room.id, user_id=current_user.id, message=schemas.GameMessage.ENTER)
 
@@ -335,6 +335,10 @@ def finish_game_room(current_user: Annotated[models.User, Depends(get_current_ac
 def get_winner(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     return crud.get_winner(db=db, game_room_id=game_room_id)
 
+## Get game results
+@app.get("/game-room/{game_room_id}/results", response_model=list[models.GameRoomSummary])
+def get_game_results(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    return crud.get_game_results(db=db, game_room_id=game_room_id)
 
 
 if __name__ == "__main__":

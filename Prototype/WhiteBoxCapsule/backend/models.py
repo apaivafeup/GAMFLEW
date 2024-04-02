@@ -254,3 +254,8 @@ class GameRound(BaseModel):
         elif (self.round_number > self.max_rounds):
             raise ValueError("A round number must be at most the maximum number of rounds.")
         return self
+    
+class GameRoomSummary(BaseModel):
+    round_id: int
+    winner_id: int
+    score: int

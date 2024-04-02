@@ -463,7 +463,7 @@ def set_game_room_state(db: Session, game_room_id: int):
     players_in = get_players_in(db, game_room_id)
     game_room.players_in = players_in
     
-    if (len(players_in) < game_room.player_number):
+    if (len(players_in) < game_room.player_number and len(game_rounds) != game_room.rounds):
         print('waiting 1')
         game_room.game_state = schemas.GameState.WAITING
     elif (len(players_in) == game_room.player_number and game_room.game_state == schemas.GameState.WAITING and len(game_rounds) != game_room.rounds):
@@ -819,3 +819,27 @@ def get_winner(db: Session, game_room_id: int):
         return result 
 
     return []
+
+def get_game_results(db: Session, game_room_id: int):
+    game_room = get_game_room(db, game_room_id)
+
+    if game_room is None:
+        return None
+
+    game_rounds = db.query(schemas.GameRound).filter(
+        schemas.GameRound.game_room_id == game_room_id).filter(schemas.GameRound.state == schemas.GameRoundState.FINISHED).all()
+
+    results = []
+
+    for round in game_rounds:
+        attempt = get_attempt_by_round_id(db, round.id)
+        if attempt is not None:
+            results.append(
+                {
+                    "round_id": round.id,
+                    "winner_id": attempt.player_id,
+                    "score": attempt.score
+                }
+            )
+
+    return results
