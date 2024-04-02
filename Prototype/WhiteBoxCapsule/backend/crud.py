@@ -403,7 +403,7 @@ def get_game_room(db: Session, game_room_id: int):
     return db.query(schemas.GameRoom).filter(schemas.GameRoom.id == game_room_id).first()
 
 def get_game_rooms(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(schemas.GameRoom).offset(skip).limit(limit).all()
+    return db.query(schemas.GameRoom).filter(schemas.GameRoom.game_state != schemas.GameState.FINISHED).offset(skip).limit(limit).all()
 
 def get_game_room_by_name(db: Session, name: str):
     return db.query(schemas.GameRoom).filter(schemas.GameRoom.name == name).first()
