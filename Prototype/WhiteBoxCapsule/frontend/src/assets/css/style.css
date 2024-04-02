@@ -384,6 +384,15 @@ button.menu-button {
   margin-right: 20px;
 }
 
+.winner-bar-avatar {
+  width: 67.5px;
+  height: 67.5px;
+  border-radius: 100px;
+  border: 1px solid #cdcdcd;
+  object-fit: cover;
+  padding: 0px;
+}
+
 .buttons-grid {
   display: grid;
   grid-template-columns: 85px 85px;

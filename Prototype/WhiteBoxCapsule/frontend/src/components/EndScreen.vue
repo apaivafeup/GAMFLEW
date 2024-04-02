@@ -3,35 +3,35 @@
     <div class="row">
       <h2 style="text-align: center; margin-bottom: 10px;">Game Room {{ this.id }} is closed.</h2>
       <p style="text-align: center;">To play again, you need to create another room.</p>
-      <p style="height: 30px; "/>
+      <p style="height: 15px; "/>
       <h4 style="text-align: center;" v-if="this.winner.length > 1">Here are the winners!</h4>
       <h4 style="text-align: center;" v-else>Here is the winner!</h4>
     </div>
     <div class="row container" style="justify-content: center;">
       <div class="winner-bar" v-for="w in this.winner">
-        <div class="player-bar" style="display: flex; flex-direction: column; padding: 0px 10px;">
-          <div style="display: grid; grid-template-columns: 80% 20%; grid-template-rows: 100%; padding: 3px 5px;">
-            <div style="display: flex; align-content: start; align-items: start; flex-direction: column; justify-content: center;">
-              <div class="row" style="--bs-gutter-x: 0; --bs-gutter-y: 0;">
-                <img :src="this.$api_link + w.picture" class="player-bar-avatar" />
-                <div class="col" style="justify-content: center; display: flex; flex-direction: column;">
+        <div class="player-bar" style="display: flex; flex-direction: column; padding: 15px;">
+              <div class="row" style="display: flex; justify-content: space-between; align-content: space-between; flex-direction: row;">
+                <img :src="this.$api_link + w.picture" class="winner-bar-avatar" />
+                <div class="col-md-5" style="justify-content: center; display: flex; flex-direction: column; margin-left: -25px;">
                   <div class="row">
-                    <b style="font-size: 14px">{{ w.name }}</b>
+                    <b style="font-size: 22px; padding: 0px;">{{ w.name }}</b>
                   </div>
                   <div class="row">
-                    <em style="font-size: 10px">
+                    <em style="font-size: 14px; padding: 0px;">
                       {{ w.username }}
                     </em>
                   </div>
                 </div>
+                <div class="col" style="justify-content: center; display: flex; flex-direction: column; max-width: 35%;">
+                  <div class="badge bg-primary" style="margin: 0px; background-color: rgb(255, 193, 7)!important; text-align: center; display: flex; justify-content: center;"><strong>{{ getWinnerPoints(w.id) }}/{{ getRoundPoints() }} points</strong></div>
+                </div>
               </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-    <p style="height: 30px; "/>
+    <p style="height: 15px; "/>
     <div class="column container" style="display: grid; justify-content: center; align-content: center;">
+      <h5 style="text-align: center;">These were the rounds:</h5>
       <div class="round-bar" v-for="(r, index) in this.round">
         <div style="display: grid; grid-template-columns: 60% 40%; grid-template-rows: 100%; grid-gap: 30px; padding: 10px; place-content: center;">
           <div style="display: flex; flex-direction: column; align-items: start; justify-content: start;">
@@ -95,7 +95,7 @@ export default defineComponent({
 
   data() {
     return {
-      round: {},
+      round: [],
       users: {}
     }
   },
@@ -137,6 +137,28 @@ export default defineComponent({
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
           return
         })
+    },
+
+    getWinnerPoints(winner_id) {
+      var points = 0
+
+      this.round.forEach((r) => {
+        if (r.player_id == winner_id) {
+          points += r.score
+        }
+      })
+
+      return points
+    },
+
+    getRoundPoints() {
+      var points = 0
+
+      this.round.forEach((r) => {
+        points += r.score
+      })
+
+      return points
     }
   }
 })
