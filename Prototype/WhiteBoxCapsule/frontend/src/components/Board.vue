@@ -51,7 +51,6 @@ export default {
         </div>
       </div>
       <div class="row" style="display: flex; width: 100%; gap: 5px;">
-
         <PlayerInfo v-if="!board.passed && !board.timeout" style="width: 100%;"/>
         <div v-if="board.failed && !board.timeout && !board.passed" class="alert alert-danger player-info">
           <p style="margin: 0px; padding: 0px; align-self: center;">

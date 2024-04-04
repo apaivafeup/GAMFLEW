@@ -179,6 +179,7 @@ export const boardStore = defineStore('boardStore', {
       this.log[this.currentKey] = []
       this.passed = false
       this.failed = false
+      this.hint = false
       this.add = false
       this.pause = false
       this.timeout = false
@@ -313,12 +314,14 @@ export const boardStore = defineStore('boardStore', {
       this.passed = !this.passed
       this.failed = false
       this.paused = true
+      this.hint = false
 
       this.attempt.setScore(score)
     },
 
     fail() {
       this.failed = true
+      this.hint = true
       this.attempt.setScore(0)
     },
 
