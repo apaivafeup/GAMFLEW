@@ -651,7 +651,7 @@
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
         "objective": "Condition coverage of line 7.",
-        "initial_board": 2,
+        "initial_board": 1,
         "code_file": 2,
         "challenge_type": "condition",
         "passing_criteria": {

@@ -43,7 +43,7 @@ export default {
       <div class="row" style="display: flex; flex-direction: row; width: 100%;">
         <ChallengeCode :code_file="code_file" style="width: 100%;" />
       </div>
-      <div class="row" style="width: 100%;" v-if="!board.passed">
+      <div class="row" style="width: 100%;" v-if="!board.passed && board.hint">
         <div class="alert alert-secondary player-info" style="width: 100%; overflow-y: scroll; font-size: 14px;" id="#challenge-hint" >
           <p style="margin: 0px; padding: 0px; align-self: center;">
             <b>Hint:</b> {{ this.challenge.hint }}

@@ -9,6 +9,7 @@ import shutil, os
 from fastapi.staticfiles import StaticFiles
 from fastapi import BackgroundTasks
 import datetime
+import ssl
 
 # New stuff
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -17,6 +18,9 @@ from typing import Annotated
 
 import uvicorn
 import crud, models, schemas, auth
+
+#ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+#ssl_context.load_cert_chain('./gamflew_api.pem', keyfile='./gamflew_api.key')
 
 # Check if file directories exist, if not create them
 if not os.path.exists('static'):
@@ -351,5 +355,5 @@ def get_game_results(current_user: Annotated[models.User, Depends(get_current_ac
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
-    #uvicorn.run(app, host="10.227.242.121", port=8000)
+    #uvicorn.run(app, host="10.227.242.121", port=8000, ssl_keyfile="./gamflew_api.key", ssl_certfile="./gamflew_api.pem")
 

@@ -366,12 +366,25 @@ export default {
     },
 
     changeX() {
+      if (document.getElementById('piece-stack-out-x').value > 7 || document.getElementById('piece-stack-out-x').value < 0) {
+        alert('You need to enter a number that IS NOT between 0 and 7.')
+        document.getElementById('piece-stack-out-x').value = ''
+        return
+      }
+      
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
         this.outX = document.getElementById('piece-stack-out-x').value
       }
+      
     },
 
     changeY() {
+      if (document.getElementById('piece-stack-out-y').value > 7 || document.getElementById('piece-stack-out-y').value < 0) {
+        alert('You need to enter a number that IS NOT between 0 and 7.')
+        document.getElementById('piece-stack-out-y').value = ''
+        return
+      }
+
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
         this.outY = document.getElementById('piece-stack-out-y').value
       }
