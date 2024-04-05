@@ -33,6 +33,7 @@ export const boardStore = defineStore('boardStore', {
 
       // Flags, for game mechanics / button panel.
       passed: Boolean,
+      go: Boolean,
       failed: Boolean,
       hint: Boolean,
       add: Boolean,
@@ -186,6 +187,7 @@ export const boardStore = defineStore('boardStore', {
       this.submitted = false
       this.started = false
       this.table = false
+      this.go = false
     },
 
     generateState(reset = false, new_state = false) {
@@ -316,13 +318,13 @@ export const boardStore = defineStore('boardStore', {
       this.paused = true
       this.hint = false
 
-      this.attempt.setScore(score)
+      this.attempt.score = score
     },
 
     fail() {
       this.failed = true
       this.hint = true
-      this.attempt.setScore(0)
+      this.attempt.score = 0
     },
 
     retry() {

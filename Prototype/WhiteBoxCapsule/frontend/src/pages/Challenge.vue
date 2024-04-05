@@ -15,12 +15,14 @@ import { authStore } from '../store/authStore'
 
 import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';
+import CommentModal from '../components/modals/CommentModal.vue'
 </script>
 
 <template style="overflow: hidden">
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
   <Board :challenge="challenge" :code_file="code_file" :user="auth.user" />
-  <SubmitModal :placeholder="submit_placeholder" />
+  <!-- <SubmitModal :placeholder="submit_placeholder" /> -->
+  <CommentModal :placeholder="submit_placeholder" />
   <FailModal :placeholder="fail_placeholder" />
 </template>
 

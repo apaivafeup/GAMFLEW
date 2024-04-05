@@ -61,9 +61,8 @@
           v-else>
           {{ !board.add ? 'Add' : 'Move' }}
         </button>
-        <button id="go-button" class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed && !board.pause"
-          @click="go(this.board)">
+        <button id="go-button" class="button is-primary is-fullwidth" data-bs-toggle="modal" data-bs-target="#comment-modal"
+          v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed && !board.pause">
           Go!
         </button>
         <button id="go-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
@@ -76,25 +75,14 @@
         <button id="reset-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Reset
         </button>
-        <button id="comment-button" class="button is-primary is-fullwidth" v-if="board.passed && !board.submitted"
-          data-bs-toggle="modal" data-bs-target="#submit-modal"
-          style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
-          Comment
-        </button>
-        <button id="comment-button" class="button is-primary is-fullwidth" v-else-if="board.failed && !board.submitted"
-          data-bs-toggle="modal" data-bs-target="#fail-modal"
-          style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
-          Comment
-        </button>
-        <button id="comment-button" class="button is-primary is-fullwidth" v-else data-bs-toggle="modal"
-          data-bs-target="#fail-modal">
-          Comment
+        <button id="retry-button" class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
+          Retry
         </button>
       </div>
+      <div id="go-click-element" style="opacity: 0%" @click="this.go()">
 
-      <button id="retry-button" class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
-        Retry
-      </button>
+      </div>
+      
       <button id="exit-button" class="button is-primary is-fullwidth" @click="this.exit()">
         Exit
       </button>
@@ -161,24 +149,25 @@
 
 <script>
 import PieceStack from './PieceStack.vue'
-import SubmitModal from './modals/SubmitModal.vue'
 
 // JS
 import { Challenge } from '../store/models/challenge'
 import { boardStore } from '../store/boardStore'
+import { authStore } from '../store/authStore'
 
 import { Color, Piece } from '../store/models/piece'
 import OutPieceStack from './OutPieceStack.vue'
 import 'vue3-easy-data-table'
 
 export default {
-  components: { PieceStack, OutPieceStack, SubmitModal },
+  components: { PieceStack, OutPieceStack},
   props: {
     challenge: Challenge
   },
 
   data() {
     return {
+      goFlag: Boolean,
       headers: [],
       items: [],
       itemsSelected: [],
@@ -190,10 +179,7 @@ export default {
 
   beforeMount() {
     this.board = boardStore()
-  },
-
-  mounted() {
-
+    this.auth = authStore()
   },
 
   methods: {
@@ -395,18 +381,28 @@ export default {
     },
 
     // Submit functions
-    go(input) {
+    go() {
+      console.log('here!')
+
+      if (!this.board.go) {
+        return
+      }
+
       var type = this.challenge.challenge_type
 
       if (type == 'statement') {
-        this.goUnique(input)
+        this.goUnique(this.board)
       } else if (type == 'decision') {
-        this.goDecision(input)
+        this.goDecision(this.board)
       } else if (type == 'condition' || type == 'mcdc' || type == 'condition/decision') {
-        this.goCondition(input)
+        this.goCondition(this.board)
       } else {
         console.error('Invalid submit type')
       }
+
+      this.submitAttempt()
+      this.board.go = false
+
     },
 
     goUnique(input) {
@@ -509,13 +505,36 @@ export default {
       }
     },
 
+    async submitAttempt() {
+      var body = {
+        id: 0,
+        score: this.board.attempt.score,
+        player_id: this.auth.user.id,
+        challenge_id: this.board.attempt.challenge_id,
+        attempt_type: this.board.passed ? 'pass' : 'fail',
+        comment: this.board.attempt.comment,
+        test_cases: this.board.state
+      }
+
+      var flag = false, score = 0
+      await this.$axios.post(this.$api_link + '/create/attempt/', body, this.auth.config).then((response) => {
+        this.$refs.close.click()
+        this.board.submit(response.data.score)
+        this.auth.getUserData(this.auth.user.id) // update user data
+        if (body.attempt_type == 'pass') {
+          this.$router.push({ name: 'home' })
+        }
+      }).catch((error) => {
+        this.toast.error('An error occurred while submitting your attempt. Please try again later.')
+      })
+
+    },
+
     exit() {
       this.$router.back()
     },
   },
 
   components: { PieceStack, OutPieceStack },
-
-  watch: {}
 }
 </script>
