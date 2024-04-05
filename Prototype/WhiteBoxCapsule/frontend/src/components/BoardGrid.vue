@@ -154,6 +154,7 @@ import PieceStack from './PieceStack.vue'
 import { Challenge } from '../store/models/challenge'
 import { boardStore } from '../store/boardStore'
 import { authStore } from '../store/authStore'
+import { useToast } from 'vue-toastification'
 
 import { Color, Piece } from '../store/models/piece'
 import OutPieceStack from './OutPieceStack.vue'
@@ -180,6 +181,7 @@ export default {
   beforeMount() {
     this.board = boardStore()
     this.auth = authStore()
+    this.toast = useToast()
   },
 
   methods: {

@@ -33,15 +33,11 @@
 
 import { defineComponent } from 'vue'
 import { boardStore } from '../../store/boardStore'
-import { useToast } from "vue-toastification";
-import { authStore } from '../../store/authStore'
 
 export default defineComponent({
 
   beforeMount() {
     this.board = boardStore()
-    this.toast = useToast()
-    this.auth = authStore()
   },
 
   data() {
