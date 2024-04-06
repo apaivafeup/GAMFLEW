@@ -7,7 +7,7 @@
     class="col"
     style="display: flex; justify-content: center; align-items: center; flex-direction: column"
   >
-    <div class="accordion" id="accordionExample" style="width: 1000px">
+    <div class="accordion" id="accordionExample" style="width: 1000px;">
       <div class="accordion-item" v-for="code_file in code_files">
         <h2 class="accordion-header" :id="'heading' + code_file.id">
           <button
@@ -30,10 +30,9 @@
               : 'accordion-collapse collapse'
           "
           :aria-labelledby="'heading' + code_file.id"
-          data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <ul class="list-group">
+            <ul class="list-group"  style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 10px;" >
               <li
                 class="list-group-item"
                 v-if="challenges[code_file.id]"

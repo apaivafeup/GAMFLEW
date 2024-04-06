@@ -2,7 +2,7 @@
   <div class="card challenge-card" @click="goToChallenge(challenge.id)">
     <div class="card-body" style="">
       <div class="row" style="display: flex; justify-content: space-between">
-        <div style="width: 85%">
+        <div style="width: 100%">
           <div class="row" style="align-items: center">
             <h5 class="card-title" style="width: auto">{{ challenge.name.split(':')[0] }}</h5>
             <div
@@ -25,40 +25,21 @@
             </div>
           </div>
           <div class="row">
-            <h6 class="card-subtitle mb-2 text-muted">{{ challenge.name.split(':')[1] }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted" style="font-size: 14px;">{{ challenge.name.split(':')[1] }}</h6>
           </div>
         </div>
-        <div style="width: 15%; display: flex; flex-direction: column; padding-right: 25px">
-          <div class="row" style="align-items: center; font-size: 15px; justify-content: end">
-            {{ challenge.score + 'pts' }}
+      </div>
+      <div class="row">
+        <div style="width: 15%; display: flex; flex-direction: row; gap: 10px;">
+          <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: rgb(169, 89, 255)!important; text-align: center; display: flex; justify-content: center;"><strong>{{ challenge.score }} points</strong></div>
+          <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
+            {{ challenge.challenge_type.charAt(0).toUpperCase() + challenge.challenge_type.slice(1) }}
           </div>
-          <div
-            class="row"
-            style="
-              align-items: center;
-              text-align: right;
-              font-size: 12px;
-              font-style: italic;
-              justify-content: end;
-            "
-          >
-            {{ challenge.challenge_type }}
-          </div>
-          <div
-            class="row"
-            style="
-              align-items: center;
-              text-align: right;
-              font-size: 10px;
-              font-weight: bold;
-              justify-content: end;
-            "
-          >
+          <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: rgb(13, 202, 240)!important; text-align: center; display: flex; justify-content: center;">
             {{ challenge.difficulty }}
           </div>
         </div>
       </div>
-      <p class="card-text">{{ challenge.description }}</p>
     </div>
   </div>
 </template>
