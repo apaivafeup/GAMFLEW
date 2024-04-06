@@ -31,7 +31,7 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
 <template style="overflow: hidden">
     <div v-if="loaded">
         <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name" :playable="this.playable" />
-        <MultiplayerBoard :challenge="challenge" :code_file="code_file" :user="auth.user" :playable="this.playable" />
+        <MultiplayerBoard :challenge="challenge" :code_file="code_file" :user="auth.user" :playable="this.playable" :round="this.round" />
         <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" />
         <FailModal :placeholder="fail_placeholder" />
     </div>
@@ -106,6 +106,7 @@ export default {
 
         this.auth = authStore()
         this.auth.checkAuth()
+        this.board = boardStore()
 
         await this.$axios.get(this.$api_link + '/game-room/' + this.id, this.auth.config)
             .then(response => {
@@ -152,10 +153,6 @@ export default {
         },
 
         async leaveRoom() {
-            console.log('Leaving...')
-            if (!confirm('Are you sure you want to leave the room?'))
-                return
-
             await this.$axios.post(this.$api_link + '/leave/game-room/' + this.id, {}, this.auth.config)
                 .then((response) => {
                     this.$router.push({ name: 'multiplayer-rooms' })
@@ -216,6 +213,7 @@ export default {
                 this.is_ready = false;
                 this.round_loading = true
                 this.loaded = false
+                this.board.emptyState(true)
                 this.getRound()
             }
 

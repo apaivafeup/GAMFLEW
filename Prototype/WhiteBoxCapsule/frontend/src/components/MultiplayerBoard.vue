@@ -15,7 +15,8 @@ export default {
     challenge: Challenge,
     user: User,
     code_file: CodeFile,
-    playable: Boolean
+    playable: Boolean,
+    round: Object
   },
 
   data() {
@@ -32,40 +33,53 @@ export default {
 
 <template>
   <div id="board-row" class="justify-content-between" style="display: grid; grid-template-rows: 100%; grid-template-columns: 50% 50%;">
-    <div class="col">
-      <div class="alert alert-warning player-info" v-if="!board.timeout">
-        {{ this.challenge.objective }}
+    <div class="col" style="display: grid; grid-template-rows: 65px 393px 85px 80px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center; font-size: 14px;">
+      <div class="row" style="width: 100%;" v-if="!board.failed && !board.passed">
+        <div class="alert alert-warning player-info" v-if="!board.timeout">
+          <p style="margin: 0px; padding: 0px; align-self: center;">{{ this.challenge.objective }}</p>
+        </div>
+      </div>
+      <div class="row" style="display: grid; grid-template-columns: 49.5% 49.5%; grid-template-rows: 100%; grid-gap: 7.5px; width: 100%;" v-else-if="board.failed">
+        <div class="col" style="padding: 0px; margin: 0px;">
+          <div class="alert alert-warning player-info" v-if="!board.timeout">
+            <p style="margin: 0px; padding: 0px; align-self: center;">{{ this.challenge.objective }}</p>
+          </div>
+        </div>
+        <div class="col" style="padding: 0px; margin: 0px;">
+          <div v-if="board.failed" class="alert alert-danger player-info">
+            <p style="margin: 0px; padding: 0px; align-self: center;">
+              You didn't pass. You can keep trying.
+            </p>
+          </div>
+        </div>
+        
       </div>
 
+      
       <ChallengeCode :code_file="code_file" />
-      <div
-        class="alert alert-secondary player-info"
-        id="#challenge-hint"
-        v-if="!board.passed"
-      >
-        <p style="margin: 0px">
-          <b>Hint:</b> {{ this.challenge.hint }}
-        </p>
+      <div class="row" style="width: 100%;" v-if="!board.passed && board.hint">
+        <div class="alert alert-secondary player-info" style="width: 100%; overflow-y: scroll; font-size: 14px;" id="#challenge-hint" >
+          <p style="margin: 0px; padding: 0px; align-self: center;">
+            <b>Hint:</b> {{ this.challenge.hint }}
+          </p>
+        </div>
       </div>
-      <PlayerInfo v-if="!board.passed && !board.timeout" />
-      <div
-        v-if="board.failed && !board.timeout && !board.passed"
-        class="alert alert-danger player-info"
-      >
-        You didn't pass. There's still time, though! Keep trying.
+
+        <div class="row" style="display: flex; width: 100%; gap: 5px;">
+          <PlayerInfo v-if="!board.passed && !board.timeout" style="width: 100%;"/>
+          <div v-if="board.passed && !board.timeout" class="alert alert-special player-info">
+            <p style="margin: 0px; padding: 0px; align-self: center;">A <b>special achievement</b> hint will be here!</p>
+          </div>
+          <div v-else-if="board.passed && !board.timeout" class="alert alert-success player-info">
+            <p style="margin: 0px; padding: 0px; align-self: center;">
+              You passed, congratulations! To submit your solution, click the <b>Comment</b> button.
+              <em>It's required for your score!</em>
+            </p>
+          </div>
+        </div>
       </div>
-      <div v-else-if="board.passed && !board.timeout" class="alert alert-success player-info">
-        <p style="margin: 0px">
-          You passed, congratulations! To submit your solution, click the <b>Comment</b> button.
-          <em>It's required for your score!</em>
-        </p>
-      </div>
-      <div v-if="board.passed && !board.timeout" class="alert alert-special player-info">
-        <p style="margin: 0px">A <b>special achievement</b> hint will be here!</p>
-      </div>
-    </div>
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
-      <MultiplayerBoardGrid :challenge="challenge" :playable="playable "/>
+      <MultiplayerBoardGrid :challenge="challenge" :playable="playable" :round="round"/>
       <PlayerBar :user="user" />
     </div>
   </div>

@@ -25,8 +25,8 @@
       </div>
 
       <div class="progress-bar">
-        <div class="row" v-if="this.round != undefined">
-          {{ 'Round ' + this.round.round_number + 'of' + this.round.max_rounds}}
+        <div class="row" v-if="this.round != undefined" style="justify-content: center;">
+          {{ 'Round ' + this.round.round_number + ' of ' + this.round.max_rounds}}
         </div>
         <div class="row" style="text-align: center;" v-else-if="this.round == undefined">
           <p style="text-align: center;"> 
@@ -83,10 +83,6 @@
         data-bs-toggle="modal" data-bs-target="#submit-modal">
         Comment
       </button>
-      <!-- <button id="comment-button" class="button is-primary is-fullwidth" v-else-if="playable && !board.passed"
-      @click="pass()">
-      Pass
-    </button> -->
         <button id="comment-button" class="button is-primary is-fullwidth" v-else-if="board.passed && !board.submitted"
         data-bs-toggle="modal" data-bs-target="#submit-modal"
         style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
@@ -180,7 +176,8 @@ export default {
   components: { PieceStack, OutPieceStack },
   props: {
     challenge: Challenge,
-    playable: Boolean
+    playable: Boolean,
+    round: Object
   },
 
   data() {

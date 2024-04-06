@@ -54,7 +54,7 @@ export default {
         <PlayerInfo v-if="!board.passed && !board.timeout" style="width: 100%;"/>
         <div v-if="board.failed && !board.timeout && !board.passed" class="alert alert-danger player-info">
           <p style="margin: 0px; padding: 0px; align-self: center;">
-            You didn't pass. There's still time, though! Keep trying.
+            You didn't pass. You can keep trying, though.
           </p>
         </div>
         <div v-else-if="board.passed && !board.timeout" class="alert alert-success player-info">
