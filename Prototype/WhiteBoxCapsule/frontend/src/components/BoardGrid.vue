@@ -520,7 +520,6 @@ export default {
 
       var flag = false, score = 0
       await this.$axios.post(this.$api_link + '/create/attempt/', body, this.auth.config).then((response) => {
-        this.$refs.close.click()
         this.board.submit(response.data.score)
         this.auth.getUserData(this.auth.user.id) // update user data
         if (body.attempt_type == 'pass') {
