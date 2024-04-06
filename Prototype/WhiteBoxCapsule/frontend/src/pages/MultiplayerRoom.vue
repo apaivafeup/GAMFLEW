@@ -155,7 +155,7 @@ export default {
         async leaveRoom() {
             await this.$axios.post(this.$api_link + '/leave/game-room/' + this.id, {}, this.auth.config)
                 .then((response) => {
-                    this.$router.push({ name: 'multiplayer-rooms' })
+                    this.$router.back()
                 })
                 .catch(error => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })

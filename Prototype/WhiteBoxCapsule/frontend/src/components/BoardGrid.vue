@@ -523,7 +523,7 @@ export default {
         this.board.submit(response.data.score)
         this.auth.getUserData(this.auth.user.id) // update user data
         if (body.attempt_type == 'pass') {
-          this.$router.push({ name: 'home' })
+          this.$router.back()
         }
       }).catch((error) => {
         this.toast.error('An error occurred while submitting your attempt. Please try again later.')

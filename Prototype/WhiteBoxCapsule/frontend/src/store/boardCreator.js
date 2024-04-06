@@ -187,7 +187,7 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
     },
 
     exit() {
-      this.$router.push({ name: 'home' })
+      this.$router.back()
     },
   }
 })
