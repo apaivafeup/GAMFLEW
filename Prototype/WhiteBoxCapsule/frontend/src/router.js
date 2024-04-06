@@ -18,6 +18,7 @@ const routes = [
     { name: 'loading', path: '/loading', component: () => import('./pages/Loading.vue')},
     { name: 'multiplayer', path: '/multiplayer', component: () => import('./pages/MultiplayerRooms.vue')},
     { name: 'multiplayer-room', path: '/multiplayer/:id', component: () => import('./pages/MultiplayerRoom.vue'), props: true},
+    { name: 'user-export', path: '/user-export', component: () => import('./pages/UserExport.vue'), props: false},
 ];
 
 export const Router = createRouter({

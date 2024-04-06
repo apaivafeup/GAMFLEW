@@ -352,6 +352,9 @@ def get_winner(current_user: Annotated[models.User, Depends(get_current_active_u
 def get_game_results(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     return crud.get_game_results(db=db, game_room_id=game_room_id)
 
+@app.get('/users/{user_id}/export', response_model=list[models.Attempt])
+def export_user_attempts(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, db: Session = Depends(get_db)):
+    return crud.get_user_attempts(db, user_id)
 
 @app.get('/code-file-dictionary', response_model=dict)
 def get_code_file_dictionary(db: Session = Depends(get_db)):

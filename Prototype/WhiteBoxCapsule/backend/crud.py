@@ -877,3 +877,6 @@ def get_code_file_dictionary(db: Session):
         result[entry.expression] = entry.replacement
 
     return result
+
+def get_user_attempts(db: Session, user_id: int):
+    return db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).all()

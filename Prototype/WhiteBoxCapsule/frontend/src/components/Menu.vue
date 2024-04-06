@@ -18,6 +18,9 @@
     <button class="menu-button" @click="this.$router.push('how-to')" id="how-to-button" style="width: 500px">
       How To Play
     </button>
+    <button class="menu-button" @click="this.$router.push({name: 'user-export'})" id="export-button" style="width: 500px">
+      Export
+    </button>
     <button class="menu-button" @click="this.$router.push({ name: 'credits' })" id="credits-button" style="width: 500px">
       Credits
     </button>
