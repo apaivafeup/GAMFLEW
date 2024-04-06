@@ -34,7 +34,7 @@ export default {
 <template>
   <div id="board-row" class="justify-content-between" style="display: grid; grid-template-rows: 100%; grid-template-columns: 50% 50%;">
     <div class="col" style="display: grid; grid-template-rows: 65px 393px 85px 80px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center; font-size: 14px;">
-      <div class="row" style="width: 100%;" v-if="!board.failed && !board.passed">
+      <div class="row" style="width: 100%;" v-if="!board.failed || board.passed">
         <div class="alert alert-warning player-info" v-if="!board.timeout">
           <p style="margin: 0px; padding: 0px; align-self: center;">{{ this.challenge.objective }}</p>
         </div>
@@ -66,16 +66,13 @@ export default {
       </div>
 
         <div class="row" style="display: flex; width: 100%; gap: 5px;">
-          <PlayerInfo v-if="!board.passed && !board.timeout" style="width: 100%;"/>
-          <div v-if="board.passed && !board.timeout" class="alert alert-special player-info">
-            <p style="margin: 0px; padding: 0px; align-self: center;">A <b>special achievement</b> hint will be here!</p>
-          </div>
-          <div v-else-if="board.passed && !board.timeout" class="alert alert-success player-info">
+          <div v-if="board.passed && !board.timeout" class="alert alert-success player-info">
             <p style="margin: 0px; padding: 0px; align-self: center;">
               You passed, congratulations! To submit your solution, click the <b>Comment</b> button.
               <em>It's required for your score!</em>
             </p>
-          </div>
+          </div> 
+          <PlayerInfo v-if="board.passed && !board.timeout" style="width: 100%;"/>        
         </div>
       </div>
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
