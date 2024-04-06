@@ -20,7 +20,8 @@ models_entries = [
     (models.BoardState, "./mock/board_states.json"),
     (models.Challenge, challenges),
     (models.Attempt, "./mock/attempts.json"),
-    (models.GameRoom, "./mock/game_rooms.json")
+    (models.GameRoom, "./mock/game_rooms.json"),
+    (models.CodeFileDictionary, "./mock/code_file_dictionary.json"),
 ]
  
 def main():

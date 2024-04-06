@@ -1,8 +1,6 @@
 <script setup>
 import ChallengeHeader from '../components/ChallengeHeader.vue'
 import Board from '../components/Board.vue'
-import SubmitModal from '../components/modals/SubmitModal.vue'
-import FailModal from '../components/modals/FailModal.vue'
 import { boardStore } from '../store/boardStore'
 
 import { Challenge } from '../store/models/challenge.js'
@@ -64,8 +62,6 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
 import EndScreen from '../components/EndScreen.vue'
 
 export default {
-    components: { ChallengeHeader, Board, MultiplayerSubmitModal, FailModal, EndScreen },
-
     props: {
         id: Number
     },
@@ -377,8 +373,7 @@ export default {
     components: {
         ChallengeHeader,
         Board,
-        SubmitModal,
-        FailModal,
+        MultiplayerSubmitModal,
         LoadingIcon,
         ChallengeMultiplayerHeader
     }

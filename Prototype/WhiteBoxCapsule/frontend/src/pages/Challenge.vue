@@ -1,8 +1,6 @@
 <script setup>
 import ChallengeHeader from '../components/ChallengeHeader.vue'
 import Board from '../components/Board.vue'
-import SubmitModal from '../components/modals/SubmitModal.vue'
-import FailModal from '../components/modals/FailModal.vue'
 import { boardStore } from '../store/boardStore'
 
 import { Challenge } from '../store/models/challenge.js'
@@ -21,14 +19,13 @@ import CommentModal from '../components/modals/CommentModal.vue'
 <template style="overflow: hidden">
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
   <Board :challenge="challenge" :code_file="code_file" :user="auth.user" />
-  <!-- <SubmitModal :placeholder="submit_placeholder" /> -->
   <CommentModal :placeholder="submit_placeholder" />
   <FailModal :placeholder="fail_placeholder" />
 </template>
 
 <script>
 export default {
-  components: { ChallengeHeader, Board, SubmitModal, FailModal },
+  components: { ChallengeHeader, Board },
 
   props: {
     id: Number

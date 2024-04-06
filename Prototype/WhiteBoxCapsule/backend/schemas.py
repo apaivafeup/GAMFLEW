@@ -104,7 +104,6 @@ class CodeFile(Base):
     id = Column(Integer, primary_key=True)
     name = Column(TEXT, index=True)
     content = Column(TEXT, index=True)
-    dictionary = Column(PickleType, index=True, nullable=True)
 
     challenges = relationship("Challenge", back_populates="code_files")
 
@@ -217,3 +216,10 @@ class GameRound(Base):
     users = relationship("User", back_populates="game_rounds")
     game_logs = relationship("GameLog", back_populates="game_rounds")
     attempts = relationship("Attempt", back_populates="game_rounds")
+
+class CodeFileDictionary(Base):
+    __tablename__ = "code_file_dictionary"
+
+    id = Column(Integer, primary_key=True)
+    expression = Column(TEXT, index=True, nullable=False)
+    replacement = Column(TEXT, index=True, nullable=False)

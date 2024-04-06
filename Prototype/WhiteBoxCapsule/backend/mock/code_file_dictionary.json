@@ -1,0 +1,78 @@
+[
+    {
+        "expression": "board",
+        "replacement": "input.state[X]"
+    },
+    {
+        "expression": "board.out",
+        "replacement": "input.outOfBoundsState[X]"
+    },
+    {
+        "expression": "board.log",
+        "replacement": "input.log[X]"
+    },
+    {
+        "expression": "last_type",
+        "replacement": "input.log[X][input.log[X].length - 1].type"
+    },
+    {
+        "expression": "last_color",
+        "replacement": "input.log[X][input.log[X].length - 1].color"
+    },
+    {
+        "expression": "last_log",
+        "replacement": "input.log[X][input.log[X].length - 1]"
+    },
+    {
+        "expression": "last_start",
+        "replacement": "input.log[X][input.log[X].length - 1].start"
+    },
+    {
+        "expression": "last_destination",
+        "replacement": "input.log[X][input.log[X].length - 1].destination"
+    },
+    {
+        "expression": "count_empty_spaces",
+        "replacement": "this.count_empty_spaces(input, X)"
+    },
+    {
+        "expression": "count_red_pieces",
+        "replacement": "this.count_red_pieces(input, X)"
+    },
+    {
+        "expression": "count_blue_pieces",
+        "replacement": "this.count_blue_pieces(input, X)"
+    },
+    {
+        "expression": "get_pieces",
+        "replacement": "this.get_pieces(input, X)"
+    },
+    {
+        "expression": "find_stacks",
+        "replacement": "this.find_stacks(input, X)"
+    },
+    {
+        "expression": "find_red_pieces",
+        "replacement": "this.find_red_pieces(input, X)"
+    },
+    {
+        "expression": "find_blue_pieces",
+        "replacement": "this.find_blue_pieces(input, X)"
+    },
+    {
+        "expression": "find_first_blue_piece",
+        "replacement": "this.find_first_blue_piece(input, X)"
+    },
+    {
+        "expression": "find_first_red_piece",
+        "replacement": "this.find_first_red_piece(input, X)"
+    },
+    {
+        "expression": "find_first_stack",
+        "replacement": "this.find_first_stack(input, X)"
+    },
+    {
+        "expression": "distance(",
+        "replacement": "this.distance("
+    }
+]

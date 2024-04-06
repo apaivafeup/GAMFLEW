@@ -353,6 +353,11 @@ def get_game_results(current_user: Annotated[models.User, Depends(get_current_ac
     return crud.get_game_results(db=db, game_room_id=game_room_id)
 
 
+@app.get('/code-file-dictionary', response_model=dict)
+def get_code_file_dictionary(db: Session = Depends(get_db)):
+    return crud.get_code_file_dictionary(db)
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
     #uvicorn.run(app, host="10.227.242.121", port=8000, ssl_keyfile="./gamflew_api.key", ssl_certfile="./gamflew_api.pem")

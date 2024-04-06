@@ -23,7 +23,6 @@ def at_least_one_month_after(token_date):
 
     return months_difference >= 1
 
-
 def create_user(db: Session, user: schemas.User):
     hashed_password = auth.get_password_hash(user.password)
     db_user = schemas.User(
@@ -42,7 +41,6 @@ def create_user(db: Session, user: schemas.User):
     db.add(db_user)
     db.commit()
     return db_user
-
 
 def create_challenge(db: Session, challenge: schemas.Challenge):
     db_challenge = schemas.Challenge(
@@ -63,7 +61,6 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
     db.add(db_challenge)
     db.commit()
     return db_challenge
-
 
 def update_challenge(db: Session, challenge_id: int, challenge: schemas.Challenge):
     db_challenge = db.query(schemas.Challenge).filter(
@@ -89,17 +86,23 @@ def update_challenge(db: Session, challenge_id: int, challenge: schemas.Challeng
     db.commit()
     return db_challenge
 
-
 def create_code_file(db: Session, code_file: schemas.CodeFile):
     db_code_file = schemas.CodeFile(
         name=code_file.name,
-        content=code_file.content,
-        dictionary=code_file.dictionary
+        content=code_file.content
     )
     db.add(db_code_file)
     db.commit()
     return db_code_file
 
+def create_code_file_dictionary(db: Session, code_file_dictionary: schemas.CodeFileDictionary):
+    db_code_file_dictionary = schemas.CodeFileDictionary(
+            expression=code_file_dictionary.expression,
+            replacement=code_file_dictionary.replacement
+    )
+    db.add(db_code_file_dictionary)
+    db.commit()
+    return db_code_file_dictionary
 
 def create_board_state(db: Session, board_state: schemas.BoardState):
     db_board_state = schemas.BoardState(
@@ -865,3 +868,12 @@ def get_game_results(db: Session, game_room_id: int):
     results.sort(key=lambda x: x['round_id'])
 
     return results
+
+def get_code_file_dictionary(db: Session):
+    entries = db.query(schemas.CodeFileDictionary).all()
+    result = {}
+
+    for entry in entries:
+        result[entry.expression] = entry.replacement
+
+    return result

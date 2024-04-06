@@ -132,7 +132,6 @@ class CodeFile(BaseModel):
     id: Optional[int]
     name: str
     content: str
-    dictionary: Optional[dict] = None
 
     class Config:
         from_attributes = True
@@ -260,3 +259,7 @@ class GameRoomSummary(BaseModel):
     player_id: int
     score: int
     challenge: str
+
+class CodeFileDictionary(BaseModel):
+    expression: str
+    replacement: str

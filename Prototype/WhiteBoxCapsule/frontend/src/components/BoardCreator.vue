@@ -103,7 +103,6 @@
 
 <script>
 import PieceStackCreator from './PieceStackCreator.vue'
-import SubmitModal from './modals/SubmitModal.vue'
 
 // JS
 import { Challenge } from '../store/models/challenge'
@@ -114,7 +113,7 @@ import { auxiliaryFunctions } from '../assets/js/auxiliary_functions'
 import { authStore } from '../store/authStore'
 
 export default {
-  components: { PieceStackCreator, OutPieceStackCreator, SubmitModal },
+  components: { PieceStackCreator, OutPieceStackCreator  },
   props: {
     challenge: Challenge,
   },

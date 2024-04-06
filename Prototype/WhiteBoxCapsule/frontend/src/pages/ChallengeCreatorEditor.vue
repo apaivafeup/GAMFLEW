@@ -390,6 +390,15 @@ export default {
       this.challenge.passing_criteria.tests.forEach((test) => this.tests.push(this.makeExpression(test, true)))
     }
 
+    await this.$axios.get(this.$api_link + '/code-file-dictionary/', this.auth.config).then((response) => {
+      this.codeFiles.forEach((codeFile) => {
+        this.dictionary = response.data
+      })
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+      this.$error = true
+    })
+
     // Code file and initial board.
     this.selectState(this.challenge.initial_board)
 
@@ -498,7 +507,7 @@ export default {
     },
 
     makeExpression(expression, reverse = false) {
-      var dict = this.codeFiles[this.challenge.code_file - 1].dictionary
+      var dict = this.dictionary
 
       var boardAccess
       if (Object.entries(this.expressionType).filter(([k, v]) => v == 'test').length > 1) {

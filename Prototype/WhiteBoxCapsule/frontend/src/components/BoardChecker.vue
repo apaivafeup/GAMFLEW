@@ -69,7 +69,6 @@
 
 <script>
 import PieceStackChecker from './PieceStackChecker.vue'
-import SubmitModal from './modals/SubmitModal.vue'
 
 // JS
 import { Challenge } from '../store/models/challenge'
@@ -80,7 +79,7 @@ import { auxiliaryFunctions } from '../assets/js/auxiliary_functions'
 import { authStore } from '../store/authStore'
 
 export default {
-  components: { PieceStackChecker, OutPieceStackChecker, SubmitModal },
+  components: { PieceStackChecker, OutPieceStackChecker },
   props: {
     challenge: Challenge,
   },

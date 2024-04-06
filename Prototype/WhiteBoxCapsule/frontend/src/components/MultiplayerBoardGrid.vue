@@ -167,7 +167,6 @@
 
 <script>
 import PieceStack from './PieceStack.vue'
-import SubmitModal from './modals/SubmitModal.vue'
 
 // JS
 import { Challenge } from '../store/models/challenge'
@@ -178,7 +177,7 @@ import OutPieceStack from './OutPieceStack.vue'
 import 'vue3-easy-data-table'
 
 export default {
-  components: { PieceStack, OutPieceStack, SubmitModal },
+  components: { PieceStack, OutPieceStack },
   props: {
     challenge: Challenge,
     playable: Boolean

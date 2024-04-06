@@ -14,7 +14,8 @@ create_op = {
     str(models.BoardState): crud.create_board_state,
     str(models.Challenge): crud.create_challenge,
     str(models.Attempt): crud.create_attempt,
-    str(models.GameRoom): crud.create_game_room
+    str(models.GameRoom): crud.create_game_room,
+    str(models.CodeFileDictionary): crud.create_code_file_dictionary,
 }
 
 def load_data(entries: List[BaseModel]) -> None:
