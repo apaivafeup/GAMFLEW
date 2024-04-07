@@ -12,22 +12,40 @@
     <div class="accordion" id="accordionExample" style="width: 1000px;">
       <div class="accordion-item" v-for="code_file in code_files">
         <h2 class="accordion-header" :id="'heading' + code_file.id">
-          <button :id="'accordion-button-' + code_file.id" class="accordion-button" type="button"
-            data-bs-toggle="collapse" :data-bs-target="'#collapse' + code_file.id" aria-expanded="true"
-            :aria-controls="'collapse' + code_file.id">
+          <button
+            :id="'accordion-button-' + code_file.id"
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            :data-bs-target="'#collapse' + code_file.id"
+            aria-expanded="true"
+            :aria-controls="'collapse' + code_file.id"
+          >
             {{ code_file.name }}
           </button>
         </h2>
-        <div :id="'collapse' + code_file.id" :class="code_files.indexOf(code_file) == 0
-            ? 'accordion-collapse collapse show'
-            : 'accordion-collapse collapse'
-          " :aria-labelledby="'heading' + code_file.id" data-bs-parent="#accordionExample">
+        <div
+          :id="'collapse' + code_file.id"
+          :class="
+            code_files.indexOf(code_file) == 0
+              ? 'accordion-collapse collapse show'
+              : 'accordion-collapse collapse'
+          "
+          :aria-labelledby="'heading' + code_file.id"
+        >
           <div class="accordion-body">
-            <ul class="list-group">
-              <li class="list-group-item" v-if="challenges[code_file.id]"
-                v-for="challenge in challenges[code_file.id].sort(sort_function)" :key="challenge.id">
-                <ChallengeCard :id="'challenge-card-' + challenge.id" :challenge="challenge"
-                  :passed="passed_challenges.includes(challenge.id)" :editor="true" />
+            <ul class="list-group"  style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 10px;" >
+              <li
+                class="list-group-item"
+                v-if="challenges[code_file.id]"
+                v-for="challenge in challenges[code_file.id].sort(sort_function)"
+                :key="challenge.id"
+              >
+                <ChallengeCard
+                  :id="'challenge-card-' + challenge.id"
+                  :challenge="challenge"
+                  :passed="passed_challenges.includes(challenge.id)"
+                />
               </li>
             </ul>
           </div>

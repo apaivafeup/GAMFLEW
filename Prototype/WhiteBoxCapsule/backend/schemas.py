@@ -86,6 +86,7 @@ class User(Base):
     score = Column(Integer, index=True)
     achievements = Column(Integer, index=True)
     auth = Column(Boolean, default=True, index=True)
+    validated = Column(Boolean, nullable=True, index=True)
 
     attempts = relationship("Attempt", back_populates="user")
     challenges = relationship("Challenge", back_populates="user")

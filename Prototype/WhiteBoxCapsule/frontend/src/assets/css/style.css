@@ -335,6 +335,15 @@ button.menu-button {
   width: 100%;
 }
 
+button.admin-menu-button {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 10px 15px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 #theme-toggle {
   background-color: var(--button-color);
   color: var(--toggle-color);
@@ -643,4 +652,18 @@ a:hover {
   border-radius: 50%;
   object-fit: cover;
   padding: 0px;
+}
+
+.user-card {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
 }

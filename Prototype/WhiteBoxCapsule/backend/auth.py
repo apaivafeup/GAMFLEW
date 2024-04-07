@@ -35,10 +35,10 @@ def get_password_hash(password):
 
 def login(db: Session, username: str, password: str):
     user = get_user(db, username)
-    if user == None:
+    if user == None or (user.user_type == 'admin' and user.validated == False):
         return False
     
-    if not verify_password(password, user.password):
+    if not verify_password(password, user.password) :
         return False
     
     return user

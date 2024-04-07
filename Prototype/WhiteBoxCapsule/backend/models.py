@@ -81,6 +81,7 @@ class User(BaseModel):
     score: int
     achievements: int
     auth: bool
+    validated: Optional[bool] = None
 
     class Config:
         from_attributes = True
@@ -96,6 +97,7 @@ class UserBasics(BaseModel):
     score: int
     achievements: int
     user_type: UserType
+    validated: Optional[bool] = None
 
     class Config:
         from_attributes = True
@@ -113,6 +115,7 @@ class UserRegister(BaseModel):
     picture: str
     password: str
     user_type: UserType
+    validated: Optional[bool] = None
 
 
 class UserResponse(BaseModel):

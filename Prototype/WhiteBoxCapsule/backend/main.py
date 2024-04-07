@@ -360,6 +360,17 @@ def export_user_attempts(current_user: Annotated[models.User, Depends(get_curren
 def get_code_file_dictionary(db: Session = Depends(get_db)):
     return crud.get_code_file_dictionary(db)
 
+@app.get('/admin/pending-admins', response_model=list[models.UserBasics])
+def get_non_validated_users(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
+    if current_user.user_type != schemas.UserType.ADMIN:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    return crud.get_non_validated_users(db)
+
+@app.post('/admin/validate-admin/{user_id}', response_model=models.UserBasics)
+def validate_user(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, db: Session = Depends(get_db)):
+    if current_user.user_type != schemas.UserType.ADMIN:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    return crud.validate_user(db, user_id)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

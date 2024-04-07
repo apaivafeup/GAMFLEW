@@ -146,7 +146,8 @@ def get_user_basics(db: Session, user_id: str):
         successful_attempts=user.successful_attempts,
         score=user.score,
         achievements=user.achievements,
-        user_type=user.user_type
+        user_type=user.user_type,
+        validated=user.validated
     )
 
     return user_basics
@@ -190,7 +191,8 @@ def get_users(db: Session, skip: int = 0, limit: int = 500):
             successful_attempts=user.successful_attempts,
             picture=user.picture,
             score=user.score,
-            achievements=user.achievements
+            achievements=user.achievements,
+            validated=user.validated
         )
         user_basics.append(user_basics_inst)
 
@@ -210,7 +212,8 @@ def get_users_by_id(db: Session, user_ids: list[int]):
             successful_attempts=user.successful_attempts,
             picture=user.picture,
             score=user.score,
-            achievements=user.achievements
+            achievements=user.achievements,
+            validated=user.validated
         )
         user_basics.append(user_basics_inst)
 
@@ -880,3 +883,16 @@ def get_code_file_dictionary(db: Session):
 
 def get_user_attempts(db: Session, user_id: int):
     return db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).all()
+
+def get_non_validated_users(db: Session):
+    return db.query(schemas.User).filter(schemas.User.validated == False).all()
+
+def validate_user(db: Session, user_id: int):
+    user_to_validate = get_user(db, user_id)
+
+    if user_to_validate is None:
+        return None
+
+    user_to_validate.validated = True
+    db.commit()
+    return user_to_validate
