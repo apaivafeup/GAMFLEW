@@ -9,7 +9,7 @@
         Create Challenge
       </button>
     </div>
-    <div class="accordion" id="accordionExample" style="width: 1000px;">
+    <div class="accordion" id="accordionExample" style="width: 1250px;">
       <div class="accordion-item" v-for="code_file in code_files">
         <h2 class="accordion-header" :id="'heading' + code_file.id">
           <button
@@ -34,7 +34,7 @@
           :aria-labelledby="'heading' + code_file.id"
         >
           <div class="accordion-body">
-            <ul class="list-group"  style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 10px;" >
+            <ul class="list-group"  style="display: grid; grid-template-columns: repeat(3, 1.5fr); grid-gap: 10px;" >
               <li
                 class="list-group-item"
                 v-if="challenges[code_file.id]"

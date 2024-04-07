@@ -1,5 +1,5 @@
 <template>
-  <div class="card challenge-card" @click="goToChallenge(challenge.id)">
+  <div class="card challenge-card">
     <div class="card-body" style="">
       <div class="row" style="display: flex; justify-content: space-between">
         <div style="width: 100%">
@@ -23,6 +23,21 @@
             >
               Passed ✅
             </div>
+            <button class="passed-badge comments-badge"
+            style="
+              align-self: start;
+              text-align: right;
+              font-size: 12px;
+              font-weight: bold;
+              width: auto;
+              display: flex;
+              margin-top: 0px;
+              flex-direction: row;
+              padding: 2.5px 10px;
+              margin-bottom: var(--bs-card-title-spacer-y);
+            " @click="goToChallengeComments()" v-else>
+              Comments 💬
+          </button>
           </div>
           <div class="row">
             <h6 class="card-subtitle mb-2 text-muted" style="font-size: 14px;">{{ challenge.name.split(':')[1] }}</h6>
@@ -30,7 +45,7 @@
         </div>
       </div>
       <div class="row">
-        <div style="width: 15%; display: flex; flex-direction: row; gap: 10px;">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
           <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: rgb(169, 89, 255)!important; text-align: center; display: flex; justify-content: center;"><strong>{{ challenge.score }} points</strong></div>
           <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
             {{ challenge.challenge_type.charAt(0).toUpperCase() + challenge.challenge_type.slice(1) }}
@@ -38,6 +53,9 @@
           <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: rgb(13, 202, 240)!important; text-align: center; display: flex; justify-content: center;">
             {{ challenge.difficulty }}
           </div>
+          <button class="badge menu-button comments-badge play-badge" style="margin: 0px; justify-content: center;" @click="goToChallenge(challenge.id)">
+            Play ▶️
+          </button>
         </div>
       </div>
     </div>
@@ -66,6 +84,10 @@ export default defineComponent({
         this.$router.push({name: 'challenge-editor', params: {id: id}})
       else
         this.$router.push({name: 'challenge', params: {id: id}})
+    },
+
+    goToChallengeComments() {
+      this.$router.push({name: 'challenge-comments', params: {challenge: this.challenge, passed: this.passed}})
     }
   }
 })

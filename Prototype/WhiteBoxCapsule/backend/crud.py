@@ -896,3 +896,12 @@ def validate_user(db: Session, user_id: int):
     user_to_validate.validated = True
     db.commit()
     return user_to_validate
+
+def get_passed_attempts_comments(db: Session, challenge_id: int):
+    attempts = db.query(schemas.Attempt).filter(schemas.Attempt.challenge_id == challenge_id).filter(schemas.Attempt.attempt_type == "pass").filter(schemas.Attempt.comment != '').all()
+    comments = []
+
+    for attempt in attempts:
+        comments.append(attempt.comment)
+
+    return comments

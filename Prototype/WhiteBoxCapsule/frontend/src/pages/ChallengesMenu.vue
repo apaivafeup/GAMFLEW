@@ -7,7 +7,7 @@
     class="col"
     style="display: flex; justify-content: center; align-items: center; flex-direction: column"
   >
-    <div class="accordion" id="accordionExample" style="width: 1000px;">
+    <div class="accordion" id="accordionExample" style="width: 1250px;">
       <div class="accordion-item" v-for="code_file in code_files">
         <h2 class="accordion-header" :id="'heading' + code_file.id">
           <button

@@ -372,6 +372,10 @@ def validate_user(current_user: Annotated[models.User, Depends(get_current_activ
         raise HTTPException(status_code=401, detail="Unauthorized")
     return crud.validate_user(db, user_id)
 
+@app.get('/challenges/{challenge_id}/comments', response_model=list[models.Attempt])
+def get_challenge_comments(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, db: Session = Depends(get_db)):
+    return crud.get_passed_attempts_comments(db, challenge_id)
+
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
     #uvicorn.run(app, host="10.227.242.121", port=8000, ssl_keyfile="./gamflew_api.key", ssl_certfile="./gamflew_api.pem")

@@ -489,14 +489,6 @@ textarea {
   color: var(--text-color-inv) !important;
 }
 
-.challenge-card:hover {
-  background-color: #8adc6d !important;
-}
-
-.challenge-card:hover .text-muted {
-  color: var(--text-color) !important;
-}
-
 .modal-content,
 .btn-close {
   background-color: var(--background-color) !important;
@@ -601,14 +593,38 @@ input[type='number'] {
   opacity: 0.75;
 }
 
-#board-box-0-0, #board-box-0-2, #board-box-0-4, #board-box-0-6,
-#board-box-1-1, #board-box-1-3, #board-box-1-5, #board-box-1-7,
-#board-box-2-0, #board-box-2-2, #board-box-2-4, #board-box-2-6,
-#board-box-3-1, #board-box-3-3, #board-box-3-5, #board-box-3-7,
-#board-box-4-0, #board-box-4-2, #board-box-4-4, #board-box-4-6,
-#board-box-5-1, #board-box-5-3, #board-box-5-5, #board-box-5-7,
-#board-box-6-0, #board-box-6-2, #board-box-6-4, #board-box-6-6,
-#board-box-7-1, #board-box-7-3, #board-box-7-5, #board-box-7-7 {
+#board-box-0-0,
+#board-box-0-2,
+#board-box-0-4,
+#board-box-0-6,
+#board-box-1-1,
+#board-box-1-3,
+#board-box-1-5,
+#board-box-1-7,
+#board-box-2-0,
+#board-box-2-2,
+#board-box-2-4,
+#board-box-2-6,
+#board-box-3-1,
+#board-box-3-3,
+#board-box-3-5,
+#board-box-3-7,
+#board-box-4-0,
+#board-box-4-2,
+#board-box-4-4,
+#board-box-4-6,
+#board-box-5-1,
+#board-box-5-3,
+#board-box-5-5,
+#board-box-5-7,
+#board-box-6-0,
+#board-box-6-2,
+#board-box-6-4,
+#board-box-6-6,
+#board-box-7-1,
+#board-box-7-3,
+#board-box-7-5,
+#board-box-7-7 {
   background-color: #dadada;
 }
 
@@ -666,4 +682,25 @@ a:hover {
   padding: 10px;
   margin: 10px;
   width: 200px;
+}
+
+.comments-badge {
+  align-self: start;
+  text-align: right;
+  font-size: 12px;
+  font-weight: bold;
+  width: auto;
+  display: flex;
+  margin-top: 0px;
+  flex-direction: row;
+  padding: 2.5px 10px;
+  margin-bottom: var(--bs-card-title-spacer-y);
+}
+
+.comments-badge:hover {
+  background-color: rgb(169, 89, 255);
+}
+
+.play-badge:hover {
+  background-color: #8adc6d;
 }
