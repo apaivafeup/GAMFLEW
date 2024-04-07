@@ -47,9 +47,14 @@
 
         <div class="row" style="place-content: center; display: grid; grid-template-columns: 600px;" v-if="comments.length > 0">
             <div class="card" v-for="comment in comments">
-                <div class="card-body"
-                    style="font-size: 15px; font-style: italic; background-color: var(--background-color); color: var(--text-color);">
-                    <p class="card-text">{{ comment }}</p>
+                <div class="card-body" style="display: grid; grid-template-columns: 85% 7.5% 7.5%; font-size: 15px; font-style: italic; background-color: var(--background-color); color: var(--text-color);">
+                    <p class="card-text" style="margin: 0px;">{{ comment.comment }}</p>
+                    <button data-bs-toggle="tooltip" data-bs-placement="top" title="Helpful" class="badge comment-score-badge" @click="scoreComment(comment.attempt_id, 1)">
+                        👍
+                    </button>
+                    <button data-bs-toggle="tooltip" data-bs-placement="top" title="Not Helpful" class="badge comment-score-badge" @click="scoreComment(comment.attempt_id, -1)">
+                        👎
+                    </button>
                 </div>
             </div>
         </div>
@@ -75,7 +80,7 @@ export default defineComponent({
             challenge: Challenge,
             auth: null,
             loader: null,
-            comments: null
+            comments: []
         }
     },
 
@@ -97,7 +102,6 @@ export default defineComponent({
         this.auth = authStore()
         this.auth.checkAuth()
         this.getChallenge()
-        this.getComments()
         this.loader.hide()
     },
 
@@ -126,6 +130,7 @@ export default defineComponent({
                         response.data.achievement_criteria,
                         response.data.owner_id
                     )
+                    this.getComments()
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
@@ -138,7 +143,36 @@ export default defineComponent({
 
             await this.$axios.get(this.$api_link + '/challenges/' + id + '/comments', this.auth.config)
                 .then((response) => {
-                    this.comments = response.data
+                    this.comments = response.data.sort((a, b) => {
+                        if (a.comment_score == b.comment_score)
+                            return a.id - b.id
+                        return b.comment_score - a.comment_score
+                    })
+
+                    this.getAttemptScores()
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
+                    return
+                })
+        },
+
+        async scoreComment(attempt_id, score) {
+            await this.$axios.post(this.$api_link + '/challenges/' + this.challenge.id + '/comments/' + attempt_id + '/score', { id: 0, user_id: this.auth.user.id, attempt_id: attempt_id, given_score: score }, this.auth.config)
+                .then((response) => {
+                    this.toast.success('Comment scored successfully!')
+                    this.getComments()
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
+                    return
+                })
+        },
+
+        async getAttemptScores() {
+            await this.$axios.get(this.$api_link + '/challenges/' + this.challenge.id + '/comments/scores/' + this.auth.user.id, this.auth.config)
+                .then((response) => {
+                    this.attemptScores = response.data
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });

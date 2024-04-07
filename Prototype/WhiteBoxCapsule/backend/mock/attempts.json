@@ -5,5 +5,7 @@
     "score": 100,
     "attempt_type": "pass",
     "comment": "Testing comments... I did very well!",
-    "test_cases": {}
+    "test_cases": {},
+    "comment_score": 0,
+    "comment_score_count": 0
 }]

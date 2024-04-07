@@ -697,6 +697,29 @@ a:hover {
   margin-bottom: var(--bs-card-title-spacer-y);
 }
 
+.comment-score-badge {
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  align-self: start;
+  justify-content: center;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  width: auto;
+  display: flex;
+  margin-top: 0px;
+  flex-direction: row;
+  padding: 15px;
+}
+
+button.badge.comment-score-badge:hover:nth-child(even) {
+  background-color: #8adc6d
+}
+
+button.badge.comment-score-badge:hover:nth-child(odd) {
+  background-color: #dc3545
+}
+
 .comments-badge:hover {
   background-color: rgb(169, 89, 255);
 }

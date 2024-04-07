@@ -123,7 +123,9 @@ def create_attempt(db: Session, attempt: schemas.Attempt):
         attempt_type=attempt.attempt_type,  # attempt.pass or attempt.fail
         comment=attempt.comment,
         test_cases=attempt.test_cases,
-        game_round_id=attempt.game_round_id
+        game_round_id=attempt.game_round_id,
+        comment_score_count=attempt.comment_score_count,
+        comment_score=attempt.comment_score
     )
 
     db.add(db_attempt)
@@ -902,6 +904,52 @@ def get_passed_attempts_comments(db: Session, challenge_id: int):
     comments = []
 
     for attempt in attempts:
-        comments.append(attempt.comment)
+        comments.append({
+            "comment": attempt.comment,
+            "comment_score": attempt.comment_score,
+            "attempt_id": attempt.id,
+            "challenge_id": attempt.challenge_id
+        })
 
     return comments
+
+def add_comment_score(db: Session, attempt_id: int, given_score: int):
+    attempt = db.query(schemas.Attempt).filter(schemas.Attempt.id == attempt_id).first()
+
+    if attempt is None or attempt.comment_score is None or attempt.comment_score_count is None:
+        return None
+
+    current_sum = attempt.comment_score * attempt.comment_score_count
+    attempt.comment_score_count += 1
+    attempt.comment_score = round((current_sum + given_score) / attempt.comment_score_count, 2)
+    db.commit()
+
+    attempt_score = schemas.AttemptScore(
+        challenge_id=attempt.challenge_id,
+        attempt_id=attempt_id,
+        user_id=attempt.player_id,
+        given_score=given_score
+    )
+
+    return attempt_score
+
+def create_attempt_score(db: Session, attempt_id: int, user_id: int, given_score: int):
+    attempt = db.query(schemas.Attempt).filter(schemas.Attempt.id == attempt_id).first()
+    user = db.query(schemas.User).filter(schemas.User.id == user_id).first()
+    attempt_score = db.query(schemas.AttemptScore).filter(schemas.AttemptScore.attempt_id == attempt_id).filter(schemas.AttemptScore.user_id == user_id).first()
+
+    if attempt is None or user is None or attempt_score is not None:
+        return None
+
+    attempt_score = schemas.AttemptScore(
+        challenge_id=attempt.challenge_id,
+        attempt_id=attempt_id,
+        user_id=user_id,
+        given_score=given_score,
+    )
+    db.add(attempt_score)
+    db.commit()
+    return attempt
+
+def get_user_attempt_scores(db: Session, challenge_id: int, user_id: int):
+    return db.query(schemas.AttemptScore).filter(schemas.AttemptScore.challenge_id == challenge_id).filter(schemas.AttemptScore.user_id == user_id).all()

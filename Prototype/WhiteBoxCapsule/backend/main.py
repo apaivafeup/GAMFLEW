@@ -372,9 +372,18 @@ def validate_user(current_user: Annotated[models.User, Depends(get_current_activ
         raise HTTPException(status_code=401, detail="Unauthorized")
     return crud.validate_user(db, user_id)
 
-@app.get('/challenges/{challenge_id}/comments', response_model=list[str])
+@app.get('/challenges/{challenge_id}/comments', response_model=list[models.ChallengeComments])
 def get_challenge_comments(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, db: Session = Depends(get_db)):
     return crud.get_passed_attempts_comments(db, challenge_id)
+
+@app.post('/challenges/{challenge_id}/comments/{attempt_id}/score', response_model=models.AttemptScore)
+def score_challenge_comment(current_user: Annotated[models.User, Depends(get_current_active_user)], attempt_score: models.AttemptScore, db: Session = Depends(get_db)):
+    result = crud.create_attempt_score(db, user_id=current_user.id, attempt_id=attempt_score.attempt_id, given_score=attempt_score.given_score)
+    return crud.add_comment_score(db, attempt_id=attempt_score.attempt_id, given_score=attempt_score.given_score) if result is not None else None
+
+@app.get('/challenges/{challenge_id}/comments/scores/{user_id}', response_model=list[models.AttemptScore])
+def get_user_attempt_scores(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, user_id: int, db: Session = Depends(get_db)):
+    return crud.get_user_attempt_scores(db, challenge_id=challenge_id, user_id=user_id)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

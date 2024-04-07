@@ -78,7 +78,9 @@ export default defineComponent({
         attempt_type: 'pass',
         comment: this.board.attempt.comment,
         test_cases: this.board.state,
-        game_round_id: this.round_id
+        game_round_id: this.round_id,
+        score: 0,
+        score_count: 0
       }
 
       var flag = false, score = 0

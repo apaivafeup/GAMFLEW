@@ -24,9 +24,20 @@ class Attempt(BaseModel):
     challenge_id: int
     score: int
     attempt_type: AttemptType
-    comment: str
     test_cases: dict
     game_round_id: Optional[int] = None
+    comment: str
+    comment_score_count: Optional[int] = None
+    comment_score: Optional[float] = None
+
+    class Config:
+        from_attributes = True
+
+class ChallengeComments(BaseModel):
+    attempt_id: int
+    challenge_id: int
+    comment: str
+    comment_score: Optional[float] = None
 
     class Config:
         from_attributes = True
@@ -266,3 +277,10 @@ class GameRoomSummary(BaseModel):
 class CodeFileDictionary(BaseModel):
     expression: str
     replacement: str
+    
+class AttemptScore(BaseModel):
+    id: Optional[int]
+    user_id: int
+    attempt_id: int
+    challenge_id: int
+    given_score: int

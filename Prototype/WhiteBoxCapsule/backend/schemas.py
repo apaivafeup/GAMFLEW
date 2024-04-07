@@ -1,4 +1,4 @@
-from sqlalchemy import PickleType, Boolean, Column, ForeignKey, Integer, TEXT, DateTime
+from sqlalchemy import PickleType, Boolean, Column, ForeignKey, Integer, TEXT, DateTime, Float
 from sqlalchemy.orm import relationship, declarative_base, backref
 from dotenv import load_dotenv   #for python-dotenv method
 import os
@@ -98,6 +98,7 @@ class User(Base):
     third_player = relationship("GameRoom", back_populates="player_3", foreign_keys="GameRoom.player_3_id")
     game_logs = relationship("GameLog", back_populates="users")
     game_rounds = relationship("GameRound", back_populates="users")
+    attempt_scores = relationship("AttemptScore", back_populates="users")
 
 class CodeFile(Base):
     __tablename__ = "code_file"
@@ -140,6 +141,7 @@ class Challenge(Base):
     attempts = relationship("Attempt", back_populates="challenge")
     code_files = relationship("CodeFile", back_populates="challenges")
     board_states = relationship("BoardState", back_populates="challenges")
+    attempt_scores = relationship("AttemptScore", back_populates="challenges")
 
 class Attempt(Base):
     __tablename__ = "attempts"
@@ -150,12 +152,15 @@ class Attempt(Base):
     challenge_id = Column(Integer, ForeignKey("challenges.id"), nullable=False)
     game_round_id = Column(Integer, ForeignKey("game_rounds.id"), nullable=True, index=True)
     attempt_type = Column(ENUM(AttemptType), nullable=False, default=AttemptType.PASS, index=True)
-    comment = Column(TEXT, index=True)
     test_cases = Column(PickleType)
+    comment = Column(TEXT, index=True)
+    comment_score = Column(Float, nullable=True, index=True)
+    comment_score_count = Column(Integer, nullable=True, index=True)
 
     user = relationship("User", back_populates="attempts")
     challenge = relationship("Challenge", back_populates="attempts")
     game_rounds = relationship("GameRound", back_populates="attempts")
+    attempt_scores = relationship("AttemptScore", back_populates="attempts")
 
 class Token(Base):
     __tablename__ = "tokens"
@@ -224,3 +229,16 @@ class CodeFileDictionary(Base):
     id = Column(Integer, primary_key=True)
     expression = Column(TEXT, index=True, nullable=False)
     replacement = Column(TEXT, index=True, nullable=False)
+
+class AttemptScore(Base):
+    __tablename__ = "attempt_scores"
+
+    id = Column(Integer, primary_key=True)
+    attempt_id = Column(Integer, ForeignKey("attempts.id"), nullable=False, index=True)
+    challenge_id = Column(Integer, ForeignKey("challenges.id"), nullable=False, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    given_score = Column(Integer, index=True)
+
+    attempts = relationship("Attempt", back_populates="attempt_scores")
+    users = relationship("User", back_populates="attempt_scores")
+    challenges = relationship("Challenge", back_populates="attempt_scores")

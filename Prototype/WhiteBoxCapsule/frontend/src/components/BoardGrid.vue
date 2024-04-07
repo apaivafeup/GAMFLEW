@@ -515,7 +515,9 @@ export default {
         challenge_id: this.board.attempt.challenge_id,
         attempt_type: this.board.passed ? 'pass' : 'fail',
         comment: this.board.attempt.comment,
-        test_cases: this.board.state
+        test_cases: this.board.state,
+        score: this.board.passed ? 0 : null,
+        score_count: this.board.passed ? 0 : null
       }
 
       var flag = false, score = 0
