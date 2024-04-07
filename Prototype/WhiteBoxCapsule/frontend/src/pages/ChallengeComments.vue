@@ -1,69 +1,155 @@
 <template>
-    <div class="row" style="text-align: center; margin-bottom: 15px;">
-      <h1>Challenge Comments</h1>
-    </div>
-    
-    <div class="row">
+    <div class="container">
 
+        <div class="row" style="text-align: center; margin-bottom: 15px;">
+            <h1>Challenge Comments</h1>
+        </div>
+
+        <div class="row" style="justify-content: center; margin-bottom: 10px;" v-if="this.challenge != null">
+            <div class="card challenge-card" style="width: 650px;">
+                <div class="card-body" style="">
+                    <div class="row" style="display: flex; justify-content: space-between">
+                        <div style="width: 100%">
+                            <div class="row" style="align-items: center">
+                                <h5 class="card-title" style="width: auto">{{ this.challenge.name.split(':')[0] }}</h5>
+                            </div>
+                            <div class="row">
+                                <h6 class="card-subtitle mb-2 text-muted" style="font-size: 14px;">{{
+            this.challenge.name.split(':')[1] }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                            <div class="badge bg-primary"
+                                style="margin: 0px; font-size: 12px !important; background-color: rgb(169, 89, 255)!important; text-align: center; display: flex; justify-content: center;">
+                                <strong>{{ this.challenge.score }} points</strong>
+                            </div>
+                            <div class="badge bg-primary"
+                                style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
+                                {{ this.challenge.challenge_type == 'mcdc' ? this.challenge.challenge_type.toUpperCase()
+            : this.challenge.challenge_type.charAt(0).toUpperCase() +
+            this.challenge.challenge_type.slice(1) }}
+                            </div>
+                            <div class="badge bg-primary"
+                                style="margin: 0px; font-size: 12px !important; background-color: rgb(13, 202, 240)!important; text-align: center; display: flex; justify-content: center;">
+                                {{ this.challenge.difficulty }}
+                            </div>
+                            <button class="badge menu-button comments-badge play-badge"
+                                style="margin: 0px; justify-content: center;" @click="goToChallenge(this.challenge.id)">
+                                Play ▶️
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="place-content: center; display: grid; grid-template-columns: 600px;" v-if="comments.length > 0">
+            <div class="card" v-for="comment in comments">
+                <div class="card-body"
+                    style="font-size: 15px; font-style: italic; background-color: var(--background-color); color: var(--text-color);">
+                    <p class="card-text">{{ comment }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" v-else>
+            <p style="margin-top: 45px; font-size: 16px; text-align: center;">This challenge has no comments to show.<br/>Come back later!</p>
+        </div>
     </div>
-  </template>
-  
-  <script>
-  import { defineComponent } from 'vue'
-  import ChallengeCard from '../components/ChallengeCard.vue'
-  import { authStore } from '../store/authStore'
-  import { h, resolveComponent } from 'vue'
-  import LoadingIcon from '../components/LoadingIcon.vue';
-  
-  export default defineComponent({
+</template>
+
+<script>
+import { defineComponent } from 'vue'
+import ChallengeCard from '../components/ChallengeCard.vue'
+import { authStore } from '../store/authStore'
+import { h, resolveComponent } from 'vue'
+import LoadingIcon from '../components/LoadingIcon.vue';
+import { Challenge } from '../store/models/challenge';
+
+export default defineComponent({
     components: { ChallengeCard },
-  
-    async beforeMount() {
-      let loader = this.$loading.show({
-        color: '#A959FF',
-        container: this.fullPage ? null : this.$refs.formContainer,
-        transition: 'fade',
-        canCancel: true,
-        freezeScroll: true,
-        onCancel: this.onCancel,
-        opacity: 0.9,
-        blur: '50px'
-      },
-        {
-          default: h(resolveComponent('LoadingIcon'))
-        });
-    
-      this.auth = authStore()
-      this.auth.checkAuth()
-  
-      await this.$axios.get(this.$api_link + '/users/' + this.auth.user.id + '/passed-challenges/', this.auth.config).then((response) => {
-        this.passed_challenges = response.data
-      }).catch((error) => {
-        this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})
-        this.$error = true  
-      })
-  
-      if (this.$error) {
-        loader.hide()
-        return
-      }
-  
-      loader.hide()
-    },
-  
+
     data() {
-      return {
-        challenges: {},
-        code_files: [],
-        passed_challenges: []
-      }
+        return {
+            challenge: Challenge,
+            auth: null,
+            loader: null,
+            comments: null
+        }
     },
-  
+
+    async beforeMount() {
+        this.loader = this.$loading.show({
+            color: '#A959FF',
+            container: this.fullPage ? null : this.$refs.formContainer,
+            transition: 'fade',
+            canCancel: true,
+            freezeScroll: true,
+            onCancel: this.onCancel,
+            opacity: 0.9,
+            blur: '50px'
+        },
+            {
+                default: h(resolveComponent('LoadingIcon'))
+            });
+
+        this.auth = authStore()
+        this.auth.checkAuth()
+        this.getChallenge()
+        this.getComments()
+        this.loader.hide()
+    },
+
+    mounted() {
+    },
+
     methods: {
-      sort_function(a, b) {
-        return a.id - b.id
-      }
+        async getChallenge() {
+            const id = this.$route.params.id
+
+            await this.$axios.get(this.$api_link + '/challenges/' + id, this.auth.config)
+                .then((response) => {
+                    this.challenge = new Challenge(
+                        response.data.id,
+                        response.data.name,
+                        response.data.description,
+                        response.data.difficulty,
+                        response.data.hint,
+                        response.data.objective,
+                        response.data.test_cases_count,
+                        response.data.score,
+                        response.data.initial_board,
+                        response.data.code_file,
+                        response.data.challenge_type,
+                        response.data.passing_criteria,
+                        response.data.achievement_criteria,
+                        response.data.owner_id
+                    )
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
+                    return
+                })
+        },
+
+        async getComments() {
+            const id = this.$route.params.id
+
+            await this.$axios.get(this.$api_link + '/challenges/' + id + '/comments', this.auth.config)
+                .then((response) => {
+                    this.comments = response.data
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
+                    return
+                })
+        },
+
+
+        goToChallenge(id) {
+            this.$router.push({ name: 'challenge', params: { id: id } })
+        }
     }
-  })
-  </script>
-  
+})
+</script>

@@ -20,6 +20,7 @@ const routes = [
     { name: 'multiplayer-room', path: '/multiplayer/:id', component: () => import('./pages/MultiplayerRoom.vue'), props: true},
     { name: 'user-export', path: '/user-export', component: () => import('./pages/UserExport.vue'), props: false},
     { name: 'validate-admin', path: '/validate-admin', component: () => import('./pages/ValidateAdmin.vue'), props: false},
+    { name: 'challenge-comments', path: '/challenges/:id/comments', component: () => import('./pages/ChallengeComments.vue'), props: true},
 ];
 
 export const Router = createRouter({

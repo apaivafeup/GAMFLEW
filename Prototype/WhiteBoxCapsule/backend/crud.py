@@ -898,7 +898,7 @@ def validate_user(db: Session, user_id: int):
     return user_to_validate
 
 def get_passed_attempts_comments(db: Session, challenge_id: int):
-    attempts = db.query(schemas.Attempt).filter(schemas.Attempt.challenge_id == challenge_id).filter(schemas.Attempt.attempt_type == "pass").filter(schemas.Attempt.comment != '').all()
+    attempts = db.query(schemas.Attempt).filter(schemas.Attempt.challenge_id == challenge_id).filter(schemas.Attempt.attempt_type == "pass").all()
     comments = []
 
     for attempt in attempts:

@@ -35,7 +35,7 @@
               flex-direction: row;
               padding: 2.5px 10px;
               margin-bottom: var(--bs-card-title-spacer-y);
-            " @click="goToChallengeComments()" v-else>
+            " @click="goToChallengeComments(challenge.id)" v-else>
               Comments 💬
           </button>
           </div>
@@ -86,8 +86,8 @@ export default defineComponent({
         this.$router.push({name: 'challenge', params: {id: id}})
     },
 
-    goToChallengeComments() {
-      this.$router.push({name: 'challenge-comments', params: {challenge: this.challenge, passed: this.passed}})
+    goToChallengeComments(id) {
+      this.$router.push({name: 'challenge-comments', params: {id: id}})
     }
   }
 })
