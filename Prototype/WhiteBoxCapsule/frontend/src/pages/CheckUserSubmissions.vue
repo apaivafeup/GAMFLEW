@@ -101,7 +101,6 @@ export default {
     async getAttempts() {
       await this.$axios.get(this.$api_link + '/challenges/attempts/', this.auth.config)
         .then(response => {
-          console.log(response.data)
           this.attempts = response.data
         })
         .catch(error => {
@@ -130,7 +129,6 @@ export default {
     },
 
     updateAttempts(challenge_id = this.selectedChallengeId) {
-      console.log(this.attempts)
       this.challenge_attempts = this.attempts['' + challenge_id]
       this.selectedAttemptId = this.challenge_attempts[0].id
       this.updateSolutionViewer(this.challenge_attempts[0].id)
