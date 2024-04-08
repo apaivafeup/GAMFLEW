@@ -712,11 +712,11 @@ a:hover {
   padding: 15px;
 }
 
-button.badge.comment-score-badge:hover:nth-child(even) {
+button.badge.comment-score-badge:hover:nth-child(odd) {
   background-color: #8adc6d
 }
 
-button.badge.comment-score-badge:hover:nth-child(odd) {
+button.badge.comment-score-badge:hover:nth-child(even) {
   background-color: #dc3545
 }
 

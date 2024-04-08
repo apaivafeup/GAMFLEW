@@ -47,14 +47,20 @@
 
         <div class="row" style="place-content: center; display: grid; grid-template-columns: 600px;" v-if="comments.length > 0">
             <div class="card" v-for="comment in comments">
-                <div class="card-body" style="display: grid; grid-template-columns: 85% 7.5% 7.5%; font-size: 15px; font-style: italic; background-color: var(--background-color); color: var(--text-color);">
+                <div class="card-body" style="display: grid; grid-template-columns: 85% 15%; font-size: 15px; font-style: italic; background-color: var(--background-color); color: var(--text-color);">
                     <p class="card-text" style="margin: 0px;">{{ comment.comment }}</p>
-                    <button data-bs-toggle="tooltip" data-bs-placement="top" title="Helpful" class="badge comment-score-badge" @click="scoreComment(comment.attempt_id, 1)">
-                        👍
-                    </button>
-                    <button data-bs-toggle="tooltip" data-bs-placement="top" title="Not Helpful" class="badge comment-score-badge" @click="scoreComment(comment.attempt_id, -1)">
-                        👎
-                    </button>
+                    <div v-if="hasScore(comment.attempt_id)" style="font-size: 10px;">
+                        <p v-if="getAttemptScore(comment.attempt_id).score > 0">You marked it as <strong style="color: #8adc6d">Helpful</strong>.</p>
+                        <p v-else>You marked it as <strong style="color: #dc3545">Not Helpful</strong>.</p>
+                    </div>
+                    <div style="display: flex; flex-direction: row;" v-else>
+                        <button data-bs-toggle="tooltip" data-bs-placement="top" style="width: 50%;" title="Helpful" class="badge comment-score-badge" @click="scoreComment(comment.attempt_id, 1)">
+                            👍
+                        </button>
+                        <button data-bs-toggle="tooltip" data-bs-placement="top" style="width: 50%;" title="Not Helpful" class="badge comment-score-badge" @click="scoreComment(comment.attempt_id, -1)">
+                            👎
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,7 +86,8 @@ export default defineComponent({
             challenge: Challenge,
             auth: null,
             loader: null,
-            comments: []
+            comments: [],
+            attemptScores: []
         }
     },
 
@@ -158,7 +165,7 @@ export default defineComponent({
         },
 
         async scoreComment(attempt_id, score) {
-            await this.$axios.post(this.$api_link + '/challenges/' + this.challenge.id + '/comments/' + attempt_id + '/score', { id: 0, user_id: this.auth.user.id, attempt_id: attempt_id, given_score: score }, this.auth.config)
+            await this.$axios.post(this.$api_link + '/challenges/' + this.challenge.id + '/comments/' + attempt_id + '/score', { id: 0, user_id: this.auth.user.id, attempt_id: attempt_id, given_score: score, challenge_id: this.challenge.id }, this.auth.config)
                 .then((response) => {
                     this.toast.success('Comment scored successfully!')
                     this.getComments()
@@ -180,6 +187,14 @@ export default defineComponent({
                 })
         },
 
+        getAttemptScore(attempt_id) {
+            return this.attemptScores.find(element => element.attempt_id == attempt_id && element.user_id == this.auth.user.id)
+        },
+
+        hasScore(attempt_id) {
+            console.log(this.attemptScores.some(element => element.attempt_id == attempt_id && element.user_id == this.auth.user.id))
+            return this.attemptScores.some(element => element.attempt_id == attempt_id && element.user_id == this.auth.user.id)
+        },
 
         goToChallenge(id) {
             this.$router.push({ name: 'challenge', params: { id: id } })
