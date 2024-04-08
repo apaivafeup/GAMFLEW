@@ -206,7 +206,7 @@ def read_user(current_user: Annotated[models.User, Depends(get_current_active_us
         raise HTTPException(status_code=404, detail="User not found")
     return db_user
 
-## Get specific users
+## Get users
 @app.post("/users/", response_model=list[models.UserBasics])
 def read_users(current_user: Annotated[models.User, Depends(get_current_active_user)], user_ids: list[int], db: Session = Depends(get_db)):
     users = crud.get_users_by_id(db, user_ids=user_ids)
@@ -224,6 +224,10 @@ def create_challenge_for_user(current_user: Annotated[models.User, Depends(get_c
 def read_challenges_by_code(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
     challenges = crud.get_challenges_by_code(db)
     return challenges
+
+@app.get('/challenge-titles/')
+def get_challenge_titles(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
+    return crud.get_challenge_titles(db)
 
 ## Get code files.
 @app.get("/code-files/", response_model=list[models.CodeFile])
@@ -248,7 +252,7 @@ def read_board_state(current_user: Annotated[models.User, Depends(get_current_ac
     return board_state
 
 ## Get challenges
-@app.get("/challenges/", response_model=list[models.ChallengeBasics])
+@app.get("/challenges/", response_model=list[models.Challenge])
 def read_challenges(current_user: Annotated[models.User, Depends(get_current_active_user)], skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     challenges = crud.get_challenges(db, skip=skip, limit=limit)
     return challenges
@@ -384,6 +388,10 @@ def score_challenge_comment(current_user: Annotated[models.User, Depends(get_cur
 @app.get('/challenges/{challenge_id}/comments/scores/{user_id}', response_model=list[models.AttemptScore])
 def get_user_attempt_scores(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, user_id: int, db: Session = Depends(get_db)):
     return crud.get_user_attempt_scores(db, challenge_id=challenge_id, user_id=user_id)
+
+@app.get('/challenges/attempts/')
+def get_all_attempts(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
+    return crud.get_all_passed_attempts_by_challenge(db)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

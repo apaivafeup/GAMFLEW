@@ -953,3 +953,24 @@ def create_attempt_score(db: Session, attempt_id: int, user_id: int, given_score
 
 def get_user_attempt_scores(db: Session, challenge_id: int, user_id: int):
     return db.query(schemas.AttemptScore).filter(schemas.AttemptScore.challenge_id == challenge_id).filter(schemas.AttemptScore.user_id == user_id).all()
+
+def get_all_passed_attempts_by_challenge(db: Session):
+    result = {}
+
+    challenges = db.query(schemas.Challenge).all()
+    for challenge in challenges:
+        result[challenge.id] = []
+        attempts = db.query(schemas.Attempt).filter(schemas.Attempt.challenge_id == challenge.id).filter(schemas.Attempt.attempt_type == "pass").all()   
+        for attempt in attempts:
+            result[challenge.id].append(attempt)
+
+    return result
+
+def get_challenge_titles(db: Session):
+    challenges = db.query(schemas.Challenge).all()
+    result = {}
+
+    for challenge in challenges:
+        result[challenge.id] = challenge.name
+
+    return result

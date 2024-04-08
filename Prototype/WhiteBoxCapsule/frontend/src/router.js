@@ -21,6 +21,7 @@ const routes = [
     { name: 'user-export', path: '/user-export', component: () => import('./pages/UserExport.vue'), props: false},
     { name: 'validate-admin', path: '/validate-admin', component: () => import('./pages/ValidateAdmin.vue'), props: false},
     { name: 'challenge-comments', path: '/challenges/:id/comments', component: () => import('./pages/ChallengeComments.vue'), props: true},
+    { name: 'check-user-submissions', path: '/user-submissions', component: () => import('./pages/CheckUserSubmissions.vue'), props: false},
 ];
 
 export const Router = createRouter({

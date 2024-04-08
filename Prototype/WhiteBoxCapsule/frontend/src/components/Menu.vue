@@ -1,6 +1,5 @@
 <template>
-  <div class="col" v-if="main && this.auth.user.user_type != 'admin'">
-    style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+  <div class="col" v-if="main && this.auth.user.user_type != 'admin'" style="display: flex; justify-content: center; align-items: center; flex-direction: column">
     <button class="menu-button" id="single-player-button" @click="this.$router.push('challenges')" style="width: 500px">
       Single Player
     </button>
@@ -70,6 +69,9 @@
         </button> -->
         <button class="admin-menu-button" @click="this.$router.push({ name: 'validate-admin' })" id="validate-admin-button" style="">
           Validate New Administrators
+        </button>
+        <button class="admin-menu-button" @click="this.$router.push({ name: 'check-user-submissions' })" id="check-user-submission-button" style="">
+          Check User Submissions
         </button>
 
       </div>
