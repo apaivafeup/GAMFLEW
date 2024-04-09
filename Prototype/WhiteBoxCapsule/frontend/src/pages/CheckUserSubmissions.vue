@@ -71,7 +71,7 @@
     <div class="col" v-if="this.selectedAttemptId != null" style="display: flex; justify-content: end; flex-direction: row; padding: 0px;">
       <ChallengeSubmissionViewer :challenge="this.challenge"  />
     </div>
-    <div class="col" style="display: flex; place-content: center; flex-direction: row; padding: 0px;" v-else>
+    <div class="col" style="display: flex; justify-content: end; flex-direction: row; padding: 0px;" v-else>
         <ChallengeSubmissionViewer class="disabled" :challenge="this.challenge"  />
     </div>
   </div>
