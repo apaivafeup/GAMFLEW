@@ -1,9 +1,9 @@
 <template>
   <div class="col piece-overlap" v-if="this.solution.outOfBoundsState[this.solution.currentKey].pieceCount() > 1">
     <div class="overlap-box">
-      <div class="square square-lg piece small red" v-if="!this.solution.outOfBoundsState[this.solution.currentKey].selected">
+      <div class="square square-lg piece-checker small red" v-if="!this.solution.outOfBoundsState[this.solution.currentKey].selected">
       </div>
-      <div class="square square-lg piece small selected" v-else></div>
+      <div class="square square-lg piece-checker small selected" v-else></div>
     </div>
     <div class="overlap-box">
       <div>
@@ -11,9 +11,9 @@
       </div>
     </div>
     <div class="overlap-box">
-      <div class="square square-lg piece small blue" v-if="!this.solution.outOfBoundsState[this.solution.currentKey].selected">
+      <div class="square square-lg piece-checker small blue" v-if="!this.solution.outOfBoundsState[this.solution.currentKey].selected">
       </div>
-      <div class="square square-lg piece small selected" v-else></div>
+      <div class="square square-lg piece-checker small selected" v-else></div>
     </div>
     <div class="overlap-box">
       <div>
@@ -21,15 +21,15 @@
       </div>
     </div>
   </div>
-  <div class="square square-lg piece selected" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].selected"
+  <div class="square square-lg piece-checker selected" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].selected"
     ></div>
-  <div class="square square-lg piece red" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].stack.blue == 0 &&
+  <div class="square square-lg piece-checker red" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].stack.blue == 0 &&
     this.solution.outOfBoundsState[this.solution.currentKey].stack.red != 0
     " ></div>
-  <div class="square square-lg piece blue" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].stack.blue != 0 &&
+  <div class="square square-lg piece-checker blue" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].stack.blue != 0 &&
     this.solution.outOfBoundsState[this.solution.currentKey].stack.red == 0
     " ></div>
-  <div class="square square-lg piece empty" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].stack.blue == 0 &&
+  <div class="square square-lg piece-checker empty" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].stack.blue == 0 &&
     this.solution.outOfBoundsState[this.solution.currentKey].stack.red == 0
     " ></div>
 </template>

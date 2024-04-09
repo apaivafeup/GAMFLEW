@@ -1,148 +1,149 @@
 <template>
   <div class="container" style="max-width: 95% !important;">
-  <div class="row" style="text-align: center;">
-    <h2 v-if="this.id == null">Challenge Creator</h2>
-    <h2 v-else>Challenge Editor</h2>
-  </div>
-  <div style="display: flex; flex-direction: column; justify-content: center; margin-bottom: 10px;">
-    <div class="row" style="justify-content: center; display: flex; flex-direction: row;">
-      <div class="col">
-        <div class="row" style="width: 100%; margin: 0px;">
-          <h5 style="padding: 0px; margin-bottom: 5px;">Code File</h5>
-        </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">Choose an existing code file below.</p>
-        </div>
-        <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
-          <select class="button is-primary guide-button" id="code-file-select" style="width: 650px;"
-            :value="this.challenge?.code_file">
-            <option @click="this.selectCode(code.id)" v-for="code in codeFiles" :value="code.id">{{ code.name }}
-            </option>
-          </select>
-        </div>
-
-        <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
-          <CodeBlock @change="Prism.highlightAll()" class="col line-numbers" theme="default" height="445px"
-            data-line="1" :prismjs="true" :code="this.codeFiles[this.challenge?.code_file - 1]?.content"
-            lang="javascript" prism-plugin prism-js
-            style="font-size: 16px; overflow: scroll; margin-bottom: 5px; width: 650px;" :copy-icon="false"
-            :copy-button="false" :copy-tab="false" :tabs="false" />
-        </div>
-      </div>
-      <div class="col">
-        <div class="row" style="width: 100%; margin: 0px;">
-          <h5 style="padding: 0px; margin-bottom: 5px;">Board State</h5>
-        </div>
-        <div class="row" style="font-size: 10px;">
-          <p style="margin-bottom: 5px;">Choose an existing board state below.</p>
-        </div>
-        <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
-          <select class="button is-primary guide-button" id="board-state-select" :value="this.challenge?.initial_board">
-            <option @click="this.selectState(state.id)" v-for="state in boardStates" :id="state.name + '-option'"
-              :value="state.id">{{ state.name }}
-            </option>
-          </select>
-        </div>
-        <div class="row" style="padding: 0px; margin: 0px;">
-          <BoardChecker />
-        </div>
-      </div>
+    <div class="row" style="text-align: center;">
+      <h2 v-if="this.id == null">Challenge Creator</h2>
+      <h2 v-else>Challenge Editor</h2>
     </div>
-    <div style="margin-top: 10px;">
-      <div class="row">
-        <h5 style="text-align: left; margin-bottom: 5px;">Challenge Details</h5>
-      </div>
-      <div class="row" style="font-size: 10px; margin-bottom: 7.5px;">
-        <p style="margin-bottom: 5px;">Fill out these details for the challenge.</p>
-      </div>
-      <div class="row" style="margin-bottom: 5px;">
-        <div class="col" id="name-input">
-          <h6 style="text-align: left; margin-bottom: 5px;">Name</h6>
-          <input id="input-name-box" class="box" @input="this.changeName($event)" type="text"
-            placeholder="Challenge X.Y: Challenge Name" style="margin: 0px; width: 100%; font-size: 18px;" />
-        </div>
-      </div>
-      <div class="row" style="margin-bottom: 5px;">
-        <div class="col" id="description-input">
-          <h6 style="text-align: left; margin-bottom: 5px;">Description</h6>
-          <input id="input-description-box" @input="this.changeDescription($event)" class="box" type="text"
-            placeholder="Anything about the challenge!" style="margin: 0px; width: 100%; font-size: 18px;" />
-        </div>
-      </div>
-      <div class="row" style="margin-bottom: 5px;">
-        <div class="col" id="hint-input">
-          <h6 style="text-align: left; margin-bottom: 5px;">Hint</h6>
-          <input id="input-hint-box" @input="this.changeHint($event)" class="box" type="text"
-            placeholder="Anything to help the player!" style="margin: 0px; width: 100%; font-size: 18px;" />
-        </div>
-      </div>
-      <div class="row" style="margin-bottom: 5px;">
-        <div class="col" id="objective-input">
-          <h6 style="text-align: left; margin-bottom: 5px;">Objective</h6>
-          <input id="input-objective-box" @input="this.changeObjective($event)" class="box" type="text"
-            placeholder="[COVERAGE] coverage of line X." style="margin: 0px; width: 100%; font-size: 18px;" />
-        </div>
-      </div>
-      <div class="row" style="margin-bottom: 7.5px;">
-        <div class="col" id="score-input">
-          <h6 style="text-align: left; margin-bottom: 5px;">Score</h6>
-          <p style="font-size: 10px; margin-bottom: 5px;">The more test cases, the more points a player should get!
-          </p>
-          <input id="input-score-box" inputmode="numeric" @input="this.changeScore($event)" class="box" type="number"
-            max-length="5" min="100" pattern="[0-9]{5}" value="100" step="25"
-            style="margin: 0px; width: 100%; font-size: 18px;" />
-        </div>
-        <div class="col" id="condition-count-input"
-          v-if="this.challenge?.challenge_type == 'condition' || this.challenge?.challenge_type == 'mcdc' || this.challenge?.challenge_type == 'condition/decision'">
-          <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
-          <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get
-            2<sup>x</sup>
-            possible test cases!</p>
-          <input id="input-condition-box" @input="this.changeConditionCount($event)" class="box" type="number"
-            placeholder="Number of variables." value="1" min="0" max="5"
-            style="margin: 0px; width: 100%; font-size: 18px;" />
-        </div>
-        <div class="col disabled" id="condition-count-input" v-else>
-          <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
-          <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get
-            2<sup>x</sup>
-            possible test cases!</p>
-          <input id="input-condition-box" @input="this.changeConditionCount($event)" class="box" type="number"
-            max="10" placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;" />
-        </div>
-      </div>
-      <div class="row" style="margin-bottom: 5px;">
+    <div style="display: flex; flex-direction: column; justify-content: center; margin-bottom: 10px;">
+      <div class="row" style="justify-content: center; display: flex; flex-direction: row;">
         <div class="col">
-          <div class="row">
-            <h6 style="text-align: left; margin-bottom: 5px;">Coverage & Difficulty</h6>
+          <div class="row" style="width: 100%; margin: 0px;">
+            <h5 style="padding: 0px; margin-bottom: 5px;">Code File</h5>
           </div>
           <div class="row" style="font-size: 10px;">
-            <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular coverage type
-              associated.<br />A difficulty level is also required.</p>
+            <p style="margin-bottom: 5px;">Choose an existing code file below.</p>
           </div>
-          <div class="row" style="margin: 0px;">
-            <div class="col" style="padding: 0px; margin-right: 5px;">
-              <select class="button is-primary guide-button" id="coverage-select" style="width: 100%;"
-                :value="this.challenge?.challenge_type">
-                <option @click="this.selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{
-    coverage }}
-                </option>
-              </select>
+          <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
+            <select class="button is-primary guide-button" id="code-file-select" style="width: 650px;"
+              :value="this.challenge?.code_file">
+              <option @click="this.selectCode(code.id)" v-for="code in codeFiles" :value="code.id">{{ code.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
+            <CodeBlock @change="Prism.highlightAll()" class="col line-numbers" theme="default" height="445px"
+              data-line="1" :prismjs="true" :code="this.codeFiles[this.challenge?.code_file - 1]?.content"
+              lang="javascript" prism-plugin prism-js
+              style="font-size: 16px; overflow: scroll; margin-bottom: 5px; width: 650px;" :copy-icon="false"
+              :copy-button="false" :copy-tab="false" :tabs="false" />
+          </div>
+        </div>
+        <div class="col">
+          <div class="row" style="width: 100%; margin: 0px;">
+            <h5 style="padding: 0px; margin-bottom: 5px;">Board State</h5>
+          </div>
+          <div class="row" style="font-size: 10px;">
+            <p style="margin-bottom: 5px;">Choose an existing board state below.</p>
+          </div>
+          <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
+            <select class="button is-primary guide-button" id="board-state-select"
+              :value="this.challenge?.initial_board">
+              <option @click="this.selectState(state.id)" v-for="state in boardStates" :id="state.name + '-option'"
+                :value="state.id">{{ state.name }}
+              </option>
+            </select>
+          </div>
+          <div class="row" style="padding: 0px; margin: 0px;">
+            <BoardChecker />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 10px;">
+        <div class="row">
+          <h5 style="text-align: left; margin-bottom: 5px;">Challenge Details</h5>
+        </div>
+        <div class="row" style="font-size: 10px; margin-bottom: 7.5px;">
+          <p style="margin-bottom: 5px;">Fill out these details for the challenge.</p>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="col" id="name-input">
+            <h6 style="text-align: left; margin-bottom: 5px;">Name</h6>
+            <input id="input-name-box" class="box" @input="this.changeName($event)" type="text"
+              placeholder="Challenge X.Y: Challenge Name" style="margin: 0px; width: 100%; font-size: 18px;" />
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="col" id="description-input">
+            <h6 style="text-align: left; margin-bottom: 5px;">Description</h6>
+            <input id="input-description-box" @input="this.changeDescription($event)" class="box" type="text"
+              placeholder="Anything about the challenge!" style="margin: 0px; width: 100%; font-size: 18px;" />
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="col" id="hint-input">
+            <h6 style="text-align: left; margin-bottom: 5px;">Hint</h6>
+            <input id="input-hint-box" @input="this.changeHint($event)" class="box" type="text"
+              placeholder="Anything to help the player!" style="margin: 0px; width: 100%; font-size: 18px;" />
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="col" id="objective-input">
+            <h6 style="text-align: left; margin-bottom: 5px;">Objective</h6>
+            <input id="input-objective-box" @input="this.changeObjective($event)" class="box" type="text"
+              placeholder="[COVERAGE] coverage of line X." style="margin: 0px; width: 100%; font-size: 18px;" />
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 7.5px;">
+          <div class="col" id="score-input">
+            <h6 style="text-align: left; margin-bottom: 5px;">Score</h6>
+            <p style="font-size: 10px; margin-bottom: 5px;">The more test cases, the more points a player should get!
+            </p>
+            <input id="input-score-box" inputmode="numeric" @input="this.changeScore($event)" class="box" type="number"
+              max-length="5" min="100" pattern="[0-9]{5}" value="100" step="25"
+              style="margin: 0px; width: 100%; font-size: 18px;" />
+          </div>
+          <div class="col" id="condition-count-input"
+            v-if="this.challenge?.challenge_type == 'condition' || this.challenge?.challenge_type == 'mcdc' || this.challenge?.challenge_type == 'condition/decision'">
+            <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
+            <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get
+              2<sup>x</sup>
+              possible test cases!</p>
+            <input id="input-condition-box" @input="this.changeConditionCount($event)" class="box" type="number"
+              placeholder="Number of variables." value="1" min="0" max="5"
+              style="margin: 0px; width: 100%; font-size: 18px;" />
+          </div>
+          <div class="col disabled" id="condition-count-input" v-else>
+            <h6 style="text-align: left; margin-bottom: 5px;">Condition Count</h6>
+            <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get
+              2<sup>x</sup>
+              possible test cases!</p>
+            <input id="input-condition-box" @input="this.changeConditionCount($event)" class="box" type="number"
+              max="10" placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;" />
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 5px;">
+          <div class="col">
+            <div class="row">
+              <h6 style="text-align: left; margin-bottom: 5px;">Coverage & Difficulty</h6>
             </div>
-            <div class="col" style="padding: 0px;">
-              <select class="button is-primary guide-button" id="difficulty-select" style="width: 100%;"
-                :value="this.challenge?.difficulty">
-                <option @click="this.selectDifficulty(difficulty)" v-for="difficulty in difficulties"
-                  :value="difficulty">
-                  {{ difficulty }}
-                </option>
-              </select>
+            <div class="row" style="font-size: 10px;">
+              <p style="margin-bottom: 5px; text-align: justify;">Each challenge must have a singular coverage type
+                associated.<br />A difficulty level is also required.</p>
+            </div>
+            <div class="row" style="margin: 0px;">
+              <div class="col" style="padding: 0px; margin-right: 5px;">
+                <select class="button is-primary guide-button" id="coverage-select" style="width: 100%;"
+                  :value="this.challenge?.challenge_type">
+                  <option @click="this.selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{
+        coverage }}
+                  </option>
+                </select>
+              </div>
+              <div class="col" style="padding: 0px;">
+                <select class="button is-primary guide-button" id="difficulty-select" style="width: 100%;"
+                  :value="this.challenge?.difficulty">
+                  <option @click="this.selectDifficulty(difficulty)" v-for="difficulty in difficulties"
+                    :value="difficulty">
+                    {{ difficulty }}
+                  </option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
     <div style="display: flex; justify-content: center; flex-direction: column;">
       <div class="row">
@@ -193,7 +194,8 @@
         </div>
 
       </div>
-      <div class="row" style="display: grid; grid-template-columns: 48% 50%; grid-gap: 2vw; grid-template-rows: 100%; max-height: 100%;">
+      <div class="row"
+        style="display: grid; grid-template-columns: 48% 50%; grid-gap: 2vw; grid-template-rows: 100%; max-height: 100%;">
         <div class="col" style="display: flex; flex-direction: column; max-height: 537px; overflow-y: scroll;">
           <div v-if="this.preconditions.length != 0">
             <div class="row" style="margin-bottom: 10px;" :id="'precondition-info-' + index"
@@ -344,31 +346,12 @@ export default {
     this.auth = authStore()
     this.auth.checkAuth()
 
-    await this.$axios.get(this.$api_link + '/board-states/', this.auth.config).then((response) => {
-      response.data.forEach((board_state) => {
-        this.boardStates.push(board_state)
-      })
-    }).catch((error) => {
-      this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
-      this.$error = true
-    })
-
-    await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
-      response.data.forEach((codeFile) => {
-        this.codeFiles.push(codeFile)
-      })
-    }).catch((error) => {
-      this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
-      this.$error = true
-    })
+    await this.getBoardStates()
+    await this.getCodeFiles()
+    await this.getDictionary()
 
     if (this.id != null) {
-      await this.$axios.get(this.$api_link + '/challenges/' + this.id, this.auth.config).then((response) => {
-        this.challenge = response.data
-      }).catch((error) => {
-        this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
-        this.$error = true
-      })
+      await this.getChallenge()
 
       if (this.$error) {
         loader.hide()
@@ -390,14 +373,7 @@ export default {
       this.challenge.passing_criteria.tests.forEach((test) => this.tests.push(this.makeExpression(test, true)))
     }
 
-    await this.$axios.get(this.$api_link + '/code-file-dictionary/', this.auth.config).then((response) => {
-      this.codeFiles.forEach((codeFile) => {
-        this.dictionary = response.data
-      })
-    }).catch((error) => {
-      this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
-      this.$error = true
-    })
+
 
     // Code file and initial board.
     this.selectState(this.challenge.initial_board)
@@ -624,6 +600,47 @@ export default {
           })
       }
 
+    },
+
+    async getBoardStates() {
+      await this.$axios.get(this.$api_link + '/board-states/', this.auth.config).then((response) => {
+        response.data.forEach((board_state) => {
+          this.boardStates.push(board_state)
+        })
+      }).catch((error) => {
+        this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
+        this.$error = true
+      })
+    },
+
+    async getCodeFiles() {
+      await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
+        response.data.forEach((codeFile) => {
+          this.codeFiles.push(codeFile)
+        })
+      }).catch((error) => {
+        this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+        this.$error = true
+      })
+    },
+
+    async getDictionary() {
+      await this.$axios.get(this.$api_link + '/code-file-dictionary/', this.auth.config).then((response) => {
+        this.dictionary = response.data
+        console.log(response.data)
+      }).catch((error) => {
+        this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+        this.$error = true
+      })
+    },
+
+    async getChallenge() {
+      await this.$axios.get(this.$api_link + '/challenges/' + this.id, this.auth.config).then((response) => {
+        this.challenge = response.data
+      }).catch((error) => {
+        this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+        this.$error = true
+      })
     }
   },
 

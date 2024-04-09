@@ -67,6 +67,8 @@ export const solutionViewer = defineStore('solutionViewer', {
           }
         }
         this.outOfBoundsState[currentKey] = new Piece({x: -1, y: -1}, this.initialState[currentKey].outOfBounds.color, this.initialState[currentKey].outOfBounds.stack)
+      
+        this.log[currentKey] = this.initialState[currentKey].log
       }
 
       

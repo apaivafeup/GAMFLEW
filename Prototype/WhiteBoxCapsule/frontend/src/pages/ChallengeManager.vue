@@ -42,6 +42,7 @@
                 :key="challenge.id"
               >
                 <ChallengeCard
+                  :editor="true"
                   :id="'challenge-card-' + challenge.id"
                   :challenge="challenge"
                   :passed="passed_challenges.includes(challenge.id)"
