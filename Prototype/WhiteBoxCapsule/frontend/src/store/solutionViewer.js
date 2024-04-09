@@ -13,6 +13,7 @@ export const solutionViewer = defineStore('solutionViewer', {
     return {
       // Actual game state.
       log: {},
+      initialState: {},
       state: {},
       outOfBoundsState: {},
       currentKey: 0,
@@ -28,14 +29,16 @@ export const solutionViewer = defineStore('solutionViewer', {
   actions: {
     emptyState() {
       this.currentKey = 0
+      this.state = {}
       this.state[this.currentKey] = []
+      this.outOfBoundsState = {}
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
-      this.log[this.currentKey] = []
+      this.log = {}
       this.infoState = ''
       this.table = false
     },
 
-    generateState(reset = false) {
+    generateState() {
       this.emptyState()
 
       for (let i = 1; i <= 8; i++) {
@@ -51,10 +54,6 @@ export const solutionViewer = defineStore('solutionViewer', {
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
 
       this.log[this.currentKey] = []
-
-      if (reset) {
-        this.changeState(this.initialState)
-      }
     },
 
     changeState(initialState) {
@@ -86,48 +85,6 @@ export const solutionViewer = defineStore('solutionViewer', {
       if (this.state[this.currentKey] == undefined) {
         this.generateState()
         this.changeState(this.initialState)
-      }
-    },
-
-    tableMode(challenge) {
-      this.table = !this.table
-
-      if (this.table && challenge != undefined) {
-        var headers = [],
-          rows = []
-
-        var charCode = 'A'.charCodeAt(0)
-        for (var i = 0; i < challenge.passing_criteria.condition_count; i++) {
-          headers.push({
-            text: String.fromCharCode(charCode),
-            value: String.fromCharCode(charCode++)
-          })
-        }
-
-        headers.push({
-          text: 'Outcome',
-          value: 'outcome'
-        })
-
-        var possible_values = [true, false]
-
-        var combs = combinations(possible_values, challenge.passing_criteria.condition_count)
-
-        var row = {},
-          rows = []
-        for (var i = 0; i < combs.length; i++) {
-          row = {}
-          for (var j = 0; j < headers.length - 1; j++) {
-            row[headers[j].value] = combs[i][j]
-          }
-
-          row['outcome'] = '?'
-
-          rows.push(row)
-        }
-
-        this.dataTable.headers = headers
-        this.dataTable.rows = rows
       }
     }
   }

@@ -5,10 +5,10 @@
   >
     <div class="overlap-box">
       <div
-        class="square square-lg piece-checker small red"
+        class="square square-lg piece small red"
         v-if="!this.solution.state[this.solution.currentKey][x][y].selected"
       ></div>
-      <div class="square square-lg piece-checker small selected" v-else></div>
+      <div class="square square-lg piece small selected" v-else></div>
     </div>
     <div class="overlap-box">
       <div>
@@ -17,10 +17,10 @@
     </div>
     <div class="overlap-box">
       <div
-        class="square square-lg piece-checker small blue"
+        class="square square-lg piece small blue"
         v-if="!this.solution.state[this.solution.currentKey][x][y].selected"
       ></div>
-      <div class="square square-lg piece-checker small selected" v-else></div>
+      <div class="square square-lg piece small selected" v-else></div>
     </div>
     <div class="overlap-box">
       <div>
@@ -29,7 +29,7 @@
     </div>
   </div>
   <div
-    class="square square-lg piece-checker selected"
+    class="square square-lg piece selected"
     style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
     v-else-if="this.solution.state[this.solution.currentKey][x][y].selected"
   >
@@ -41,7 +41,7 @@
 />
 </div>
   <div
-    class="square square-lg piece-checker red"
+    class="square square-lg piece red"
     style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
     v-else-if="
       this.solution.state[this.solution.currentKey][x][y].stack.blue == 0 &&
@@ -56,7 +56,7 @@
 />
 </div>
   <div
-    class="square square-lg piece-checker blue"
+    class="square square-lg piece blue"
     style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
     v-else-if="
       this.solution.state[this.solution.currentKey][x][y].stack.blue != 0 &&
@@ -71,7 +71,7 @@
 />
 </div>
   <div
-    class="square square-lg piece-checker empty"
+    class="square square-lg piece empty"
     v-else-if="
       this.solution.state[this.solution.currentKey][x][y].stack.blue == 0 &&
       this.solution.state[this.solution.currentKey][x][y].stack.red == 0
