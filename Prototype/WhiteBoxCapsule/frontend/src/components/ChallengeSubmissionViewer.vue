@@ -7,13 +7,13 @@
         </div>
         <div class="game-board-out">
           <div class="box">
-            <OutPieceStackSolutionViewer class="" :x="this.outX" :y="this.outY" />
+            <OutPieceStackSolutionViewer class="" :x="this.solution.outOfBoundsState.position.x" :y="this.solution.outOfBoundsState.position.y" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input id="piece-stack-out-x" class="col box "
-              style="width: 30px; text-align: center; font-size: 12px" type="number" />
+              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="this.solution.outOfBoundsState.position.x" />
             <input id="piece-stack-out-y" class="col box "
-              style="width: 30px; text-align: center; font-size: 12px" type="number" />
+              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="this.solution.outOfBoundsState.position.y"/>
           </div>
         </div>
       </div>
@@ -22,10 +22,18 @@
         {{ this.solution.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
       <div class="buttons-grid">
-        <button id="previous-button" class="button is-primary is-fullwidth " style="cursor: default">
+        <button id="previous-button" class="button is-primary is-fullwidth" v-if="solution.currentKey != 0"
+          @click="solution.previous()">
           Previous
         </button>
-        <button id="next-button" class="button is-primary is-fullwidth " style="cursor: default">
+        <button id="previous-button" class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
+          Previous
+        </button>
+        <button id="next-button" class="button is-primary is-fullwidth"
+          v-if="solution.currentKey + 1 != challenge.test_cases_count" @click="solution.next()">
+          Next
+        </button>
+        <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Next
         </button>
       </div>
@@ -91,10 +99,10 @@
             <OutPieceStackSolutionViewer :x="this.outX" :y="this.outY" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-            <input id="piece-stack-out-x" class="col box "
-              style="width: 30px; text-align: center; font-size: 12px" type="number" />
-            <input id="piece-stack-out-y" class="col box "
-              style="width: 30px; text-align: center; font-size: 12px" type="number" />
+            <input id="piece-stack-out-x" class="col box disabled"
+              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="this.solution.outOfBoundsState[this.solution.currentKey].position.x" />
+            <input id="piece-stack-out-y" class="col box disabled"
+              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="this.solution.outOfBoundsState[this.solution.currentKey].position.y" />
           </div>
         </div>
       </div>
@@ -108,14 +116,14 @@
           @click="solution.previous()">
           Previous
         </button>
-        <button id="previous-button" class="button is-primary is-fullwidth " v-else style="cursor: default">
+        <button id="previous-button" class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
           Previous
         </button>
         <button id="next-button" class="button is-primary is-fullwidth"
-          v-if="solution.currentKey + 1 != challenge.test_cases_count " @click="solution.next()">
+          v-if="solution.currentKey + 1 != challenge.test_cases_count" @click="solution.next()">
           Next
         </button>
-        <button id="next-button" class="button is-primary is-fullwidth " style="cursor: default" v-else>
+        <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Next
         </button>
       </div>

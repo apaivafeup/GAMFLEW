@@ -27,6 +27,7 @@ export const solutionViewer = defineStore('solutionViewer', {
   },
   actions: {
     emptyState() {
+      this.currentKey = 0
       this.state[this.currentKey] = []
       this.outOfBoundsState[this.currentKey] = new Piece({ x: -1, y: -1 }, Color.EMPTY)
       this.log[this.currentKey] = []
@@ -58,14 +59,17 @@ export const solutionViewer = defineStore('solutionViewer', {
 
     changeState(initialState) {
       this.initialState = initialState
-      for (var i = 0; i < initialState.board_state.length; i++) {
-        for (var j = 0; j < initialState.board_state[i].length; j++) {
-          this.state[this.currentKey][i][j] = 
-            new Piece({x: i, y: j}, initialState.board_state[i][j].color, initialState.board_state[i][j].content)
+
+      for (var currentKey = 0; currentKey < Object.keys(this.initialState).length; currentKey++) {
+        for (var i = 0; i < this.initialState[currentKey].board.length; i++) {
+          for (var j = 0; j < this.initialState[currentKey].board[i].length; j++) {
+            this.state[this.currentKey][i][j] = new Piece({x: i, y: j}, this.initialState[currentKey].board[i][j].color, this.initialState[currentKey].board[i][j].content)
+          }
         }
+        this.outOfBoundsState[currentKey] = new Piece({x: -1, y: -1}, this.initialState[currentKey].outOfBounds.color, this.initialState[currentKey].outOfBounds.stack)
       }
 
-      this.outOfBoundsState[this.currentKey] = new Piece({x: -1, y: -1}, initialState.out_of_bounds_state.color, initialState.out_of_bounds_state.stack)
+      
     },
 
     previous() {
@@ -81,9 +85,6 @@ export const solutionViewer = defineStore('solutionViewer', {
         this.generateState()
         this.changeState(this.initialState)
       }
-
-      this.selectedPiece = null
-      this.selectedCoords = { x: 0, y: 0 }
     },
 
     tableMode(challenge) {

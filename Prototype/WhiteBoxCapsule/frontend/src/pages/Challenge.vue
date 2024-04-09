@@ -83,7 +83,6 @@ export default {
         response.data.owner_id
       )
     }).catch((error) => {
-      console.log(error.response)
       this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
       this.$error = true
     })

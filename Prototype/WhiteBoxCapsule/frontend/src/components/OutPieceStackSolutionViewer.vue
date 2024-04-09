@@ -1,6 +1,5 @@
 <template>
-  <div class="col piece-overlap" v-if="this.solution.outOfBoundsState[this.solution.currentKey].pieceCount() > 1"
-    @click.stop="this.solution.selectPiece(this.x, this.y)">
+  <div class="col piece-overlap" v-if="this.solution.outOfBoundsState[this.solution.currentKey].pieceCount() > 1">
     <div class="overlap-box">
       <div class="square square-lg piece small red" v-if="!this.solution.outOfBoundsState[this.solution.currentKey].selected">
       </div>
@@ -23,16 +22,16 @@
     </div>
   </div>
   <div class="square square-lg piece selected" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].selected"
-    @click.stop="this.solution.selectPiece(this.x, this.y)"></div>
+    ></div>
   <div class="square square-lg piece red" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].stack.blue == 0 &&
     this.solution.outOfBoundsState[this.solution.currentKey].stack.red != 0
-    " @click.stop="this.solution.selectPiece(this.x, this.y)"></div>
+    " ></div>
   <div class="square square-lg piece blue" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].stack.blue != 0 &&
     this.solution.outOfBoundsState[this.solution.currentKey].stack.red == 0
-    " @click.stop="this.solution.selectPiece(this.x, this.y)"></div>
+    " ></div>
   <div class="square square-lg piece empty" v-else-if="this.solution.outOfBoundsState[this.solution.currentKey].stack.blue == 0 &&
     this.solution.outOfBoundsState[this.solution.currentKey].stack.red == 0
-    " @click.stop="this.solution.selectPiece(this.x, this.y)"></div>
+    " ></div>
 </template>
 
 <script>

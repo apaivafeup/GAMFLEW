@@ -261,8 +261,6 @@ export const boardStore = defineStore('boardStore', {
         else
           this.infoState[this.currentKey].push('Removed piece from (' + lastLog.destination.x + ', ' + lastLog.destination.y + ').')
       }
-
-      console.log(this.infoState)
     },
 
     addMode() {

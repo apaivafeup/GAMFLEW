@@ -9,8 +9,6 @@ export default {
   },
 
   beforeMount() {
-    console.log(this.code, this.message)
-
     if (this.code == undefined) {
       this.code = 'Error'
       this.message = 'Unknown'

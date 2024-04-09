@@ -224,7 +224,6 @@ export default {
             }
 
             if (this.round.state == 'finished' && this.round.round_number != -1) {
-                console.log('The next round is starting...')
                 this.round_loading = true
                 this.loaded = false
             } else if (this.round.state == 'finished' && this.round.round_number == -1) {

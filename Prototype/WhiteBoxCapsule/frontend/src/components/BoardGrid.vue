@@ -384,8 +384,6 @@ export default {
 
     // Submit functions
     go() {
-      console.log('here!')
-
       if (!this.board.go) {
         return
       }
@@ -510,13 +508,12 @@ export default {
     async submitAttempt() {
       var body = {
         id: 0,
-        score: this.board.attempt.score,
         player_id: this.auth.user.id,
         challenge_id: this.board.attempt.challenge_id,
         attempt_type: this.board.passed ? 'pass' : 'fail',
         comment: this.board.attempt.comment,
-        test_cases: this.board.state,
-        score: this.board.passed ? 0 : null,
+        test_cases: this.saveTestCases(),
+        score: this.board.passed ? this.challenge.score : null,
         score_count: this.board.passed ? 0 : null
       }
 
@@ -531,6 +528,23 @@ export default {
         this.toast.error('An error occurred while submitting your attempt. Please try again later.')
       })
 
+    },
+
+    saveTestCases() {
+      var testCases = {}
+
+      for (var i = 0; i < this.challenge.test_cases_count; i++) {
+        var testCase = {
+          board: this.board.state[i],
+          outOfBounds: this.board.outOfBoundsState[i],
+          log: this.board.log[i]
+        }
+
+        
+        testCases[i] = testCase
+      }
+
+      return testCases
     },
 
     exit() {

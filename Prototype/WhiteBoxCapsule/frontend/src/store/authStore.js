@@ -12,7 +12,6 @@ export const authStore = defineStore('authStore', {
     },
     actions: {
         async checkAuth() {
-            console.log('Checking auth...')
             const username = window.sessionStorage.getItem('username')
             if (username != null) {
                 this.config = {
@@ -64,7 +63,6 @@ export const authStore = defineStore('authStore', {
         },
 
         async getUserData(id) {
-            console.log('Getting user data...')
             await this.$axios.get(this.$api_link + '/users/' + id, this.config)
                 .then((response) => {
                     if (response.status === 200) {

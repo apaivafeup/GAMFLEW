@@ -468,8 +468,6 @@ export default {
 
     // Submit functions
     go(input) {
-      console.log(this.challenge)
-
       try {
         var type = this.challenge.challenge_type
 
@@ -503,7 +501,6 @@ export default {
     },
 
     testAlerts(i, test, input) {
-      console.log(test)
       document.getElementById('test-info-alert-' + i).classList = ['alert alert-info player-info']
       document.getElementById('test-info-alert-' + i).classList.remove('alert-info')
       document.getElementById('test-info-alert-' + i).classList.add(eval(test) ? 'alert-success' : 'alert-danger')

@@ -2,7 +2,6 @@
   <div
     class="col piece-overlap"
     v-if="this.solution.state[this.solution.currentKey][x][y].pieceCount() > 1"
-    @click.stop="this.solution.selectPiece(x, y)"
   >
     <div class="overlap-box">
       <div
@@ -33,7 +32,6 @@
     class="square square-lg piece selected"
     style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
     v-else-if="this.solution.state[this.solution.currentKey][x][y].selected"
-    @click.stop="this.solution.selectPiece(x, y)"
   >
   <font-awesome-icon
   v-if="this.solution.state[this.solution.currentKey][x][y].king"
@@ -49,7 +47,6 @@
       this.solution.state[this.solution.currentKey][x][y].stack.blue == 0 &&
       this.solution.state[this.solution.currentKey][x][y].stack.red != 0
     "
-    @click.stop="this.solution.selectPiece(x, y)"
   >
   <font-awesome-icon
   v-if="this.solution.state[this.solution.currentKey][x][y].king"
@@ -65,7 +62,6 @@
       this.solution.state[this.solution.currentKey][x][y].stack.blue != 0 &&
       this.solution.state[this.solution.currentKey][x][y].stack.red == 0
     "
-    @click.stop="this.solution.selectPiece(x, y)"
   >
   <font-awesome-icon
   v-if="this.solution.state[this.solution.currentKey][x][y].king"

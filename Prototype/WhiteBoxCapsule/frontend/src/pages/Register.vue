@@ -35,7 +35,6 @@ export default {
             const email = document.getElementById('email').value
             const picture = document.getElementById('picture').files[0] == undefined ? 'default.png' : document.getElementById('picture').files[0]
             const user_type = document.querySelector('input[type="radio"]:checked').value
-            console.log('user_type', user_type)
 
             if (username === '' || password === '' || passwordConfirm === '' || email === '') {
                 alert('Please fill all the fields.')

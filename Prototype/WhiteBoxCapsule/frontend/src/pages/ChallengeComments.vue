@@ -192,7 +192,6 @@ export default defineComponent({
         },
 
         hasScore(attempt_id) {
-            console.log(this.attemptScores.some(element => element.attempt_id == attempt_id && element.user_id == this.auth.user.id))
             return this.attemptScores.some(element => element.attempt_id == attempt_id && element.user_id == this.auth.user.id)
         },
 
