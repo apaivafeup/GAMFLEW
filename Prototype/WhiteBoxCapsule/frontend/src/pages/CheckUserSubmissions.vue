@@ -13,7 +13,7 @@
           challenge.name }}</option>
       </select>
     </div>
-    <div style="width: 650px;" >
+    <div style="width: 650px;">
       <label for="attempt-select" style="margin-right: 10px;">
         <h6 style="margin-bottom: 2.5px;">Attempt</h6>
       </label>
@@ -30,75 +30,92 @@
       </select>
     </div>
   </div>
-  <div class="row" style="display: grid; grid-template-columns: 45% 45%; place-content: center; grid-gap: 10px; grid-template-rows: 100%; max-height: 100%;">
-    <div class="col" style="display: grid; grid-template-rows: 50% 50%; overflow-y: scroll;">
-        
-      <div class="col" style="margin-bottom: 10px; overflow-y: scroll; overflow-x: hidden;">
+  <div class="row"
+    style="display: grid; grid-template-columns: 45% 45%; place-content: center; grid-gap: 10px; grid-template-rows: 100%; max-height: 100%;">
+    <div class="col" style="display: grid; grid-template-rows: 49% 49%; grid-gap: 5px; overflow-y: scroll;">
+      <div class="col">
         <div class="row" style="margin-bottom: 2.5px;">
           <h6 style="margin: 0px;">Passing Criteria</h6>
         </div>
-            <div v-if="this.preconditions.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'precondition-info-' + index"
-              v-for="(precondition, index) in this.preconditions">
-                <div :class="this.evaluateExpression(precondition, this.solution) == null ? 'alert alert-info player-info precondition-alert' : !this.evaluateExpression(precondition, this.solution) ? 'alert player-info alert-danger' : 'alert player-info alert-success'" :id="'precondition-info-alert-' + index"
-                  style="display: flex; justify-content: start;">
-                  <div class="col" style="max-width: 10%; align-self: center; text-align: center;">
-                    <strong style="margin-right: 2.5px;">{{ 'A' + (index + 1) + ':' }}</strong>
-                  </div>
-                  <div class="col" style="max-width: 90%; align-self: center;">
-                    <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">{{ this.replace(precondition) }}</p>
-                  </div>
-                </div>
+        <div class="col" style="margin-bottom: 10px; overflow-y: scroll; overflow-x: hidden;">
+          <div v-if="this.preconditions.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;"
+            :id="'precondition-info-' + index" v-for="(precondition, index) in this.preconditions">
+            <div
+              :class="this.evaluateExpression(precondition, this.solution) == null ? 'alert alert-info player-info precondition-alert' : !this.evaluateExpression(precondition, this.solution) ? 'alert player-info alert-danger' : 'alert player-info alert-success'"
+              :id="'precondition-info-alert-' + index" style="display: flex; justify-content: start;">
+              <div class="col" style="max-width: 10%; align-self: center; text-align: center;">
+                <strong style="margin-right: 2.5px;">{{ 'A' + (index + 1) + ':' }}</strong>
+              </div>
+              <div class="col" style="max-width: 90%; align-self: center;">
+                <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">{{
+          this.replace(precondition) }}</p>
+              </div>
             </div>
-            <div v-else class="alert alert-info player-info precondition-alert" style="display: flex; justify-content: center;">
-                <div class="col" style="max-width: 100%; align-self: center;">
-                  <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">No assertions included.</p>
-                </div>
+          </div>
+          <div v-else class="alert alert-info player-info precondition-alert"
+            style="display: flex; justify-content: center;">
+            <div class="col" style="max-width: 100%; align-self: center;">
+              <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">No assertions included.
+              </p>
             </div>
-            <div v-if="this.tests.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'test-info-' + index" v-for="(test, index) in this.tests">
-                <div :class="this.evaluateExpression(test, this.solution) == null ? 'alert alert-info player-info precondition-alert' : !this.evaluateExpression(test, this.solution) ? 'alert player-info alert-danger' : 'alert player-info alert-success'" :id="'test-info-alert-' + index"
-                  style="display: flex; justify-content: start;">
-                  <div class="col" style="max-width: 10%; align-self: center; text-align: center;">
-                    <strong style="margin-right: 2.5px;">{{ 'T' + (index + 1) + ':' }}</strong>
-                  </div>
-                  <div class="col" style="max-width: 90%; align-self: center;">
-                    <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">{{ this.replace(test)
-                      }}
-                    </p>
-                  </div>
-                </div>
-            </div>
-      </div>
-      <div class="col" style="overflow-y: scroll; overflow-x: hidden;">
-        <div class="row" style="margin-bottom: 2.5px;">
-          <h6 style="margin: 0px;">Logged Interactions</h6>
-        </div>
-        <div class="row">
-          <div v-if="this.solution.log[this.solution.currentKey].length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'log-info-' + index"
-              v-for="(interaction, index) in this.solution.log[this.solution.currentKey]">
-                <div class='alert alert-info player-info precondition-alert' :id="'log-info-alert-' + index" style="display: flex; justify-content: start;">
-                  <div class="row" style="display: flex; align-self: center; text-align: center;">
-                    <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;" v-if="interaction.type == 'move'">
-                      <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1)}}</strong> {{ ' from ' }} <em> {{  this.getPosition(interaction.start)  }}</em> {{ ' to ' }} <em> {{ this.getPosition(interaction.destination) }} </em>.
-                    </p>
-                    <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;" v-else-if="interaction.type == 'add'">
-                      <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1)}}</strong> {{ ' '  + interaction.color + ' piece in ' }} <em>{{this.getPosition(interaction.destination) }}</em>.
-                    </p>
-                  </div>
-                </div>
-            </div>
-          <div v-else>
-            <div class="alert alert-info player-info precondition-alert" style="display: flex; justify-content: center;">
-              <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">No interactions logged.</p>
+          </div>
+          <div v-if="this.tests.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;"
+            :id="'test-info-' + index" v-for="(test, index) in this.tests">
+            <div
+              :class="this.evaluateExpression(test, this.solution) == null ? 'alert alert-info player-info precondition-alert' : !this.evaluateExpression(test, this.solution) ? 'alert player-info alert-danger' : 'alert player-info alert-success'"
+              :id="'test-info-alert-' + index" style="display: flex; justify-content: start;">
+              <div class="col" style="max-width: 10%; align-self: center; text-align: center;">
+                <strong style="margin-right: 2.5px;">{{ 'T' + (index + 1) + ':' }}</strong>
+              </div>
+              <div class="col" style="max-width: 90%; align-self: center;">
+                <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">{{ this.replace(test)
+                  }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col">
+        <div class="row" style="margin-bottom: 2.5px;">
+          <h6 style="margin: 0px;">Logged Interactions</h6>
+        </div>
+
+        <div class="col" style="overflow-y: scroll; overflow-x: hidden;">
+          <div class="row" v-if="this.solution.state[this.solution.currentKey] != null">
+            <div style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'log-info-' + index"
+              v-for="(interaction, index) in this.solution.log[this.solution.currentKey]">
+              <div class='alert alert-secondary player-info precondition-alert' :id="'log-info-alert-' + index"
+                style="display: flex; justify-content: start;">
+                <div class="row" style="display: flex; align-self: center; text-align: center;">
+                  <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;"
+                    v-if="interaction.type == 'move'">
+                    <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' from ' }} <em> {{ this.getPosition(interaction.start) }}</em> {{ ' to ' }} <em> {{
+          this.getPosition(interaction.destination) }} </em>.
+                  </p>
+                  <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;"
+                    v-else-if="interaction.type == 'add'">
+                    <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' ' +
+          interaction.color + ' piece in ' }} <em>{{ this.getPosition(interaction.destination) }}</em>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-else class="alert alert-secondary player-info precondition-alert" style="display: flex; justify-content: center;">
+            <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">
+              No interactions logged.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col" v-if="this.selectedAttemptId != null" style="display: flex; justify-content: end; flex-direction: row; padding: 0px;">
-      <ChallengeSubmissionViewer :challenge="this.challenge"  />
+    <div class="col" v-if="this.selectedAttemptId != null"
+      style="display: flex; justify-content: end; flex-direction: row; padding: 0px;">
+      <ChallengeSubmissionViewer :challenge="this.challenge" />
     </div>
     <div class="col" style="display: flex; justify-content: end; flex-direction: row; padding: 0px;" v-else>
-        <ChallengeSubmissionViewer class="disabled" :challenge="this.challenge"  />
+      <ChallengeSubmissionViewer class="disabled" :challenge="this.challenge" />
     </div>
   </div>
 </template>
@@ -151,6 +168,7 @@ export default {
       preconditions: [],
       tests: [],
       selectedChallengeId: 1,
+      selectedAttemptId: null,
       dictionary: {},
     }
   },
@@ -199,16 +217,18 @@ export default {
       this.preconditions = this.challenge.passing_criteria.preconditions
       this.tests = this.challenge.passing_criteria.tests
       this.challenge_attempts = this.attempts['' + challenge_id]
-      this.selectedAttemptId = (this.challenge_attempts.length > 0 ? this.challenge_attempts[0].id : null)
-      this.solution.generateState()
-
-      if (this.selectedAttemptId != null)
-        this.updateSolutionViewer(this.challenge_attempts[0].id)
+      this.solution.defaultState()
+      
+      if (this.challenge_attempts.length > 0) {
+        this.solution.generateState()
+        this.selectedAttemptId = this.challenge_attempts[0].id
+        this.updateSolutionViewer(this.selectedAttemptId)
+      }
     },
 
     updateSolutionViewer(attempt_id) {
-      var challenge = this.challenges.find(challenge => challenge.id == this.selectedChallengeId),
-        attempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
+      var challenge = this.challenges.find(challenge => challenge.id == this.selectedChallengeId), 
+          attempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
       this.solution.changeState(attempt.test_cases)
     },
 
@@ -224,7 +244,7 @@ export default {
 
       var expression = test.replaceAll(boardAccess, 'X'),
         array = Object.entries(dict).sort((a, b) => b[1].length - a[1].length)
-        
+
       for (var entry in array) {
         expression = expression.replaceAll(array[entry][1], array[entry][0])
       }
@@ -253,9 +273,15 @@ export default {
 
     getPosition(position) {
       return '(' + position.x + ', ' + position.y + ')'
+    },
+
+    getLog() {
+      console.log(this.solution.log[this.solution.currentKey])
+      if (this.solution.log != {}) {
+        return this.solution.log[this.solution.currentKey]
+      }
+      return null
     }
-
-
   },
 }
 </script>

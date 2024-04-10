@@ -38,6 +38,13 @@ export const solutionViewer = defineStore('solutionViewer', {
       this.table = false
     },
 
+    
+    defaultState() {
+      this.emptyState()
+
+      this.state[this.currentKey] = null
+    },
+
     generateState() {
       this.emptyState()
 
