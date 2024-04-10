@@ -32,7 +32,11 @@
   </div>
   <div class="row" style="display: grid; grid-template-columns: 45% 45%; place-content: center; grid-gap: 10px; grid-template-rows: 100%; max-height: 100%;">
     <div class="col" style="display: grid; grid-template-rows: 50% 50%; overflow-y: scroll;">
-        <div class="col" style="margin-bottom: 10px; overflow-y: scroll;">
+        
+      <div class="col" style="margin-bottom: 10px; overflow-y: scroll; overflow-x: hidden;">
+        <div class="row" style="margin-bottom: 2.5px;">
+          <h6 style="margin: 0px;">Passing Criteria</h6>
+        </div>
             <div v-if="this.preconditions.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'precondition-info-' + index"
               v-for="(precondition, index) in this.preconditions">
                 <div :class="this.evaluateExpression(precondition, this.solution) == null ? 'alert alert-info player-info precondition-alert' : !this.evaluateExpression(precondition, this.solution) ? 'alert player-info alert-danger' : 'alert player-info alert-success'" :id="'precondition-info-alert-' + index"
@@ -63,10 +67,32 @@
                   </div>
                 </div>
             </div>
+      </div>
+      <div class="col" style="overflow-y: scroll; overflow-x: hidden;">
+        <div class="row" style="margin-bottom: 2.5px;">
+          <h6 style="margin: 0px;">Logged Interactions</h6>
         </div>
         <div class="row">
-
+          <div v-if="this.solution.log[this.solution.currentKey].length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'log-info-' + index"
+              v-for="(interaction, index) in this.solution.log[this.solution.currentKey]">
+                <div class='alert alert-info player-info precondition-alert' :id="'log-info-alert-' + index" style="display: flex; justify-content: start;">
+                  <div class="row" style="display: flex; align-self: center; text-align: center;">
+                    <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;" v-if="interaction.type == 'move'">
+                      <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1)}}</strong> {{ ' from ' }} <em> {{  this.getPosition(interaction.start)  }}</em> {{ ' to ' }} <em> {{ this.getPosition(interaction.destination) }} </em>.
+                    </p>
+                    <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;" v-else-if="interaction.type == 'add'">
+                      <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1)}}</strong> {{ ' '  + interaction.color + ' piece in ' }} <em>{{this.getPosition(interaction.destination) }}</em>.
+                    </p>
+                  </div>
+                </div>
+            </div>
+          <div v-else>
+            <div class="alert alert-info player-info precondition-alert" style="display: flex; justify-content: center;">
+              <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">No interactions logged.</p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <div class="col" v-if="this.selectedAttemptId != null" style="display: flex; justify-content: end; flex-direction: row; padding: 0px;">
       <ChallengeSubmissionViewer :challenge="this.challenge"  />
@@ -223,6 +249,10 @@ export default {
       } catch (error) {
         return null
       }
+    },
+
+    getPosition(position) {
+      return '(' + position.x + ', ' + position.y + ')'
     }
 
 
