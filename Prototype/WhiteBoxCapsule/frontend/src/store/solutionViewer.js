@@ -66,6 +66,10 @@ export const solutionViewer = defineStore('solutionViewer', {
     changeState(initialState) {
       this.initialState = initialState
 
+      if (this.initialState == null) {
+        return
+      }
+
       for (var currentKey = 0; currentKey < Object.keys(this.initialState).length; currentKey++) {
         for (var i = 0; i < this.initialState[currentKey].board.length; i++) {
           for (var j = 0; j < this.initialState[currentKey].board[i].length; j++) {

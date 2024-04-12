@@ -21,9 +21,9 @@
         v-if="challenge_attempts.length > 0 && this.selectedAttemptId != null" :value="selectedAttemptId">
         <option @click="updateSolutionViewer(attempt.id)" v-for="attempt in challenge_attempts" :value="attempt.id">
           Attempt by {{
-          this.users.find(user => user.id == attempt.player_id).name }} (<em style="font-style: italic;">{{
-          this.users.find(user => user.id ==
-            attempt.player_id).username }}</em>)</option>
+            this.users.find(user => user.id == attempt.player_id).name }} (<em style="font-style: italic;">{{
+            this.users.find(user => user.id ==
+              attempt.player_id).username }}</em>)</option>
       </select>
       <select class="button is-primary guide-button disabled" id="attempt-select" style="width: 650px;" v-else>
         <option>No attempts submitted.</option>
@@ -48,7 +48,7 @@
               </div>
               <div class="col" style="max-width: 90%; align-self: center;">
                 <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">{{
-          this.replace(precondition) }}</p>
+                  this.replace(precondition) }}</p>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@
         </div>
 
         <div class="col" style="overflow-y: scroll; overflow-x: hidden;">
-          <div class="row" v-if="this.solution.state[this.solution.currentKey] != null">
+          <div class="row" v-if="(this.solution.log[this.solution.currentKey] == undefined? [] : this.solution.log[this.solution.currentKey]).length > 0">
             <div style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'log-info-' + index"
               v-for="(interaction, index) in this.solution.log[this.solution.currentKey]">
               <div class='alert alert-secondary player-info precondition-alert' :id="'log-info-alert-' + index"
@@ -91,18 +91,19 @@
                   <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;"
                     v-if="interaction.type == 'move'">
                     <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' from ' }} <em> {{ this.getPosition(interaction.start) }}</em> {{ ' to ' }} <em> {{
-          this.getPosition(interaction.destination) }} </em>.
+                      this.getPosition(interaction.destination) }} </em>.
                   </p>
                   <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;"
                     v-else-if="interaction.type == 'add'">
                     <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' ' +
-          interaction.color + ' piece in ' }} <em>{{ this.getPosition(interaction.destination) }}</em>.
+                      interaction.color + ' piece in ' }} <em>{{ this.getPosition(interaction.destination) }}</em>.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div v-else class="alert alert-secondary player-info precondition-alert" style="display: flex; justify-content: center;">
+          <div v-else class="alert alert-secondary player-info precondition-alert"
+            style="display: flex; justify-content: center;">
             <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">
               No interactions logged.
             </p>
@@ -218,7 +219,7 @@ export default {
       this.tests = this.challenge.passing_criteria.tests
       this.challenge_attempts = this.attempts['' + challenge_id]
       this.solution.defaultState()
-      
+
       if (this.challenge_attempts.length > 0) {
         this.solution.generateState()
         this.selectedAttemptId = this.challenge_attempts[0].id
@@ -227,9 +228,12 @@ export default {
     },
 
     updateSolutionViewer(attempt_id) {
-      var challenge = this.challenges.find(challenge => challenge.id == this.selectedChallengeId), 
-          attempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
-      this.solution.changeState(attempt.test_cases)
+      var challenge = this.challenges.find(challenge => challenge.id == this.selectedChallengeId),
+        attempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
+
+      if (attempt != null) {
+        this.solution.changeState(attempt.test_cases)
+      }
     },
 
     replace(test) {
