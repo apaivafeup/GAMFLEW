@@ -974,3 +974,42 @@ def get_challenge_titles(db: Session):
         result[challenge.id] = challenge.name
 
     return result
+
+def get_admin_leaderboard(db: Session):
+    users = db.query(schemas.User).all()
+    users.sort(key=lambda x: x.score, reverse=True)
+    result = []
+
+    for user in users:
+        result.append(models.UserBasics(
+            id=user.id,
+            name=user.name,
+            picture=user.picture,
+            username=user.username,
+            failed_attempts=user.failed_attempts,
+            successful_attempts=user.successful_attempts,
+            score=user.score,
+            achievements=user.achievements,
+            user_type=user.user_type,
+            validated=user.validated
+        ))
+
+    return result
+
+def get_player_leaderboard(db: Session):
+    users = db.query(schemas.User).filter(schemas.User.user_type == schemas.UserType.PLAYER).all()
+    users.sort(key=lambda x: x.score, reverse=True)
+    result = []
+
+    for user in users:
+        result.append({
+            "id": user.id,
+            "name": user.name,
+            "username": user.username,
+            "picture": user.picture,
+            "successful_attempts": user.successful_attempts,
+            "achievements": user.achievements,
+            "user_type": user.user_type
+        })
+
+    return result

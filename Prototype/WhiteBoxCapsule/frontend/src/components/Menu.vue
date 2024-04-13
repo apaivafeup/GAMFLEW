@@ -9,6 +9,9 @@
     <button class="menu-button" @click="this.$router.push('how-to')" id="how-to-button" style="width: 500px">
       How To Play
     </button>
+    <button class="admin-menu-button" @click="this.$router.push({ name: 'leaderboard' })" id="leaderboard-button" style="">
+      Leaderboard
+    </button>
     <button class="menu-button" @click="this.$router.push({ name: 'user-export' })"
       v-if="this.auth.user.user_type == 'player'" id="export-button" style="width: 500px">
       Export
@@ -48,6 +51,9 @@
       </div>
       <div class="col" style="margin: 0px; padding: 0px;">
       <h4 style="text-align: center;">Game Information</h4>
+      <button class="admin-menu-button" @click="this.$router.push({ name: 'leaderboard' })" id="leaderboard-button" style="">
+        Leaderboard
+      </button>
       <button class="admin-menu-button" @click="this.$router.push({ name: 'user-export' })" id="export-button" style="">
         Export
       </button>

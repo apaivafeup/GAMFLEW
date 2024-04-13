@@ -393,6 +393,14 @@ def get_user_attempt_scores(current_user: Annotated[models.User, Depends(get_cur
 def get_all_attempts(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
     return crud.get_all_passed_attempts_by_challenge(db)
 
+@app.get('/leaderboard/')
+def get_leaderboard(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
+    if (current_user.user_type == schemas.UserType.ADMIN):
+        return crud.get_admin_leaderboard(db)
+    else:
+        return crud.get_player_leaderboard(db)
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
     #uvicorn.run(app, host="10.227.242.121", port=8000, ssl_keyfile="./gamflew_api.key", ssl_certfile="./gamflew_api.pem")
