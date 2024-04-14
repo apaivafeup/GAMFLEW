@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from fastapi import File
 from sqlalchemy.exc import SQLAlchemyError
 from dateutil.relativedelta import *
+from functools import cmp_to_key
 
 import random
 
@@ -975,9 +976,32 @@ def get_challenge_titles(db: Session):
 
     return result
 
+def compare(user1, user2):
+    if user1.score < user2.score:
+        return 1
+    elif user1.score > user2.score:
+        return -1
+    elif user1.score == user2.score:
+        if (user1.successful_attempts < user2.successful_attempts):
+            return 1
+        elif (user1.successful_attempts > user2.successful_attempts):
+            return -1
+        elif (user1.successful_attempts == user2.successful_attempts):
+            if (user1.failed_attempts < user2.failed_attempts):
+                return -1
+            elif (user1.failed_attempts > user2.failed_attempts):
+                return 1
+            elif (user1.failed_attempts == user2.failed_attempts):
+                if (user1.successful_attempts + user1.failed_attempts < user2.successful_attempts + user2.failed_attempts):
+                    return 1
+                elif (user1.successful_attempts + user1.failed_attempts > user2.successful_attempts + user2.failed_attempts):
+                    return -1
+                elif (user1.successful_attempts + user1.failed_attempts == user2.successful_attempts + user2.failed_attempts):
+                    return user1.name < user2.name
+
 def get_admin_leaderboard(db: Session):
     users = db.query(schemas.User).all()
-    users.sort(key=lambda x: x.score, reverse=True)
+    users.sort(key=cmp_to_key(compare))
     result = []
 
     for user in users:
@@ -998,7 +1022,7 @@ def get_admin_leaderboard(db: Session):
 
 def get_player_leaderboard(db: Session):
     users = db.query(schemas.User).filter(schemas.User.user_type == schemas.UserType.PLAYER).all()
-    users.sort(key=lambda x: x.score, reverse=True)
+    users.sort(key=cmp_to_key(compare))
     result = []
 
     for user in users:
@@ -1013,3 +1037,4 @@ def get_player_leaderboard(db: Session):
         })
 
     return result
+

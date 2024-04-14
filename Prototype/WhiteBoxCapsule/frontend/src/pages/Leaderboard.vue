@@ -6,6 +6,7 @@ import { authStore } from '../store/authStore'
 import LoadingIcon from '../components/LoadingIcon.vue'
 import { defineComponent, h, resolveComponent } from 'vue'
 import AdminLeaderboardPlayerBar from '../components/AdminLeaderboardPlayerBar.vue'
+import PlayerLeaderboardPlayerBar from '../components/PlayerLeaderboardPlayerBar.vue'
 
 export default {
   beforeMount() {
@@ -49,7 +50,7 @@ export default {
       leaderboard: [],
     }
   },
-  components: { LoadingIcon, AdminLeaderboardPlayerBar }
+  components: { LoadingIcon, AdminLeaderboardPlayerBar, PlayerLeaderboardPlayerBar }
 }
 </script>
 
@@ -65,7 +66,7 @@ export default {
   </div>
   <div class="row" v-else>
     <div class="col">
-      <AdminLeaderboardPlayerBar v-for="player in leaderboard" :key="player.id" :user="player" />
+      <PlayerLeaderboardPlayerBar v-for="player in leaderboard" :key="player.id" :user="player" />
     </div>
   </div>
 </template>

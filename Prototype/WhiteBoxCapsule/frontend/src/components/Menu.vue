@@ -9,7 +9,7 @@
     <button class="menu-button" @click="this.$router.push('how-to')" id="how-to-button" style="width: 500px">
       How To Play
     </button>
-    <button class="admin-menu-button" @click="this.$router.push({ name: 'leaderboard' })" id="leaderboard-button" style="">
+    <button class="menu-button" @click="this.$router.push({ name: 'leaderboard' })" id="leaderboard-button" style="width: 500px;">
       Leaderboard
     </button>
     <button class="menu-button" @click="this.$router.push({ name: 'user-export' })"
