@@ -7,6 +7,7 @@ import { authStore } from '../store/authStore'
 export default {
   beforeMount() {
     this.auth = authStore()
+    this.auth.checkAuth()
   },
 
   methods: {
