@@ -401,7 +401,10 @@ def get_user_attempt_scores(current_user: Annotated[models.User, Depends(get_cur
 
 @app.get('/challenges/attempts/')
 def get_all_attempts(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
-    return crud.get_all_passed_attempts_by_challenge(db)
+    if (current_user.user_type == schemas.UserType.ADMIN):
+        return crud.get_all_passed_attempts_by_challenge(db)
+    else:
+        raise HTTPException(status_code=401, detail="Unauthorized")
 
 @app.get('/leaderboard/')
 def get_leaderboard(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
