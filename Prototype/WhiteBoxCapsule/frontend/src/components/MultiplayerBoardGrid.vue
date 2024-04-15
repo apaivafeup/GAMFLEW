@@ -355,4 +355,4 @@ export default {
 
   watch: {}
 }
-</script>../store/models/challenge.js../store/boardStore.js
+</script>

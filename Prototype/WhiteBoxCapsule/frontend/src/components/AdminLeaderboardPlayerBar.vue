@@ -60,7 +60,7 @@
             <p style="margin: 0px 7.5px 0px 0px">Total Attempts:</p>
             {{ user.successful_attempts + user.failed_attempts }}
           </span>
-          <span class="badge badge-warning" style="
+          <!-- <span class="badge badge-warning" style="
               display: flex;
               flex-direction: row;
               justify-content: end;
@@ -71,7 +71,7 @@
             <font-awesome-icon icon="award" fixed-width style="color: rgb(169, 89, 255); margin-right: 5px" />
             <p style="margin: 0px 7.5px 0px 0px">Achievements:</p>
             {{ user.achievements }}
-          </span>
+          </span> -->
         </div>
       </div>
     </div>

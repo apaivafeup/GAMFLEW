@@ -52,7 +52,6 @@ class UserType(str, Enum):
 class GameState(str, Enum):
     """Enum for the state of the game."""
     WAITING = "waiting"
-    NEW_ROUND = "new_round"
     READY = "ready"
     PLAYING = "playing"
     PASS_ROUND = "pass_round"

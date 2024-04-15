@@ -315,11 +315,31 @@ def get_user_score(db: Session, user_id: int):
 
     # Get all challenges that the user has passed, to help in finding the highscores.
     covered_challenges = get_passed_challenges(db, user_id)
+    won_multiplayer_games = db.query(schemas.GameRoom).filter(
+        schemas.GameRoom.game_state == schemas.GameState.FINISHED
+    ).filter(
+        schemas.GameRoom.game_winner_1_id == user_id or
+        schemas.GameRoom.game_winner_2_id == user_id or
+        schemas.GameRoom.game_winner_3_id == user_id
+    ).all()
+    played_multiplayer_games = db.query(schemas.GameRoom).filter(
+        schemas.GameRoom.player_1_id == user_id or
+        schemas.GameRoom.player_2_id == user_id or 
+        schemas.GameRoom.player_3_id == user_id
+    ).filter(
+        schemas.GameRoom.game_state == schemas.GameState.FINISHED
+    ).filter(
+        schemas.GameRoom.game_winner_1_id != user_id and
+        schemas.GameRoom.game_winner_2_id != user_id and
+        schemas.GameRoom.game_winner_3_id != user_id
+    ).all()
 
     successful_attempts = db.query(schemas.Attempt).filter(
-        schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
+        schemas.Attempt.player_id == user_id).filter(schemas.Attempt.game_round_id == None).filter(schemas.Attempt.attempt_type == "pass")
 
     user_score = 0
+
+    # Add the score of each challenge that the user has passed.
     for challenge_id in covered_challenges:
         attempts = successful_attempts.filter(
             schemas.Attempt.challenge_id == challenge_id)
@@ -328,6 +348,9 @@ def get_user_score(db: Session, user_id: int):
 
         # Only count the highest-scored attempt for each challenge.
         user_score += attempts[0].score
+
+    user_score += len(won_multiplayer_games) * 50 # 50 points for winning a multiplayer game
+    user_score += len(played_multiplayer_games) * 25 # 25 points for playing a multiplayer game
 
     return user_score
 

@@ -82,7 +82,7 @@
         </div>
 
         <div class="col" style="overflow-y: scroll; overflow-x: hidden;">
-          <div class="row" v-if="(this.solution.log[this.solution.currentKey] == undefined? [] : this.solution.log[this.solution.currentKey]).length > 0">
+          <div class="row" v-if="this.solution.log[this.solution.currentKey].length > 0">
             <div style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'log-info-' + index"
               v-for="(interaction, index) in this.solution.log[this.solution.currentKey]">
               <div class='alert alert-secondary player-info precondition-alert' :id="'log-info-alert-' + index"
@@ -233,6 +233,7 @@ export default {
 
       if (attempt != null) {
         this.solution.changeState(attempt.test_cases)
+        this.$forceUpdate()
       }
     },
 

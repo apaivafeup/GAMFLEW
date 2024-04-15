@@ -168,11 +168,12 @@ export const boardStore = defineStore('boardStore', {
     },
 
     emptyState(new_state = false) {
-      if (!new_state) {
+      if (new_state) {
         this.currentKey = 0
         this.state = {}
         this.outOfBoundsState = {}
         this.log = {}
+        this.infoState = { 0: [] };
       }
       
       this.state[this.currentKey] = []
