@@ -16,7 +16,8 @@ export default {
     user: User,
     code_file: CodeFile,
     playable: Boolean,
-    round: Object
+    round: Object,
+    can_pass: Boolean
   },
 
   data() {
@@ -76,7 +77,7 @@ export default {
         </div>
       </div>
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
-      <MultiplayerBoardGrid :challenge="challenge" :playable="playable" :round="round"/>
+      <MultiplayerBoardGrid :challenge="challenge" :can_pass="this.can_pass" :playable="playable" :round="round"/>
       <PlayerBar :user="user" />
     </div>
   </div>

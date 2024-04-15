@@ -97,6 +97,12 @@
       <button id="retry-button" class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
         Retry
       </button>
+      <button id="pass-button" class="button is-primary is-fullwidth" v-if="playable && this.can_pass" @click="pass()">
+        Pass
+      </button>
+      <button id="pass-button" class="button is-primary is-fullwidth disabled" v-else >
+        Pass
+      </button>
       <button id="exit-button" class="button is-primary is-fullwidth" @click="board.exit()">
         Exit
       </button>
@@ -171,13 +177,15 @@ import { boardStore } from '../store/boardStore'
 import * as utils from '../store/utils.js'
 import OutPieceStack from './OutPieceStack.vue'
 import 'vue3-easy-data-table'
+import { authStore } from '../store/authStore.js'
 
 export default {
   components: { PieceStack, OutPieceStack },
   props: {
     challenge: Challenge,
     playable: Boolean,
-    round: Object
+    round: Object,
+    can_pass: Boolean
   },
 
   data() {
@@ -193,6 +201,7 @@ export default {
 
   beforeMount() {
     this.board = boardStore()
+    this.auth = authStore()
   },
 
   mounted() {
@@ -329,6 +338,17 @@ export default {
       } else {
         this.board.fail()
       }
+    },
+
+    async pass() {
+      await this.$axios.post(this.$api_link + '/game-room/' + this.round.game_room_id + '/game-round/' + this.round.id + '/pass/', {}, this.auth.config)
+        .then(response => {
+          window.location.reload()
+        })
+        .catch((error) => {
+          this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+          return
+        })
     }
   },
   components: { PieceStack, OutPieceStack },

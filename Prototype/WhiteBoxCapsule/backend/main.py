@@ -315,6 +315,16 @@ def start_game_room(current_user: Annotated[models.User, Depends(get_current_act
     game_log = crud.send_start_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id)
     return game_log
 
+## Pass game round
+@app.post("/game-room/{game_room_id}/game-round/{game_round_id}/pass")
+def start_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, game_round_id: int, db: Session = Depends(get_db)):
+    can_pass = crud.can_pass_round(db, game_round_id, current_user.id)
+    game_log = None
+    if (can_pass):
+        game_log = crud.send_pass_round_log(db=db, game_room_id=game_room_id, user_id=current_user.id, game_round_id=game_round_id)
+        crud.pass_round(db=db, game_round_id=game_round_id)
+    return game_log 
+
 ## Check game room state
 @app.get("/game-room/{game_room_id}/state", response_model=models.GameRoomState)
 def read_game_room_state(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):

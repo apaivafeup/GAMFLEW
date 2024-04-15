@@ -31,17 +31,17 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
 <template style="overflow: hidden">
     <div v-if="loaded">
         <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name" :playable="this.playable" />
-        <MultiplayerBoard :challenge="challenge" :code_file="code_file" :user="auth.user" :playable="this.playable" :round="this.round" />
+        <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user" :playable="this.playable" :round="this.round" />
         <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" />
         <FailModal :placeholder="fail_placeholder" />
     </div>
     <div style="display: flex; justify-content: center;" v-else-if="!loaded && this.winner.length <= 0">
         <div class="vertical-center" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
-            <h2 style="text-align: center;" v-if="!this.round_loading">You've entered <em>{{ room.name }}</em></h2>
+            <h2 style="text-align: center;" v-if="this.room_state.game_state == 'waiting'">You've entered <em>{{ room.name }}</em></h2>
             <h2 style="text-align: center;" v-else><em>{{ room.name }}</em></h2>
-            <p style="text-align: center; margin-bottom: 5px;" v-if="!this.round_loading">When all players get in the
+            <p style="text-align: center; margin-bottom: 5px;" v-if="this.room_state.game_state == 'waiting'">When all players get in the
                 room, the game will start.</p>
-            <p style="text-align: center; margin-bottom: 5px;" v-else-if="this.round_loading && this.winner.length <= 0">New
+            <p style="text-align: center; margin-bottom: 5px;" v-else-if="this.room_state.game_state != 'waiting' || this.round_loading && this.winner.length <= 0">New
                 round is loading...</p>
             <p style="text-align: center; margin-bottom: 5px;" v-else>The game is over.</p>
             <p style="text-align: center;" v-if="!this.round_loading">Leaving this page means the game won't start.</p>
@@ -77,6 +77,7 @@ export default {
             got_round: false, // if we (the player) have the round (step 2)
             round_loading: false, // if all players have the round (step 3)
             is_ready: false, // if we can play (step 4)
+            can_pass: true,
             playable: Boolean, // if it's our turn to play (step 5),
             winner: [],
             code_file: CodeFile,
@@ -179,6 +180,11 @@ export default {
                 this.stateChecking()
             }
 
+            if ((this.room_state.game_state == 'pass_round' || this.room_state.game_state == 'ready') && this.room_state.pass_round != null) {
+                this.can_pass = false
+                window.location.reload()
+            }
+
             if (this.room_state.game_state == 'ready' && !this.is_ready) {
                 this.getRound()
                 this.is_ready = true
@@ -210,7 +216,8 @@ export default {
             }
 
             if (this.room_state.game_state == 'next_round') {
-                this.is_ready = false;
+                this.is_ready = false
+                this.can_pass = true
                 this.round_loading = true
                 this.loaded = false
                 this.board.emptyState(true)

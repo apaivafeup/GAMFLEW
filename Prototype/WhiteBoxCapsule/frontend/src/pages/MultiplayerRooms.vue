@@ -102,6 +102,8 @@ export default {
                             <div class="col" style="justify-content: end; display: flex;">
                                 <button class="btn btn-primary" style="padding: 15px; border-radius: 10px;"
                                     @click="enterRoom(room.id)">Enter</button>
+                                    <button class="btn btn-primary" v-if="room.player_1_id == this.auth.user.id" style="padding: 15px; border-radius: 10px;"
+                                    @click="deleteRoom(room.id)">Delete</button>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 15px;">
