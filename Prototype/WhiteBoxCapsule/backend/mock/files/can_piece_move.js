@@ -1,7 +1,6 @@
-import PieceStackCreatorVue from "../../../../frontend/src/components/PieceStackCreator.vue";
-
 function can_piece_move(piece) {
-    // Checking diagonals, clockwise, starting top left.
+    // Checking diagonals, clockwise, starting on top-right quadrant.
+    // Quadrants are: top-right, bottom-right, bottom-left, top-left.
     var directions = [
         { x: 1, y: 1 },
         { x: 1, y: -1 },
@@ -9,6 +8,7 @@ function can_piece_move(piece) {
         { x: -1, y: 1 },
     ];
 
+    // Kings can move in all directions.
     if (piece.isKing) {
         for (d in directions) {
             var destination_x = piece.position.x + d.x,
@@ -22,11 +22,14 @@ function can_piece_move(piece) {
         }
     }
 
+    // Normal pieces can only move in half the directions.
+    // Blue and red pieces move in opposite directions!
     if (piece.color == Color.RED) {
         for (d in directions.slice(0, 2)) {
             var destination_x = piece.position.x + d.x,
                 destination_y = piece.position.y + d.y ;
 
+            // Color.EMPTY represents an empty space.
             if (board[destination_x][destination_y].color == Color.EMPTY ||
                 (board[destination_x][destination_y].color != piece.color &&
                 board[destination_x + d.x][destination_y + d.y].color == Color.EMPTY)) {
@@ -34,6 +37,9 @@ function can_piece_move(piece) {
             }
         }
     } else {
+        // .slice() returns a new list with the elements from the
+        // original list, starting from the first index and ending
+        // at the second index (exclusive).
         for (d in directions.slice(2, 4)) {
             var destination_x = piece.position.x + d.x,
                 destination_y = piece.position.y + d.y ;
@@ -44,23 +50,5 @@ function can_piece_move(piece) {
                 return true;
             }
         }
-    }
-}
-
-function has_game_ended(board) {
-    var pieces = utils.get_pieces(board);
-
-    if (pieces.length == 1) {
-        return true;
-    } else if (utils.count_blue_pieces(board) == utils.count_red_pieces(board)) {
-        return false;
-    }
-}
-
-function who_won(board) {
-    if (utils.count_blue_pieces(board) == 0) {
-        return Color.RED;
-    } else if (utils.count_red_pieces(board) == 0) {
-        return Color.BLUE;
     }
 }

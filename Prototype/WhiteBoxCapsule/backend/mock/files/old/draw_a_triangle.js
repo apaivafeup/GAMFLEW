@@ -12,7 +12,7 @@ function draw_a_triangle(board) {
         side_2 = [vertices[1], vertices[2]],
         side_3 = [vertices[2], vertices[0]];
 
-    // This function calcuates the Cartesian distance between
+    // This function calculates the Cartesian distance between
     // two (x, y) vertices. It rounds up to the nearest integer.
     var length_1 = utils.distance(side_1[0], side_1[1]),
         length_2 = utils.distance(side_2[0], side_2[1]),
