@@ -472,7 +472,7 @@
         "challenge_type": "statement",
         "passing_criteria": {
             "condition_count": 0,
-            "preconditions": [],    
+            "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, input.currentKey) > 12 || this.count_red_pieces(input, input.currentKey) > 12"
             ]
@@ -494,7 +494,7 @@
         "challenge_type": "statement",
         "passing_criteria": {
             "condition_count": 0,
-            "preconditions": [],    
+            "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, input.currentKey) == 0 || this.count_red_pieces(input, input.currentKey) == 0"
             ]
@@ -516,7 +516,7 @@
         "challenge_type": "decision",
         "passing_criteria": {
             "condition_count": 0,
-            "preconditions": [],    
+            "preconditions": [],
             "tests": [
                 "!(this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12)",
                 "this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12"
@@ -539,7 +539,7 @@
         "challenge_type": "mcdc",
         "passing_criteria": {
             "condition_count": 2,
-            "preconditions": [],    
+            "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, case_num) > 12 && this.count_red_pieces(input, case_num) <= 12",
                 "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) > 12",
@@ -563,7 +563,7 @@
         "challenge_type": "mcdc",
         "passing_criteria": {
             "condition_count": 2,
-            "preconditions": [],    
+            "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) != 0",
                 "this.count_blue_pieces(input, case_num) != 0 && this.count_red_pieces(input, case_num) == 0",
@@ -587,7 +587,7 @@
         "challenge_type": "condition/decision",
         "passing_criteria": {
             "condition_count": 2,
-            "preconditions": [],    
+            "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) == 0",
                 "!(this.count_blue_pieces(input, case_num) == 0) && !(this.count_red_pieces(input, case_num) == 0)"
@@ -610,9 +610,9 @@
         "challenge_type": "condition/decision",
         "passing_criteria": {
             "condition_count": 2,
-            "preconditions": [],    
+            "preconditions": [],
             "tests": [
-                "!(this.count_blue_pieces(input, case_num) > 12) && !(this.count_red_pieces(input, case_num) > 12)", 
+                "!(this.count_blue_pieces(input, case_num) > 12) && !(this.count_red_pieces(input, case_num) > 12)",
                 "this.count_blue_pieces(input, case_num) > 12 && this.count_red_pieces(input, case_num) > 12"
             ]
         },
@@ -633,9 +633,9 @@
         "challenge_type": "condition",
         "passing_criteria": {
             "condition_count": 2,
-            "preconditions": [],    
+            "preconditions": [],
             "tests": [
-                "this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12", 
+                "this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12",
                 "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) <= 12"
             ]
         },
@@ -656,9 +656,9 @@
         "challenge_type": "condition",
         "passing_criteria": {
             "condition_count": 2,
-            "preconditions": [],    
+            "preconditions": [],
             "tests": [
-                "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) == 0", 
+                "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) == 0",
                 "this.count_blue_pieces(input, case_num) != 0 && this.count_red_pieces(input, case_num) != 0"
             ]
         },
@@ -679,11 +679,9 @@
         "challenge_type": "statement",
         "passing_criteria": {
             "condition_count": 0,
-            "preconditions": [
-                
-            ],    
+            "preconditions": [],
             "tests": [
-                "this.get_pieces(input, input.currentKey).some((piece) => ![1, 3, 5, 7].includes(piece.position.y) && piece.position.x % 2 != 0)" 
+                "this.get_pieces(input, input.currentKey).some((piece) => ![1, 3, 5, 7].includes(piece.position.y) && piece.position.x % 2 != 0)"
             ]
         },
         "achievement_criteria": null,
@@ -703,11 +701,9 @@
         "challenge_type": "statement",
         "passing_criteria": {
             "condition_count": 0,
-            "preconditions": [
-                
-            ],    
+            "preconditions": [],
             "tests": [
-                "this.get_pieces(input, input.currentKey).some((piece) => ![0, 2, 4, 6].includes(piece.position.y) && piece.position.x % 2 == 0)" 
+                "this.get_pieces(input, input.currentKey).some((piece) => ![0, 2, 4, 6].includes(piece.position.y) && piece.position.x % 2 == 0)"
             ]
         },
         "achievement_criteria": null,
@@ -727,10 +723,9 @@
         "challenge_type": "statement",
         "passing_criteria": {
             "condition_count": 0,
-            "preconditions": [
-            ],    
+            "preconditions": [],
             "tests": [
-                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)" 
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)"
             ]
         },
         "achievement_criteria": null,
@@ -753,9 +748,9 @@
             "preconditions": [
                 "this.count_blue_pieces(input, input.currentKey) != 0 && this.count_red_pieces(input, input.currentKey) != 0",
                 "this.count_empty_spaces(input, input.currentKey) != 64"
-            ],    
+            ],
             "tests": [
-                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)" 
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)"
             ]
         },
         "achievement_criteria": null,
@@ -778,10 +773,10 @@
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.count_blue_pieces(input, input.currentKey) != 0 && this.count_red_pieces(input, input.currentKey) != 0"
-            ],    
+            ],
             "tests": [
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 != 0)",
-                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 == 0)"  
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.position.x % 2 == 0)"
             ]
         },
         "achievement_criteria": null,
@@ -805,7 +800,7 @@
                 "this.count_empty_spaces(input, input.currentKey) != 0",
                 "this.count_blue_pieces(input, input.currentKey) <= 12 && this.count_red_pieces(input, input.currentKey) <= 12",
                 "this.count_blue_pieces(input, input.currentKey) != 0 && this.count_red_pieces(input, input.currentKey) != 0"
-            ],    
+            ],
             "tests": [
                 "this.get_pieces(input, input.currentKey).every((piece) => (piece.position.x % 2 != 0 && [1, 3, 5, 7].includes(piece.position.y)) || (piece.position.x % 2 == 0 && [0, 2, 4, 6].includes(piece.position.y)))"
             ]
@@ -813,5 +808,451 @@
         "achievement_criteria": null,
         "difficulty": "Normal",
         "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.1: A King Piece",
+        "description": "You're going to meet royalty!",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed!",
+        "objective": "Statement coverage of line 12.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.2: A King Can Go Anywhere",
+        "description": "Royals have no restrictions!",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed - if you put more than one, only the first is considered.",
+        "objective": "Statement coverage of line 20.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
+            ],
+            "tests": [
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.3: Testing Kings",
+        "description": "Not all royalty can move freely.",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed!",
+        "objective": "Decision coverage of lines 17-19.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64"
+            ],
+            "tests": [
+                "![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.4: A King and a Peasant",
+        "description": "Some pieces aren't born into royalty.",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed!",
+        "objective": "Decision coverage of line 12.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.king)",
+                "!this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.5: A Red Piece",
+        "description": "Some peasants are red.",
+        "test_cases_count": 1,
+        "score": 300,
+        "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
+        "objective": "Statement coverage of line 28.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.6: (NOT) A Red Piece",
+        "description": "Some peasants aren't red.",
+        "test_cases_count": 1,
+        "score": 300,
+        "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
+        "objective": "Statement coverage of line 43.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color != Color.RED)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.7: Double The Colors!",
+        "description": "Some peasants are red, others are not.",
+        "test_cases_count": 1,
+        "score": 400,
+        "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
+        "objective": "Statement coverage of line 43.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color != Color.RED)",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.8: Under The Condition of Being King",
+        "description": "Some pieces aren't born into royalty.",
+        "test_cases_count": 2,
+        "score": 400,
+        "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed - if you put more than one, only the first one's considered.",
+        "objective": "Condition coverage of line 12.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.king)",
+                "!this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.9: A Valid Position for a Red Piece",
+        "description": "They can only go 'down'!",
+        "test_cases_count": 2,
+        "score": 400,
+        "hint": "Only one piece needs to pass the test in each test case! You can check Checkers' rules to know how movement works.",
+        "objective": "Statement coverage of line 36.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)",
+                "!this.get_pieces(input, input.currentKey).some((piece) => piece.king) || ![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.10: Can A Red Piece Move?",
+        "description": "They can only go 'down'!",
+        "test_cases_count": 2,
+        "score": 400,
+        "hint": "Only one piece needs to pass the test in each test case! You can check Checkers' rules to know how movement works.",
+        "objective": "Decision coverage of line 33.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)",
+                "!this.get_pieces(input, input.currentKey).some((piece) => piece.king) || ![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))",
+                "![{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.11: Both Colors Move",
+        "description": "They go in opposite directions!",
+        "test_cases_count": 2,
+        "score": 400,
+        "hint": "Only one piece satisfying the test is needed - if you put more than one, only the first one's considered. You can check Checkers' rules to know how movement works.",
+        "objective": "Decision coverage of line 27.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "!this.get_pieces(input, input.currentKey).some((piece) => piece.king || ![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.BLUE)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.12: Thoroughly Testing Red Piece Movement",
+        "description": "They can only go 'down'!",
+        "test_cases_count": 4,
+        "score": 700,
+        "hint": "Only one red piece in your submissions needs to pass the tests. You can check Checkers' rules to know how movement works.",
+        "objective": "Modified condition/decision coverage of line 33.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 3,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)",
+                "!this.get_pieces(input, input.currentKey).some((piece) => piece.king || ![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY)",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color == piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY)",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color == piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY)",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.13: Thoroughly Testing Blue Piece Movement",
+        "description": "They can only go 'up'!",
+        "test_cases_count": 4,
+        "score": 700,
+        "hint": "Only one blue piece in your submissions needs to pass the tests. You can check Checkers' rules to know how movement works.",
+        "objective": "Modified condition/decision coverage of line 47.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 3,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, input.currentKey).some((piece) => piece.king || ![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY)",
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color == piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY)",
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color == piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY)",
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.14: Movement Under a Colorful Condition",
+        "description": "They go in opposite directions!",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "Only one piece satisfying the test is needed - if you put more than one, only the first one's considered. You can check Checkers' rules to know how movement works.",
+        "objective": "Condition coverage of line 27.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": 1,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "!this.get_pieces(input, input.currentKey)[0].some((piece) => piece.king || ![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.BLUE)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.15: Move When Red, Move When Blue",
+        "description": "Making decisions according to conditions!",
+        "test_cases_count": 2,
+        "score": 350,
+        "hint": "Only one piece satisfying the test is needed - if you put more than one, only the first one's considered. You can check Checkers' rules to know how movement works.",
+        "objective": "Condition coverage of line 27.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "condition/decision",
+        "passing_criteria": {
+            "condition_count": 1,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "!this.get_pieces(input, input.currentKey).some((piece) => piece.king || ![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.BLUE)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.16: Testing King Movement Semi-Thoroughly",
+        "description": "Not all royalty can move freely!",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed - if you put more than one, only the first one's considered.",
+        "objective": "Condition coverage of lines 17-19.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": 3,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64"
+            ],
+            "tests": [
+                "![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 3.17: Thoroughly Testing King Movement",
+        "description": "They can go in all directions!",
+        "test_cases_count": 4,
+        "score": 700,
+        "hint": "Only one blue piece in your submissions needs to pass the tests. You can check Checkers' rules to know how movement works.",
+        "objective": "Modified condition/decision coverage of lines 17-19.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 3,
+            "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.get_pieces(input, input.currentKey).some((piece) => piece.king)",
+                "!this.get_pieces(input, input.currentKey).some((piece) => piece.king || ![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey).some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) || (input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY))"
+            ],
+            "tests": [
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY)",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color == piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY)",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color == piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY)",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, input.currentKey)[0].some((piece) => input[piece.position.x + direction.x][piece.position.y + direction.y].color != Color.EMPTY) && input[piece.position.x + direction.x][piece.position.y + direction.y].color != piece.color && input[piece.position.x + direction.x][piece.position.y + direction.y].color == Color.EMPTY)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Hard",
+        "owner_id": 1
     }
+    
 ]

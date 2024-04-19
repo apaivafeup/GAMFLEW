@@ -9,7 +9,7 @@ function can_piece_move(piece) {
     ];
 
     // Kings can move in all directions.
-    if (piece.isKing) {
+    if (piece.king) {
         for (d in directions) {
             var destination_x = piece.position.x + d.x,
                 destination_y = piece.position.y + d.y ;
@@ -25,7 +25,7 @@ function can_piece_move(piece) {
     // Normal pieces can only move in half the directions.
     // Blue and red pieces move in opposite directions!
     if (piece.color == Color.RED) {
-        for (d in directions.slice(0, 2)) {
+        for (d in [directions[0], directions[3]]) {
             var destination_x = piece.position.x + d.x,
                 destination_y = piece.position.y + d.y ;
 
@@ -37,10 +37,10 @@ function can_piece_move(piece) {
             }
         }
     } else {
-        // .slice() returns a new list with the elements from the
-        // original list, starting from the first index and ending
-        // at the second index (exclusive).
-        for (d in directions.slice(2, 4)) {
+        // Blue pieces only move "up", which means
+        // all moves have a negative y component.
+        // They can have a positive or negative x component.
+        for (d in [directions[1], directions[2]]) {
             var destination_x = piece.position.x + d.x,
                 destination_y = piece.position.y + d.y ;
 
