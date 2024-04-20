@@ -191,8 +191,12 @@ export const boardStore = defineStore('boardStore', {
       this.go = false
     },
 
-    generateState(reset = false, new_state = false) {
-      this.emptyState(new_state)
+    generateState(reset = false) {
+      if (!reset) {
+        this.emptyState(false)
+      } else {
+        this.emptyState(true)
+      }
 
       for (let i = 1; i <= 8; i++) {
         this.state[this.currentKey].push([])
@@ -229,19 +233,20 @@ export const boardStore = defineStore('boardStore', {
     },
 
     next() {
-      this.currentKey++
+      this.currentKey = this.currentKey + 1
 
       if (this.state[this.currentKey] == undefined) {
-        this.generateState(false, true)
+        this.generateState(false)
         this.setState()
       }
 
       if (this.infoState[this.currentKey] == undefined) {
         this.infoState[this.currentKey] = []
       }
-
+      
       this.selectedPiece = null
       this.selectedCoords = { x: 0, y: 0 }
+      console.log(this.currentKey)
     },
 
     gameOver() {

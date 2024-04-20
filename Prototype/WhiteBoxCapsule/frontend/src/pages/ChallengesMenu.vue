@@ -23,12 +23,9 @@
           </button>
         </h2>
         <div
+          v-if="challenges[code_file.id] != undefined"
           :id="'collapse' + code_file.id"
-          :class="
-            code_files.indexOf(code_file) == 0
-              ? 'accordion-collapse collapse show'
-              : 'accordion-collapse collapse'
-          "
+          :class="'accordion-collapse collapse show'"
           :aria-labelledby="'heading' + code_file.id"
         >
           <div class="accordion-body">

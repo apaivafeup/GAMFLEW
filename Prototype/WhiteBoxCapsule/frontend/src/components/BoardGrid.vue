@@ -62,7 +62,7 @@
           {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button id="go-button" class="button is-primary is-fullwidth" data-bs-toggle="modal" data-bs-target="#comment-modal"
-          v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed && !board.pause">
+          v-if="board.currentKey == challenge.test_cases_count - 1 && !board.passed && !board.pause">
           Go!
         </button>
         <button id="go-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
@@ -513,8 +513,9 @@ export default {
         attempt_type: this.board.passed ? 'pass' : 'fail',
         comment: this.board.attempt.comment,
         test_cases: this.saveTestCases(),
-        score: this.board.passed ? this.challenge.score : null,
-        score_count: this.board.passed ? 0 : null
+        score: this.board.passed ? this.challenge.score : 0,
+        comment_score_count: this.board.passed ? 0 : null,
+        comment_score: this.board.passed ? 0 : null
       }
 
       var flag = false, score = 0

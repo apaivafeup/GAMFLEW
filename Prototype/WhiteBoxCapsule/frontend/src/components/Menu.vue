@@ -1,5 +1,5 @@
 <template>
-  <div class="col" v-if="main && this.auth.user.user_type != 'admin'" style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+  <div class="col" v-if="main && this.auth.user.user_type != 'admin'" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
     <button class="menu-button" id="single-player-button" @click="this.$router.push('challenges')" style="width: 500px">
       Single Player
     </button>
