@@ -1039,7 +1039,7 @@
     },
     {
         "id": 0,
-        "name": "[HERE!] Challenge 3.10: Can A Red Piece Move?",
+        "name": "Challenge 3.10: Can A Red Piece Move?",
         "description": "They can only go 'down'!",
         "test_cases_count": 2,
         "score": 400,
@@ -1056,8 +1056,8 @@
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))"
             ],
             "tests": [
-                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY) || (input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY))",
-                "![{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY) || (input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY))"
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))",
+                "![{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))"
             ]
         },
         "achievement_criteria": null,
@@ -1109,11 +1109,11 @@
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))"
             ],
             "tests": [
-                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY)",
-                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY)",
-                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY)",
-                "[{ x: 1, y: 1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY)"
-            ]
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color == Color.EMPTY; }))",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY; }))",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX][newY].color != Color.EMPTY; }))",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color == Color.EMPTY; }))"
+            ]            
         },
         "achievement_criteria": null,
         "difficulty": "Hard",
@@ -1125,7 +1125,7 @@
         "description": "They can only go 'up'!",
         "test_cases_count": 4,
         "score": 700,
-        "hint": "Only one blue piece in your submissions needs to pass the tests. You can check Checkers' rules to know how movement works.",
+        "hint": "Only one blue piece in your submissions needs to pass each test. You can check Checkers' rules to know how movement works.",
         "objective": "Modified condition/decision coverage of line 47.",
         "initial_board": 1,
         "code_file": 3,
@@ -1138,11 +1138,11 @@
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))"
             ],
             "tests": [
-                "[{ x: 1, y: -1}, { x: -1, y: -1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY)",
-                "[{ x: 1, y: -1}, { x: -1, y: -1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY)",
-                "[{ x: 1, y: -1}, { x: -1, y: -1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY)",
-                "[{ x: 1, y: -1}, { x: -1, y: -1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY)"
-            ]
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color == Color.EMPTY; })) && input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color == Color.EMPTY",
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != Color.EMPTY; })) && input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX][newY].color == Color.EMPTY",
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != Color.EMPTY; })) && input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX][newY].color != Color.EMPTY",
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != Color.EMPTY; })) && input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color == Color.EMPTY"
+            ]            
         },
         "achievement_criteria": null,
         "difficulty": "Hard",
@@ -1154,7 +1154,7 @@
         "description": "They go in opposite directions!",
         "test_cases_count": 2,
         "score": 250,
-        "hint": "Only one piece satisfying the test is needed - if you put more than one, only the first one's considered. You can check Checkers' rules to know how movement works.",
+        "hint": "Only one piece satisfying each test is needed. You can check Checkers' rules to know how movement works.",
         "objective": "Condition coverage of line 27.",
         "initial_board": 1,
         "code_file": 3,
@@ -1163,7 +1163,7 @@
             "condition_count": 1,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
-                "!this.get_pieces(input, case_num)[0].some((piece) => piece.king || ![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num).some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY) || (input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY))"
+                "![ { x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 } ].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color == Color.EMPTY)); })))"
             ],
             "tests": [
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)",
@@ -1214,7 +1214,9 @@
         "passing_criteria": {
             "condition_count": 3,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64"
+                "this.count_empty_spaces(input, case_num) != 64",
+                "![ { x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 } ].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color == Color.EMPTY)); })))"
+
             ],
             "tests": [
                 "![{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num).some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY) || (input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY))",
@@ -1240,15 +1242,14 @@
             "condition_count": 3,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
-                "this.get_pieces(input, case_num).some((piece) => piece.king)",
-                "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))"
+                "this.get_pieces(input, case_num).some((piece) => piece.king)"
             ],
             "tests": [
-                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY)",
-                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY)",
-                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY)",
-                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some((direction) => this.get_pieces(input, case_num)[0].some((piece) => input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != Color.EMPTY) && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color != piece.color && input.state[case_num][Number(piece.position.x) + Number(direction.x)][Number(piece.position.y) + Number(direction.y)].color == Color.EMPTY)"
-            ]
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color == Color.EMPTY; })) && input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color == Color.EMPTY",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != Color.EMPTY; })) && input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX][newY].color == Color.EMPTY",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != Color.EMPTY; })) && input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX][newY].color != Color.EMPTY",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num)[0].some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != Color.EMPTY; })) && input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color == Color.EMPTY"
+            ]            
         },
         "achievement_criteria": null,
         "difficulty": "Very Hard",
