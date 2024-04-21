@@ -252,7 +252,6 @@ export const boardStore = defineStore('boardStore', {
       
       this.selectedPiece = null
       this.selectedCoords = { x: 0, y: 0 }
-      console.log(this.currentKey)
     },
 
     gameOver() {
