@@ -56,6 +56,10 @@ export const boardCheckerStore = defineStore('boardStore', {
         piece.setStack({ red: 0, blue: 1 })
       } else {
         piece.setEmpty()
+
+        if (piece.king) {
+          piece.king = false
+        }
       }
 
       piece.updateColor()

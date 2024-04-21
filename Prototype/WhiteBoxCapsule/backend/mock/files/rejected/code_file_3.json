@@ -1,0 +1,88 @@
+[
+    { 
+        "id": 0,
+        "name": "[IMPOSSIBLE] Challenge 3.12: Thoroughly Testing Red Piece Movement",
+        "description": "Will they go 'down'?",
+        "test_cases_count": 4,
+        "score": 700,
+        "hint": "Only one red piece in your submissions needs to pass the tests. You can check Checkers' rules to know how movement works.",
+        "objective": "Modified condition/decision coverage of line 33.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "mcdc",
+        "passing_criteria": {
+            "condition_count": 3,
+            "preconditions": [
+                "this.count_empty_spaces(input, case_num) != 64",
+                "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)",
+                "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))"
+            ],
+            "tests": [
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY && (input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "[IMPOSSIBLE] Challenge 3.13: Thoroughly Testing Blue Piece Movement",
+        "description": "They can only go 'up'!",
+        "test_cases_count": 4,
+        "score": 700,
+        "hint": "Only one blue piece in your submissions needs to pass each test. You can check Checkers' rules to know how movement works.",
+        "objective": "Modified condition/decision coverage of line 47.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "mcdc",
+        "passing_criteria": {
+            "condition_count": 3,
+            "preconditions": [
+                "this.count_empty_spaces(input, case_num) != 64",
+                "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)",
+                "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))"
+            ],
+            "tests": [
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY && (input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "[IMPOSSIBLE] Challenge 3.15: Thoroughly Testing King Movement",
+        "description": "They can go in all directions!",
+        "test_cases_count": 4,
+        "score": 500,
+        "hint": "Only one King in your submissions needs to pass each test. You can check Checkers' rules to know how movement works.",
+        "objective": "Modified condition/decision coverage of lines 17-19.",
+        "initial_board": 1,
+        "code_file": 3,
+        "challenge_type": "mcdc",
+        "passing_criteria": {
+            "condition_count": 3,
+            "preconditions": [
+                "this.count_empty_spaces(input, case_num) != 64",
+                "this.get_pieces(input, case_num).some((piece) => piece.king)"
+            ],
+            "tests": [
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color == Color.EMPTY && input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color == Color.EMPTY })) ",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != Color.EMPTY && input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX][newY].color == Color.EMPTY })) ",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != Color.EMPTY && input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX][newY].color != Color.EMPTY })) ",
+                "[{ x: 1, y: 1},{ x: 1, y: -1}, { x: -1, y: -1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && input.state[case_num][newX][newY].color != Color.EMPTY && input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color == Color.EMPTY })) "
+            ]            
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Hard",
+        "owner_id": 1
+    },
+]

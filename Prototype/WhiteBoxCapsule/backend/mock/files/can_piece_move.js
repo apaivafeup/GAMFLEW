@@ -12,11 +12,11 @@ function can_piece_move(piece) {
     if (piece.king) {
         for (d in directions) {
             var destination_x = piece.position.x + d.x,
-                destination_y = piece.position.y + d.y ;
+                destination_y = piece.position.y + d.y;
 
-            if ( (board[destination_x][destination_y].color == Color.EMPTY) ||
+            if ((board[destination_x][destination_y].color == Color.EMPTY) ||
                 (board[destination_x][destination_y].color != piece.color &&
-                board[destination_x + d.x][destination_y + d.y].color == Color.EMPTY)) {
+                    board[destination_x + d.x][destination_y + d.y].color == Color.EMPTY)) {
                 return true;
             }
         }
@@ -27,12 +27,12 @@ function can_piece_move(piece) {
     if (piece.color == Color.RED) {
         for (d in [directions[0], directions[3]]) {
             var destination_x = piece.position.x + d.x,
-                destination_y = piece.position.y + d.y ;
+                destination_y = piece.position.y + d.y;
 
             // Color.EMPTY represents an empty space.
             if (board[destination_x][destination_y].color == Color.EMPTY ||
                 (board[destination_x][destination_y].color != piece.color &&
-                board[destination_x + d.x][destination_y + d.y].color == Color.EMPTY)) {
+                    board[destination_x + d.x][destination_y + d.y].color == Color.EMPTY)) {
                 return true;
             }
         }
@@ -42,11 +42,11 @@ function can_piece_move(piece) {
         // They can have a positive or negative x component.
         for (d in [directions[1], directions[2]]) {
             var destination_x = piece.position.x + d.x,
-                destination_y = piece.position.y + d.y ;
+                destination_y = piece.position.y + d.y;
 
             if (board[destination_x][destination_y].color == Color.EMPTY ||
                 (board[destination_x][destination_y].color != piece.color &&
-                board[destination_x + d.x][destination_y + d.y].color == Color.EMPTY)) {
+                    board[destination_x + d.x][destination_y + d.y].color == Color.EMPTY)) {
                 return true;
             }
         }

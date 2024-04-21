@@ -119,6 +119,12 @@ export default {
     Prism.highlightAll()
   },
 
+  beforeUnmount() {
+    this.challenge = null
+    this.code_file = null
+    this.board.generateState(true)
+  },
+
   methods: {},
 
   watch: {
