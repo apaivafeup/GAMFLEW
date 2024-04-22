@@ -32,7 +32,7 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
     <div v-if="loaded">
         <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name" :playable="this.playable" />
         <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user"
-            :playable="this.playable" :round="this.round" />
+            :playable="this.playable" :round="this.round" :timer="this.timer" />
         <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" />
         <FailModal :placeholder="fail_placeholder" />
     </div>
@@ -90,6 +90,7 @@ export default {
             timer: 0,
             timer_interval: null,
             has_time_ended: false,
+            timer_set: false,
             code_file: CodeFile,
             challenge: Challenge,
             board_state: BoardState,
@@ -208,7 +209,7 @@ export default {
                     this.is_ready = true
                 }
 
-                if (playable) {
+                if (this.playable && !this.timer_set) {
                     this.timer = this.getTimeForRound() + 3 // 3 second buffer!
                     this.timer_interval = setInterval(() => {
                         this.timer--
@@ -216,8 +217,10 @@ export default {
                         if (this.timer <= 0) {
                             clearInterval(this.timer_interval)
                             this.has_time_ended = true
+                            this.timer_set = false
                         }
                     }, 1000)
+                    this.timer_set = true
                 }
 
                 this.loaded = true
@@ -240,6 +243,7 @@ export default {
 
             if (this.room_state.game_state == 'next_round') {
                 this.is_ready = false
+                this.timer_set = false
                 this.can_pass = true
                 this.round_loading = true
                 this.loaded = false
@@ -311,7 +315,7 @@ export default {
                     this.current_round = this.round.round_number
                     this.challenge_id = this.round.challenge_id
                     this.playable = (this.round.user_id == this.auth.user.id)
-                    this.can_pass = (await this.can_user_pass_auto()) && this.playable;
+                    this.can_pass = this.playable;
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })

@@ -25,6 +25,9 @@
       </div>
 
       <div class="progress-bar">
+        <span v-if="this.playable">
+          <strong>Time Left: </strong><em :style="this.timer >= 30 ? 'color: var(--text-color);' : 'color: red;'">{{this.timer}}</em>
+        </span>
         <div class="row" v-if="this.round != undefined" style="justify-content: center;">
           {{ 'Round ' + this.round.round_number + ' of ' + this.round.max_rounds}}
         </div>
@@ -185,7 +188,8 @@ export default {
     challenge: Challenge,
     playable: Boolean,
     round: Object,
-    can_pass: Boolean
+    can_pass: Boolean,
+    timer: Number
   },
 
   data() {
