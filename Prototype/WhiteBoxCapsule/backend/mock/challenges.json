@@ -1193,6 +1193,231 @@
         "achievement_criteria": null,
         "difficulty": "Normal",
         "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 4.1: Only One Piece",
+        "description": "Because only one player can win!",
+        "test_cases_count": 1,
+        "score": 150,
+        "hint": "You can choose the piece's color. But you must only put one piece!",
+        "objective": "Statement coverage of line 6.",
+        "initial_board": 1,
+        "code_file": 4,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, case_num) != 64",
+                "this.get_pieces(input, case_num).length != 0"
+            ],
+            "tests": [
+                "this.get_pieces(input, case_num).length == 1"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 4.2: One Piece... or More",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "An empty board won't work for either test case. One test with ONE piece only, and another test that is anything EXCEPT that!",
+        "objective": "Decision coverage of line 5.",
+        "initial_board": 1,
+        "code_file": 4,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, case_num) != 64"
+            ],
+            "tests": [
+                "this.get_pieces(input, case_num).length == 1",
+                "!this.get_pieces(input, case_num).length == 1"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 4.3: A Piece... Under a Condition!",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "An empty board won't work for either test case. One test with ONE piece only, and another test that is anything EXCEPT that!",
+        "objective": "Condition coverage of line 5.",
+        "initial_board": 1,
+        "code_file": 4,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": 1,
+            "preconditions": [
+                "this.count_empty_spaces(input, case_num) != 64"
+            ],
+            "tests": [
+                "this.get_pieces(input, case_num).length == 1",
+                "!(this.get_pieces(input, case_num).length == 1)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 4.4: Decide A Piece... Under a Condition!",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 275,
+        "hint": "An empty board won't work for either test case. One test with ONE piece only, and another test that is anything EXCEPT that!",
+        "objective": "Condition/decision coverage of line 5.",
+        "initial_board": 1,
+        "code_file": 4,
+        "challenge_type": "condition/decision",
+        "passing_criteria": {
+            "condition_count": 1,
+            "preconditions": [
+                "this.count_empty_spaces(input, case_num) != 64"
+            ],
+            "tests": [
+                "this.get_pieces(input, case_num).length == 1",
+                "!(this.get_pieces(input, case_num).length == 1)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 4.5: Only One Color!",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 175,
+        "hint": "An empty board won't work for either test case. Choose a color, but beware of the first If!",
+        "objective": "Statement coverage of line 8.",
+        "initial_board": 1,
+        "code_file": 4,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, case_num) != 64",
+                "this.get_pieces(input, case_num).length != 1"
+            ],
+            "tests": [
+                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 4.6: Only One Color... Or Not!",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "An empty board CAN work for one of the needed test cases. For the other, pick a color! Beware of the first If.",
+        "objective": "Decision coverage of line 7.",
+        "initial_board": 1,
+        "code_file": 4,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.get_pieces(input, case_num).length != 1"
+            ],
+            "tests": [
+                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
+                "!(this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 4.7: Another Colorful Condition",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 275,
+        "hint": "An empty board CAN work for one of the needed test cases. One test with ONE piece only, and another test that is anything EXCEPT that!",
+        "objective": "Condition coverage of line 7.",
+        "initial_board": 1,
+        "code_file": 4,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": 2,
+            "preconditions": [
+                "this.get_pieces(input, case_num).length != 1"
+            ],
+            "tests": [
+                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
+                "!(this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 4.8: Another Colorful Condition",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "An empty board CAN work for one of the needed test cases. You need to avoid the Ifs from lines 5 and 7.",
+        "objective": "Statement coverage of line 10.",
+        "initial_board": 1,
+        "code_file": 4,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).length != 1",
+                "!(this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 4.9: Thoroughly Testing the Colorful Condition",
+        "description": "",
+        "test_cases_count": 3,
+        "score": 250,
+        "hint": "An empty board CAN work for one of the needed test cases. You need to avoid the Ifs from lines 5 and 7.",
+        "objective": "Modified condition/decision coverage of line 7.",
+        "initial_board": 1,
+        "code_file": 4,
+        "challenge_type": "mcdc",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_empty_spaces(input, case_num) != 64",
+                "this.get_pieces(input, input.currentKey).length != 1"
+            ],
+            "tests": [
+                "this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || !this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || !this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
     }
-    
 ]
