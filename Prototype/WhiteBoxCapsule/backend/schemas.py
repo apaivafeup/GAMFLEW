@@ -63,6 +63,7 @@ class GameMessage(str, Enum):
     ENTER = "enter"
     LEAVE = "leave"
     START = "start"
+    AUTO_PASS = "auto_pass"
     PASS = "pass"
     NEXT_ROUND = "next_round"
     END = "end"
@@ -201,7 +202,7 @@ class GameLog(Base):
     id = Column(Integer, primary_key=True)
     message = Column(ENUM(GameMessage), index=True)
     game_room_id = Column(Integer, ForeignKey("game_rooms.id"), nullable=False, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
     game_round_id = Column(Integer, ForeignKey("game_rounds.id"), nullable=True, index=True)
 
     game_rooms = relationship("GameRoom", back_populates="game_logs")

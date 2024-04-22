@@ -325,6 +325,17 @@ def start_game_room(current_user: Annotated[models.User, Depends(get_current_act
         crud.pass_round(db=db, game_round_id=game_round_id)
     return game_log 
 
+## Auto pass round.
+@app.post("/game-room/{game_room_id}/game-round/{game_round_id}/auto-pass")
+def start_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, game_round_id: int, db: Session = Depends(get_db)):
+    game_log = crud.send_pass_round_log(db=db, game_room_id=game_room_id, user_id=current_user.id, game_round_id=game_round_id, auto=True)
+    crud.pass_round(db=db, game_round_id=game_round_id)
+    return game_log 
+
+@app.post("/game-room/{game_room_id}/game-round/{game_round_id}/can-user-pass-auto")
+def can_user_pass(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, game_round_id: int, db: Session = Depends(get_db)):
+    return crud.can_user_pass_round_auto(db=db, game_room_id=game_room_id, game_round_id=game_round_id)
+
 ## Check game room state
 @app.get("/game-room/{game_room_id}/state", response_model=models.GameRoomState)
 def read_game_room_state(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
@@ -334,6 +345,7 @@ def read_game_room_state(current_user: Annotated[models.User, Depends(get_curren
 @app.get("/game-room/{game_room_id}/round", response_model=models.GameRound)
 def random_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     challenge = crud.get_random_challenge(db=db, game_room_id=game_room_id)
+    #TODO: make pass the random challenge to the round creation.
     return crud.add_game_round(db=db, challenge_id=1, game_room_id=game_room_id)
 
 ## Start round

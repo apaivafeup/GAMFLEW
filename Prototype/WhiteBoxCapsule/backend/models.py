@@ -241,7 +241,7 @@ class GameRoomState(BaseModel):
 class GameLog(BaseModel):
     id: Optional[int]
     game_room_id: int
-    user_id: int
+    user_id: Optional[int] = None
     message: GameMessage
     game_round_id: Optional[int] = None
 

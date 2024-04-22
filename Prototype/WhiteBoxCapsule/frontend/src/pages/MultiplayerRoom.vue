@@ -31,21 +31,26 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
 <template style="overflow: hidden">
     <div v-if="loaded">
         <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name" :playable="this.playable" />
-        <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user" :playable="this.playable" :round="this.round" />
+        <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user"
+            :playable="this.playable" :round="this.round" />
         <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" />
         <FailModal :placeholder="fail_placeholder" />
     </div>
     <div style="display: flex; justify-content: center;" v-else-if="!loaded && this.winner.length <= 0">
         <div class="vertical-center" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
-            <h2 style="text-align: center;" v-if="this.room_state.game_state == 'waiting'">You've entered <em>{{ room.name }}</em></h2>
+            <h2 style="text-align: center;" v-if="this.room_state.game_state == 'waiting'">You've entered <em>{{
+                room.name }}</em></h2>
             <h2 style="text-align: center;" v-else><em>{{ room.name }}</em></h2>
-            <p style="text-align: center; margin-bottom: 5px;" v-if="this.room_state.game_state == 'waiting'">When all players get in the
+            <p style="text-align: center; margin-bottom: 5px;" v-if="this.room_state.game_state == 'waiting'">When all
+                players get in the
                 room, the game will start.</p>
-            <p style="text-align: center; margin-bottom: 5px;" v-else-if="this.room_state.game_state != 'waiting' || this.round_loading && this.winner.length <= 0">New
+            <p style="text-align: center; margin-bottom: 5px;"
+                v-else-if="this.room_state.game_state != 'waiting' || this.round_loading && this.winner.length <= 0">New
                 round is loading...</p>
             <p style="text-align: center; margin-bottom: 5px;" v-else>The game is over.</p>
             <p style="text-align: center;" v-if="!this.round_loading">Leaving this page means the game won't start.</p>
-            <p style="text-align: center;" v-else-if="this.round_loading && this.winner.length <= 0">Leaving this page means
+            <p style="text-align: center;" v-else-if="this.round_loading && this.winner.length <= 0">Leaving this page
+                means
                 the game won't continue.</p>
             <p style="text-align: center;" v-else>If you wish, you can wait for the End Screen to load.</p>
             <button class="btn btn-primary" style="justify-self: center; width: 125px;" v-if="!this.round_loading"
@@ -53,8 +58,10 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
                 Room</button>
         </div>
     </div>
-    <div style="display: flex; flex-direction: row; justify-content: center; overflow-y: scroll;" v-else-if="this.winner.length > 0">
-        <EndScreen :winner="this.winner" :id="this.id" :room="this.room" style="position: absolute; top: 50%; transform: translate(0, -50%);"/>
+    <div style="display: flex; flex-direction: row; justify-content: center; overflow-y: scroll;"
+        v-else-if="this.winner.length > 0">
+        <EndScreen :winner="this.winner" :id="this.id" :room="this.room"
+            style="position: absolute; top: 50%; transform: translate(0, -50%);" />
     </div>
 </template>
 
@@ -80,6 +87,9 @@ export default {
             can_pass: true,
             playable: Boolean, // if it's our turn to play (step 5),
             winner: [],
+            timer: 0,
+            timer_interval: null,
+            has_time_ended: false,
             code_file: CodeFile,
             challenge: Challenge,
             board_state: BoardState,
@@ -181,7 +191,7 @@ export default {
             }
 
             if ((this.room_state.game_state == 'pass_round' || this.room_state.game_state == 'ready') && this.room_state.pass_round != null) {
-                this.can_pass = false
+                this.can_pass = await this.can_user_pass_auto()
                 window.location.reload()
             }
 
@@ -197,6 +207,19 @@ export default {
                     this.getRound()
                     this.is_ready = true
                 }
+
+                if (playable) {
+                    this.timer = this.getTimeForRound() + 3 // 3 second buffer!
+                    this.timer_interval = setInterval(() => {
+                        this.timer--
+
+                        if (this.timer <= 0) {
+                            clearInterval(this.timer_interval)
+                            this.has_time_ended = true
+                        }
+                    }, 1000)
+                }
+
                 this.loaded = true
                 this.round_loading = false
                 this.got_round = false
@@ -239,10 +262,43 @@ export default {
                 this.finishRoom()
                 this.getWinner()
             }
+
+            if (this.has_time_ended) {
+                this.autoPassRound()
+            }
         },
 
         stateChecking() {
             this.interval = setInterval(() => { this.checkState() }, 5000)
+        },
+
+        getTimeForRound() {
+            if (this.challenge.difficulty == 'Very Easy') {
+                return 100 // 1 minute and 40 seconds
+            } else if (this.challenge.difficulty == 'Easy') {
+                return 150 // 2 minutes and 30 seconds
+            } else if (this.challenge.difficulty == 'Normal') {
+                return 300 // 5 minutes
+            } else if (this.challenge.difficulty == 'Hard') {
+                return 480 // 8 minutes 
+            } else {
+                return 600 // 10 minutes
+            }
+        },
+
+        async autoPassRound() {
+            if (!this.playable) {
+                return;
+            }
+
+            await this.$axios.post(this.$api_link + '/game-room/' + this.round.game_room_id + '/game-round/' + this.round.id + '/auto-pass/', {}, this.auth.config)
+                .then(response => {
+                    window.location.reload()
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
         },
 
         async getRound() {
@@ -255,6 +311,7 @@ export default {
                     this.current_round = this.round.round_number
                     this.challenge_id = this.round.challenge_id
                     this.playable = (this.round.user_id == this.auth.user.id)
+                    this.can_pass = (await this.can_user_pass_auto()) && this.playable;
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -350,6 +407,20 @@ export default {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
+        },
+
+        async can_user_pass_auto() {
+            let can_pass = false
+            await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/game-round/' + this.round_id + '/can-user-pass-auto/', this.auth.config)
+                .then(response => {
+                    can_pass = response.data.can_pass
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
+
+            return can_pass
         }
     },
 
