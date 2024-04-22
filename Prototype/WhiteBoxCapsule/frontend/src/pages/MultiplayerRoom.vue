@@ -28,7 +28,7 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
 }
 </style>
 
-<template style="overflow: hidden">
+<template style="overflow: hidden" >
     <div v-if="loaded">
         <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name" :playable="this.playable" />
         <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user"
@@ -123,8 +123,10 @@ export default {
         await this.$axios.get(this.$api_link + '/game-room/' + this.id, this.auth.config)
             .then(response => {
                 this.room = response.data
+                
             })
             .catch((error) => {
+                clearInterval(this.interval)
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                 return
             })
@@ -158,6 +160,7 @@ export default {
 
                     })
                     .catch((error) => {
+                        clearInterval(this.interval)
                         this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                         return
                     })
@@ -170,6 +173,7 @@ export default {
                     this.$router.back()
                 })
                 .catch(error => {
+                    clearInterval(this.interval)
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
@@ -181,6 +185,7 @@ export default {
                     this.room_state = response.data
                 })
                 .catch((error) => {
+                    clearInterval(this.interval)
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
@@ -192,8 +197,8 @@ export default {
             }
 
             if ((this.room_state.game_state == 'pass_round' || this.room_state.game_state == 'ready') && this.room_state.pass_round != null) {
-                this.can_pass = await this.can_user_pass_auto()
-                window.location.reload()
+                this.can_pass = this.can_user_pass_auto()
+                this.$router.go()
             }
 
             if (this.room_state.game_state == 'ready' && !this.is_ready) {
@@ -277,6 +282,7 @@ export default {
         },
 
         getTimeForRound() {
+            return 10
             if (this.challenge.difficulty == 'Very Easy') {
                 return 100 // 1 minute and 40 seconds
             } else if (this.challenge.difficulty == 'Easy') {
@@ -297,9 +303,10 @@ export default {
 
             await this.$axios.post(this.$api_link + '/game-room/' + this.round.game_room_id + '/game-round/' + this.round.id + '/auto-pass/', {}, this.auth.config)
                 .then(response => {
-                    window.location.reload()
+                    this.$router.go()
                 })
                 .catch((error) => {
+                    clearInterval(this.interval)
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
@@ -318,6 +325,7 @@ export default {
                     this.can_pass = this.playable;
                 })
                 .catch((error) => {
+                    clearInterval(this.interval)
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
@@ -344,6 +352,7 @@ export default {
                     response.data.owner_id
                 )
             }).catch((error) => {
+                clearInterval(this.interval)
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
                 this.$error = true
             })
@@ -351,6 +360,7 @@ export default {
             await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
                 this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
             }).catch((error) => {
+                clearInterval(this.interval)
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                 this.$error = true
             })
@@ -358,6 +368,7 @@ export default {
             await this.$axios.get(this.$api_link + '/board-states/' + this.challenge.initial_board, this.auth.config).then((response) => {
                 this.board_state = new BoardState(response.data.id, response.data.name, response.data.board_state, response.data.out_of_bounds_state)
             }).catch((error) => {
+                clearInterval(this.interval)
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                 return
             })
@@ -378,6 +389,7 @@ export default {
 
                 })
                 .catch((error) => {
+                    clearInterval(this.interval)
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
@@ -387,9 +399,11 @@ export default {
             await this.$axios.post(this.$api_link + '/finish/game-room/' + this.id, {}, this.auth.config)
                 .then((response) => {
                     clearInterval(this.interval)
+                    clearInterval(this.timer_interval)
                     this.room_state.game_state = 'finished'
                 })
                 .catch((error) => {
+                    clearInterval(this.interval)
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
@@ -402,12 +416,14 @@ export default {
                         // someone won or a tie
                         this.winner = response.data;
                         clearInterval(this.interval)
+                        clearInterval(this.timer_interval)
                     } else {
                         // no winner yet
                         this.winner = null;
                     }
                 })
                 .catch((error) => {
+                    clearInterval(this.interval)
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
@@ -415,11 +431,17 @@ export default {
 
         async can_user_pass_auto() {
             let can_pass = false
+
+            if (this.round_id == null || this.id == null || this.round_id == undefined || this.id == undefined) {
+                return can_pass
+            }
+
             await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/game-round/' + this.round_id + '/can-user-pass-auto/', this.auth.config)
                 .then(response => {
                     can_pass = response.data.can_pass
                 })
                 .catch((error) => {
+                    clearInterval(this.timer_interval)
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })

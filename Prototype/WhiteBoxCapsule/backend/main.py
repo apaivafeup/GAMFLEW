@@ -334,7 +334,7 @@ def start_game_room(current_user: Annotated[models.User, Depends(get_current_act
 
 @app.post("/game-room/{game_room_id}/game-round/{game_round_id}/can-user-pass-auto")
 def can_user_pass(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, game_round_id: int, db: Session = Depends(get_db)):
-    return crud.can_user_pass_round_auto(db=db, game_room_id=game_room_id, game_round_id=game_round_id)
+    return {"can_pass": crud.can_user_pass_round_auto(db=db, game_room_id=game_room_id, game_round_id=game_round_id)}
 
 ## Check game room state
 @app.get("/game-room/{game_room_id}/state", response_model=models.GameRoomState)
