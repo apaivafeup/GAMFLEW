@@ -30,16 +30,18 @@ import MultiplayerUserSubmissions from '../components/MultiplayerUserSubmissions
 </style>
 
 <template style="overflow: hidden">
-    <div v-if="this.got_round_solution">
+    <div v-if="this.got_round_solution && this.show_solution_timer > 0">
         <MultiplayerUserSubmissions :challenge="this.challenge" :attempt="this.round_solution"
             :show_solution_timer="this.show_solution_timer" :playable="this.playable" />
     </div>
     <div v-else-if="loaded">
-        <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name" :playable="this.playable" />
-        <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user"
-            :playable="this.playable" :round="this.round" :timer="this.timer" />
-        <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" :challenge="challenge" />
-        <FailModal :placeholder="fail_placeholder" />
+            <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name"
+                :playable="this.playable" />
+            <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user"
+                :playable="this.playable" :round="this.round" :timer="this.timer" :timer_set="this.timer_set" />
+            <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id"
+                :challenge="challenge" />
+            <FailModal :placeholder="fail_placeholder" />
     </div>
     <div style="display: flex; justify-content: center;"
         v-else-if="!loaded && !this.got_round_solution && this.winner.length <= 0">
@@ -230,7 +232,7 @@ export default {
                 }
 
                 if (this.playable && !this.timer_set) {
-                    this.timer = this.getTimeForRound() + 3
+                    this.timer = this.getTimeForRound()
                     this.timer_interval = setInterval(() => {
                         this.timer--
 
@@ -241,6 +243,7 @@ export default {
                         }
                     }, 1000)
                     this.timer_set = true
+                    this.$forceUpdate()
                 }
 
                 this.loaded = true
@@ -357,6 +360,11 @@ export default {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
+
+            if (this.round_solution.player_id == this.auth.user.id) {
+                this.round_solution = {}
+                this.got_round_solution = false
+            }
         },
 
         async autoPassRound() {
@@ -535,12 +543,6 @@ export default {
     },
 
     watch: {
-        board: {
-            handler: function () {
-                this.$forceUpdate()
-            },
-            deep: true
-        },
         auth: {
             handler: function () {
                 this.$forceUpdate()
@@ -552,7 +554,7 @@ export default {
                 this.$forceUpdate()
             },
             deep: true
-        }
+        },
     },
 
     components: {

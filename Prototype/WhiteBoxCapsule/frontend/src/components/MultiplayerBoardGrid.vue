@@ -25,8 +25,11 @@
       </div>
 
       <div class="progress-bar">
-        <span v-if="this.playable">
+        <span v-if="this.playable && this.timer > 0">
           <strong>Time Left: </strong><em :style="this.timer >= 30 ? 'color: var(--text-color);' : 'color: red;'">{{this.timer}}</em>
+        </span>
+        <span v-if="this.playable && this.timer <= 0">
+          You can play!
         </span>
         <div class="row" v-if="this.round != undefined" style="justify-content: center;">
           {{ 'Round ' + this.round.round_number + ' of ' + this.round.max_rounds}}
@@ -153,7 +156,11 @@
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
       <div class="game-board" id="challenge-board">
-        <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
+        <div class="box" v-if="(this.timer > 0 && this.timer_set) || (this.timer <= 0 && !this.timer_set)" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
+          <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+            :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
+        </div>
+        <div class="box disabled" v-else v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
           <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
             :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
         </div>
@@ -189,7 +196,8 @@ export default {
     playable: Boolean,
     round: Object,
     can_pass: Boolean,
-    timer: Number
+    timer: Number,
+    timer_set: Boolean
   },
 
   data() {

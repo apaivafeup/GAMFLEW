@@ -18,7 +18,8 @@ export default {
     playable: Boolean,
     round: Object,
     can_pass: Boolean,
-    timer: Number
+    timer: Number,
+    timer_set: Boolean
   },
 
   data() {
@@ -78,7 +79,7 @@ export default {
         </div>
       </div>
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
-      <MultiplayerBoardGrid :challenge="challenge" :can_pass="this.can_pass" :playable="playable" :round="round" :timer="this.timer"/>
+      <MultiplayerBoardGrid :timer_set="this.timer_set" :challenge="challenge" :can_pass="this.can_pass" :playable="playable" :round="round" :timer="this.timer"/>
       <PlayerBar :user="user" />
     </div>
   </div>
