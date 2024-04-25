@@ -55,6 +55,7 @@ class GameState(str, Enum):
     READY = "ready"
     PLAYING = "playing"
     PASS_ROUND = "pass_round"
+    SHOW_SOLUTION = "show_solution"
     NEXT_ROUND = "next_round"
     FINISHED = "finished"
 
@@ -65,6 +66,7 @@ class GameMessage(str, Enum):
     START = "start"
     AUTO_PASS = "auto_pass"
     PASS = "pass"
+    SEEN_SOLUTION = "seen_solution"
     NEXT_ROUND = "next_round"
     END = "end"
 

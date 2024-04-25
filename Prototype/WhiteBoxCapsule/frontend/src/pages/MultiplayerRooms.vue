@@ -70,6 +70,17 @@ export default {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
+        },
+
+        async deleteRoom(id) {
+            await this.$axios.delete(this.$api_link + '/game-room/' + id, this.auth.config)
+                .then(response => {
+                    this.$router.go()
+                })
+                .catch(error => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
         }
     },
     components: { CreateRoomModal }

@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; justify-content: right;" class="" v-if="this.challenge == null">
+  <div style="display: flex; justify-content: right;" class="" v-if="this.challenge == {}">
     <div style="flex-direction: column; justify-content: space-between; display: flex">
       <div class="col">
         <div class="game-board-out-labels">
@@ -19,7 +19,7 @@
       </div>
 
       <div class="progress-bar">
-        {{ this.solution.currentKey + 1 + '/' + challenge.test_cases_count }}
+        {{ this.solution.currentKey + 1 + '/' + this.challenge.test_cases_count }}
       </div>
       <div class="buttons-grid">
         <button id="previous-button" class="button is-primary is-fullwidth" v-if="solution.currentKey != 0"
@@ -108,7 +108,7 @@
       </div>
 
       <div class="progress-bar">
-        {{ this.solution.currentKey + 1 + '/' + challenge.test_cases_count }}
+        {{ this.solution.currentKey + 1 + '/' + this.challenge.test_cases_count }}
       </div>
 
       <div class="buttons-grid">
@@ -184,21 +184,16 @@
 import PieceStackSolutionViewer from './PieceStackSolutionViewer.vue'
 
 // JS
-import { Challenge } from '../store/models/challenge'
 import { solutionViewer } from '../store/solutionViewer'
-import * as utils from '../store/utils.js'
 import OutPieceStackSolutionViewer from './OutPieceStackSolutionViewer.vue'
 import 'vue3-easy-data-table'
-import { auxiliaryFunctions } from '../assets/js/auxiliary_functions'
 
 export default {
   components: { PieceStackSolutionViewer, OutPieceStackSolutionViewer },
 
   props: {
-    challenge: {
-      type: Challenge,
-      required: true,
-    },
+    challenge: {},
+    attempt: {}
   },
 
   data() {
@@ -208,7 +203,14 @@ export default {
 
   async beforeMount() {
     this.solution = solutionViewer()
+
+    this.solution.defaultState()
     this.solution.generateState()
+
+    if (this.attempt != {}) {
+      this.solution.changeState(this.attempt.test_cases)
+      this.$forceUpdate()
+    }
   },
 
   mounted() {

@@ -233,6 +233,7 @@ class GameRoomState(BaseModel):
     players_in: list[int]
     game_state: GameState
     game_over: bool
+    last_round_id: Optional[int] = None
     pass_round: Optional[int] = None
     game_winner_1_id: Optional[int]
     game_winner_2_id: Optional[int]

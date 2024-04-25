@@ -16,6 +16,7 @@ import LoadingIcon from '../components/LoadingIcon.vue';
 import ChallengeMultiplayerHeader from '../components/ChallengeMultiplayerHeader.vue'
 import MultiplayerBoard from '../components/MultiplayerBoard.vue'
 import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.vue'
+import MultiplayerUserSubmissions from '../components/MultiplayerUserSubmissions.vue'
 </script>
 
 <style>
@@ -28,15 +29,20 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
 }
 </style>
 
-<template style="overflow: hidden" >
-    <div v-if="loaded">
+<template style="overflow: hidden">
+    <div v-if="this.got_round_solution">
+        <MultiplayerUserSubmissions :challenge="this.challenge" :attempt="this.round_solution"
+            :show_solution_timer="this.show_solution_timer" :playable="this.playable" />
+    </div>
+    <div v-else-if="loaded">
         <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name" :playable="this.playable" />
         <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user"
             :playable="this.playable" :round="this.round" :timer="this.timer" />
-        <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" />
+        <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id" :challenge="challenge" />
         <FailModal :placeholder="fail_placeholder" />
     </div>
-    <div style="display: flex; justify-content: center;" v-else-if="!loaded && this.winner.length <= 0">
+    <div style="display: flex; justify-content: center;"
+        v-else-if="!loaded && !this.got_round_solution && this.winner.length <= 0">
         <div class="vertical-center" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
             <h2 style="text-align: center;" v-if="this.room_state.game_state == 'waiting'">You've entered <em>{{
                 room.name }}</em></h2>
@@ -67,6 +73,7 @@ import MultiplayerSubmitModal from '../components/modals/MultiplayerSubmitModal.
 
 <script>
 import EndScreen from '../components/EndScreen.vue'
+import { solutionViewer } from '../store/solutionViewer.js'
 
 export default {
     props: {
@@ -80,13 +87,18 @@ export default {
             room: {}, // room information
             room_state: {}, // room state info
             round: {}, // round info
+            round_solution: {},
             current_round: 0, // current round number
             got_round: false, // if we (the player) have the round (step 2)
             round_loading: false, // if all players have the round (step 3)
             is_ready: false, // if we can play (step 4)
             can_pass: true,
-            playable: Boolean, // if it's our turn to play (step 5),
+            playable: false, // if it's our turn to play (step 5),
             winner: [],
+            got_round_solution: false,
+            show_solution_timer: 60,
+            show_solution_interval: null,
+            solution_timer_set: false,
             timer: 0,
             timer_interval: null,
             has_time_ended: false,
@@ -123,13 +135,15 @@ export default {
         await this.$axios.get(this.$api_link + '/game-room/' + this.id, this.auth.config)
             .then(response => {
                 this.room = response.data
-                
+
             })
             .catch((error) => {
                 clearInterval(this.interval)
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                 return
             })
+
+        await this.checkState()
 
         if (this.$error) {
             loader.hide()
@@ -196,8 +210,9 @@ export default {
                 this.stateChecking()
             }
 
-            if ((this.room_state.game_state == 'pass_round' || this.room_state.game_state == 'ready') && this.room_state.pass_round != null) {
+            if ((this.room_state.game_state == 'pass_round' || this.room_state.game_state == 'ready')) {
                 this.can_pass = this.can_user_pass_auto()
+                this.$forceUpdate()
                 this.$router.go()
             }
 
@@ -215,7 +230,7 @@ export default {
                 }
 
                 if (this.playable && !this.timer_set) {
-                    this.timer = this.getTimeForRound() + 3 // 3 second buffer!
+                    this.timer = this.getTimeForRound() + 3
                     this.timer_interval = setInterval(() => {
                         this.timer--
 
@@ -246,12 +261,32 @@ export default {
                 this.$forceUpdate()
             }
 
+            if (this.room_state.game_state == 'show_solution' && !this.solution_timer_set) {
+                clearInterval(this.timer_interval)
+                await this.getRoundSolution()
+                this.show_solution_interval = setInterval(() => {
+                    this.show_solution_timer--
+
+                    if (this.show_solution_timer <= 0) {
+                        this.stateChecking()
+                        clearInterval(this.show_solution_interval)
+                        this.show_solution_timer = 60
+                        this.solution_timer_set = false
+                        this.send_seen_solution()
+                        this.$forceUpdate()
+                    }
+                }, 1000)
+                this.solution_timer_set = true
+            }
+
             if (this.room_state.game_state == 'next_round') {
-                this.is_ready = false
                 this.timer_set = false
+                clearInterval(this.timer_interval)
+                this.loaded = false
+                this.is_ready = false
                 this.can_pass = true
                 this.round_loading = true
-                this.loaded = false
+                this.round_solution = {}
                 this.board.emptyState(true)
                 this.getRound()
             }
@@ -282,7 +317,7 @@ export default {
         },
 
         getTimeForRound() {
-            return 10
+            return 100
             if (this.challenge.difficulty == 'Very Easy') {
                 return 100 // 1 minute and 40 seconds
             } else if (this.challenge.difficulty == 'Easy') {
@@ -294,6 +329,34 @@ export default {
             } else {
                 return 600 // 10 minutes
             }
+        },
+
+        async getRoundSolution() {
+            this.round_solution = {}
+            this.$forceUpdate()
+
+            var round_id
+            if (this.round.id != null && this.round.id != undefined) {
+                round_id = this.round.id
+            } else if (this.room_state.last_round_id != null && this.room_state.last_round_id != undefined) {
+                round_id = this.room_state.last_round_id
+            } else {
+                return
+            }
+
+            await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/round/' + round_id + '/solution', this.auth.config)
+                .then(response => {
+                    if (!this.got_round_solution) {
+                        this.round_solution = response.data
+                        this.got_round_solution = true
+                        this.$forceUpdate()
+                    }
+                })
+                .catch((error) => {
+                    clearInterval(this.interval)
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
         },
 
         async autoPassRound() {
@@ -447,6 +510,27 @@ export default {
                 })
 
             return can_pass
+        },
+
+        async send_seen_solution() {
+            var round_id
+            if (this.round.id != null && this.round.id != undefined) {
+                round_id = this.round.id
+            } else if (this.room_state.last_round_id != null && this.room_state.last_round_id != undefined) {
+                round_id = this.room_state.last_round_id
+            } else {
+                return
+            }
+
+            await this.$axios.post(this.$api_link + '/game-room/' + this.id + '/round/' + round_id + '/seen-solution/', {}, this.auth.config)
+                .then(response => {
+                    this.$router.go()
+                })
+                .catch((error) => {
+                    clearInterval(this.interval)
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
         }
     },
 
@@ -476,7 +560,8 @@ export default {
         Board,
         MultiplayerSubmitModal,
         LoadingIcon,
-        ChallengeMultiplayerHeader
+        ChallengeMultiplayerHeader,
+        MultiplayerUserSubmissions
     }
 }
 </script>

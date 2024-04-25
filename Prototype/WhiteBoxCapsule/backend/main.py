@@ -315,6 +315,11 @@ def start_game_room(current_user: Annotated[models.User, Depends(get_current_act
     game_log = crud.send_start_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id)
     return game_log
 
+@app.delete("/game-room/{game_room_id}")
+def delete_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
+    crud.delete_game_room(db=db, game_room_id=game_room_id)
+    return {"message": "Game room deleted"}
+
 ## Pass game round
 @app.post("/game-room/{game_room_id}/game-round/{game_round_id}/pass")
 def start_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, game_round_id: int, db: Session = Depends(get_db)):
@@ -360,6 +365,16 @@ def finish_game_round(current_user: Annotated[models.User, Depends(get_current_a
     game_log = crud.send_next_round_log(db=db, game_round_id=game_round_id, user_id=current_user.id)
     crud.finish_game_round(db=db, game_round_id=game_round_id)
     return game_log
+
+## Get round solution
+@app.get("/game-room/{game_room_id}/round/{game_round_id}/solution", response_model=models.Attempt)
+def get_round_solution(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, game_round_id: int, db: Session = Depends(get_db)):
+    return crud.get_round_solution(db=db, game_round_id=game_round_id)
+
+## Send seen solution.
+@app.post("/game-room/{game_room_id}/round/{game_round_id}/seen-solution", response_model=models.GameLog)
+def seen_solution(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, game_round_id: int, db: Session = Depends(get_db)):
+    return crud.send_seen_solution_log(db=db, game_round_id=game_round_id, user_id=current_user.id)
 
 ## Finish game room
 @app.post("/finish/game-room/{game_room_id}", response_model=models.GameLog)

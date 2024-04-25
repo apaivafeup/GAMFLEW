@@ -347,6 +347,9 @@ def get_user_score(db: Session, user_id: int):
 
         attempts.order_by(schemas.Attempt.score.desc())
 
+        if attempts.count() == 0:
+            continue
+
         # Only count the highest-scored attempt for each challenge.
         user_score += attempts[0].score
 
@@ -432,6 +435,14 @@ def create_game_room(db: Session, game_room: schemas.GameRoom):
     db.commit()
     return db_game_room
 
+def delete_game_room(db: Session, game_room_id: int):
+    game_room_to_delete = get_game_room(db, game_room_id)
+    if game_room_to_delete is None:
+        return None
+    db.delete(game_room_to_delete)
+    db.commit()
+    return game_room_to_delete
+
 def get_game_room(db: Session, game_room_id: int):
     return db.query(schemas.GameRoom).filter(schemas.GameRoom.id == game_room_id).first()
 
@@ -482,6 +493,12 @@ def get_players_in(db: Session, game_room_id: int):
 
 def get_game_room_state(db: Session, game_room_id: int):
     game_room = get_game_room(db, game_room_id)
+    game_round = get_last_finished_round(db=db, game_room_id=game_room_id)
+
+    if game_round is not None:
+        game_round_id = game_round.id
+    else: 
+        game_round_id = None
 
     game_room_state = models.GameRoomState(
         id=game_room.id,
@@ -489,12 +506,16 @@ def get_game_room_state(db: Session, game_room_id: int):
         game_state=game_room.game_state,
         pass_round=get_last_passed_round(db, game_room_id),
         game_over=game_room.game_over,
+        last_round_id=game_round_id,
         game_winner_1_id=game_room.game_winner_1_id,
         game_winner_2_id=game_room.game_winner_2_id,
         game_winner_3_id=game_room.game_winner_3_id
     )
 
     return game_room_state
+
+def get_last_finished_round(db: Session, game_room_id: int):
+    return db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).filter(schemas.GameRound.state == schemas.GameRoundState.FINISHED).order_by(schemas.GameRound.id.desc()).first()
 
 def get_last_passed_round(db: Session, game_room_id: int):
     game_round = db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).order_by(schemas.GameRound.id.desc()).first()
@@ -540,9 +561,11 @@ def set_game_room_state(db: Session, game_room_id: int):
         game_room.game_state = schemas.GameState.PLAYING
     elif (game_room.game_state == schemas.GameState.PASS_ROUND):
         game_room.game_state = schemas.GameState.READY
-    elif (game_round is not None and game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state != schemas.GameState.NEXT_ROUND and len(game_rounds) != game_room.rounds):
-        print('next round 1')
+    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and have_seen_game_logs(db=db, game_round_id=game_round.id)):
         game_room.game_state = schemas.GameState.NEXT_ROUND
+    elif (game_round is not None and game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state != schemas.GameState.NEXT_ROUND and len(game_rounds) != game_room.rounds):
+        print('show solution 1')
+        game_room.game_state = schemas.GameState.SHOW_SOLUTION
     elif (game_room.game_state == schemas.GameState.NEXT_ROUND):
         print('waiting 2')
         game_room.game_state = schemas.GameState.WAITING
@@ -552,6 +575,12 @@ def set_game_room_state(db: Session, game_room_id: int):
     
     db.commit()
     return get_game_room_state(db=db, game_room_id=game_room_id)
+
+def have_seen_game_logs(db: Session, game_round_id: int):
+    game_logs = db.query(schemas.GameLog).filter(schemas.GameLog.game_round_id == game_round_id).filter(schemas.GameLog.message == schemas.GameMessage.SEEN_SOLUTION).all()
+    game_round = db.query(schemas.GameRound).filter(schemas.GameRound.id == game_round_id).first()
+    game_room = db.query(schemas.GameRoom).filter(schemas.GameRoom.id == game_round.game_room_id).first()
+    return len(game_logs) >= game_room.player_number - 1 
 
 def finish_game_room_state(db: Session, game_room_id: int):
     game_room = get_game_room(db, game_room_id)
@@ -717,6 +746,27 @@ def send_finish_game_log(db: Session, user_id: int, game_round_id: int = None, g
     db.commit()
     return db_game_log
 
+def send_seen_solution_log(db: Session, user_id: int, game_round_id: int):
+    game_round = get_game_round(db, game_round_id)
+    game_room = get_game_room(db, game_round.game_room_id)
+
+    if game_room is None:
+        raise ValueError("Game room does not exist.")
+
+    if (game_room.player_1_id != user_id and game_room.player_2_id != user_id and game_room.player_3_id != user_id):
+        raise ValueError("User is not in the game room.")
+
+    db_game_log = schemas.GameLog(
+        game_round_id=game_round_id,
+        message=schemas.GameMessage.SEEN_SOLUTION,
+        game_room_id=game_room.id,
+        user_id=user_id
+    )
+
+    db.add(db_game_log)
+    db.commit()
+    return db_game_log
+
 def is_in_game_room(db: Session, game_room_id: int, user_id: int):
     game_room = get_game_room(db, game_room_id)
 
@@ -841,10 +891,15 @@ def get_next_player(db: Session, game_room_id: int, last_user: int):
             return game_room.player_1_id
         
         return random.choice([game_room.player_1_id, game_room.player_2_id])
-    
-    
+      
 def get_attempt_by_round_id(db: Session, game_round_id: int):
     return db.query(schemas.Attempt).filter(schemas.Attempt.game_round_id == game_round_id).order_by(schemas.Attempt.id.desc()).first()
+
+def get_round_solution(db: Session, game_round_id: int):
+    game_round = db.query(schemas.GameRound).filter(schemas.GameRound.id == game_round_id).first()
+    attempt = get_attempt_by_round_id(db, game_round_id)
+
+    return attempt
 
 def add_game_round(db: Session, game_room_id: int, challenge_id: int):
     game_round = db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).order_by(schemas.GameRound.id.desc()).first()

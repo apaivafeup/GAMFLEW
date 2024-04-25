@@ -35,6 +35,7 @@ import { defineComponent } from 'vue'
 import { boardStore } from '../../store/boardStore'
 import { useToast } from "vue-toastification";
 import { authStore } from '../../store/authStore'
+import { Challenge } from '../../store/models/challenge';
 
 export default defineComponent({
 
@@ -53,7 +54,8 @@ export default defineComponent({
 
   props: {
     placeholder: String,
-    round_id: Number
+    round_id: Number,
+    challenge: Challenge
   },
 
   methods: {
@@ -67,20 +69,17 @@ export default defineComponent({
 
       this.board.attempt.comment = comment
 
-
-      this.board.timer
-
       var body = {
         id: 0,
         score: this.board.attempt.score,
         player_id: this.board.attempt.player_id,
         challenge_id: this.board.attempt.challenge_id,
-        attempt_type: 'pass',
+        attempt_type: this.board.passed ? 'pass' : 'fail',
         comment: this.board.attempt.comment,
-        test_cases: this.board.state,
         game_round_id: this.round_id,
-        score: 0,
-        score_count: 0
+        test_cases: this.saveTestCases(),
+        comment_score_count: this.board.passed ? 0 : null,
+        comment_score: this.board.passed ? 0 : null
       }
 
       var flag = false, score = 0
@@ -95,7 +94,23 @@ export default defineComponent({
       }).catch((error) => {
         this.toast.error('An error occurred while finishing the round. Please try again later.')
       })
-    }
+    },
+
+    saveTestCases() {
+      var testCases = {}
+
+      for (var i = 0; i < this.challenge.test_cases_count; i++) {
+        var testCase = {
+          board: this.board.state[i],
+          outOfBounds: this.board.outOfBoundsState[i],
+          log: this.board.log[i]
+        }
+
+        testCases[i] = testCase
+      }
+
+      return testCases
+    },
   }
 })
 </script>

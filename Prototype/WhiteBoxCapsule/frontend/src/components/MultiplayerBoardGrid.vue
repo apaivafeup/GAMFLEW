@@ -106,7 +106,7 @@
       <button id="pass-button" class="button is-primary is-fullwidth disabled" v-else >
         Pass
       </button>
-      <button id="exit-button" class="button is-primary is-fullwidth" @click="board.exit()">
+      <button id="exit-button" class="button is-primary is-fullwidth" @click="this.$router.push({name: 'multiplayer-rooms'})">
         Exit
       </button>
     </div>
