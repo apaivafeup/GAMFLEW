@@ -7,19 +7,19 @@
         </div>
         <div class="game-board-out">
           <div class="box">
-            <OutPieceStackSolutionViewer class="" :x="this.solution.outOfBoundsState.position.x" :y="this.solution.outOfBoundsState.position.y" />
+            <OutPieceStackSolutionViewer class="" :x="solution.outOfBoundsState.position.x" :y="solution.outOfBoundsState.position.y" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input id="piece-stack-out-x" class="col box "
-              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="this.solution.outOfBoundsState.position.x" />
+              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="solution.outOfBoundsState.position.x" />
             <input id="piece-stack-out-y" class="col box "
-              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="this.solution.outOfBoundsState.position.y"/>
+              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="solution.outOfBoundsState.position.y"/>
           </div>
         </div>
       </div>
 
       <div class="progress-bar">
-        {{ this.solution.currentKey + 1 + '/' + this.challenge.test_cases_count }}
+        {{ solution.currentKey + 1 + '/' + this.challenge.test_cases_count }}
       </div>
       <div class="buttons-grid">
         <button id="previous-button" class="button is-primary is-fullwidth" v-if="solution.currentKey != 0"
@@ -108,7 +108,7 @@
       </div>
 
       <div class="progress-bar">
-        {{ this.solution.currentKey + 1 + '/' + this.challenge.test_cases_count }}
+        {{ solution.currentKey + 1 + '/' + this.challenge.test_cases_count }}
       </div>
 
       <div class="buttons-grid">
@@ -120,7 +120,7 @@
           Previous
         </button>
         <button id="next-button" class="button is-primary is-fullwidth"
-          v-if="solution.currentKey + 1 != challenge.test_cases_count && solution.currentKey + 1 != Object.keys(this.solution.initialState).length " @click="solution.next()">
+          v-if="solution.currentKey + 1 != this.challenge.test_cases_count && solution.currentKey + 1 != Object.keys(solution.initialState).length " @click="solution.next()">
           Next
         </button>
         <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
@@ -187,25 +187,24 @@ import PieceStackSolutionViewer from './PieceStackSolutionViewer.vue'
 import { solutionViewer } from '../store/solutionViewer'
 import OutPieceStackSolutionViewer from './OutPieceStackSolutionViewer.vue'
 import 'vue3-easy-data-table'
+import { authStore } from '../store/authStore'
+import { Challenge } from '../store/models/challenge'
 
 export default {
   components: { PieceStackSolutionViewer, OutPieceStackSolutionViewer },
 
   props: {
-    challenge: {},
+    challenge: Challenge,
     attempt: {}
   },
 
-  data() {
-    return {
-    }
-  },
-
   async beforeMount() {
-    this.solution = solutionViewer()
+    console.log(this.challenge)
 
+    this.solution = solutionViewer()
     this.solution.defaultState()
     this.solution.generateState()
+    this.auth = authStore()
 
     if (this.attempt != {}) {
       this.solution.changeState(this.attempt.test_cases)
@@ -213,8 +212,7 @@ export default {
     }
   },
 
-  mounted() {
-
+  methods: {
   },
 
   components: { PieceStackSolutionViewer, OutPieceStackSolutionViewer },

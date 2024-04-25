@@ -30,7 +30,7 @@ import MultiplayerUserSubmissions from '../components/MultiplayerUserSubmissions
 </style>
 
 <template style="overflow: hidden">
-    <div v-if="this.got_round_solution && this.show_solution_timer > 0">
+    <div v-if="this.got_round_solution">
         <MultiplayerUserSubmissions :challenge="this.challenge" :attempt="this.round_solution"
             :show_solution_timer="this.show_solution_timer" :playable="this.playable" />
     </div>
@@ -361,10 +361,6 @@ export default {
                     return
                 })
 
-            if (this.round_solution.player_id == this.auth.user.id) {
-                this.round_solution = {}
-                this.got_round_solution = false
-            }
         },
 
         async autoPassRound() {

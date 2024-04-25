@@ -8,7 +8,6 @@
   <div v-else>
     <div class="row" style="text-align: center;">
       <h1>Round Solution</h1>
-      <h5>Submitted by {{ this.selectedUser.name }}</h5>
     </div>
     <div class="row"
       style="display: grid; grid-template-columns: 45% 45%; place-content: center; grid-gap: 10px; grid-template-rows: 100%; max-height: 100%;">
@@ -58,13 +57,14 @@ import { solutionViewer } from '../store/solutionViewer';
 import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';
 import ChallengeSubmissionViewer from '../components/ChallengeSubmissionViewer.vue';
+import { Challenge } from '../store/models/challenge';
 
 export default {
   components: { ChallengeSubmissionViewer },
 
   props: {
     attempt: {},
-    challenge: {},
+    challenge: Challenge,
     show_solution_timer: Number,
     playable: Boolean
   },
