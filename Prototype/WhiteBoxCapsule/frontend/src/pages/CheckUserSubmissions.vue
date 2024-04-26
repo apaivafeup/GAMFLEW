@@ -8,7 +8,7 @@
         <h6 style="margin-bottom: 2.5px;">Challenge</h6>
       </label>
       <select class="button is-primary guide-button" id="challenge-select" style="width: 650px;"
-        :value="selectedChallengeId" v-if="challenges.length > 0">
+        :v-model="selectedChallengeId" v-if="challenges.length > 0">
         <option @click="updateAttempts(challenge.id)" v-for="challenge in challenges" :value="challenge.id">{{
           challenge.name }}</option>
       </select>
@@ -18,12 +18,12 @@
         <h6 style="margin-bottom: 2.5px;">Attempt</h6>
       </label>
       <select class="button is-primary guide-button" id="attempt-select" style="width: 650px;"
-        v-if="challenge_attempts.length > 0 && this.selectedAttemptId != null" :value="selectedAttemptId">
-        <option @click="updateSolutionViewer(attempt.id)" v-for="attempt in challenge_attempts" :value="attempt.id">
+        v-if="challenge_attempts.length > 0 && selectedAttemptId != null" :value="selectedAttemptId">
+        <option @click="updateSolutionViewer(selectedAttempt.id)" v-for="selectedAttempt in challenge_attempts" :value="selectedAttempt.id">
           Attempt by {{
-            this.users.find(user => user.id == attempt.player_id).name }} (<em style="font-style: italic;">{{
+            this.users.find(user => user.id == selectedAttempt.player_id).name }} (<em style="font-style: italic;">{{
             this.users.find(user => user.id ==
-              attempt.player_id).username }}</em>)</option>
+              selectedAttempt.player_id).username }}</em>)</option>
       </select>
       <select class="button is-primary guide-button disabled" id="attempt-select" style="width: 650px;" v-else>
         <option>No attempts submitted.</option>
@@ -32,12 +32,13 @@
   </div>
   <div class="row"
     style="display: grid; grid-template-columns: 45% 45%; place-content: center; grid-gap: 10px; grid-template-rows: 100%; max-height: 100%;">
-    <div class="col" style="display: grid; grid-template-rows: 49% 49%; grid-gap: 5px; overflow-y: scroll;">
-      <div class="col">
-        <div class="row" style="margin-bottom: 2.5px;">
-          <h6 style="margin: 0px;">Passing Criteria</h6>
-        </div>
-        <div class="col" style="margin-bottom: 10px; overflow-y: scroll; overflow-x: hidden;">
+
+    <div class="col" style="display: grid; grid-template-rows: 20px calc((512px - 40px)/2) 20px calc((512px - 40px)/2); grid-gap: 5px;">
+      <div class="row">
+        <h6 style="margin: 0px;">Passing Criteria</h6>
+      </div>
+      <div class="col" style="overflow-y: scroll; overflow-x: hidden; padding-right: 10px;">
+        <div class="col">
           <div v-if="this.preconditions.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;"
             :id="'precondition-info-' + index" v-for="(precondition, index) in this.preconditions">
             <div
@@ -76,15 +77,16 @@
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="row" style="margin-bottom: 2.5px;">
-          <h6 style="margin: 0px;">Logged Interactions</h6>
-        </div>
+      <div class="row">
+        <h6 style="margin: 0px;">Logged Interactions</h6>
+      </div>
+      <div class="col" style="overflow-y: scroll; overflow-x: hidden; padding-right: 10px;">
+
 
         <div class="col" style="overflow-y: scroll; overflow-x: hidden;">
-          <div class="row" v-if="this.solution.log[this.solution.currentKey].length > 0">
+          <div class="row" v-if="this.selectedAttempt != null">
             <div style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'log-info-' + index"
-              v-for="(interaction, index) in this.solution.log[this.solution.currentKey]">
+              v-for="(interaction, index) in solution.log[solution.currentKey]">
               <div class='alert alert-secondary player-info precondition-alert' :id="'log-info-alert-' + index"
                 style="display: flex; justify-content: start;">
                 <div class="row" style="display: flex; align-self: center; text-align: center;">
@@ -111,12 +113,12 @@
         </div>
       </div>
     </div>
-    <div class="col" v-if="this.selectedAttemptId != null"
+    <div class="col" v-if="selectedAttemptId != null"
       style="display: flex; justify-content: end; flex-direction: row; padding: 0px;">
-      <ChallengeSubmissionViewer :challenge="this.challenge" />
+      <ChallengeSubmissionViewer :challenge="challenge" :attempt="selectedAttempt" />
     </div>
     <div class="col" style="display: flex; justify-content: end; flex-direction: row; padding: 0px;" v-else>
-      <ChallengeSubmissionViewer class="disabled" :challenge="this.challenge" />
+      <ChallengeSubmissionViewer class="disabled" :challenge="challenge" :attempt="selectedAttempt" />
     </div>
   </div>
 </template>
@@ -151,6 +153,7 @@ export default {
     this.auth = authStore()
     this.toast = useToast()
     this.solution = solutionViewer()
+    this.solution.generateState()
     await this.getAttempts()
     await this.getChallenges()
     await this.getUsers()
@@ -162,6 +165,7 @@ export default {
   data() {
     return {
       attempts: Object,
+      selectedAttempt: null,
       challenges: [],
       users: [],
       challenge: {},
@@ -219,22 +223,21 @@ export default {
       this.tests = this.challenge.passing_criteria.tests
       this.challenge_attempts = this.attempts['' + challenge_id]
       this.solution.defaultState()
-
+      
       if (this.challenge_attempts.length > 0) {
         this.solution.generateState()
         this.selectedAttemptId = this.challenge_attempts[0].id
         this.updateSolutionViewer(this.selectedAttemptId)
+      } else {
+        this.selectedAttempt = null
+        this.solution.generateState()
       }
     },
 
     updateSolutionViewer(attempt_id) {
-      var challenge = this.challenges.find(challenge => challenge.id == this.selectedChallengeId),
-        attempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
-
-      if (attempt != null) {
-        this.solution.changeState(attempt.test_cases)
-        this.$forceUpdate()
-      }
+      this.selectedAttempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
+      this.solution.changeState(this.selectedAttempt.test_cases)
+      this.$forceUpdate()
     },
 
     replace(test) {

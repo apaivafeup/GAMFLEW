@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; justify-content: right;" class="" v-if="this.challenge == {}">
+  <div style="display: flex; justify-content: right;" class="" v-if="challenge == {}">
     <div style="flex-direction: column; justify-content: space-between; display: flex">
       <div class="col">
         <div class="game-board-out-labels">
@@ -19,7 +19,7 @@
       </div>
 
       <div class="progress-bar">
-        {{ solution.currentKey + 1 + '/' + this.challenge.test_cases_count }}
+        {{ solution.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
       <div class="buttons-grid">
         <button id="previous-button" class="button is-primary is-fullwidth" v-if="solution.currentKey != 0"
@@ -108,7 +108,7 @@
       </div>
 
       <div class="progress-bar">
-        {{ solution.currentKey + 1 + '/' + this.challenge.test_cases_count }}
+        {{ solution.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
 
       <div class="buttons-grid">
@@ -120,7 +120,7 @@
           Previous
         </button>
         <button id="next-button" class="button is-primary is-fullwidth"
-          v-if="solution.currentKey + 1 != this.challenge.test_cases_count && solution.currentKey + 1 != Object.keys(solution.initialState).length " @click="solution.next()">
+          v-if="solution.currentKey + 1 != challenge.test_cases_count && solution.currentKey + 1 != Object.keys(solution.initialState).length " @click="solution.next()">
           Next
         </button>
         <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
@@ -195,18 +195,16 @@ export default {
 
   props: {
     challenge: Challenge,
-    attempt: {}
+    attempt: null
   },
 
   async beforeMount() {
-    console.log(this.challenge)
-
     this.solution = solutionViewer()
     this.solution.defaultState()
     this.solution.generateState()
     this.auth = authStore()
 
-    if (this.attempt != {}) {
+    if (this.attempt != null) {
       this.solution.changeState(this.attempt.test_cases)
       this.$forceUpdate()
     }
