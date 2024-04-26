@@ -96,13 +96,13 @@
         </div>
         <div class="game-board-out">
           <div class="box">
-            <OutPieceStackSolutionViewer :x="this.outX" :y="this.outY" />
+            <OutPieceStackSolutionViewer :x="outX" :y="outY" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input id="piece-stack-out-x" class="col box disabled"
-              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="this.solution.outOfBoundsState[this.solution.currentKey].position.x" />
+              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="solution.outOfBoundsState[solution.currentKey].position.x" />
             <input id="piece-stack-out-y" class="col box disabled"
-              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="this.solution.outOfBoundsState[this.solution.currentKey].position.y" />
+              style="width: 30px; text-align: center; font-size: 12px" type="number" :value="solution.outOfBoundsState[solution.currentKey].position.y" />
           </div>
         </div>
       </div>

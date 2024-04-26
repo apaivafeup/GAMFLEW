@@ -1,7 +1,7 @@
 <template>
   <div v-if="playable" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
     <h3>Please wait a minute.</h3>
-    <h6>{{ this.show_solution_timer }} seconds left.</h6>
+    <h6>{{ show_solution_timer }} seconds left.</h6>
     <p>Other players are seeing your solution.</p>
     <p>After a minute, you will be able to see the solution.</p>
   </div>
@@ -20,7 +20,7 @@
           <div class="col" style="overflow-y: scroll; overflow-x: hidden;">
             <div class="row">
               <div style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'log-info-' + index"
-                v-for="(interaction, index) in this.solution.log[this.solution.currentKey]">
+                v-for="(interaction, index) in solution.log[solution.currentKey]">
                 <div class='alert alert-secondary player-info precondition-alert' :id="'log-info-alert-' + index"
                   style="display: flex; justify-content: start;">
                   <div class="row" style="display: flex; align-self: center; text-align: center;">
@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="col" style="display: flex; justify-content: end; flex-direction: row; padding: 0px;">
-        <ChallengeSubmissionViewer :challenge="this.challenge" :attempt="this.attempt" />
+        <ChallengeSubmissionViewer :challenge="challenge" :attempt="attempt" />
       </div>
     </div>
   </div>
