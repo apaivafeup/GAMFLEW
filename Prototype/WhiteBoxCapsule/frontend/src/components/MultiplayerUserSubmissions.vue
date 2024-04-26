@@ -95,7 +95,7 @@ export default {
     return {
       users: [],
       selectedUser: {},
-      challenge: {},
+      //challenge: {},
     }
   },
 
