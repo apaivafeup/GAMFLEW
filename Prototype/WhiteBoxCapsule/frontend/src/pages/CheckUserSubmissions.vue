@@ -19,10 +19,11 @@
       </label>
       <select class="button is-primary guide-button" id="attempt-select" style="width: 650px;"
         v-if="challenge_attempts.length > 0 && selectedAttemptId != null" :value="selectedAttemptId">
-        <option @click="updateSolutionViewer(selectedAttempt.id)" v-for="selectedAttempt in challenge_attempts" :value="selectedAttempt.id">
-          Attempt by {{
-            this.users.find(user => user.id == selectedAttempt.player_id).name }} (<em style="font-style: italic;">{{
-            this.users.find(user => user.id ==
+        <option @click="updateSolutionViewer(selectedAttempt.id)" v-for="selectedAttempt in challenge_attempts"
+          :value="selectedAttempt.id">
+          {{ selectedAttempt.attempt_type.charAt(0).toUpperCase() + selectedAttempt.attempt_type.slice(1) + 'ed' }}
+          attempt by {{ this.users.find(user => user.id == selectedAttempt.player_id).name }} (<em
+            style="font-style: italic;">{{ this.users.find(user => user.id ==
               selectedAttempt.player_id).username }}</em>)</option>
       </select>
       <select class="button is-primary guide-button disabled" id="attempt-select" style="width: 650px;" v-else>
@@ -30,10 +31,17 @@
       </select>
     </div>
   </div>
+  <div style="display: flex; flex-direction: row; margin-bottom: 10px; justify-content: center;">
+    <div class="row" style="width: 1300px;">
+      <div class="alert alert-special player-info precondition-alert" style="width: 100%;"> <strong
+          style="margin-right: 2.5px;">{{ 'Comment:' }}</strong><em>{{ selectedAttempt.comment }}</em></div>
+    </div>
+  </div>
+
   <div class="row"
     style="display: grid; grid-template-columns: 45% 45%; place-content: center; grid-gap: 10px; grid-template-rows: 100%; max-height: 100%;">
-
-    <div class="col" style="display: grid; grid-template-rows: 20px calc((512px - 40px)/2) 20px calc((512px - 40px)/2); grid-gap: 5px;">
+    <div class="col"
+      style="display: grid; grid-template-rows: 20px calc((512px - 40px)/2) 20px calc((512px - 40px)/2); grid-gap: 5px;">
       <div class="row">
         <h6 style="margin: 0px;">Passing Criteria</h6>
       </div>
@@ -223,7 +231,7 @@ export default {
       this.tests = this.challenge.passing_criteria.tests
       this.challenge_attempts = this.attempts['' + challenge_id]
       this.solution.defaultState()
-      
+
       if (this.challenge_attempts.length > 0) {
         this.solution.generateState()
         this.selectedAttemptId = this.challenge_attempts[0].id
