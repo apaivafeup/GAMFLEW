@@ -1419,5 +1419,686 @@
         "achievement_criteria": null,
         "difficulty": "Normal",
         "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.1: Build-a-Triangle",
+        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
+        "test_cases_count": 1,
+        "score": 175,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "objective": "Statement coverage of line 8.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, input.currentKey) != 0",
+                "this.count_blue_pieces(input, input.currentKey) != 0",
+                "this.count_empty_spaces(input, input.currentKey) != 0"
+            ],
+            "tests": [
+                "this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.2: Don't-Build-a-Triangle",
+        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
+        "test_cases_count": 1,
+        "score": 100,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
+        "objective": "Statement coverage of line 10.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+            ],
+            "tests": [
+                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.3: Don't-Build-Or-Build-a-Triangle",
+        "description": "Yes, we're taking you back to Middle School.",
+        "test_cases_count": 2,
+        "score": 300,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
+        "objective": "Decision coverage of line 10.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+            ],
+            "tests": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.4: Triangulating Condition",
+        "description": "Yes, we're taking you back to Middle School.",
+        "test_cases_count": 2,
+        "score": 300,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
+        "objective": "Condition coverage of line 10.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+            ],
+            "tests": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.5: Not Quite a Scalene Triangle",
+        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle. That means one side can be equal to zero!",
+        "test_cases_count": 2,
+        "score": 225,
+        "hint": "Though it's all tested at once, you're dealing with two separate conditions. Each case needs to cover True-False state for each, across two tests! Notice how the variables' meaning (i.e., variable a will always count red pieces) never changes!",
+        "objective": "Condition coverage of line 10.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": 2,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.6: Possibly, A Scalene Triangle",
+        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle. That means one side can be equal to zero!",
+        "test_cases_count": 1,
+        "score": 150,
+        "hint": "Though it's all tested at once, you're dealing with two separate conditions. Each case needs to cover True-False state for each, across two tests! Notice how the variables' meaning (i.e., variable a will always count red pieces) never changes!",
+        "objective": "Statement coverage of line 11.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": 2,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+            ],
+            "tests": [
+                "this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.7: An Out of Scale(ne) Decision",
+        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle. That means one side can be equal to zero!",
+        "test_cases_count": 2,
+        "score": 300,
+        "hint": "Though it's all tested at once, you're dealing with two separate parts in the decision. Each test case must cover each possible decision!",
+        "objective": "Decision coverage of line 10.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 2,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.8: Conditioning An Isosceles Triangle",
+        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
+        "test_cases_count": 2,
+        "score": 300,
+        "hint": "If it's not a triangle, sides don't have to be greater than 0. You're dealing with two separate conditions, so cover True-False state for each, across two test cases! Also, notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
+        "objective": "Condition coverage of line 12.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": 1,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)))",
+                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.9: Conditioning An Isosceles Triangle",
+        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
+        "test_cases_count": 2,
+        "score": 225,
+        "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
+        "objective": "Decision coverage of line 12.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": 1,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)))",
+                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.10: In Theory, An Isosceles Triangle",
+        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
+        "objective": "Statement coverage of line 13",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": 1,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+            ],
+            "tests": [
+                "this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_spaces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.11: Thoroughly Testing A Theoretical Isosceles Triangle",
+        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
+        "test_cases_count": 3,
+        "score": 325,
+        "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
+        "objective": "MCDC coverage of line 12",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "mcdc",
+        "passing_criteria": {
+            "condition_count": 1,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+            ],
+            "tests": [
+                "!this.count_blue_pieces(input, input.currentKey) == this.count_red_spaces(input, input.currentKey) && this.count_blue_spaces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey)",
+                "this.count_blue_pieces(input, input.currentKey) == this.count_red_spaces(input, input.currentKey) && !this.count_blue_spaces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey)",
+                "!this.count_blue_pieces(input, input.currentKey) == this.count_red_spaces(input, input.currentKey) && !this.count_blue_spaces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.12: Thoroughly Testing A Theoretical Scalene Triangle",
+        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
+        "test_cases_count": 3,
+        "score": 325,
+        "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
+        "objective": "MCDC coverage of line 10",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "mcdc",
+        "passing_criteria": {
+            "condition_count": 1,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+            ],
+            "tests": [
+                "!this.count_blue_pieces(input, input.currentKey) > this.count_red_spaces(input, input.currentKey) && this.count_blue_spaces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)",
+                "this.count_blue_pieces(input, input.currentKey) > this.count_red_spaces(input, input.currentKey) && !this.count_blue_spaces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)",
+                "!this.count_blue_pieces(input, input.currentKey) > this.count_red_spaces(input, input.currentKey) && !this.count_blue_spaces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.13: If This Was A Triangle, We'd Be Concerned",
+        "description": "We encourage creativity on this one. But we make no reservations about the results.",
+        "test_cases_count": 1,
+        "score": 150,
+        "hint": "Treat the first three If conditions as landmines - you can't cover them!",
+        "objective": "Statement coverage of line 15.",
+        "initial_board": 1,
+        "code_file": 6,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
+                "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)) || !(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"  
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.1: Draw A Right Triangle",
+        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
+        "objective": "Statement coverage of line 31.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "function six_one() { return Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2); } six_one();"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.2: Don't Draw A Right Triangle",
+        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
+        "objective": "Statement coverage of line 32.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.3: Drawing A Right Triangle... Or Not!",
+        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
+        "test_cases_count": 2,
+        "score": 225,
+        "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
+        "objective": "Decision coverage of line 30.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
+                "function six_one() { return (Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.4: Drawing A Right Triangle... Under A Condition!",
+        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
+        "objective": "Condition coverage of line 30.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
+                "function six_one() { return (Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.5: Draw A Scalene Triangle",
+        "description": "You might have to Google this one. But it's not that hard, we promise!",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "Here, the comment in line 2 is not that help- Actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
+        "objective": "Statement coverage of line 33.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3",
+                "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();"
+            ],
+            "tests": [
+                "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.6: Don't Draw A Scalene Triangle",
+        "description": "You might have to Google this one. But it's not that hard, we promise!",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "Here, the comment in line 2 is not that help- Actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
+        "objective": "Statement coverage of line 34.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.7: Draw A Scalene Triangle... Or Not!",
+        "description": "You might have to Google this one. But it's not that hard, we promise!",
+        "test_cases_count": 2,
+        "score": 225,
+        "hint": "Here, the comment in line 2 is not that help- Actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
+        "objective": "Decision coverage of line 32.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)",
+                "(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.8: Draw A Scalene Triangle... Under A Condition!",
+        "description": "You might have to Google this one. But it's not that hard, we promise!",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "Here, the comment in line 2 is not that help- Actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
+        "objective": "Decision coverage of line 32.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)",
+                "(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.9: Draw An Isosceles Triangle",
+        "description": "Be honest, did you remember these ones? We hope so! Once again, it's an easy challenge.",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "An isosceles triangle has only two equal sides. It doesn't matter which ones you choose to be equal.",
+        "objective": "Statement coverage of line 35.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3",
+                "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)"
+            ],
+            "tests": [
+                "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.10: Don't Draw An Isosceles Triangle",
+        "description": "Be honest, did you remember these ones? We hope so! Once again, it's an easy challenge.",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "An isosceles triangle has only two equal sides. It doesn't matter which ones you choose to be equal.",
+        "objective": "Statement coverage of line 36.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 3"
+            ],
+            "tests": [
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.11: (Don't) Draw An Equilateral Triangle",
+        "description": "Believe it or not, it's impossible... Unless we get creative!",
+        "test_cases_count": 1,
+        "score": 200,
+        "hint": "No checks are performed on the triangle's sides, so you can make them equal. But how? ",
+        "objective": "Statement coverage of line 37.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 0",
+                "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2)"
+            ],
+            "tests": [
+                "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && (new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1)[0] == 0"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.12: Equilateral Triangles... Or Not!",
+        "description": "Believe it or not, it's impossible... Unless we get creative!",
+        "test_cases_count": 2,
+        "score": 300,
+        "hint": "No checks are performed on the triangle's sides, so you can make them equal. But how? ",
+        "objective": "Decision coverage of line 36.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 0",
+                "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2)"
+            ],
+            "tests": [
+                "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && (new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1)[0] == 0",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && (new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1)[0] == 0)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.13: Equilateral Triangles... Under A Condition!",
+        "description": "Believe it or not, it's impossible... Unless we get creative!",
+        "test_cases_count": 2,
+        "score": 400,
+        "hint": "No checks are performed on the triangle's sides, so you can make them equal. But how? ",
+        "objective": "Decision coverage of line 36.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 0",
+                "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2)"
+            ],
+            "tests": [
+                "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && (new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1)[0] == 0",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && (new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1)[0] == 0)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Hard",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 7.14: Thoroughly Testing Equilateral Triangles",
+        "description": "Believe it or not, it's impossible... Unless we get creative!",
+        "test_cases_count": 3,
+        "score": 500,
+        "hint": "No checks are performed on the triangle's sides, so you can make them equal. But how? ",
+        "objective": "Decision coverage of line 36.",
+        "initial_board": 1,
+        "code_file": 7,
+        "challenge_type": "mcdc",
+        "passing_criteria": {
+            "condition_count": null,
+            "preconditions": [
+                "this.find_blue_pieces(input, input.currentKey).length == 0",
+                "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)",
+                "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2)"
+            ],
+            "tests": [
+                "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && (new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1)[0] == 0",
+                "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size != 1 && (new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1)[0] == 0",
+                "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && (new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1)[0] != 0"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Hard",
+        "owner_id": 1
     }
 ]

@@ -17,11 +17,21 @@
     {
         "id": 4,
         "name": "Test File 4: Has Game Ended?",
-        "content": "function has_game_ended(board) {\n\tvar pieces = utils.get_pieces(board);\n\n\t// If there is only one piece left, the game has ended.\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.all(p => p.color == Color.RED) || pieces.all(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+        "content": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\n\t// If there is only one piece left, the game has ended.\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.all(p => p.color == Color.RED) || pieces.all(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
     },
     {
         "id": 5,
         "name": "Test File 5: Who Won?",
-        "content": "function who_won(board) {\n\tvar blue = utils.count_blue_pieces(board),\n\t\tred = utils.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (utils.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}"
+        "content": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}"
+    },
+    {
+        "id": 6,
+        "name": "Test File 6: Build A Triangle",
+        "content": "function build_a_triangle(board) {\n\tvar a = this.count_red_pieces(board); // Counts the number of blue pieces.\n\tvar b = this.count_blue_pieces(board); // Counts the number of red pieces.\n\tvar c = this.count_empty_spaces(board); // Counts the number of empty spaces (no pieces).\n\t\n\t// Tests if the lengths of the sides of the triangle are valid.\n\tif (this.isTriangle(a, b, c)) {\n\t\treturn true;\n\t} else {\n\t\tif (b < c && b > a) {\n\t\t\treturn true;\n\t\t} else if (b == a || b == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
+    },
+    {
+        "id": 7,
+        "name": "Test File 7: Draw A Triangle",
+        "content": "function draw_a_triangle(board) {\n\t// This function finds all blue pieces in the board and\n\t// returns them in a list. The final list is ordered by\n\t// row and column - respectively, (x, y).\n\tvar vertices = this.find_blue_pieces(board)\n\n\tif (vertices.length != 3) {\n\t\treturn;\n\t}\n\n\tvar side_1 = [vertices[0], vertices[1]],\n\t\tside_2 = [vertices[1], vertices[2]],\n\t\tside_3 = [vertices[2], vertices[0]];\n\n\t// This function calculates the Cartesian distance between\n\t// two (x, y) vertices. It rounds up to the nearest integer.\n\tvar length_1 = this.distance(side_1[0], side_1[1]),\n\t\tlength_2 = this.distance(side_2[0], side_2[1]),\n\t\tlength_3 = this.distance(side_3[0], side_3[1]);\n\n\tvar ordered_sides = [length_1, length_2, length_3].sort();\n\n\tvar side_a = ordered_sides[0],\n\t\tside_b = ordered_sides[1],\n\t\tside_c = ordered_sides[2];\n\n\t// Math.sqrt() calculates the square root of a number.\n\t// Math.pow(number, power) calculates number^power.\n\t// Sets are like lists, but they contain no duplicates.\n\tif (Math.sqrt(Math.pow(side_a, 2) + Math.pow(side_b, 2)) == side_c) {\n\t\treturn true;\n\t} else if (new Set([side_a, side_b, side_c]).size == 3) {\n\t\treturn true;\n\t} else if (new Set([side_a, side_b, side_c]).size == 2) {\n\t\treturn true;\n\t} else if (new Set([side_a, side_b, side_c]).size == 1 && side_a == 0) {\n\t\treturn false;\n\t}\n}"
     }
 ]
