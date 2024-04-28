@@ -42,7 +42,7 @@ app.config.globalProperties.$api_link = (
 
 const options = {
   position: POSITION.BOTTOM_LEFT,
-  timeout: 7000
+  timeout: 3000
 };
 
 app.use(Toast, options);

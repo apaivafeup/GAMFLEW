@@ -343,8 +343,11 @@ export const boardStore = defineStore('boardStore', {
     submit(score = null) {
       this.submitted = true
 
-      if (score != null) {
+
+      if (this.passed && score != null) {
         toast.success("You just earned " + score + " points!")
+      } else if (!this.passed) {
+        toast.success("Your attempt was submitted. Keep trying!")
       } else {
         this.failed = false;
         this.submitted = false;
