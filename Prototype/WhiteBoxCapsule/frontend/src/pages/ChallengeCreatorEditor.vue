@@ -388,7 +388,7 @@ export default {
     document.getElementById('input-hint-box').value = this.challenge.hint
     document.getElementById('input-objective-box').value = this.challenge.objective
     document.getElementById('input-score-box').value = this.challenge.score
-    document.getElementById('input-condition-box').value = this.challenge.passing_criteria.condition_count
+    document.getElementById('input-condition-box').value = this.challenge.passing_criteria.expression_count
 
     loader.hide()
     Prism.highlightAll()
@@ -420,7 +420,7 @@ export default {
         test_cases_count: 1,
         code_file: 1,
         passing_criteria: {
-          condition_count: 0,
+          expression_count: 0,
           preconditions: [''],
           tests: ['']
         }

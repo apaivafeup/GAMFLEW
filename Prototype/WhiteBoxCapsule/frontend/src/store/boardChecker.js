@@ -238,7 +238,7 @@ export const boardCheckerStore = defineStore('boardStore', {
           rows = []
 
         var charCode = 'A'.charCodeAt(0)
-        for (var i = 0; i < challenge.passing_criteria.condition_count; i++) {
+        for (var i = 0; i < challenge.passing_criteria.expression_count; i++) {
           headers.push({
             text: String.fromCharCode(charCode),
             value: String.fromCharCode(charCode++)
@@ -252,7 +252,7 @@ export const boardCheckerStore = defineStore('boardStore', {
 
         var possible_values = [true, false]
 
-        var combs = combinations(possible_values, challenge.passing_criteria.condition_count)
+        var combs = combinations(possible_values, challenge.passing_criteria.expression_count)
 
         var row = {},
           rows = []
