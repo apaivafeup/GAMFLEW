@@ -635,8 +635,10 @@
             "condition_count": 2,
             "preconditions": [],
             "tests": [
-                "this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12",
-                "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) <= 12"
+                "this.count_blue_pieces(input, case_num) > 12",
+                "this.count_red_pieces(input, case_num) > 12",
+                "!this.count_blue_pieces(input, case_num) > 12",
+                "!this.count_red_pieces(input, case_num) > 12"
             ]
         },
         "achievement_criteria": null,
@@ -658,8 +660,10 @@
             "condition_count": 2,
             "preconditions": [],
             "tests": [
-                "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) == 0",
-                "this.count_blue_pieces(input, case_num) != 0 && this.count_red_pieces(input, case_num) != 0"
+                "this.count_blue_pieces(input, case_num) == 0",
+                "this.count_red_pieces(input, case_num) == 0",
+                "this.count_blue_pieces(input, case_num) != 0",
+                "this.count_red_pieces(input, case_num) != 0"
             ]
         },
         "achievement_criteria": null,
@@ -1159,7 +1163,7 @@
                 "this.getPieces(input, case_num).some((piece) => piece.king)"
             ],
             "tests": [
-                "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
+                "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
@@ -1187,7 +1191,7 @@
             ],
             "tests": [
                 "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))",
-                "![{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))"
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX][newY].color == Color.EMPTY)); }))"
             ]
         },
         "achievement_criteria": null,
@@ -1348,7 +1352,7 @@
         "id": 0,
         "name": "Challenge 4.7: Another Colorful Condition",
         "description": "",
-        "test_cases_count": 1,
+        "test_cases_count": 2,
         "score": 275,
         "hint": "An empty board CAN work for one of the needed test cases. One test with ONE piece only, and another test that is anything EXCEPT that!",
         "objective": "Condition coverage of line 7.",
@@ -1361,8 +1365,10 @@
                 "this.get_pieces(input, case_num).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
-                "!(this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE))"
+                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED)",
+                "this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.RED)"
             ]
         },
         "achievement_criteria": null,
@@ -1534,8 +1540,10 @@
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
-                "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
+                "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)",
+                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))"
             ]
         },
         "achievement_criteria": null,
@@ -1552,14 +1560,14 @@
         "objective": "Statement coverage of line 11.",
         "initial_board": 3,
         "code_file": 6,
-        "challenge_type": "condition",
+        "challenge_type": "statement",
         "passing_criteria": {
             "condition_count": 2,
             "preconditions": [
                 "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ],
             "tests": [
-                "this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
+                "this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)",
             ]
         },
         "achievement_criteria": null,
@@ -1608,8 +1616,10 @@
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)))",
-                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)"
+                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
+                "this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
+                "this.count_blue_spaces(input, case_num) != this.count_red_pieces(input, case_num)"
             ]
         },
         "achievement_criteria": null,
