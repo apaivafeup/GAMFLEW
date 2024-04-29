@@ -76,6 +76,7 @@ import { RouterLink } from 'vue-router'
 export default defineComponent({
   beforeMount() {
     this.auth = authStore()
+    this.auth.checkAuth()
 
     this.getResults()
   },

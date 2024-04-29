@@ -25,6 +25,7 @@ export default {
       });
 
     this.auth = authStore()
+    this.auth.checkAuth()
     this.getLeaderboard()
 
     loader.hide()

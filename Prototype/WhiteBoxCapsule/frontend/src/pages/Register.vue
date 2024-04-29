@@ -20,6 +20,7 @@ export default {
             });
 
         this.auth = authStore()
+        this.auth.checkAuth()
 
         loader.hide()
     },

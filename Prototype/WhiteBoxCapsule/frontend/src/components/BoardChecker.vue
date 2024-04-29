@@ -98,6 +98,7 @@ export default {
     this.board = boardCreatorStore()
     this.board.generateState()
     this.auth = authStore()
+    this.auth.checkAuth()
   },
 
   mounted() { },

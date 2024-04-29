@@ -24,6 +24,7 @@ export default {
             });
 
         this.auth = authStore()
+        this.auth.checkAuth()
 
         await this.$axios.get(this.$api_link + '/game-rooms/', this.auth.config)
             .then(response => {

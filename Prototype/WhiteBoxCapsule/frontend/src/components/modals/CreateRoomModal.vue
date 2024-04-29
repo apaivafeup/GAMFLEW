@@ -52,6 +52,7 @@ export default defineComponent({
     this.board = boardStore()
     this.toast = useToast()
     this.auth = authStore()
+    this.auth.checkAuth()
   },
 
   data() {

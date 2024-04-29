@@ -186,6 +186,7 @@ export default {
   beforeMount() {
     this.board = boardStore()
     this.auth = authStore()
+    this.auth.checkAuth()
     this.toast = useToast()
   },
 
