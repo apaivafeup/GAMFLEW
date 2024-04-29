@@ -23,7 +23,7 @@ export default {
   <div class="row" style="justify-content: center; margin-top: 30px" v-if="!this.auth.auth">
     <Login />
   </div>
-  <div class="row" style="justify-content: center; margin-top: 30px" v-else>
+  <div class="row" style="justify-content: center; margin-top: 30px" v-else-if="this.auth.auth">
     <Menu />
   </div>
 </template>
