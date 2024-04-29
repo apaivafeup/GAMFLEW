@@ -4,7 +4,7 @@
     <title>Gamflew</title>
   </head>
   <div class="container">
-    <router-view></router-view>
+    <router-view :key="$route.fullPath"></router-view>
   </div>
   <button v-if="!url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode"
     id="theme-toggle">💡</button>
