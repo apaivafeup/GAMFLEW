@@ -442,6 +442,6 @@ def get_leaderboard(current_user: Annotated[models.User, Depends(get_current_act
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8000)
-    #uvicorn.run(app, host="10.227.242.121", port=8000, ssl_keyfile="./gamflew_api.key", ssl_certfile="./gamflew_api.pem")
+    #uvicorn.run(app, host="localhost", port=8000)
+    uvicorn.run(app, host="10.227.242.121", port=8000, ssl_keyfile="./gamflew_api.key", ssl_certfile="./gamflew_api.pem")
 

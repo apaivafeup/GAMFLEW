@@ -9,10 +9,9 @@ load_dotenv()
 
 local = eval(os.environ.get('LOCAL'))
 
-if not local: 
-    from sqlalchemy.dialects.mysql import ENUM, TEXT
-else:
-    from sqlalchemy.dialects.postgresql import ENUM
+
+from sqlalchemy.dialects.mysql import ENUM, TEXT
+
 
 Base = declarative_base()
 

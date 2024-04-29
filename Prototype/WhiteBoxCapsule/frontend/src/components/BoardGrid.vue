@@ -523,7 +523,12 @@ export default {
         this.board.submit(response.data.score)
         this.auth.getUserData(this.auth.user.id) // update user data
         if (body.attempt_type == 'pass') {
-          this.$router.back()
+          if (confirm('You passed the challenge. Want to move on to the next one?')) {
+            // var id = this.challenge.id + 1
+            // this.$router.go({ name: 'challenge', params: { id: id }, replace: true, force: true})
+            this.$router.back()
+          } else {
+          }
         }
       }).catch((error) => {
         this.toast.error('An error occurred while submitting your attempt. Please try again later.')
