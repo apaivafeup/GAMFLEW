@@ -47,7 +47,6 @@ def create_user(db: Session, user: schemas.User):
 def create_challenge(db: Session, challenge: schemas.Challenge):
     db_challenge = schemas.Challenge(
         name=challenge.name,
-        description=challenge.description,
         hint=challenge.hint,
         objective=challenge.objective,
         test_cases_count=challenge.test_cases_count,
@@ -72,7 +71,6 @@ def update_challenge(db: Session, challenge_id: int, challenge: schemas.Challeng
         return None
 
     db_challenge.name = challenge.name
-    db_challenge.description = challenge.description
     db_challenge.hint = challenge.hint
     db_challenge.objective = challenge.objective
     db_challenge.test_cases_count = challenge.test_cases_count

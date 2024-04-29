@@ -44,7 +44,6 @@ class ChallengeComments(BaseModel):
 class Challenge(BaseModel):
     id: Optional[int]
     name: str
-    description: str
     test_cases_count: int
     hint: str
     objective: str
@@ -64,7 +63,6 @@ class Challenge(BaseModel):
 class ChallengeBasics(BaseModel):
     id: Optional[int]
     name: str
-    description: str
     code_file: str
     passing_criteria: dict
     score: int
