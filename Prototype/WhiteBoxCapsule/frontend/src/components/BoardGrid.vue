@@ -503,6 +503,8 @@ export default {
         }
       }
 
+      console.log('passed', passed)
+
       if (!passed.includes(false)) {
         this.board.add = false
         this.board.pass(this.challenge.score)
