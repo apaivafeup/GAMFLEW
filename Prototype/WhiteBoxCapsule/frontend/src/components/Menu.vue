@@ -98,7 +98,6 @@ import { authStore } from '../store/authStore'
 export default defineComponent({
   beforeMount() {
     this.auth = authStore()
-    this.auth.checkAuth()
   },
 
   components: {},
