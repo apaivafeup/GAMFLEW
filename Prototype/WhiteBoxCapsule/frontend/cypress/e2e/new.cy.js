@@ -13,24 +13,23 @@ beforeEach('login', () => {
     cy.visit('http://localhost:5173/#/challenges')
 })
 
-describe('test file 3', () => {
-    describe("challenge 3.15", () => {
-        it('pass challenge 3.15', () => {
+describe('test file 4', () => {
+    describe("challenge 4.9", () => {
+        it('pass challenge 4.9', () => {
             // Section 1
-            cy.get('#challenge-48-play').click().wait(1000)
+            cy.get('#challenge-57-play').click().wait(1000)
     
             // Section 2
             cy.get('#add-button').click()
             cy.get('#board-box-5-1').click().click()
+            cy.get('#board-box-5-3').click().click()
             cy.get('#add-button').click()
             cy.get('#next-button').click()
             cy.get('#add-button').click()
-            for (var i = 0; i < 8; i++) {
-                for (var j = 0; j < 8; j++) {
-                    cy.get('#board-box-' + i + '-' + j).click().click()
-                }
-            }
+            cy.get('#board-box-5-3').click()
+            cy.get('#board-box-5-1').click()
             cy.get('#add-button').click()
+            cy.get('#next-button').click()
             
             // Section 3
             cy.get('#go-button').click()
@@ -42,12 +41,12 @@ describe('test file 3', () => {
             cy.get('.alert-success').should('be.visible')
         })
 
-        it('fail challenge 3.15', () => {
+        it('fail challenge 4.9', () => {
             // Section 1
-            cy.get('#challenge-48-play').click().wait(1000)
+            cy.get('#challenge-57-play').click().wait(1000)
     
             // Section 2
-            cy.get('#next-button').click()
+            cy.get('#next-button').click().click()
 
             // Section 3
             cy.get('#go-button').click()

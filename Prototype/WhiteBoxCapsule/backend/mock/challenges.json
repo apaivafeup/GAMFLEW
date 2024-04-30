@@ -1203,7 +1203,7 @@
         "name": "Challenge 4.1: Only One Piece",
         "description": "Because only one player can win!",
         "test_cases_count": 1,
-        "score": 150,
+        "score": 125,
         "hint": "You can choose the piece's color. But you must only put one piece!",
         "objective": "Statement coverage of line 6.",
         "initial_board": 1,
@@ -1212,11 +1212,10 @@
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64",
-                "this.get_pieces(input, case_num).length != 0"
+                "this.count_empty_spaces(input, input.currentKey) != 64"
             ],
             "tests": [
-                "this.get_pieces(input, case_num).length == 1"
+                "this.get_pieces(input, input.currentKey).length == 1"
             ]
         },
         "achievement_criteria": null,
@@ -1241,7 +1240,7 @@
             ],
             "tests": [
                 "this.get_pieces(input, case_num).length == 1",
-                "!this.get_pieces(input, case_num).length == 1"
+                "!(this.get_pieces(input, case_num).length == 1)"
             ]
         },
         "achievement_criteria": null,
@@ -1312,11 +1311,11 @@
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64",
-                "this.get_pieces(input, case_num).length != 1"
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.get_pieces(input, input.currentKey).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)"
+                "this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)"
             ]
         },
         "achievement_criteria": null,
@@ -1337,11 +1336,12 @@
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.get_pieces(input, case_num).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
-                "!(this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE))"
+                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE)",
+                "!(this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE))"
             ]
         },
         "achievement_criteria": null,
@@ -1366,9 +1366,9 @@
             ],
             "tests": [
                 "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED)",
-                "this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
-                "!this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
-                "!this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.RED)"
+                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED)"
             ]
         },
         "achievement_criteria": null,
@@ -1379,9 +1379,9 @@
         "id": 0,
         "name": "Challenge 4.8: Another Colorful Condition",
         "description": "",
-        "test_cases_count": 2,
+        "test_cases_count": 1,
         "score": 250,
-        "hint": "An empty board CAN work for one of the needed test cases. You need to avoid the Ifs from lines 5 and 7.",
+        "hint": "Could an empty board work? You need to avoid the Ifs from lines 5 and 7.",
         "objective": "Statement coverage of line 10.",
         "initial_board": 1,
         "code_file": 4,
@@ -1389,9 +1389,9 @@
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
+                "this.get_pieces(input, input.currentKey).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, input.currentKey).length != 1",
                 "!(this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE))"
             ]
         },
@@ -1413,13 +1413,12 @@
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64",
-                "this.get_pieces(input, input.currentKey).length != 1"
+                "this.get_pieces(input, case_num).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || !this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE)",
-                "!this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE)",
-                "!this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || !this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE)"
+                "this.get_pieces(input, case_num).every(piece => piece.color == Color.RED) && !this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, case_num).every(piece => piece.color == Color.RED) && this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)",
+                "this.get_pieces(input, case_num).length == 0 || (!(this.get_pieces(input, case_num).every(piece => piece.color == Color.RED)) && !(this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)))"
             ]
         },
         "achievement_criteria": null,
