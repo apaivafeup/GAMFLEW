@@ -56,7 +56,7 @@
           <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: rgb(13, 202, 240)!important; text-align: center; display: flex; justify-content: center;">
             {{ challenge.difficulty }}
           </div>
-          <button v-if="!this.editor" class="badge menu-button comments-badge play-badge" style="margin: 0px; justify-content: center;" @click="goToChallenge(challenge.id)">
+          <button v-if="!this.editor" :id="'challenge-' + challenge.id + '-play'" class="badge menu-button comments-badge play-badge" style="margin: 0px; justify-content: center;" @click="goToChallenge(challenge.id)">
             Play ▶️
           </button>
           <button v-else class="badge menu-button comments-badge play-badge" style="margin: 0px; justify-content: center;" @click="goToChallenge(challenge.id)">

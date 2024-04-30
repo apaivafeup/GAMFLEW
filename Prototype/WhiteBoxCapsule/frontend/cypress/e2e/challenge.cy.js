@@ -4,12 +4,9 @@ beforeEach('login', () => {
     cy.get('#exampleInputPassword').type('password')
     cy.get('#login-button').click()
     cy.viewport(1920, 1080)
-    cy.wait(1000)
 })
 
 describe("Basic Functionality", () => {
-
-
     it('starts a challenge', () => {
 
         cy.get('#single-player-button').click()
