@@ -14,10 +14,10 @@ beforeEach('login', () => {
 })
 
 describe('test file 4', () => {
-    describe("challenge 4.9", () => {
-        it('pass challenge 4.9', () => {
+    describe("challenge 5.1", () => {
+        it('pass challenge 5.1', () => {
             // Section 1
-            cy.get('#challenge-57-play').click().wait(1000)
+            cy.get('#challenge-58-play').click().wait(1000)
     
             // Section 2
             cy.get('#add-button').click()
@@ -41,9 +41,9 @@ describe('test file 4', () => {
             cy.get('.alert-success').should('be.visible')
         })
 
-        it('fail challenge 4.9', () => {
+        it('fail challenge 5.1', () => {
             // Section 1
-            cy.get('#challenge-57-play').click().wait(1000)
+            cy.get('#challenge-58-play').click().wait(1000)
     
             // Section 2
             cy.get('#next-button').click().click()
