@@ -21,11 +21,9 @@ describe('test file 6', () => {
     
             // Section 2
             cy.get('#add-button').click()
-            cy.get('#board-box-0-0').click()
-            cy.get('#add-button').click()
-            cy.get('#next-button').click()
-            cy.get('#add-button').click()
+            cy.get('#board-box-2-1').click().click()
             cy.get('#board-box-5-1').click().click()
+            cy.get('#board-box-5-5').click().click()
             cy.get('#add-button').click()
             
             // Section 3
