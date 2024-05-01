@@ -16,6 +16,7 @@ Be sure to check the code that is being deployed, and make sure it is the correc
 - Do ```CTRL + D`` to safely close the ssh connection.
 - Done!
 
-Be sure to check that the API is running and the frontend can connect.
+Be sure to check that the API (https://gamflew-api.fe.up.pt:8000/) is running and the frontend can connect.
+
 
 It's necessary to use the VPN to connect to the API, for now.
