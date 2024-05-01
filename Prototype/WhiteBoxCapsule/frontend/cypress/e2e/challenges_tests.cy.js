@@ -2341,3 +2341,596 @@ describe('test file 4', () => {
         })
     })
 })
+
+describe('test file 5', () => {
+    describe("challenge 5.1", () => {
+        it('pass challenge 5.1', () => {
+            // Section 1
+            cy.get('#challenge-58-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#board-box-5-3').click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.1', () => {
+            // Section 1
+            cy.get('#challenge-58-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-3').click()
+            cy.get('#add-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.2", () => {
+        it('pass challenge 5.2', () => {
+            // Section 1
+            cy.get('#challenge-59-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.2', () => {
+            // Section 1
+            cy.get('#challenge-59-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.3", () => {
+        it('pass challenge 5.3', () => {
+            // Section 1
+            cy.get('#challenge-60-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.3', () => {
+            // Section 1
+            cy.get('#challenge-60-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.4", () => {
+        it('pass challenge 5.4', () => {
+            // Section 1
+            cy.get('#challenge-61-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.4', () => {
+            // Section 1
+            cy.get('#challenge-61-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.5", () => {
+        it('pass challenge 5.5', () => {
+            // Section 1
+            cy.get('#challenge-62-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#board-box-5-3').click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.5', () => {
+            // Section 1
+            cy.get('#challenge-62-play').click().wait(1000)
+    
+            // Section 2
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.6", () => {
+        it('pass challenge 5.6', () => {
+            // Section 1
+            cy.get('#challenge-63-play').click().wait(1000)
+    
+            // Section 2
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.6', () => {
+            // Section 1
+            cy.get('#challenge-63-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#board-box-5-3').click()
+            cy.get('#add-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.7", () => {
+        it('pass challenge 5.7', () => {
+            // Section 1
+            cy.get('#challenge-64-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#board-box-5-3').click()
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.7', () => {
+            // Section 1
+            cy.get('#challenge-64-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.8", () => {
+        it('pass challenge 5.8', () => {
+            // Section 1
+            cy.get('#challenge-65-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#board-box-5-3').click()
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.8', () => {
+            // Section 1
+            cy.get('#challenge-65-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.9", () => {
+        it('pass challenge 5.9', () => {
+            // Section 1
+            cy.get('#challenge-66-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#board-box-5-3').click()
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.9', () => {
+            // Section 1
+            cy.get('#challenge-66-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.10", () => {
+        it('pass challenge 5.10', () => {
+            // Section 1
+            cy.get('#challenge-67-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.10', () => {
+            // Section 1
+            cy.get('#challenge-67-play').click().wait(1000)
+    
+            // Section 2
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.11", () => {
+        it('pass challenge 5.11', () => {
+            // Section 1
+            cy.get('#challenge-68-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-0-0').click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.11', () => {
+            // Section 1
+            cy.get('#challenge-68-play').click().wait(1000)
+    
+            // Section 2
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.12", () => {
+        it('pass challenge 5.12', () => {
+            // Section 1
+            cy.get('#challenge-69-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.12', () => {
+            // Section 1
+            cy.get('#challenge-69-play').click().wait(1000)
+    
+            // Section 2
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.13", () => {
+        it('pass challenge 5.13', () => {
+            // Section 1
+            cy.get('#challenge-70-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-0-0').click()
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.13', () => {
+            // Section 1
+            cy.get('#challenge-70-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.14", () => {
+        it('pass challenge 5.14', () => {
+            // Section 1
+            cy.get('#challenge-71-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-0-0').click()
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.14', () => {
+            // Section 1
+            cy.get('#challenge-71-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+
+    describe("challenge 5.15", () => {
+        it('pass challenge 5.15', () => {
+            // Section 1
+            cy.get('#challenge-72-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-0-0').click()
+            cy.get('#add-button').click()
+            cy.get('#next-button').click()
+            cy.get('#add-button').click()
+            cy.get('#board-box-5-1').click().click()
+            cy.get('#add-button').click()
+            
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-success').should('be.visible')
+        })
+
+        it('fail challenge 5.15', () => {
+            // Section 1
+            cy.get('#challenge-72-play').click().wait(1000)
+    
+            // Section 2
+            cy.get('#next-button').click()
+
+            // Section 3
+            cy.get('#go-button').click()
+            cy.get('#comment-modal-textarea').type('Example comment.')
+            cy.get('#comment-modal-button').click().wait(1000)
+            cy.on('window:confirm', () => false)
+
+            // Section 4
+            cy.get('.alert-danger').should('be.visible')
+        })
+    })
+})

@@ -1431,7 +1431,7 @@
         "description": "",
         "test_cases_count": 1,
         "score": 100,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "hint": "Zero is a number, just saying.",
         "objective": "Statement coverage of line 6.",
         "initial_board": 1,
         "code_file": 5,
@@ -1454,7 +1454,7 @@
         "description": "",
         "test_cases_count": 2,
         "score": 200,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "hint": "Zero is a number, by the way. But you can't use it for both test cases!",
         "objective": "Decision coverage of line 5.",
         "initial_board": 1,
         "code_file": 5,
@@ -1478,7 +1478,7 @@
         "description": "",
         "test_cases_count": 2,
         "score": 200,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "hint": "Zero is a number! But it's not useful for both test cases.",
         "objective": "Condition coverage of line 5.",
         "initial_board": 1,
         "code_file": 5,
@@ -1498,134 +1498,11 @@
     },
     {
         "id": 0,
-        "name": "Challenge 5.4: One Is Victorious",
-        "description": "",
-        "test_cases_count": 1,
-        "score": 125,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
-        "objective": "Statement coverage of line 8.",
-        "initial_board": 1,
-        "code_file": 5,
-        "challenge_type": "statement",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [
-                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
-            ],
-            "tests": [
-                "this.count_empty_spaces(input, input.currentKey) != 64"
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Easy",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
-        "name": "Challenge 5.5: One Is (Not) Victorious (?)",
-        "description": "",
-        "test_cases_count": 1,
-        "score": 125,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
-        "objective": "Statement coverage of line 11.",
-        "initial_board": 1,
-        "code_file": 5,
-        "challenge_type": "statement",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [
-                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
-            ],
-            "tests": [
-                "this.count_empty_spaces(input, input.currentKey) == 64"
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Easy",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
-        "name": "Challenge 5.6: A Tie... Or Not!",
+        "name": "Challenge 5.4: Equally Conditioned Decision",
         "description": "",
         "test_cases_count": 2,
-        "score": 225,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
-        "objective": "Decision coverage of line 6.",
-        "initial_board": 1,
-        "code_file": 5,
-        "challenge_type": "decision",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [
-                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
-            ],
-            "tests": [
-                "this.count_empty_spaces(input, input.currentKey) == 64",
-                "this.count_empty_spaces(input, input.currentKey) != 64"
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Easy",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
-        "name": "Challenge 5.7: Conditioned Tie",
-        "description": "",
-        "test_cases_count": 2,
-        "score": 250,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
-        "objective": "Condition coverage of line 6.",
-        "initial_board": 1,
-        "code_file": 5,
-        "challenge_type": "condition",
-        "passing_criteria": {
-            "expression_count": 1,
-            "preconditions": [
-                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
-            ],
-            "tests": [
-                "this.count_empty_spaces(input, input.currentKey) == 64",
-                "this.count_empty_spaces(input, input.currentKey) != 64"
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Easy",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
-        "name": "Challenge 5.8: Conditioning and Deciding A Tie",
-        "description": "",
-        "test_cases_count": 2,
-        "score": 250,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
-        "objective": "Condition/decision coverage of line 6.",
-        "initial_board": 1,
-        "code_file": 5,
-        "challenge_type": "condition/decision",
-        "passing_criteria": {
-            "expression_count": 1,
-            "preconditions": [
-                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
-            ],
-            "tests": [
-                "this.count_empty_spaces(input, input.currentKey) == 64",
-                "this.count_empty_spaces(input, input.currentKey) != 64"
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Easy",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
-        "name": "Challenge 5.9: Equally Decided and Conditioned",
-        "description": "",
-        "test_cases_count": 2,
-        "score": 250,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "score": 200,
+        "hint": "Zero is a number! But it's not useful for both test cases.",
         "objective": "Condition/decision coverage of line 5.",
         "initial_board": 1,
         "code_file": 5,
@@ -1645,11 +1522,134 @@
     },
     {
         "id": 0,
-        "name": "Challenge 5.10: Not A Tie",
+        "name": "Challenge 5.5: Everyone Wins!",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "You cannot use zero here. In the most basic terms (number of pieces per player), what is a tie?",
+        "objective": "Statement coverage of line 8.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, input.currentKey) != 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.6: No One Wins?",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "Only one number of pieces per player will work here. Remember: the board is an 8 by 8 grid!",
+        "objective": "Statement coverage of line 11.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, input.currentKey) == 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.7: A Tie... Or Not!",
         "description": "",
         "test_cases_count": 2,
+        "score": 225,
+        "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
+        "objective": "Decision coverage of line 6.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, case_num) == 64",
+                "this.count_empty_spaces(input, case_num) != 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.8: Conditioned Tie",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
+        "objective": "Condition coverage of line 6.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "expression_count": 1,
+            "preconditions": [
+                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, case_num) == 64",
+                "this.count_empty_spaces(input, case_num) != 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.9: Conditioning and Deciding A Tie",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
+        "objective": "Condition/decision coverage of line 6.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "condition/decision",
+        "passing_criteria": {
+            "expression_count": 1,
+            "preconditions": [
+                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, case_num) == 64",
+                "this.count_empty_spaces(input, case_num) != 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.10: Not A Tie",
+        "description": "",
+        "test_cases_count": 1,
         "score": 100,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "hint": "You can't use zero, here... That would lead to an early return!",
         "objective": "Statement coverage of line 14.",
         "initial_board": 1,
         "code_file": 5,
@@ -1671,7 +1671,7 @@
         "id": 0,
         "name": "Challenge 5.11: A Blue (But Not Sad) Victory!",
         "description": "",
-        "test_cases_count": 2,
+        "test_cases_count": 1,
         "score": 125,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
         "objective": "Statement coverage of line 14.",
@@ -1695,7 +1695,7 @@
         "id": 0,
         "name": "Challenge 5.12: A Red (But Not Angry) Victory!",
         "description": "",
-        "test_cases_count": 2,
+        "test_cases_count": 1,
         "score": 125,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
         "objective": "Statement coverage of line 17.",
@@ -1721,7 +1721,7 @@
         "description": "",
         "test_cases_count": 2,
         "score": 225,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
         "objective": "Decision coverage of line 14.",
         "initial_board": 2,
         "code_file": 5,
@@ -1729,11 +1729,11 @@
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
-                "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
+                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))",
-                "(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
+                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
         "achievement_criteria": null,
@@ -1746,7 +1746,7 @@
         "description": "",
         "test_cases_count": 2,
         "score": 250,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
         "objective": "Condition coverage of line 14.",
         "initial_board": 2,
         "code_file": 5,
@@ -1754,11 +1754,11 @@
         "passing_criteria": {
             "expression_count": 1,
             "preconditions": [
-                "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
+                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))",
-                "(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
+                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
         "achievement_criteria": null,
@@ -1771,7 +1771,7 @@
         "description": "",
         "test_cases_count": 2,
         "score": 275,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
         "objective": "Condition/decision coverage of line 14.",
         "initial_board": 2,
         "code_file": 5,
@@ -1779,11 +1779,11 @@
         "passing_criteria": {
             "expression_count": 1,
             "preconditions": [
-                "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
+                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))",
-                "(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
+                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
         "achievement_criteria": null,
