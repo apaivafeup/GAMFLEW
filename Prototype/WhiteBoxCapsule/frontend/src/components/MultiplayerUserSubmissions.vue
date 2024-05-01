@@ -85,6 +85,7 @@ export default {
       });
 
     this.auth = authStore()
+    this.auth.checkAuth()
     this.toast = useToast()
     this.solution = solutionViewer()
     await this.getUsers()

@@ -10,13 +10,11 @@ from schemas import AttemptType, ChallengeType, Difficulty, GameRoundState, Piec
 class PassingCriteria(BaseModel):
     preconditions: list[str]
     tests: list[str]
-    condition_count: Optional[int] = None
-
+    expression_count: Optional[int] = None
 
 class AchievementCriteria(BaseModel):
     preconditions: list[str]
     tests: list[str]
-
 
 class Attempt(BaseModel):
     id: Optional[int]
@@ -46,7 +44,6 @@ class ChallengeComments(BaseModel):
 class Challenge(BaseModel):
     id: Optional[int]
     name: str
-    description: str
     test_cases_count: int
     hint: str
     objective: str
@@ -66,7 +63,6 @@ class Challenge(BaseModel):
 class ChallengeBasics(BaseModel):
     id: Optional[int]
     name: str
-    description: str
     code_file: str
     passing_criteria: dict
     score: int

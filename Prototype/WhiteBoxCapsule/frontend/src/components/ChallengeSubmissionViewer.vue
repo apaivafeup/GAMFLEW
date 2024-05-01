@@ -203,6 +203,7 @@ export default {
     this.solution.defaultState()
     this.solution.generateState()
     this.auth = authStore()
+    this.auth.checkAuth()
 
     if (this.attempt != null) {
       this.solution.changeState(this.attempt.test_cases)

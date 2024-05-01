@@ -17,7 +17,7 @@
     {
         "id": 4,
         "name": "Test File 4: Has Game Ended?",
-        "content": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\n\t// If there is only one piece left, the game has ended.\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.all(p => p.color == Color.RED) || pieces.all(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+        "content": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\n\t// If there is only one piece left, the game has ended.\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
     },
     {
         "id": 5,

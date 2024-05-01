@@ -127,7 +127,6 @@ class Challenge(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(TEXT, index=True)
-    description = Column(TEXT, index=True)
     hint = Column(TEXT, index=True)
     objective = Column(TEXT, index=True)
     test_cases_count = Column(Integer, index=True)

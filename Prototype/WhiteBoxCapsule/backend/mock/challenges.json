@@ -11,7 +11,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0"
             ],
@@ -35,7 +35,7 @@
         "code_file": 1,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[case_num].length > 0"
             ],
@@ -60,7 +60,7 @@
         "code_file": 1,
         "challenge_type": "mcdc",
         "passing_criteria": {
-            "condition_count": 4,
+            "expression_count": 4,
             "preconditions": [
                 "input.log[case_num].length > 0"
             ],
@@ -88,7 +88,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0"
             ],
@@ -112,7 +112,7 @@
         "code_file": 1,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[case_num].length > 0"
             ],
@@ -137,7 +137,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0"
             ],
@@ -161,7 +161,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0"
             ],
@@ -185,7 +185,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0"
             ],
@@ -209,7 +209,7 @@
         "code_file": 1,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[case_num].length > 0"
             ],
@@ -234,7 +234,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
@@ -260,7 +260,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
@@ -286,7 +286,7 @@
         "code_file": 1,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[case_num].length > 0",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y)",
@@ -313,7 +313,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
@@ -339,7 +339,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
@@ -365,7 +365,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
@@ -391,7 +391,7 @@
         "code_file": 1,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[case_num].length > 0",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y)",
@@ -418,7 +418,7 @@
         "code_file": 1,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
@@ -444,7 +444,7 @@
         "code_file": 1,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "input.log[case_num].length > 0",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y)",
@@ -471,7 +471,7 @@
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, input.currentKey) > 12 || this.count_red_pieces(input, input.currentKey) > 12"
@@ -493,7 +493,7 @@
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, input.currentKey) == 0 || this.count_red_pieces(input, input.currentKey) == 0"
@@ -515,7 +515,7 @@
         "code_file": 2,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [],
             "tests": [
                 "!(this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12)",
@@ -538,7 +538,7 @@
         "code_file": 2,
         "challenge_type": "mcdc",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": 2,
             "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, case_num) > 12 && this.count_red_pieces(input, case_num) <= 12",
@@ -562,7 +562,7 @@
         "code_file": 2,
         "challenge_type": "mcdc",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": 2,
             "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) != 0",
@@ -586,7 +586,7 @@
         "code_file": 2,
         "challenge_type": "condition/decision",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": 2,
             "preconditions": [],
             "tests": [
                 "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) == 0",
@@ -609,7 +609,7 @@
         "code_file": 2,
         "challenge_type": "condition/decision",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": 2,
             "preconditions": [],
             "tests": [
                 "!(this.count_blue_pieces(input, case_num) > 12) && !(this.count_red_pieces(input, case_num) > 12)",
@@ -632,11 +632,13 @@
         "code_file": 2,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": 2,
             "preconditions": [],
             "tests": [
-                "this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12",
-                "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) <= 12"
+                "this.count_blue_pieces(input, case_num) > 12",
+                "this.count_red_pieces(input, case_num) > 12",
+                "!(this.count_blue_pieces(input, case_num) > 12)",
+                "!(this.count_red_pieces(input, case_num) > 12)"
             ]
         },
         "achievement_criteria": null,
@@ -655,11 +657,13 @@
         "code_file": 2,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": 2,
             "preconditions": [],
             "tests": [
-                "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) == 0",
-                "this.count_blue_pieces(input, case_num) != 0 && this.count_red_pieces(input, case_num) != 0"
+                "this.count_blue_pieces(input, case_num) == 0",
+                "this.count_red_pieces(input, case_num) == 0",
+                "this.count_blue_pieces(input, case_num) != 0",
+                "this.count_red_pieces(input, case_num) != 0"
             ]
         },
         "achievement_criteria": null,
@@ -678,7 +682,7 @@
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [],
             "tests": [
                 "this.get_pieces(input, input.currentKey).some((piece) => ![1, 3, 5, 7].includes(Number(piece.position.y)) && Number(piece.position.x) % 2 != 0)"
@@ -700,7 +704,7 @@
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [],
             "tests": [
                 "this.get_pieces(input, input.currentKey).some((piece) => ![0, 2, 4, 6].includes(Number(piece.position.y)) && Number(piece.position.x) % 2 == 0)"
@@ -722,7 +726,7 @@
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [],
             "tests": [
                 "this.get_pieces(input, input.currentKey).some((piece) => Number(piece.position.x) % 2 != 0)"
@@ -744,7 +748,7 @@
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "this.count_blue_pieces(input, input.currentKey) != 0 && this.count_red_pieces(input, input.currentKey) != 0",
                 "this.count_empty_spaces(input, input.currentKey) != 64"
@@ -769,7 +773,7 @@
         "code_file": 2,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": 0,
+            "expression_count": 0,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.count_blue_pieces(input, input.currentKey) != 0 && this.count_red_pieces(input, input.currentKey) != 0"
@@ -795,7 +799,7 @@
         "code_file": 2,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": 2,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 0",
                 "this.count_blue_pieces(input, input.currentKey) <= 12 && this.count_red_pieces(input, input.currentKey) <= 12",
@@ -821,7 +825,7 @@
         "code_file": 3,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64"
             ],
@@ -845,7 +849,7 @@
         "code_file": 3,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
@@ -870,7 +874,7 @@
         "code_file": 3,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
@@ -895,7 +899,7 @@
         "code_file": 3,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
@@ -920,7 +924,7 @@
         "code_file": 3,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
@@ -945,7 +949,7 @@
         "code_file": 3,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
@@ -970,7 +974,7 @@
         "code_file": 3,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
@@ -996,7 +1000,7 @@
         "code_file": 3,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
@@ -1021,7 +1025,7 @@
         "code_file": 3,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)",
@@ -1047,7 +1051,7 @@
         "code_file": 3,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)",
@@ -1074,7 +1078,7 @@
         "code_file": 3,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
@@ -1101,7 +1105,7 @@
         "code_file": 3,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": 1,
+            "expression_count": 1,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "![ { x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 } ].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX + direction.x][newY + direction.y].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
@@ -1127,7 +1131,7 @@
         "code_file": 3,
         "challenge_type": "condition/decision",
         "passing_criteria": {
-            "condition_count": 1,
+            "expression_count": 1,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
@@ -1153,13 +1157,13 @@
         "code_file": 3,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": 3,
+            "expression_count": 3,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
-                "this.getPieces(input, case_num).some((piece) => piece.king)"
+                "this.get_pieces(input, case_num).some((piece) => piece.king)"
             ],
             "tests": [
-                "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
+                "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
@@ -1174,20 +1178,20 @@
         "test_cases_count": 2,
         "score": 450,
         "hint": "Only one piece needs to pass the test in each test case! You can check Checkers' rules to know how movement works.",
-        "objective": "Decision coverage of line 33.",
+        "objective": "Decision coverage of line 47.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
             "tests": [
-                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))",
-                "![{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX][newY].color != Color.EMPTY)); }))"
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
+                "![{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
         "achievement_criteria": null,
@@ -1199,20 +1203,19 @@
         "name": "Challenge 4.1: Only One Piece",
         "description": "Because only one player can win!",
         "test_cases_count": 1,
-        "score": 150,
+        "score": 125,
         "hint": "You can choose the piece's color. But you must only put one piece!",
         "objective": "Statement coverage of line 6.",
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64",
-                "this.get_pieces(input, case_num).length != 0"
+                "this.count_empty_spaces(input, input.currentKey) != 64"
             ],
             "tests": [
-                "this.get_pieces(input, case_num).length == 1"
+                "this.get_pieces(input, input.currentKey).length == 1"
             ]
         },
         "achievement_criteria": null,
@@ -1231,13 +1234,13 @@
         "code_file": 4,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
             "tests": [
                 "this.get_pieces(input, case_num).length == 1",
-                "!this.get_pieces(input, case_num).length == 1"
+                "!(this.get_pieces(input, case_num).length == 1)"
             ]
         },
         "achievement_criteria": null,
@@ -1256,7 +1259,7 @@
         "code_file": 4,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": 1,
+            "expression_count": 1,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
@@ -1281,7 +1284,7 @@
         "code_file": 4,
         "challenge_type": "condition/decision",
         "passing_criteria": {
-            "condition_count": 1,
+            "expression_count": 1,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
@@ -1306,13 +1309,13 @@
         "code_file": 4,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64",
-                "this.get_pieces(input, case_num).length != 1"
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.get_pieces(input, input.currentKey).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)"
+                "this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)"
             ]
         },
         "achievement_criteria": null,
@@ -1331,13 +1334,14 @@
         "code_file": 4,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
+                "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.get_pieces(input, case_num).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
-                "!(this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE))"
+                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE)",
+                "!(this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE))"
             ]
         },
         "achievement_criteria": null,
@@ -1348,7 +1352,7 @@
         "id": 0,
         "name": "Challenge 4.7: Another Colorful Condition",
         "description": "",
-        "test_cases_count": 1,
+        "test_cases_count": 2,
         "score": 275,
         "hint": "An empty board CAN work for one of the needed test cases. One test with ONE piece only, and another test that is anything EXCEPT that!",
         "objective": "Condition coverage of line 7.",
@@ -1356,13 +1360,15 @@
         "code_file": 4,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": 2,
             "preconditions": [
                 "this.get_pieces(input, case_num).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
-                "!(this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE))"
+                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED)",
+                "this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED)"
             ]
         },
         "achievement_criteria": null,
@@ -1373,19 +1379,19 @@
         "id": 0,
         "name": "Challenge 4.8: Another Colorful Condition",
         "description": "",
-        "test_cases_count": 2,
+        "test_cases_count": 1,
         "score": 250,
-        "hint": "An empty board CAN work for one of the needed test cases. You need to avoid the Ifs from lines 5 and 7.",
+        "hint": "Could an empty board work? You need to avoid the Ifs from lines 5 and 7.",
         "objective": "Statement coverage of line 10.",
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
+                "this.get_pieces(input, input.currentKey).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, input.currentKey).length != 1",
                 "!(this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE))"
             ]
         },
@@ -1405,15 +1411,379 @@
         "code_file": 4,
         "challenge_type": "mcdc",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64",
-                "this.get_pieces(input, input.currentKey).length != 1"
+                "this.get_pieces(input, case_num).length != 1"
             ],
             "tests": [
-                "this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || !this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE)",
-                "!this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE)",
-                "!this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || !this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE)"
+                "this.get_pieces(input, case_num).every(piece => piece.color == Color.RED) && !this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)",
+                "!this.get_pieces(input, case_num).every(piece => piece.color == Color.RED) && this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)",
+                "this.get_pieces(input, case_num).length == 0 || (!(this.get_pieces(input, case_num).every(piece => piece.color == Color.RED)) && !(this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.1: Equal Footing",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 100,
+        "hint": "Zero is a number, just saying.",
+        "objective": "Statement coverage of line 6.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+            ],
+            "tests": [
+                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.2: Evenly Matched... or Not!",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 200,
+        "hint": "Zero is a number, by the way. But you can't use it for both test cases!",
+        "objective": "Decision coverage of line 5.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+            ],
+            "tests": [
+                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)",
+                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.3: Equally Conditioned",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 200,
+        "hint": "Zero is a number! But it's not useful for both test cases.",
+        "objective": "Condition coverage of line 5.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "expression_count": 1,
+            "preconditions": [
+            ],
+            "tests": [
+                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)",
+                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.4: Equally Conditioned Decision",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 200,
+        "hint": "Zero is a number! But it's not useful for both test cases.",
+        "objective": "Condition/decision coverage of line 5.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "condition/decision",
+        "passing_criteria": {
+            "expression_count": 1,
+            "preconditions": [
+            ],
+            "tests": [
+                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)",
+                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.5: Everyone Wins!",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "You cannot use zero here. In the most basic terms (number of pieces per player), what is a tie?",
+        "objective": "Statement coverage of line 8.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, input.currentKey) != 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.6: No One Wins?",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "Only one number of pieces per player will work here. Remember: the board is an 8 by 8 grid!",
+        "objective": "Statement coverage of line 11.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, input.currentKey) == 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.7: A Tie... Or Not!",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 225,
+        "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
+        "objective": "Decision coverage of line 6.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, case_num) == 64",
+                "this.count_empty_spaces(input, case_num) != 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.8: Conditioned Tie",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
+        "objective": "Condition coverage of line 6.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "expression_count": 1,
+            "preconditions": [
+                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, case_num) == 64",
+                "this.count_empty_spaces(input, case_num) != 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.9: Conditioning and Deciding A Tie",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
+        "objective": "Condition/decision coverage of line 6.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "condition/decision",
+        "passing_criteria": {
+            "expression_count": 1,
+            "preconditions": [
+                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)"
+            ],
+            "tests": [
+                "this.count_empty_spaces(input, case_num) == 64",
+                "this.count_empty_spaces(input, case_num) != 64"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.10: Not A Tie",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 100,
+        "hint": "You can't use zero, here... That would lead to an early return!",
+        "objective": "Statement coverage of line 14.",
+        "initial_board": 1,
+        "code_file": 5,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                
+            ],
+            "tests": [
+                "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.11: A Blue (But Not Sad) Victory!",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "objective": "Statement coverage of line 14.",
+        "initial_board": 2,
+        "code_file": 5,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
+            ],
+            "tests": [
+                "this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.12: A Red (But Not Angry) Victory!",
+        "description": "",
+        "test_cases_count": 1,
+        "score": 125,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
+        "objective": "Statement coverage of line 17.",
+        "initial_board": 2,
+        "code_file": 5,
+        "challenge_type": "statement",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.13: Colorful Victories",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 225,
+        "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
+        "objective": "Decision coverage of line 14.",
+        "initial_board": 2,
+        "code_file": 5,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.14: Colorful Conditioned Victories",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
+        "objective": "Condition coverage of line 14.",
+        "initial_board": 2,
+        "code_file": 5,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "expression_count": 1,
+            "preconditions": [
+                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 5.15: Colorful Conditioned Decisions",
+        "description": "",
+        "test_cases_count": 2,
+        "score": 275,
+        "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
+        "objective": "Condition/decision coverage of line 14.",
+        "initial_board": 2,
+        "code_file": 5,
+        "challenge_type": "condition/decision",
+        "passing_criteria": {
+            "expression_count": 1,
+            "preconditions": [
+                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
         "achievement_criteria": null,
@@ -1427,12 +1797,12 @@
         "test_cases_count": 1,
         "score": 175,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
-        "objective": "Statement coverage of line 8.",
+        "objective": "Statement coverage of line 7.",
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.count_red_pieces(input, input.currentKey) != 0",
                 "this.count_blue_pieces(input, input.currentKey) != 0",
@@ -1453,12 +1823,12 @@
         "test_cases_count": 1,
         "score": 100,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
-        "objective": "Statement coverage of line 10.",
+        "objective": "Statement coverage of line 9.",
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
             ],
             "tests": [
@@ -1471,17 +1841,17 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.3: Don't-Build-Or-Build-a-Triangle",
-        "description": "Yes, we're taking you back to Middle School.",
+        "name": "Challenge 6.3: Triangular Decision",
+        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
         "test_cases_count": 2,
-        "score": 300,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
-        "objective": "Decision coverage of line 10.",
+        "score": 200,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
+        "objective": "Decision coverage of line 6.",
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
             ],
             "tests": [
@@ -1490,52 +1860,76 @@
             ]
         },
         "achievement_criteria": null,
-        "difficulty": "Easy",
+        "difficulty": "Very Easy",
         "owner_id": 1
     },
     {
         "id": 0,
-        "name": "Challenge 6.4: Triangulating Condition",
+        "name": "Challenge 6.4: Triangular Condition",
+        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
+        "test_cases_count": 2,
+        "score": 200,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
+        "objective": "Condition coverage of line 6.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+            ],
+            "tests": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.5: Triangular Conditional Decision",
+        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
+        "test_cases_count": 2,
+        "score": 200,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
+        "objective": "Condition/decision coverage of line 6.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "condition/decision",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+            ],
+            "tests": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Very Easy",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.6: Don't-Build-Or-Build-a-Triangle",
         "description": "Yes, we're taking you back to Middle School.",
         "test_cases_count": 2,
-        "score": 300,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
-        "objective": "Condition coverage of line 10.",
-        "initial_board": 3,
-        "code_file": 6,
-        "challenge_type": "condition",
-        "passing_criteria": {
-            "condition_count": null,
-            "preconditions": [
-            ],
-            "tests": [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
-                "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Easy",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
-        "name": "Challenge 6.5: Not Quite a Scalene Triangle",
-        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle. That means one side can be equal to zero!",
-        "test_cases_count": 2,
         "score": 225,
-        "hint": "Though it's all tested at once, you're dealing with two separate conditions. Each case needs to cover True-False state for each, across two tests! Notice how the variables' meaning (i.e., variable a will always count red pieces) never changes!",
-        "objective": "Condition coverage of line 10.",
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
+        "objective": "Decision coverage of line 9.",
         "initial_board": 3,
         "code_file": 6,
-        "challenge_type": "condition",
+        "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": null,
             "preconditions": [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
-                "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
+                "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)",
+                "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))"
             ]
         },
         "achievement_criteria": null,
@@ -1544,72 +1938,50 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.6: Possibly, A Scalene Triangle",
+        "name": "Challenge 6.7: Triangulating Condition",
+        "description": "Yes, we're taking you back to Middle School.",
+        "test_cases_count": 2,
+        "score": 450,
+        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
+        "objective": "Condition coverage of line 9.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "condition",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ],
+            "tests": [
+                "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)",
+                "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num))",
+                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.8: Never A Scalene Triangle",
         "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle. That means one side can be equal to zero!",
         "test_cases_count": 1,
         "score": 150,
-        "hint": "Though it's all tested at once, you're dealing with two separate conditions. Each case needs to cover True-False state for each, across two tests! Notice how the variables' meaning (i.e., variable a will always count red pieces) never changes!",
-        "objective": "Statement coverage of line 11.",
+        "hint": "You cannot make a triangle, nor can the condition on line 9 be hit!",
+        "objective": "Statement coverage of line 12.",
         "initial_board": 3,
         "code_file": 6,
-        "challenge_type": "condition",
+        "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 2,
+            "expression_count": 2,
             "preconditions": [
-                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
+                "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ],
             "tests": [
-                "this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Normal",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
-        "name": "Challenge 6.7: An Out of Scale(ne) Decision",
-        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle. That means one side can be equal to zero!",
-        "test_cases_count": 2,
-        "score": 300,
-        "hint": "Though it's all tested at once, you're dealing with two separate parts in the decision. Each test case must cover each possible decision!",
-        "objective": "Decision coverage of line 10.",
-        "initial_board": 3,
-        "code_file": 6,
-        "challenge_type": "decision",
-        "passing_criteria": {
-            "condition_count": 2,
-            "preconditions": [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
-            ],
-            "tests": [
-                "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
-                "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
-            ]
-        },
-        "achievement_criteria": null,
-        "difficulty": "Normal",
-        "owner_id": 1
-    },
-    {
-        "id": 0,
-        "name": "Challenge 6.8: Conditioning An Isosceles Triangle",
-        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
-        "test_cases_count": 2,
-        "score": 300,
-        "hint": "If it's not a triangle, sides don't have to be greater than 0. You're dealing with two separate conditions, so cover True-False state for each, across two test cases! Also, notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
-        "objective": "Condition coverage of line 12.",
-        "initial_board": 3,
-        "code_file": 6,
-        "challenge_type": "condition",
-        "passing_criteria": {
-            "condition_count": 1,
-            "preconditions": [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
-            ],
-            "tests": [
-                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)))",
-                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)"
+                "this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)"
             ]
         },
         "achievement_criteria": null,
@@ -1621,20 +1993,23 @@
         "name": "Challenge 6.9: Conditioning An Isosceles Triangle",
         "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 2,
-        "score": 225,
-        "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
-        "objective": "Decision coverage of line 12.",
+        "score": 450,
+        "hint": "If it's not a triangle, sides don't have to be greater than 0. You're dealing with two separate conditions, so cover True-False state for each, across two test cases! Also, notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
+        "objective": "Condition coverage of line 12.",
         "initial_board": 3,
         "code_file": 6,
-        "challenge_type": "decision",
+        "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": 1,
+            "expression_count": 1,
             "preconditions": [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)))",
-                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_spaces(input, case_num) == this.count_red_pieces(input, case_num)"
+                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num)"
             ]
         },
         "achievement_criteria": null,
@@ -1643,7 +2018,32 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.10: In Theory, An Isosceles Triangle",
+        "name": "Challenge 6.10: Deciding If It's An Isosceles Triangle",
+        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
+        "test_cases_count": 2,
+        "score": 225,
+        "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
+        "objective": "Decision coverage of line 12.",
+        "initial_board": 3,
+        "code_file": 6,
+        "challenge_type": "decision",
+        "passing_criteria": {
+            "expression_count": 1,
+            "preconditions": [
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+            ],
+            "tests": [
+                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)))",
+                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)"
+            ]
+        },
+        "achievement_criteria": null,
+        "difficulty": "Normal",
+        "owner_id": 1
+    },
+    {
+        "id": 0,
+        "name": "Challenge 6.11: In Theory, An Isosceles Triangle",
         "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 1,
         "score": 125,
@@ -1653,12 +2053,12 @@
         "code_file": 6,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": 1,
+            "expression_count": 1,
             "preconditions": [
                 "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ],
             "tests": [
-                "this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_spaces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)"
+                "this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)"
             ]
         },
         "achievement_criteria": null,
@@ -1667,24 +2067,25 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.11: Thoroughly Testing A Theoretical Isosceles Triangle",
+        "name": "Challenge 6.12: Thoroughly Testing A Theoretical Isosceles Triangle",
         "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 3,
-        "score": 325,
+        "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
-        "objective": "MCDC coverage of line 12",
+        "objective": "Modified condition/decision coverage of line 11",
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "mcdc",
         "passing_criteria": {
-            "condition_count": 1,
+            "expression_count": 1,
             "preconditions": [
-                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))"
             ],
             "tests": [
-                "!this.count_blue_pieces(input, input.currentKey) == this.count_red_spaces(input, input.currentKey) && this.count_blue_spaces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey)",
-                "this.count_blue_pieces(input, input.currentKey) == this.count_red_spaces(input, input.currentKey) && !this.count_blue_spaces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey)",
-                "!this.count_blue_pieces(input, input.currentKey) == this.count_red_spaces(input, input.currentKey) && !this.count_blue_spaces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey)"
+                "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)"
             ]
         },
         "achievement_criteria": null,
@@ -1693,24 +2094,24 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.12: Thoroughly Testing A Theoretical Scalene Triangle",
+        "name": "Challenge 6.13: Thoroughly Testing A Theoretical Scalene Triangle",
         "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 3,
-        "score": 325,
+        "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
-        "objective": "MCDC coverage of line 10",
+        "objective": "Modified condition/decision coverage of line 9",
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "mcdc",
         "passing_criteria": {
-            "condition_count": 1,
+            "expression_count": 1,
             "preconditions": [
-                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "!this.count_blue_pieces(input, input.currentKey) > this.count_red_spaces(input, input.currentKey) && this.count_blue_spaces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)",
-                "this.count_blue_pieces(input, input.currentKey) > this.count_red_spaces(input, input.currentKey) && !this.count_blue_spaces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)",
-                "!this.count_blue_pieces(input, input.currentKey) > this.count_red_spaces(input, input.currentKey) && !this.count_blue_spaces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)"
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) >= this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) <= this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)"
             ]
         },
         "achievement_criteria": null,
@@ -1719,7 +2120,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.13: If This Was A Triangle, We'd Be Concerned",
+        "name": "Challenge 6.14: If This Was A Triangle, We'd Be Concerned",
         "description": "We encourage creativity on this one. But we make no reservations about the results.",
         "test_cases_count": 1,
         "score": 150,
@@ -1729,7 +2130,7 @@
         "code_file": 6,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
                 "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)) || !(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"  
@@ -1754,7 +2155,7 @@
         "code_file": 7,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -1778,7 +2179,7 @@
         "code_file": 7,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -1802,7 +2203,7 @@
         "code_file": 7,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -1827,7 +2228,7 @@
         "code_file": 7,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -1852,7 +2253,7 @@
         "code_file": 7,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3",
                 "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();"
@@ -1877,7 +2278,7 @@
         "code_file": 7,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -1901,7 +2302,7 @@
         "code_file": 7,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -1926,7 +2327,7 @@
         "code_file": 7,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -1951,7 +2352,7 @@
         "code_file": 7,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3",
                 "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
@@ -1977,7 +2378,7 @@
         "code_file": 7,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 3"
             ],
@@ -2001,7 +2402,7 @@
         "code_file": 7,
         "challenge_type": "statement",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 0",
                 "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
@@ -2028,7 +2429,7 @@
         "code_file": 7,
         "challenge_type": "decision",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 0",
                 "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
@@ -2056,7 +2457,7 @@
         "code_file": 7,
         "challenge_type": "condition",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 0",
                 "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",
@@ -2084,7 +2485,7 @@
         "code_file": 7,
         "challenge_type": "mcdc",
         "passing_criteria": {
-            "condition_count": null,
+            "expression_count": null,
             "preconditions": [
                 "this.find_blue_pieces(input, input.currentKey).length == 0",
                 "function six_one() { return !(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2) + Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2) == Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)); } six_one();",

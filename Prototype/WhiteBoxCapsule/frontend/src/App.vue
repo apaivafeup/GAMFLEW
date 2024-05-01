@@ -4,16 +4,22 @@
     <title>Gamflew</title>
   </head>
   <div class="container">
-    <router-view></router-view>
+    <router-view :key="$route.fullPath"></router-view>
   </div>
   <button v-if="!url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode"
     id="theme-toggle">💡</button>
+  <button @click="this.$router.back()"
+    id="theme-toggle" class="back">◀️</button>
 </template>
 
 <style>
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
+}
+
+.back {
+  margin-right: 45px;
 }
 </style>
 

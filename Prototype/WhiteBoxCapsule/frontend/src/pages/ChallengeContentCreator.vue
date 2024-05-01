@@ -34,6 +34,7 @@ export default {
 
     this.boardCreator = boardCreatorStore()
     this.auth = authStore()
+    this.auth.checkAuth()
 
     await this.$axios.get(this.$api_link + '/board-states', this.auth.config).then((response) => {
       response.data.forEach((board_state) => {

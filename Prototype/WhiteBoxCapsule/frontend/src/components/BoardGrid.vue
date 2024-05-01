@@ -27,6 +27,11 @@
 
       </div>
 
+      <router-link id="next-challenge" :to="{ name: 'challenge', params: { id: challenge.id + 1 } }" v-if="board.passed" style="opacity: 0%; color: transparent; background-color: transparent;">
+        <button id="next-challenge-button" class="button is-primary is-fullwidth">
+          Next Challenge
+        </button>
+      </router-link>
       <div class="progress-bar">
         {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
@@ -181,6 +186,7 @@ export default {
   beforeMount() {
     this.board = boardStore()
     this.auth = authStore()
+    this.auth.checkAuth()
     this.toast = useToast()
   },
 
@@ -464,6 +470,8 @@ export default {
         }
       }
 
+      console.log('passed', passed)
+
       if (!passed.includes(false)) {
         this.board.add = false
         this.board.pass(this.challenge.score)
@@ -481,6 +489,7 @@ export default {
         for (var i = 0; i < preconditions.length; i++) {
           var precondition = preconditions[i]
           if (!eval(precondition)) {
+            console.log(case_num, precondition)
             this.board.fail()
             return
           }
@@ -496,6 +505,8 @@ export default {
           }
         }
       }
+
+      console.log('passed', passed)
 
       if (!passed.includes(false)) {
         this.board.add = false
@@ -523,12 +534,8 @@ export default {
         this.board.submit(response.data.score)
         this.auth.getUserData(this.auth.user.id) // update user data
         if (body.attempt_type == 'pass') {
-          if (confirm('You passed the challenge. Want to move on to the next one?')) {
-            // var id = this.challenge.id + 1
-            // this.$router.go({ name: 'challenge', params: { id: id }, replace: true, force: true})
-            this.$router.back()
-          } else {
-          }
+          if (confirm('You have passed the challenge! Would you like to move on to the next challenge?'))
+            this.$router.push({ name: 'challenge', params: { id: Number(Number(this.challenge.id) + 1) } })
         }
       }).catch((error) => {
         this.toast.error('An error occurred while submitting your attempt. Please try again later.')
