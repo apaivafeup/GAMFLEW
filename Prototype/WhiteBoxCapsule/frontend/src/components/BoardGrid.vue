@@ -489,6 +489,7 @@ export default {
         for (var i = 0; i < preconditions.length; i++) {
           var precondition = preconditions[i]
           if (!eval(precondition)) {
+            console.log(case_num, precondition)
             this.board.fail()
             return
           }
