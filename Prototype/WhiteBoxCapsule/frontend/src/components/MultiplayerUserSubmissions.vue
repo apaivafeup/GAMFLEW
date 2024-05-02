@@ -7,7 +7,7 @@
   </div>
   <div v-else>
     <div class="row" style="text-align: center;">
-      <h1>Round Solution</h1>
+      <h1>Challenge Solution</h1>
     </div>
     <div class="row"
       style="display: grid; grid-template-columns: 45% 45%; place-content: center; grid-gap: 10px; grid-template-rows: 100%; max-height: 100%;">

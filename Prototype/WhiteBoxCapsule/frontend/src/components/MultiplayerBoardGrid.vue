@@ -32,7 +32,7 @@
           You can play!
         </span>
         <div class="row" v-if="this.round != undefined" style="justify-content: center;">
-          {{ 'Round ' + this.round.round_number + ' of ' + this.round.max_rounds}}
+          {{ 'Challenge ' + this.round.round_number + ' of ' + this.round.max_rounds}}
         </div>
         <div class="row" style="text-align: center;" v-else-if="this.round == undefined">
           <p style="text-align: center;"> 

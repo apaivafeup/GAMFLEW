@@ -41,7 +41,7 @@
               display: flex;
               justify-content: center;
               align-items: center;">
-                <strong style="font-size: 12px; margin-right: 5px;">Round {{ index + 1 }} of {{ this.room.rounds }}</strong>
+                <strong style="font-size: 12px; margin-right: 5px;">Challenge {{ index + 1 }} of {{ this.room.rounds }}</strong>
                 <div class="badge bg-primary" style="margin: 0px; font-size: 12px; background-color: rgb(255, 193, 7)!important;"><strong>{{ r.score }} points</strong></div>
               </div>
             </div>
