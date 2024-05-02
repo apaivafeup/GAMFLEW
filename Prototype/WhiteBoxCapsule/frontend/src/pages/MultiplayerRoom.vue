@@ -98,7 +98,7 @@ export default {
             playable: false, // if it's our turn to play (step 5),
             winner: [],
             got_round_solution: false,
-            show_solution_timer: 60*1000,
+            show_solution_timer: 60, //*1000,
             show_solution_interval: null,
             solution_timer_set: false,
             timer: 0,
