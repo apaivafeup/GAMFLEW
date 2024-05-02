@@ -31,7 +31,7 @@ import MultiplayerUserSubmissions from '../components/MultiplayerUserSubmissions
 
 <template style="overflow: hidden">
     <div v-if="this.got_round_solution">
-        <MultiplayerUserSubmissions :challenge="this.challenge" :attempt="this.round_solution"
+        <MultiplayerUserSubmissions :code_file="code_file" :challenge="this.challenge" :attempt="this.round_solution"
             :show_solution_timer="this.show_solution_timer" :playable="this.playable" />
     </div>
     <div v-else-if="loaded">
@@ -98,7 +98,7 @@ export default {
             playable: false, // if it's our turn to play (step 5),
             winner: [],
             got_round_solution: false,
-            show_solution_timer: 60,
+            show_solution_timer: 60*1000,
             show_solution_interval: null,
             solution_timer_set: false,
             timer: 0,

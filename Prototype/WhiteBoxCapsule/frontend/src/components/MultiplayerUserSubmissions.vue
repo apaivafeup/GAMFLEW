@@ -1,4 +1,5 @@
 <template>
+
   <div v-if="playable" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
     <h3>Please wait a minute.</h3>
     <h6>{{ show_solution_timer }} seconds left.</h6>
@@ -9,21 +10,25 @@
     <div class="row" style="text-align: center;">
       <h1>Challenge Solution</h1>
     </div>
-    <div class="row"
-      style="display: grid; grid-template-columns: 45% 45%; place-content: center; grid-gap: 10px; grid-template-rows: 100%; max-height: 100%;">
-      <div class="col" style="display: grid; grid-template-rows: 100%; grid-gap: 5px; overflow-y: scroll;">
-        <div class="col">
-          <div class="row" style="margin-bottom: 2.5px;">
-            <h6 style="margin: 0px;">Logged Interactions</h6>
-          </div>
+    <div class="row" style="display: grid; grid-template-columns: 50% 50%; padding: 30px;">
 
+      <div class="col" style="padding: 0px;">
+        <div class="row" style="width: 100%; display: flex; justify-content: center; margin-bottom: 10px;">
+          <div class="alert alert-warning player-info" style="font-size: 10px;">
+            <p style="margin: 0px; padding: 0px; align-self: center;">{{ this.challenge.objective }}</p>
+          </div>
+        </div>
+        <div class="row" style="width: 100%;">
+          <ChallengeCode :code_file="code_file" />
+        </div>
+        <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
           <div class="col" style="overflow-y: scroll; overflow-x: hidden;">
             <div class="row">
               <div style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'log-info-' + index"
                 v-for="(interaction, index) in solution.log[solution.currentKey]">
                 <div class='alert alert-secondary player-info precondition-alert' :id="'log-info-alert-' + index"
-                  style="display: flex; justify-content: start;">
-                  <div class="row" style="display: flex; align-self: center; text-align: center;">
+                style="min-height: 72px; max-height: 72px; overflow-y: scroll; display: flex; flex-direction: column; align-content: start;">
+                  <div class="col" style="font-size: 10px; display: flex; align-self: start; text-align: center;">
                     <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;"
                       v-if="interaction.type == 'move'">
                       <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' from ' }} <em> {{ this.getPosition(interaction.start) }}</em> {{ ' to ' }} <em> {{
@@ -40,14 +45,13 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
-      <div class="col" style="display: flex; justify-content: end; flex-direction: row; padding: 0px;">
+      <div class="col" style="padding: 0px;">
         <ChallengeSubmissionViewer :challenge="challenge" :attempt="attempt" />
       </div>
-    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -58,13 +62,17 @@ import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';
 import ChallengeSubmissionViewer from '../components/ChallengeSubmissionViewer.vue';
 import { Challenge } from '../store/models/challenge';
+import { CodeFile } from '../store/models/code_file';
+import ChallengeCode from './ChallengeCode.vue';
+import Prism from 'prismjs';
 
 export default {
-  components: { ChallengeSubmissionViewer },
+  components: { ChallengeSubmissionViewer, ChallengeCode },
 
   props: {
     attempt: {},
     challenge: Challenge,
+    code_file: CodeFile,
     show_solution_timer: Number,
     playable: Boolean
   },
@@ -89,6 +97,7 @@ export default {
     this.toast = useToast()
     this.solution = solutionViewer()
     await this.getUsers()
+    Prism.highlightAll()
     loader.hide()
   },
 
