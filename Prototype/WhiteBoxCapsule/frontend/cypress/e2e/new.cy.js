@@ -14,16 +14,13 @@ beforeEach('login', () => {
 })
 
 describe('test file 7', () => {
-    describe("challenge 7.1", () => {
-        it('pass challenge 7.1', () => {
+    describe("challenge 7.13", () => {
+        it('pass challenge 7.13', () => {
             // Section 1
-            cy.get('#challenge-87-play').click().wait(1000)
-    
+            cy.get('#challenge-99-play').click().wait(1000)
+
             // Section 2
-            cy.get('#add-button').click()
-            cy.get('#board-box-7-0').click()
-            cy.get('#add-button').click()
-            
+
             // Section 3
             cy.get('#go-button').click()
             cy.get('#comment-modal-textarea').type('Example comment.')
@@ -34,11 +31,16 @@ describe('test file 7', () => {
             cy.get('.alert-success').should('be.visible')
         })
 
-        it('fail challenge 7.1', () => {
+        it('fail challenge 7.13', () => {
             // Section 1
-            cy.get('#challenge-87-play').click().wait(1000)
-    
+            cy.get('#challenge-99-play').click().wait(1000)
+
             // Section 2
+            cy.get('#add-button').click()
+            cy.get('#board-box-0-0').click().click()
+            cy.get('#board-box-0-1').click().click()
+            cy.get('#board-box-0-2').click().click()
+            cy.get('#add-button').click()
 
             // Section 3
             cy.get('#go-button').click()
@@ -51,8 +53,3 @@ describe('test file 7', () => {
         })
     })
 })
-
-
-
-
-

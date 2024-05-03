@@ -199,10 +199,10 @@ export default {
       if (!a || !b) {
         return 0
       }
-
-      return Math.round(
+      
+      return Number.parseFloat(
         Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2))
-      )
+        ).toFixed(2)
     },
 
     get_pieces(board, boardKey) {
