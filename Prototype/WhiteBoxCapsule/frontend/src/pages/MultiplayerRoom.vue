@@ -36,7 +36,7 @@ import MultiplayerUserSubmissions from '../components/MultiplayerUserSubmissions
     </div>
     <div v-else-if="loaded">
             <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name"
-                :playable="this.playable" />
+                :playable="this.playable" :score="challenge.score" />
             <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user"
                 :playable="this.playable" :round="this.round" :timer="this.timer" :timer_set="this.timer_set" />
             <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id"
@@ -320,7 +320,7 @@ export default {
         },
 
         getTimeForRound() {
-            return 100
+            return 100000
             if (this.challenge.difficulty == 'Very Easy') {
                 return 100 // 1 minute and 40 seconds
             } else if (this.challenge.difficulty == 'Easy') {

@@ -2,7 +2,10 @@
   <header>
     <div class="row justify-content-between" id="header-row">
       <div class="col" id="challenge-id">
-        <strong>{{room_name + ': '}}</strong><em>{{ challenge_name.includes(':') ? challenge_name.split(':')[1] : challenge_name }}</em>
+        <div class="span" style="display: flex; flex-direction: row">
+          <strong style="margin-right: 2.5px;">{{room_name + ': '}}</strong><em style="margin-right: 5px;">{{ challenge_name.includes(':') ? challenge_name.split(':')[1] : challenge_name }}</em>
+          <span class="badge bg-primary" style="font-size: 12px; margin: 0px; background-color: rgb(169, 89, 255)!important; text-align: center; display: flex; justify-content: center;"><strong>{{ score }} points</strong></span>
+        </div>       
       </div>
       <div class="col">
         <p v-if="playable" style="margin: 0px; text-align: right; font-weight: bold; font-style: italic; color: rgb(169, 89, 255);">It's your turn! Go at it!</p>
@@ -19,7 +22,8 @@ export default {
   props: {
     room_name: String,
     challenge_name: String,
-    playable: Boolean
+    playable: Boolean,
+    score: Number
   },
 
   beforeMount() {
