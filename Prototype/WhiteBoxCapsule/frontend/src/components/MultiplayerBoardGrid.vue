@@ -25,6 +25,10 @@
       </div>
 
       <div class="progress-bar">
+        <span v-if="board.add" style="font-size: 10px; margin-bottom: 10px;">
+          Click a spot to change it! <br/>
+          More clicks do different things!
+        </span>
         <span v-if="this.playable && this.timer > 0">
           <strong>Time Left: </strong><em :style="this.timer >= 30 ? 'color: var(--text-color);' : 'color: red;'">{{this.timer}}</em>
         </span>
