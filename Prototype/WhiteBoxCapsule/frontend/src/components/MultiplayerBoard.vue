@@ -9,6 +9,7 @@ import { User } from '../store/models/user.js'
 import { CodeFile } from '../store/models/code_file'
 import { authStore } from '../store/authStore'
 import MultiplayerBoardGrid from './MultiplayerBoardGrid.vue'
+import Prism from 'prismjs'
 
 export default {
   props: {
@@ -30,6 +31,8 @@ export default {
 
   async beforeMount() {
     this.board = boardStore()
+    Prism.highlightAll()
+    console.log('board grid', this.can_pass)
   }
 }
 </script>
@@ -79,7 +82,7 @@ export default {
         </div>
       </div>
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
-      <MultiplayerBoardGrid :timer_set="this.timer_set" :challenge="challenge" :can_pass="this.can_pass" :playable="playable" :round="round" :timer="this.timer"/>
+      <MultiplayerBoardGrid :timer_set="this.timer_set" :challenge="challenge" :can_pass="can_pass" :playable="playable" :round="round" :timer="this.timer"/>
       <PlayerBar :user="user" />
     </div>
   </div>

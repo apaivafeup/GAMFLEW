@@ -37,7 +37,7 @@ import MultiplayerUserSubmissions from '../components/MultiplayerUserSubmissions
     <div v-else-if="loaded">
             <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name"
                 :playable="this.playable" :score="challenge.score" />
-            <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="this.can_pass" :user="auth.user"
+            <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="can_pass" :user="auth.user"
                 :playable="this.playable" :round="this.round" :timer="this.timer" :timer_set="this.timer_set" />
             <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id"
                 :challenge="challenge" />
@@ -94,7 +94,7 @@ export default {
             got_round: false, // if we (the player) have the round (step 2)
             round_loading: false, // if all players have the round (step 3)
             is_ready: false, // if we can play (step 4)
-            can_pass: true,
+            can_pass: Boolean,
             playable: false, // if it's our turn to play (step 5),
             winner: [],
             got_round_solution: false,
@@ -145,7 +145,8 @@ export default {
                 return
             })
 
-        await this.checkState()
+        this.can_pass = await this.can_user_pass_auto()
+        console.log('can_pass', this.can_pass)
 
         if (this.$error) {
             loader.hide()
@@ -196,6 +197,8 @@ export default {
         },
 
         async checkState() {
+            this.old_room_state = this.room_state
+
             await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/state', this.auth.config)
                 .then(response => {
                     this.room_state = response.data
@@ -212,8 +215,8 @@ export default {
                 this.stateChecking()
             }
 
-            if ((this.room_state.game_state == 'pass_round' || this.room_state.game_state == 'ready')) {
-                this.can_pass = this.can_user_pass_auto()
+            if ((this.room_state.game_state == 'pass_round' || this.room_state.game_state == 'waiting') && this.old_room_state.game_state == 'playing') {
+                this.can_pass = await this.can_user_pass_auto()
                 this.$forceUpdate()
                 this.$router.go()
             }
@@ -287,7 +290,7 @@ export default {
                 clearInterval(this.timer_interval)
                 this.loaded = false
                 this.is_ready = false
-                this.can_pass = true
+                this.can_pass = await this.can_user_pass_auto()
                 this.round_loading = true
                 this.round_solution = {}
                 this.board.emptyState(true)
@@ -320,7 +323,7 @@ export default {
         },
 
         getTimeForRound() {
-            return 100000
+            return 100
             if (this.challenge.difficulty == 'Very Easy') {
                 return 100 // 1 minute and 40 seconds
             } else if (this.challenge.difficulty == 'Easy') {
@@ -389,7 +392,6 @@ export default {
                     this.current_round = this.round.round_number
                     this.challenge_id = this.round.challenge_id
                     this.playable = (this.round.user_id == this.auth.user.id)
-                    this.can_pass = this.playable;
                 })
                 .catch((error) => {
                     clearInterval(this.interval)
@@ -397,6 +399,7 @@ export default {
                     return
                 })
 
+            this.can_pass = await this.can_user_pass_auto()
 
             var user_id = 0
             await this.$axios.get(this.$api_link + '/challenges/' + this.challenge_id, this.auth.config).then((response) => {

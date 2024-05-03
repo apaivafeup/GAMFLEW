@@ -88,30 +88,29 @@
         <button id="comment-button" class="button is-primary is-fullwidth disabled" v-if="!playable && !board.passed"
         data-bs-toggle="modal" data-bs-target="#submit-modal">
         Comment
-      </button>
+        </button>
         <button id="comment-button" class="button is-primary is-fullwidth" v-else-if="board.passed && !board.submitted"
         data-bs-toggle="modal" data-bs-target="#submit-modal"
         style="border-color: rgb(169, 89, 255); background-color: rgb(169, 89, 255)">
         Comment
-      </button>
-      <button id="comment-button" class="button is-primary is-fullwidth" v-else data-bs-toggle="modal"
-        data-bs-target="#fail-modal">
-        Comment
-      </button>
+        </button>
+        <button id="comment-button" class="button is-primary is-fullwidth" v-else data-bs-toggle="modal"
+          data-bs-target="#fail-modal">
+          Comment
+        </button>
+        <button id="pass-button" class="button is-primary is-fullwidth" v-if="playable && can_pass" @click="pass()">
+          Pass
+        </button>
+        <button id="pass-button" class="button is-primary is-fullwidth disabled" v-else >
+          Pass
+        </button>
+        <button id="exit-button" class="button is-primary is-fullwidth" @click="this.$router.push({name: 'multiplayer-rooms'})">
+          Exit
+        </button>
       </div>
       
-      <button id="retry-button" class="button is-primary is-fullwidth" v-if="board.passed" @click="board.retry()">
-        Retry
-      </button>
-      <button id="pass-button" class="button is-primary is-fullwidth" v-if="playable && this.can_pass" @click="pass()">
-        Pass
-      </button>
-      <button id="pass-button" class="button is-primary is-fullwidth disabled" v-else >
-        Pass
-      </button>
-      <button id="exit-button" class="button is-primary is-fullwidth" @click="this.$router.push({name: 'multiplayer-rooms'})">
-        Exit
-      </button>
+      
+      
     </div>
     <div style="align-content: center;" v-if="!board.table">
       <div class="game-board-labels">
@@ -354,9 +353,14 @@ export default {
     },
 
     async pass() {
+      
+
       await this.$axios.post(this.$api_link + '/game-room/' + this.round.game_room_id + '/game-round/' + this.round.id + '/pass/', {}, this.auth.config)
         .then(response => {
-          window.location.reload()
+          if (response.data == null) {
+            alert("You cannot choose to pass again in this round! Try to pass the challenge before the time runs out!")
+          }
+          this.$router.go()
         })
         .catch((error) => {
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })

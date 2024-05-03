@@ -558,8 +558,10 @@ def set_game_room_state(db: Session, game_room_id: int):
         print('playing 1')
         game_room.game_state = schemas.GameState.PLAYING
     elif (game_room.game_state == schemas.GameState.PASS_ROUND):
-        game_room.game_state = schemas.GameState.READY
+        print('waiting 3')
+        game_room.game_state = schemas.GameState.WAITING
     elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and have_seen_game_logs(db=db, game_round_id=game_round.id)):
+        print('next round 1')
         game_room.game_state = schemas.GameState.NEXT_ROUND
     elif (game_round is not None and game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state != schemas.GameState.NEXT_ROUND and len(game_rounds) != game_room.rounds):
         print('show solution 1')
@@ -824,10 +826,8 @@ def can_pass_round(db: Session, game_round_id: int, user_id: int):
     game_room = get_game_room(db, game_round.game_room_id)
     game_logs = db.query(schemas.GameLog).filter(schemas.GameLog.game_round_id == game_round_id).filter(schemas.GameLog.message == schemas.GameMessage.PASS).filter(schemas.GameLog.user_id == user_id).all()
     
-    if (len(game_logs) > 0):
-        return False
-    
-    if (len(game_logs) == game_room.player_number - 1):
+    print('comparison:', len(game_logs), game_room.player_number - 1)
+    if (len(game_logs) > 0 and len(game_logs) == game_room.player_number - 1):
         return False
     
     if (len(game_logs) <= 0):
@@ -845,6 +845,7 @@ def can_user_pass_round_auto(db: Session, game_room_id: int, game_round_id: int)
     
 def pass_round(db: Session, game_round_id: int):
     game_round_to_pass = get_game_round(db, game_round_id)
+    game_room = get_game_room(db, game_round_to_pass.game_room_id)
 
     old_user = game_round_to_pass.user_id
 
@@ -854,6 +855,7 @@ def pass_round(db: Session, game_round_id: int):
         return None
     
     game_round_to_pass.user_id = new_user
+    game_room.game_state = schemas.GameState.PASS_ROUND
     db.commit()
     return game_round_to_pass
 
