@@ -14,8 +14,8 @@
 
       <div class="col" style="padding: 0px;">
         <div class="row" style="width: 100%; display: flex; justify-content: center; margin-bottom: 10px;">
-          <div class="alert alert-warning player-info" style="font-size: 10px;">
-            <p style="margin: 0px; padding: 0px; align-self: center;">{{ this.challenge.objective }}</p>
+          <div class="alert alert-special player-info" style="font-size: 10px;">
+            <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ this.challenge.objective }}</p>
           </div>
         </div>
         <div class="row" style="width: 100%;">

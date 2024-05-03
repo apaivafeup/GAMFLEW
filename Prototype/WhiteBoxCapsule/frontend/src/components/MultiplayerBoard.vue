@@ -41,14 +41,14 @@ export default {
   <div id="board-row" class="justify-content-between" style="display: grid; grid-template-rows: 100%; grid-template-columns: 50% 50%;">
     <div class="col" style="display: grid; grid-template-rows: 65px 393px 85px 80px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center; font-size: 14px;">
       <div class="row" style="width: 100%;" v-if="!board.failed || board.passed">
-        <div class="alert alert-warning player-info" v-if="!board.timeout">
-          <p style="margin: 0px; padding: 0px; align-self: center;">{{ this.challenge.objective }}</p>
+        <div class="alert alert-special player-info" v-if="!board.timeout">
+          <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ this.challenge.objective }}</p>
         </div>
       </div>
       <div class="row" style="display: grid; grid-template-columns: 49.5% 49.5%; grid-template-rows: 100%; grid-gap: 7.5px; width: 100%;" v-else-if="board.failed">
         <div class="col" style="padding: 0px; margin: 0px;">
-          <div class="alert alert-warning player-info" v-if="!board.timeout">
-            <p style="margin: 0px; padding: 0px; align-self: center;">{{ this.challenge.objective }}</p>
+          <div class="alert alert-special player-info" v-if="!board.timeout">
+            <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ this.challenge.objective }}</p>
           </div>
         </div>
         <div class="col" style="padding: 0px; margin: 0px;">

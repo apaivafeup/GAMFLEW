@@ -36,8 +36,8 @@ export default {
     <div class="col"
       style="display: grid; grid-template-rows: 65px 393px 85px 80px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center;">
       <div class="row" style="width: 100%;">
-        <div class="alert alert-warning player-info" v-if="!board.timeout">
-          <p style="margin: 0px; padding: 0px; align-self: center;">{{ this.challenge.objective }}</p>
+        <div class="alert alert-special player-info" v-if="!board.timeout">
+          <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ this.challenge.objective }}</p>
         </div>
       </div>
       <div class="row" style="display: flex; flex-direction: row; width: 100%;">
