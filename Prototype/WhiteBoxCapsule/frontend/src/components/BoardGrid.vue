@@ -11,15 +11,16 @@
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outX"
-              id="piece-stack-out-x" @input="this.changeX()" class="col box"
+              id="piece-stack-out-x" @input="this.changeX()" class="col box" name="piece-stack-out-x"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
-            <input v-else id="piece-stack-out-x" :value="this.outX" class="col box disabled"
+            <input v-else id="piece-stack-out-x" :value="this.outX" class="col box disabled" name="piece-stack-out-x"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
             <input @input="this.changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
-              :v-model="this.outY" id="piece-stack-out-y" class="col box"
+              :v-model="this.outY" id="piece-stack-out-y" class="col box" name="piece-stack-out-y"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
             <input v-else id="piece-stack-out-y" :value="this.outY" class="col box disabled"
-              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
+              style="width: 50px; text-align: center; font-size: 12px" type="number" name="piece-stack-out-y"
+              placeholder="y" />
           </div>
         </div>
       </div>
@@ -27,7 +28,8 @@
 
       </div>
 
-      <router-link id="next-challenge" :to="{ name: 'challenge', params: { id: challenge.id + 1 } }" v-if="board.passed" style="opacity: 0%; color: transparent; background-color: transparent;">
+      <router-link id="next-challenge" :to="{ name: 'challenge', params: { id: challenge.id + 1 } }" v-if="board.passed"
+        style="opacity: 0%; color: transparent; background-color: transparent;">
         <button id="next-challenge-button" class="button is-primary is-fullwidth">
           Next Challenge
         </button>
@@ -66,7 +68,8 @@
           v-else>
           {{ !board.add ? 'Add' : 'Move' }}
         </button>
-        <button id="go-button" class="button is-primary is-fullwidth" data-bs-toggle="modal" data-bs-target="#comment-modal"
+        <button id="go-button" class="button is-primary is-fullwidth" data-bs-toggle="modal"
+          data-bs-target="#comment-modal"
           v-if="board.currentKey == challenge.test_cases_count - 1 && !board.passed && !board.pause">
           Go!
         </button>
@@ -87,7 +90,7 @@
       <div id="go-click-element" style="opacity: 0%" @click="this.go()">
 
       </div>
-      
+
       <button id="exit-button" class="button is-primary is-fullwidth" @click="this.exit()">
         Exit
       </button>
@@ -166,7 +169,7 @@ import OutPieceStack from './OutPieceStack.vue'
 import 'vue3-easy-data-table'
 
 export default {
-  components: { PieceStack, OutPieceStack},
+  components: { PieceStack, OutPieceStack },
   props: {
     challenge: Challenge
   },
@@ -199,10 +202,10 @@ export default {
       if (!a || !b) {
         return 0
       }
-      
+
       return Number.parseFloat(
         Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2))
-        ).toFixed(2)
+      ).toFixed(2)
     },
 
     get_pieces(board, boardKey) {
@@ -360,26 +363,14 @@ export default {
     },
 
     changeX() {
-      if (document.getElementById('piece-stack-out-x').value > 7 || document.getElementById('piece-stack-out-x').value < 0) {
-        alert('You need to enter a number that IS NOT between 0 and 7.')
-        document.getElementById('piece-stack-out-x').value = ''
-        return
-      }
-      
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
         this.outX = document.getElementById('piece-stack-out-x').value
       }
-      
+
     },
 
     changeY() {
-      if (document.getElementById('piece-stack-out-y').value > 7 || document.getElementById('piece-stack-out-y').value < 0) {
-        alert('You need to enter a number that IS NOT between 0 and 7.')
-        document.getElementById('piece-stack-out-y').value = ''
-        return
-      }
-
-      if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
+      if (!isNaN(document.getElementById('piece-stack-out-y').value)) {
         this.outY = document.getElementById('piece-stack-out-y').value
       }
     },
@@ -553,7 +544,7 @@ export default {
           log: this.board.log[i]
         }
 
-        
+
         testCases[i] = testCase
       }
 

@@ -232,7 +232,7 @@ export default {
     },
 
     changeY() {
-      if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
+      if (!isNaN(document.getElementById('piece-stack-out-y').value)) {
         this.outY = document.getElementById('piece-stack-out-y').value
       }
     },
