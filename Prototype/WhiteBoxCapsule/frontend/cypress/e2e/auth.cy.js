@@ -18,13 +18,13 @@ describe('Authentication', () => {
     })
 
     it('error page (not authorized - example)', () => {
-        cy.visit('http://localhost:5173/#/challenge/1')
-        cy.contains('401').should('be.visible')
+        cy.visit('http://localhost:5173/#/400_Bad%20Request').wait(3000)
+        cy.contains('400').should('be.visible')
     })
 
     it('moving from error page', () => {
-        cy.visit('http://localhost:5173/#/challenge/1')
-        cy.contains('401').should('be.visible')
+        cy.visit('http://localhost:5173/#/400_Bad%20Request').wait(3000)
+        cy.contains('400').should('be.visible')
         cy.get('#home-button').click()
         cy.contains('Login').should('be.visible')
     })

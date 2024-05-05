@@ -40,9 +40,8 @@ describe('Home Page', () => {
   })
 
   it('opens the challenge content creator', () => {
-    cy.visit('http://localhost:5173/')
     cy.get('#challenge-content-button').click()
 
-    cy.contains('Test File')
+    cy.contains('Code')
   })
 })

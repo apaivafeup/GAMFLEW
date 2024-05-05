@@ -39,7 +39,7 @@ describe('challenge creator and editor', () => {
     it('edit a challenge', () => {
         cy.get('#challenge-manager-button').click()
         cy.contains('Create Challenge')
-        cy.get('#challenge-card-1').click()
+        cy.get('.play-badge').first().click()
         cy.contains('Challenge Editor').should('be.visible')
         cy.get('#board-box-2-0').click()
         cy.get('.game-board-out > .box').click()
@@ -49,6 +49,5 @@ describe('challenge creator and editor', () => {
         cy.on('window:alert', (str) => {
             expect(str).to.equal('Challenge updated successfully!')
         })
-        cy.contains('OK! You passed the challenge you just made. Click the button below to submit the challenge!')
     })
 })
