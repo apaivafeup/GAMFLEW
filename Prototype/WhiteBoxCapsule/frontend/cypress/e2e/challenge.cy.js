@@ -79,6 +79,18 @@ describe("Board Movement", () => {
                 cy.get('#board-box-5-2').click()
                 cy.get('#board-box-5-2 > .blue').should('be.visible')
             })
+
+            it('makes kings', () => {
+                cy.get('#single-player-button').click()
+                cy.get('#challenge-2-play').click().wait(1000)
+                cy.get('#board-box-7-1').click()
+                cy.get('#board-box-5-2').click()
+                cy.get('#board-box-5-2 > .blue').should('be.visible')
+                cy.get('#board-box-0-0').click()
+                cy.get('#board-box-7-1').click()
+                cy.get('#board-box-7-1 > .red').should('be.visible')
+                cy.get('#board-box-7-1 > .red > ').should('be.visible')
+            })
         })
 
         describe("With stacking", () => {
@@ -417,7 +429,7 @@ describe("Board Movement", () => {
 
 
 describe("Board buttons", () => {
-    it('reset button', () => {
+    describe('reset button', () => {
 
         cy.get('#single-player-button').click()
         cy.get('#challenge-1-play').click().wait(1000)
@@ -434,7 +446,7 @@ describe("Board buttons", () => {
         cy.get('#board-box-0-0 > .red').should('be.visible')
     }),
 
-        describe('previous and next buttons', () => {
+    describe('previous and next buttons', () => {
             it('next button', () => {
 
                 cy.get('#single-player-button').click()
@@ -516,7 +528,7 @@ describe("Board buttons", () => {
                     cy.get('#board-box-0-0 > .empty').should('exist')
                     cy.get('#board-box-0-2 > .empty').should('exist')
                 })
-        })
+    })
 
     describe('add button', () => {
         it('add button (red)', () => {
@@ -567,7 +579,7 @@ describe("Board buttons", () => {
             })
     }),
 
-        describe('go! button', () => {
+    describe('go! button', () => {
             it('go! button (pass)', () => {
                 cy.get('#single-player-button').click()
                 cy.get('#challenge-1-play').click().wait(1000) // challenge 2 has multiple test cases, so...
@@ -583,22 +595,22 @@ describe("Board buttons", () => {
                 cy.contains("You passed, congratulations! To submit your solution, click the Comment button. It's required for your score!").should('be.visible')
             }),
 
-            it('go! button (fail)', () => {
-                cy.get('#single-player-button').click()
-                cy.get('#challenge-1-play').click().wait(1000) // challenge 2 has multiple test cases, so...
-                cy.get('#go-button').click()
-                cy.get('#comment-modal-textarea').type('Example comment.')
-                cy.get('#comment-modal-button').click().wait(1000)
-                cy.contains("You didn't pass. You can keep trying, though.").should('be.visible')
-            })
-        }),
+                it('go! button (fail)', () => {
+                    cy.get('#single-player-button').click()
+                    cy.get('#challenge-1-play').click().wait(1000) // challenge 2 has multiple test cases, so...
+                    cy.get('#go-button').click()
+                    cy.get('#comment-modal-textarea').type('Example comment.')
+                    cy.get('#comment-modal-button').click().wait(1000)
+                    cy.contains("You didn't pass. You can keep trying, though.").should('be.visible')
+                })
+    }),
 
-        it('exit button', () => {
+    describe('exit button', () => {
 
             cy.get('#single-player-button').click()
             cy.get('#challenge-1-play').click().wait(1000) // challenge 2 has multiple test cases, so...
             cy.get('#exit-button').click()
 
             cy.contains('Challenges')
-        })
+    })
 })
