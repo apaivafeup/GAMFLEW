@@ -63,13 +63,13 @@
               placeholder="Challenge X.Y: Challenge Name" style="margin: 0px; width: 100%; font-size: 18px;" />
           </div>
         </div>
-        <div class="row" style="margin-bottom: 5px;">
+        <!-- <div class="row" style="margin-bottom: 5px;">
           <div class="col" id="description-input">
             <h6 style="text-align: left; margin-bottom: 5px;">Description</h6>
             <input id="input-description-box" @input="this.changeDescription($event)" class="box" type="text"
               placeholder="Anything about the challenge!" style="margin: 0px; width: 100%; font-size: 18px;" />
           </div>
-        </div>
+        </div> -->
         <div class="row" style="margin-bottom: 5px;">
           <div class="col" id="hint-input">
             <h6 style="text-align: left; margin-bottom: 5px;">Hint</h6>
@@ -384,7 +384,7 @@ export default {
 
     // Challenge details
     document.getElementById('input-name-box').value = this.challenge.name
-    document.getElementById('input-description-box').value = this.challenge.description
+    // document.getElementById('input-description-box').value = this.challenge.description
     document.getElementById('input-hint-box').value = this.challenge.hint
     document.getElementById('input-objective-box').value = this.challenge.objective
     document.getElementById('input-score-box').value = this.challenge.score
@@ -410,7 +410,6 @@ export default {
       selectedCode: '',
       challenge: {
         name: '',
-        description: '',
         hint: '',
         objective: '',
         score: 100,
@@ -534,9 +533,9 @@ export default {
       this.challenge.name = event.target.value;
     },
 
-    changeDescription(event) {
-      this.challenge.description = event.target.value;
-    },
+    // changeDescription(event) {
+    //   this.challenge.description = event.target.value;
+    // },
 
     changeHint(event) {
       this.challenge.hint = event.target.value;

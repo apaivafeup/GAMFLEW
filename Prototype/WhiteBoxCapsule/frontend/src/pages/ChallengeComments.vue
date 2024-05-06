@@ -124,7 +124,6 @@ export default defineComponent({
                     this.challenge = new Challenge(
                         response.data.id,
                         response.data.name,
-                        response.data.description,
                         response.data.difficulty,
                         response.data.hint,
                         response.data.objective,

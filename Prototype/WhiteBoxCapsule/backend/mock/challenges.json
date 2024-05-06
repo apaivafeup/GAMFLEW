@@ -2,7 +2,6 @@
     {
         "id": 0,
         "name": "Challenge 1.1: Checking for Out of Bounds",
-        "description": "Pieces can never leave the board.",
         "test_cases_count": 1,
         "score": 100,
         "hint": "The condition guarding line 9 is made only using OR (||). What does that mean, logically?",
@@ -26,7 +25,6 @@
     {
         "id": 0,
         "name": "Challenge 1.2: Thorough Checking of Out of Bounds",
-        "description": "What if pieces could go out of bounds?",
         "test_cases_count": 2,
         "score": 200,
         "hint": "The condition is made only using OR (||)! You need to make sure that the condition yields both True and False.",
@@ -51,7 +49,6 @@
     {
         "id": 0,
         "name": "Challenge 1.3: Focus on the Destination",
-        "description": "In this challenge, only the destination is tested, as thoroughly as possible.",
         "test_cases_count": 5,
         "score": 500,
         "hint": "You only need 5 test cases to pass this challenge. Use the condition table, if needed.",
@@ -79,7 +76,6 @@
     {
         "id": 0,
         "name": "Challenge 1.4: (Not) Moving Diagonally",
-        "description": "Checkers only allows for diagonal movement. You need to avoid that, in this challenge.",
         "test_cases_count": 1,
         "score": 100,
         "hint": "Think about what the condition in line 15 is testing. Knowing you can make all kinds of movements, can't you fulfill the condition?",
@@ -103,7 +99,6 @@
     {
         "id": 0,
         "name": "Challenge 1.5: Valid and Invalid Movement",
-        "description": "In this challenge, you need to test both valid and invalid movement.",
         "test_cases_count": 2,
         "score": 200,
         "hint": "Considering the function is testing for valid moves in Checkers, you only need to make one valid and one invalid move... but validity is dictated by the condition in line 15!",
@@ -128,7 +123,6 @@
     {
         "id": 0,
         "name": "Challenge 1.6: A Valid Move",
-        "description": "In this challenge, you need to make a valid move.",
         "test_cases_count": 1,
         "score": 150,
         "hint": "You need to make a valid move, as defined by a certain condition evaluated to false. What condition is it?",
@@ -152,7 +146,6 @@
     {
         "id": 0,
         "name": "Challenge 1.7: A Normal Move",
-        "description": "In this challenge, you need to make a normal Checkers move.",
         "test_cases_count": 1,
         "score": 150,
         "hint": "If you're making a Checkers move, you always draw a square (as you follow one of its diagonals). Here, you're given the side of said square.",
@@ -176,7 +169,6 @@
     {
         "id": 0,
         "name": "Challenge 1.8: (Almost) A Capture Move",
-        "description": "In this challenge, you need to make a capture move.",
         "test_cases_count": 1,
         "score": 150,
         "hint": "If you're making a capture in Checkers, you always draw a square (as you follow one of its diagonals). If you have to go OVER a piece, what side does the square have?",
@@ -200,7 +192,6 @@
     {
         "id": 0,
         "name": "Challenge 1.9: All Possible Moves",
-        "description": "In this challenge, you need to test all possible moves!",
         "test_cases_count": 2,
         "score": 350,
         "hint": "If you're making a move in Checkers, you always draw a square (as you follow one of its diagonals). Each case corresponds to a difference side length of the square.",
@@ -225,7 +216,6 @@
     {
         "id": 0,
         "name": "Challenge 1.10: Moving to the Right Place",
-        "description": "In this challenge, you need to make an actual Checkers move!",
         "test_cases_count": 1,
         "score": 175,
         "hint": "When you're making a normal movement (not a capture), you can only move to a spot that is one square away from your current position. What other condition must be true?",
@@ -251,7 +241,6 @@
     {
         "id": 0,
         "name": "Challenge 1.11: Moving to a Wrong Place",
-        "description": "In this challenge, you need to make an illegal Checkers move!",
         "test_cases_count": 1,
         "score": 175,
         "hint": "Remember that you can do make things that aren't legal in Checkers! What condition must be false?",
@@ -277,7 +266,6 @@
     {
         "id": 0,
         "name": "Challenge 1.12: Moving to Places",
-        "description": "In this challenge, you need to make an illegal and a totally valid Checkers move!",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Remember that you can do make things that aren't legal in Checkers! There are two clear cases to test, here.",
@@ -304,7 +292,6 @@
     {
         "id": 0,
         "name": "Challenge 1.13: Not Capturing a Piece, but Very Close",
-        "description": "In this challenge, you need to make a potentially valid Checkers move!",
         "test_cases_count": 1,
         "score": 175,
         "hint": "You don't have to have a piece in between your from and destination positions: notice the condition only cares about the destination!",
@@ -330,7 +317,6 @@
     {
         "id": 0,
         "name": "Challenge 1.14: An Illegal Capture",
-        "description": "To make sure captures work correctly.",
         "test_cases_count": 1,
         "score": 175,
         "hint": "There's only one way to capture a piece in Checkers: you move over it. What does that mean, in terms of the condition in line 27? How can you make the condition true? Also, remember that only the last movement you made is considered.",
@@ -356,7 +342,6 @@
     {
         "id": 0,
         "name": "Challenge 1.15: Capture",
-        "description": "Testing a real capture move.",
         "test_cases_count": 1,
         "score": 225,
         "hint": "There's only one way to capture a piece in Checkers: you move over it. What does that mean, in terms of the condition in line 27? How can you make the condition false? Also, remember that only the last movement you made is considered.",
@@ -382,7 +367,6 @@
     {
         "id": 0,
         "name": "Challenge 1.16: Testing Captures",
-        "description": "Testing a real and an illegal capture move.",
         "test_cases_count": 2,
         "score": 225,
         "hint": "There's only one way to capture a piece in Checkers: you move over it. What does that mean, in terms of the condition in line 27? How can you make the condition false and true, in different boards? Also, remember that only the last movement you made is considered.",
@@ -409,7 +393,6 @@
     {
         "id": 0,
         "name": "Challenge 1.17: Illegal Capture, Under a Condition",
-        "description": "Testing an illegal capture move.",
         "test_cases_count": 1,
         "score": 175,
         "hint": "There's only one way to capture a piece in Checkers: you move over it. In this case, you need to make sure a condition related to the destination is True.",
@@ -435,7 +418,6 @@
     {
         "id": 0,
         "name": "Challenge 1.18: Capturing Pieces, Under Conditions",
-        "description": "Testing an illegal capture and a valid capture move.",
         "test_cases_count": 2,
         "score": 175,
         "hint": "There's only one way to capture a piece in Checkers: you move over it. In this case, you need to make sure a condition related to the destination yields True and False in two different cases.",
@@ -462,7 +444,6 @@
     {
         "id": 0,
         "name": "Challenge 2.1: Counting Pieces",
-        "description": "Is the number of pieces possible?",
         "test_cases_count": 1,
         "score": 100,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed.",
@@ -484,7 +465,6 @@
     {
         "id": 0,
         "name": "Challenge 2.2: No Pieces to Count",
-        "description": "Is the number of pieces possible?",
         "test_cases_count": 1,
         "score": 100,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed.",
@@ -506,7 +486,6 @@
     {
         "id": 0,
         "name": "Challenge 2.3: Counting Pieces, Not Counting Pieces",
-        "description": "Is the number of pieces possible?",
         "test_cases_count": 2,
         "score": 200,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed.",
@@ -529,7 +508,6 @@
     {
         "id": 0,
         "name": "Challenge 2.4: Counting Pieces, Only When It Matters",
-        "description": "Not all test cases are equal in this challenge.",
         "test_cases_count": 3,
         "score": 300,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table is probably your best friend, here.",
@@ -553,7 +531,6 @@
     {
         "id": 0,
         "name": "Challenge 2.5: Win Conditions, Only When It Matters",
-        "description": "Only some test cases are relevant in this challenge.",
         "test_cases_count": 3,
         "score": 300,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table is probably your best friend, here.",
@@ -577,7 +554,6 @@
     {
         "id": 0,
         "name": "Challenge 2.6: Win Conditions, But Thoroughly",
-        "description": "All test cases are relevant in this challenge.",
         "test_cases_count": 2,
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
@@ -600,7 +576,6 @@
     {
         "id": 0,
         "name": "Challenge 2.7: Counting Pieces, But Thoroughly",
-        "description": "You need to submit all possible test cases in this challenge.",
         "test_cases_count": 2,
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
@@ -623,7 +598,6 @@
     {
         "id": 0,
         "name": "Challenge 2.8: Counting Pieces On Some Restrictions",
-        "description": "You need to cover all values in this challenge, with limited test cases.",
         "test_cases_count": 2,
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
@@ -648,7 +622,6 @@
     {
         "id": 0,
         "name": "Challenge 2.9: Winning Conditions On Some Restrictions",
-        "description": "You need to cover all possible values in this challenge, with limited test cases.",
         "test_cases_count": 2,
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
@@ -673,7 +646,6 @@
     {
         "id": 0,
         "name": "Challenge 2.10: Valid Positions for Odd Rows",
-        "description": "You need to cover all possible values in this challenge, with limited test cases.",
         "test_cases_count": 1,
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
@@ -695,7 +667,6 @@
     {
         "id": 0,
         "name": "Challenge 2.11: Valid Positions for Even Rows",
-        "description": "You need to cover all possible values in this challenge, with limited test cases.",
         "test_cases_count": 1,
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
@@ -717,7 +688,6 @@
     {
         "id": 0,
         "name": "Challenge 2.12: Just Odd Rows",
-        "description": "You need to cover all possible values in this challenge, with limited test cases.",
         "test_cases_count": 1,
         "score": 150,
         "hint": "Not all is what it seems. Pay attention to the code.",
@@ -739,7 +709,6 @@
     {
         "id": 0,
         "name": "Challenge 2.13: Just Even Rows",
-        "description": "You need to cover all possible values in this challenge, with limited test cases.",
         "test_cases_count": 1,
         "score": 150,
         "hint": "Pay attention to the code. You MUST use the Add button.",
@@ -764,7 +733,6 @@
     {
         "id": 0,
         "name": "Challenge 2.14: All Rows",
-        "description": "You need to cover all possible values in this challenge, with limited test cases.",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Pay attention to the code condition! You don't need to care what's inside the branches of the If, only that execution gets there!",
@@ -790,7 +758,6 @@
     {
         "id": 0,
         "name": "Challenge 2.15: A Valid Board",
-        "description": "You need to cover all possible values in this challenge, with limited test cases.",
         "test_cases_count": 1,
         "score": 250,
         "hint": "You have a lot of hurdles to get through, and the Add button is your friend - it adds AND removes pieces (check Guide, if needed).",
@@ -816,7 +783,6 @@
     {
         "id": 0,
         "name": "Challenge 3.1: A King Piece",
-        "description": "You're going to meet royalty!",
         "test_cases_count": 1,
         "score": 250,
         "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed!",
@@ -840,7 +806,6 @@
     {
         "id": 0,
         "name": "Challenge 3.2: A King Can Go Anywhere",
-        "description": "Royals have no restrictions!",
         "test_cases_count": 1,
         "score": 250,
         "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed - if you put more than one, only the first is considered.",
@@ -865,7 +830,6 @@
     {
         "id": 0,
         "name": "Challenge 3.3: Testing Kings",
-        "description": "Not all royalty can move freely.",
         "test_cases_count": 2,
         "score": 250,
         "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed!",
@@ -890,7 +854,6 @@
     {
         "id": 0,
         "name": "Challenge 3.4: A King and a Peasant",
-        "description": "Some pieces aren't born into royalty.",
         "test_cases_count": 2,
         "score": 250,
         "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed!",
@@ -915,7 +878,6 @@
     {
         "id": 0,
         "name": "Challenge 3.5: A Red Piece",
-        "description": "Some peasants are red.",
         "test_cases_count": 1,
         "score": 300,
         "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
@@ -940,7 +902,6 @@
     {
         "id": 0,
         "name": "Challenge 3.6: (NOT) A Red Piece",
-        "description": "Some peasants aren't red.",
         "test_cases_count": 1,
         "score": 150,
         "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
@@ -965,7 +926,6 @@
     {
         "id": 0,
         "name": "Challenge 3.7: Double The Colors!",
-        "description": "Some peasants are red, others are not.",
         "test_cases_count": 2,
         "score": 350,
         "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
@@ -991,7 +951,6 @@
     {
         "id": 0,
         "name": "Challenge 3.8: Under The Condition of Being King",
-        "description": "Some pieces aren't born into royalty.",
         "test_cases_count": 2,
         "score": 225,
         "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed - if you put more than one, only the first one's considered.",
@@ -1016,7 +975,6 @@
     {
         "id": 0,
         "name": "Challenge 3.9: A Valid Position for a Red Piece",
-        "description": "They need to go 'down'!",
         "test_cases_count": 1,
         "score": 250,
         "hint": "Only one piece needs to pass the test in each test case! You can check Checkers' rules to know how movement works.",
@@ -1042,7 +1000,6 @@
     {
         "id": 0,
         "name": "Challenge 3.10: Can A Red Piece Move?",
-        "description": "Only if they go 'down'!",
         "test_cases_count": 2,
         "score": 450,
         "hint": "Only one piece needs to pass the test in each test case! You can check Checkers' rules to know how movement works.",
@@ -1069,7 +1026,6 @@
     {
         "id": 0,
         "name": "Challenge 3.11: Both Colors Move",
-        "description": "They go in opposite directions!",
         "test_cases_count": 2,
         "score": 300,
         "hint": "Only one piece satisfying the test is needed - if you put more than one, only the first one's considered. You can check Checkers' rules to know how movement works.",
@@ -1096,7 +1052,6 @@
     {
         "id": 0,
         "name": "Challenge 3.12: Movement Under a Colorful Condition",
-        "description": "They go in opposite directions!",
         "test_cases_count": 2,
         "score": 325,
         "hint": "Only one piece satisfying each test is needed. You can check Checkers' rules to know how movement works.",
@@ -1122,7 +1077,6 @@
     {
         "id": 0,
         "name": "Challenge 3.13: Move When Red, Move When Blue",
-        "description": "Making decisions according to conditions!",
         "test_cases_count": 2,
         "score": 350,
         "hint": "Only one piece satisfying the test is needed - if you put more than one, only the first one's considered. You can check Checkers' rules to know how movement works.",
@@ -1148,7 +1102,6 @@
     {
         "id": 0,
         "name": "Challenge 3.14: Testing King Movement Semi-Thoroughly",
-        "description": "Not all royalty can move freely!",
         "test_cases_count": 2,
         "score": 325,
         "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed - if you put more than one, only the first one's considered.",
@@ -1174,7 +1127,6 @@
     {
         "id": 0,
         "name": "Challenge 3.15: Can A Blue Piece Move?",
-        "description": "Only if they go 'down'!",
         "test_cases_count": 2,
         "score": 450,
         "hint": "Only one piece needs to pass the test in each test case! You can check Checkers' rules to know how movement works.",
@@ -1201,7 +1153,6 @@
     {
         "id": 0,
         "name": "Challenge 4.1: Only One Piece",
-        "description": "Because only one player can win!",
         "test_cases_count": 1,
         "score": 125,
         "hint": "You can choose the piece's color. But you must only put one piece!",
@@ -1225,7 +1176,6 @@
     {
         "id": 0,
         "name": "Challenge 4.2: One Piece... or More",
-        "description": "",
         "test_cases_count": 2,
         "score": 250,
         "hint": "An empty board won't work for either test case. One test with ONE piece only, and another test that is anything EXCEPT that!",
@@ -1250,7 +1200,6 @@
     {
         "id": 0,
         "name": "Challenge 4.3: A Piece... Under a Condition!",
-        "description": "",
         "test_cases_count": 2,
         "score": 250,
         "hint": "An empty board won't work for either test case. One test with ONE piece only, and another test that is anything EXCEPT that!",
@@ -1275,7 +1224,6 @@
     {
         "id": 0,
         "name": "Challenge 4.4: Decide A Piece... Under a Condition!",
-        "description": "",
         "test_cases_count": 2,
         "score": 275,
         "hint": "An empty board won't work for either test case. One test with ONE piece only, and another test that is anything EXCEPT that!",
@@ -1300,7 +1248,6 @@
     {
         "id": 0,
         "name": "Challenge 4.5: Only One Color!",
-        "description": "",
         "test_cases_count": 1,
         "score": 175,
         "hint": "An empty board won't work for either test case. Choose a color, but beware of the first If!",
@@ -1325,7 +1272,6 @@
     {
         "id": 0,
         "name": "Challenge 4.6: Only One Color... Or Not!",
-        "description": "",
         "test_cases_count": 2,
         "score": 250,
         "hint": "An empty board CAN work for one of the needed test cases. For the other, pick a color! Beware of the first If.",
@@ -1351,7 +1297,6 @@
     {
         "id": 0,
         "name": "Challenge 4.7: Another Colorful Condition",
-        "description": "",
         "test_cases_count": 2,
         "score": 275,
         "hint": "An empty board CAN work for one of the needed test cases. One test with ONE piece only, and another test that is anything EXCEPT that!",
@@ -1378,7 +1323,6 @@
     {
         "id": 0,
         "name": "Challenge 4.8: Another Colorful Condition",
-        "description": "",
         "test_cases_count": 1,
         "score": 250,
         "hint": "Could an empty board work? You need to avoid the Ifs from lines 5 and 7.",
@@ -1402,7 +1346,6 @@
     {
         "id": 0,
         "name": "Challenge 4.9: Thoroughly Testing the Colorful Condition",
-        "description": "",
         "test_cases_count": 3,
         "score": 250,
         "hint": "An empty board CAN work for one of the needed test cases. You need to avoid the Ifs from lines 5 and 7.",
@@ -1428,7 +1371,6 @@
     {
         "id": 0,
         "name": "Challenge 5.1: Equal Footing",
-        "description": "",
         "test_cases_count": 1,
         "score": 100,
         "hint": "Zero is a number, just saying.",
@@ -1451,7 +1393,6 @@
     {
         "id": 0,
         "name": "Challenge 5.2: Evenly Matched... or Not!",
-        "description": "",
         "test_cases_count": 2,
         "score": 200,
         "hint": "Zero is a number, by the way. But you can't use it for both test cases!",
@@ -1475,7 +1416,6 @@
     {
         "id": 0,
         "name": "Challenge 5.3: Equally Conditioned",
-        "description": "",
         "test_cases_count": 2,
         "score": 200,
         "hint": "Zero is a number! But it's not useful for both test cases.",
@@ -1499,7 +1439,6 @@
     {
         "id": 0,
         "name": "Challenge 5.4: Equally Conditioned Decision",
-        "description": "",
         "test_cases_count": 2,
         "score": 200,
         "hint": "Zero is a number! But it's not useful for both test cases.",
@@ -1523,7 +1462,6 @@
     {
         "id": 0,
         "name": "Challenge 5.5: Everyone Wins!",
-        "description": "",
         "test_cases_count": 1,
         "score": 125,
         "hint": "You cannot use zero here. In the most basic terms (number of pieces per player), what is a tie?",
@@ -1547,7 +1485,6 @@
     {
         "id": 0,
         "name": "Challenge 5.6: No One Wins?",
-        "description": "",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Only one number of pieces per player will work here. Remember: the board is an 8 by 8 grid!",
@@ -1571,7 +1508,6 @@
     {
         "id": 0,
         "name": "Challenge 5.7: A Tie... Or Not!",
-        "description": "",
         "test_cases_count": 2,
         "score": 225,
         "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
@@ -1596,7 +1532,6 @@
     {
         "id": 0,
         "name": "Challenge 5.8: Conditioned Tie",
-        "description": "",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
@@ -1621,7 +1556,6 @@
     {
         "id": 0,
         "name": "Challenge 5.9: Conditioning and Deciding A Tie",
-        "description": "",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
@@ -1646,7 +1580,6 @@
     {
         "id": 0,
         "name": "Challenge 5.10: Not A Tie",
-        "description": "",
         "test_cases_count": 1,
         "score": 100,
         "hint": "You can't use zero, here... That would lead to an early return!",
@@ -1670,7 +1603,6 @@
     {
         "id": 0,
         "name": "Challenge 5.11: A Blue (But Not Sad) Victory!",
-        "description": "",
         "test_cases_count": 1,
         "score": 125,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
@@ -1694,7 +1626,6 @@
     {
         "id": 0,
         "name": "Challenge 5.12: A Red (But Not Angry) Victory!",
-        "description": "",
         "test_cases_count": 1,
         "score": 125,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
@@ -1718,7 +1649,6 @@
     {
         "id": 0,
         "name": "Challenge 5.13: Colorful Victories",
-        "description": "",
         "test_cases_count": 2,
         "score": 225,
         "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
@@ -1743,7 +1673,6 @@
     {
         "id": 0,
         "name": "Challenge 5.14: Colorful Conditioned Victories",
-        "description": "",
         "test_cases_count": 2,
         "score": 250,
         "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
@@ -1768,7 +1697,6 @@
     {
         "id": 0,
         "name": "Challenge 5.15: Colorful Conditioned Decisions",
-        "description": "",
         "test_cases_count": 2,
         "score": 275,
         "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
@@ -1793,7 +1721,6 @@
     {
         "id": 0,
         "name": "Challenge 6.1: Build-a-Triangle",
-        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
         "test_cases_count": 1,
         "score": 175,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
@@ -1819,7 +1746,6 @@
     {
         "id": 0,
         "name": "Challenge 6.2: Don't-Build-a-Triangle",
-        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
         "test_cases_count": 1,
         "score": 100,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
@@ -1842,7 +1768,6 @@
     {
         "id": 0,
         "name": "Challenge 6.3: Triangular Decision",
-        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
         "test_cases_count": 2,
         "score": 200,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
@@ -1866,7 +1791,6 @@
     {
         "id": 0,
         "name": "Challenge 6.4: Triangular Condition",
-        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
         "test_cases_count": 2,
         "score": 200,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
@@ -1890,7 +1814,6 @@
     {
         "id": 0,
         "name": "Challenge 6.5: Triangular Conditional Decision",
-        "description": "Yes, we're taking you back to Middle School. You're going to build a triangle, and you're going to like it!",
         "test_cases_count": 2,
         "score": 200,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
@@ -1914,7 +1837,6 @@
     {
         "id": 0,
         "name": "Challenge 6.6: Don't-Build-Or-Build-a-Triangle",
-        "description": "Yes, we're taking you back to Middle School.",
         "test_cases_count": 2,
         "score": 225,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
@@ -1939,7 +1861,6 @@
     {
         "id": 0,
         "name": "Challenge 6.7: Triangulating Condition",
-        "description": "Yes, we're taking you back to Middle School.",
         "test_cases_count": 2,
         "score": 450,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
@@ -1966,7 +1887,6 @@
     {
         "id": 0,
         "name": "Challenge 6.8: Never A Scalene Triangle",
-        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle. That means one side can be equal to zero!",
         "test_cases_count": 1,
         "score": 150,
         "hint": "You cannot make a triangle, nor can the condition on line 9 be hit!",
@@ -1991,7 +1911,6 @@
     {
         "id": 0,
         "name": "Challenge 6.9: Conditioning An Isosceles Triangle",
-        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 2,
         "score": 450,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. You're dealing with two separate conditions, so cover True-False state for each, across two test cases! Also, notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2019,7 +1938,6 @@
     {
         "id": 0,
         "name": "Challenge 6.10: Deciding If It's An Isosceles Triangle",
-        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 2,
         "score": 225,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2044,7 +1962,6 @@
     {
         "id": 0,
         "name": "Challenge 6.11: In Theory, An Isosceles Triangle",
-        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 1,
         "score": 125,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2068,7 +1985,6 @@
     {
         "id": 0,
         "name": "Challenge 6.12: Thoroughly Testing A Theoretical Isosceles Triangle",
-        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 3,
         "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2095,7 +2011,6 @@
     {
         "id": 0,
         "name": "Challenge 6.13: Thoroughly Testing A Theoretical Scalene Triangle",
-        "description": "We really think people ought to remember middle school math. This time, you're going to purposefully NOT build a valid triangle, but with two equal values.",
         "test_cases_count": 3,
         "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2121,7 +2036,6 @@
     {
         "id": 0,
         "name": "Challenge 6.14: If This Was A Triangle, We'd Be Concerned",
-        "description": "We encourage creativity on this one. But we make no reservations about the results.",
         "test_cases_count": 1,
         "score": 150,
         "hint": "Treat the first three If conditions as landmines - you can't cover them!",
@@ -2146,7 +2060,6 @@
     {
         "id": 0,
         "name": "Challenge 7.1: Draw A Right Triangle",
-        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
@@ -2170,7 +2083,6 @@
     {
         "id": 0,
         "name": "Challenge 7.2: Don't Draw A Right Triangle",
-        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
@@ -2194,7 +2106,6 @@
     {
         "id": 0,
         "name": "Challenge 7.3: Drawing A Right Triangle... Or Not!",
-        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
         "test_cases_count": 2,
         "score": 225,
         "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
@@ -2219,7 +2130,6 @@
     {
         "id": 0,
         "name": "Challenge 7.4: Drawing A Right Triangle... Under A Condition!",
-        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
@@ -2244,7 +2154,6 @@
     {
         "id": 0,
         "name": "Challenge 7.5: Drawing A Right Triangle... Under A Condition!",
-        "description": "Do you remember the Pythagorean Theorem? Be honest. Either way, you shall be reminded!",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Notice the comment in line 2 - it can help you understand which side is which!",
@@ -2269,7 +2178,6 @@
     {
         "id": 0,
         "name": "Challenge 7.6: Draw A Scalene Triangle",
-        "description": "You might have to Google this one. But it's not that hard, we promise!",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Here, the comment in line 2 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
@@ -2294,7 +2202,6 @@
     {
         "id": 0,
         "name": "Challenge 7.7: Don't Draw A Scalene Triangle",
-        "description": "You might have to Google this one. But it's not that hard, we promise!",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Here, the comment in line 2 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
@@ -2319,7 +2226,6 @@
     {
         "id": 0,
         "name": "Challenge 7.8: Draw A Scalene Triangle... Or Not!",
-        "description": "You might have to Google this one. But it's not that hard, we promise!",
         "test_cases_count": 2,
         "score": 225,
         "hint": "Here, the comment in line 2 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
@@ -2345,7 +2251,6 @@
     {
         "id": 0,
         "name": "Challenge 7.9: Draw A Scalene Triangle... Under A Condition!",
-        "description": "You might have to Google this one. But it's not that hard, we promise!",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Here, the comment in line 2 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
@@ -2371,7 +2276,6 @@
     {
         "id": 0,
         "name": "Challenge 7.10: Draw A Scalene Triangle... Under A Condition!",
-        "description": "You might have to Google this one. But it's not that hard, we promise!",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Here, the comment in line 2 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
@@ -2397,7 +2301,6 @@
     {
         "id": 0,
         "name": "Challenge 7.11: Draw An Isosceles Triangle",
-        "description": "Be honest, did you remember these ones? We hope so! Once again, it's an easy challenge.",
         "test_cases_count": 1,
         "score": 250,
         "hint": "An isosceles triangle has only two equal sides. It doesn't matter which ones you choose to be equal.",
@@ -2423,7 +2326,6 @@
     {
         "id": 0,
         "name": "Challenge 7.12: Don't Draw An Isosceles Triangle",
-        "description": "Be honest, did you remember these ones? We hope so! Once again, it's an easy challenge.",
         "test_cases_count": 1,
         "score": 250,
         "hint": "An isosceles triangle has only two equal sides. It doesn't matter which ones you choose to be equal.",
@@ -2450,7 +2352,6 @@
     {
         "id": 0,
         "name": "Challenge 7.13: Theoretically, It's An Equilateral Triangle",
-        "description": "Believe it or not, it's impossible... Unless we get creative!",
         "test_cases_count": 1,
         "score": 200,
         "hint": "No checks are performed on the triangle's sides, so you can make them equal. But how? ",

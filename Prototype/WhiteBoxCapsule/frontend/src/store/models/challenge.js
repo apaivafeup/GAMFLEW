@@ -2,7 +2,6 @@ export class Challenge {
   constructor(
     id,
     name,
-    description,
     difficulty,
     hint,
     objective,
@@ -17,7 +16,6 @@ export class Challenge {
   ) {
     this.id = id
     this.name = name
-    this.description = description
     this.difficulty = difficulty
     this.hint = hint
     this.objective = objective
