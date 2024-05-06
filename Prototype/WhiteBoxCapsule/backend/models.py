@@ -99,6 +99,7 @@ class UserBasics(BaseModel):
     name: str
     username: str
     picture: str
+    email: str
     failed_attempts: int
     successful_attempts: int
     score: int
