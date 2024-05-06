@@ -165,6 +165,18 @@ def create_user(user: models.UserRegister, db: Session = Depends(get_db)):
     
     return crud.create_user(db=db, user=user)
 
+
+@app.post("/edit-user/{user_id}", response_model=models.UserResponse)
+def edit_user(current_user: Annotated[models.User, Depends(get_current_active_user)], user: models.UserRegister, user_id: int, db: Session = Depends(get_db)):
+    if current_user.id != user_id:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    
+    db_user = crud.get_user_by_id(db, user_id=user_id)  
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="User not found.")
+    
+    return crud.edit_user(db=db, user_id=user_id, user=user)
+
 ## Create Challenge
 @app.post("/create/challenge", response_model=models.Challenge)
 def create_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge: models.Challenge, db: Session = Depends(get_db)):

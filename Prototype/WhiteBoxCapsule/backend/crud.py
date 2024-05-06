@@ -44,6 +44,22 @@ def create_user(db: Session, user: schemas.User):
     db.commit()
     return db_user
 
+def edit_user(db: Session, user_id: int, user: schemas.User):
+    db_user = db.query(schemas.User).filter(schemas.User.id == user_id).first()
+
+    if db_user is None:
+        return None
+
+    db_user.name = user.name
+    db_user.username = user.username
+    db_user.email = user.email
+    db_user.picture = user.picture
+    db_user.user_type = user.user_type
+    db_user.validated = user.validated
+
+    db.commit()
+    return db_user
+
 def create_challenge(db: Session, challenge: schemas.Challenge):
     db_challenge = schemas.Challenge(
         name=challenge.name,
@@ -143,6 +159,7 @@ def get_user_basics(db: Session, user_id: str):
         id=user.id,
         name=user.name,
         picture=user.picture,
+        email=user.email,
         username=user.username,
         failed_attempts=user.failed_attempts,
         successful_attempts=user.successful_attempts,
@@ -220,6 +237,9 @@ def get_users_by_id(db: Session, user_ids: list[int]):
         user_basics.append(user_basics_inst)
 
     return user_basics if len(user_basics) > 0 else None
+
+def get_user_by_id(db: Session, user_id: int):
+    return db.query(schemas.User).filter(schemas.User.id == user_id).first()
 
 def get_challenges(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Challenge).offset(skip).limit(limit).all()
