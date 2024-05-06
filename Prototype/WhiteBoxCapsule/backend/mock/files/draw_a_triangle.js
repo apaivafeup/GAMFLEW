@@ -4,7 +4,7 @@ function draw_a_triangle(board) {
     // row and column - respectively, (x, y).
     var vertices = utils.find_blue_pieces(board)
 
-    if (vertices.length != 3) {
+    if (vertices.length > 3) {
         return;
     }
 
