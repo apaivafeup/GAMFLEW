@@ -12,6 +12,9 @@
     <button class="menu-button" @click="this.$router.push({ name: 'leaderboard' })" id="leaderboard-button" style="width: 500px;">
       Leaderboard
     </button>
+    <button class="menu-button" @click="this.$router.push({ name: 'edit-user', params: { id: this.auth.user.id } })" id="edit-user-button" style="width: 500px">
+      Edit User
+    </button>
     <button class="menu-button" @click="this.$router.push({ name: 'user-export' })"
       v-if="this.auth.user.user_type == 'player'" id="export-button" style="width: 500px">
       Export
@@ -53,6 +56,9 @@
       <h4 style="text-align: center;">Game Information</h4>
       <button class="admin-menu-button" @click="this.$router.push({ name: 'leaderboard' })" id="leaderboard-button" style="">
         Leaderboard
+      </button>
+      <button class="admin-menu-button" @click="this.$router.push({ name: 'edit-user', params: { id: this.auth.user.id } })" id="edit-user-button" style="">
+        Edit User
       </button>
       <button class="admin-menu-button" @click="this.$router.push({ name: 'user-export' })" id="export-button" style="">
         Export

@@ -22,7 +22,8 @@ const routes = [
     { name: 'validate-admin', path: '/validate-admin', component: () => import('./pages/ValidateAdmin.vue'), props: false},
     { name: 'challenge-comments', path: '/challenges/:id/comments', component: () => import('./pages/ChallengeComments.vue'), props: true},
     { name: 'check-user-submissions', path: '/user-submissions', component: () => import('./pages/CheckUserSubmissions.vue'), props: false},
-    { name: 'leaderboard', path: '/leaderboard', component: () => import('./pages/Leaderboard.vue'), props: false}
+    { name: 'leaderboard', path: '/leaderboard', component: () => import('./pages/Leaderboard.vue'), props: false},
+    { name: 'edit-user', path: '/edit-user/:id/', component: () => import('./pages/EditUser.vue'), props: true},
 ];
 
 export const Router = createRouter({
