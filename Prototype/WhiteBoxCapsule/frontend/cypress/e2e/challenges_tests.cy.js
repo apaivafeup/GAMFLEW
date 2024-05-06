@@ -7,9 +7,9 @@ beforeEach('login', () => {
     cy.visit('http://localhost:5173/')
     cy.get('#exampleInputUsername').type('professor')
     cy.get('#exampleInputPassword').type('password')
-    cy.get('#login-button').click()
-    cy.wait(1000)
-    cy.visit('http://localhost:5173/#/challenges')
+    cy.get('#login-button').click().wait(1000)
+    cy.viewport(1920, 1080)
+    cy.get('#single-player-button').click().wait(1000)
 })
 
 describe("test file 1", () => {

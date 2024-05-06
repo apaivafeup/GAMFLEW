@@ -429,7 +429,7 @@ describe("Board Movement", () => {
 
 
 describe("Board buttons", () => {
-    describe('reset button', () => {
+    it('reset button', () => {
 
         cy.get('#single-player-button').click()
         cy.get('#challenge-1-play').click().wait(1000)
@@ -605,7 +605,7 @@ describe("Board buttons", () => {
                 })
     }),
 
-    describe('exit button', () => {
+    it('exit button', () => {
 
             cy.get('#single-player-button').click()
             cy.get('#challenge-1-play').click().wait(1000) // challenge 2 has multiple test cases, so...
