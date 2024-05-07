@@ -155,6 +155,7 @@ class Attempt(Base):
     challenge_id = Column(Integer, ForeignKey("challenges.id"), nullable=False)
     game_round_id = Column(Integer, ForeignKey("game_rounds.id"), nullable=True, index=True)
     attempt_type = Column(ENUM(AttemptType), nullable=False, default=AttemptType.PASS, index=True)
+    achievement = Column(Boolean, index=True, nullable=False)
     test_cases = Column(PickleType)
     comment = Column(TEXT, index=True)
     comment_score = Column(Float, nullable=True, index=True)

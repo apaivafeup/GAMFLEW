@@ -137,6 +137,7 @@ def create_attempt(db: Session, attempt: schemas.Attempt):
         player_id=attempt.player_id,
         challenge_id=attempt.challenge_id,
         attempt_type=attempt.attempt_type,  # attempt.pass or attempt.fail
+        achievement=attempt.achievement,
         comment=attempt.comment,
         test_cases=attempt.test_cases,
         game_round_id=attempt.game_round_id,

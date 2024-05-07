@@ -22,6 +22,7 @@ class Attempt(BaseModel):
     challenge_id: int
     score: int
     attempt_type: AttemptType
+    achievement: bool
     test_cases: dict
     game_round_id: Optional[int] = None
     comment: str
