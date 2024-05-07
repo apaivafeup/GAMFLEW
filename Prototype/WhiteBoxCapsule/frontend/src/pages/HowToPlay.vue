@@ -239,10 +239,10 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                 </div>
             </div>
         </div>
-        <div v-if="tab == 'auxiliary_functions'" style="font-size: 13px !important; justify-content: center;">
-            <p style="text-align: justify;">
-                There are a bunch of auxiliary functions that may be used in challenges. These
-                functions' code is superfluous to all challenge objectives, but what the functions do
+        <div v-if="tab == 'auxiliary_functions'" style="font-size: 16px !important; justify-content: center;">
+            <p style="text-align: center;">
+                There are a bunch of auxiliary functions that may be used in challenges. <br />
+                Their code is superfluous to all challenge objectives, but what the functions do
                 is not.
             </p>
 
