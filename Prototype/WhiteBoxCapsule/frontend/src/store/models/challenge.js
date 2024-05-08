@@ -11,7 +11,8 @@ export class Challenge {
     code_file,
     challenge_type,
     passing_criteria,
-    achievement_criteria,
+    achievement,
+    achievement_hint,
     owner
   ) {
     this.id = id
@@ -25,7 +26,8 @@ export class Challenge {
     this.code_file = code_file
     this.challenge_type = challenge_type
     this.passing_criteria = passing_criteria
-    this.achievement_criteria = achievement_criteria
+    this.achievement = achievement
+    this.achievement_hint = achievement_hint
     this.owner = owner
   }
 }

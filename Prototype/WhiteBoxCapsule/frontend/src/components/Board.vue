@@ -63,9 +63,12 @@ export default {
             <em>It's required for your score!</em>
           </p>
         </div>
-        <div v-if="board.passed && !board.timeout" class="alert alert-special-hint player-info">
+        <div v-if="board.passed && !board.timeout && !board.achievement" class="alert alert-special-hint player-info">
           <p v-if="challenge.achievement_hint == null" id="achievement-text" style="margin: 0px; padding: 0px; align-self: center;">There is no achievement for this challenge!</p>
           <p v-else id="achievement-text" style="margin: 0px; padding: 0px; align-self: center; ">{{ challenge.achievement_hint }}</p>
+        </div>
+        <div v-else-if="board.passed && !board.timeout && board.achievement" class="alert alert-special-hint player-info">
+          <p id="achievement-text" style="margin: 0px; padding: 0px; align-self: center;">You have won this Challenge's achievement!</p>
         </div>
       </div>
     </div>

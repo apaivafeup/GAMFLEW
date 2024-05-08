@@ -408,7 +408,6 @@ export default {
                 this.challenge = new Challenge(
                     response.data.id,
                     response.data.name,
-                    // response.data.description,
                     response.data.difficulty,
                     response.data.hint,
                     response.data.objective,
@@ -418,7 +417,8 @@ export default {
                     response.data.code_file,
                     response.data.challenge_type,
                     response.data.passing_criteria,
-                    response.data.achievement_criteria,
+                    response.data.achievement,
+                    response.data.achievement_hint,
                     response.data.owner_id
                 )
             }).catch((error) => {

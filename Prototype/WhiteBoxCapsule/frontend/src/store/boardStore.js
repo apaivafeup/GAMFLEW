@@ -44,6 +44,7 @@ export const boardStore = defineStore('boardStore', {
       submitted: Boolean,
       started: Boolean,
       table: Boolean,
+      achievement: Boolean,
 
       // Attempt state, for future submission.
       attempt: Attempt,
