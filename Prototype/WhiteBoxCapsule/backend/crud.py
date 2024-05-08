@@ -71,7 +71,8 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
         code_file=challenge.code_file,
         challenge_type=challenge.challenge_type,
         passing_criteria=challenge.passing_criteria,
-        achievement_criteria=challenge.achievement_criteria,
+        achievement=challenge.achievement,
+        achievement_hint=challenge.achievement_hint,
         owner_id=challenge.owner_id,
         difficulty=challenge.difficulty
     )
@@ -95,7 +96,7 @@ def update_challenge(db: Session, challenge_id: int, challenge: schemas.Challeng
     db_challenge.code_file = challenge.code_file
     db_challenge.challenge_type = challenge.challenge_type
     db_challenge.passing_criteria = challenge.passing_criteria
-    db_challenge.achievement_criteria = challenge.achievement_criteria
+    db_challenge.achievement = challenge.achievement
     db_challenge.owner_id = challenge.owner_id
     db_challenge.difficulty = challenge.difficulty
 
@@ -312,10 +313,8 @@ def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: in
 
 
 def get_passed_challenges(db: Session, user_id: int):
-    passed_attempts = db.query(schemas.Attempt).filter(
-        schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
-    passed_challenges_ids = [
-        attempt.challenge_id for attempt in passed_attempts]
+    passed_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
+    passed_challenges_ids = [attempt.challenge_id for attempt in passed_attempts]
     return passed_challenges_ids
 
 

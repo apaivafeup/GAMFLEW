@@ -5,6 +5,7 @@
         "challenge_id": 1,
         "score": 100,
         "attempt_type": "pass",
+        "achievement": false,
         "comment": "Testing comments... I did very well!",
         "test_cases": {
             "0": {

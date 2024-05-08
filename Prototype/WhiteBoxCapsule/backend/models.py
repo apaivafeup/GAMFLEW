@@ -53,7 +53,8 @@ class Challenge(BaseModel):
     code_file: int
     passing_criteria: PassingCriteria
     challenge_type: ChallengeType
-    achievement_criteria: Optional[dict] = None
+    achievement: Optional[str] = None
+    achievement_hint: Optional[str] = None
     owner_id: int
     difficulty: Difficulty
 

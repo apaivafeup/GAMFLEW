@@ -136,7 +136,8 @@ class Challenge(Base):
     code_file = Column(Integer, ForeignKey("code_file.id"), nullable=False, index=True)
     challenge_type = Column(ENUM(ChallengeType), nullable=False, default=ChallengeType.STATEMENT, index=True)
     passing_criteria = Column(PickleType)
-    achievement_criteria = Column(PickleType, nullable=True)
+    achievement = Column(TEXT, nullable=True)
+    achievement_hint = Column(TEXT, nullable=True)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     difficulty = Column(ENUM(Difficulty), index=True)
 

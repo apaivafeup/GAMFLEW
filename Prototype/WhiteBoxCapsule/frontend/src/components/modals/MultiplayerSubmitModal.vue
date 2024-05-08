@@ -77,6 +77,7 @@ export default defineComponent({
         challenge_id: this.board.attempt.challenge_id,
         attempt_type: this.board.passed ? 'pass' : 'fail',
         comment: this.board.attempt.comment,
+        achievement: false,
         game_round_id: this.round_id,
         test_cases: this.saveTestCases(),
         comment_score_count: this.board.passed ? 0 : null,

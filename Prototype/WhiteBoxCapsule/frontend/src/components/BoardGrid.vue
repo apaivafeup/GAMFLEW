@@ -397,6 +397,7 @@ export default {
         console.error('Invalid submit type')
       }
 
+      this.achievement = this.checkAchievement(this.board)
       this.submitAttempt()
       this.board.go = false
 
@@ -507,6 +508,22 @@ export default {
       }
     },
 
+    checkAchievement(input) {
+      if (this.board.currentKey == 0) {
+        if (eval(this.challenge.achievement)) {
+          return true
+        }
+        return false
+      } else {
+        for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
+          if (eval(this.challenge.achievement)) {
+            return true
+          }
+        }
+        return false
+      }
+    },
+
     async submitAttempt() {
       var body = {
         id: 0,
@@ -514,6 +531,7 @@ export default {
         challenge_id: this.board.attempt.challenge_id,
         attempt_type: this.board.passed ? 'pass' : 'fail',
         comment: this.board.attempt.comment,
+        achievement: this.achievement,
         test_cases: this.saveTestCases(),
         score: this.board.passed ? this.challenge.score : 0,
         comment_score_count: this.board.passed ? 0 : null,

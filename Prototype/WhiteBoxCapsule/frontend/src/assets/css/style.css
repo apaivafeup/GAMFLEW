@@ -452,6 +452,18 @@ textarea {
   border-color: #d9beeb;
 }
 
+.alert-special-hint {
+  background-clip: padding-box;
+  color: rgba(57, 12, 96, 1);
+  background: -webkit-linear-gradient(45deg, rgb(186, 143, 229) 0%, rgb(141, 208, 240) 100%);
+  border-style: solid;
+  border: double 1px transparent;
+  background-image: linear-gradient(to left, rgb(169, 216, 238), rgba(225, 209, 241, 1)),
+                    linear-gradient(to right, rgb(186, 143, 229), rgb(107, 196, 237));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
 .accordion,
 .accordion-button,
 .accordion-button:focus,
