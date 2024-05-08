@@ -397,7 +397,8 @@ export default {
         console.error('Invalid submit type')
       }
 
-      this.board.achievement = this.checkAchievement(this.board)
+      this.board.achievement = this.board.passed && this.checkAchievement(this.board)
+
       this.submitAttempt()
       this.board.go = false
 
