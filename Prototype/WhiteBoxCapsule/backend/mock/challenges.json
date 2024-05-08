@@ -18,8 +18,8 @@
                 "input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y > 7 || input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x > 7"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x == 10 && input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y == 10",
+        "achievement_hint": "For the 1.1 challenge, consider that the numbers for the out of bounds spot start with 1. Start with the lowest number!",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
