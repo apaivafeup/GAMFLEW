@@ -8,8 +8,8 @@
   </div>
   <button v-if="!url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode"
     id="theme-toggle">💡</button>
-  <button @click="this.$router.back()"
-    id="theme-toggle" class="back">◀️</button>
+  <button @click="this.$router.back()" id="theme-toggle" v-if="!url.includes('challenge/')" class="back">◀️</button>
+  <button @click="this.$router.back()" id="theme-toggle" v-else>◀️</button>
 </template>
 
 <style>
