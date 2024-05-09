@@ -1,7 +1,7 @@
 <template>
   <div class="row" style="padding: 0px 15px; justify-content: center; ">
     <div class="player-bar-box" style="width: 75%; display: flex; flex-direction: column; border-radius: 30px;">
-      <div style="display: grid; grid-template-columns: 70% 12% 12%; grid-gap: 2vw; grid-template-rows: 100%; padding: 3px 5px;">
+      <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 3px 5px;">
         <div style="display: flex; align-content: center; align-items: start; flex-direction: column; justify-content: center;">
           <div class="row" style="--bs-gutter-x: 0; --bs-gutter-y: 0;">
             <img :src="this.$api_link + user.picture" class="player-bar-avatar" />
@@ -17,11 +17,12 @@
             </div>
           </div>
         </div>
-        <div id="player-points" style="display: flex; align-items: center;">
-          <span class="badge bg-primary" style="padding: 5px; margin: 0px; background: #00c8ff !important; display: flex; justify-content: center;">
-            <font-awesome-icon icon="coins" fixed-width style="color: white; margin-right: 5px" />
-            <p style="color: white; margin: 0px;">Score: {{ user.score }}</p>
+        <div id="player-points-achievements" style="display: flex; align-items: center; justify-content: end;">
+          <span style="padding: 5px; margin: 0px; display: flex; justify-content: center; align-items: center; font-weight: bold;">
+            <font-awesome-icon icon="coins" fixed-width style="color: #00c8ff !important; margin-right: 5px" />
+            <p style="color: #00c8ff !important; margin: 0px;">Score: {{ user.score }}</p>
           </span>
+          <!-- TODO: ACHIEVEMENTS, IF THEY'RE KEPT -->
         </div>
         <div id="player-stats">
           <span class="badge badge-warning" style="

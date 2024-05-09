@@ -228,6 +228,7 @@ def get_users_by_id(db: Session, user_ids: list[int]):
         user_basics_inst = models.UserBasics(
             id=user.id,
             name=user.name,
+            email=user.email,
             username=user.username,
             user_type=user.user_type,
             failed_attempts=user.failed_attempts,
@@ -1215,6 +1216,7 @@ def get_admin_leaderboard(db: Session):
         result.append(models.UserBasics(
             id=user.id,
             name=user.name,
+            email=user.email,
             picture=user.picture,
             username=user.username,
             failed_attempts=user.failed_attempts,
