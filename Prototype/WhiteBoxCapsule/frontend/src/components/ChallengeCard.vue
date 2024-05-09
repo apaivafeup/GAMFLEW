@@ -52,7 +52,7 @@
       </div>
       <div class="row">
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-          <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: rgb(169, 89, 255)!important; text-align: center; display: flex; justify-content: center;"><strong>{{ challenge.score }} points</strong></div>
+          <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: #ffc107 !important; text-align: center; display: flex; justify-content: center;"><strong>{{ challenge.score }} points</strong></div>
           <div class="badge bg-primary" v-if="challenge.challenge_type != 'mcdc'" style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
             {{ challenge.challenge_type.charAt(0).toUpperCase() + challenge.challenge_type.slice(1) }}
           </div>
