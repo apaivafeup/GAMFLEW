@@ -13,3 +13,39 @@ beforeEach('login', () => {
     cy.visit('http://localhost:5173/#/challenges')
 })
 
+function challenge(challenge) {
+    cy.get('#challenge-' + challenge + '-play').click()
+}
+
+function outOfBounds(x, y) {
+    cy.get('#piece-stack-out-x').click().type(x)
+    cy.get('#piece-stack-out-y').click().type(y)
+}
+
+function move(x, y) {
+    cy.get('#board-box-' + x + '-' + y).click()
+}
+
+function moveOut() {
+    cy.get('.game-board-out').click()
+}
+
+function submit() {
+    cy.get('#go-button').click()
+    cy.get('#comment-modal-textarea').type('Example comment.')
+    cy.get('#comment-modal-button').click().wait(1000)
+    cy.on('window:confirm', () => false)
+    cy.contains("You have won this Challenge's achievement!").should('be.visible')
+}
+
+function next() {
+    cy.get('#next-button').click()
+}
+
+describe('test file 2', () => {
+    it('challenge 2.1', () => {
+        //challenge(19)
+
+        //submit()
+    })
+})
