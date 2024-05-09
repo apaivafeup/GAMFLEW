@@ -37,7 +37,13 @@
               margin-bottom: var(--bs-card-title-spacer-y);
             " @click="goToChallengeComments(challenge.id)" v-else>
               Comments 💬
-          </button>
+            </button>
+            <div class="col" v-if="this.unlocked" style="display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end;">
+              <font-awesome-icon class="icon" icon="award" fixed-width />
+            </div>
+            <div class="col" v-else style="opacity: 45%; display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end;">
+              <font-awesome-icon class="icon" icon="award" fixed-width />
+            </div>
           </div>
           <div class="row">
             <h6 class="card-subtitle mb-2 text-muted" style="font-size: 14px;">{{ challenge.name.split(':')[1] }}</h6>
@@ -68,6 +74,16 @@
   </div>
 </template>
 
+<style>
+.icon:nth-of-type(n) {
+  color: rgb(169, 89, 255) !important;
+}
+
+.icon:nth-of-type(2n) {
+  color: rgb(89, 111, 255) !important;
+}
+</style>
+
 <script>
 import { defineComponent } from 'vue'
 import { Challenge } from '../store/models/challenge.js'
@@ -77,7 +93,8 @@ export default defineComponent({
   props: {
     challenge: Challenge,
     passed: Boolean,
-    editor: Boolean
+    editor: Boolean,
+    unlocked: Boolean
   },
 
   data() {

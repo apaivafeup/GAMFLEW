@@ -15,7 +15,7 @@ import { Router } from './router.js'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark} from '@fortawesome/free-solid-svg-icons'
 
 import Toast, { POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";

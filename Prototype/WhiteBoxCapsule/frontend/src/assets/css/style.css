@@ -513,6 +513,8 @@ textarea {
   border: 1px solid var(--border-color) !important;
 }
 
+
+
 .guide-button {
   background-color: var(--background-color);
   color: var(--text-color) !important;

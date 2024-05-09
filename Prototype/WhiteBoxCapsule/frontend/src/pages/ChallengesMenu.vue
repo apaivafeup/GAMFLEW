@@ -40,6 +40,7 @@
                   :id="'challenge-card-' + challenge.id"
                   :challenge="challenge"
                   :passed="passed_challenges.includes(challenge.id)"
+                  :unlocked="unlocked_challenge_achievements.includes(challenge.id)"
                 />
               </li>
             </ul>
@@ -99,6 +100,13 @@ export default defineComponent({
       this.$error = true  
     })
 
+    await this.$axios.get(this.$api_link + '/users/' + this.auth.user.id + '/achievements/challenges/', this.auth.config).then((response) => {
+      this.unlocked_challenge_achievements = response.data
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})
+      this.$error = true
+    })
+
     if (this.$error) {
       loader.hide()
       return
@@ -111,7 +119,8 @@ export default defineComponent({
     return {
       challenges: {},
       code_files: [],
-      passed_challenges: []
+      passed_challenges: [],
+      unlocked_challenge_achievements: []
     }
   },
 

@@ -281,6 +281,12 @@ def read_passed_challenges(current_user: Annotated[models.User, Depends(get_curr
     passed_challenges = crud.get_passed_challenges(db, user_id=user_id)
     return passed_challenges
 
+## Get unlocked achievements (individual challenges)
+@app.get("/users/{user_id}/achievements/challenges/", response_model=list[int])
+def read_unlocked_challenge_achievements(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, db: Session = Depends(get_db)):
+    unlocked_achievements = crud.get_unlocked_challenge_achievements(db, user_id=user_id)
+    return unlocked_achievements
+
 ## Delete specific user
 @app.delete('/user/{user_id}', status_code=200)
 def delete_user(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id:int, db: Session = Depends(get_db)):

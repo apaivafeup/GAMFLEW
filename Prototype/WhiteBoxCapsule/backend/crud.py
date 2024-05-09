@@ -207,6 +207,7 @@ def get_users(db: Session, skip: int = 0, limit: int = 500):
             id=user.id,
             name=user.name,
             username=user.username,
+            email=user.email,
             user_type=user.user_type,
             failed_attempts=user.failed_attempts,
             successful_attempts=user.successful_attempts,
@@ -315,8 +316,14 @@ def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: in
 def get_passed_challenges(db: Session, user_id: int):
     passed_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
     passed_challenges_ids = [attempt.challenge_id for attempt in passed_attempts]
+    passed_challenges_ids = list(set(passed_challenges_ids))
     return passed_challenges_ids
 
+def get_unlocked_challenge_achievements(db: Session, user_id: int):
+    achievement_unlocked_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.achievement == True).filter(schemas.Attempt.attempt_type == "pass")
+    unlocked_challenges = [attempt.challenge_id for attempt in achievement_unlocked_attempts]
+    unlocked_challenges = list(set(unlocked_challenges))
+    return unlocked_challenges
 
 def delete_user(db: Session, user_id: int):
     user_to_delete = get_user(db, user_id)
