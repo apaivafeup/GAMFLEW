@@ -53,8 +53,13 @@ export default {
         </div>
         <div class="col" style="padding: 0px; margin: 0px;">
           <div v-if="board.failed" class="alert alert-danger player-info">
-            <p style="margin: 0px; padding: 0px; align-self: center;">
-              You didn't pass. You can keep trying.
+            <p id="fail-message" v-if="!board.error" style="margin: 0px; padding: 0px; align-self: center;">
+              You didn't pass. You can keep trying, though.
+            </p>
+            <p v-else id="fail-message" style="margin: 0px; padding: 0px; align-self: center;">
+              An error occurred while processing your submission. Tell your colleagues.
+              Please contact us for assistance (be sure to include the error message - check your browser's console).
+              If you wish to keep trying still, you can click the <b>Reset</b> button.
             </p>
           </div>
         </div>

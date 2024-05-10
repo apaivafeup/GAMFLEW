@@ -43,7 +43,7 @@ export default {
       <div class="row" style="display: flex; flex-direction: row; width: 100%;">
         <ChallengeCode :code_file="code_file" style="width: 100%;" />
       </div>
-      <div class="row" style="width: 100%;" v-if="!board.passed && board.hint">
+      <div class="row" style="width: 100%;" v-if="!board.passed && board.hint && !board.error">
         <div class="alert alert-secondary player-info" style="width: 100%; overflow-y: scroll; font-size: 14px;" id="#challenge-hint" >
           <p style="margin: 0px; padding: 0px; align-self: center;">
             <b>Hint:</b> {{ this.challenge.hint }}
@@ -53,8 +53,12 @@ export default {
       <div class="row" style="display: flex; width: 100%; gap: 5px;">
         <PlayerInfo v-if="!board.passed && !board.timeout" style="width: 100%;"/>
         <div v-if="board.failed && !board.timeout && !board.passed" class="alert alert-danger player-info">
-          <p style="margin: 0px; padding: 0px; align-self: center;">
+          <p id="fail-message" v-if="!board.error" style="margin: 0px; padding: 0px; align-self: center;">
             You didn't pass. You can keep trying, though.
+          </p>
+          <p v-else id="fail-message" style="margin: 0px; padding: 0px; align-self: center;">
+            An error occurred while processing your submission.
+            Please contact us for assistance (be sure to include the error message - check your browser's console).
           </p>
         </div>
         <div v-else-if="board.passed && !board.timeout" class="alert alert-success player-info">

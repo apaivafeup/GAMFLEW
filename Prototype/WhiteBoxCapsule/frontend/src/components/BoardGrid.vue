@@ -387,15 +387,22 @@ export default {
 
       var type = this.challenge.challenge_type
 
-      if (type == 'statement') {
-        this.goUnique(this.board)
-      } else if (type == 'decision') {
-        this.goDecision(this.board)
-      } else if (type == 'condition' || type == 'mcdc' || type == 'condition/decision') {
-        this.goCondition(this.board)
-      } else {
-        console.error('Invalid submit type')
+      try {
+        if (type == 'statement') {
+          this.goUnique(this.board)
+        } else if (type == 'decision') {
+          this.goDecision(this.board)
+        } else if (type == 'condition' || type == 'mcdc' || type == 'condition/decision') {
+          this.goCondition(this.board)
+        } else {
+          console.error('Invalid submit type')
+        }
+      } catch (error) {
+        this.board.fail()
+        this.board.error = true;
+        return
       }
+
 
       this.board.achievement = this.board.passed && this.checkAchievement(this.board)
 
