@@ -26,6 +26,12 @@ function move(x, y) {
     cy.get('#board-box-' + x + '-' + y).click()
 }
 
+function moveTo(x1, y1, x2, y2) {
+    cy.get('#board-box-' + x1 + '-' + y1).click()
+    cy.get('#board-box-' + x2 + '-' + y2).click()
+}
+
+function click(x, y) {
     cy.get('#board-box-' + x + '-' + y).click()
 }
 
@@ -49,36 +55,8 @@ function next() {
     cy.get('#next-button').click()
 }
 
-describe('test file 2', () => {
-
-    it('challenge 2.15', () => {
-        challenge(33)
-        add()
-        cy.get('#board-box-5-1').click()
-        cy.get('#board-box-5-3').click()
-        cy.get('#board-box-5-5').click()
-        cy.get('#board-box-5-7').click()
-        cy.get('#board-box-6-0').click()
-        cy.get('#board-box-6-2').click()
-        cy.get('#board-box-6-4').click()
-        cy.get('#board-box-6-6').click()
-        cy.get('#board-box-7-1').click()
-        cy.get('#board-box-7-3').click()
-        cy.get('#board-box-7-5').click()
-        cy.get('#board-box-7-7').click()
-        cy.get('#board-box-0-0').click().click()
-        cy.get('#board-box-0-2').click().click()
-        cy.get('#board-box-0-4').click().click()
-        cy.get('#board-box-0-6').click().click()
-        cy.get('#board-box-1-1').click().click()
-        cy.get('#board-box-1-3').click().click()
-        cy.get('#board-box-1-5').click().click()
-        cy.get('#board-box-1-7').click().click()
-        cy.get('#board-box-2-0').click().click()
-        cy.get('#board-box-2-2').click().click()
-        cy.get('#board-box-2-4').click().click()
-        cy.get('#board-box-2-6').click().click()
-        add()
-        submit()
+describe('test file 4', () => {
+    it('challenge 4.1', () => {
+        challenge(49)
     })
 })

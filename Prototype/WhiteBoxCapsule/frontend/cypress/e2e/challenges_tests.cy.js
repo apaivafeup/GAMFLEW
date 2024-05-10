@@ -1869,6 +1869,8 @@ describe('test file 3', () => {
             cy.get('#add-button').click()
             cy.get('#board-box-5-1').click()
             cy.get('#board-box-0-1').click()
+            cy.get('#board-box-0-1').click()
+            cy.get('#board-box-3-3').click()
             cy.get('#next-button').click()
             cy.get('#add-button').click()
             cy.get('#board-box-5-1').click().click()

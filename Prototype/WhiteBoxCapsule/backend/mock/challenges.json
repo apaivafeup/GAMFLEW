@@ -841,8 +841,8 @@
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "Math.abs(this.log[this.log[input.currentKey].length - 1].destination.x - this.log[this.log[input.currentKey].length - 1].start.x) == 7",
+        "achievement_hint": "The challenge format is X.Y. Make a final interaction that makes this expression true: [|destination.x - start.x| = 2*X + Y]",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -866,8 +866,8 @@
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[input.currentKey][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => [{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].filter((position) => input.state[input.currentKey][piece.position.x + position.x][piece.position.y + position.y].color != 'empty').length == 3) || this.get_pieces(input, input.currentKey).forEach((piece) => [{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].filter((position) => input.state[input.currentKey][piece.position.x + position.x][piece.position.y + position.y].color != 'empty').length == 2)",
+        "achievement_hint": "The challenge format is X.Y. Block X or Y directions of a King.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -891,8 +891,8 @@
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, case_num).length == 6",
+        "achievement_hint": "The challenge format is X.Y. Make sure you have exactly X + Y pieces in a test case.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -916,8 +916,8 @@
                 "!this.get_pieces(input, case_num).some((piece) => piece.king)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, case_num).forEach((piece) => piece.king).filter((king) => king == true).length == 4",
+        "achievement_hint": "The challenge format is Y.X. Make X kings in a test case.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -941,8 +941,8 @@
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'red').length == 2 && this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 2",
+        "achievement_hint": "If the challenge format is X.Y, make sure to submit a (Y - X) pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -966,8 +966,8 @@
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color != Color.RED)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'red').length == 3 && this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 3",
+        "achievement_hint": "If the challenge format is Y.X, make sure to submit a (X - Y) pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -992,8 +992,8 @@
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, case_num).forEach((piece) => piece.color).filter((color) => color == 'red').length == 1 && this.get_pieces(input, case_num).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 1",
+        "achievement_hint": "If the challenge format is X.Y, make sure to submit a |(2*X - Y)| pieces of each color.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1017,8 +1017,8 @@
                 "!this.get_pieces(input, case_num).some((piece) => piece.king)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, case_num).length == 5 || this.get_pieces(input, case_num).length == 3",
+        "achievement_hint": "If the challenge format is X.Y, make sure one of the test cases has, at most, either X or Y pieces.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1040,11 +1040,11 @@
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
             "tests": [
-                "[{ x: 1, y: 1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[input.currentKey][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
+                "[{ x: 1, y: 1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && piece.color == 'red' && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[input.currentKey][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 3",
+        "achievement_hint": "The challenge format is Y.X. Make sure you have (X/Y) pieces of the color NOT mentioned in the challenge title.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1066,12 +1066,12 @@
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
             "tests": [
-                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
-                "![{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
+                "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).filter((piece) => piece.color == 'red').some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
+                "![{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).filter((piece) => piece.color == 'red').some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_blue_pieces(input, case_num) ==  4",
+        "achievement_hint": "The board format is X.Y. Make sure one test case has [Y - X*X + X + 1] blue pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1096,8 +1096,8 @@
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, case_num).length != this.count_blue_pieces(input, case_num) || this.get_pieces(input, case_num).length != this.count_red_pieces(input, case_num)",
+        "achievement_hint": "Make sure one test case has at least one piece of each color.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1122,8 +1122,8 @@
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "(this.count_blue_pieces(input, case_num) == 4 && this.count_red_pieces(input, case_num) == 3) || (this.count_blue_pieces(input, case_num) == 3 && this.count_red_pieces(input, case_num) == 4)",
+        "achievement_hint": "The challenge format is Y.X. Make sure one test case has (X/Y) pieces of one color and Y pieces of the other.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1148,8 +1148,8 @@
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_blue_pieces(input, case_num) == 5 && this.count_red_pieces(input, case_num) == 5",
+        "achievement_hint": "The challenge is formatted as X.Y. Make sure a test case has (Y - X)/2 pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1159,7 +1159,7 @@
         "test_cases_count": 2,
         "score": 325,
         "hint": "You can check Checkers' rules to know how one makes a King. Only one piece is needed - if you put more than one, only the first one's considered.",
-        "objective": "Condition coverage of lines 17-19.",
+        "objective": "Condition coverage of lines 17-19 (2 considered variables, separated by ||).",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "condition",
@@ -1170,12 +1170,14 @@
                 "this.get_pieces(input, case_num).some((piece) => piece.king)"
             ],
             "tests": [
-                "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != Color.EMPTY && (input.state[case_num][newX][newY].color == piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
-                "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
+                "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY); }))",
+                "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && !(input.state[case_num][newX][newY].color == Color.EMPTY); }))",
+                "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY); }))",
+                "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && !(input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY); }))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_blue_pieces(input, case_num) == this.get_pieces(input, case_num).length",
+        "achievement_hint": "You can only use pieces of one color!",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1201,8 +1203,8 @@
                 "![{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
+        "achievement_hint": "In one test case, make sure that there both colors get an equal number of pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
