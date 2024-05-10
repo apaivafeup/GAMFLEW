@@ -1202,9 +1202,6 @@ describe('test file 2', () => {
     
     describe("challenge 2.13", () => {
         it('pass challenge 2.13', () => {
-    
-    
-    
             cy.get('#challenge-31-play').click().wait(1000)
     
             cy.get('#add-button').click()
@@ -1235,9 +1232,6 @@ describe('test file 2', () => {
     
     describe("challenge 2.14", () => {
         it('pass challenge 2.14', () => {
-    
-    
-    
             cy.get('#challenge-32-play').click().wait(1000)
     
             cy.get('#add-button').click()
