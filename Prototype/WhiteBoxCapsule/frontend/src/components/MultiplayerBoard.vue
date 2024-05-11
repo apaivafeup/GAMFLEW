@@ -67,7 +67,7 @@ export default {
       </div>
 
       
-      <ChallengeCode :code_file="code_file" />
+      <ChallengeCode :code_file="code_file" style="width: 100%;" />
       <div class="row" style="width: 100%;" v-if="!board.passed && board.hint">
         <div class="alert alert-secondary player-info" style="width: 100%; overflow-y: scroll; font-size: 14px;" id="#challenge-hint" >
           <p style="margin: 0px; padding: 0px; align-self: center;">
