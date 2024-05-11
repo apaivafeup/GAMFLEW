@@ -32,7 +32,7 @@ export default {
   async beforeMount() {
     this.board = boardStore()
     Prism.highlightAll()
-    console.log('board grid', this.can_pass)
+    //console.log('board grid', this.can_pass)
   }
 }
 </script>

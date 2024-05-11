@@ -626,7 +626,7 @@ export default {
     async getDictionary() {
       await this.$axios.get(this.$api_link + '/code-file-dictionary/', this.auth.config).then((response) => {
         this.dictionary = response.data
-        console.log(response.data)
+        //console.log(response.data)
       }).catch((error) => {
         this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
         this.$error = true

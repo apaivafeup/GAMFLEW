@@ -293,7 +293,7 @@ export default {
     },
 
     getLog() {
-      console.log(this.solution.log[this.solution.currentKey])
+      // console.log(this.solution.log[this.solution.currentKey])
       if (this.solution.log != {}) {
         return this.solution.log[this.solution.currentKey]
       }

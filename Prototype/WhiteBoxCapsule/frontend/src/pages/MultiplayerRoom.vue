@@ -146,7 +146,7 @@ export default {
             })
 
         this.can_pass = await this.can_user_pass_auto()
-        console.log('can_pass', this.can_pass)
+        // console.log('can_pass', this.can_pass)
 
         if (this.$error) {
             loader.hide()

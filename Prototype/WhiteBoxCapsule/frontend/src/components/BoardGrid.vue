@@ -526,7 +526,7 @@ export default {
         }
       }
 
-      console.log('passed', passed)
+      //console.log('passed', passed)
 
       if (!passed.includes(false)) {
         this.board.add = false
@@ -545,7 +545,7 @@ export default {
         for (var i = 0; i < preconditions.length; i++) {
           var precondition = preconditions[i]
           if (!eval(precondition)) {
-            console.log(case_num, precondition)
+            //console.log(case_num, precondition)
             this.board.fail()
             return
           }
@@ -562,7 +562,7 @@ export default {
         }
       }
 
-      console.log('passed', passed)
+      //console.log('passed', passed)
 
       if (!passed.includes(false)) {
         this.board.add = false
