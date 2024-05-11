@@ -196,6 +196,7 @@ import { Challenge } from '../store/models/challenge'
 import { boardStore } from '../store/boardStore'
 
 import * as utils from '../store/utils.js'
+import { Color, Piece } from '../store/models/piece'
 import OutPieceStack from './OutPieceStack.vue'
 import 'vue3-easy-data-table'
 import { authStore } from '../store/authStore.js'
@@ -233,6 +234,230 @@ export default {
   },
 
   methods: {
+    isTriangle(a, b, c) {
+      return a + b > c && a + c > b && b + c > a
+    },
+
+    distance(a, b) {
+      if (!a || !b) {
+        return 0
+      }
+
+      return Number.parseFloat(
+        Math.sqrt(Math.pow(a.position.x - b.position.x, 2) + Math.pow(a.position.y - b.position.y, 2))
+      ).toFixed(2)
+    },
+
+    get_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
+    get_top_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 8; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
+    get_bottom_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 4; i < 8; i++) {
+        for (var j = 0; j < 8; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
+    get_left_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 0; i < 8; i++) {
+        for (var j = 0; j < 4; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
+    get_right_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 0; i < 8; i++) {
+        for (var j = 4; j < 8; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
+    count_blue_pieces(board, boardKey) {
+      var count = 0
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.BLUE) {
+            count++
+          }
+        }
+      }
+      return count
+    },
+
+    count_red_pieces(board, boardKey) {
+      var count = 0
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.RED) {
+            count++
+          }
+        }
+      }
+      return count
+    },
+
+    count_empty_spaces(board, boardKey) {
+      var count = 0
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.EMPTY) {
+            count++
+          }
+        }
+      }
+      return count
+    },
+
+    find_first_red_piece(board, boardKey) {
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (
+            board.state[boardKey][i][j].color == Color.RED ||
+            (board.state[boardKey][i][j].color == Color.STACK &&
+              board.state[boardKey][i][j].stack.red > 0)
+          ) {
+            return board.state[boardKey][i][j]
+          }
+        }
+      }
+
+      if (board.outOfBoundsState[boardKey].color == Color.RED || (board.outOfBoundsState[boardKey].color == Color.STACK &&
+        board.outOfBoundsState[boardKey].stack.red > 0)) {
+        return board.outOfBoundsState[boardKey]
+      }
+
+      return new Piece({ x: -2, y: -2 }, Color.EMPTY)
+    },
+
+    find_first_blue_piece(board, boardKey) {
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (
+            board.state[boardKey][i][j].color == Color.BLUE ||
+            (board.state[boardKey][i][j].color == Color.STACK &&
+              board.state[boardKey][i][j].stack.blue > 0)
+          ) {
+            return board.state[boardKey][i][j]
+          }
+        }
+      }
+
+      if (board.outOfBoundsState[boardKey].color == Color.BLUE || (board.outOfBoundsState[boardKey].color == Color.STACK &&
+        board.outOfBoundsState[boardKey].stack.blue > 0)) {
+        return board.outOfBoundsState[boardKey]
+      }
+
+      return new Piece({ x: -2, y: -2 }, Color.EMPTY)
+    },
+
+    find_first_stack(board, boardKey) {
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.STACK) {
+            return board.state[boardKey][i][j]
+          }
+        }
+      }
+
+      if (board.outOfBoundsState[boardKey].color == Color.STACK) {
+        return board.outOfBoundsState[boardKey]
+      }
+
+      return new Piece({ x: -2, y: -2 }, Color.EMPTY)
+    },
+
+    find_blue_pieces(board, boardKey) {
+      var vertices = []
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.BLUE) {
+            vertices.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      vertices.sort((a, b) => {
+        a.x - b.x == 0 ? a.y - b.y : a.x - b.x
+      })
+      return vertices
+    },
+
+    find_red_pieces(board, boardKey) {
+      var vertices = []
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.RED) {
+            vertices.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+      vertices.sort((a, b) => {
+        a.x - b.x == 0 ? a.y - b.y : a.x - b.x
+      })
+      return vertices
+    },
+
+    find_stacks(board, boardKey) {
+      var vertices = []
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color == Color.STACK) {
+            vertices.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+      vertices.sort((a, b) => {
+        a.x - b.x == 0 ? a.y - b.y : a.x - b.x
+      })
+      return vertices
+    },
+
     changeX() {
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
         this.outX = document.getElementById('piece-stack-out-x').value
@@ -264,6 +489,7 @@ export default {
           console.error('Invalid submit type')
         }
       } catch (error) {
+        console.log(error)
         this.board.fail()
         this.board.error = true;
         return

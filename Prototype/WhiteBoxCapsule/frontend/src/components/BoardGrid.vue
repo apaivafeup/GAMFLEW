@@ -222,6 +222,62 @@ export default {
       return pieces
     },
 
+    get_top_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 8; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
+    get_bottom_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 4; i < 8; i++) {
+        for (var j = 0; j < 8; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
+    get_left_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 0; i < 8; i++) {
+        for (var j = 0; j < 4; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
+    get_right_pieces(board, boardKey) {
+      var pieces = []
+
+      for (var i = 0; i < 8; i++) {
+        for (var j = 4; j < 8; j++) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+            pieces.push(board.state[boardKey][i][j])
+          }
+        }
+      }
+
+      return pieces
+    },
+
     count_blue_pieces(board, boardKey) {
       var count = 0
       for (var i = 0; i < board.state[boardKey].length; i++) {

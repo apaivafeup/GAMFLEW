@@ -154,6 +154,7 @@ export default {
         }
 
         loader.hide()
+        Prism.highlightAll()
     },
 
     async mounted() {

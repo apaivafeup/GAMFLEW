@@ -369,7 +369,7 @@ def read_game_room_state(current_user: Annotated[models.User, Depends(get_curren
 def random_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     challenge = crud.get_random_challenge(db=db, game_room_id=game_room_id)
     #TODO: make pass the random challenge to the round creation.
-    return crud.add_game_round(db=db, challenge_id=1, game_room_id=game_room_id)
+    return crud.add_game_round(db=db, challenge_id=19, game_room_id=game_room_id)
 
 ## Start round
 @app.post("/round/{game_round_id}/start", response_model=models.GameLog)
