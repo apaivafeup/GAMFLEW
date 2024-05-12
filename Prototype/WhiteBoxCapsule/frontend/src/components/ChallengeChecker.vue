@@ -253,7 +253,7 @@ import { boardCheckerStore } from '../store/boardChecker'
 import * as utils from '../store/utils.js'
 import OutPieceStack from './OutPieceStack.vue'
 import 'vue3-easy-data-table'
-import { auxiliaryFunctions } from '../assets/js/auxiliary_functions'
+
 
 export default {
   components: { PieceStack, OutPieceStack },

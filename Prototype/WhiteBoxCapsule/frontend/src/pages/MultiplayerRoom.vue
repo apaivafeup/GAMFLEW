@@ -9,7 +9,7 @@ import { Attempt } from '../store/models/attempt.js'
 import { CodeFile } from '../store/models/code_file.js'
 import { BoardState } from '../store/models/board_state.js'
 import Prism from 'prismjs'
-import { authStore } from '../store/authStore'
+import { authStore } from '../store/authStore.js'
 
 import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';

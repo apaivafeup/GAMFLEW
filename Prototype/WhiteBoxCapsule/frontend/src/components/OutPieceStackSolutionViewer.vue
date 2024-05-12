@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { solutionViewer } from '../store/solutionViewer'
+import { solutionViewer } from '../store/solutionViewer.js'
 
 export default {
   components: {},

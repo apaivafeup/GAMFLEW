@@ -70,7 +70,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { authStore } from '../store/authStore'
+import { authStore } from '../store/authStore.js'
 import { RouterLink } from 'vue-router'
 
 export default defineComponent({

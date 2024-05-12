@@ -32,7 +32,7 @@
 <script>
 
 import { defineComponent } from 'vue'
-import { boardStore } from '../../store/boardStore'
+import { boardStore } from '../../store/boardStore.js'
 
 export default defineComponent({
 

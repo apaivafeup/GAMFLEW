@@ -184,11 +184,11 @@
 import PieceStackSolutionViewer from './PieceStackSolutionViewer.vue'
 
 // JS
-import { solutionViewer } from '../store/solutionViewer'
+import { solutionViewer } from '../store/solutionViewer.js'
 import OutPieceStackSolutionViewer from './OutPieceStackSolutionViewer.vue'
 import 'vue3-easy-data-table'
-import { authStore } from '../store/authStore'
-import { Challenge } from '../store/models/challenge'
+import { authStore } from '../store/authStore.js'
+import { Challenge } from '../store/models/challenge.js'
 
 export default {
   components: { PieceStackSolutionViewer, OutPieceStackSolutionViewer },

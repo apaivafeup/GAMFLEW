@@ -192,11 +192,11 @@
 import PieceStack from './PieceStack.vue'
 
 // JS
-import { Challenge } from '../store/models/challenge'
-import { boardStore } from '../store/boardStore'
+import { Challenge } from '../store/models/challenge.js'
+import { boardStore } from '../store/boardStore.js'
 
 import * as utils from '../store/utils.js'
-import { Color, Piece } from '../store/models/piece'
+import { Color, Piece } from '../store/models/piece.js'
 import OutPieceStack from './OutPieceStack.vue'
 import 'vue3-easy-data-table'
 import { authStore } from '../store/authStore.js'

@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { boardCreatorStore } from '../store/boardCreator'
+import { boardCreatorStore } from '../store/boardCreator.js'
 
 export default {
   components: {},

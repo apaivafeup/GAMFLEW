@@ -7,11 +7,11 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 import GameCredits from './GameCredits.vue'
 import Menu from '../components/Menu.vue'
 import BoardCreator from '../components/BoardCreator.vue'
-import { boardCreatorStore } from '../store/boardCreator'
+import { boardCreatorStore } from '../store/boardCreator.js'
 
 import hljs from 'highlight.js';
 import CodeEditor from "simple-code-editor";
-import { authStore } from '../store/authStore'
+import { authStore } from '../store/authStore.js'
 
 import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';

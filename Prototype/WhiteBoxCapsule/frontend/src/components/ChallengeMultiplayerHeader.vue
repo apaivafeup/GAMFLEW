@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { boardStore } from '../store/boardStore'
+import { boardStore } from '../store/boardStore.js'
 
 export default {
   props: {

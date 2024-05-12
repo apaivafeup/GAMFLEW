@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import { auxiliaryFunctions } from '../assets/js/auxiliary_functions';
-import { authStore } from '../store/authStore';
+;
+import { authStore } from '../store/authStore.js';
 import { useToast } from 'vue-toastification';
 import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';

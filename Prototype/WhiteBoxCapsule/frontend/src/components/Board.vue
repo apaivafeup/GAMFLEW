@@ -4,10 +4,10 @@ import BoardGrid from './BoardGrid.vue'
 import PlayerInfo from './PlayerInfo.vue'
 import { boardStore } from '../store/boardStore'
 import PlayerBar from './PlayerBar.vue'
-import { Challenge } from '../store/models/challenge'
+import { Challenge } from '../store/models/challenge.js'
 import { User } from '../store/models/user.js'
-import { CodeFile } from '../store/models/code_file'
-import { authStore } from '../store/authStore'
+import { CodeFile } from '../store/models/code_file.js'
+import { authStore } from '../store/authStore.js'
 
 export default {
   props: {

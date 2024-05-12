@@ -2,7 +2,7 @@
 import GameCredits from './GameCredits.vue'
 import Menu from '../components/Menu.vue'
 import Login from '../components/Login.vue'
-import { authStore } from '../store/authStore'
+import { authStore } from '../store/authStore.js'
 import LoadingIcon from '../components/LoadingIcon.vue'
 import { defineComponent, h, resolveComponent } from 'vue'
 import AdminLeaderboardPlayerBar from '../components/AdminLeaderboardPlayerBar.vue'

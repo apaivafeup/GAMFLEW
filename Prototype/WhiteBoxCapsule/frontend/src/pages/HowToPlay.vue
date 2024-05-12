@@ -372,8 +372,8 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 
 <script>
 import { defineComponent } from 'vue'
-import { boardStore } from '../store/boardStore'
-import { auxiliaryFunctions, auxiliaryFunctionsNames } from '../assets/js/auxiliary_functions'
+import { boardStore } from '../store/boardStore.js'
+import { auxiliaryFunctions, auxiliaryFunctionsNames } from '../assets/js/auxiliary_functions.js'
 import Prism from 'prismjs'
 
 export default defineComponent({

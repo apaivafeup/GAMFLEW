@@ -71,12 +71,11 @@
 import PieceStackChecker from './PieceStackChecker.vue'
 
 // JS
-import { Challenge } from '../store/models/challenge'
-import { boardCreatorStore } from '../store/boardCreator'
+import { Challenge } from '../store/models/challenge.js'
+import { boardCreatorStore } from '../store/boardCreator.js'
 import OutPieceStackChecker from './OutPieceStackChecker.vue'
 import 'vue3-easy-data-table'
-import { auxiliaryFunctions } from '../assets/js/auxiliary_functions'
-import { authStore } from '../store/authStore'
+import { authStore } from '../store/authStore.js'
 
 export default {
   components: { PieceStackChecker, OutPieceStackChecker },

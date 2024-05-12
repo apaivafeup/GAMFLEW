@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import { boardStore } from '../store/boardStore'
-import { boardCreatorStore } from '../store/boardCreator'
+import { boardStore } from '../store/boardStore.js'
+import { boardCreatorStore } from '../store/boardCreator.js'
 
 export default {
   components: {},

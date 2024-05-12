@@ -56,7 +56,7 @@
 <script>
 import { defineComponent } from 'vue'
 import ChallengeCard from '../components/ChallengeCard.vue'
-import { authStore } from '../store/authStore'
+import { authStore } from '../store/authStore.js'
 
 import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';

@@ -42,9 +42,9 @@
 <script>
 
 import { defineComponent } from 'vue'
-import { boardStore } from '../../store/boardStore'
+import { boardStore } from '../../store/boardStore.js'
 import { useToast } from "vue-toastification";
-import { authStore } from '../../store/authStore'
+import { authStore } from '../../store/authStore.js'
 
 export default defineComponent({
 

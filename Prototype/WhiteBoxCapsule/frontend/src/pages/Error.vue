@@ -1,6 +1,6 @@
 <script>
 import GameCredits from './GameCredits.vue'
-import { authStore } from '../store/authStore'
+import { authStore } from '../store/authStore.js'
 
 export default {
   props: {

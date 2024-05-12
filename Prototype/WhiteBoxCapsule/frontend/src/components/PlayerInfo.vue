@@ -10,8 +10,8 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 </script>
 
 <script>
-import { Challenge } from '../store/models/challenge'
-import { boardStore } from '../store/boardStore'
+import { Challenge } from '../store/models/challenge.js'
+import { boardStore } from '../store/boardStore.js'
 
 export default {
   components: {},

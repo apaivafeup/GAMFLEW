@@ -55,14 +55,14 @@
 </template>
 
 <script>
-import { authStore } from '../store/authStore';
+import { authStore } from '../store/authStore.js';
 import { useToast } from 'vue-toastification';
-import { solutionViewer } from '../store/solutionViewer';
+import { solutionViewer } from '../store/solutionViewer.js';
 import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';
 import ChallengeSubmissionViewer from '../components/ChallengeSubmissionViewer.vue';
-import { Challenge } from '../store/models/challenge';
-import { CodeFile } from '../store/models/code_file';
+import { Challenge } from '../store/models/challenge.js';
+import { CodeFile } from '../store/models/code_file.js';
 import ChallengeCode from './ChallengeCode.vue';
 import Prism from 'prismjs';
 

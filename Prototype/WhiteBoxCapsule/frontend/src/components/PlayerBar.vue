@@ -61,8 +61,8 @@
 </template>
 
 <script>
-import { Challenge } from '../store/models/challenge'
-import { boardStore } from '../store/boardStore'
+import { Challenge } from '../store/models/challenge.js'
+import { boardStore } from '../store/boardStore.js'
 import { User } from '../store/models/user.js'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 

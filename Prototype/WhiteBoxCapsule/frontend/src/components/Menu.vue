@@ -99,7 +99,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { authStore } from '../store/authStore'
+import { authStore } from '../store/authStore.js'
 
 export default defineComponent({
   beforeMount() {

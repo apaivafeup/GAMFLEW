@@ -32,10 +32,10 @@
 <script>
 
 import { defineComponent } from 'vue'
-import { boardStore } from '../../store/boardStore'
+import { boardStore } from '../../store/boardStore.js'
 import { useToast } from "vue-toastification";
-import { authStore } from '../../store/authStore'
-import { Challenge } from '../../store/models/challenge';
+import { authStore } from '../../store/authStore.js'
+import { Challenge } from '../../store/models/challenge.js';
 
 export default defineComponent({
 
