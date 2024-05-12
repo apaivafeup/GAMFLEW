@@ -381,9 +381,45 @@ def get_user_score(db: Session, user_id: int):
 
     user_score += len(won_multiplayer_games) * 50 # 50 points for winning a multiplayer game
     user_score += len(played_multiplayer_games) * 25 # 25 points for playing a multiplayer game
+    user_score += get_user_achievements_points(db=db, user_id=user_id) # Each unlocked achievement gives points.
 
     return user_score
 
+def get_user_achievements_points(db: Session, user_id: int):
+    achievement_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.achievement == True)
+
+    challenges = []
+    for attempt in achievement_attempts:
+        challenge = get_challenge(db=db, challenge_id=attempt.challenge_id)
+
+        if (attempt.challenge_id in challenges):
+            continue
+
+        challenges.append(attempt.challenge_id)
+
+        match (challenge.difficulty):
+            case schemas.Difficulty.VERY_EASY:
+                # 100 points for Very Easy.
+                user_score += 100
+                break
+            case schemas.Difficulty.EASY:
+                # 150 for Easy.
+                user_score += 150
+                break
+            case schemas.Difficulty.NORMAL:
+                # 300 for Normal.
+                user_score += 300
+                break
+            case schemas.Difficulty.HARD:
+                # 500 for Hard.
+                user_score += 500
+                break
+            case schemas.Difficulty.VERY_HARD:
+                # 750 for Very Hard.
+                user_score += 750
+                break
+    
+    return user_score
 
 def update_user_stats(db: Session, user_id: int):
     user_to_update = get_user(db, user_id)
@@ -1195,17 +1231,22 @@ def compare(user1, user2):
         elif (user1.successful_attempts > user2.successful_attempts):
             return -1
         elif (user1.successful_attempts == user2.successful_attempts):
-            if (user1.failed_attempts < user2.failed_attempts):
-                return -1
-            elif (user1.failed_attempts > user2.failed_attempts):
+            if (user1.achievements < user2.achievements):
                 return 1
-            elif (user1.failed_attempts == user2.failed_attempts):
-                if (user1.successful_attempts + user1.failed_attempts < user2.successful_attempts + user2.failed_attempts):
-                    return 1
-                elif (user1.successful_attempts + user1.failed_attempts > user2.successful_attempts + user2.failed_attempts):
+            elif (user1.achievements > user2.achievements):
+                return -1
+            elif (user1.achievements == user2.achievements):
+                if (user1.failed_attempts < user2.failed_attempts):
                     return -1
-                elif (user1.successful_attempts + user1.failed_attempts == user2.successful_attempts + user2.failed_attempts):
-                    return user1.name < user2.name
+                elif (user1.failed_attempts > user2.failed_attempts):
+                    return 1
+                elif (user1.failed_attempts == user2.failed_attempts):
+                    if (user1.successful_attempts + user1.failed_attempts < user2.successful_attempts + user2.failed_attempts):
+                        return 1
+                    elif (user1.successful_attempts + user1.failed_attempts > user2.successful_attempts + user2.failed_attempts):
+                        return -1
+                    elif (user1.successful_attempts + user1.failed_attempts == user2.successful_attempts + user2.failed_attempts):
+                        return user1.name < user2.name
 
 def get_admin_leaderboard(db: Session):
     users = db.query(schemas.User).all()
