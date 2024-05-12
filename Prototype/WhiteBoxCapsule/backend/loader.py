@@ -5,17 +5,24 @@ from typing import List
 from pydantic import BaseModel
 
 import models 
-import crud
+import crud.token as token
+import crud.user as user
+import crud.code_file as code_file
+import crud.board_state as board_state
+import crud.challenge as challenge
+import crud.attempt as attempt
+import crud.game_room as game_room
+import crud.code_file_dictionary as code_file_dictionary
 from database import SessionLocal
 
 create_op = {
-    str(models.User): crud.create_user,
-    str(models.CodeFile): crud.create_code_file,
-    str(models.BoardState): crud.create_board_state,
-    str(models.Challenge): crud.create_challenge,
-    str(models.Attempt): crud.create_attempt,
-    str(models.GameRoom): crud.create_game_room,
-    str(models.CodeFileDictionary): crud.create_code_file_dictionary,
+    str(models.User): user.create_user,
+    str(models.CodeFile): code_file.create_code_file,
+    str(models.BoardState): board_state.create_board_state,
+    str(models.Challenge): challenge.create_challenge,
+    str(models.Attempt): attempt.create_attempt,
+    str(models.GameRoom): game_room.create_game_room,
+    str(models.CodeFileDictionary): code_file_dictionary.create_code_file_dictionary,
 }
 
 def load_data(entries: List[BaseModel]) -> None:
