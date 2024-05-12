@@ -461,8 +461,10 @@ export default {
 
 
       this.board.achievement = this.board.passed && this.checkAchievement(this.board)
-
       this.submitAttempt()
+      if (this.board.achievement) {
+        this.toast.warning("You just won " + this.challenge.name.split(':')[0] + "'s achievement!")
+      }
       this.board.go = false
 
     },
