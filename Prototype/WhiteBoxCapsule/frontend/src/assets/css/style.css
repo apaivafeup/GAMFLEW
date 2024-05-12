@@ -552,7 +552,7 @@ input[type='number'] {
 }
 
 .Vue-Toastification__toast--warning {
-  background-color: rgb(169, 89, 255) !important;
+  background: linear-gradient(90deg, rgba(89,164,251,1) 0%, rgba(169,89,251,1) 100%) !important;
 }
 
 .badge {
