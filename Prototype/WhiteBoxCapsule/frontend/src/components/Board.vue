@@ -63,8 +63,7 @@ export default {
         </div>
         <div v-else-if="board.passed && !board.timeout" class="alert alert-success player-info">
           <p style="margin: 0px; padding: 0px; align-self: center;">
-            You passed, congratulations! To submit your solution, click the <b>Comment</b> button.
-            <em>It's required for your score!</em>
+            You passed, congratulations!
           </p>
         </div>
         <div v-if="board.passed && !board.timeout && !board.achievement" class="alert alert-special-hint player-info">

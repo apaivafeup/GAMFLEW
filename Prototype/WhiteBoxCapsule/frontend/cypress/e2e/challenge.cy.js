@@ -592,7 +592,7 @@ describe("Board buttons", () => {
 
                 // Test case.
                 cy.get('.alert-success').should('be.visible')
-                cy.contains("You passed, congratulations! To submit your solution, click the Comment button. It's required for your score!").should('be.visible')
+                cy.contains("You passed, congratulations!").should('be.visible')
             }),
 
                 it('go! button (fail)', () => {

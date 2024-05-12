@@ -79,8 +79,7 @@ export default {
         <div class="row" style="display: flex; width: 100%; gap: 5px;">
           <div v-if="board.passed && !board.timeout" class="alert alert-success player-info">
             <p style="margin: 0px; padding: 0px; align-self: center;">
-              You passed, congratulations! To submit your solution, click the <b>Comment</b> button.
-              <em>It's required for your score!</em>
+              You passed, congratulations!
             </p>
           </div> 
           <PlayerInfo v-if="board.passed && !board.timeout" style="width: 100%;"/>        
