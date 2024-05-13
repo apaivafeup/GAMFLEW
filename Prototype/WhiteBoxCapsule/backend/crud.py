@@ -389,6 +389,7 @@ def get_user_achievements_points(db: Session, user_id: int):
     achievement_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.achievement == True)
 
     challenges = []
+    user_score = 0
     for attempt in achievement_attempts:
         challenge = get_challenge(db=db, challenge_id=attempt.challenge_id)
 
