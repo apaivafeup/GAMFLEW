@@ -96,7 +96,7 @@
         </div>
         <div class="game-board-out">
           <div class="box">
-            <OutPieceStackSolutionViewer :x="outX" :y="outY" />
+            <OutPieceStackSolutionViewer :x="solution.outOfBoundsState[solution.currentKey].position.x" :y="solution.outOfBoundsState[solution.currentKey].position.y" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input id="piece-stack-out-x" class="col box disabled"
