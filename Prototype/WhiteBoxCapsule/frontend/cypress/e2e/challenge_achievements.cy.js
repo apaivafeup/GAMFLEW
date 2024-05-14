@@ -31,6 +31,10 @@ function moveTo(x1, y1, x2, y2) {
     cy.get('#board-box-' + x2 + '-' + y2).click()
 }
 
+function click(x, y) {
+    cy.get('#board-box-' + x + '-' + y).click()
+}
+
 function moveOut() {
     cy.get('.game-board-out').click()
 }
@@ -40,12 +44,17 @@ function submit() {
     cy.get('#comment-modal-textarea').type('Example comment.')
     cy.get('#comment-modal-button').click().wait(1000)
     cy.on('window:confirm', () => false)
-    cy.contains("You have won this Challenge's achievement!").should('be.visible')
+    cy.contains("You passed, congratulations!").should('be.visible')
+}
+
+function add() {
+    cy.get('#add-button').click()
 }
 
 function next() {
     cy.get('#next-button').click()
 }
+
 
 describe('test file 1', () => {
     it('challenge 1.1', () => {

@@ -44,7 +44,7 @@ function submit() {
     cy.get('#comment-modal-textarea').type('Example comment.')
     cy.get('#comment-modal-button').click().wait(1000)
     cy.on('window:confirm', () => false)
-    cy.contains("You have won this Challenge's achievement!").should('be.visible')
+    cy.contains("You passed, congratulations!").should('be.visible')
 }
 
 function add() {
@@ -56,7 +56,26 @@ function next() {
 }
 
 describe('test file 4', () => {
-    it('challenge 4.1', () => {
-        challenge(49)
+    it('challenge 3.14', () => {
+        challenge(47)
+        add()
+        click(5, 1)
+        click(5, 1)
+        add()
+        moveTo(5, 1, 0, 1)
+        moveTo(0, 1, 3, 3)
+        next()
+        add()
+        click(5, 1)
+        click(5, 1)
+        add()
+        moveTo(5, 1, 0, 1)
+        add()
+        click(1, 2)
+        click(1, 2)
+        click(1, 0)
+        click(1, 0)
+        add()
+        submit()
     })
 })
