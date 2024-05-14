@@ -9,17 +9,20 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y > 7 || input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x > 7"
             ]
         },
         "achievement": "input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x == 10 && input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y == 10",
-        "achievement_hint": "For challenge 1.1, consider that the numbers for the out of bounds spot start with 1. Start with the lowest number!",
+        "achievement_hint": "Consider that the numbers for the out of bounds spot start with 1 and are positive. Start with the lowest numbers!",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -33,18 +36,21 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[case_num].length > 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(input.log[case_num][input.log[case_num].length - 1].destination.y < 0 || input.log[case_num][input.log[case_num].length - 1].destination.y > 7 || input.log[case_num][input.log[case_num].length - 1].destination.x < 0 || input.log[case_num][input.log[case_num].length - 1].destination.x > 7)",
                 "(input.log[case_num][input.log[case_num].length - 1].destination.y < 0 || input.log[case_num][input.log[case_num].length - 1].destination.y > 7 || input.log[case_num][input.log[case_num].length - 1].destination.x < 0 || input.log[case_num][input.log[case_num].length - 1].destination.x > 7)"
             ]
         },
         "achievement": "input.log[case_num][input.log[case_num].length - 1].destination.x == 10 && input.log[case_num][input.log[case_num].length - 1].destination.y == 20",
-        "achievement_hint": "For challenge 1.2, consider that the line for the out of bounds spot starts with 1, and that the column starts with 2. Use the lowest numbers possible! You just need to use them once, in the same test case!",
+        "achievement_hint": "Consider, in one test case, that the line (x) for the out of bounds spot starts with 1, and that the column (y) starts with 2. Use the lowest POSTIIVE numbers!",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -58,12 +64,15 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "mcdc",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 4,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[case_num].length > 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "(input.log[case_num][input.log[case_num].length - 1].destination.y >= 0 || input.log[case_num][input.log[case_num].length - 1].destination.y <= 7 || input.log[case_num][input.log[case_num].length - 1].destination.x >= 0 || input.log[case_num][input.log[case_num].length - 1].destination.x <= 7)",
                 "(input.log[case_num][input.log[case_num].length - 1].destination.y < 0 || input.log[case_num][input.log[case_num].length - 1].destination.y <= 7 || input.log[case_num][input.log[case_num].length - 1].destination.x >= 0 || input.log[case_num][input.log[case_num].length - 1].destination.x <= 7)",
                 "(input.log[case_num][input.log[case_num].length - 1].destination.y >= 0 || input.log[case_num][input.log[case_num].length - 1].destination.y > 7 || input.log[case_num][input.log[case_num].length - 1].destination.x >= 0 || input.log[case_num][input.log[case_num].length - 1].destination.x <= 7)",
@@ -72,7 +81,7 @@
             ]
         },
         "achievement": "input.log[case_num][input.log[case_num].length - 1].destination.x == 10 && input.log[case_num][input.log[case_num].length - 1].destination.y == 30",
-        "achievement_hint": "For challenge 1.3, consider that the line for the out of bounds spot starts with 1, and that the column starts with 3. Use the lowest numbers possible! You just need to use them once, in the same test case!",
+        "achievement_hint": "Consider, in one test case, that the line (x) for the out of bounds spot starts with 1, and that the column (y) starts with 3. Use the lowest POSITIVE numbers!",
         "difficulty": "Hard",
         "owner_id": 1
     },
@@ -86,17 +95,20 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) != Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)"
             ]
         },
         "achievement": "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 1 && Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y) == 4",
-        "achievement_hint": "For challenge X.Y, consider that the line difference is Y, and that the column difference is X. Remember, only the last movement you made is considered!",
+        "achievement_hint": "For challenge X.Y, consider moving Y positions on the x-axis, and X positions on the y-axis. Only the last movement made is considered!",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -110,18 +122,21 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[case_num].length > 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) != Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y)",
                 "!(Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) != Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y))"
             ]
         },
         "achievement": "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 5 && Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y) == 6",
-        "achievement_hint": "For challenge X.Y, consider that the line difference is (Y * X), and that the column difference is (X + Y). Remember, only the last movement you made is considered!",
+        "achievement_hint": "For challenge X.Y, consider moving (Y * X) positions on the x-axis, and (X + Y) positions on the y-axis. Only the last movement made is considered!",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -135,17 +150,20 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) != Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y))"
             ]
         },
         "achievement": "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 6 && Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y) == 6",
-        "achievement_hint": "For challenge X.Y, consider that the line difference is [(Y - 1) * 2 - 4], and that the column difference is X*Y. Remember, only the last movement you made is considered!",
+        "achievement_hint": "For challenge X.Y, move [(Y - 1) * 2 - 4] positions on the x-axis, and X*Y positions on the y-axis. Only the last movement made is considered!",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -159,17 +177,20 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 1"
             ]
         },
         "achievement": "(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x > 7 || input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y > 7) && ((input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y == 0 && input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x == 0) || (input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y == 7 && input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x == 7))",
-        "achievement_hint": "Make a movement that starts outside of the board and ends in one of the board's main diagonal corners. Don't forget: you must pass the challenge!",
+        "achievement_hint": "Make a movement from outside of the board to one of the board's main diagonal corners.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -183,17 +204,20 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 2"
             ]
         },
         "achievement": "(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x > 7 || input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y < 0 || input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y > 7) && ((input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y == 0 && input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x == 0) || (input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y == 7 && input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x == 7))",
-        "achievement_hint": "Make a movement that starts outside of the board and ends in one of the board's main diagonal corners. Don't forget: you must pass the challenge!",
+        "achievement_hint": "Make a movement from outside of the board to one of the board's main diagonal corners.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -207,18 +231,21 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[case_num].length > 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 2",
                 "!(Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 2)"
             ]
         },
         "achievement": "input.log[case_num][input.log[case_num].length - 1].destination.x + input.log[case_num][input.log[case_num].length - 1].destination.y == 9",
-        "achievement_hint": "In one of test cases, the destination's position is (X, Y). Make sure X + Y - 1 = 8.",
+        "achievement_hint": "In one of test cases, consider the destination to be (X, Y). Make sure X + Y - 1 = 8.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -232,19 +259,22 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 1"
             ],
-            "tests": [
+            "tests":
+            [
                 "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.blue == 1"
             ]
         },
         "achievement": "(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x == 0 && input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y == 0) || (input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x == 7 && input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y == 7) || (input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x == 0 && input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y == 7) || (input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x == 7 && input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y == 0)",
-        "achievement_hint": "Unlike a globe, the board is a square. Make sure you start your move from a corner.",
+        "achievement_hint": "The board is a square. Make sure you start your move from a corner.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -258,19 +288,22 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 1"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.blue == 1)"
             ]
         },
         "achievement": "input.state[input.currentKey][input.log[input.log[input.currentKey].length - 1].destination.x][input.log[input.log[input.currentKey].length - 1].destination.y].stack.red == 0 || input.state[input.currentKey][input.log[input.log[input.currentKey].length - 1].destination.x][input.log[input.log[input.currentKey].length - 1].destination.y].stack.blue == 0",
-        "achievement_hint": "Did you know you can stack pieces of the same color?",
+        "achievement_hint": "Make a stack by stacking pieces of the same color.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -284,20 +317,23 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[case_num].length > 0",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y)",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 1"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.blue == 1)",
                 "(input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.blue == 1)"
             ]
         },
         "achievement": "input.state[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num].length - 1].destination.y].stack.blue == 0",
-        "achievement_hint": "In one of test cases, the destination spot must only have [color] X pieces, if any. X = RGB(255, 0, 0).",
+        "achievement_hint": "In one test case, the destination must only have [color] X pieces, if any. X = RGB(255, 0, 0).",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -311,19 +347,22 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 2"
             ],
-            "tests": [
+            "tests":
+            [
                 "(input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.blue == 1)"
             ]
         },
         "achievement": "input.state[input.currentKey][Math.round((input.log[input.log[input.currentKey].length - 1].destination.x + input.log[input.log[input.currentKey].length - 1].start.x)/2)][Math.round((input.log[input.log[input.currentKey].length - 1].destination.y + input.log[input.log[input.currentKey].length - 1].start.y)/2)].color == 'empty'",
-        "achievement_hint": "From the test, the destination must follow a specific condition (line 25). Make sure the middle piece (line 26) follows the same condition.",
+        "achievement_hint": "The destination must pass the condition on line 25. Make sure the middle piece (line 26) follows the same condition.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -337,19 +376,22 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 2"
             ],
-            "tests": [
+            "tests":
+            [
                 "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)/2)].color"
             ]
         },
         "achievement": "input.state[input.currentKey][Math.round((input.log[input.log[input.currentKey].length - 1].destination.x + input.log[input.log[input.currentKey].length - 1].start.x)/2)][Math.round((input.log[input.log[input.currentKey].length - 1].destination.y + input.log[input.log[input.currentKey].length - 1].start.y)/2)].color == 'blue'",
-        "achievement_hint": "The middle piece must be of Y color. Y = RGB(0, 0, 255).",
+        "achievement_hint": "The middle piece (line 26) must be of Y color. Y = RGB(0, 0, 255).",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -363,19 +405,22 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 2"
             ],
-            "tests": [
+            "tests":
+            [
                 "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color != input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)/2)].color && input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)/2)].color != 'empty'"
             ]
         },
         "achievement": "input.state[input.currentKey][input.log[input.log[input.currentKey].length - 1].destination.x][input.log[input.log[input.currentKey].length - 1].destination.y].color == 'red'",
-        "achievement_hint": "Look closely at the background for this text. You have two colors, from left to right: X and Y. You need to move a piece of color Z, knowing that X = Y + Z.",
+        "achievement_hint": "Look closely at this bar. It has two colors, from left to right: X and Y. Move a piece of color Z, knowing that X = Y + Z.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -389,20 +434,23 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[case_num].length > 0",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y)",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 2"
             ],
-            "tests": [
+            "tests":
+            [
                 "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color != input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].start.x + input.log[case_num][input.log[case_num].length - 1].destination.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].start.y + input.log[case_num][input.log[case_num].length - 1].destination.y)/2)].color",
                 "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color == input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].start.x + input.log[case_num][input.log[case_num].length - 1].destination.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].start.y + input.log[case_num][input.log[case_num].length - 1].destination.y)/2)].color"
             ]
         },
         "achievement": "input.state[case_num][Math.round((input.log[input.log[case_num].length - 1].destination.x + input.log[input.log[case_num].length - 1].start.x)/2)][Math.round((input.log[input.log[case_num].length - 1].destination.y + input.log[input.log[case_num].length - 1].start.y)/2)].color == 'red'",
-        "achievement_hint": "Look closely at the background. You get two colors, from left to right: X and Y. You need to move a piece of color Z, knowing that (X - Z) + 'yellow' = RGB(0, 255, 0). Only one of the test cases is enough!",
+        "achievement_hint": "Look closely at this bar. It has two colors, from left to right: X and Y. In one test case, move a piece of color Z, knowing that (X - Z) + 'yellow' = RGB(0, 255, 0).",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -416,19 +464,22 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[input.currentKey].length > 0",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)",
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 2"
             ],
-            "tests": [
+            "tests":
+            [
                 "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.blue >= 2"
             ]
         },
         "achievement": "input.state[input.currentKey][input.log[input.log[input.currentKey].length - 1].destination.x][input.log[input.log[input.currentKey].length - 1].destination.y].color == 'blue'",
-        "achievement_hint": "Look closely at the background for this text. You have two colors, from left to right: Y and X. Move a piece of color X.",
+        "achievement_hint": "Look closely at this bar. It has two colors, from left to right: X and Y. Move a piece of color X.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -442,20 +493,23 @@
         "initial_board": 2,
         "code_file": 1,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "input.log[case_num].length > 0",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y)",
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 2"
             ],
-            "tests": [
+            "tests":
+            [
                 "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.blue >= 2",
                 "!(input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.blue >= 2)"
             ]
         },
         "achievement": "input.log[input.log[case_num].length - 1].destination.x + input.log[input.log[case_num].length - 1].start.x + input.log[input.log[case_num].length - 1].destination.y + input.log[input.log[case_num].length - 1].start.y == 18",
-        "achievement_hint": "The challenge is in X.Y format. Make sure that start.x + start.y + destination.x + destination.y = Y.",
+        "achievement_hint": "For challenge X.Y, make sure that start.x + start.y + destination.x + destination.y = Y.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -469,15 +523,19 @@
         "initial_board": 2,
         "code_file": 2,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_blue_pieces(input, input.currentKey) > 12 || this.count_red_pieces(input, input.currentKey) > 12"
             ]
         },
         "achievement": "this.count_blue_pieces(input, input.currentKey) > 12 && this.count_red_pieces(input, input.currentKey) > 12",
-        "achievement_hint": "The challenge is formatted as X.Y. Make sure both colors have over YX (read as a String) pieces.",
+        "achievement_hint": "For challenge X.Y. Make sure both colors have over YX (read as a String, not a calculation!) pieces.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -491,10 +549,14 @@
         "initial_board": 2,
         "code_file": 2,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_blue_pieces(input, input.currentKey) == 0 || this.count_red_pieces(input, input.currentKey) == 0"
             ]
         },
@@ -513,16 +575,20 @@
         "initial_board": 2,
         "code_file": 2,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "!(this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12)",
                 "this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12"
             ]
         },
         "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 2 || Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 3",
-        "achievement_hint": "The challenge format is X.Y. Make sure there is a difference of X or Y pieces between the colors. One test case is enough!",
+        "achievement_hint": "For challenge X.Y, in one test case, make sure there is a difference of X or Y pieces between the colors.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -536,17 +602,21 @@
         "initial_board": 2,
         "code_file": 2,
         "challenge_type": "mcdc",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 2,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) > 12 && this.count_red_pieces(input, case_num) <= 12",
                 "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) > 12",
                 "this.count_blue_pieces(input, case_num) <= 12 && this.count_red_pieces(input, case_num) <= 12"
             ]
         },
         "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 8",
-        "achievement_hint": "The challenge format is X.Y. Make sure the piece difference between colors is Y*X. One test case is enough!",
+        "achievement_hint": "For challenge X.Y, in one test case, make sure the piece difference between colors is Y*X.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -560,17 +630,21 @@
         "initial_board": 1,
         "code_file": 2,
         "challenge_type": "mcdc",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 2,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) != 0",
                 "this.count_blue_pieces(input, case_num) != 0 && this.count_red_pieces(input, case_num) == 0",
                 "this.count_blue_pieces(input, case_num) != 0 && this.count_red_pieces(input, case_num) != 0"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) == 1 || this.count_red_pieces(input, case_num) == 1",
-        "achievement_hint": "If the challenge format is Y.X, make sure one of the colors only has (2*Y - X). One test case is enough!",
+        "achievement_hint": "For challenge Y.X, make sure, in one test case, that one of the colors only has (2*Y - X) pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -584,16 +658,20 @@
         "initial_board": 1,
         "code_file": 2,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 2,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) == 0 && this.count_red_pieces(input, case_num) == 0",
                 "!(this.count_blue_pieces(input, case_num) == 0) && !(this.count_red_pieces(input, case_num) == 0)"
             ]
         },
         "achievement": "(this.count_blue_pieces(input, case_num) == 6 && this.count_red_pieces(input, case_num) == 2) || (this.count_blue_pieces(input, case_num) == 2 && this.count_red_pieces(input, case_num) == 6)",
-        "achievement_hint": "Make sure one of the test cases has X pieces of one color and Y pieces of the other color.",
+        "achievement_hint": "For challenge X.Y, make sure one test case has X pieces of one color and Y pieces of the other color.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -607,16 +685,20 @@
         "initial_board": 2,
         "code_file": 2,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 2,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "!(this.count_blue_pieces(input, case_num) > 12) && !(this.count_red_pieces(input, case_num) > 12)",
                 "this.count_blue_pieces(input, case_num) > 12 && this.count_red_pieces(input, case_num) > 12"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) == 14 && this.count_red_pieces(input, case_num) == 14",
-        "achievement_hint": "The challenge format is X.Y. Make sure both colors have (X*Y) pieces in one test case.",
+        "achievement_hint": "For challenge X.Y, make sure one test case has (X*Y) pieces of each color.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -630,10 +712,14 @@
         "initial_board": 2,
         "code_file": 2,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 2,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) > 12",
                 "this.count_red_pieces(input, case_num) > 12",
                 "!(this.count_blue_pieces(input, case_num) > 12)",
@@ -641,7 +727,7 @@
             ]
         },
         "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 4",
-        "achievement_hint": "The challenge format is Y.X. Make one test case where the difference is X/Y.",
+        "achievement_hint": "For challenge Y.X, make one test case where the difference of pieces between colors is X/Y.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -655,10 +741,14 @@
         "initial_board": 1,
         "code_file": 2,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 2,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) == 0",
                 "this.count_red_pieces(input, case_num) == 0",
                 "this.count_blue_pieces(input, case_num) != 0",
@@ -666,7 +756,7 @@
             ]
         },
         "achievement": "(this.count_blue_pieces(input, case_num) == 2 && this.count_red_pieces(input, case_num) == 5) || (this.count_blue_pieces(input, case_num) == 5 && this.count_red_pieces(input, case_num) == 2)",
-        "achievement_hint": "The challenge format is X.Y. Make sure one of the test cases has X pieces of one color and (Y - X) pieces of the other color.",
+        "achievement_hint": "For challenge X.Y, make sure one of the test cases has X pieces of one color and (Y - X) pieces of the other color.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -680,18 +770,21 @@
         "initial_board": 2,
         "code_file": 2,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "!(this.count_blue_pieces(input, input.currentKey) > 12 || this.count_red_pieces(input, input.currentKey) > 12)",
                 "!(this.count_blue_pieces(input, input.currentKey) == 0 || this.count_red_pieces(input, input.currentKey) == 0)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).some((piece) => ![1, 3, 5, 7].includes(Number(piece.position.y)) && Number(piece.position.x) % 2 != 0)"
             ]
         },
         "achievement": "(this.log[input.currentKey][this.log[input.currentKey].length - 1].start.x + this.log[input.currentKey][this.log[input.currentKey].length - 1].start.y) * 2 == 10",
-        "achievement_hint": "The challenge format is X.Y. Make sure that, in one test case, the last interaction makes the following true: [(start.x + start.y) * 2 = 10].",
+        "achievement_hint": "For challenge X.Y, make one test case where the last interaction makes the following true: [(start.x + start.y) * 2 = 10].",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -705,18 +798,21 @@
         "initial_board": 2,
         "code_file": 2,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "!(this.count_blue_pieces(input, input.currentKey) > 12 || this.count_red_pieces(input, input.currentKey) > 12)",
                 "!(this.count_blue_pieces(input, input.currentKey) == 0 || this.count_red_pieces(input, input.currentKey) == 0)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).some((piece) => ![0, 2, 4, 6].includes(Number(piece.position.y)) && Number(piece.position.x) % 2 == 0)"
             ]
         },
         "achievement": "(this.log[input.currentKey][this.log[input.currentKey].length - 1].destination.x + this.log[input.currentKey][this.log[input.currentKey].length - 1].destination.y) + 2 == 11",
-        "achievement_hint": "The challenge format is Y.X. Make sure that the last interaction makes this expression true: [destination.x + destination.y + 2 = 11].",
+        "achievement_hint": "For challenge Y.X, make sure the last interaction makes this expression true: [destination.x + destination.y + 2 = 11].",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -730,18 +826,21 @@
         "initial_board": 2,
         "code_file": 2,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "!(this.count_blue_pieces(input, input.currentKey) > 12 || this.count_red_pieces(input, input.currentKey) > 12)",
                 "!(this.count_blue_pieces(input, input.currentKey) == 0 || this.count_red_pieces(input, input.currentKey) == 0)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).some((piece) => Number(piece.position.x) % 2 != 0)"
             ]
         },
         "achievement": "this.count_blue_pieces(input, input.currentKey) + this.count_red_pieces(input, input.currentKey) == 22",
-        "achievement_hint": "The challenge format is Y.X. Make sure you have at most (X * Y - Y) pieces in the board.",
+        "achievement_hint": "For challenge Y.X, make sure there are at most (X * Y - Y) pieces in the board.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -755,18 +854,21 @@
         "initial_board": 1,
         "code_file": 2,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "!(this.count_blue_pieces(input, input.currentKey) > 12 || this.count_red_pieces(input, input.currentKey) > 12)",
                 "!(this.count_blue_pieces(input, input.currentKey) == 0 || this.count_red_pieces(input, input.currentKey) == 0)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).some((piece) => Number(piece.position.x) % 2 != 0)"
             ]
         },
         "achievement": "this.count_blue_pieces(input, input.currentKey) + this.count_red_pieces(input, input.currentKey) == 15",
-        "achievement_hint": "The challenge format is Y.X. Make sure you have at most (X + Y) pieces in the board.",
+        "achievement_hint": "For challenge Y.X, make sure you have at most (X + Y) pieces in the board.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -780,19 +882,22 @@
         "initial_board": 1,
         "code_file": 2,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 0,
-            "preconditions": [
+            "preconditions":
+            [
                 "!(this.count_blue_pieces(input, case_num) > 12 || this.count_red_pieces(input, case_num) > 12)",
                 "!(this.count_blue_pieces(input, case_num) == 0 || this.count_red_pieces(input, case_num) == 0)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).some((piece) => Number(piece.position.x) % 2 != 0)",
                 "this.get_pieces(input, case_num).some((piece) => Number(piece.position.x) % 2 == 0)"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) == 7 && this.count_red_pieces(input, case_num) == 7",
-        "achievement_hint": "The challenge format is X.Y. Make a test case where you have (Y / X) pieces of each color.",
+        "achievement_hint": "For challenge X.Y, make a test case where you have (Y / X) pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -806,14 +911,17 @@
         "initial_board": 1,
         "code_file": 2,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 2,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 0",
                 "this.count_blue_pieces(input, input.currentKey) <= 12 && this.count_red_pieces(input, input.currentKey) <= 12",
                 "this.count_blue_pieces(input, input.currentKey) != 0 && this.count_red_pieces(input, input.currentKey) != 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).every((piece) => (Number(piece.position.x) % 2 != 0 && [1, 3, 5, 7].includes(Number(piece.position.y))) || (Number(piece.position.x) % 2 == 0 && [0, 2, 4, 6].includes(Number(piece.position.y))))"
             ]
         },
@@ -832,17 +940,20 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 64"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
             ]
         },
         "achievement": "Math.abs(this.log[this.log[input.currentKey].length - 1].destination.x - this.log[this.log[input.currentKey].length - 1].start.x) == 7",
-        "achievement_hint": "The challenge format is X.Y. Make a final interaction that makes this expression true: [|destination.x - start.x| = 2*X + Y]",
+        "achievement_hint": "For challenge X.Y, make a final interaction that makes this expression true: [|destination.x - start.x| = 2*X + Y].",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -856,18 +967,21 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
             ],
-            "tests": [
+            "tests":
+            [
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[input.currentKey][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ]
         },
         "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => [{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].filter((position) => input.state[input.currentKey][piece.position.x + position.x][piece.position.y + position.y].color != 'empty').length == 3) || this.get_pieces(input, input.currentKey).forEach((piece) => [{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].filter((position) => input.state[input.currentKey][piece.position.x + position.x][piece.position.y + position.y].color != 'empty').length == 2)",
-        "achievement_hint": "The challenge format is X.Y. Block X or Y directions of a King.",
+        "achievement_hint": "For challenge X.Y, block X or Y positions adjacent to a King. Use the directions defined on the code.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -881,18 +995,21 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
-            "tests": [
+            "tests":
+            [
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ]
         },
         "achievement": "this.get_pieces(input, case_num).length == 6",
-        "achievement_hint": "The challenge format is X.Y. Make sure you have exactly X + Y pieces in a test case.",
+        "achievement_hint": "For challenge X.Y, make sure you have exactly X + Y pieces in a test case.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -906,18 +1023,21 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).some((piece) => piece.king)",
                 "!this.get_pieces(input, case_num).some((piece) => piece.king)"
             ]
         },
         "achievement": "this.get_pieces(input, case_num).forEach((piece) => piece.king).filter((king) => king == true).length == 4",
-        "achievement_hint": "The challenge format is Y.X. Make X kings in a test case.",
+        "achievement_hint": "For challenge Y.X, make X Kings in one test case.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -931,18 +1051,21 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)"
             ]
         },
         "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'red').length == 2 && this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 2",
-        "achievement_hint": "If the challenge format is X.Y, make sure to submit a (Y - X) pieces of each color.",
+        "achievement_hint": "For challenge X.Y, make sure to have (Y - X) pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -956,18 +1079,21 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color != Color.RED)"
             ]
         },
         "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'red').length == 3 && this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 3",
-        "achievement_hint": "If the challenge format is Y.X, make sure to submit a (X - Y) pieces of each color.",
+        "achievement_hint": "For challenge Y.X, make sure to have (X - Y) pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -981,19 +1107,22 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).some((piece) => piece.color != Color.RED)",
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)"
             ]
         },
         "achievement": "this.get_pieces(input, case_num).forEach((piece) => piece.color).filter((color) => color == 'red').length == 1 && this.get_pieces(input, case_num).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 1",
-        "achievement_hint": "If the challenge format is X.Y, make sure to submit a |(2*X - Y)| pieces of each color.",
+        "achievement_hint": "For challenge X.Y, make sure to have |(2*X - Y)| pieces of each color.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1007,18 +1136,21 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).some((piece) => piece.king)",
                 "!this.get_pieces(input, case_num).some((piece) => piece.king)"
             ]
         },
         "achievement": "this.get_pieces(input, case_num).length == 5 || this.get_pieces(input, case_num).length == 3",
-        "achievement_hint": "If the challenge format is X.Y, make sure one of the test cases has, at most, either X or Y pieces.",
+        "achievement_hint": "For challenge X.Y, make sure one of the test cases has, at most, either X or Y pieces.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1032,19 +1164,22 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
-            "tests": [
+            "tests":
+            [
                 "[{ x: 1, y: 1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && piece.color == 'red' && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[input.currentKey][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
         "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 3",
-        "achievement_hint": "The challenge format is Y.X. Make sure you have (X/Y) pieces of the color NOT mentioned in the challenge title.",
+        "achievement_hint": "For challenge Y.X, make sure you have (X/Y) pieces of the color NOT mentioned in the challenge title.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1058,20 +1193,23 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
-            "tests": [
+            "tests":
+            [
                 "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).filter((piece) => piece.color == 'red').some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
                 "![{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).filter((piece) => piece.color == 'red').some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) ==  4",
-        "achievement_hint": "The board format is X.Y. Make sure one test case has [Y - X*X + X + 1] blue pieces.",
+        "achievement_hint": "For challenge X.Y, make sure one test case has [Y - X*X + X] blue pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1085,13 +1223,16 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)",
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)"
             ]
@@ -1111,19 +1252,22 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "![ { x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 } ].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX + direction.x][newY + direction.y].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)",
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)"
             ]
         },
         "achievement": "(this.count_blue_pieces(input, case_num) == 4 && this.count_red_pieces(input, case_num) == 3) || (this.count_blue_pieces(input, case_num) == 3 && this.count_red_pieces(input, case_num) == 4)",
-        "achievement_hint": "The challenge format is Y.X. Make sure one test case has (X/Y) pieces of one color and Y pieces of the other.",
+        "achievement_hint": "For challenge Y.X, make sure one test case has (X/Y) pieces of one color and Y pieces of the other.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1137,19 +1281,22 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)",
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) == 5 && this.count_red_pieces(input, case_num) == 5",
-        "achievement_hint": "The challenge is formatted as X.Y. Make sure a test case has (Y - X)/2 pieces of each color.",
+        "achievement_hint": "For challenge X.Y, make sure a test case has (Y - X)/2 pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1163,21 +1310,24 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 3,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "this.get_pieces(input, case_num).some((piece) => piece.king)"
             ],
-            "tests": [
+            "tests":
+            [
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY); }))",
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && !(input.state[case_num][newX][newY].color == Color.EMPTY); }))",
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY); }))",
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && !(input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY); }))"
             ]
         },
-        "achievement": "this.count_blue_pieces(input, case_num) == this.get_pieces(input, case_num).length",
-        "achievement_hint": "You can only use pieces of one color!",
+        "achievement": "this.count_red_pieces(input, case_num) == this.get_pieces(input, case_num).length || this.count_blue_pieces(input, case_num) == this.get_pieces(input, case_num).length",
+        "achievement_hint": "Use pieces of only one color in one test case!",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1191,20 +1341,23 @@
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
-            "tests": [
+            "tests":
+            [
                 "[{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
                 "![{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
-        "achievement_hint": "In one test case, make sure that there both colors get an equal number of pieces.",
+        "achievement_hint": "In one test case, make sure that both colors get an equal number of pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1218,17 +1371,20 @@
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 64"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).length == 1"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, input.currentKey).color == 'stack'",
+        "achievement_hint": "Beyond a singular piece, have a stack on the board.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1242,18 +1398,21 @@
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).length == 1",
                 "!(this.get_pieces(input, case_num).length == 1)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, case_num).stack.red == 0 && this.find_first_stack(input, case_num).color == 'stack'",
+        "achievement_hint": "In one test case, have a stack of only blue pieces.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1267,18 +1426,21 @@
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).length == 1",
                 "!(this.get_pieces(input, case_num).length == 1)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, case_num).stack.blue == 0 && this.find_first_stack(input, case_num).color == 'stack'",
+        "achievement_hint": "In one test case, have a stack of only red pieces.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1292,18 +1454,21 @@
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, case_num) != 64"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).length == 1",
                 "!(this.get_pieces(input, case_num).length == 1)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue && this.find_first_stack(input, case_num).color == 'stack'",
+        "achievement_hint": "In one test case, have a stack of an equal number of red and blue pieces.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1317,18 +1482,21 @@
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.get_pieces(input, input.currentKey).length != 1"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "find_first_single_piece(input, input.currentKey).color != (find_first_stack(input, input.currentKey).stack.red > 0 ? 'red' : (find_first_stack(input, input.currentKey).stack.blue > 0 ? 'blue' : 'stack'))",
+        "achievement_hint": "Add one stack of pieces of a color different from the one you choose to pass the challenge.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1342,19 +1510,22 @@
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
                 "this.get_pieces(input, case_num).length != 1"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE)",
                 "!(this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED) || this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, case_num).color != 'empty'",
+        "achievement_hint": "Submit a stack for the False-branch test case.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1368,20 +1539,23 @@
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 2,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.get_pieces(input, case_num).length != 1"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED)",
                 "this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE)",
                 "!this.get_pieces(input, case_num).every((piece) => piece.color == Color.BLUE)",
                 "!this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.isPrime(this.get_pieces(input, case_num).length)",
+        "achievement_hint": "In one test case, have a prime number of total pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1395,17 +1569,20 @@
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.get_pieces(input, input.currentKey).length != 1"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "!this.isPrime(this.get_pieces(input, case_num).length)",
+        "achievement_hint": "Add a non-prime number of total pieces to the board.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1419,19 +1596,22 @@
         "initial_board": 1,
         "code_file": 4,
         "challenge_type": "mcdc",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.get_pieces(input, case_num).length != 1"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.get_pieces(input, case_num).every(piece => piece.color == Color.RED) && !this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)",
                 "!this.get_pieces(input, case_num).every(piece => piece.color == Color.RED) && this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)",
                 "this.get_pieces(input, case_num).length == 0 || (!(this.get_pieces(input, case_num).every(piece => piece.color == Color.RED)) && !(this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.isPrime(this.find_first_stack(input, case_num).stack.red + this.find_first_stack(input, case_num).stack.blue)",
+        "achievement_hint": "In one test case, add a stack with a prime number of pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1445,10 +1625,14 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
             ]
         },
@@ -1467,10 +1651,14 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)",
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ]
@@ -1490,10 +1678,14 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)",
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ]
@@ -1513,10 +1705,14 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)",
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ]
@@ -1536,12 +1732,15 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_empty_spaces(input, input.currentKey) != 64"
             ]
         },
@@ -1560,12 +1759,15 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_empty_spaces(input, input.currentKey) == 64"
             ]
         },
@@ -1584,12 +1786,15 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_empty_spaces(input, case_num) == 64",
                 "this.count_empty_spaces(input, case_num) != 64"
             ]
@@ -1609,12 +1814,15 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_empty_spaces(input, case_num) == 64",
                 "this.count_empty_spaces(input, case_num) != 64"
             ]
@@ -1634,12 +1842,15 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_empty_spaces(input, case_num) == 64",
                 "this.count_empty_spaces(input, case_num) != 64"
             ]
@@ -1659,10 +1870,14 @@
         "initial_board": 1,
         "code_file": 5,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
             ]
         },
@@ -1681,12 +1896,15 @@
         "initial_board": 2,
         "code_file": 5,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
             ]
         },
@@ -1705,12 +1923,15 @@
         "initial_board": 2,
         "code_file": 5,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ]
         },
@@ -1729,12 +1950,15 @@
         "initial_board": 2,
         "code_file": 5,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
@@ -1754,12 +1978,15 @@
         "initial_board": 2,
         "code_file": 5,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
@@ -1779,12 +2006,15 @@
         "initial_board": 2,
         "code_file": 5,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
@@ -1804,14 +2034,17 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.count_red_pieces(input, input.currentKey) != 0",
                 "this.count_blue_pieces(input, input.currentKey) != 0",
                 "this.count_empty_spaces(input, input.currentKey) != 0"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ]
         },
@@ -1830,10 +2063,14 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ]
         },
@@ -1852,10 +2089,14 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
                 "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
@@ -1875,10 +2116,14 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
                 "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
@@ -1898,10 +2143,14 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [],
-            "tests": [
+            "preconditions":
+            [
+            ],
+            "tests":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
                 "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
@@ -1921,12 +2170,15 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)",
                 "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))"
             ]
@@ -1946,12 +2198,15 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)",
                 "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num))",
@@ -1973,13 +2228,16 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 2,
-            "preconditions": [
+            "preconditions":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
                 "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)"
             ]
         },
@@ -1998,13 +2256,16 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
                 "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
@@ -2026,12 +2287,15 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)))",
                 "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)"
             ]
@@ -2051,12 +2315,15 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)"
             ]
         },
@@ -2075,13 +2342,16 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "mcdc",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
                 "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)"
@@ -2102,12 +2372,15 @@
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "mcdc",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": 1,
-            "preconditions": [
+            "preconditions":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
-            "tests": [
+            "tests":
+            [
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) >= this.count_empty_spaces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) <= this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)"
@@ -2128,13 +2401,16 @@
         "initial_board": 1,
         "code_file": 6,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
                 "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)) || !(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey))"
             ]
         },
@@ -2153,12 +2429,15 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, input.currentKey).length <= 3"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ]
         },
@@ -2177,12 +2456,15 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, input.currentKey).length <= 3"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ]
         },
@@ -2201,12 +2483,15 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, case_num).length == 3"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))",
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ]
@@ -2226,12 +2511,15 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, case_num).length == 3"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))",
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ]
@@ -2251,12 +2539,15 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, case_num).length == 3"
             ],
-            "tests": [
+            "tests":
+            [
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))",
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ]
@@ -2276,13 +2567,16 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, input.currentKey).length <= 3",
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ],
-            "tests": [
+            "tests":
+            [
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3"
             ]
         },
@@ -2301,13 +2595,16 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, input.currentKey).length <= 3",
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)"
             ]
         },
@@ -2326,13 +2623,16 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, case_num).length == 3",
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)",
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
@@ -2352,13 +2652,16 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "condition",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, case_num).length == 3",
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)",
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
@@ -2378,13 +2681,16 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "condition/decision",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, case_num).length == 3",
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)",
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
@@ -2404,14 +2710,17 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, input.currentKey).length <= 3",
                 "this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]) == 0 || (Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)))",
                 "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)"
             ],
-            "tests": [
+            "tests":
+            [
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2"
             ]
         },
@@ -2430,14 +2739,17 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, input.currentKey).length <= 3",
                 "this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]) == 0 || (Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)))",
                 "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)"
             ],
-            "tests": [
+            "tests":
+            [
                 "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2)"
             ]
         },
@@ -2456,15 +2768,18 @@
         "initial_board": 1,
         "code_file": 7,
         "challenge_type": "statement",
-        "passing_criteria": {
+        "passing_criteria":
+        {
             "expression_count": null,
-            "preconditions": [
+            "preconditions":
+            [
                 "this.find_blue_pieces(input, input.currentKey).length <= 3",
                 "this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]) == 0 || (Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2)))",
                 "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)",
                 "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2)"
             ],
-            "tests": [
+            "tests":
+            [
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && [...(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]))] == 0"
             ]
         },
