@@ -37,7 +37,7 @@ export default {
   <div id="board-row" class="justify-content-between"
     style="display: grid; grid-template-rows: 100%; grid-template-columns: 50% 50%;">
     <div class="col"
-      style="display: grid; grid-template-rows: 90px 393px 85px 80px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center;">
+      style="display: grid; grid-template-rows: 90px 393px 85px 55px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center;">
       <div class="row" style="width: 100%;">
         <div class="alert alert-special player-info" v-if="!board.timeout && this.objective" style="font-size: 14px; display: flex; justify-content: space-between; flex-direction: row;">
           <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ this.challenge.objective }}</p>
@@ -71,7 +71,7 @@ export default {
           background-image: linear-gradient(to right, rgba(225, 209, 241, 1), rgba(225, 209, 241, 1)),
                             linear-gradient(to left, rgb(186, 143, 229), rgb(186, 143, 229));
           background-origin: border-box;
-          padding: 10px 5px;
+          padding: 7.5px 5px;
           border-radius: 50px;
           background-clip: padding-box, border-box;">
             <font-awesome-icon icon="bullseye" />
@@ -89,7 +89,7 @@ export default {
           </p>
         </div>
       </div>
-      <div class="row" style="display: flex; width: 100%; gap: 5px;">
+      <div class="row" style="display: flex; width: 100%; gap: 5px; font-size: 14px;">
         <PlayerInfo v-if="!board.passed && !board.timeout" style="width: 100%;"/>
         <div v-if="board.failed && !board.timeout && !board.passed" class="alert alert-danger player-info">
           <p id="fail-message" v-if="!board.error" style="margin: 0px; padding: 0px; align-self: center;">
