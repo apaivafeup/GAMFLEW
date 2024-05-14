@@ -40,6 +40,9 @@
         style="">
         Multiplayer
       </button>
+      <button class="admin-menu-button" @click="this.$router.push('how-to')" id="how-to-button" style="">
+        How To Play
+      </button>
       </div>
       <div class="col" style="margin: 0px; padding: 0px;">
       <h4 style="text-align: center;">Challenges</h4>
@@ -62,9 +65,6 @@
       </button>
       <button class="admin-menu-button" @click="this.$router.push({ name: 'user-export' })" id="export-button" style="">
         Export
-      </button>
-      <button class="admin-menu-button" @click="this.$router.push('how-to')" id="how-to-button" style="">
-        How To Play
       </button>
       <button class="admin-menu-button" @click="this.$router.push({ name: 'credits' })" id="credits-button"
       style="">
