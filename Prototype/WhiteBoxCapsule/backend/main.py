@@ -281,6 +281,12 @@ def read_passed_challenges(current_user: Annotated[models.User, Depends(get_curr
     passed_challenges = crud.get_passed_challenges(db, user_id=user_id)
     return passed_challenges
 
+## Get if challenge is passed
+@app.get("/users/{user_id}/passed-challenges/{challenge_id}")
+def read_passed_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, challenge_id: int, db: Session = Depends(get_db)):
+    passed_challenge = crud.get_passed_challenge(db=db, user_id=user_id, challenge_id=challenge_id)
+    return passed_challenge
+
 ## Get unlocked achievements (individual challenges)
 @app.get("/users/{user_id}/achievements/challenges/", response_model=list[int])
 def read_unlocked_challenge_achievements(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, db: Session = Depends(get_db)):

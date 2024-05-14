@@ -18,7 +18,7 @@ import CommentModal from '../components/modals/CommentModal.vue'
 
 <template style="overflow: hidden">
   <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
-  <Board :challenge="challenge" :code_file="code_file" :user="auth.user" />
+  <Board :challenge="challenge" :code_file="code_file" :user="auth.user" :beat_challenge="beat_challenge" />
   <CommentModal :placeholder="submit_placeholder" />
   <FailModal :placeholder="fail_placeholder" />
 </template>
@@ -36,6 +36,7 @@ export default {
       code_file: CodeFile,
       challenge: Challenge,
       board_state: BoardState,
+      beat_challenge: Boolean,
       submit_placeholder:
         "Don't know what to write? Answer these: What was the specific objective to hit, beyond the target line? How did you hit it?",
       fail_placeholder:
@@ -96,6 +97,13 @@ export default {
 
     await this.$axios.get(this.$api_link + '/board-states/' + this.challenge.initial_board, this.auth.config).then((response) => {
       this.board_state = new BoardState(response.data.id, response.data.name, response.data.board_state, response.data.out_of_bounds_state)
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
+      return
+    })
+
+    await this.$axios.get(this.$api_link + '/users/' + this.auth.user.id + '/passed-challenges/' + this.id, this.auth.config).then((response) => {
+      this.beat_challenge = (response.data != null)
     }).catch((error) => {
       this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
       return

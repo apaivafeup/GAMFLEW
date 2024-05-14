@@ -320,6 +320,10 @@ def get_passed_challenges(db: Session, user_id: int):
     passed_challenges_ids = list(set(passed_challenges_ids))
     return passed_challenges_ids
 
+def get_passed_challenge(db: Session, user_id: int, challenge_id: int):
+    passed_attempt = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.challenge_id == challenge_id).filter(schemas.Attempt.attempt_type == "pass").first()
+    return passed_attempt
+
 def get_unlocked_challenge_achievements(db: Session, user_id: int):
     achievement_unlocked_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.achievement == True).filter(schemas.Attempt.attempt_type == "pass")
     unlocked_challenges = [attempt.challenge_id for attempt in achievement_unlocked_attempts]

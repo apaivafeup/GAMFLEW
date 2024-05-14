@@ -14,11 +14,14 @@ export default {
     challenge: Challenge,
     user: User,
     code_file: CodeFile,
-    playable: Boolean
+    playable: Boolean,
+    beat_challenge: Boolean
   },
 
   data() {
-    return {}
+    return {
+      objective: true,
+    }
   },
 
   components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar },
@@ -34,10 +37,46 @@ export default {
   <div id="board-row" class="justify-content-between"
     style="display: grid; grid-template-rows: 100%; grid-template-columns: 50% 50%;">
     <div class="col"
-      style="display: grid; grid-template-rows: 65px 393px 85px 80px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center;">
+      style="display: grid; grid-template-rows: 90px 393px 85px 80px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center;">
       <div class="row" style="width: 100%;">
-        <div class="alert alert-special player-info" v-if="!board.timeout">
+        <div class="alert alert-special player-info" v-if="!board.timeout && this.objective" style="font-size: 14px; display: flex; justify-content: space-between; flex-direction: row;">
           <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ this.challenge.objective }}</p>
+          <button class="button" @click="this.objective = !this.objective" v-if="beat_challenge" style="border-style: solid;
+          border: double 1px transparent;
+          background-image: linear-gradient(to left, rgb(169, 216, 238), rgb(169, 216, 238)),
+                            linear-gradient(to right, rgb(107, 196, 237), rgb(107, 196, 237));
+          background-origin: border-box;
+          padding: 7.5px 5px;
+          border-radius: 50px;
+          background-clip: padding-box, border-box;">
+            <font-awesome-icon icon="award" />
+            Achievement
+          </button>
+          <button class="button disabled" v-else style="border-style: solid;
+          border: double 1px transparent;
+          background-image: linear-gradient(to left, rgb(169, 216, 238), rgba(225, 209, 241, 1)),
+                            linear-gradient(to right, rgb(186, 143, 229), rgb(107, 196, 237));
+          background-origin: border-box;
+          padding: 10px 5px;
+          border-radius: 50px;
+          background-clip: padding-box, border-box;">
+            <font-awesome-icon icon="award" />
+            Achievement
+          </button>
+        </div>
+        <div v-else-if="!board.timeout" class="alert alert-special-hint player-info" style="display: grid; grid-template-columns: 85% 15%;">
+          <p v-if="challenge.achievement_hint == null" id="achievement-text" style="font-size: 14px; margin: 0px; padding: 0px; align-self: center;">There is no achievement for this challenge!</p>
+          <p v-else id="achievement-text" style="font-size: 14px; margin: 0px; padding: 0px; align-self: center; "><b>Achievement Hint:</b> {{ challenge.achievement_hint }}</p>
+          <button class="button" @click="this.objective = !this.objective" style="border: double 1px transparent;
+          background-image: linear-gradient(to right, rgba(225, 209, 241, 1), rgba(225, 209, 241, 1)),
+                            linear-gradient(to left, rgb(186, 143, 229), rgb(186, 143, 229));
+          background-origin: border-box;
+          padding: 10px 5px;
+          border-radius: 50px;
+          background-clip: padding-box, border-box;">
+            <font-awesome-icon icon="bullseye" />
+            Objective
+          </button>
         </div>
       </div>
       <div class="row" style="display: flex; flex-direction: row; width: 100%;">
@@ -65,10 +104,6 @@ export default {
           <p style="margin: 0px; padding: 0px; align-self: center;">
             You passed, congratulations!
           </p>
-        </div>
-        <div v-if="board.passed && !board.timeout && !board.achievement" class="alert alert-special-hint player-info">
-          <p v-if="challenge.achievement_hint == null" id="achievement-text" style="margin: 0px; padding: 0px; align-self: center;">There is no achievement for this challenge!</p>
-          <p v-else id="achievement-text" style="margin: 0px; padding: 0px; align-self: center; "><b>Achievement Hint:</b> {{ challenge.achievement_hint }}</p>
         </div>
         <div v-else-if="board.passed && !board.timeout && board.achievement" class="alert alert-special-hint player-info">
           <p id="achievement-text" style="margin: 0px; padding: 0px; align-self: center;">You have won this Challenge's achievement!</p>
