@@ -1636,8 +1636,8 @@
                 "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "(this.find_first_stack(input, input.currentKey).stack.red + this.find_first_stack(input, input.currentKey).stack.blue == 5) && this.find_stacks(input, input.currentKey).length == 1",
+        "achievement_hint": "For challenge X.Y, make Y stack(s) with X total pieces.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -1663,8 +1663,8 @@
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_red_pieces(input, case_num) == 5 && this.count_blue_pieces(input, case_num) == 2",
+        "achievement_hint": "For challenge X.Y, in one test case, use X red pieces and Y blue pieces.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -1690,8 +1690,8 @@
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_red_pieces(input, case_num) == 3 && this.count_blue_pieces(input, case_num) == 5",
+        "achievement_hint": "For challenge Y.X, in one test case, use X red pieces and Y blue pieces.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1717,8 +1717,8 @@
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, case_num).stack.red == 4 && this.find_first_stack(input, case_num).stack.blue == 1",
+        "achievement_hint": "For challenge Y.X, in one test case, make a stack with X red pieces and (Y - X) blue pieces.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1727,7 +1727,7 @@
         "name": "Challenge 5.5: Everyone Wins!",
         "test_cases_count": 1,
         "score": 125,
-        "hint": "You cannot use zero here. In the most basic terms (number of pieces per player), what is a tie?",
+        "hint": "Using an empty board here is not possible. In the most basic terms (number of pieces per player), what is a tie?",
         "objective": "Statement coverage of line 8.",
         "initial_board": 1,
         "code_file": 5,
@@ -1744,8 +1744,8 @@
                 "this.count_empty_spaces(input, input.currentKey) != 64"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, input.currentKey).color != 'empty'",
+        "achievement_hint": "Pass the challenge with a stack.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1771,8 +1771,8 @@
                 "this.count_empty_spaces(input, input.currentKey) == 64"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, input.currentKey).color != 'empty'",
+        "achievement_hint": "Pass the challenge with a stack... but you can't put it on the board, can you?",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1799,8 +1799,8 @@
                 "this.count_empty_spaces(input, case_num) != 64"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.get_pieces(input, case_num).length <= 2",
+        "achievement_hint": "For challenge Y.X, make one test case with, at most, (X - Y) occupied spots.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1827,8 +1827,8 @@
                 "this.count_empty_spaces(input, case_num) != 64"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 3",
+        "achievement_hint": "For challenge X.Y, make sure a test case has a difference of (Y - X) pieces between colors.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1855,8 +1855,8 @@
                 "this.count_empty_spaces(input, case_num) != 64"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_blue_pieces(input, case_num) == 5 || this.count_red_pieces(input, case_num) == 5",
+        "achievement_hint": "For challenge X.Y, make sure one test case has X pieces of the same color.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1865,7 +1865,7 @@
         "name": "Challenge 5.10: Not A Tie",
         "test_cases_count": 1,
         "score": 100,
-        "hint": "You can't use zero, here... That would lead to an early return!",
+        "hint": "You can't use an empty board, here... That would lead to an early return!",
         "objective": "Statement coverage of line 14.",
         "initial_board": 1,
         "code_file": 5,
@@ -1881,8 +1881,8 @@
                 "this.count_red_pieces(input, input.currentKey) != this.count_blue_pieces(input, input.currentKey)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "Math.abs(this.count_blue_pieces(input, input.currentKey) - this.count_red_pieces(input, input.currentKey)) == 2",
+        "achievement_hint": "For challenge X.Y, make sure there is a difference of (Y/X) pieces between colors.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -1908,8 +1908,8 @@
                 "this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "Math.abs(this.count_red_pieces(input, input.currentKey) - this.count_blue_pieces(input, input.currentKey)) >= 6",
+        "achievement_hint": "For challenge Y.X, make sure there is a difference of |(Y - X)| pieces between colors.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1935,8 +1935,8 @@
                 "!(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "Math.abs(this.count_red_pieces(input, input.currentKey) - this.count_blue_pieces(input, input.currentKey)) >= 2",
+        "achievement_hint": "For challenge X.Y, make sure there is a difference of |2*X - Y| pieces between colors.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1963,8 +1963,8 @@
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
+        "achievement_hint": "In one test case, make sure both colors have the same number of pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1991,8 +1991,8 @@
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 3",
+        "achievement_hint": "For challenge X.Y, make sure there is a difference of [|(2*X - Y)| - 1] pieces between colors.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2019,8 +2019,8 @@
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 6",
+        "achievement_hint": "For challenge Y.X, make sure there is a difference of 2*(Y/X) pieces between colors.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2048,8 +2048,8 @@
                 "this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.isPrime(this.count_red_pieces(input, input.currentKey)) || this.isPrime(this.count_blue_pieces(input, input.currentKey)) || this.isPrime(this.count_empty_spaces(input, input.currentKey))",
+        "achievement_hint": "Make sure one of the triangle's sides is a prime number.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -2074,8 +2074,8 @@
                 "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "(this.count_red_pieces(input, input.currentKey) + this.count_blue_pieces(input, input.currentKey)) % 2 == 0",
+        "achievement_hint": "Make sure the sum of red and blue pieces is an even number.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -2101,8 +2101,8 @@
                 "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "(this.count_red_pieces(input, case_num) % 2 == 0 && this.count_blue_pieces(input, case_num) % 2 != 0) || (this.count_blue_pieces(input, case_num) % 2 == 0 && this.count_red_pieces(input, case_num) % 2 != 0)",
+        "achievement_hint": "In one test case, make sure one color has an even number of pieces, and the other has an odd number of pieces.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -2128,8 +2128,8 @@
                 "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "Math.pow(Math.sqrt(this.count_red_pieces(input, case_num)), 2) == this.count_red_pieces(input, case_num)",
+        "achievement_hint": "In one test case, make sure that the number of red pieces is a perfect square.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -2155,8 +2155,8 @@
                 "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "(this.count_red_pieces(input, input.currentKey) + this.count_blue_pieces(input, input.currentKey)) % 2 != 0",
+        "achievement_hint": "In one test case, make sure that the sum of red and blue pieces is an odd number.",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -2183,8 +2183,8 @@
                 "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_empty_spaces(input, case_num) >= this.count_red_pieces(input, case_num) + this.count_blue_pieces(input, case_num)",
+        "achievement_hint": "In one test case, make the number of empty spaces be bigger or equal to all pieces combined.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2213,8 +2213,8 @@
                 "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_red_pieces(input, case_num) > this.count_empty_spaces(input, case_num)",
+        "achievement_hint": "In one test case, make the number of red pieces equal to or bigger than the sum of empty spaces and blue pieces combined.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2241,8 +2241,8 @@
                 "this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, input.currentKey).stack.red == 0 && this.find_first_stack(input, input.currentKey).color != 'empty'",
+        "achievement_hint": "Add a stack of blue pieces on the out of bounds spot.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2272,8 +2272,8 @@
                 "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_blue_pieces(input, case_num) > this.count_empty_spaces(input, case_num)",
+        "achievement_hint": "In one test case, make sure that the number of blue pieces is bigger than the number of empty spaces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2300,8 +2300,8 @@
                 "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
+        "achievement_hint": "Make sure the number of empty spaces, red pieces and blue pieces is the same. Remember: a stack also occupies a space!",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2327,8 +2327,8 @@
                 "this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, input.currentKey).color != 'empty' && this.find_first_stack(input, input.currentKey).stack.red != 0 && this.find_first_stack(input, input.currentKey).stack.blue != 0",
+        "achievement_hint": "Make sure there is a stack on the board, with both red and blue pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2357,8 +2357,8 @@
                 "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_red_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
+        "achievement_hint": "In one test case, make sure the number of red pieces and empty spaces is different.",
         "difficulty": "Hard",
         "owner_id": 1
     },
@@ -2386,8 +2386,8 @@
                 "this.count_blue_pieces(input, case_num) <= this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, case_num).color != 'empty' && this.find_first_stack(input, case_num).stack.blue == 0",
+        "achievement_hint": "Add a stack of only red pieces on the out of bounds spot.",
         "difficulty": "Hard",
         "owner_id": 1
     },
@@ -2414,8 +2414,8 @@
                 "!(this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.find_first_stack(input, case_num).color != 'empty' && this.find_first_stack(input, case_num).stack.red == 0",
+        "achievement_hint": "Add a stack of only blue pieces on the out of bounds spot.",
         "difficulty": "Hard",
         "owner_id": 1
     },
@@ -2441,8 +2441,8 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.trianglePerimeter(input, input.currentKey) >= 12",
+        "achievement_hint": "Make sure the triangle's perimeter is above or equal to 12.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2468,8 +2468,8 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.count_red_pieces(input, input.currentKey) == 5",
+        "achievement_hint": "For challenge X.Y, make sure there are 5 red pieces on the board.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2496,8 +2496,8 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.isPythagoreanTriple(input, case_num)",
+        "achievement_hint": "Make sure the right triangle in test True-branch test case has a trio of Pythagorean triples as its sides.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2524,8 +2524,8 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "[{x: 0, y: 0}, {x: 0, y: 7}, {x: 7, y: 0}, {x: 7, y: 7}].filter((point) => input.state[case_num][point.x][point.y].color == 'red').length == 3",
+        "achievement_hint": "For challenge Y.X, in one test case, make sure (Y - X) corners of the board are occupied by a red piece.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2552,8 +2552,8 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.hasAdjacentPiece(input, case_num, 'red')",
+        "achievement_hint": "In one test case, place a red piece adjacent to a triangle vertex.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2580,8 +2580,8 @@
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.hasAdjacentPiece(input, case_num, 'stack') && this.find_first_stack(input, case_num).stack.blue == 0",
+        "achievement_hint": "Place a stack of red pieces adjacent to a triangle vertex.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -2608,8 +2608,8 @@
                 "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "input.state[input.currentKey][7][7].color == 'red'",
+        "achievement_hint": "For challenge Y.X, place a red piece on position (X, Y).",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -2629,7 +2629,7 @@
             "preconditions":
             [
                 "this.find_blue_pieces(input, case_num).length == 3",
-                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
+                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ],
             "tests":
             [
@@ -2637,8 +2637,8 @@
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "input.outOfBoundsState[case_num].position.x == 7 && input.outOfBoundsState[case_num].position.y == 8 && this.outOfBoundsState[case_num].color == 'red'",
+        "achievement_hint": "For challenge X.Y, place a red piece on position (X, Y).",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2658,7 +2658,7 @@
             "preconditions":
             [
                 "this.find_blue_pieces(input, case_num).length == 3",
-                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
+                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ],
             "tests":
             [
@@ -2666,8 +2666,8 @@
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "input.outOfBoundsState[case_num].position.x == 63 && input.outOfBoundsState[case_num].position.y == 63 && this.outOfBoundsState[case_num].color == 'red'",
+        "achievement_hint": "For challenge X.Y, in one test case, place a red piece on position (X*Y, Y*X).",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2695,8 +2695,8 @@
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "this.state[case_num][7][3].color == 'stack' && this.state[case_num][7][3].stack.red == 3",
+        "achievement_hint": "For challenge X.Y, in one test case, place (Y - X) red pieces on position (X, Y - X)",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2724,8 +2724,8 @@
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "input.outOfBoundsState[input.currentKey].position.x == -4 && input.outOfBoundsState[input.currentKey].position.y == 18 && this.outOfBoundsState[input.currentKey].color == 'red'",
+        "achievement_hint": "For challenge Y.X, place a red piece on position (Y - X, Y + X).",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -2753,8 +2753,8 @@
                 "!(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2)"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "Math.abs(this.count_blue_pieces(input, input.currentKey) - this.count_red_pieces(input, input.currentKey)) == 5",
+        "achievement_hint": "For challenge X.Y, make sure there is a difference of |(X - Y)| pieces between colors.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -2783,8 +2783,8 @@
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && [...(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]))] == 0"
             ]
         },
-        "achievement": null,
-        "achievement_hint": null,
+        "achievement": "input.outOfBoundsState[input.currentKey].position.x == 13 && input.outOfBoundsState[input.currentKey].position.y == 7 && this.outOfBoundsState[input.currentKey].stack.red == this.outOfBoundsState[input.currentKey].stack.blue && this.outOfBoundsState[input.currentKey].stack.red + this.outOfBoundsState[input.currentKey].stack.blue == 6",
+        "achievement_hint": "For challenge Y.X, make a stack of |(X - Y)| pieces in position (X, Y), with the same number of red and blue pieces.",
         "difficulty": "Hard",
         "owner_id": 1
     }

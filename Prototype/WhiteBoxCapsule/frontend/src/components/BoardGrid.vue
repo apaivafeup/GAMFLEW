@@ -215,6 +215,66 @@ export default {
       ).toFixed(2)
     },
 
+    trianglePerimeter(board, boardKey) {
+      var vertices = this.find_blue_pieces(board, boardKey)
+
+      if (vertices.length != 3) {
+        return 0
+      }
+
+      var a = this.distance(vertices[0], vertices[1])
+      var b = this.distance(vertices[1], vertices[2])
+      var c = this.distance(vertices[2], vertices[0])
+
+      if (!this.isTriangle(a, b, c)) {
+        return 0
+      }
+
+      return Number.parseFloat(a + b + c).toFixed(2)
+    },
+
+    isPythagoreanTriple(board, boardKey) {
+      var vertices = this.find_blue_pieces(board, boardKey)
+
+      var a = this.distance(vertices[0], vertices[1])
+      var b = this.distance(vertices[1], vertices[2])
+      var c = this.distance(vertices[2], vertices[0])
+
+      return Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2)
+    },
+
+    hasAdjacentPiece(board, boardKey, color) {
+      var vertices = this.find_blue_pieces(board, boardKey)
+
+      var directions = [
+        { x: 1, y: 1 },
+        { x: 1, y: -1 },
+        { x: -1, y: 1 },
+        { x: -1, y: -1 },
+        { x: 1, y: 0 },
+        { x: -1, y: 0 },
+        { x: 0, y: 1 },
+        { x: 0, y: -1 },
+      ]
+
+      for (var vertex in vertices) {
+        for (var direction in directions) {
+          var x = vertex.position.x + direction.x
+          var y = vertex.position.y + direction.y
+
+          if (x < 0 || x >= 8 || y < 0 || y >= 8) {
+            continue
+          }
+
+          if (board.state[boardKey][x][y].color == color) {
+            return true
+          }
+        }
+      }
+
+      return false
+    },
+
     get_pieces(board, boardKey) {
       var pieces = []
 
