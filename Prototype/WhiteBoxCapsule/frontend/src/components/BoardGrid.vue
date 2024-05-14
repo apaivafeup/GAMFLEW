@@ -7,18 +7,18 @@
         </div>
         <div class="game-board-out">
           <div class="box">
-            <OutPieceStack :x="this.outX" :y="this.outY" />
+            <OutPieceStack :x="board.outOfBoundsState[board.currentKey].position.x" :y="board.outOfBoundsState[board.currentKey].position.y" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" :v-model="this.outX"
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
               id="piece-stack-out-x" @input="this.changeX()" class="col box" name="piece-stack-out-x"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
-            <input v-else id="piece-stack-out-x" :value="this.outX" class="col box disabled" name="piece-stack-out-x"
+            <input v-else id="piece-stack-out-x" :value="board.outOfBoundsState[board.currentKey].position.x" class="col box disabled" name="piece-stack-out-x"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
             <input @input="this.changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
-              :v-model="this.outY" id="piece-stack-out-y" class="col box" name="piece-stack-out-y"
+              id="piece-stack-out-y" class="col box" name="piece-stack-out-y"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
-            <input v-else id="piece-stack-out-y" :value="this.outY" class="col box disabled"
+            <input v-else id="piece-stack-out-y" :value="board.outOfBoundsState[board.currentKey].position.y" class="col box disabled"
               style="width: 50px; text-align: center; font-size: 12px" type="number" name="piece-stack-out-y"
               placeholder="y" />
           </div>
@@ -180,9 +180,7 @@ export default {
       headers: [],
       items: [],
       itemsSelected: [],
-      outcomeInput: '',
-      outX: -1,
-      outY: -1
+      outcomeInput: ''
     }
   },
 
@@ -196,6 +194,15 @@ export default {
   methods: {
     isTriangle(a, b, c) {
       return a + b > c && a + c > b && b + c > a
+    },
+
+    isPrime(n) {
+      for(let i = 2, s = Math.sqrt(num); i <= s; i++) {
+        if (n % i === 0) {
+          return false;
+        }
+      }
+      return n > 1;
     },
 
     distance(a, b) {
@@ -356,6 +363,22 @@ export default {
       return new Piece({ x: -2, y: -2 }, Color.EMPTY)
     },
 
+    find_first_single_piece(board, boardKey) {
+      for (var i = 0; i < board.state[boardKey].length; i++) {
+        for (var j = 0; j < board.state[boardKey].length; j++) {
+          if (board.state[boardKey][i][j].color != Color.STACK && board.state[boardKey][i][j].color != Color.EMPTY) {
+            return board.state[boardKey][i][j]
+          }
+        }
+      }
+
+      if (board.outOfBoundsState[boardKey].color == Color.STACK && board.state[boardKey][i][j].color != Color.EMPTY) {
+        return board.outOfBoundsState[boardKey]
+      }
+
+      return new Piece({ x: -2, y: -2 }, Color.EMPTY)
+    },
+
     find_first_stack(board, boardKey) {
       for (var i = 0; i < board.state[boardKey].length; i++) {
         for (var j = 0; j < board.state[boardKey].length; j++) {
@@ -420,14 +443,14 @@ export default {
 
     changeX() {
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
-        this.outX = document.getElementById('piece-stack-out-x').value
+        this.board.outOfBoundsState[this.board.currentKey].position.x = document.getElementById('piece-stack-out-x').value
       }
 
     },
 
     changeY() {
       if (!isNaN(document.getElementById('piece-stack-out-y').value)) {
-        this.outY = document.getElementById('piece-stack-out-y').value
+        this.board.outOfBoundsState[this.board.currentKey].position.y = document.getElementById('piece-stack-out-y').value
       }
     },
 
