@@ -175,7 +175,7 @@ export const boardStore = defineStore('boardStore', {
 
       this.updateInfoState()
 
-      if (this.isOutOfBounds(this.selectedPiece.position.x, this.selectedPiece.position.y)) {
+      if (this.isOutOfBounds(this.selectedPiece.position.x, this.selectedPiece.position.y) && this.outOfBoundsState.color == 'empty') {
         this.outOfBoundsState[this.currentKey].position.x = -1
         this.outOfBoundsState[this.currentKey].position.y = -1
       }

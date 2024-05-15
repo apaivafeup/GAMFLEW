@@ -222,9 +222,9 @@ export default {
         return 0
       }
 
-      var a = this.distance(vertices[0], vertices[1])
-      var b = this.distance(vertices[1], vertices[2])
-      var c = this.distance(vertices[2], vertices[0])
+      var a = parseFloat(this.distance(vertices[0], vertices[1]))
+      var b = parseFloat(this.distance(vertices[1], vertices[2]))
+      var c = parseFloat(this.distance(vertices[2], vertices[0]))
 
       if (!this.isTriangle(a, b, c)) {
         return 0
@@ -236,9 +236,9 @@ export default {
     isPythagoreanTriple(board, boardKey) {
       var vertices = this.find_blue_pieces(board, boardKey)
 
-      var a = this.distance(vertices[0], vertices[1])
-      var b = this.distance(vertices[1], vertices[2])
-      var c = this.distance(vertices[2], vertices[0])
+      var a = parseFloat(this.distance(vertices[0], vertices[1]))
+      var b = parseFloat(this.distance(vertices[1], vertices[2]))
+      var c = parseFloat(this.distance(vertices[2], vertices[0]))
 
       return Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2)
     },
