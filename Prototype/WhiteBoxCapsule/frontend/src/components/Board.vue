@@ -90,7 +90,7 @@ export default {
         </div>
       </div>
       <div class="row" style="display: flex; width: 100%; gap: 5px; font-size: 14px;">
-        <PlayerInfo v-if="!board.passed && !board.timeout" style="width: 100%;"/>
+        <PlayerInfo v-if="!board.passed && !board.timeout && !board.failed" style="width: 100%;"/>
         <div v-if="board.failed && !board.timeout && !board.passed" class="alert alert-danger player-info">
           <p id="fail-message" v-if="!board.error" style="margin: 0px; padding: 0px; align-self: center;">
             You didn't pass. You can keep trying, though.
@@ -105,7 +105,7 @@ export default {
             You passed, congratulations!
           </p>
         </div>
-        <div v-else-if="board.passed && !board.timeout && board.achievement" class="alert alert-special-hint player-info">
+        <div v-if="board.passed && !board.timeout && board.achievement" class="alert alert-special-hint player-info">
           <p id="achievement-text" style="margin: 0px; padding: 0px; align-self: center;">You have won this Challenge's achievement!</p>
         </div>
       </div>

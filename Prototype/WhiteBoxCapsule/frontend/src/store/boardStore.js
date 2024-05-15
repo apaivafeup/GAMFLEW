@@ -97,6 +97,10 @@ export const boardStore = defineStore('boardStore', {
     },
 
     selectPiece(x, y) {
+      if (this.failed) {
+        this.failed = false
+      }
+
       if (this.add) {
         this.addPiece(x, y)
         return

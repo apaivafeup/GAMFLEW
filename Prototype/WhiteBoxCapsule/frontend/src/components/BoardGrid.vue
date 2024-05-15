@@ -197,7 +197,7 @@ export default {
     },
 
     isPrime(n) {
-      for(let i = 2, s = Math.sqrt(num); i <= s; i++) {
+      for(let i = 2, s = Math.sqrt(n); i <= s; i++) {
         if (n % i === 0) {
           return false;
         }
@@ -280,7 +280,7 @@ export default {
 
       for (var i = 0; i < board.state[boardKey].length; i++) {
         for (var j = 0; j < board.state[boardKey].length; j++) {
-          if (board.state[boardKey][i][j].color != Color.EMPTY) {
+          if (board.state[boardKey][i][j].color != Color.EMPTY && board.state[boardKey][i][j].color != Color.STACK) {
             pieces.push(board.state[boardKey][i][j])
           }
         }
