@@ -17,7 +17,7 @@ import CommentModal from '../components/modals/CommentModal.vue'
 </script>
 
 <template style="overflow: hidden">
-  <ChallengeHeader :name="challenge.name" :timer="challenge.timer" />
+  <ChallengeHeader :name="challenge.name" :timer="challenge.timer" :id="id" />
   <Board :challenge="challenge" :code_file="code_file" :user="auth.user" :beat_challenge="beat_challenge" />
   <CommentModal :placeholder="submit_placeholder" />
   <FailModal :placeholder="fail_placeholder" />
