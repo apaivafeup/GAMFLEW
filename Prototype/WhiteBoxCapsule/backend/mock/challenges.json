@@ -1495,7 +1495,7 @@
                 "this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)"
             ]
         },
-        "achievement": "find_first_single_piece(input, input.currentKey).color != (find_first_stack(input, input.currentKey).stack.red > 0 ? 'red' : (find_first_stack(input, input.currentKey).stack.blue > 0 ? 'blue' : 'stack'))",
+        "achievement": "this.find_first_single_piece(input, input.currentKey).color != (this.find_first_stack(input, input.currentKey).stack.red > 0 ? 'red' : (this.find_first_stack(input, input.currentKey).stack.blue > 0 ? 'blue' : 'stack'))",
         "achievement_hint": "Add one stack of pieces of a color different from the one you choose to pass the challenge.",
         "difficulty": "Easy",
         "owner_id": 1
@@ -1525,7 +1525,7 @@
             ]
         },
         "achievement": "this.find_first_stack(input, case_num).color != 'empty'",
-        "achievement_hint": "Submit a stack for the False-branch test case.",
+        "achievement_hint": "Submit a stack in one test case.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -1581,7 +1581,7 @@
                 "!(this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE))"
             ]
         },
-        "achievement": "!this.isPrime(this.get_pieces(input, case_num).length)",
+        "achievement": "!this.isPrime(this.get_pieces(input, input.currentKey).length)",
         "achievement_hint": "Add a non-prime number of total pieces to the board.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -1827,8 +1827,8 @@
                 "this.count_empty_spaces(input, case_num) != 64"
             ]
         },
-        "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 3",
-        "achievement_hint": "For challenge X.Y, make sure a test case has a difference of (Y - X) pieces between colors.",
+        "achievement": "Math.abs(this.find_first_stack(input, case_num).stack.red - this.find_first_stack(input, case_num).stack.blue) == 3",
+        "achievement_hint": "For challenge X.Y, make sure a test case has a stack with a difference of (Y - X) pieces between colors.",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -1908,7 +1908,7 @@
                 "this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey)"
             ]
         },
-        "achievement": "Math.abs(this.count_red_pieces(input, input.currentKey) - this.count_blue_pieces(input, input.currentKey)) >= 6",
+        "achievement": "Math.abs(this.count_red_pieces(input, input.currentKey) - this.count_blue_pieces(input, input.currentKey)) == 6",
         "achievement_hint": "For challenge Y.X, make sure there is a difference of |(Y - X)| pieces between colors.",
         "difficulty": "Easy",
         "owner_id": 1
@@ -1935,7 +1935,7 @@
                 "!(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ]
         },
-        "achievement": "Math.abs(this.count_red_pieces(input, input.currentKey) - this.count_blue_pieces(input, input.currentKey)) >= 2",
+        "achievement": "Math.abs(this.count_red_pieces(input, input.currentKey) - this.count_blue_pieces(input, input.currentKey)) == 2",
         "achievement_hint": "For challenge X.Y, make sure there is a difference of |2*X - Y| pieces between colors.",
         "difficulty": "Easy",
         "owner_id": 1
@@ -1963,8 +1963,8 @@
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
-        "achievement_hint": "In one test case, make sure both colors have the same number of pieces.",
+        "achievement": "this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue",
+        "achievement_hint": "In one test case, make a stack where both colors have the same number of pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
