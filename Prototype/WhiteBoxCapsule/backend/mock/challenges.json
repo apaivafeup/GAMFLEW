@@ -2155,7 +2155,7 @@
                 "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
         },
-        "achievement": "(this.count_red_pieces(input, input.currentKey) + this.count_blue_pieces(input, input.currentKey)) % 2 != 0",
+        "achievement": "(this.count_red_pieces(input, case_num) + this.count_blue_pieces(input, case_num)) % 2 != 0",
         "achievement_hint": "In one test case, make sure that the sum of red and blue pieces is an odd number.",
         "difficulty": "Very Easy",
         "owner_id": 1
@@ -2272,8 +2272,8 @@
                 "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": "this.count_blue_pieces(input, case_num) > this.count_empty_spaces(input, case_num)",
-        "achievement_hint": "In one test case, make sure that the number of blue pieces is bigger than the number of empty spaces.",
+        "achievement": "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)",
+        "achievement_hint": "In one test case, make sure that the number of blue pieces is smaller than the number of empty spaces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2300,8 +2300,8 @@
                 "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
-        "achievement_hint": "Make sure the number of empty spaces, red pieces and blue pieces is the same. Remember: a stack also occupies a space!",
+        "achievement": "this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue)",
+        "achievement_hint": "Make sure, in one test case, there is a stack with an equal number of red and blue pieces.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2328,7 +2328,7 @@
             ]
         },
         "achievement": "this.find_first_stack(input, input.currentKey).color != 'empty' && this.find_first_stack(input, input.currentKey).stack.red != 0 && this.find_first_stack(input, input.currentKey).stack.blue != 0",
-        "achievement_hint": "Make sure there is a stack on the board, with both red and blue pieces.",
+        "achievement_hint": "Make sure there is at least one stack with both red and blue pieces on the board.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -2368,7 +2368,7 @@
         "test_cases_count": 3,
         "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
-        "objective": "Modified condition/decision coverage of line 9",
+        "objective": "Modified condition/decision coverage of line 10",
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "mcdc",
@@ -2387,7 +2387,7 @@
             ]
         },
         "achievement": "this.find_first_stack(input, case_num).color != 'empty' && this.find_first_stack(input, case_num).stack.blue == 0",
-        "achievement_hint": "Add a stack of only red pieces on the out of bounds spot.",
+        "achievement_hint": "In one test case, add a stack of only red pieces on the out of bounds spot.",
         "difficulty": "Hard",
         "owner_id": 1
     },
@@ -2666,7 +2666,7 @@
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
         },
-        "achievement": "input.outOfBoundsState[case_num].position.x == 63 && input.outOfBoundsState[case_num].position.y == 63 && this.outOfBoundsState[case_num].color == 'red'",
+        "achievement": "input.outOfBoundsState[case_num].position.x == 63 && input.outOfBoundsState[case_num].position.y == 63 && input.outOfBoundsState[case_num].color == 'red'",
         "achievement_hint": "For challenge X.Y, in one test case, place a red piece on position (X*Y, Y*X).",
         "difficulty": "Normal",
         "owner_id": 1

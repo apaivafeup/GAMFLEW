@@ -43,6 +43,11 @@ function red(x, y) {
     cy.get('#board-box-' + x + '-' + y).click()
 }
 
+function writeOut(x, y) {
+    cy.get('#piece-stack-out-x').click().type(x)
+    cy.get('#piece-stack-out-y').click().type(y)
+}
+
 function moveOut() {
     cy.get('.game-board-out').click()
 }
@@ -53,7 +58,7 @@ function submit(challenge) {
     cy.get('#comment-modal-button').click().wait(1000)
     cy.on('window:confirm', () => false)
     cy.contains("You passed, congratulations!").should('be.visible')
-    cy.contains("You just won Challenge " + challenge + "'s achievement!").should('be.visible')
+    cy.contains("You have won this Challenge's achievement!").should('be.visible')
 }
 
 function add() {
@@ -64,10 +69,30 @@ function next() {
     cy.get('#next-button').click()
 }
 
-describe('test file 6', () => {
-    it('challenge 6.1', () => {
-        challenge(73)
-        
-        submit("6.1")
+describe('test file 7', () => {
+    it('challenge 7.13', () => {
+        challenge(99)
+        add()
+        blue(0, 0)
+        blue(0, 1)
+        blue(0, 2)
+        red(0, 3)
+        red(0, 4)
+        red(0, 5)
+        add()
+        writeOut(13, 7)
+        red(0, 0)
+        moveOut()
+        red(0, 1)
+        moveOut()
+        red(0, 2)
+        moveOut()
+        red(0, 3)
+        moveOut()
+        red(0, 4)
+        moveOut()
+        red(0, 5)
+        moveOut()
+        submit("7.13")
     })
 })

@@ -45,6 +45,7 @@ function submit() {
     cy.get('#comment-modal-button').click().wait(1000)
     cy.on('window:confirm', () => false)
     cy.contains("You passed, congratulations!").should('be.visible')
+    cy.contains("You have won this Challenge's achievement!").should('be.visible')
 }
 
 function blue(x, y) {
@@ -61,7 +62,7 @@ function submit(challenge) {
     cy.get('#comment-modal-button').click().wait(1000)
     cy.on('window:confirm', () => false)
     cy.contains("You passed, congratulations!").should('be.visible')
-    cy.contains("You just won Challenge" + challenge + "'s achievement!").should('be.visible')
+    cy.contains("You have won this Challenge's achievement!").should('be.visible')
 }
 
 function add() {
@@ -70,6 +71,11 @@ function add() {
 
 function next() {
     cy.get('#next-button').click()
+}
+
+function writeOut(x, y) {
+    cy.get('#piece-stack-out-x').click().type(x)
+    cy.get('#piece-stack-out-y').click().type(y)
 }
 
 
@@ -1196,3 +1202,531 @@ describe('test file 5', () => {
     })
 })
 
+describe('test file 6', () => {
+    it('challenge 6.1', () => {
+        challenge(73)
+        add()
+        blue(2, 1)
+        blue(5, 1)
+        blue(5, 5)
+        add()
+        submit("6.1")
+    })
+
+    it('challenge 6.2', () => {
+        challenge(74)
+        add()
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
+                red(i, j)
+            }
+        }
+        add()
+        submit("6.2")
+    })
+
+    it('challenge 6.3', () => {
+        challenge(75)
+        add()
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        red(4, 0)
+        add()
+        next()
+        submit("6.3")
+    })
+
+    it('challenge 6.4', () => {
+        challenge(76)
+        add()
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        red(4, 0)
+        add()
+        next()
+        for (var i = 0; i < 1; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        submit("6.4")
+    })
+
+    it('challenge 6.5', () => {
+        challenge(77)
+        add()
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        red(4, 0)
+        add()
+        next()
+        submit("6.5")
+    })
+
+    it('challenge 6.6', () => {
+        challenge(78)
+        add()
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        add()
+        next()
+        add()
+        for (var i = 4; i < 5; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        add()
+        submit("6.6")
+    })
+
+    it('challenge 6.7', () => {
+        challenge(79)
+        add()
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        add()
+        next()
+        add()
+        for (var i = 4; i < 5; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        add()
+        submit("6.7")
+    })
+
+    it('challenge 6.8', () => {
+        challenge(80)
+        add()
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        for (var i = 4; i < 5; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        blue(0, 0)
+        blue(0, 1)
+        add()
+        click(0, 0)
+        moveOut()
+        click(0, 1)
+        moveOut()
+        submit("6.8")
+    })
+
+    it('challenge 6.9', () => {
+        challenge(81)
+        add()
+        for (var i = 3; i < 4; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        for (var i = 5; i < 6; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        add()
+        next()
+        add() 
+        for (var i = 2; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        for (var i = 5; i < 6; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        add()
+        submit("6.9")
+    })
+
+    it('challenge 6.10', () => {
+        challenge(82)
+        add()
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        for (var i = 5; i < 6; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        add()
+        next()
+        add() 
+        for (var i = 2; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        for (var i = 5; i < 6; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        red(2, 0)
+        blue(2, 1)
+        add()
+        moveTo(2, 0, 2, 1)
+        click(2, 1)
+        moveOut()
+        submit("6.10")
+    })
+
+    it('challenge 6.11', () => {
+        challenge(83)
+        add()
+        for (var i = 3; i < 4; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        for (var i = 4; i < 5; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        add()
+        moveTo(7, 0, 0, 0)
+        moveTo(0, 7, 7, 7)
+        add()
+        red(0, 7)
+        blue(7, 0)
+        submit("6.11")
+    })
+
+    it('challenge 6.12', () => {
+        challenge(84)
+        add()
+        for (var i = 2; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        for (var i = 5; i < 6; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        add()
+        next()
+        add()
+        for (var i = 3; i < 4; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        for (var i = 5; i < 6; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        add()
+        next()
+        add()
+        for (var i = 5; i < 8; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        add()
+        submit("6.12")
+    })
+
+    it('challenge 6.13', () => {
+        challenge(85)
+        add()
+        for (var i = 1; i < 3; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        add()
+        next()
+        add()
+        for (var i = 3; i < 4; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        for (var i = 5; i < 6; i++) {
+            for (var j = 0; j < 8; j++) {
+                red(i, j)
+            }
+        }
+        red(6, 0)
+        add()
+        next()
+        add()
+        for (var i = 4; i < 5; i++) {
+            for (var j = 0; j < 8; j++) {
+                blue(i, j)
+            }
+        }
+        red(3, 0)
+        red(3, 1)
+        add()
+        click(3, 0)
+        moveOut()
+        click(3, 1)
+        moveOut()
+        submit("6.13")
+    })
+
+    it('challenge 6.14', () => {
+        challenge(86)
+        add()
+        red(7, 0)
+        blue(3, 0)
+        blue(3, 1)
+        add()
+        click(3, 0)
+        moveOut()
+        click(3, 1)
+        moveOut()
+        submit("6.14")
+    })
+})
+
+describe('test file 7', () => {
+    it('challenge 7.1', () => {
+        challenge(87)
+        add()
+        blue(3, 0)
+        blue(7, 0)
+        blue(7, 3)
+        add()
+        submit("7.1")
+    })
+
+    it('challenge 7.2', () => {
+        challenge(88)
+        add()
+        blue(4, 1)
+        blue(7, 0)
+        blue(7, 3)
+        red(0, 0)
+        red(0, 1)
+        red(0, 2)
+        red(0, 3)
+        red(0, 4)
+        add()
+        submit("7.2")
+    })
+
+    it('challenge 7.3', () => {
+        challenge(89)
+        add()
+        blue(3, 0)
+        blue(7, 0)
+        blue(7, 3)
+        add()
+        next()
+        add()
+        blue(4, 1)
+        blue(7, 0)
+        blue(7, 3)
+        add()
+        submit("7.3")
+    })
+
+    it('challenge 7.4', () => {
+        challenge(90)
+        add()
+        blue(4, 0)
+        blue(7, 0)
+        blue(7, 3)
+        add()
+        next()
+        add()
+        blue(4, 1)
+        blue(7, 0)
+        blue(7, 3)
+        red(0, 0)
+        red(0, 7)
+        red(7, 7)
+        add()
+        submit("7.4")
+    })
+
+    it('challenge 7.5', () => {
+        challenge(91)
+        add()
+        blue(4, 0)
+        blue(7, 0)
+        blue(7, 3)
+        add()
+        next()
+        add()
+        blue(4, 1)
+        blue(7, 0)
+        blue(7, 3)
+        red(4, 0)
+        add()
+        submit("7.5")
+    })
+
+    it('challenge 7.6', () => {
+        challenge(92)
+        add()
+        blue(4, 1)
+        blue(7, 0)
+        blue(7, 3)
+        red(4, 0)
+        red(4, 2)
+        add()
+        moveTo(4, 2, 4, 0)
+        submit("7.6")
+    })
+
+    it('challenge 7.7', () => {
+        challenge(93)
+        add()
+        blue(3, 0)
+        blue(7, 0)
+        blue(5, 3)
+        red(7, 7)
+        add()
+        submit("7.7")
+    })
+
+    it('challenge 7.8', () => {
+        challenge(94)
+        add()
+        blue(3, 0)
+        blue(7, 0)
+        blue(5, 3)
+        add()
+        next()
+        add()
+        blue(5, 1)
+        blue(7, 0)
+        blue(7, 4)
+        red(7, 7)
+        add()
+        writeOut(7, 8)
+        click(7, 7)
+        moveOut()
+        submit("7.8")
+    })
+
+    it('challenge 7.9', () => {
+        challenge(95)
+        add()
+        blue(3, 0)
+        blue(7, 0)
+        blue(5, 3)
+        add()
+        next()
+        add()
+        blue(5, 1)
+        blue(7, 0)
+        blue(7, 4)
+        red(7, 7)
+        add()
+        writeOut(63, 63)
+        click(7, 7)
+        moveOut()
+        submit("7.9")
+    })
+
+    it('challenge 7.10', () => {
+        challenge(96)
+        add()
+        blue(3, 0)
+        blue(7, 0)
+        blue(5, 3)
+        add()
+        next()
+        add()
+        blue(5, 1)
+        blue(7, 0)
+        blue(7, 4)
+        red(7, 3)
+        red(7, 1)
+        red(7, 2)
+        add()
+        moveTo(7, 1, 7, 3)
+        moveTo(7, 2, 7, 3)
+        submit("7.10")
+    })
+
+    it('challenge 7.11', () => {
+        challenge(97)
+        add()
+        blue(3, 0)
+        blue(7, 0)
+        blue(5, 3)
+        red(7, 7)
+        add()
+        writeOut(-4, 18)
+        move(7, 7)
+        moveOut()
+        submit("7.11")
+    })
+
+    it('challenge 7.12', () => {
+        challenge(98)
+        add()
+        red(3, 0)
+        red(7, 0)
+        red(5, 3)
+        red(7, 7)
+        red(0, 0)
+        add()
+        submit("7.12")
+    })
+
+    it('challenge 7.13', () => {
+        challenge(99)
+        add()
+        blue(0, 0)
+        blue(0, 1)
+        blue(0, 2)
+        red(0, 3)
+        red(0, 4)
+        red(0, 5)
+        add()
+        writeOut(13, 7)
+        red(0, 0)
+        moveOut()
+        red(0, 1)
+        moveOut()
+        red(0, 2)
+        moveOut()
+        red(0, 3)
+        moveOut()
+        red(0, 4)
+        moveOut()
+        red(0, 5)
+        moveOut()
+        submit("7.13")
+    })
+})
