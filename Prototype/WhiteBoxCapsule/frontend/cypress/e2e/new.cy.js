@@ -35,16 +35,25 @@ function click(x, y) {
     cy.get('#board-box-' + x + '-' + y).click()
 }
 
+function blue(x, y) {
+    cy.get('#board-box-' + x + '-' + y).click().click()
+}
+
+function red(x, y) {
+    cy.get('#board-box-' + x + '-' + y).click()
+}
+
 function moveOut() {
     cy.get('.game-board-out').click()
 }
 
-function submit() {
+function submit(challenge) {
     cy.get('#go-button').click()
     cy.get('#comment-modal-textarea').type('Example comment.')
     cy.get('#comment-modal-button').click().wait(1000)
     cy.on('window:confirm', () => false)
     cy.contains("You passed, congratulations!").should('be.visible')
+    cy.contains("You just won Challenge " + challenge + "'s achievement!").should('be.visible')
 }
 
 function add() {
@@ -55,27 +64,10 @@ function next() {
     cy.get('#next-button').click()
 }
 
-describe('test file 4', () => {
-    it('challenge 3.14', () => {
-        challenge(47)
-        add()
-        click(5, 1)
-        click(5, 1)
-        add()
-        moveTo(5, 1, 0, 1)
-        moveTo(0, 1, 3, 3)
-        next()
-        add()
-        click(5, 1)
-        click(5, 1)
-        add()
-        moveTo(5, 1, 0, 1)
-        add()
-        click(1, 2)
-        click(1, 2)
-        click(1, 0)
-        click(1, 0)
-        add()
-        submit()
+describe('test file 6', () => {
+    it('challenge 6.1', () => {
+        challenge(73)
+        
+        submit("6.1")
     })
 })
