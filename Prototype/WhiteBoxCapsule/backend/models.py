@@ -296,4 +296,3 @@ class UserGeneralAchievement(BaseModel):
     id: Optional[int]
     user_id: int
     general_achievement_id: int
-    seen: bool

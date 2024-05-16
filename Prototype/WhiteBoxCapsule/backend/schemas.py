@@ -265,7 +265,6 @@ class UserGeneralAchievement(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     general_achievement_id = Column(Integer, ForeignKey("general_achievements.id"), nullable=False, index=True)
-    seen = Column(Boolean, default=False, index=True, nullable=False)
 
     users = relationship("User", back_populates="general_achievements")
     general_achievements = relationship("GeneralAchievement", back_populates="user_general_achievements")
