@@ -21,23 +21,33 @@ import CommentModal from '../components/modals/CommentModal.vue'
         <h1>Achievements</h1>
     </div>
 
+    <div class="row" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; align-items: center; flex-direction: row; width: 100%; ">
+            <button id="guide-button-1" v-if="individual" class="col button is-primary is-fullwidth guide-button guide-button-selected" style="margin: 0px;" @click="switchTabs()">
+                Individual Achievements
+            </button>
+            <button id="guide-button-1" v-else class="col button is-primary is-fullwidth guide-button" style="margin: 0px;" @click="switchTabs()">
+                Individual Achievements
+            </button>
+            <button id="guide-button-2" v-if="!individual" class="col button is-primary is-fullwidth guide-button guide-button-selected" style="margin: 0px;" @click="switchTabs()">
+                General Achievements
+            </button>
+            <button id="guide-button-2" v-else class="col button is-primary is-fullwidth guide-button" style="margin: 0px;"
+                @click="switchTabs()">
+                General Achievements
+            </button>
+    </div>
+
+
     <div class="col" style="display: flex; align-items: center; flex-direction: column">
-        <div style="width: 100%; margin-bottom: 15px; display: flex; flex-direction: column; justify-content: center;">
-            <div class="row" style="width: 100%; display: flex; text-align: left;">
-                <h5>Individual Achievements</h5>
-            </div>
+        <div style="width: 100%; margin-bottom: 15px; display: flex; flex-direction: column; justify-content: center;" v-if="individual">
             <div class="row" style="width: 100%; display: grid; grid-template-columns: repeat(3, 1.5fr); grid-gap: 10px;">
                 <div class="col" v-for="challenge in challenges" :key="challenge.id">
                     <ChallengeAchievementCard :challenge="challenge" :unlocked="user_individual_achievements.includes(challenge.id)"/>
                 </div>
             </div>
         </div>
-        <div style="width: 100%; margin-bottom: 15px; display: flex; flex-direction: column; justify-content: center;">
-            <div class="row" style="width: 100%; display: flex; text-align: left;">
-                <h5>General Achievements</h5>
-            </div>
-
-            <div class="row" style="width: 100%; display: grid; grid-template-columns: repeat(3, 1.5fr); grid-gap: 10px;">
+        <div style="width: 100%; margin-bottom: 15px; display: flex; flex-direction: column; justify-content: center;" v-else >
+            <div class="row" style="width: 100%; display: grid; grid-template-columns: repeat(3, 1.5fr); grid-gap: 15px;">
                 <div class="col" v-for="general_achievement in general_achievements" :key="general_achievement.id">
                     <GeneralAchievementCard :general_achievement="general_achievement" :unlocked="user_general_achievements.includes(general_achievement.id)"/>
                 </div>
@@ -63,6 +73,7 @@ export default {
       general_achievements: [],
       user_general_achievements: [],
       user_individual_achievements: [],
+      individual: Boolean
     }
   },
 
@@ -87,6 +98,8 @@ export default {
     await this.getChallenges()
     await this.getIndividualAchievements()
     await this.getGeneralAchievements()
+
+    this.individual = true
 
     loader.hide()
   },
@@ -124,9 +137,13 @@ export default {
       }).catch((error) => {
         this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
       })
+    },
+
+    switchTabs() {
+        this.individual = !this.individual
     }
 
-  },
+},
 
   watch: {
     auth: {
