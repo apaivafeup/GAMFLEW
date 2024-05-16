@@ -1554,7 +1554,7 @@
                 "!this.get_pieces(input, case_num).every((piece) => piece.color == Color.RED)"
             ]
         },
-        "achievement": "this.isPrime(this.get_pieces(input, case_num).length)",
+        "achievement": "this.is_prime(this.get_pieces(input, case_num).length)",
         "achievement_hint": "In one test case, have a prime number of total pieces.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -1581,7 +1581,7 @@
                 "!(this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every(piece => piece.color == Color.BLUE))"
             ]
         },
-        "achievement": "!this.isPrime(this.get_pieces(input, input.currentKey).length)",
+        "achievement": "!this.is_prime(this.get_pieces(input, input.currentKey).length)",
         "achievement_hint": "Add a non-prime number of total pieces to the board.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -1610,7 +1610,7 @@
                 "this.get_pieces(input, case_num).length == 0 || (!(this.get_pieces(input, case_num).every(piece => piece.color == Color.RED)) && !(this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)))"
             ]
         },
-        "achievement": "this.isPrime(this.find_first_stack(input, case_num).stack.red + this.find_first_stack(input, case_num).stack.blue)",
+        "achievement": "this.is_prime(this.find_first_stack(input, case_num).stack.red + this.find_first_stack(input, case_num).stack.blue)",
         "achievement_hint": "In one test case, add a stack with a prime number of pieces.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -2045,10 +2045,10 @@
             ],
             "tests":
             [
-                "this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+                "this.is_triangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ]
         },
-        "achievement": "this.isPrime(this.count_red_pieces(input, input.currentKey)) || this.isPrime(this.count_blue_pieces(input, input.currentKey)) || this.isPrime(this.count_empty_spaces(input, input.currentKey))",
+        "achievement": "this.is_prime(this.count_red_pieces(input, input.currentKey)) || this.is_prime(this.count_blue_pieces(input, input.currentKey)) || this.is_prime(this.count_empty_spaces(input, input.currentKey))",
         "achievement_hint": "Make sure one of the triangle's sides is a prime number.",
         "difficulty": "Very Easy",
         "owner_id": 1
@@ -2071,7 +2071,7 @@
             ],
             "tests":
             [
-                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+                "!this.is_triangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ]
         },
         "achievement": "(this.count_red_pieces(input, input.currentKey) + this.count_blue_pieces(input, input.currentKey)) % 2 == 0",
@@ -2097,8 +2097,8 @@
             ],
             "tests":
             [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
-                "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
         },
         "achievement": "(this.count_red_pieces(input, case_num) % 2 == 0 && this.count_blue_pieces(input, case_num) % 2 != 0) || (this.count_blue_pieces(input, case_num) % 2 == 0 && this.count_red_pieces(input, case_num) % 2 != 0)",
@@ -2124,8 +2124,8 @@
             ],
             "tests":
             [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
-                "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
         },
         "achievement": "Math.pow(Math.sqrt(this.count_red_pieces(input, case_num)), 2) == this.count_red_pieces(input, case_num)",
@@ -2151,8 +2151,8 @@
             ],
             "tests":
             [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
-                "this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ]
         },
         "achievement": "(this.count_red_pieces(input, case_num) + this.count_blue_pieces(input, case_num)) % 2 != 0",
@@ -2175,7 +2175,7 @@
             "expression_count": null,
             "preconditions":
             [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests":
             [
@@ -2203,7 +2203,7 @@
             "expression_count": null,
             "preconditions":
             [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests":
             [
@@ -2233,7 +2233,7 @@
             "expression_count": 2,
             "preconditions":
             [
-                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
+                "!this.is_triangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
                 "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ],
             "tests":
@@ -2261,7 +2261,7 @@
             "expression_count": 1,
             "preconditions":
             [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
                 "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ],
             "tests":
@@ -2292,7 +2292,7 @@
             "expression_count": 1,
             "preconditions":
             [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests":
             [
@@ -2320,7 +2320,7 @@
             "expression_count": 1,
             "preconditions":
             [
-                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
+                "!this.is_triangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ],
             "tests":
             [
@@ -2347,7 +2347,7 @@
             "expression_count": 1,
             "preconditions":
             [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
+                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
                 "!(this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))"
             ],
             "tests":
@@ -2377,7 +2377,7 @@
             "expression_count": 1,
             "preconditions":
             [
-                "!this.isTriangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
+                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests":
             [
@@ -2406,7 +2406,7 @@
             "expression_count": null,
             "preconditions":
             [
-                "!this.isTriangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
+                "!this.is_triangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
                 "!(this.count_blue_pieces(input, input.currentKey) < this.count_empty_spaces(input, input.currentKey)) || !(this.count_blue_pieces(input, input.currentKey) > this.count_red_pieces(input, input.currentKey))"
             ],
             "tests":
@@ -2441,7 +2441,7 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": "this.trianglePerimeter(input, input.currentKey) >= 12",
+        "achievement": "this.triangle_perimeter(input, input.currentKey) >= 12",
         "achievement_hint": "Make sure the triangle's perimeter is above or equal to 12.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -2496,7 +2496,7 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": "this.isPythagoreanTriple(input, case_num)",
+        "achievement": "this.is_pythagorean_triple(input, case_num)",
         "achievement_hint": "Make sure the right triangle in test True-branch test case has a trio of Pythagorean triples as its sides.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -2552,7 +2552,7 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": "this.hasAdjacentPiece(input, case_num, 'red')",
+        "achievement": "this.has_adjacent_piece(input, case_num, 'red')",
         "achievement_hint": "In one test case, place a red piece adjacent to a triangle vertex.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -2580,7 +2580,7 @@
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3"
             ]
         },
-        "achievement": "this.hasAdjacentPiece(input, case_num, 'stack') && this.find_first_stack(input, case_num).stack.blue == 0",
+        "achievement": "this.has_adjacent_piece(input, case_num, 'stack') && this.find_first_stack(input, case_num).stack.blue == 0",
         "achievement_hint": "Place a stack of red pieces adjacent to a triangle vertex.",
         "difficulty": "Easy",
         "owner_id": 1

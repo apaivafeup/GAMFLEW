@@ -281,11 +281,11 @@ export default {
   },
 
   methods: {
-    isTriangle(a, b, c) {
+    is_triangle(a, b, c) {
       return a + b > c && a + c > b && b + c > a
     },
 
-    isPrime(n) {
+    is_prime(n) {
       for(let i = 2, s = Math.sqrt(num); i <= s; i++) {
         if (n % i === 0) {
           return false;

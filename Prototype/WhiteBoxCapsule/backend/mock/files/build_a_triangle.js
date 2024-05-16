@@ -4,7 +4,7 @@ function build_a_triangle(board) {
 	var c = this.count_empty_spaces(board); // Counts the number of empty spaces (no pieces).
 	
     // Tests if the lengths of the sides of the triangle are valid.
-	if (this.isTriangle(a, b, c)) {
+	if (this.is_triangle(a, b, c)) {
 		return true;
 	} else {
 		if (b < c && b > a) {

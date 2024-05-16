@@ -27,7 +27,7 @@
     {
         "id": 6,
         "name": "Test File 6: Build A Triangle",
-        "content": "function build_a_triangle(board) {\n\tvar a = this.count_red_pieces(board); // Counts the number of blue pieces.\n\tvar b = this.count_blue_pieces(board); // Counts the number of red pieces.\n\tvar c = this.count_empty_spaces(board); // Counts the number of empty spaces (no pieces).\n\t\n\t// Tests if the lengths of the sides of the triangle are valid.\n\tif (this.isTriangle(a, b, c)) {\n\t\treturn true;\n\t} else {\n\t\tif (b < c && b > a) {\n\t\t\treturn true;\n\t\t} else if (b == a || b == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
+        "content": "function build_a_triangle(board) {\n\tvar a = this.count_red_pieces(board); // Counts the number of blue pieces.\n\tvar b = this.count_blue_pieces(board); // Counts the number of red pieces.\n\tvar c = this.count_empty_spaces(board); // Counts the number of empty spaces (no pieces).\n\t\n\t// Tests if the lengths of the sides of the triangle are valid.\n\tif (this.is_triangle(a, b, c)) {\n\t\treturn true;\n\t} else {\n\t\tif (b < c && b > a) {\n\t\t\treturn true;\n\t\t} else if (b == a || b == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn false;\n\t\t}\n\t}\n}"
     },
     {
         "id": 7,

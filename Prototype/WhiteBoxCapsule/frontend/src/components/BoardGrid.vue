@@ -192,11 +192,11 @@ export default {
   },
 
   methods: {
-    isTriangle(a, b, c) {
+    is_triangle(a, b, c) {
       return a + b > c && a + c > b && b + c > a
     },
 
-    isPrime(n) {
+    is_prime(n) {
       for(let i = 2, s = Math.sqrt(n); i <= s; i++) {
         if (n % i === 0) {
           return false;
@@ -215,7 +215,7 @@ export default {
       ).toFixed(2)
     },
 
-    trianglePerimeter(board, boardKey) {
+    triangle_perimeter(board, boardKey) {
       var vertices = this.find_blue_pieces(board, boardKey)
 
       if (vertices.length != 3) {
@@ -226,14 +226,14 @@ export default {
       var b = parseFloat(this.distance(vertices[1], vertices[2]))
       var c = parseFloat(this.distance(vertices[2], vertices[0]))
 
-      if (!this.isTriangle(a, b, c)) {
+      if (!this.is_triangle(a, b, c)) {
         return 0
       }
 
       return Number.parseFloat(a + b + c).toFixed(2)
     },
 
-    isPythagoreanTriple(board, boardKey) {
+    is_pythagorean_triple(board, boardKey) {
       var vertices = this.find_blue_pieces(board, boardKey)
 
       var a = parseFloat(this.distance(vertices[0], vertices[1]))
@@ -243,7 +243,7 @@ export default {
       return Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2)
     },
 
-    hasAdjacentPiece(board, boardKey, color) {
+    has_adjacent_piece(board, boardKey, color) {
       var vertices = this.find_blue_pieces(board, boardKey)
 
       var directions = [
