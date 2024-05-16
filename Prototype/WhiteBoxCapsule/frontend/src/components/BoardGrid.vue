@@ -719,7 +719,7 @@ export default {
     },
 
     exit() {
-      this.$router.back()
+      this.$router.push({ name: 'challenges'})
     },
   },
 
