@@ -24,6 +24,7 @@ const routes = [
     { name: 'check-user-submissions', path: '/user-submissions', component: () => import('./pages/CheckUserSubmissions.vue'), props: false},
     { name: 'leaderboard', path: '/leaderboard', component: () => import('./pages/Leaderboard.vue'), props: false},
     { name: 'edit-user', path: '/edit-user/:id/', component: () => import('./pages/EditUser.vue'), props: true},
+    { name: 'achievements', path: '/achievements', component: () => import('./pages/Achievements.vue'), props: false},
 ];
 
 export const Router = createRouter({

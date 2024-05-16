@@ -6,6 +6,9 @@
     <button class="menu-button" id="multiplayer-button" @click="this.$router.push('multiplayer')" style="width: 500px">
       Multiplayer
     </button>
+    <button class="menu-button" id="achievements-button" @click="this.$router.push('achievements')" style="width: 500px">
+      Achievements
+    </button>
     <button class="menu-button" @click="this.$router.push('how-to')" id="how-to-button" style="width: 500px">
       How To Play
     </button>
@@ -36,9 +39,11 @@
         style="">
         Single Player
       </button>
-      <button class="admin-menu-button" id="multiplayer-button" @click="this.$router.push('multiplayer')"
-        style="">
+      <button class="admin-menu-button" id="multiplayer-button" @click="this.$router.push('multiplayer')" style="">
         Multiplayer
+      </button>
+      <button class="admin-menu-button" id="achievements-button" @click="this.$router.push('achievements')" style="">
+        Achievements
       </button>
       <button class="admin-menu-button" @click="this.$router.push('how-to')" id="how-to-button" style="">
         How To Play
@@ -122,35 +127,6 @@ export default defineComponent({
       event.preventDefault()
 
       this.auth.logout()
-    },
-
-    switchMenu(target) {
-      switch (target) {
-        case 'main':
-          this.main = true
-          this.challenges = false
-          this.howTo = false
-          this.credits = false
-          break
-        case 'challenges':
-          this.main = false
-          this.challenges = true
-          this.howTo = false
-          this.credits = false
-          break
-        case 'howTo':
-          this.main = false
-          this.challenges = false
-          this.howTo = true
-          this.credits = false
-          break
-        case 'credits':
-          this.main = false
-          this.challenges = false
-          this.howTo = false
-          this.credits = true
-          break
-      }
     }
   }
 })

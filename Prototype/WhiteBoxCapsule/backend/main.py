@@ -228,10 +228,28 @@ def read_users(current_user: Annotated[models.User, Depends(get_current_active_u
         raise HTTPException(status_code=404, detail="User not found")
     return users
 
-## Get specific user's challenges
+## Create specific user's challenges
 @app.post("/users/{user_id}/challenges/", response_model=models.Challenge)
 def create_challenge_for_user(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, challenge: models.Challenge, db: Session = Depends(get_db)):
     return crud.create_user_challenge(db=db, challenge=challenge, user_id=user_id)
+
+## Get a user's unlocked general achievements
+@app.get("/users/{user_id}/general-achievements/", response_model=list[int])
+def get_general_achievements(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, db: Session = Depends(get_db)):
+    ach = crud.get_user_general_achievements(db, user_id)
+    return ach
+
+## Get a user's unlocked challenge achievements
+@app.get("/users/{user_id}/challenge-achievements/", response_model=list[int])
+def get_user_challenge_achievements(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, db: Session = Depends(get_db)):
+    ach = crud.get_user_challenge_achievements(db, user_id)
+    return ach
+
+## Get all general achievements
+@app.get("/general-achievements/", response_model=list[models.GeneralAchievement])
+def get_all_general_achievements(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
+    ach = crud.get_general_achievements(db)
+    return ach
 
 ## Get challenges dictionary, where code file is the key.
 @app.get("/challenges-by-code/")

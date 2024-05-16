@@ -22,6 +22,7 @@ models_entries = [
     (models.Attempt, "./mock/attempts.json"),
     (models.GameRoom, "./mock/game_rooms.json"),
     (models.CodeFileDictionary, "./mock/code_file_dictionary.json"),
+    (models.GeneralAchievement, "./mock/general_achievements.json"),
 ]
  
 def main():

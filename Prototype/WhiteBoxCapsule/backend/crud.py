@@ -16,8 +16,7 @@ def create_general_achievement(db: Session, general_achievement: schemas.General
     db_general_achievement = schemas.GeneralAchievement(
         name=general_achievement.name,
         description=general_achievement.description,
-        score=general_achievement.score,
-        type=general_achievement.type
+        hint=general_achievement.hint
     )
     db.add(db_general_achievement)
     db.commit()
@@ -438,6 +437,19 @@ def get_user_achievements_points(db: Session, user_id: int):
     user_score += len(general_achievements) * 1000 # 1000 points for each general achievement.
     
     return user_score
+
+def get_general_achievements(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(schemas.GeneralAchievement).offset(skip).limit(limit).all()
+
+def get_user_general_achievements(db: Session, user_id: int):
+    user_general_achievements = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).all()
+
+    return [a.general_achievement_id for a in user_general_achievements]
+
+def get_user_challenge_achievements(db: Session, user_id: int):
+    user_challenge_achievements = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.achievement == True).all()
+
+    return [a.challenge_id for a in user_challenge_achievements]
 
 def update_user_stats(db: Session, user_id: int):
     user_to_update = get_user(db, user_id)
