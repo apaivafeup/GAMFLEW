@@ -16,6 +16,7 @@ create_op = {
     str(models.Attempt): crud.create_attempt,
     str(models.GameRoom): crud.create_game_room,
     str(models.CodeFileDictionary): crud.create_code_file_dictionary,
+    str(models.GeneralAchievement): crud.create_general_achievement,
 }
 
 def load_data(entries: List[BaseModel]) -> None:

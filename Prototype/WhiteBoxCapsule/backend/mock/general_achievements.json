@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Test File 1 Connoisseur",
+        "description": "Beaten all Test File 1 challenges at least once.",
+        "hint": "Pass all challenges in Test File 1."
+    },
+    {
+        "name": "Test File 2 Connoisseur",
+        "description": "Beaten all Test File 2 challenges at least once.",
+        "hint": "Pass all challenges in Test File 2."
+    },
+    {
+        "name": "Test File 3 Connoisseur",
+        "description": "Beaten all Test File 3 challenges at least once.",
+        "hint": "Pass all challenges in Test File 3."
+    },
+    {
+        "name": "Test File 4 Connoisseur",
+        "description": "Beaten all Test File 4 challenges at least once.",
+        "hint": "Pass all challenges in Test File 4."
+    },
+    {
+        "name": "Test File 5 Connoisseur",
+        "description": "Beaten all Test File 5 challenges at least once.",
+        "hint": "Pass all challenges in Test File 5."
+    },
+    {
+        "name": "Test File 6 Connoisseur",
+        "description": "Beaten all Test File 6 challenges at least once.",
+        "hint": "Pass all challenges in Test File 6."
+    },
+    {
+        "name": "Test File 7 Connoisseur",
+        "description": "Beaten all Test File 7 challenges at least once.",
+        "hint": "Pass all challenges in Test File 7."
+    },
+    {
+        "name": "It's A Trap!",
+        "description": "Beaten a challenge without any interaction with the board.",
+        "hint": "Pass a challenge by doing nothing."
+    },
+    {
+        "name": "Participation Prize",
+        "description": "Beaten a challenge after submitting a failed attempt.",
+        "hint": "Pass a challenge after failing it!"
+    },
+    {
+        "name": "Baby's First Multiplayer Game",
+        "description": "Participated in a multiplayer game.",
+        "hint": "Play a multiplayer game!"
+    },
+    {
+        "name": "The First of Many",
+        "description": "Won a multiplayer game.",
+        "hint": "Win a multiplayer game!"
+    },
+    {
+        "name": "Making New Enemies",
+        "description": "Lost a multiplayer game.",
+        "hint": "Lose a multiplayer game!"  
+    }
+]

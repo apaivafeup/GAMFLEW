@@ -695,10 +695,6 @@ export default {
       await this.$axios.post(this.$api_link + '/create/attempt/', body, this.auth.config).then((response) => {
         this.board.submit(response.data.score)
         this.auth.getUserData(this.auth.user.id) // update user data
-        if (body.attempt_type == 'pass') {
-          if (confirm('You have passed the challenge! Would you like to move on to the next challenge?'))
-            this.$router.push({ name: 'challenge', params: { id: Number(Number(this.challenge.id) + 1) } })
-        }
       }).catch((error) => {
         this.toast.error('An error occurred while submitting your attempt. Please try again later.')
       })

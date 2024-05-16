@@ -103,6 +103,7 @@ class User(Base):
     game_logs = relationship("GameLog", back_populates="users")
     game_rounds = relationship("GameRound", back_populates="users")
     attempt_scores = relationship("AttemptScore", back_populates="users")
+    general_achievements = relationship("UserGeneralAchievement", back_populates="users")
 
 class CodeFile(Base):
     __tablename__ = "code_file"
@@ -247,3 +248,24 @@ class AttemptScore(Base):
     attempts = relationship("Attempt", back_populates="attempt_scores")
     users = relationship("User", back_populates="attempt_scores")
     challenges = relationship("Challenge", back_populates="attempt_scores")
+
+class GeneralAchievement(Base):
+    __tablename__ = "general_achievements"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(TEXT, index=True, nullable=False)
+    description = Column(TEXT, index=True, nullable=False)
+    hint = Column(TEXT, index=True, nullable=False)
+
+    user_general_achievements = relationship("UserGeneralAchievement", back_populates="general_achievements")
+
+class UserGeneralAchievement(Base):
+    __tablename__ = "user_general_achievements"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    general_achievement_id = Column(Integer, ForeignKey("general_achievements.id"), nullable=False, index=True)
+    seen = Column(Boolean, default=False, index=True, nullable=False)
+
+    users = relationship("User", back_populates="general_achievements")
+    general_achievements = relationship("GeneralAchievement", back_populates="user_general_achievements")

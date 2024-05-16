@@ -285,3 +285,15 @@ class AttemptScore(BaseModel):
     attempt_id: int
     challenge_id: int
     given_score: int
+
+class GeneralAchievement(BaseModel):
+    id: Optional[int]
+    name: str
+    description: str
+    hint: str
+
+class UserGeneralAchievement(BaseModel):
+    id: Optional[int]
+    user_id: int
+    general_achievement_id: int
+    seen: bool

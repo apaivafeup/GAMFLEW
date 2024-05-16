@@ -12,6 +12,16 @@ import models
 import schemas
 import auth
 
+def create_general_achievement(db: Session, general_achievement: schemas.GeneralAchievement):
+    db_general_achievement = schemas.GeneralAchievement(
+        name=general_achievement.name,
+        description=general_achievement.description,
+        score=general_achievement.score,
+        type=general_achievement.type
+    )
+    db.add(db_general_achievement)
+    db.commit()
+    return db_general_achievement
 
 def at_least_one_month_after(token_date):
     current_date = datetime.datetime.now()
@@ -391,6 +401,7 @@ def get_user_score(db: Session, user_id: int):
 
 def get_user_achievements_points(db: Session, user_id: int):
     achievement_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.achievement == True)
+    general_achievements = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).all()
 
     challenges = []
     user_score = 0
@@ -424,6 +435,8 @@ def get_user_achievements_points(db: Session, user_id: int):
                 user_score += 750
                 break
     
+    user_score += len(general_achievements) * 1000 # 1000 points for each general achievement.
+    
     return user_score
 
 def update_user_stats(db: Session, user_id: int):
@@ -438,7 +451,8 @@ def update_user_stats(db: Session, user_id: int):
     score = get_user_score(db, user_id)
 
     achievement_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.achievement == True)
-    achievements = len(set([attempt.challenge_id for attempt in achievement_attempts]))
+    general_achievements = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).all()
+    achievements = len(set([attempt.challenge_id for attempt in achievement_attempts])) + len(set([achievement.general_achievement_id for achievement in general_achievements]))
 
     user_to_update.successful_attempts = successful_attempts
     user_to_update.failed_attempts = failed_attempts
