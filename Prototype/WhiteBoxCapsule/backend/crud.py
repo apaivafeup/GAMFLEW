@@ -294,16 +294,16 @@ def get_random_challenge(db: Session, game_room_id: int):
 
     game_rounds = db.query(schemas.GameRound).filter(
         schemas.GameRound.game_room_id == game_room_id).all()
+    played_challenges = [round.challenge_id for round in game_rounds if round.state == schemas.GameRoundState.FINISHED]
+    passed_challenges = get_passed_challenges(db=db, user_id=game_room_id)
+    
+    passed_or_played = list(set(played_challenges + passed_challenges))
 
-    if (len(game_rounds) == 0):
+    if (len(game_rounds) == 0 and random_challenge.id not in passed_or_played):
         return random_challenge
-
-    for round in game_rounds:
-        if round.challenge_id == random_challenge.id:
-            return get_random_challenge(db, game_room_id)
-        else:
-            continue
-
+    else:
+        return get_random_challenge(db=db, game_room_id=game_room_id)
+    
     return random_challenge
 
 
