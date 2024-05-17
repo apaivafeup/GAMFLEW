@@ -35,7 +35,13 @@
         </button>
       </router-link>
       <div class="progress-bar">
-        {{ this.board.currentKey + 1 + '/' + challenge.test_cases_count }}
+        <div class="row" v-if="board.add" style="display: flex; justify-content: center; text-align: center; font-size: 10px; margin-bottom: 10px;">
+          Click a spot to change it! <br />
+          More clicks do different things!
+        </div>
+        <div class="row" style="display: flex; justify-content: center; text-align: center;">
+          {{ board.currentKey + 1 + '/' + challenge.test_cases_count }}
+        </div>
       </div>
 
       <button id="view-button" class="button is-primary is-fullwidth"

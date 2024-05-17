@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 
 def grant_general_achievement(db: Session, user_id: int, general_achievement_id: int):
-    db.add(models.UserGeneralAchievement(user_id=user_id, general_achievement_id=general_achievement_id))
+    db.add(schemas.UserGeneralAchievement(user_id=user_id, general_achievement_id=general_achievement_id))
     db.commit()
 
 def check_achievements(db: Session, user_id: int):
@@ -23,7 +23,7 @@ def check_achievements(db: Session, user_id: int):
     check_achievement_12(db, user_id)
 
 def check_achievement_1(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 1).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 1).first()
 
     if general_achievement is not None:
         return
@@ -35,7 +35,7 @@ def check_achievement_1(db: Session, user_id: int):
         grant_general_achievement(db, user_id, 1)
 
 def check_achievement_2(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 2).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 2).first()
 
     if general_achievement is not None:
         return
@@ -47,7 +47,7 @@ def check_achievement_2(db: Session, user_id: int):
         grant_general_achievement(db, user_id, 2)
 
 def check_achievement_3(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 3).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 3).first()
 
     if general_achievement is not None:
         return
@@ -59,7 +59,7 @@ def check_achievement_3(db: Session, user_id: int):
         grant_general_achievement(db, user_id, 3)
 
 def check_achievement_4(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 4).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 4).first()
 
     if general_achievement is not None:
         return
@@ -71,7 +71,7 @@ def check_achievement_4(db: Session, user_id: int):
         grant_general_achievement(db, user_id, 4)
 
 def check_achievement_5(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 5).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 5).first()
 
     if general_achievement is not None:
         return
@@ -83,7 +83,7 @@ def check_achievement_5(db: Session, user_id: int):
         grant_general_achievement(db, user_id, 5)
 
 def check_achievement_6(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 6).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 6).first()
 
     if general_achievement is not None:
         return
@@ -95,7 +95,7 @@ def check_achievement_6(db: Session, user_id: int):
         grant_general_achievement(db, user_id, 6)
 
 def check_achievement_7(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 7).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 7).first()
 
     if general_achievement is not None:
         return
@@ -107,7 +107,7 @@ def check_achievement_7(db: Session, user_id: int):
         grant_general_achievement(db, user_id, 7)
 
 def check_achievement_8(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 8).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 8).first()
 
     if general_achievement is not None:
         return
@@ -127,7 +127,7 @@ def check_achievement_8(db: Session, user_id: int):
             break
 
 def check_achievement_9(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 9).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 9).first()
 
     if general_achievement is not None:
         return
@@ -145,7 +145,7 @@ def check_achievement_9(db: Session, user_id: int):
                 break
 
 def check_achievement_10(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 10).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 10).first()
 
     if general_achievement is not None:
         return
@@ -156,7 +156,7 @@ def check_achievement_10(db: Session, user_id: int):
         grant_general_achievement(db, user_id, 10)
 
 def check_achievement_11(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 11).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 11).first()
 
     if general_achievement is not None:
         return
@@ -167,7 +167,7 @@ def check_achievement_11(db: Session, user_id: int):
         grant_general_achievement(db, user_id, 11)
 
 def check_achievement_12(db: Session, user_id: int):
-    general_achievement = db.query(models.UserGeneralAchievement).filter(models.UserGeneralAchievement.user_id == user_id).filter(models.UserGeneralAchievement.general_achievement_id == 12).first()
+    general_achievement = db.query(schemas.UserGeneralAchievement).filter(schemas.UserGeneralAchievement.user_id == user_id).filter(schemas.UserGeneralAchievement.general_achievement_id == 12).first()
 
     if general_achievement is not None:
         return

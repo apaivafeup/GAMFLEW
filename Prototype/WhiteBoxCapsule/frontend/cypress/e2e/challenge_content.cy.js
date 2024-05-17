@@ -3,8 +3,8 @@ beforeEach('login', () => {
     cy.get('#exampleInputUsername').type('professor')
     cy.get('#exampleInputPassword').type('password')
     cy.get('#login-button').click()
-    cy.viewport(1920, 1080)
     cy.wait(1000)
+    cy.viewport(1920, 1080)
 })
 
 describe('challenge content', () => {
