@@ -17,12 +17,12 @@
             </div>
           </div>
         </div>
-        <div id="player-points-achievements" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-          <span style="padding: 5px; margin: 0px; display: flex; justify-content: center; align-items: center; font-weight: bold;">
+        <div id="player-points-achievements" style="display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 14px;">
+          <span style="padding: 5px; margin: 0px; display: flex; justify-content: center; align-items: center;">
             <font-awesome-icon icon="coins" fixed-width style="color: #00c8ff !important; margin-right: 5px" />
             <p style="color: #00c8ff !important; margin: 0px;">Score: {{ user.score }}</p>
           </span>
-          <span style="padding: 5px; margin: 0px; display: flex; justify-content: center; align-items: center; font-weight: bold;">
+          <span style="padding: 5px; margin: 0px; display: flex; justify-content: center; align-items: center;">
             <font-awesome-icon icon="award" fixed-width style="color: rgb(169, 89, 255) !important; margin-right: 5px" />
             <p style="color: rgb(169, 89, 255) !important; margin: 0px;">Achievements: {{ user.achievements }}</p>
           </span>
