@@ -56,15 +56,6 @@ function red(x, y) {
     cy.get('#board-box-' + x + '-' + y).click()
 }
 
-function submit(challenge) {
-    cy.get('#go-button').click()
-    cy.get('#comment-modal-textarea').type('Example comment.')
-    cy.get('#comment-modal-button').click().wait(1000)
-    cy.on('window:confirm', () => false)
-    cy.contains("You passed, congratulations!").should('be.visible')
-    cy.contains("You have won this Challenge's achievement!").should('be.visible')
-}
-
 function add() {
     cy.get('#add-button').click()
 }
@@ -850,7 +841,7 @@ describe('test file 4', () => {
         click(0, 1)
         add()
         moveTo(0, 0, 0, 1)
-        submit("4.1")
+        submit()
     })
 
     it('challenge 4.2', () => {
@@ -871,7 +862,7 @@ describe('test file 4', () => {
         click(5, 3)
         click(5, 3)
         add()
-        submit("4.2")
+        submit()
     })
 
     it('challenge 4.3', () => {
@@ -890,7 +881,7 @@ describe('test file 4', () => {
         click(5, 3)
         click(5, 3)
         add()
-        submit("4.3")
+        submit()
     })
 
     it('challenge 4.4', () => {
@@ -910,7 +901,7 @@ describe('test file 4', () => {
         click(5, 3)
         click(5, 3)
         add()
-        submit("4.4")
+        submit()
     })
 
     it('challenge 4.5', () => {
@@ -924,7 +915,7 @@ describe('test file 4', () => {
         click(0, 1)
         add()
         moveTo(0, 0, 0, 1)
-        submit("4.5")
+        submit()
     })
 
     it('challenge 4.6', () => {
@@ -942,7 +933,7 @@ describe('test file 4', () => {
         click(5, 4)
         add()
         moveTo(5, 2, 5, 4)
-        submit("4.6")
+        submit()
     })
 
     it('challenge 4.7', () => {
@@ -960,7 +951,7 @@ describe('test file 4', () => {
         click(5, 4)
         click(5, 4)
         add()
-        submit("4.7")
+        submit()
     })
 
     it('challenge 4.8', () => {
@@ -972,7 +963,7 @@ describe('test file 4', () => {
         click(5, 5)
         click(5, 6)
         add()
-        submit("4.8")
+        submit()
     })
 
     it('challenge 4.9', () => {
@@ -992,7 +983,7 @@ describe('test file 4', () => {
         moveTo(0, 0, 0, 1)
         moveTo(0, 2, 0, 1)
         next()
-        submit("4.9")
+        submit()
     })
 })
 
@@ -1012,7 +1003,7 @@ describe('test file 5', () => {
         moveTo(0, 1, 0, 2)
         moveTo(0, 2, 0, 3)
         moveTo(0, 3, 0, 4)
-        submit("5.1")
+        submit()
     })
 
     it('challenge 5.2', () => {
@@ -1027,7 +1018,7 @@ describe('test file 5', () => {
         blue(5, 2)
         blue(5, 1)
         add()
-        submit("5.2")
+        submit()
     })
 
     it('challenge 5.3', () => {
@@ -1043,7 +1034,7 @@ describe('test file 5', () => {
         red(0, 1)
         red(0, 2)
         add()
-        submit("5.3")
+        submit()
     })
 
     it('challenge 5.4', () => {
@@ -1061,7 +1052,7 @@ describe('test file 5', () => {
         moveTo(0, 0, 0, 1)
         moveTo(0, 1, 0, 2)
         moveTo(0, 2, 0, 3)
-        submit("5.4")
+        submit()
     })
 
     it('challenge 5.5', () => {
@@ -1071,7 +1062,7 @@ describe('test file 5', () => {
         blue(5, 3)
         add()
         moveTo(5, 1, 5, 3)
-        submit("5.5")
+        submit()
     })
 
     it('challenge 5.6', () => {
@@ -1083,7 +1074,7 @@ describe('test file 5', () => {
         moveTo(5, 1, 5, 3)
         click(5, 3)
         moveOut()
-        submit("5.6")
+        submit()
     })
 
     it('challenge 5.7', () => {
@@ -1093,7 +1084,7 @@ describe('test file 5', () => {
         red(5, 3)
         add()
         next()
-        submit("5.7")
+        submit()
     })
 
     it('challenge 5.8', () => {
@@ -1106,7 +1097,7 @@ describe('test file 5', () => {
         moveTo(5, 1, 5, 2)
         moveTo(5, 2, 5, 3)
         next()
-        submit("5.8")
+        submit()
     })
 
     it('challenge 5.9', () => {
@@ -1124,7 +1115,7 @@ describe('test file 5', () => {
         red(0, 4)
         add()
         next()
-        submit("5.9")
+        submit()
     })
 
     it('challenge 5.10', () => {
@@ -1210,7 +1201,7 @@ describe('test file 6', () => {
         blue(5, 1)
         blue(5, 5)
         add()
-        submit("6.1")
+        submit()
     })
 
     it('challenge 6.2', () => {
@@ -1222,7 +1213,7 @@ describe('test file 6', () => {
             }
         }
         add()
-        submit("6.2")
+        submit()
     })
 
     it('challenge 6.3', () => {
@@ -1236,7 +1227,7 @@ describe('test file 6', () => {
         red(4, 0)
         add()
         next()
-        submit("6.3")
+        submit()
     })
 
     it('challenge 6.4', () => {
@@ -1255,7 +1246,7 @@ describe('test file 6', () => {
                 red(i, j)
             }
         }
-        submit("6.4")
+        submit()
     })
 
     it('challenge 6.5', () => {
@@ -1269,7 +1260,7 @@ describe('test file 6', () => {
         red(4, 0)
         add()
         next()
-        submit("6.5")
+        submit()
     })
 
     it('challenge 6.6', () => {
@@ -1289,7 +1280,7 @@ describe('test file 6', () => {
             }
         }
         add()
-        submit("6.6")
+        submit()
     })
 
     it('challenge 6.7', () => {
@@ -1309,7 +1300,7 @@ describe('test file 6', () => {
             }
         }
         add()
-        submit("6.7")
+        submit()
     })
 
     it('challenge 6.8', () => {
@@ -1332,7 +1323,7 @@ describe('test file 6', () => {
         moveOut()
         click(0, 1)
         moveOut()
-        submit("6.8")
+        submit()
     })
 
     it('challenge 6.9', () => {
@@ -1362,7 +1353,7 @@ describe('test file 6', () => {
             }
         }
         add()
-        submit("6.9")
+        submit()
     })
 
     it('challenge 6.10', () => {
@@ -1523,7 +1514,7 @@ describe('test file 7', () => {
         blue(7, 0)
         blue(7, 3)
         add()
-        submit("7.1")
+        submit()
     })
 
     it('challenge 7.2', () => {
@@ -1538,7 +1529,7 @@ describe('test file 7', () => {
         red(0, 3)
         red(0, 4)
         add()
-        submit("7.2")
+        submit()
     })
 
     it('challenge 7.3', () => {
@@ -1554,7 +1545,7 @@ describe('test file 7', () => {
         blue(7, 0)
         blue(7, 3)
         add()
-        submit("7.3")
+        submit()
     })
 
     it('challenge 7.4', () => {
@@ -1573,7 +1564,7 @@ describe('test file 7', () => {
         red(0, 7)
         red(7, 7)
         add()
-        submit("7.4")
+        submit()
     })
 
     it('challenge 7.5', () => {
@@ -1590,7 +1581,7 @@ describe('test file 7', () => {
         blue(7, 3)
         red(4, 0)
         add()
-        submit("7.5")
+        submit()
     })
 
     it('challenge 7.6', () => {
@@ -1603,7 +1594,7 @@ describe('test file 7', () => {
         red(4, 2)
         add()
         moveTo(4, 2, 4, 0)
-        submit("7.6")
+        submit()
     })
 
     it('challenge 7.7', () => {
@@ -1614,7 +1605,7 @@ describe('test file 7', () => {
         blue(5, 3)
         red(7, 7)
         add()
-        submit("7.7")
+        submit()
     })
 
     it('challenge 7.8', () => {
@@ -1634,7 +1625,7 @@ describe('test file 7', () => {
         writeOut(7, 8)
         click(7, 7)
         moveOut()
-        submit("7.8")
+        submit()
     })
 
     it('challenge 7.9', () => {
@@ -1654,7 +1645,7 @@ describe('test file 7', () => {
         writeOut(63, 63)
         click(7, 7)
         moveOut()
-        submit("7.9")
+        submit()
     })
 
     it('challenge 7.10', () => {
