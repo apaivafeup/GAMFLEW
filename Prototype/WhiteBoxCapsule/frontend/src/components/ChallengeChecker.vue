@@ -108,7 +108,7 @@
         </div>
         <div class="game-board-out">
           <div class="box">
-            <OutPieceStackChecker :x="board.outOfBoundsState[board.currentKey].position.x" :y="board.outOfBoundsState[board.currentKey].position.y" />
+            <OutPieceStack :x="board.outOfBoundsState[board.currentKey].position.x" :y="board.outOfBoundsState[board.currentKey].position.y" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
