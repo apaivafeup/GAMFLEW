@@ -26,9 +26,9 @@
               color: var(--text-color);
               font-size: 14px;
             ">
-            <font-awesome-icon icon="trophy" fixed-width style="color: #ffc107; margin-right: 5px" />
-            <p style="margin: 0px 7.5px 0px 0px">Wins:</p>
-            {{ user.successfulAttempts }}
+            <font-awesome-icon icon="chart-simple" fixed-width style="color: #ffc107; margin-right: 5px" />
+            <p style="margin: 0px 7.5px 0px 0px">Points:</p>
+            {{ user.score }}
           </span>
           <span class="badge badge-warning" style="
               display: flex;

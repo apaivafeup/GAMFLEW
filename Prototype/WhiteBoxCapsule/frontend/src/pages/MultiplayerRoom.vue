@@ -247,7 +247,6 @@ export default {
                         }
                     }, 1000)
                     this.timer_set = true
-                    this.$forceUpdate()
                 }
 
                 this.loaded = true
@@ -324,7 +323,7 @@ export default {
         },
 
         getTimeForRound() {
-            return 100
+            return 10
             if (this.challenge.difficulty == 'Very Easy') {
                 return 100 // 1 minute and 40 seconds
             } else if (this.challenge.difficulty == 'Easy') {
@@ -452,6 +451,7 @@ export default {
             this.board.attempt = new Attempt(this.auth.user.id, this.challenge_id, this.challenge.score, 0, 0, null, null)
             Prism.highlightAll()
             this.$forceUpdate()
+            Prism.highlightAll()
         },
 
         async sendStart() {

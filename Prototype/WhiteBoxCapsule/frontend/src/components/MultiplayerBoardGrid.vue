@@ -37,8 +37,11 @@
           <strong>Time Left: </strong><em
             :style="this.timer >= 30 ? 'color: var(--text-color);' : 'color: red;'">{{ this.timer }}</em>
         </span>
-        <span v-if="this.playable && this.timer <= 0">
+        <span v-if="this.playable && this.timer > 0">
           You can play!
+        </span>
+        <span v-else-if="this.playable && this.timer <= 0">
+          Loading...
         </span>
         <div class="row" v-if="this.round != undefined" style="justify-content: center;">
           {{ 'Challenge ' + this.round.round_number + ' of ' + this.round.max_rounds }}
