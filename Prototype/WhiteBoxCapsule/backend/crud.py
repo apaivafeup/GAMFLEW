@@ -286,8 +286,9 @@ def get_challenge(db: Session, challenge_id: int):
     return db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
 
 
-def get_random_challenge(db: Session, game_room_id: int):
+def get_random_challenge(db: Session, game_room_id: int, exclude_challenges: list[int] = []):
     challenge_count = int(db.query(schemas.Challenge).count())
+    game_room = get_game_room(db, game_room_id)
     random_id = random.randint(1, challenge_count)
     random_challenge = db.query(schemas.Challenge).filter(
         schemas.Challenge.id == random_id).first()
@@ -295,14 +296,14 @@ def get_random_challenge(db: Session, game_room_id: int):
     game_rounds = db.query(schemas.GameRound).filter(
         schemas.GameRound.game_room_id == game_room_id).all()
     played_challenges = [round.challenge_id for round in game_rounds if round.state == schemas.GameRoundState.FINISHED]
-    passed_challenges = get_passed_challenges(db=db, user_id=game_room_id)
-    
+    passed_challenges = get_passed_challenges(db=db, user_id=game_room.player_1_id) + get_passed_challenges(db=db, user_id=game_room.player_2_id) + (get_passed_challenges(db=db, user_id=game_room.player_3_id) if game_room.player_3_id != None else [])
     passed_or_played = list(set(played_challenges + passed_challenges))
 
-    if (len(game_rounds) == 0 and random_challenge.id not in passed_or_played):
+    if (len(game_rounds) == 0 or random_challenge.id not in passed_or_played):
         return random_challenge
     else:
-        return get_random_challenge(db=db, game_room_id=game_room_id)
+        exclude_challenges.append(random_challenge.id)
+        return get_random_challenge(db=db, game_room_id=game_room_id, exclude_challenges=exclude_challenges)
     
     return random_challenge
 

@@ -50,7 +50,7 @@
             ]
         },
         "achievement": "input.log[case_num][input.log[case_num].length - 1].destination.x == 10 && input.log[case_num][input.log[case_num].length - 1].destination.y == 20",
-        "achievement_hint": "Consider, in one test case, that the line (x) for the out of bounds spot starts with 1, and that the column (y) starts with 2. Use the lowest POSTIIVE numbers!",
+        "achievement_hint": "Consider, in one test case, that the line (x) for the out of bounds spot starts with 1, and that the column (y) starts with 2. Use the lowest POSITIVE numbers!",
         "difficulty": "Easy",
         "owner_id": 1
     },
