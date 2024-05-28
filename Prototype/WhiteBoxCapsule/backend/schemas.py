@@ -223,6 +223,8 @@ class GameRound(Base):
     round_number = Column(Integer, nullable=False, index=True)
     max_rounds = Column(Integer, nullable=False, index=True)
     state = Column(ENUM(GameRoundState), index=True)
+    all_passed = Column(Boolean, default=False, index=True)
+    first_chosen = Column(Integer, nullable=False, index=True)
 
     game_rooms = relationship("GameRoom", back_populates="game_rounds")
     users = relationship("User", back_populates="game_rounds")

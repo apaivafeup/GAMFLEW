@@ -7,7 +7,7 @@
       <h4 style="text-align: center;" v-if="this.winner.length > 1">Here are the winners!</h4>
       <h4 style="text-align: center;" v-else>Here is the winner!</h4>
     </div>
-    <div class="row container" style="justify-content: center;">
+    <div class="row container" style="justify-content: center; gap: 10px;">
       <div class="winner-bar" v-for="w in this.winner">
         <div class="player-bar" style="display: flex; flex-direction: column; padding: 15px;">
               <div class="row" style="display: flex; justify-content: space-between; align-content: space-between; flex-direction: row;">
@@ -32,8 +32,8 @@
     <p style="height: 15px; "/>
     <div class="column container" style="display: grid; justify-content: center; align-content: center;">
       <h5 style="text-align: center;">These were the rounds:</h5>
-      <div class="round-bar" v-for="(r, index) in this.round">
-        <div style="display: grid; grid-template-columns: 60% 40%; grid-template-rows: 100%; grid-gap: 30px; padding: 10px; place-content: center;">
+      <div class="round-bar" v-for="(r, index) in this.round" :style="(r.all_passed ? 'background-color: rgb(193, 135, 255)!important;' : '')">
+        <div v-if="!r.all_passed" style="display: grid; grid-template-columns: 60% 40%; grid-template-rows: 100%; grid-gap: 30px; padding: 10px; place-content: center;">
           <div style="display: flex; flex-direction: column; align-items: start; justify-content: start;">
             <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
               <div style="display: flex; margin-bottom: 5px;
@@ -62,7 +62,37 @@
                 </div>
             </div>
           </div>
-      </div>
+        </div>
+        <div v-else style="display: grid; grid-template-columns: 60% 40%; grid-template-rows: 100%; grid-gap: 30px; padding: 10px; place-content: center;">
+          <div style="display: flex; flex-direction: column; align-items: start; justify-content: start;">
+            <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
+              <div style="display: flex; margin-bottom: 5px;
+              align-content: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;">
+                <strong style="font-size: 12px; margin-right: 5px;">Challenge {{ index + 1 }} of {{ this.room.rounds }}</strong>
+                <div class="badge bg-primary" style="margin: 0px; font-size: 12px; background-color: #dc3545!important;"><strong>SKIPPED</strong></div>
+              </div>
+            </div>
+            <p style="margin-bottom: 0px; font-size: 8px; font-style: italic;"><strong>{{ r.challenge.split(':')[0] }}</strong>{{ ': ' + r.challenge.split(':')[1] }}</p>
+          </div>
+          <div style="display: grid; align-items: center; justify-content: end;">
+            <div class="row disabled" style="display: flex; flex-direction: row; justify-content: center;">
+              <img :src="this.$api_link + this.users[r.player_id].picture" class="round-summary-avatar" />
+                <div class="col" style="justify-content: center; display: flex; flex-direction: column;">
+                  <div class="row">
+                    <b style="font-size: 12px">1st Chosen:</b>
+                  </div>
+                  <div class="row">
+                    <em style="font-size: 10px">
+                      {{ this.users[r.player_id].username }}
+                    </em>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>

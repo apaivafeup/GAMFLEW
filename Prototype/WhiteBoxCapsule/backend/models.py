@@ -256,6 +256,8 @@ class GameRound(BaseModel):
     max_rounds: int
     round_number: int
     state: GameRoundState
+    all_passed: bool = False
+    first_chosen: int
     
     class Config:
         from_attributes = True
@@ -274,6 +276,7 @@ class GameRoomSummary(BaseModel):
     player_id: int
     score: int
     challenge: str
+    all_passed: bool
 
 class CodeFileDictionary(BaseModel):
     expression: str

@@ -395,7 +395,7 @@ def read_game_room_state(current_user: Annotated[models.User, Depends(get_curren
 def random_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     challenge = crud.get_random_challenge(db=db, game_room_id=game_room_id)
     #TODO: make pass the random challenge to the round creation.
-    return crud.add_game_round(db=db, challenge_id=19, game_room_id=game_room_id)
+    return crud.add_game_round(db=db, challenge_id=1, game_room_id=game_room_id)
 
 ## Start round
 @app.post("/round/{game_round_id}/start", response_model=models.GameLog)
@@ -410,8 +410,21 @@ def finish_game_round(current_user: Annotated[models.User, Depends(get_current_a
     crud.finish_game_round(db=db, game_round_id=game_round_id)
     return game_log
 
+## Finish game round (after all passed, from 1st chosen)
+@app.post("/round/{game_round_id}/all-passed/finish", response_model=models.GameLog)
+def finish_all_passed_game_round(current_user: Annotated[models.User, Depends(get_current_active_user)], game_round_id: int, db: Session = Depends(get_db)):
+    game_round = crud.get_game_round(db, game_round_id)
+
+    if (current_user.id == game_round.first_chosen):
+        game_log = crud.send_next_round_log(db=db, game_round_id=game_round_id, user_id=current_user.id)
+        crud.finish_all_passed_game_round(db=db, game_round_id=game_round_id)
+    else:
+        raise HTTPException(status_code=401, detail="Only the 1st chosen player can finish the round after a cycle of passes.")
+    
+    return game_log
+
 ## Get round solution
-@app.get("/game-room/{game_room_id}/round/{game_round_id}/solution", response_model=models.Attempt)
+@app.get("/game-room/{game_room_id}/round/{game_round_id}/solution")
 def get_round_solution(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, game_round_id: int, db: Session = Depends(get_db)):
     return crud.get_round_solution(db=db, game_round_id=game_round_id)
 

@@ -270,7 +270,9 @@ export default {
             if (this.room_state.game_state == 'show_solution' && !this.solution_timer_set) {
                 clearInterval(this.timer_interval)
                 await this.getRoundSolution()
-                this.show_solution_interval = setInterval(() => {
+
+                if (this.round_solution != null) {
+                    this.show_solution_interval = setInterval(() => {
                     this.show_solution_timer--
 
                     if (this.show_solution_timer <= 0) {
@@ -281,8 +283,12 @@ export default {
                         this.send_seen_solution()
                         this.$forceUpdate()
                     }
-                }, 1000)
-                this.solution_timer_set = true
+                    }, 1000)
+                    this.solution_timer_set = true
+                } else {
+                    this.send_seen_solution()
+                    this.$forceUpdate()
+                }
             }
 
             if (this.room_state.game_state == 'next_round') {
@@ -354,6 +360,11 @@ export default {
                 .then(response => {
                     if (!this.got_round_solution) {
                         this.round_solution = response.data
+
+                        if (this.round_solution == null || this.round_solution == undefined) {
+                            return
+                        }
+
                         this.got_round_solution = true
                         this.$forceUpdate()
                     }
@@ -398,6 +409,13 @@ export default {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
+
+            if (this.round.all_passed && this.round.first_chosen == this.auth.user.id) {
+                if (confirm('All players have passed the round. It is your turn, and you can choose to move on to a new challenge.')) {
+                    clearInterval(this.interval)
+                    this.finishPassedRound()
+                }
+            }
 
             this.can_pass = await this.can_user_pass_auto()
 
@@ -536,6 +554,17 @@ export default {
                 })
                 .catch((error) => {
                     clearInterval(this.interval)
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
+        },
+
+        async finishPassedRound() {
+            await this.$axios.post(this.$api_link + '/round/' + this.round.id + '/all-passed/finish/', {}, this.auth.config)
+                .then(response => {
+                    window.location.reload()
+                })
+                .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })

@@ -1001,20 +1001,53 @@ def get_round_solution(db: Session, game_round_id: int):
 
     return attempt
 
+def get_users_in_game_room(db: Session, game_room_id: int):
+    game_room = get_game_room(db, game_room_id)
+
+    if game_room is None:
+        return None
+
+    users = []
+
+    if (game_room.player_1_id is not None):
+        users.append(game_room.player_1_id)
+    if (game_room.player_2_id is not None):
+        users.append(game_room.player_2_id)
+    if (game_room.player_3_id is not None):
+        users.append(game_room.player_3_id)
+
+    return users
+
 def add_game_round(db: Session, game_room_id: int, challenge_id: int):
     game_round = db.query(schemas.GameRound).filter(schemas.GameRound.game_room_id == game_room_id).order_by(schemas.GameRound.id.desc()).first()
     next_user = get_next_player(db=db, game_room_id=game_room_id, last_user=game_round.user_id if game_round is not None else None)
     game_room = get_game_room(db, game_room_id)
-
+    
     if (game_room.game_state == schemas.GameState.FINISHED):
         return None
 
     if (game_round is not None):
         attempt = get_attempt_by_round_id(db, game_round.id)
+        pass_messages = db.query(schemas.GameLog).filter(schemas.GameLog.game_round_id == game_round.id).filter(schemas.GameLog.message == schemas.GameMessage.PASS or schemas.GameLog.message == schemas.GameMessage.AUTO_PASS).all()
+    
+        if (pass_messages is not None):
+            users_who_passed = list({log.user_id for log in pass_messages})
+            users_who_passed = sorted(users_who_passed)
 
-        if (game_round.state == schemas.GameRoundState.ONGOING or attempt is None):
+        if (game_round.state == schemas.GameRoundState.FINISHED):
+            print('game round found was already finished')
+        elif (game_round.state == schemas.GameRoundState.ONGOING or attempt is None):
             print('ongoing game round')
-            return game_round
+
+            if (sorted(users_who_passed) == sorted(get_users_in_game_room(db, game_room_id)) and (not game_round.all_passed)):
+                print('all have passed')
+                game_round.player_id = game_round.first_chosen
+                game_round.all_passed = True
+                db.commit()
+                return game_round
+            else:
+                print('not all have passed')
+                return game_round
 
     game_room = get_game_room(db, game_room_id)
 
@@ -1032,6 +1065,7 @@ def add_game_round(db: Session, game_room_id: int, challenge_id: int):
         max_rounds=game_room.rounds,
         state=schemas.GameRoundState.FINISHED
         )
+        db.commit()
         return db_game_round
 
     db_game_round = schemas.GameRound(
@@ -1040,7 +1074,8 @@ def add_game_round(db: Session, game_room_id: int, challenge_id: int):
         challenge_id=challenge_id,
         round_number=round_number,
         max_rounds=game_room.rounds,
-        state=schemas.GameRoundState.ONGOING
+        state=schemas.GameRoundState.ONGOING,
+        first_chosen=next_user
     )
     db.add(db_game_round)
     db.commit()
@@ -1077,6 +1112,24 @@ def finish_game_round(db: Session, game_round_id: int):
     db.commit()
     return game_round_to_finish
 
+def finish_all_passed_game_round(db: Session, game_round_id: int):
+    
+    game_round_to_finish = db.query(schemas.GameRound).filter(
+        schemas.GameRound.id == game_round_id).first()
+    game_room = get_game_room(db, game_round_to_finish.game_room_id)
+
+    if game_round_to_finish is None:
+        return None
+    
+    if game_round_to_finish.all_passed is False:
+        return None
+
+    game_round_to_finish.state = schemas.GameRoundState.FINISHED
+
+    db.commit()
+    print('finish game round (all passed)')
+    return game_round_to_finish
+
 def get_winner(db: Session, game_room_id: int):
     game_room = get_game_room(db, game_room_id)
 
@@ -1099,6 +1152,7 @@ def get_winner(db: Session, game_room_id: int):
                         player_scores[attempt.player_id] = attempt.score
                     else:
                         player_scores[attempt.player_id] += attempt.score
+                
 
         winner_id = max(player_scores, key=player_scores.get)
         winner = []
@@ -1145,7 +1199,18 @@ def get_game_results(db: Session, game_room_id: int):
                     "round_id": round.id,
                     "player_id": attempt.player_id,
                     "score": attempt.score,
-                    "challenge": get_challenge(db, round.challenge_id).name
+                    "challenge": get_challenge(db, round.challenge_id).name,
+                    "all_passed": False
+                }
+            )
+        elif round.all_passed:
+            results.append(
+                {
+                    "round_id": round.id,
+                    "player_id": round.user_id,
+                    "score": 0,
+                    "challenge": get_challenge(db, round.challenge_id).name,
+                    "all_passed": True
                 }
             )
 
