@@ -30,45 +30,44 @@ import MultiplayerUserSubmissions from '../components/MultiplayerUserSubmissions
 </style>
 
 <template style="overflow: hidden">
-    <div v-if="this.got_round_solution">
-        <MultiplayerUserSubmissions :code_file="code_file" :challenge="this.challenge" :attempt="this.round_solution"
-            :show_solution_timer="this.show_solution_timer" :playable="this.playable" />
+    <div v-if="got_round_solution">
+        <MultiplayerUserSubmissions :code_file="code_file" :challenge="challenge" :attempt="round_solution"
+            :show_solution_timer="show_solution_timer" :playable="playable" />
     </div>
     <div v-else-if="loaded">
             <ChallengeMultiplayerHeader :room_name="room.name" :challenge_name="challenge.name"
-                :playable="this.playable" :score="challenge.score" />
+                :playable="playable" :score="challenge.score" />
             <MultiplayerBoard :challenge="challenge" :code_file="code_file" :can_pass="can_pass" :user="auth.user"
-                :playable="this.playable" :round="this.round" :timer="this.timer" :timer_set="this.timer_set" />
-            <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="this.round.id"
+                :playable="playable" :round="round" :timer="timer" :timer_set="timer_set" />
+            <MultiplayerSubmitModal :placeholder="submit_placeholder" :round_id="round.id"
                 :challenge="challenge" />
             <FailModal :placeholder="fail_placeholder" />
     </div>
     <div style="display: flex; justify-content: center;"
-        v-else-if="!loaded && !this.got_round_solution && this.winner.length <= 0">
+        v-else-if="!loaded && !got_round_solution && winner.length <= 0">
         <div class="vertical-center" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
-            <h2 style="text-align: center;" v-if="this.room_state.game_state == 'waiting'">You've entered <em>{{
-                room.name }}</em></h2>
+            <h2 style="text-align: center;" v-if="room_state.game_state == 'waiting'">You've entered <em>{{ room.name }}</em></h2>
             <h2 style="text-align: center;" v-else><em>{{ room.name }}</em></h2>
-            <p style="text-align: center; margin-bottom: 5px;" v-if="this.room_state.game_state == 'waiting'">When all
+            <p style="text-align: center; margin-bottom: 5px;" v-if="room_state.game_state == 'waiting'">When all
                 players get in the
                 room, the game will start.</p>
             <p style="text-align: center; margin-bottom: 5px;"
-                v-else-if="this.room_state.game_state != 'waiting' || this.round_loading && this.winner.length <= 0">New
+                v-else-if="room_state.game_state != 'waiting' || round_loading && winner.length <= 0">New
                 round is loading...</p>
             <p style="text-align: center; margin-bottom: 5px;" v-else>The game is over.</p>
-            <p style="text-align: center;" v-if="!this.round_loading">Leaving this page means the game won't start.</p>
-            <p style="text-align: center;" v-else-if="this.round_loading && this.winner.length <= 0">Leaving this page
+            <p style="text-align: center;" v-if="!round_loading">Leaving this page means the game won't start.</p>
+            <p style="text-align: center;" v-else-if="round_loading && winner.length <= 0">Leaving this page
                 means
                 the game won't continue.</p>
             <p style="text-align: center;" v-else>If you wish, you can wait for the End Screen to load.</p>
-            <button class="btn btn-primary" style="justify-self: center; width: 125px;" v-if="!this.round_loading"
+            <button class="btn btn-primary" style="justify-self: center; width: 125px;" v-if="!round_loading"
                 @click="leaveRoom()">Leave
                 Room</button>
         </div>
     </div>
     <div style="display: flex; flex-direction: row; justify-content: center; overflow-y: scroll;"
-        v-else-if="this.winner.length > 0">
-        <EndScreen :winner="this.winner" :id="this.id" :room="this.room"
+        v-else-if="winner.length > 0">
+        <EndScreen :winner="winner" :id="id" :room="room"
             style="position: absolute; top: 50%; transform: translate(0, -50%);" />
     </div>
 </template>
@@ -144,8 +143,6 @@ export default {
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                 return
             })
-
-        this.can_pass = await this.can_user_pass_auto()
         // console.log('can_pass', this.can_pass)
 
         if (this.$error) {
@@ -158,10 +155,7 @@ export default {
     },
 
     async mounted() {
-        window.onpopstate = () => {
-            this.leaveRoom()
-        }
-
+        this.can_pass = this.can_user_pass_auto()
         this.stateChecking()
         this.startGameRoom()
     },
