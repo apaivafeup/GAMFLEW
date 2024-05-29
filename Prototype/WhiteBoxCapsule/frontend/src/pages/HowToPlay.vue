@@ -23,7 +23,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                 @click="changeTab('code_coverage', '3')">
                 Code Coverage Measures
             </button>
-            <button id="guide-button-4" class="col button is-primary is-fullwidth guide-button" v-if="this.auth.user.type != 'student'" style="margin: 0px;"
+            <button id="guide-button-4" class="col button is-primary is-fullwidth guide-button" v-if="auth.user.type != 'student'" style="margin: 0px;"
                 @click="changeTab('teacher_view', '4')">
                 Teacher View
             </button>
@@ -271,11 +271,11 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
         <div v-if="tab == 'code_coverage'" style="font-size: 13px !important; justify-content: center;">
             <div class="row" style="display: grid; grid-template-columns: 0.75fr 2fr;">
                 <div class="col" style="width: 1/3%; font-size: 16px;">
-                    <button id="code-coverage-button-1" @click="this.changeCodeCoverage('statement', 1)" class="button is-primary is-fullwidth guide-button-selected" style="width: 100%;">Statement Coverage</button>
-                    <button id="code-coverage-button-2" @click="this.changeCodeCoverage('decision', 2)" class="button is-primary is-fullwidth" style="width: 100%;">Decision Coverage</button>
-                    <button id="code-coverage-button-3" @click="this.changeCodeCoverage('condition', 3)" class="button is-primary is-fullwidth" style="width: 100%;">Condition Coverage</button>
-                    <button id="code-coverage-button-4" @click="this.changeCodeCoverage('condition/decision', 4)" class="button is-primary is-fullwidth" style="width: 100%;">Condition/Decision Coverage</button>
-                    <button id="code-coverage-button-5" @click="this.changeCodeCoverage('mcdc', 5)" class="button is-primary is-fullwidth" style="width: 100%;">Modified Condition/Decision Coverage (MCDC)</button>
+                    <button id="code-coverage-button-1" @click="changeCodeCoverage('statement', 1)" class="button is-primary is-fullwidth guide-button-selected" style="width: 100%;">Statement Coverage</button>
+                    <button id="code-coverage-button-2" @click="changeCodeCoverage('decision', 2)" class="button is-primary is-fullwidth" style="width: 100%;">Decision Coverage</button>
+                    <button id="code-coverage-button-3" @click="changeCodeCoverage('condition', 3)" class="button is-primary is-fullwidth" style="width: 100%;">Condition Coverage</button>
+                    <button id="code-coverage-button-4" @click="changeCodeCoverage('condition/decision', 4)" class="button is-primary is-fullwidth" style="width: 100%;">Condition/Decision Coverage</button>
+                    <button id="code-coverage-button-5" @click="changeCodeCoverage('mcdc', 5)" class="button is-primary is-fullwidth" style="width: 100%;">Modified Condition/Decision Coverage (MCDC)</button>
                 </div>
                 <div class="col" style="width: 2/3%; font-size: 16px;">
                     <div v-if="code_coverage == 'statement'">
@@ -288,7 +288,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                         to ensure its execution.
                     </p>
                     <CodeBlock id="code-block-example" class="line-numbers" theme="default" data-line="1"
-                    :prismjs="true" :name="name" :code="this.statement_code" lang="javascript" prism-js
+                    :prismjs="true" :name="name" :code="statement_code" lang="javascript" prism-js
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
@@ -305,7 +305,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                         It is mostly applied to condition code structures, such as <code>If-Then-Else</code> or <code>Switch Case</code>. <br />
                     </p>
                     <CodeBlock id="code-block-example" class="line-numbers" theme="default" data-line="1"
-                    :prismjs="true" :name="name" :code="this.statement_code" lang="javascript" prism-js
+                    :prismjs="true" :name="name" :code="statement_code" lang="javascript" prism-js
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
@@ -325,7 +325,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                         <em><q>But isn't that just decision coverage, again?</q></em> <strong>Not really, let's see the difference.</strong>
                     </p>
                     <CodeBlock id="code-block-example" class="line-numbers" theme="default" data-line="1"
-                    :prismjs="true" :name="name" :code="this.condition_code" lang="javascript" prism-js
+                    :prismjs="true" :name="name" :code="condition_code" lang="javascript" prism-js
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
@@ -341,7 +341,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                         In other words, all expressions from conditions are covered for True and False, and all decision points have both branches executed.
                     </p>
                     <CodeBlock id="code-block-example" class="line-numbers" theme="default" data-line="1"
-                    :prismjs="true" :name="name" :code="this.condition_code" lang="javascript" prism-js
+                    :prismjs="true" :name="name" :code="condition_code" lang="javascript" prism-js
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
@@ -356,7 +356,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                         Modified condition/decision coverage adapts condition/decision coverage.
                     </p>
                     <CodeBlock id="code-block-example" class="line-numbers" theme="default" data-line="1"
-                    :prismjs="true" :name="name" :code="this.condition_code" lang="javascript" prism-js
+                    :prismjs="true" :name="name" :code="condition_code" lang="javascript" prism-js
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
@@ -377,10 +377,10 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
         <div v-if="tab == 'teacher_view'" style="font-size: 13px !important; justify-content: center;">
             <div class="row" style="display: grid; grid-template-columns: 0.5fr 2fr;">
                 <div class="col" style="width: 1/3%; font-size: 16px;">
-                    <button id="teacher-view-button-1" @click="this.changeTeacherView('challenge_content_creator', 1)" class="button is-primary is-fullwidth guide-button-selected" style="width: 100%;">Challenge Content Creator</button>
-                    <button id="teacher-view-button-2" @click="this.changeTeacherView('challenge_manager', 2)" class="button is-primary is-fullwidth" style="width: 100%;">Challenge Manager</button>
-                    <button id="teacher-view-button-3" @click="this.changeTeacherView('leaderboard', 3)" class="button is-primary is-fullwidth" style="width: 100%;">Leaderboard</button>
-                    <button id="teacher-view-button-4" @click="this.changeTeacherView('validating_admins', 4)" class="button is-primary is-fullwidth" style="width: 100%;">Validating Administrators</button>
+                    <button id="teacher-view-button-1" @click="changeTeacherView('challenge_content_creator', 1)" class="button is-primary is-fullwidth guide-button-selected" style="width: 100%;">Challenge Content Creator</button>
+                    <button id="teacher-view-button-2" @click="changeTeacherView('challenge_manager', 2)" class="button is-primary is-fullwidth" style="width: 100%;">Challenge Manager</button>
+                    <button id="teacher-view-button-3" @click="changeTeacherView('leaderboard', 3)" class="button is-primary is-fullwidth" style="width: 100%;">Leaderboard</button>
+                    <button id="teacher-view-button-4" @click="changeTeacherView('validating_admins', 4)" class="button is-primary is-fullwidth" style="width: 100%;">Validating Administrators</button>
                 </div>
                 <div class="col" style="width: calc(2/3% + 10px); font-size: 16px;">
                     <div v-if="teacher_view == 'challenge_content_creator'" style="overflow: scroll; scrollbar-width: none;">
