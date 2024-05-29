@@ -23,6 +23,13 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                 @click="changeTab('code_coverage', '3')">
                 Code Coverage Measures
             </button>
+            <button id="guide-button-4" class="col button is-primary is-fullwidth guide-button" v-if="this.auth.user.type != 'student'" style="margin: 0px;"
+                @click="changeTab('teacher_view', '4')">
+                Teacher View
+            </button>
+            <button id="guide-button-4" class="col button is-primary is-fullwidth guide-button disabled" v-else style="margin: 0px;">
+                Teacher View
+            </button>
         </div>
         <div v-if="tab == 'board'" class="display: grid; grid-template-rows: 50% 50%; grid-template-columns: 100%;"
             style="font-size: 12px !important">
@@ -262,7 +269,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
             </div>
         </div>
         <div v-if="tab == 'code_coverage'" style="font-size: 13px !important; justify-content: center;">
-            <div class="row" style="display: grid; grid-template-columns: 1fr 2fr;">
+            <div class="row" style="display: grid; grid-template-columns: 0.75fr 2fr;">
                 <div class="col" style="width: 1/3%; font-size: 16px;">
                     <button id="code-coverage-button-1" @click="this.changeCodeCoverage('statement', 1)" class="button is-primary is-fullwidth guide-button-selected" style="width: 100%;">Statement Coverage</button>
                     <button id="code-coverage-button-2" @click="this.changeCodeCoverage('decision', 2)" class="button is-primary is-fullwidth" style="width: 100%;">Decision Coverage</button>
@@ -346,8 +353,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                     <div v-if="code_coverage == 'mcdc'">
                         <h6>Modified Condition/Decision Coverage</h6>
                     <p style="text-align: justify; margin-bottom: 10px;">
-                        Modified condition/decision coverage is an adaptation of condition/decision coverage.
-                        In other words, all expressions from conditions are covered for True and False, and all decision points have both branches executed.
+                        Modified condition/decision coverage adapts condition/decision coverage.
                     </p>
                     <CodeBlock id="code-block-example" class="line-numbers" theme="default" data-line="1"
                     :prismjs="true" :name="name" :code="this.condition_code" lang="javascript" prism-js
@@ -355,11 +361,97 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
                         If you have a condition like <code>(hour > 6 && hour < 12)</code>, you have two Boolean expressions.
-                        Consider all combinations of the expressions being True and False: True + True, True + False, False + True, False + False. <br style="margin-bottom: 5px;"/>
-                        For all except the first, the condition yields False. You need test cases where each expression is <em>determinant</em> - that is, it changes the outcome.
-                        You only have one combination that yields True (True + True), so it must be included. Then, for False + True, <code>hour > 6</code> is determinant, because it being False makes the outcome False.
-                        A similar reasoning applies to True + False and the <code>hour < 12</code> expression.
+                        The possible combinations with True and False: True + True, True + False, False + True, False + False, where only the first is True.
+                        We need test cases where each expression is <em>determinant</em> - it changes the outcome. <br style="margin-bottom: 5px;"/>
+                        As only one combination yields True (True + True), it must be included.
+                        Then, for False + True, <code>hour > 6</code> is determinant, because it being False makes the outcome False.
+                        Similar reasons for True + False and the <code>hour < 12</code> expression.
                         So, you need the 3 discriminated test cases to achieve 100% MCDC.
+                    </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div v-if="tab == 'teacher_view'" style="font-size: 13px !important; justify-content: center;">
+            <div class="row" style="display: grid; grid-template-columns: 0.5fr 2fr;">
+                <div class="col" style="width: 1/3%; font-size: 16px;">
+                    <button id="teacher-view-button-1" @click="this.changeTeacherView('challenge_content_creator', 1)" class="button is-primary is-fullwidth guide-button-selected" style="width: 100%;">Challenge Content Creator</button>
+                    <button id="teacher-view-button-2" @click="this.changeTeacherView('challenge_manager', 2)" class="button is-primary is-fullwidth" style="width: 100%;">Challenge Manager</button>
+                    <button id="teacher-view-button-3" @click="this.changeTeacherView('leaderboard', 3)" class="button is-primary is-fullwidth" style="width: 100%;">Leaderboard</button>
+                    <button id="teacher-view-button-4" @click="this.changeTeacherView('validating_admins', 4)" class="button is-primary is-fullwidth" style="width: 100%;">Validating Administrators</button>
+                </div>
+                <div class="col" style="width: calc(2/3% + 10px); font-size: 16px;">
+                    <div v-if="teacher_view == 'challenge_content_creator'" style="overflow: scroll; scrollbar-width: none;">
+                        <h6>Challenge Content Creator</h6>
+                    <p style="text-align: justify; margin-bottom: 10px;">
+                        To make a challenge, you need both an initial state and a code file to associate to it. These, of course, affect how the challenge is played and what must be done to pass it.
+                    </p>
+                    <img src="../assets/pictures/challenge_content_creator.png" style="width: 50%;" />
+                    <img src="../assets/pictures/challenge_content_creator_2.png" style="width: 50%;" />
+                    <p style="text-align: justify; margin-bottom: 10px;">
+                        The left tab allows to create new initial board states - these define how a board is initialized when a player starts a challenge. <br style="margin-bottom: 5px;"/>
+                        The board functions like it does in the challenge. Check the <strong>Board</strong> tab for a refresher! 
+                        Know you can also select an existing board state to adapt to your needs, if you so wish.
+                    </p>
+                    <p style="text-align: justify; margin-bottom: 10px;">
+                        The right tab allows one to create a new Code File to associate to challenges.
+                        Just input your code on the right and give it a name - it really is that simple. <br style="margin-bottom: 5px;"/>
+                        Make sure it looks good with the left code block, though!
+                    </p>
+                    </div>
+                    <div v-if="teacher_view == 'challenge_manager'" style="height: 550px; overflow: overlay; scrollbar-width: none;">
+                        <h6>Challenge Manager <span class="badge badge-primary" style="background-color: rgb(169, 89, 255); margin-bottom: 0px;">SCROLLABLE!</span></h6> 
+                    <p style="text-align: justify; margin-bottom: 10px;">
+                        You can edit or create new challenges with this page.
+                    </p>
+                    <img src="../assets/pictures/challenge_manager.png" style="width: 50%;" />
+                    <img src="../assets/pictures/challenge_manager_2.png" style="width: 50%;" />
+                    <p style="text-align: justify; margin-bottom: 10px;">
+                        The first thing to do is select the initial board state and code file to associate to the challenge (left picture). <br style="margin-bottom: 5px;"/>
+                        Then, you can set the challenge's name, hint, objective, score, code coverage, and difficulty (right picture). Beware of the <em>Condition Count</em> attribute, which is used to generate the condition table in condition, condition/decision, and MCDC challenges.
+                    </p>
+                    <img src="../assets/pictures/challenge_manager_3.png" style="width: 50%;" />
+                    <img src="../assets/pictures/challenge_manager_4.png" style="width: 50%;" />
+                    <p style="text-align: justify; margin-bottom: 10px; margin-top: 10px;">
+                        Then, you are greeted to a few purple callouts (left picture). These explain how to write expressions for a challenge. These expressions are what determines if a submitted attempt passes a challenge or not. <br style="margin-bottom: 5px;"/>
+                        Two expression types exist: assertions and tests. Assertions are not required in any challenge, but they lend themselves to stronger restrictions <em>and</em> may be used as shortcuts in evaluation.
+                        Simply put: <strong>if an assertion fails, it's guaranteed that the test(s) will fail</strong>. So write assertions that pass for all tests! <br style="margin-bottom: 5px;"/>
+                        <strong>An example (right picture):</strong> in Challenge 1.1, at least one move is required to pass the challenge. So checking the number of moves is a good idea.
+
+                    </p>
+                    <img src="../assets/pictures/challenge_manager_5.png" style="width: 50%;" />
+                    <img src="../assets/pictures/challenge_manager_6.png" style="width: 50%;" />
+                    <p style="text-align: justify; margin-bottom: 10px; margin-top: 10px;">
+                        To submit a new challenge, you must pass it first. <br style="margin-bottom: 5px;"/>
+                        As a Teacher, however, it's possible to see exactly what expressions are failing (red) or passing (green), as seen above.
+                    </p>
+                    </div>
+                    <div v-if="teacher_view == 'leaderboard'" style="height: 550px; overflow: overlay; scrollbar-width: none; display: flex; flex-direction: column; justify-content: center; align-content: center;">
+                        <h6>Leaderboard</h6> 
+                    <p style="text-align: justify; margin-bottom: 10px;">
+                        Here, you can check how players are doing.
+                    </p>
+                    <img src="../assets/pictures/leaderboard.png" style="width: 75%;" />
+                    <p style="text-align: justify; margin-bottom: 10px;">
+                       This version of the leaderboard does not hide any statistic stored on the database. <br style="margin-bottom: 5px;"/>
+                       Teacher users are also included in the Leaderboard, because you guys deserve fun too! <br style="margin-bottom: 5px;"/>
+                       That is it!
+                    </p>
+                    </div>
+                    <div v-if="teacher_view == 'validating_admins'" style="height: 550px; overflow: overlay; scrollbar-width: none; display: flex; flex-direction: column; justify-content: center; align-content: center;">
+                        <h6>Validating Administrators</h6> 
+                    <p style="text-align: justify; margin-bottom: 10px;">
+                        Here, you can validate new administrators.
+                    </p>
+                    <div class="row" style="display: flex; justify-content: center; align-content: center;">
+
+                        <img src="../assets/pictures/validate_admins.png" style="width: 75%;" />
+                    </div>
+                    <p style="text-align: justify; margin-bottom: 10px;">
+                       Just click the <strong>Validate</strong> button and the user will be able to log in as an Administrator from then on. <br style="margin-bottom: 5px;"/>
+                       That is it!
                     </p>
                     </div>
                 </div>
@@ -374,13 +466,16 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 import { defineComponent } from 'vue'
 import { boardStore } from '../store/boardStore.js'
 import { auxiliaryFunctions, auxiliaryFunctionsNames } from '../assets/js/auxiliary_functions.js'
+import { authStore } from '../store/authStore.js'
 import Prism from 'prismjs'
 
 export default defineComponent({
     beforeMount() {
         this.tab = 'board'
         this.code_coverage = 'statement'
+        this.teacher_view = 'challenge_content_creator'
         this.board = boardStore()
+        this.auth = authStore()
     },
 
     mounted() {
@@ -391,6 +486,7 @@ export default defineComponent({
         return {
             tab: String,
             code_coverage: String,
+            teacher_view: String,
             selectedFunction: String,
             board: null,
             auxiliaryFunctions: auxiliaryFunctions,
@@ -408,7 +504,8 @@ export default defineComponent({
         changeTab(value, button) {
             var button_1 = document.getElementById('guide-button-1'),
                 button_2 = document.getElementById('guide-button-2'),
-                button_3 = document.getElementById('guide-button-3')
+                button_3 = document.getElementById('guide-button-3'),
+                button_4 = document.getElementById('guide-button-4')
 
             if (value == 'code_coverage')
                 button_3.classList.toggle('guide-button-selected')
@@ -416,6 +513,8 @@ export default defineComponent({
                 button_1.classList.toggle('guide-button-selected')
             else if (value == 'auxiliary_functions')
                 button_2.classList.toggle('guide-button-selected')
+            else if (value == 'teacher_view')
+                button_4.classList.toggle('guide-button-selected')
 
             if (this.tab == 'code_coverage') {
                 button_3.classList.toggle('guide-button-selected')
@@ -423,6 +522,8 @@ export default defineComponent({
                 button_1.classList.toggle('guide-button-selected')
             } else if (this.tab == 'auxiliary_functions') {
                 button_2.classList.toggle('guide-button-selected')
+            } else if (this.tab == 'teacher_view') {
+                button_4.classList.toggle('guide-button-selected')
             }
 
             this.tab = value
@@ -455,6 +556,31 @@ export default defineComponent({
             }
 
             this.code_coverage = value
+            Prism.highlightAll()
+        },
+
+        changeTeacherView(value, button) {
+            if (this.teacher_view == 'challenge_content_creator') {
+                document.getElementById('teacher-view-button-1').classList.toggle('guide-button-selected')
+            } else if (this.teacher_view == 'challenge_manager') {
+                document.getElementById('teacher-view-button-2').classList.toggle('guide-button-selected')
+            } else if (this.teacher_view == 'leaderboard') {
+                document.getElementById('teacher-view-button-3').classList.toggle('guide-button-selected')
+            } else if (this.teacher_view == 'validating_admins') {
+                document.getElementById('teacher-view-button-4').classList.toggle('guide-button-selected')
+            }
+
+            if (value == 'challenge_content_creator') {
+                document.getElementById('teacher-view-button-1').classList.toggle('guide-button-selected')
+            } else if (value == 'challenge_manager') {
+                document.getElementById('teacher-view-button-2').classList.toggle('guide-button-selected')
+            } else if (value == 'leaderboard') {
+                document.getElementById('teacher-view-button-3').classList.toggle('guide-button-selected')
+            } else if (value == 'validating_admins') {
+                document.getElementById('teacher-view-button-4').classList.toggle('guide-button-selected')
+            }
+
+            this.teacher_view = value
             Prism.highlightAll()
         },
 
