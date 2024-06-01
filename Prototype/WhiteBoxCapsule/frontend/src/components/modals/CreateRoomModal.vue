@@ -88,11 +88,11 @@ export default defineComponent({
       await this.$axios.post(this.$api_link + '/create/game-room/', body, this.auth.config)
         .then(response => {
           this.$refs.close.click()
-          this.$router.push({ name: 'multiplayer-room', params: { roomId: response.data.id } })
+          this.$router.go()
         })
         .catch(error => {
-          alert('Error creating room. Please try again.')
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+          return
         })
     }
   }

@@ -191,6 +191,13 @@ class TokenData(BaseModel):
 class UserInDB(User):
     hashed_password: str
 
+class CreateGameRoom(BaseModel):
+    id: Optional[int]
+    name: str
+    rounds: int
+    player_number: int
+    player_1_id: int
+
 class GameRoom(BaseModel):
     id: Optional[int]
     name: str

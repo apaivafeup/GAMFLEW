@@ -324,10 +324,10 @@ def delete_user(current_user: Annotated[models.User, Depends(get_current_active_
     return user_to_delete
 
 ## Create game room
-@app.post("/create/game-room", response_model=models.GameLog)
-def create_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room: int, db: Session = Depends(get_db)):
-    db_game_room = crud.create_game_room(db=db, game_room=game_room)
-    return crud.send_game_log(db=db, game_room_id=db_game_room.id, user_id=current_user.id, message=schemas.GameMessage.ENTER)
+@app.post("/create/game-room", response_model=models.GameRoom)
+def create_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room: models.CreateGameRoom, db: Session = Depends(get_db)):
+    db_game_room = crud.create_game_room_api(db=db, game_room=game_room)
+    return db_game_room
 
 ## Get game rooms
 @app.get("/game-rooms/", response_model=list[models.GameRoom])

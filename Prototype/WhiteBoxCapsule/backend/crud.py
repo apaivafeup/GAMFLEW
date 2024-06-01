@@ -520,6 +520,17 @@ def delete_blacklisted_token(db: Session, token_id: int):
     db.commit()
     return token_to_delete
 
+def create_game_room_api(db: Session, game_room: models.CreateGameRoom):
+    db_game_room = schemas.GameRoom(
+        name=game_room.name,
+        rounds=game_room.rounds,
+        player_1_id=game_room.player_1_id,
+        player_number=game_room.player_number,
+        game_state=schemas.GameState.WAITING
+    )
+    db.add(db_game_room)
+    db.commit()
+    return db_game_room
 
 def create_game_room(db: Session, game_room: schemas.GameRoom):
     db_game_room = schemas.GameRoom(
@@ -537,9 +548,17 @@ def delete_game_room(db: Session, game_room_id: int):
     game_room_to_delete = get_game_room(db, game_room_id)
     if game_room_to_delete is None:
         return None
+    delete_game_logs_from_room(db, game_room_id)
+
     db.delete(game_room_to_delete)
     db.commit()
     return game_room_to_delete
+
+def delete_game_logs_from_room(db: Session, game_room_id: int):
+    game_logs_to_delete = db.query(schemas.GameLog).filter(schemas.GameLog.game_room_id == game_room_id).all()
+    for log in game_logs_to_delete:
+        db.delete(log)
+    db.commit()
 
 def get_game_room(db: Session, game_room_id: int):
     return db.query(schemas.GameRoom).filter(schemas.GameRoom.id == game_room_id).first()

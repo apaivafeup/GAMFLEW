@@ -232,7 +232,7 @@ export default {
                 if (this.playable && !this.timer_set) {
                     this.timer = this.getTimeForRound()
                     this.timer_interval = setInterval(() => {
-                        //this.timer--
+                        this.timer--
 
                         if (this.timer <= 0) {
                             clearInterval(this.timer_interval)
@@ -324,6 +324,7 @@ export default {
         },
 
         getTimeForRound() {
+            return 30
             if (this.challenge.difficulty == 'Very Easy') {
                 return 100 // 1 minute and 40 seconds
             } else if (this.challenge.difficulty == 'Easy') {
