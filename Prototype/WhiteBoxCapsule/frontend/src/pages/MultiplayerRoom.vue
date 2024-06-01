@@ -232,7 +232,7 @@ export default {
                 if (this.playable && !this.timer_set) {
                     this.timer = this.getTimeForRound()
                     this.timer_interval = setInterval(() => {
-                        this.timer--
+                        //this.timer--
 
                         if (this.timer <= 0) {
                             clearInterval(this.timer_interval)
@@ -264,6 +264,7 @@ export default {
             if (this.room_state.game_state == 'show_solution' && !this.solution_timer_set) {
                 clearInterval(this.timer_interval)
                 await this.getRoundSolution()
+                console.log('got the solution...')
 
                 if (this.round_solution != null) {
                     this.show_solution_interval = setInterval(() => {
@@ -323,7 +324,6 @@ export default {
         },
 
         getTimeForRound() {
-            return 10
             if (this.challenge.difficulty == 'Very Easy') {
                 return 100 // 1 minute and 40 seconds
             } else if (this.challenge.difficulty == 'Easy') {
@@ -515,11 +515,11 @@ export default {
         async can_user_pass_auto() {
             let can_pass = false
 
-            if (this.round_id == null || this.id == null || this.round_id == undefined || this.id == undefined) {
+            if (this.round.id == undefined || this.id == undefined) {
                 return can_pass
             }
 
-            await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/game-round/' + this.round_id + '/can-user-pass-auto/', this.auth.config)
+            await this.$axios.post(this.$api_link + '/game-room/' + this.id + '/game-round/' + this.round.id + '/can-pass', {}, this.auth.config)
                 .then(response => {
                     can_pass = response.data.can_pass
                 })
