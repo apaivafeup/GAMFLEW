@@ -88,8 +88,9 @@ export default {
             room: {}, // room information
             room_state: {}, // room state info
             round: {}, // round info
-            round_solution: {},
+            round_solution: null,
             current_round: 0, // current round number
+            challenge_id: -1,
             got_round: false, // if we (the player) have the round (step 2)
             round_loading: false, // if all players have the round (step 3)
             is_ready: false, // if we can play (step 4)
@@ -97,7 +98,7 @@ export default {
             playable: false, // if it's our turn to play (step 5),
             winner: [],
             got_round_solution: false,
-            show_solution_timer: 60, //*1000,
+            show_solution_timer: 10, //*1000,
             show_solution_interval: null,
             solution_timer_set: false,
             timer: 0,
@@ -263,7 +264,7 @@ export default {
 
             if (this.room_state.game_state == 'show_solution' && !this.solution_timer_set) {
                 clearInterval(this.timer_interval)
-                await this.getRoundSolution()
+                this.getRoundSolution()
                 console.log('got the solution...')
 
                 if (this.round_solution != null) {
@@ -273,7 +274,6 @@ export default {
                     if (this.show_solution_timer <= 0) {
                         this.stateChecking()
                         clearInterval(this.show_solution_interval)
-                        this.show_solution_timer = 60
                         this.solution_timer_set = false
                         this.send_seen_solution()
                         this.$forceUpdate()
@@ -354,12 +354,12 @@ export default {
             await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/round/' + round_id + '/solution', this.auth.config)
                 .then(response => {
                     if (!this.got_round_solution) {
-                        this.round_solution = response.data
-
-                        if (this.round_solution == null || this.round_solution == undefined) {
+                        if (response.data == null || response.data == undefined) {
+                            this.round_solution = response.data
                             return
                         }
 
+                        this.round_solution = response.data
                         this.got_round_solution = true
                         this.$forceUpdate()
                     }
@@ -391,6 +391,14 @@ export default {
         async getRound() {
             await this.$axios.get(this.$api_link + '/game-room/' + this.id + '/round', this.auth.config)
                 .then(response => {
+                    if (response.data == null || response.data == undefined) {
+                        this.current_round = this.round.round_number
+                        this.challenge_id = -1
+                        this.playable = false
+                        this.room_state.game_state = 'finished'
+                        return
+                    }
+
                     if (this.round.id == response.data.id) {
                         return
                     }
@@ -415,30 +423,35 @@ export default {
             this.can_pass = await this.can_user_pass_auto()
 
             var user_id = 0
-            await this.$axios.get(this.$api_link + '/challenges/' + this.challenge_id, this.auth.config).then((response) => {
-                user_id = response.data.owner_id
 
-                this.challenge = new Challenge(
-                    response.data.id,
-                    response.data.name,
-                    response.data.difficulty,
-                    response.data.hint,
-                    response.data.objective,
-                    response.data.test_cases_count,
-                    response.data.score,
-                    response.data.initial_board,
-                    response.data.code_file,
-                    response.data.challenge_type,
-                    response.data.passing_criteria,
-                    response.data.achievement,
-                    response.data.achievement_hint,
-                    response.data.owner_id
-                )
-            }).catch((error) => {
-                clearInterval(this.interval)
-                this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
-                this.$error = true
-            })
+            if (this.challenge_id != -1) {
+                await this.$axios.get(this.$api_link + '/challenges/' + this.challenge_id, this.auth.config).then((response) => {
+                    user_id = response.data.owner_id
+    
+                    this.challenge = new Challenge(
+                        response.data.id,
+                        response.data.name,
+                        response.data.difficulty,
+                        response.data.hint,
+                        response.data.objective,
+                        response.data.test_cases_count,
+                        response.data.score,
+                        response.data.initial_board,
+                        response.data.code_file,
+                        response.data.challenge_type,
+                        response.data.passing_criteria,
+                        response.data.achievement,
+                        response.data.achievement_hint,
+                        response.data.owner_id
+                    )
+                }).catch((error) => {
+                    clearInterval(this.interval)
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
+                    this.$error = true
+                })
+            } else {
+                return
+            }
 
             await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
                 this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
@@ -545,6 +558,8 @@ export default {
 
             await this.$axios.post(this.$api_link + '/game-room/' + this.id + '/round/' + round_id + '/seen-solution/', {}, this.auth.config)
                 .then(response => {
+                    this.round_solution = null
+                    this.solution_timer_set = false
                     this.$router.go()
                 })
                 .catch((error) => {
