@@ -666,7 +666,14 @@ def set_game_room_state(db: Session, game_room_id: int):
 
     players_in = get_players_in(db, game_room_id)
     game_room.players_in = players_in
-    
+
+    print("IN STATE")
+    print(game_room.game_state)
+    if (game_round is not None):
+        print(game_round.state)
+    if (game_room.game_state == schemas.GameState.FINISHED):
+        have_seen_game_logs(db=db, game_round_id=game_round.id)
+
     if (len(players_in) < game_room.player_number and len(game_rounds) != game_room.rounds and game_room.game_state != schemas.GameState.WAITING):
         print('waiting 1')
         game_room.game_state = schemas.GameState.WAITING
@@ -679,13 +686,16 @@ def set_game_room_state(db: Session, game_room_id: int):
     elif (game_room.game_state == schemas.GameState.PASS_ROUND):
         print('waiting 2')
         game_room.game_state = schemas.GameState.WAITING
+    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and game_round.state == schemas.GameRoundState.FINISHED and len(game_rounds) == game_room.rounds):
+        print('finished')
+        game_room.game_state = schemas.GameState.FINISHED
     elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and have_seen_game_logs(db=db, game_round_id=game_round.id)):
         print('next round 1')
         game_room.game_state = schemas.GameState.NEXT_ROUND
     elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and not have_seen_game_logs(db=db, game_round_id=game_round.id)):
         print('show solution 1')
         game_room.game_state = schemas.GameState.SHOW_SOLUTION
-    elif (game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state != schemas.GameState.NEXT_ROUND and len(game_rounds) != game_room.rounds):
+    elif (game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state != schemas.GameState.NEXT_ROUND and not have_seen_game_logs(db=db, game_round_id=game_round.id)):
         print('show solution 2')
         game_room.game_state = schemas.GameState.SHOW_SOLUTION
     elif (game_room.game_state == schemas.GameState.NEXT_ROUND and len(game_rounds) != game_room.rounds):

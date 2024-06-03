@@ -487,13 +487,13 @@ export default {
 
     changeX() {
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
-        this.outX = document.getElementById('piece-stack-out-x').value
+        this.board.outOfBoundsState[this.board.currentKey].position.x = document.getElementById('piece-stack-out-x').value
       }
     },
 
     changeY() {
       if (!isNaN(document.getElementById('piece-stack-out-y').value)) {
-        this.outY = document.getElementById('piece-stack-out-y').value
+        this.board.outOfBoundsState[this.board.currentKey].position.y = document.getElementById('piece-stack-out-y').value
       }
     },
 
