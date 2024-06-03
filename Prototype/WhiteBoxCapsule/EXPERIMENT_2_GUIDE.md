@@ -41,3 +41,18 @@ To keep this script short, please check the "How to Play" page (Login -> How to 
 ## 3. Part 2: Teacher View
 After playing the game, you are ready to take the role of a teacher. This part is divided into three sections: Tutorial, Create Your Own Challenge, and Post-Questionnaire.
 
+Know that there is a specific "Teacher View" tab on the "How to Play" page, which may be useful before this part. It's a quick read!
+
+### 3.1 Tutorial
+
+#### 3.1.1 The Challenge Manager Pages
+This tutorial intends to guide you through the process of creating a challenge. To start, go to the "Challenge Manager" page. For this part, we invite you to open the same challenge you beat, to see how it came to be and read go through this part while checking it.
+
+To do that, one just have to go to an existing challenge and click the "Edit" button. Obviously, to create a new challenge, one should click the "Create Challenge" button.
+
+After opening a challenge, you will see a form with several fields. The first two are the initial board state and the code file associated with the challenge. These should be familiar to you, as they are what you are first shown when opening the challenge you played.
+
+While in this page you can only select existing entries for the initial pair of fields, you can create new ones by going to the "Challenge Content Creator" (click [here](https://fe.up.pt/gamflew/#/challenge-content-creator)). There, you can create new board states to initialize challenges and new code files to associate with them. They're pretty self-explanatory, only requiring a name and their content (check ["How to Play"](https://fe.up.pt/gamflew/#/how-to) for more details). We will be using the page later in the tutorial.
+
+After the first two fields, there is a pretty standard form: this is where everything is filled up (challenge title, its objective, the hint shown to struggling students, coverage type, difficulty).
+

@@ -30,7 +30,7 @@ import MultiplayerUserSubmissions from '../components/MultiplayerUserSubmissions
 </style>
 
 <template style="overflow: hidden">
-    <div v-if="got_round_solution">
+    <div v-if="got_round_solution && round_solution != null">
         <MultiplayerUserSubmissions :code_file="code_file" :challenge="challenge" :attempt="round_solution"
             :show_solution_timer="show_solution_timer" :playable="playable" />
     </div>
@@ -43,8 +43,7 @@ import MultiplayerUserSubmissions from '../components/MultiplayerUserSubmissions
                 :challenge="challenge" />
             <FailModal :placeholder="fail_placeholder" />
     </div>
-    <div style="display: flex; justify-content: center;"
-        v-else-if="!loaded && !got_round_solution && winner.length <= 0">
+    <div style="display: flex; justify-content: center;" v-else-if="!loaded && !got_round_solution && winner.length <= 0">
         <div class="vertical-center" style="display: flex; flex-direction: column; margin: auto; align-items: center;">
             <h2 style="text-align: center;" v-if="room_state.game_state == 'waiting'">You've entered <em>{{ room.name }}</em></h2>
             <h2 style="text-align: center;" v-else><em>{{ room.name }}</em></h2>
@@ -158,6 +157,7 @@ export default {
     async mounted() {
         this.can_pass = this.can_user_pass_auto()
         this.got_round_solution = false
+        this.round_solution = null
         this.stateChecking()
         this.startGameRoom()
     },
@@ -366,6 +366,8 @@ export default {
                 .then(response => {
                     if (!this.got_round_solution) {
                         if (response.data == null || response.data == undefined) {
+                            console.log('did not get round solution')
+                            this.got_round_solution = false
                             this.round_solution = response.data
                             return
                         }
