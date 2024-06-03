@@ -216,7 +216,7 @@ export default {
             if ((this.room_state.game_state == 'pass_round' || this.room_state.game_state == 'waiting') && this.old_room_state.game_state == 'playing') {
                 console.log('passing or waiting after playing...')
                 this.can_pass = await this.can_user_pass_auto()
-                this.$forceUpdate()
+                //this.$forceUpdate()
                 this.$router.go()
             }
 
@@ -265,7 +265,7 @@ export default {
                 this.is_ready = false
                 this.not_first_time = false
                 this.startGameRoom()
-                this.$forceUpdate()
+                //this.$forceUpdate()
             }
 
             if (this.room_state.game_state == 'next_round') {
@@ -295,13 +295,13 @@ export default {
                         clearInterval(this.show_solution_interval)
                         this.solution_timer_set = false
                         this.send_seen_solution()
-                        this.$forceUpdate()
+                        //this.$forceUpdate()
                     }
                     }, 1000)
                     this.solution_timer_set = true
                 } else {
                     this.send_seen_solution()
-                    this.$forceUpdate()
+                    //this.$forceUpdate()
                 }
             }
 
@@ -353,7 +353,7 @@ export default {
 
         async getRoundSolution() {
             this.round_solution = {}
-            this.$forceUpdate()
+            //this.$forceUpdate()
 
             var round_id
             if (this.round.id != null && this.round.id != undefined) {
@@ -377,7 +377,7 @@ export default {
                         this.round_solution = response.data
                         this.got_round_solution = true
                         console.log("got round solution")
-                        this.$forceUpdate()
+                        //this.$forceUpdate()
                     }
                 })
                 .catch((error) => {
@@ -492,7 +492,7 @@ export default {
 
             this.board.attempt = new Attempt(this.auth.user.id, this.challenge_id, this.challenge.score, 0, 0, null, null)
             Prism.highlightAll()
-            this.$forceUpdate()
+            //this.$forceUpdate()
             Prism.highlightAll()
         },
 
@@ -600,13 +600,13 @@ export default {
     watch: {
         auth: {
             handler: function () {
-                this.$forceUpdate()
+                //this.$forceUpdate()
             },
             deep: true
         },
         winner: {
             handler: function () {
-                this.$forceUpdate()
+                //this.$forceUpdate()
             },
             deep: true
         },
