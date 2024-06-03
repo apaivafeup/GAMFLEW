@@ -281,25 +281,6 @@ export default {
                 this.getRound()
             }
 
-            if (this.room_state.game_state == 'finished' && this.winner.length <= 0) {
-                console.log('finished...')
-                this.loaded = false
-                this.round_loading = false
-                this.getWinner()
-            }
-
-            if (this.round.state == 'finished' && this.round.round_number != -1) {
-                console.log('round finished...')
-                this.round_loading = true
-                this.loaded = false
-            } else if (this.round.state == 'finished' && this.round.round_number == -1) {
-                console.log('game finished...')
-                this.loaded = false
-                this.round_loading = false
-                this.finishRoom()
-                this.getWinner()
-            }
-
             if (this.room_state.game_state == 'show_solution' && !this.solution_timer_set) {
                 console.log('showing solution...')
                 clearInterval(this.timer_interval)
@@ -323,6 +304,27 @@ export default {
                     this.$forceUpdate()
                 }
             }
+
+            if (this.room_state.game_state == 'finished' && this.winner.length <= 0) {
+                console.log('finished...')
+                this.loaded = false
+                this.round_loading = false
+                this.getWinner()
+            }
+
+            if (this.round.state == 'finished' && this.round.round_number != -1) {
+                console.log('round finished...')
+                this.round_loading = true
+                this.loaded = false
+            } else if (this.round.state == 'finished' && this.round.round_number == -1) {
+                console.log('game finished...')
+                this.loaded = false
+                this.round_loading = false
+                this.finishRoom()
+                this.getWinner()
+            }
+
+            
 
             if (this.has_time_ended) {
                 console.log('time ran out, automatic pass...')
