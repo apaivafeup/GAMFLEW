@@ -268,30 +268,6 @@ export default {
                 this.$forceUpdate()
             }
 
-            if (this.room_state.game_state == 'show_solution' && !this.solution_timer_set) {
-                console.log('showing solution...')
-                clearInterval(this.timer_interval)
-                this.getRoundSolution()
-
-                if (this.round_solution != null) {
-                    this.show_solution_interval = setInterval(() => {
-                    this.show_solution_timer--
-
-                    if (this.show_solution_timer <= 0) {
-                        this.stateChecking()
-                        clearInterval(this.show_solution_interval)
-                        this.solution_timer_set = false
-                        this.send_seen_solution()
-                        this.$forceUpdate()
-                    }
-                    }, 1000)
-                    this.solution_timer_set = true
-                } else {
-                    this.send_seen_solution()
-                    this.$forceUpdate()
-                }
-            }
-
             if (this.room_state.game_state == 'next_round') {
                 console.log('next round...')
                 this.timer_set = false
@@ -322,6 +298,30 @@ export default {
                 this.round_loading = false
                 this.finishRoom()
                 this.getWinner()
+            }
+
+            if (this.room_state.game_state == 'show_solution' && !this.solution_timer_set) {
+                console.log('showing solution...')
+                clearInterval(this.timer_interval)
+                this.getRoundSolution()
+
+                if (this.round_solution != null) {
+                    this.show_solution_interval = setInterval(() => {
+                    this.show_solution_timer--
+
+                    if (this.show_solution_timer <= 0) {
+                        this.stateChecking()
+                        clearInterval(this.show_solution_interval)
+                        this.solution_timer_set = false
+                        this.send_seen_solution()
+                        this.$forceUpdate()
+                    }
+                    }, 1000)
+                    this.solution_timer_set = true
+                } else {
+                    this.send_seen_solution()
+                    this.$forceUpdate()
+                }
             }
 
             if (this.has_time_ended) {
