@@ -157,6 +157,7 @@ export default {
 
     async mounted() {
         this.can_pass = this.can_user_pass_auto()
+        this.got_round_solution = false
         this.stateChecking()
         this.startGameRoom()
     },
@@ -206,23 +207,27 @@ export default {
                 })
 
             if (this.room_state.players_in.length === this.room.player_number && !this.not_first_time) {
+                console.log('all players in, starting periodic checking...')
                 this.not_first_time = true
                 clearInterval(this.interval)
                 this.stateChecking()
             }
 
             if ((this.room_state.game_state == 'pass_round' || this.room_state.game_state == 'waiting') && this.old_room_state.game_state == 'playing') {
+                console.log('passing or waiting after playing...')
                 this.can_pass = await this.can_user_pass_auto()
                 this.$forceUpdate()
                 this.$router.go()
             }
 
             if (this.room_state.game_state == 'ready' && !this.is_ready) {
+                console.log('ready...')
                 this.getRound()
                 this.is_ready = true
             }
 
             if (this.room_state.game_state == 'playing') {
+                console.log('playing...')
                 if (!this.is_ready) {
                     this.round_loading = true
                     this.loaded = false
@@ -250,6 +255,7 @@ export default {
             }
 
             if (this.room_state.game_state == 'waiting') {
+                console.log('waiting...')
                 this.loaded = false
 
                 if (this.round != null) {
@@ -263,9 +269,9 @@ export default {
             }
 
             if (this.room_state.game_state == 'show_solution' && !this.solution_timer_set) {
+                console.log('showing solution...')
                 clearInterval(this.timer_interval)
                 this.getRoundSolution()
-                console.log('got the solution...')
 
                 if (this.round_solution != null) {
                     this.show_solution_interval = setInterval(() => {
@@ -287,6 +293,7 @@ export default {
             }
 
             if (this.room_state.game_state == 'next_round') {
+                console.log('next round...')
                 this.timer_set = false
                 clearInterval(this.timer_interval)
                 this.loaded = false
@@ -299,15 +306,18 @@ export default {
             }
 
             if (this.room_state.game_state == 'finished' && this.winner.length <= 0) {
+                console.log('finished...')
                 this.loaded = false
                 this.round_loading = false
                 this.getWinner()
             }
 
             if (this.round.state == 'finished' && this.round.round_number != -1) {
+                console.log('round finished...')
                 this.round_loading = true
                 this.loaded = false
             } else if (this.round.state == 'finished' && this.round.round_number == -1) {
+                console.log('game finished...')
                 this.loaded = false
                 this.round_loading = false
                 this.finishRoom()
@@ -315,6 +325,7 @@ export default {
             }
 
             if (this.has_time_ended) {
+                console.log('time ran out, automatic pass...')
                 this.autoPassRound()
             }
         },
@@ -361,6 +372,7 @@ export default {
 
                         this.round_solution = response.data
                         this.got_round_solution = true
+                        console.log("got round solution")
                         this.$forceUpdate()
                     }
                 })

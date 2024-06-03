@@ -682,8 +682,11 @@ def set_game_room_state(db: Session, game_room_id: int):
     elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and have_seen_game_logs(db=db, game_round_id=game_round.id)):
         print('next round 1')
         game_room.game_state = schemas.GameState.NEXT_ROUND
-    elif (game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state != schemas.GameState.NEXT_ROUND):
+    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and not have_seen_game_logs(db=db, game_round_id=game_round.id)):
         print('show solution 1')
+        game_room.game_state = schemas.GameState.SHOW_SOLUTION
+    elif (game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state != schemas.GameState.NEXT_ROUND):
+        print('show solution 2')
         game_room.game_state = schemas.GameState.SHOW_SOLUTION
     elif (game_room.game_state == schemas.GameState.NEXT_ROUND and len(game_rounds) != game_room.rounds):
         print('waiting 3')

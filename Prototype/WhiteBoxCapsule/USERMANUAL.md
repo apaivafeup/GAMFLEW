@@ -224,7 +224,6 @@ If they pass, a "Submit Challenge" button will become available. Clicking it wil
 - The application is programmed to redirect you whenever a network error happens. If you see a page similar to the one below, it means that the application redirected you after an error. Simply try again, and if the error persists, contact the developer.
 ![Network Error](figures/error_page.png)
   - If you see that accuses a **401 Unauthorized** error, it means you've just been logged out. Go back to the main page and log in again. Beware that closing a tab will log you out.
-  - 
 
 ## Conclusion
 This document has covered the usage of the **GAMFLEW** application. If you have any questions, feel free to contact the developer. Enjoy the game! 
