@@ -288,21 +288,20 @@ export default {
 
                 if (this.round_solution != null) {
                     this.show_solution_interval = setInterval(() => {
-                    this.show_solution_timer--
+                        this.show_solution_timer--
 
-                    if (this.show_solution_timer <= 0) {
-                        this.stateChecking()
-                        clearInterval(this.show_solution_interval)
-                        this.solution_timer_set = false
-                        this.send_seen_solution()
-                        //this.$forceUpdate()
-                    }
+                        if (this.show_solution_timer <= 0) {
+                            this.stateChecking()
+                            clearInterval(this.show_solution_interval)
+                            this.solution_timer_set = false
+                            console.log('going to send seen solution...')
+                            await this.send_seen_solution()
+                            //this.$forceUpdate()
+                        }
                     }, 1000)
+
                     this.solution_timer_set = true
-                } else {
-                    this.send_seen_solution()
-                    //this.$forceUpdate()
-                }
+                } 
             }
 
             if (this.room_state.game_state == 'finished' && this.winner.length <= 0) {

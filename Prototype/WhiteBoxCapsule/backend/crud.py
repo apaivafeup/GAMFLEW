@@ -712,7 +712,7 @@ def have_seen_game_logs(db: Session, game_round_id: int):
     user_ids = list({game_log.user_id for game_log in game_logs})
 
     print('have seen game logs:', len(user_ids) == game_room.player_number - 1)
-    return len(user_ids) == game_room.player_number - 1 
+    return (len(user_ids) == game_room.player_number - 1) and (game_round.user_id in user_ids)
 
 def finish_game_room_state(db: Session, game_room_id: int):
     game_room = get_game_room(db, game_room_id)
