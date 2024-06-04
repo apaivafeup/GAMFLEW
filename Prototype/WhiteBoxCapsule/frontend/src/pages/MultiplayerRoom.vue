@@ -295,7 +295,7 @@ export default {
                             clearInterval(this.show_solution_interval)
                             this.solution_timer_set = false
                             console.log('going to send seen solution...')
-                            await this.send_seen_solution()
+                            this.send_seen_solution()
                             //this.$forceUpdate()
                         }
                     }, 1000)
