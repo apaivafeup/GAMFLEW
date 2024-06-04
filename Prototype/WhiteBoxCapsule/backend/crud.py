@@ -667,12 +667,10 @@ def set_game_room_state(db: Session, game_room_id: int):
     players_in = get_players_in(db, game_room_id)
     game_room.players_in = players_in
 
-    print("IN STATE")
-    print(game_room.game_state)
     if (game_round is not None):
-        print(game_round.state)
-    if (game_room.game_state == schemas.GameState.FINISHED):
-        have_seen_game_logs(db=db, game_round_id=game_round.id)
+        print('game round state:', game_round.state)
+
+    print("game room state:", game_room.game_state)
 
     if (len(players_in) < game_room.player_number and len(game_rounds) != game_room.rounds and game_room.game_state != schemas.GameState.WAITING):
         print('waiting 1')
