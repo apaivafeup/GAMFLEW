@@ -287,7 +287,7 @@ export default {
                 this.getRoundSolution()
 
                 if (this.round_solution != null) {
-                    this.show_solution_interval = setInterval(() => {
+                    this.show_solution_interval = setInterval(async () => {
                         this.show_solution_timer--
 
                         if (this.show_solution_timer <= 0) {
@@ -295,7 +295,7 @@ export default {
                             clearInterval(this.show_solution_interval)
                             this.solution_timer_set = false
                             console.log('going to send seen solution...')
-                            this.send_seen_solution()
+                            await this.send_seen_solution()
                             //this.$forceUpdate()
                         }
                     }, 1000)
@@ -562,6 +562,7 @@ export default {
         },
 
         async send_seen_solution() {
+            console.log('In send_seen_solution')
             var round_id
             if (this.round.id != null && this.round.id != undefined) {
                 round_id = this.round.id
@@ -571,6 +572,7 @@ export default {
                 return
             }
 
+            console.log('Doing axios post')
             await this.$axios.post(this.$api_link + '/game-room/' + this.id + '/round/' + round_id + '/seen-solution/', {}, this.auth.config)
                 .then(response => {
                     this.round_solution = null
@@ -578,10 +580,12 @@ export default {
                     this.$router.go()
                 })
                 .catch((error) => {
+                    console.log('Error in send_seen_solution')
                     clearInterval(this.interval)
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                     return
                 })
+            console.log('Done axios post')
         },
 
         async finishPassedRound() {

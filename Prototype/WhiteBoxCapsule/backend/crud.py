@@ -684,21 +684,21 @@ def set_game_room_state(db: Session, game_room_id: int):
     elif (game_room.game_state == schemas.GameState.PASS_ROUND):
         print('waiting 2')
         game_room.game_state = schemas.GameState.WAITING
-    elif (game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state == schemas.GameState.PLAYING):
+    elif (game_room.game_state == schemas.GameState.PLAYING and game_round.state == schemas.GameRoundState.FINISHED and not have_seen_game_logs(db=db, game_round_id=game_round.id)):
         print('show solution 1')
-        game_room.game_state = schemas.GameState.SHOW_SOLUTION
-    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and not have_seen_game_logs(db=db, game_round_id=game_round.id)):
+        game_room.game_state = schemas.GameState.SHOW_SOLUTION 
+    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and have_seen_game_logs(db=db, game_round_id=game_round.id) and len(game_rounds) != game_room.rounds):
+        print('next round 1')
+        game_room.game_state = schemas.GameState.NEXT_ROUND    
+    elif (game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state == schemas.GameState.FINISHED and not have_seen_game_logs(db=db, game_round_id=game_round.id)):
         print('show solution 2')
         game_room.game_state = schemas.GameState.SHOW_SOLUTION
-    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and have_seen_game_logs(db=db, game_round_id=game_round.id)):
-        print('next round 1')
-        game_room.game_state = schemas.GameState.NEXT_ROUND
+    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and game_round.state == schemas.GameRoundState.FINISHED and have_seen_game_logs(db=db, game_round_id=game_round.id) and len(game_rounds) == game_room.rounds):
+        print('finished')
+        game_room.game_state = schemas.GameState.FINISHED
     elif (game_room.game_state == schemas.GameState.NEXT_ROUND and len(game_rounds) != game_room.rounds):
         print('waiting 3')
         game_room.game_state = schemas.GameState.WAITING
-    elif (len(game_rounds) == game_room.rounds):
-        print('finished')
-        game_room.game_state = schemas.GameState.FINISHED
     
     db.commit()
     return get_game_room_state(db=db, game_room_id=game_room_id)
@@ -709,8 +709,8 @@ def have_seen_game_logs(db: Session, game_round_id: int):
     game_room = db.query(schemas.GameRoom).filter(schemas.GameRoom.id == game_round.game_room_id).first()
     user_ids = list({game_log.user_id for game_log in game_logs})
 
-    print('have seen game logs:', len(user_ids) == game_room.player_number - 1)
-    return (len(user_ids) == game_room.player_number - 1) and (game_round.user_id in user_ids)
+    print('have seen game logs:', len(user_ids) >= game_room.player_number - 1  and (game_round.user_id in user_ids))
+    return (len(user_ids) >= game_room.player_number - 1) and (game_round.user_id in user_ids)
 
 def finish_game_room_state(db: Session, game_room_id: int):
     game_room = get_game_room(db, game_room_id)
@@ -877,6 +877,7 @@ def send_finish_game_log(db: Session, user_id: int, game_round_id: int = None, g
     return db_game_log
 
 def send_seen_solution_log(db: Session, user_id: int, game_round_id: int):
+    print('Send seen solution log')
     game_round = get_game_round(db, game_round_id)
     game_room = get_game_room(db, game_round.game_room_id)
 
@@ -895,6 +896,7 @@ def send_seen_solution_log(db: Session, user_id: int, game_round_id: int):
 
     db.add(db_game_log)
     db.commit()
+    print('Seen solution log sent to db')
     return db_game_log
 
 def is_in_game_room(db: Session, game_room_id: int, user_id: int):
