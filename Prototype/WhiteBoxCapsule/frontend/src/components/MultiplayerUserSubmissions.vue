@@ -24,11 +24,11 @@
         <div class="row" style="width: 100%;">
           <div class="col" style="overflow-y: scroll; overflow-x: hidden; padding: 0px; display: flex; flex-direction: column; justify-content: center; align-content: start;">
             <div class="row" style="padding: 0px; margin: 0px;">
-              <div style="margin-bottom: 10px; width: 100%; display: flex; flex-direction: row; justify-content: center; padding: 0px;" :id="'log-info-' + index"
-                v-for="(interaction, index) in solution.log[solution.currentKey]">
-                <div class='alert alert-secondary player-info precondition-alert' :id="'log-info-alert-' + index"
+              <div style="margin-bottom: 10px; width: 100%; display: flex; flex-direction: row; justify-content: center; padding: 0px;" :id="'log-info'">
+                <div class='alert alert-secondary player-info precondition-alert' :id="'log-info-alert'"
                 style="min-height: 72px; max-height: 72px; overflow-y: scroll; display: flex; flex-direction: column; align-content: start;">
                   <div class="col" style="font-size: 10px; display: flex; align-self: start; text-align: center; ">
+                    <span v-for="(interaction, index) in solution.log[solution.currentKey]">
                     <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;"
                       v-if="interaction.type == 'move'">
                       <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' from ' }} <em> {{ this.getPosition(interaction.start) }}</em> {{ ' to ' }} <em> {{
@@ -39,6 +39,7 @@
                         +
                         interaction.color + ' piece in ' }} <em>{{ this.getPosition(interaction.destination) }}</em>.
                     </p>
+                    </span>
                   </div>
                 </div>
               </div>

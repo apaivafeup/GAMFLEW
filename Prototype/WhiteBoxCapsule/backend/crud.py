@@ -686,18 +686,15 @@ def set_game_room_state(db: Session, game_room_id: int):
     elif (game_room.game_state == schemas.GameState.PASS_ROUND):
         print('waiting 2')
         game_room.game_state = schemas.GameState.WAITING
-    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and game_round.state == schemas.GameRoundState.FINISHED and len(game_rounds) == game_room.rounds):
-        print('finished')
-        game_room.game_state = schemas.GameState.FINISHED
+    elif (game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state == schemas.GameState.PLAYING):
+        print('show solution 1')
+        game_room.game_state = schemas.GameState.SHOW_SOLUTION
+    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and not have_seen_game_logs(db=db, game_round_id=game_round.id)):
+        print('show solution 2')
+        game_room.game_state = schemas.GameState.SHOW_SOLUTION
     elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and have_seen_game_logs(db=db, game_round_id=game_round.id)):
         print('next round 1')
         game_room.game_state = schemas.GameState.NEXT_ROUND
-    elif (game_room.game_state == schemas.GameState.SHOW_SOLUTION and not have_seen_game_logs(db=db, game_round_id=game_round.id)):
-        print('show solution 1')
-        game_room.game_state = schemas.GameState.SHOW_SOLUTION
-    elif (game_round.state == schemas.GameRoundState.FINISHED and game_room.game_state != schemas.GameState.NEXT_ROUND and not have_seen_game_logs(db=db, game_round_id=game_round.id)):
-        print('show solution 2')
-        game_room.game_state = schemas.GameState.SHOW_SOLUTION
     elif (game_room.game_state == schemas.GameState.NEXT_ROUND and len(game_rounds) != game_room.rounds):
         print('waiting 3')
         game_room.game_state = schemas.GameState.WAITING
@@ -714,6 +711,7 @@ def have_seen_game_logs(db: Session, game_round_id: int):
     game_room = db.query(schemas.GameRoom).filter(schemas.GameRoom.id == game_round.game_room_id).first()
     user_ids = list({game_log.user_id for game_log in game_logs})
 
+    print('have seen game logs:', len(user_ids) == game_room.player_number - 1)
     return len(user_ids) == game_room.player_number - 1 
 
 def finish_game_room_state(db: Session, game_room_id: int):
