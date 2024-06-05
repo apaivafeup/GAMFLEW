@@ -5,14 +5,14 @@
 		"type": "debugpy", 
 		"request": "launch", 
 		"module": "uvicorn",
-		"cwd": "${fileDirname}",
+		"cwd": "L:\\FEUP\\repos\\THESIS\\Prototype\\WhiteBoxCapsule\\backend",
 		"args": ["main:app", "--host", "localhost", "--port", "8000", "--reload"], 
 		"jinja": true },
 		{ "name": "Update DB", 
 		"type": "debugpy", 
 		"request": "launch", 
 		"module": "refresh_db",
-		"cwd": "${fileDirname}",
+		"cwd": "L:\\FEUP\\repos\\THESIS\\Prototype\\WhiteBoxCapsule\\backend",
 		"args": [], 
 		"jinja": true }
 	]
