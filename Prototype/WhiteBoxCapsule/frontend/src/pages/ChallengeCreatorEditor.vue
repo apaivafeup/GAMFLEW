@@ -409,8 +409,10 @@ export default {
       stateName: '',
       selectedCode: '',
       challenge: {
+        id: 0,
         name: '',
         hint: '',
+        owner_id: 0,
         objective: '',
         score: 100,
         difficulty: 'Very Easy',
@@ -577,6 +579,8 @@ export default {
     },
 
     async submitChallenge(challenge) {
+      this.challenge.owner_id = this.auth.user.id
+
       if (this.id == null) {
         await this.$axios.post(this.$api_link + '/create/challenge', this.challenge, this.auth.config)
           .then((response) => {
