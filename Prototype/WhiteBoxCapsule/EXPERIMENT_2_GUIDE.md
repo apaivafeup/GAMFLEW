@@ -95,7 +95,7 @@ After creating these, head on to the "Challenge Manager" page to create a brand 
 The idea is to create a challenge for one of the return lines. The first things to do is to select the code file and board state you created in the previous step. 
 
 For this challenge, we will be using the `return true;` line. As such, fill the form with the following information:
-- Challenge Title: "Challenge 0.0: A Simple Move" **[NOTE, IF THERE IS ALREADY A CHALLENGE 0.0, USE 0.1, AND SO ON - NEW CODE FILES WILL BE LISTED AT THE BOTTOM!]**
+- Challenge Title: "Challenge 0.0: A Simple Move" **[IF THERE IS ALREADY A CHALLENGE 0.0, USE 0.1, AND SO ON - NEW CODE FILES WILL BE LISTED AT THE BOTTOM!]**
 - Objective: "Statement coverage of line 6."
 - Coverage Type: "Statement"
 - Difficulty: "Very Easy"
@@ -108,13 +108,13 @@ From the ``if`` statement right above it, one can see the function returns True 
 
 
 ```javascript
-board.log[board.log.length - 1].start.x - board.log[board.log.length - 1].destination.x == 1 && board.log[board.log.length - 1].start.y - board.log[board.log.length - 1].destination.y == 1
+Math.abs(board.log[board.log.length - 1].start.x - board.log[board.log.length - 1].destination.x) == 1 && Math.abs(board.log[board.log.length - 1].start.y - board.log[board.log.length - 1].destination.y) == 1
 ```
 
-This is pretty standard: we are just checking if the last movement (as stated in the provided hint) is a diagonal movement of 1. But we can make this shorter by using the provided abbreviations:
+This is pretty standard: we are just checking if the last movement (as stated in the provided hint) is a diagonal movement of 1. We use ``Math.abs()`` to make sure the result is always positive. But we can make this shorter by using the provided abbreviations:
 
 ```javascript
-last_start.x - last_destination.x == 1 && last_start.y - last_destination.y == 1
+Math.abs(last_start.x - last_destination.x) == 1 && Math.abs(last_start.y - last_destination.y) == 1
 ```
 
 This is the exact same expression logically, but it is now more readable.
