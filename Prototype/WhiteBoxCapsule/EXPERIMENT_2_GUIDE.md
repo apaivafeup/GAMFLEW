@@ -1,11 +1,11 @@
-# GANFLEW, Teacher View: Validation Experiment
+# <justify>GAMFLEW, Teacher View: Validation Experiment
 
 This document serves as a script/guide to a validation experiment of GAMFLEW, a new serious game to teach white-box testing techiniques. Please follow the instructions below to properly participate in the experiment.
 
 ## 1. Introduction
 This experiment happens at your own pace, but, as a suggestion, one should only need at maximum 60 minutes to complete it.
 There are two parts to the experiment:
-1. **Part 1: Playing The Game** - to allow you to understand the game mechanics, you are provided with a small list of suggested challenges for you to complete one from the perspective of a player/student.
+1. **Part 1: Playing The Game** - to allow you to understand the game mechanics, you are to complete a challenge (as a player/student) from a provided small list of suggested challenges.
 2. **Part 2: Teacher View** - after playing the game, you will be ready to take the role of a teacher and follow a short tutorial on how to create your own challenges for the game. After this, there is a questionnaire.
    1. **Part 2.1: Tutorial** - a step-by-step guide on how to create a challenge and overview of other features.
    2. **[OPTIONAL] Part 2.2: Create Your Own Challenge** - you can create your own challenge.
@@ -18,7 +18,7 @@ To play the game, it is required to go through authentication. For your purposes
 - Username: `professor`
 - Password: `password`
 
-However, if you want to create your own account, you can do so by clicking on the "Register" link on the login page. After creating it, you must validate your account to be able to use it. You can do so using the account above (Login -> Validate Administrators -> Find Your User -> Click "Validate").
+However, if you want to create your own account, you can do so by clicking on the "Register" link on the login page. After creating it, you must validate your account to be able to use it. You can do so using the account above (*Login -> Validate Administrators -> Find Your User -> Click "Validate"*).
 
 After authentication, you will be redirected to the game's main page. Here, click on the "Single Player" button.
 
@@ -27,21 +27,21 @@ You will then be in the Challenges page, where all existing challenges are liste
 2. Challenge 1.2 (Decision coverage, Easy)
 3. Challenge 1.3 (Modified condition/decision coverage, Hard)
 4. Challenge 2.6 (Condition/decision coverage, Normal)
-5. Challenge 2.8 (Condition coveraage, Easy)
+5. Challenge 2.8 (Condition coverage, Easy)
 
 For the purpose of this experiment, **we only ask you to complete one of the challenges**. After this, one should be familiar enough with the game mechanics to proceed to Part 2.
 
 ### How to Play
 The game is built on a simple idea: players get a challenge, containing a code and specific coverage objective. The player must then "write" test cases to achieve the coverage objective. 
 
-To "write" test cases, there is a board, based on the game Checkers, to interact with. For each attempt, one is expected to comment on what they tried and why they think it worked.
+To "write" test cases, there is a board based on the game Checkers to interact with. For each attempt, one is expected to comment on what they tried and why they think it worked.
 
 To keep this script short, please check the "How to Play" page (Login -> How to Play) for a detailed explanation of the controls (or click [here](https://fe.up.pt/gamflew/#/how-to)).
 
 ## 3. Part 2: Teacher View
 After playing the game, you are ready to take the role of a Teacher. This part is divided into three sections: Tutorial, Create Your Own Challenge, and Post-Questionnaire.
 
-Know that there is a specific "Teacher View" tab on the "How to Play" page, which may be useful before this part. It's also quick read!
+Know that there is a specific "Teacher View" tab on the "How to Play" page, which may be useful before this part. It's also a quick read!
 
 ### 3.1 Tutorial
 
@@ -92,7 +92,7 @@ If you want a suggestion: just add one piece (red or blue) to the board, as that
 After creating these, head on to the "Challenge Manager" page to create a brand new challenge.
 
 #### 3.1.3 Creating a Challenge
-The idea is to create a challenge for one of the return lines. The first things to do is to select the code file and board state you created in the previous step. 
+The idea is to create a challenge for one of the return lines. The first thing to do is selecting the code file and board state you created in the previous step. 
 
 For this challenge, we will be using the `return true;` line. As such, fill the form with the following information:
 - Challenge Title: "Challenge 0.0: A Simple Move" **[IF THERE IS ALREADY A CHALLENGE 0.0, USE 0.1, AND SO ON - NEW CODE FILES WILL BE LISTED AT THE BOTTOM!]**
@@ -160,4 +160,4 @@ After playing the game and creating a challenge, please fill out the post-questi
 ## 4. Conclusion
 Thank you so much for participating in this experiment. Your feedback is very important to us, as it will help us improve the game and the challenge creation process.
 
-For any further contacts, please reach out to us!
+For any further contacts, please reach out to us!</justify>
