@@ -22,7 +22,7 @@ def get_user(db: Session, username: str):
     except:
         return None
 
-    if user != None:
+    if user is not None:
         return user
 
     return None
@@ -35,7 +35,7 @@ def get_password_hash(password):
 
 def login(db: Session, username: str, password: str):
     user = get_user(db, username)
-    if user == None or (user.user_type == 'admin' and user.validated == False):
+    if user is None or user.validated == False:
         return False
     
     if not verify_password(password, user.password) :
