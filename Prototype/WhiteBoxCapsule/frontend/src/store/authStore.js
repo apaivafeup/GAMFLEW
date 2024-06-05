@@ -1,5 +1,8 @@
 import { defineStore } from 'pinia'
 import { User } from './models/user.js'
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
 
 export const authStore = defineStore('authStore', {
     state: () => {
@@ -42,6 +45,8 @@ export const authStore = defineStore('authStore', {
 
                     this.getUserData(response.data.user_id)
                 }
+            }).catch((error) => {
+                toast.error('An error occurred while logging in. Check your credentials and try again.')
             })
         },
 
@@ -58,7 +63,7 @@ export const authStore = defineStore('authStore', {
                     }
                 })
                 .catch((error) => {
-                    alert('An error occurred while logging out.')
+                    toast.error('An error occurred while logging in. Check your credentials and try again.')
                 })
         },
 
