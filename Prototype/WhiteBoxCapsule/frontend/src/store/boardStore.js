@@ -356,7 +356,7 @@ export const boardStore = defineStore('boardStore', {
 
 
       if (this.passed && score != null) {
-        toast.success("You just earned " + score + " points!")
+        toast.success("You just earned " + score + " points and unlocked this challenge's individual achievement hint!")
       } else if (!this.passed) {
         toast.success("Your attempt was submitted. Keep trying!")
       } else {
