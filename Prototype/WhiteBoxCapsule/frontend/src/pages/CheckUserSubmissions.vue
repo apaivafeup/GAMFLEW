@@ -22,8 +22,8 @@
         <option @click="updateSolutionViewer(selectedAttempt.id)" v-for="selectedAttempt in challenge_attempts"
           :value="selectedAttempt.id">
           {{ selectedAttempt.attempt_type.charAt(0).toUpperCase() + selectedAttempt.attempt_type.slice(1) + 'ed' }}
-          attempt by {{ this.users.find(user => user.id == selectedAttempt.player_id).name }} (<em
-            style="font-style: italic;">{{ this.users.find(user => user.id ==
+          attempt by {{ users.find(user => user.id == selectedAttempt.player_id).name }} (<em
+            style="font-style: italic;">{{ users.find(user => user.id ==
               selectedAttempt.player_id).username }}</em>)</option>
       </select>
       <select class="button is-primary guide-button disabled" id="attempt-select" style="width: 650px;" v-else>
@@ -47,17 +47,17 @@
       </div>
       <div class="col" style="overflow-y: scroll; overflow-x: hidden; padding-right: 10px;">
         <div class="col">
-          <div v-if="this.preconditions.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;"
-            :id="'precondition-info-' + index" v-for="(precondition, index) in this.preconditions">
+          <div v-if="preconditions.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;"
+            :id="'precondition-info-' + index" v-for="(precondition, index) in preconditions">
             <div
-              :class="this.evaluateExpression(precondition, this.solution) == null ? 'alert alert-info player-info precondition-alert' : !this.evaluateExpression(precondition, this.solution) ? 'alert player-info alert-danger' : 'alert player-info alert-success'"
+              :class="evaluateExpression(precondition, solution) == null ? 'alert alert-info player-info precondition-alert' : !evaluateExpression(precondition, solution) ? 'alert player-info alert-danger' : 'alert player-info alert-success'"
               :id="'precondition-info-alert-' + index" style="display: flex; justify-content: start;">
               <div class="col" style="max-width: 10%; align-self: center; text-align: center;">
                 <strong style="margin-right: 2.5px;">{{ 'A' + (index + 1) + ':' }}</strong>
               </div>
               <div class="col" style="max-width: 90%; align-self: center;">
                 <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">{{
-                  this.replace(precondition) }}</p>
+                  replace(precondition) }}</p>
               </div>
             </div>
           </div>
@@ -68,16 +68,16 @@
               </p>
             </div>
           </div>
-          <div v-if="this.tests.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;"
-            :id="'test-info-' + index" v-for="(test, index) in this.tests">
+          <div v-if="tests.length != 0" style="margin-bottom: 10px; width: 100%; justify-content: center;"
+            :id="'test-info-' + index" v-for="(test, index) in tests">
             <div
-              :class="this.evaluateExpression(test, this.solution) == null ? 'alert alert-info player-info precondition-alert' : !this.evaluateExpression(test, this.solution) ? 'alert player-info alert-danger' : 'alert player-info alert-success'"
+              :class="evaluateExpression(test, solution) == null ? 'alert alert-info player-info precondition-alert' : !evaluateExpression(test, solution) ? 'alert player-info alert-danger' : 'alert player-info alert-success'"
               :id="'test-info-alert-' + index" style="display: flex; justify-content: start;">
               <div class="col" style="max-width: 10%; align-self: center; text-align: center;">
                 <strong style="margin-right: 2.5px;">{{ 'T' + (index + 1) + ':' }}</strong>
               </div>
               <div class="col" style="max-width: 90%; align-self: center;">
-                <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">{{ this.replace(test)
+                <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;">{{ replace(test)
                   }}
                 </p>
               </div>
@@ -92,7 +92,7 @@
 
 
         <div class="col" style="overflow-y: scroll; overflow-x: hidden;">
-          <div class="row" v-if="this.selectedAttempt != null">
+          <div class="row" v-if="selectedAttempt != null">
             <div style="margin-bottom: 10px; width: 100%; justify-content: center;" :id="'log-info-' + index"
               v-for="(interaction, index) in solution.log[solution.currentKey]">
               <div class='alert alert-secondary player-info precondition-alert' :id="'log-info-alert-' + index"
@@ -100,13 +100,13 @@
                 <div class="row" style="display: flex; align-self: center; text-align: center;">
                   <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;"
                     v-if="interaction.type == 'move'">
-                    <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' from ' }} <em> {{ this.getPosition(interaction.start) }}</em> {{ ' to ' }} <em> {{
-                      this.getPosition(interaction.destination) }} </em>.
+                    <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' from ' }} <em> {{ getPosition(interaction.start) }}</em> {{ ' to ' }} <em> {{
+                      getPosition(interaction.destination) }} </em>.
                   </p>
                   <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;"
                     v-else-if="interaction.type == 'add'">
                     <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' ' +
-                      interaction.color + ' piece in ' }} <em>{{ this.getPosition(interaction.destination) }}</em>.
+                      interaction.color + ' piece in ' }} <em>{{ getPosition(interaction.destination) }}</em>.
                   </p>
                 </div>
               </div>

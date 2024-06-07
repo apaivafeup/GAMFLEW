@@ -116,7 +116,7 @@ export default {
                                 <div class="col" style="justify-content: end; display: flex;">
                                     <button class="btn btn-primary" style="padding: 15px; border-radius: 10px;"
                                         @click="enterRoom(room.id)">Enter</button>
-                                    <button class="btn btn-primary" v-if="room.player_1_id == this.auth.user.id"
+                                    <button class="btn btn-primary" v-if="room.player_1_id == auth.user.id"
                                         style="padding: 15px; border-radius: 10px;"
                                         @click="deleteRoom(room.id)">Delete</button>
                                 </div>
@@ -127,10 +127,10 @@ export default {
                                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 1vw;">
                                         <div class="badge bg-info" v-if="room.player_1_id != null"
                                             style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
-                                            <img :src="this.$api_link + this.users[room.player_1_id].picture"
+                                            <img :src="this.$api_link + users[room.player_1_id].picture"
                                                 style="width: 40px; height: 40px;" />
                                             <p style="margin: 0px; padding-right: 5px;">
-                                                {{ this.users[room.player_1_id] ? this.users[room.player_1_id].username
+                                                {{ users[room.player_1_id] ? users[room.player_1_id].username
                                                     :
                                                 'Empty' }}
                                             </p>
@@ -140,7 +140,7 @@ export default {
                                             <img :src="this.$api_link + users[room.player_2_id].picture"
                                                 style="width: 40px; height: 40px;" />
                                             <p style="margin: 0px; padding-right: 5px;">
-                                                {{ users[room.player_2_id] ? this.users[room.player_2_id].username :
+                                                {{ users[room.player_2_id] ? users[room.player_2_id].username :
                                                 'Empty' }}
                                             </p>
                                         </div>
@@ -155,10 +155,10 @@ export default {
                                         </div>
                                         <div class="badge bg-info" v-if="room.player_3_id != null"
                                             style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
-                                            <img :src="this.$api_link + this.users[room.player_3_id].picture"
+                                            <img :src="this.$api_link + users[room.player_3_id].picture"
                                                 style="width: 40px; height: 40px;" />
                                             <p style="margin: 0px; padding-right: 5px;">
-                                                {{ this.users[room.player_3_id] ? this.users[room.player_3_id].username
+                                                {{ users[room.player_3_id] ? users[room.player_3_id].username
                                                     :
                                                 'Empty' }}
                                             </p>

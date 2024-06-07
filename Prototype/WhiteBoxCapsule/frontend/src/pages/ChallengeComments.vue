@@ -5,17 +5,17 @@
             <h1>Challenge Comments</h1>
         </div>
 
-        <div class="row" style="justify-content: center; margin-bottom: 10px;" v-if="this.challenge != null">
+        <div class="row" style="justify-content: center; margin-bottom: 10px;" v-if="challenge != null">
             <div class="card challenge-card" style="width: 650px;">
                 <div class="card-body" style="">
                     <div class="row" style="display: flex; justify-content: space-between">
                         <div style="width: 100%">
                             <div class="row" style="align-items: center">
-                                <h5 class="card-title" style="width: auto">{{ this.challenge.name.split(':')[0] }}</h5>
+                                <h5 class="card-title" style="width: auto">{{ challenge.name.split(':')[0] }}</h5>
                             </div>
                             <div class="row">
                                 <h6 class="card-subtitle mb-2 text-muted" style="font-size: 14px;">{{
-            this.challenge.name.split(':')[1] }}</h6>
+            challenge.name.split(':')[1] }}</h6>
                             </div>
                         </div>
                     </div>
@@ -23,20 +23,20 @@
                         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
                             <div class="badge bg-primary"
                                 style="margin: 0px; font-size: 12px !important; background-color: rgb(169, 89, 255)!important; text-align: center; display: flex; justify-content: center;">
-                                <strong>{{ this.challenge.score }} points</strong>
+                                <strong>{{ challenge.score }} points</strong>
                             </div>
                             <div class="badge bg-primary"
                                 style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
-                                {{ this.challenge.challenge_type == 'mcdc' ? this.challenge.challenge_type.toUpperCase()
-            : this.challenge.challenge_type.charAt(0).toUpperCase() +
-            this.challenge.challenge_type.slice(1) }}
+                                {{ challenge.challenge_type == 'mcdc' ? challenge.challenge_type.toUpperCase()
+            : challenge.challenge_type.charAt(0).toUpperCase() +
+            challenge.challenge_type.slice(1) }}
                             </div>
                             <div class="badge bg-primary"
                                 style="margin: 0px; font-size: 12px !important; background-color: rgb(13, 202, 240)!important; text-align: center; display: flex; justify-content: center;">
-                                {{ this.challenge.difficulty }}
+                                {{ challenge.difficulty }}
                             </div>
                             <button class="badge menu-button comments-badge play-badge"
-                                style="margin: 0px; justify-content: center;" @click="goToChallenge(this.challenge.id)">
+                                style="margin: 0px; justify-content: center;" @click="goToChallenge(challenge.id)">
                                 Play ▶️
                             </button>
                         </div>

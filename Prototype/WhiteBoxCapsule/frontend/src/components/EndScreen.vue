@@ -4,11 +4,11 @@
       <h2 style="text-align: center; margin-bottom: 10px;">Game Room {{ this.id }} is closed.</h2>
       <p style="text-align: center;">To play again, you need to create another room.</p>
       <p style="height: 15px; "/>
-      <h4 style="text-align: center;" v-if="this.winner.length > 1">Here are the winners!</h4>
+      <h4 style="text-align: center;" v-if="winner.length > 1">Here are the winners!</h4>
       <h4 style="text-align: center;" v-else>Here is the winner!</h4>
     </div>
     <div class="row container" style="justify-content: center; gap: 10px;">
-      <div class="winner-bar" v-for="w in this.winner">
+      <div class="winner-bar" v-for="w in winner">
         <div class="player-bar" style="display: flex; flex-direction: column; padding: 15px;">
               <div class="row" style="display: flex; justify-content: space-between; align-content: space-between; flex-direction: row;">
                 <img :src="this.$api_link + w.picture" class="winner-bar-avatar" />
@@ -32,7 +32,7 @@
     <p style="height: 15px; "/>
     <div class="column container" style="display: grid; justify-content: center; align-content: center;">
       <h5 style="text-align: center;">These were the rounds:</h5>
-      <div class="round-bar" v-for="(r, index) in this.round" :style="(r.all_passed ? 'background-color: rgb(193, 135, 255)!important;' : '')">
+      <div class="round-bar" v-for="(r, index) in round" :style="(r.all_passed ? 'background-color: rgb(193, 135, 255)!important;' : '')">
         <div v-if="!r.all_passed" style="display: grid; grid-template-columns: 60% 40%; grid-template-rows: 100%; grid-gap: 30px; padding: 10px; place-content: center;">
           <div style="display: flex; flex-direction: column; align-items: start; justify-content: start;">
             <div style="display: flex; flex-wrap: nowrap; flex-direction: row;">
@@ -41,7 +41,7 @@
               display: flex;
               justify-content: center;
               align-items: center;">
-                <strong style="font-size: 12px; margin-right: 5px;">Challenge {{ index + 1 }} of {{ this.room.rounds }}</strong>
+                <strong style="font-size: 12px; margin-right: 5px;">Challenge {{ index + 1 }} of {{ room.rounds }}</strong>
                 <div class="badge bg-primary" style="margin: 0px; font-size: 12px; background-color: rgb(255, 193, 7)!important;"><strong>{{ r.score }} points</strong></div>
               </div>
             </div>
@@ -49,14 +49,14 @@
           </div>
           <div style="display: grid; align-items: center; justify-content: end;">
             <div class="row" style="display: flex; flex-direction: row; justify-content: center;">
-              <img :src="this.$api_link + this.users[r.player_id].picture" class="round-summary-avatar" />
+              <img :src="this.$api_link + users[r.player_id].picture" class="round-summary-avatar" />
                 <div class="col" style="justify-content: center; display: flex; flex-direction: column;">
                   <div class="row">
-                    <b style="font-size: 14px">{{ this.users[r.player_id].name }}</b>
+                    <b style="font-size: 14px">{{ users[r.player_id].name }}</b>
                   </div>
                   <div class="row">
                     <em style="font-size: 10px">
-                      {{ this.users[r.player_id].username }}
+                      {{ users[r.player_id].username }}
                     </em>
                   </div>
                 </div>
@@ -71,7 +71,7 @@
               display: flex;
               justify-content: center;
               align-items: center;">
-                <strong style="font-size: 12px; margin-right: 5px;">Challenge {{ index + 1 }} of {{ this.room.rounds }}</strong>
+                <strong style="font-size: 12px; margin-right: 5px;">Challenge {{ index + 1 }} of {{ room.rounds }}</strong>
                 <div class="badge bg-primary" style="margin: 0px; font-size: 12px; background-color: #dc3545!important;"><strong>SKIPPED</strong></div>
               </div>
             </div>
@@ -79,14 +79,14 @@
           </div>
           <div style="display: grid; align-items: center; justify-content: end;">
             <div class="row disabled" style="display: flex; flex-direction: row; justify-content: center;">
-              <img :src="this.$api_link + this.users[r.player_id].picture" class="round-summary-avatar" />
+              <img :src="this.$api_link + users[r.player_id].picture" class="round-summary-avatar" />
                 <div class="col" style="justify-content: center; display: flex; flex-direction: column;">
                   <div class="row">
                     <b style="font-size: 12px">1st Chosen:</b>
                   </div>
                   <div class="row">
                     <em style="font-size: 10px">
-                      {{ this.users[r.player_id].username }}
+                      {{ users[r.player_id].username }}
                     </em>
                   </div>
                 </div>

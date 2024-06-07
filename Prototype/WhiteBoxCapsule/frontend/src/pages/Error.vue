@@ -24,8 +24,8 @@ export default {
   <div class="col" style="padding: 0vw 5vw; display: grid; place-self: center; grid-template-rows: 50% 40% 10%;">
     <div class="row" style="margin-top: 10vh; display: inline-grid; grid-template-columns: 50% 50%; place-self: center; grid-template-rows: 100%; align-content:center; vertical-align: middle; justify-content: center; min-width: 100%;">
       <div class="col" style="display: flex; flex-direction: column;">
-        <h1 style="font-size: 72px; font-family:'Lemon Milk';color:#8647d4;"> <strong>{{this.code == ''? 'Error' : this.code}}</strong> </h1>
-        <h2 style="font-size: 56px; font-family:'Lemon Milk';color:#8647d4;"> <em>{{this.message == '' ? 'Unknown' : this.message}}</em></h2>
+        <h1 style="font-size: 72px; font-family:'Lemon Milk';color:#8647d4;"> <strong>{{code == ''? 'Error' : code}}</strong> </h1>
+        <h2 style="font-size: 56px; font-family:'Lemon Milk';color:#8647d4;"> <em>{{message == '' ? 'Unknown' : message}}</em></h2>
       </div>
       <div class="col">
         <img src="https://i.ibb.co/BnR2dGP/logo.png" style="width:100%;margin-top:30px;">

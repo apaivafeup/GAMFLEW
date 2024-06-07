@@ -1,42 +1,42 @@
 <template>
   <div
     class="col piece-overlap"
-    v-if="this.board.state[this.board.currentKey][x][y].pieceCount() > 1"
-    @click.stop="this.board.selectPiece(x, y)"
+    v-if="board.state[board.currentKey][x][y].pieceCount() > 1"
+    @click.stop="board.selectPiece(x, y)"
   >
     <div class="overlap-box">
       <div
         class="square square-lg piece small red"
-        v-if="!this.board.state[this.board.currentKey][x][y].selected"
+        v-if="!board.state[board.currentKey][x][y].selected"
       ></div>
       <div class="square square-lg piece small selected" v-else></div>
     </div>
     <div class="overlap-box">
       <div>
-        {{ this.board.state[this.board.currentKey][x][y].stack.red }}
+        {{ board.state[board.currentKey][x][y].stack.red }}
       </div>
     </div>
     <div class="overlap-box">
       <div
         class="square square-lg piece small blue"
-        v-if="!this.board.state[this.board.currentKey][x][y].selected"
+        v-if="!board.state[board.currentKey][x][y].selected"
       ></div>
       <div class="square square-lg piece small selected" v-else></div>
     </div>
     <div class="overlap-box">
       <div>
-        {{ this.board.state[this.board.currentKey][x][y].stack.blue }}
+        {{ board.state[board.currentKey][x][y].stack.blue }}
       </div>
     </div>
   </div>
   <div
     class="square square-lg piece selected"
     style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
-    v-else-if="this.board.state[this.board.currentKey][x][y].selected"
-    @click.stop="this.board.selectPiece(x, y)"
+    v-else-if="board.state[board.currentKey][x][y].selected"
+    @click.stop="board.selectPiece(x, y)"
   >
   <font-awesome-icon
-  v-if="this.board.state[this.board.currentKey][x][y].king"
+  v-if="board.state[board.currentKey][x][y].king"
   icon="crown"
   fixed-width
   style="color: white;"
@@ -46,13 +46,13 @@
     class="square square-lg piece red"
     style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
     v-else-if="
-      this.board.state[this.board.currentKey][x][y].stack.blue == 0 &&
-      this.board.state[this.board.currentKey][x][y].stack.red != 0
+      board.state[board.currentKey][x][y].stack.blue == 0 &&
+      board.state[board.currentKey][x][y].stack.red != 0
     "
-    @click.stop="this.board.selectPiece(x, y)"
+    @click.stop="board.selectPiece(x, y)"
   >
   <font-awesome-icon
-  v-if="this.board.state[this.board.currentKey][x][y].king"
+  v-if="board.state[board.currentKey][x][y].king"
   icon="crown"
   fixed-width
   style="color: white;"
@@ -62,13 +62,13 @@
     class="square square-lg piece blue"
     style="display: flex; justify-content: center; align-items: center; font-size: 20px;"
     v-else-if="
-      this.board.state[this.board.currentKey][x][y].stack.blue != 0 &&
-      this.board.state[this.board.currentKey][x][y].stack.red == 0
+      board.state[board.currentKey][x][y].stack.blue != 0 &&
+      board.state[board.currentKey][x][y].stack.red == 0
     "
-    @click.stop="this.board.selectPiece(x, y)"
+    @click.stop="board.selectPiece(x, y)"
   >
   <font-awesome-icon
-  v-if="this.board.state[this.board.currentKey][x][y].king"
+  v-if="board.state[board.currentKey][x][y].king"
   icon="crown"
   fixed-width
   style="color: white;"
@@ -77,10 +77,10 @@
   <div
     class="square square-lg piece empty"
     v-else-if="
-      this.board.state[this.board.currentKey][x][y].stack.blue == 0 &&
-      this.board.state[this.board.currentKey][x][y].stack.red == 0
+      board.state[board.currentKey][x][y].stack.blue == 0 &&
+      board.state[board.currentKey][x][y].stack.red == 0
     "
-    @click.stop="this.board.selectPiece(x, y)"
+    @click.stop="board.selectPiece(x, y)"
   ></div>
 </template>
 

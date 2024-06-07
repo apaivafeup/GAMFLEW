@@ -11,11 +11,11 @@
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
-              id="piece-stack-out-x" @input="this.changeX()" class="col box" name="piece-stack-out-x"
+              id="piece-stack-out-x" @input="changeX()" class="col box" name="piece-stack-out-x"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
             <input v-else id="piece-stack-out-x" :value="board.outOfBoundsState[board.currentKey].position.x" class="col box disabled" name="piece-stack-out-x"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
-            <input @input="this.changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
+            <input @input="changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
               id="piece-stack-out-y" class="col box" name="piece-stack-out-y"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
             <input v-else id="piece-stack-out-y" :value="board.outOfBoundsState[board.currentKey].position.y" class="col box disabled"
@@ -45,7 +45,7 @@
       </div>
 
       <button id="view-button" class="button is-primary is-fullwidth"
-        v-if="!board.passed && !board.pause && !board.add && needsTable()" @click="board.tableMode(this.challenge)">
+        v-if="!board.passed && !board.pause && !board.add && needsTable()" @click="board.tableMode(challenge)">
         {{ !board.table ? 'Condition Table' : 'Game Board' }}
       </button>
       <button id="view-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
@@ -67,7 +67,7 @@
           Next
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
-          @click="this.board.addMode()">
+          @click="board.addMode()">
           {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default"
@@ -93,11 +93,11 @@
           Retry
         </button>
       </div>
-      <div id="go-click-element" style="opacity: 0%" @click="this.go()">
+      <div id="go-click-element" style="opacity: 0%" @click="go()">
 
       </div>
 
-      <button id="exit-button" class="button is-primary is-fullwidth" @click="this.exit()">
+      <button id="exit-button" class="button is-primary is-fullwidth" @click="exit()">
         Exit
       </button>
     </div>

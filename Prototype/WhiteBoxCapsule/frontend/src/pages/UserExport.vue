@@ -38,7 +38,7 @@ export default {
         This page is used to export user data. <br/>
         The data is exported in JSON format and can be used by an Administrator.
     </p>
-    <button class="menu-button" @click="this.export()" id="export-button" style="width: 500px">
+    <button class="menu-button" @click="export()" id="export-button" style="width: 500px">
       Download
     </button>
   </div>

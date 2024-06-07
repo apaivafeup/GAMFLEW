@@ -15,7 +15,7 @@
       <div class="col" style="padding: 0px;">
         <div class="row" style="width: 100%; display: flex; justify-content: center; margin-bottom: 10px;">
           <div class="alert alert-special player-info" style="font-size: 10px;">
-            <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ this.challenge.objective }}</p>
+            <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ challenge.objective }}</p>
           </div>
         </div>
         <div class="row" style="width: 100%;">
@@ -29,13 +29,13 @@
                     <span v-for="(interaction, index) in solution.log[solution.currentKey]">
                     <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;"
                       v-if="interaction.type == 'move'">
-                      <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' from ' }} <em> {{ this.getPosition(interaction.start) }}</em> {{ ' to ' }} <em> {{
-                        this.getPosition(interaction.destination) }} </em>.
+                      <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' from ' }} <em> {{ getPosition(interaction.start) }}</em> {{ ' to ' }} <em> {{
+                        getPosition(interaction.destination) }} </em>.
                     </p>
                     <p style="width: 100%; text-align: start; vertical-align: center; margin: 0px;" v-else-if="interaction.type == 'add'">
                       <strong>{{ interaction.type.charAt(0).toUpperCase() + interaction.type.slice(1) }}</strong> {{ ' '
                         +
-                        interaction.color + ' piece in ' }} <em>{{ this.getPosition(interaction.destination) }}</em>.
+                        interaction.color + ' piece in ' }} <em>{{ getPosition(interaction.destination) }}</em>.
                     </p>
                     </span>
                   </div>

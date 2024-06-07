@@ -20,10 +20,10 @@ export default {
   <div class="row" style="text-align: center; justify-content: center;">
     <img src="https://i.ibb.co/BnR2dGP/logo.png" style="width: 600px; margin-top: 30px;" />
   </div>
-  <div class="row" style="justify-content: center; margin-top: 30px" v-if="!this.auth.auth">
+  <div class="row" style="justify-content: center; margin-top: 30px" v-if="!auth.auth">
     <Login />
   </div>
-  <div class="row" style="justify-content: center; margin-top: 30px" v-else-if="this.auth.auth">
+  <div class="row" style="justify-content: center; margin-top: 30px" v-else-if="auth.auth">
     <Menu />
   </div>
 </template>

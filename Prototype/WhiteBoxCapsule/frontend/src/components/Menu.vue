@@ -1,5 +1,5 @@
 <template>
-  <div class="col" v-if="main && this.auth.user.user_type != 'admin'" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+  <div class="col" v-if="main && auth.user.user_type != 'admin'" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
     <button class="menu-button" id="single-player-button" @click="this.$router.push('challenges')" style="width: 500px">
       Single Player
     </button>
@@ -15,23 +15,23 @@
     <button class="menu-button" @click="this.$router.push({ name: 'leaderboard' })" id="leaderboard-button" style="width: 500px;">
       Leaderboard
     </button>
-    <button class="menu-button" @click="this.$router.push({ name: 'edit-user', params: { id: this.auth.user.id } })" id="edit-user-button" style="width: 500px">
+    <button class="menu-button" @click="this.$router.push({ name: 'edit-user', params: { id: auth.user.id } })" id="edit-user-button" style="width: 500px">
       Edit User
     </button>
     <button class="menu-button" @click="this.$router.push({ name: 'user-export' })"
-      v-if="this.auth.user.user_type == 'player'" id="export-button" style="width: 500px">
+      v-if="auth.user.user_type == 'player'" id="export-button" style="width: 500px">
       Export
     </button>
     <button class="menu-button" @click="this.$router.push({ name: 'credits' })" id="credits-button"
       style="width: 500px">
       Credits
     </button>
-    <button class="menu-button" @click="this.logout($event)" id="logout-button" style="width: 500px">
+    <button class="menu-button" @click="logout($event)" id="logout-button" style="width: 500px">
       Logout
     </button>
   </div>
 
-  <div class="col" v-else-if="main && this.auth.user.user_type == 'admin'">
+  <div class="col" v-else-if="main && auth.user.user_type == 'admin'">
     <div class="row" style="display: grid; grid-template-columns: repeat(3, 300px); grid-gap: 30px; place-content: center; margin-bottom: 15px;" >
       <div class="col" style="margin: 0px; padding: 0px;">
       <h4 style="text-align: center;">Play</h4>
@@ -51,11 +51,11 @@
       </div>
       <div class="col" style="margin: 0px; padding: 0px;">
       <h4 style="text-align: center;">Challenges</h4>
-      <button class="admin-menu-button" id="challenge-content-button" v-if="this.auth.user.user_type == 'admin'"
+      <button class="admin-menu-button" id="challenge-content-button" v-if="auth.user.user_type == 'admin'"
         @click="this.$router.push('content-creator')" style="">
         Challenge Content Creator
       </button>
-      <button class="admin-menu-button" id="challenge-manager-button" v-if="this.auth.user.user_type == 'admin'"
+      <button class="admin-menu-button" id="challenge-manager-button" v-if="auth.user.user_type == 'admin'"
         @click="this.$router.push('challenge-manager')" style="">
         Challenge Manager
       </button>
@@ -65,7 +65,7 @@
       <button class="admin-menu-button" @click="this.$router.push({ name: 'leaderboard' })" id="leaderboard-button" style="">
         Leaderboard
       </button>
-      <button class="admin-menu-button" @click="this.$router.push({ name: 'edit-user', params: { id: this.auth.user.id } })" id="edit-user-button" style="">
+      <button class="admin-menu-button" @click="this.$router.push({ name: 'edit-user', params: { id: auth.user.id } })" id="edit-user-button" style="">
         Edit User
       </button>
       <button class="admin-menu-button" @click="this.$router.push({ name: 'user-export' })" id="export-button" style="">
@@ -81,7 +81,7 @@
       <div class="col" style="margin: 0px; padding: 0px;">
         <h4 style="text-align: center;">Administrator Features</h4>
         <!-- <button class="admin-menu-button" @click="this.$router.push({ name: 'user-import' })"
-          v-if="this.auth.user.user_type == 'admin'" id="import-button" style="">
+          v-if="auth.user.user_type == 'admin'" id="import-button" style="">
           Import
         </button> -->
         <button class="admin-menu-button" @click="this.$router.push({ name: 'validate-admin' })" id="validate-admin-button" style="">
@@ -94,7 +94,7 @@
       </div>
     </div>
     <div class="row" style="display: flex; justify-content: center; margin-top: 75px;">
-      <button class="admin-menu-button" @click="this.logout($event)" id="logout-button" style="width: 300px;">
+      <button class="admin-menu-button" @click="logout($event)" id="logout-button" style="width: 300px;">
         Logout
       </button>
     </div>

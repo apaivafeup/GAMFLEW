@@ -1,36 +1,36 @@
 <template>
-  <div class="col checker-overlap" v-if="this.board.state[this.board.currentKey][x][y].pieceCount() > 1">
+  <div class="col checker-overlap" v-if="board.state[board.currentKey][x][y].pieceCount() > 1">
     <div class="overlap-box checker">
       <div class="square square-lg piece-checker small-checker red"
-        v-if="!this.board.state[this.board.currentKey][x][y].selected"></div>
+        v-if="!board.state[board.currentKey][x][y].selected"></div>
       <div class="square square-lg piece-checker small-checker selected" v-else></div>
     </div>
     <div class="overlap-box checker">
       <div>
-        {{ this.board.state[this.board.currentKey][x][y].stack.red }}
+        {{ board.state[board.currentKey][x][y].stack.red }}
       </div>
     </div>
     <div class="overlap-box checker">
       <div class="square square-lg piece-checker small-checker blue"
-        v-if="!this.board.state[this.board.currentKey][x][y].selected"></div>
+        v-if="!board.state[board.currentKey][x][y].selected"></div>
       <div class="square square-lg piece-checker small-checker selected" v-else></div>
     </div>
     <div class="overlap-box checker">
       <div>
-        {{ this.board.state[this.board.currentKey][x][y].stack.blue }}
+        {{ board.state[board.currentKey][x][y].stack.blue }}
       </div>
     </div>
   </div>
-  <div class="square square-lg piece-checker red" v-else-if="this.board.state[this.board.currentKey][x][y].stack.blue == 0 &&
-    this.board.state[this.board.currentKey][x][y].stack.red != 0
-    "><font-awesome-icon v-if="this.board.state[this.board.currentKey][x][y].king" icon="crown" fixed-width
+  <div class="square square-lg piece-checker red" v-else-if="board.state[board.currentKey][x][y].stack.blue == 0 &&
+    board.state[board.currentKey][x][y].stack.red != 0
+    "><font-awesome-icon v-if="board.state[board.currentKey][x][y].king" icon="crown" fixed-width
       style="color: white;" /></div>
-  <div class="square square-lg piece-checker blue" v-else-if="this.board.state[this.board.currentKey][x][y].stack.blue != 0 &&
-    this.board.state[this.board.currentKey][x][y].stack.red == 0
-    "><font-awesome-icon v-if="this.board.state[this.board.currentKey][x][y].king" icon="crown" fixed-width
+  <div class="square square-lg piece-checker blue" v-else-if="board.state[board.currentKey][x][y].stack.blue != 0 &&
+    board.state[board.currentKey][x][y].stack.red == 0
+    "><font-awesome-icon v-if="board.state[board.currentKey][x][y].king" icon="crown" fixed-width
       style="color: white;" /></div>
-  <div class="square square-lg piece-checker empty" v-else-if="this.board.state[this.board.currentKey][x][y].stack.blue == 0 &&
-    this.board.state[this.board.currentKey][x][y].stack.red == 0
+  <div class="square square-lg piece-checker empty" v-else-if="board.state[board.currentKey][x][y].stack.blue == 0 &&
+    board.state[board.currentKey][x][y].stack.red == 0
     "></div>
 </template>
 

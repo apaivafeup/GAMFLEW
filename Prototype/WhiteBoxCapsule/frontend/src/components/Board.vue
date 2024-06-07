@@ -39,9 +39,9 @@ export default {
     <div class="col"
       style="display: grid; grid-template-rows: 90px 393px 85px 55px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center;">
       <div class="row" style="width: 100%;">
-        <div class="alert alert-special player-info" v-if="!board.timeout && this.objective" style="font-size: 14px; display: flex; justify-content: space-between; flex-direction: row;">
-          <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ this.challenge.objective }}</p>
-          <button class="button" @click="this.objective = !this.objective" v-if="beat_challenge" style="border-style: solid;
+        <div class="alert alert-special player-info" v-if="!board.timeout && objective" style="font-size: 14px; display: flex; justify-content: space-between; flex-direction: row;">
+          <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ challenge.objective }}</p>
+          <button class="button" @click="objective = !objective" v-if="beat_challenge" style="border-style: solid;
           border: double 1px transparent;
           background-image: linear-gradient(to left, rgb(169, 216, 238), rgb(169, 216, 238)),
                             linear-gradient(to right, rgb(107, 196, 237), rgb(107, 196, 237));
@@ -67,7 +67,7 @@ export default {
         <div v-else-if="!board.timeout" class="alert alert-special-hint player-info" style="display: grid; grid-template-columns: 85% 15%;">
           <p v-if="challenge.achievement_hint == null" id="achievement-text" style="font-size: 14px; margin: 0px; padding: 0px; align-self: center;">There is no achievement for this challenge!</p>
           <p v-else id="achievement-text" style="font-size: 14px; margin: 0px; padding: 0px; align-self: center; "><b>Achievement Hint:</b> {{ challenge.achievement_hint }}</p>
-          <button class="button" @click="this.objective = !this.objective" style="border: double 1px transparent;
+          <button class="button" @click="objective = !objective" style="border: double 1px transparent;
           background-image: linear-gradient(to right, rgba(225, 209, 241, 1), rgba(225, 209, 241, 1)),
                             linear-gradient(to left, rgb(186, 143, 229), rgb(186, 143, 229));
           background-origin: border-box;
@@ -85,7 +85,7 @@ export default {
       <div class="row" style="width: 100%;" v-if="!board.passed && board.hint && !board.error">
         <div class="alert alert-secondary player-info" style="width: 100%; overflow-y: scroll; font-size: 14px;" id="#challenge-hint" >
           <p style="margin: 0px; padding: 0px; align-self: center;">
-            <b>Hint:</b> {{ this.challenge.hint }}
+            <b>Hint:</b> {{ challenge.hint }}
           </p>
         </div>
       </div>
