@@ -513,6 +513,10 @@ def update_code_file(current_user: Annotated[models.User, Depends(get_current_ac
 def update_board_state(current_user: Annotated[models.User, Depends(get_current_active_user)], board_state_id: int, board_state: models.BoardState, db: Session = Depends(get_db)):
     return crud.update_board_state(db=db, board_state_id=board_state_id, board_state=board_state)
 
+@app.delete('/challenge/{challenge_id}', response_model=models.Challenge)
+def delete_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, db: Session = Depends(get_db)):
+    return crud.delete_challenge(db=db, challenge_id=challenge_id)
+
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
     #uvicorn.run(app, host="10.227.242.121", port=8000, ssl_keyfile="./gamflew_api.key", ssl_certfile="./gamflew_api.pem")

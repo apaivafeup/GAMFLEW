@@ -285,14 +285,19 @@
           When you try passing your challenge, the result will be here.
         </div>
       </div>
-      <div class="row">
-        <button id="submit-challenge-button" class="box is-primary"
-          style="min-width: 100%; padding: 10px; margin: 10px;" v-if="boardChecker.passed"
+      <div class="row" style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
+        <button id="submit-challenge-button" class="box is-primary" style="min-width: 50%; padding: 10px; margin: 10px;" v-if="boardChecker.passed"
           @click="submitChallenge()">
           Submit Challenge
         </button>
-        <button class="box is-primary disabled" style="min-width: 100%; padding: 10px; margin: 10px;" v-else>
+        <button class="box is-primary disabled" style="min-width: 50%; padding: 10px; margin: 10px;" v-else>
           Submit Challenge
+        </button>
+        <button id="delete-challenge-button" class="box is-primary" style="min-width: 50%; padding: 10px; margin: 10px;" v-if="challenge.id > 99" @click="deleteChallenge()">
+          Delete Challenge
+        </button>
+        <button class="box is-primary disabled" style="min-width: 50%; padding: 10px; margin: 10px;" v-else>
+          Delete Challenge
         </button>
       </div>
     </div>
@@ -586,7 +591,7 @@ export default {
           .then((response) => {
             if (response.status == 200) {
               alert('Challenge submitted successfully!')
-              this.$router.push({ name: 'home'})
+              this.$router.push({ name: 'challenge-manager'})
             } else {
               alert('There was an error submitting the challenge. Try again.')
             }
@@ -596,13 +601,25 @@ export default {
           .then((response) => {
             if (response.status == 200) {
               alert('Challenge updated successfully!')
-              this.$router.push({ name: 'home'})
+              this.$router.push({ name: 'challenge-manager'})
             } else {
               alert('There was an error updating the challenge. Try again.')
             }
           })
       }
 
+    },
+
+    async deleteChallenge() {
+      await this.$axios.delete(this.$api_link + '/challenge/' + this.id, this.auth.config)
+        .then((response) => {
+          if (response.status == 200) {
+            alert('Challenge deleted successfully!')
+            this.$router.push({name: 'challenge-manager'})
+          } else {
+            alert('There was an error deleting the challenge. Please try again.')
+          }
+        })
     },
 
     async getBoardStates() {

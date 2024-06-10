@@ -1456,3 +1456,11 @@ def update_code_file(db: Session, code_file_id: int, code_file: models.CodeFile)
 
     db.commit()
     return code_file_to_update
+
+def delete_challenge(db: Session, challenge_id: int):
+    challenge_to_delete = get_challenge(db, challenge_id)
+    if challenge_to_delete is None:
+        return None
+    db.delete(challenge_to_delete)
+    db.commit()
+    return challenge_to_delete
