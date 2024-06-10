@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <title>Gamflew</title>
   </head>
-  <div class="container">
+  <div id="app" class="container">
     <router-view :key="$route.fullPath"></router-view>
   </div>
   <button v-if="!url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode"
