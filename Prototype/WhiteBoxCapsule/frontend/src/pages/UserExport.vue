@@ -11,7 +11,7 @@ export default {
   },
 
   methods: {
-    async export() {
+    async exportAttempts() {
       await this.$axios.get(this.$api_link + '/users/' + this.auth.user.id + '/export/', this.auth.config).then((response) => {
         const url = window.URL.createObjectURL(new Blob([JSON.stringify(response.data)]))
         const link = document.createElement('a')
@@ -38,7 +38,7 @@ export default {
         This page is used to export user data. <br/>
         The data is exported in JSON format and can be used by an Administrator.
     </p>
-    <button class="menu-button" @click="export()" id="export-button" style="width: 500px">
+    <button class="menu-button" @click="exportAttempts()" id="export-button" style="width: 500px">
       Download
     </button>
   </div>
