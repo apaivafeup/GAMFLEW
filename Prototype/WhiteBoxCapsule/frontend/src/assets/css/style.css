@@ -542,6 +542,22 @@ textarea {
   border: 1px solid rgb(169, 89, 255);
 }
 
+.delete-badge {
+  background-color: transparent;
+  color: var(--text-color);
+  border-radius: 0.375rem;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #dc3545;
+  margin: 0px !important;
+}
+
+.delete-badge:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+
 .disabled {
   opacity: 0.5;
   pointer-events: none;

@@ -285,7 +285,7 @@
           When you try passing your challenge, the result will be here.
         </div>
       </div>
-      <div class="row" style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
+      <div class="" style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
         <button id="submit-challenge-button" class="box is-primary" style="min-width: 50%; padding: 10px; margin: 10px;" v-if="boardChecker.passed"
           @click="submitChallenge()">
           Submit Challenge
