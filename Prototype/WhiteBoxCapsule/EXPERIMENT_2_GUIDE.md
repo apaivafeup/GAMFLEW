@@ -52,7 +52,7 @@ To do that, one just has to go to an existing challenge and click the "Edit" but
 
 After opening a challenge, you will see a form with several fields. The first two are the initial board state and the code file associated with the challenge. These should be familiar to you, as they are what you are shown when opening a challenge.
 
-While in this page you can only select existing entries for the initial pair of fields, you can create new ones by going to the "Challenge Content Creator" (click [here](https://fe.up.pt/gamflew/#/challenge-content-creator)). There, you can create new board states to initialize challenges and new code files to associate with them. They're pretty self-explanatory, only requiring a name and their content (check ["How to Play"](https://fe.up.pt/gamflew/#/how-to) for more details). We will be using the page later in the tutorial.
+While in this page you can only select existing entries for the initial pair of fields, you can create new ones by going to the "Challenge Content Creator" (click [here](https://fe.up.pt/gamflew/#/content-creator)). There, you can create new board states to initialize challenges and new code files to associate with them. They're pretty self-explanatory, only requiring a name and their content (check ["How to Play"](https://fe.up.pt/gamflew/#/how-to) for more details). We will be using the page later in the tutorial.
 
 After the first two fields, there is a pretty standard form: this is where everything is filled up (challenge title, its objective, the hint shown to struggling students, coverage type, difficulty). There is, also, a field for the number of conditions to consider when generating the truth table (this only for coverage types that warrant it).
 
@@ -83,13 +83,13 @@ function makeAMove(start, destination) {
 }
 ```
 
-Pretty simple stuff, right? We recommend you to give the code file the name *"Code File 0: Make A Move"*. However, you can really give it any name, as long as you can identify it.
+Pretty simple stuff, right? We recommend you to give the code file the name *"Code File 0: Make A Move"*. However, you can really give it any name, as long as you can identify it. After this, submit it, using the respective button.
 
 Now, for the board state, you can really make any sort of board state you wish, as long as you submit it and give it an identifiable name for you to select in the ["Challenge Creator"](https://fe.up.pt/gamflew/#/challenge-manager). When making the existing challenges, we tried to make initial board states that either created little work for the players, or, somehow, made the challenge more interesting.
 
 If you want a suggestion: just add one piece (red or blue) to the board, as that is all that is needed for the challenge!
 
-After creating these, head on to the "Challenge Manager" page to create a brand new challenge.
+After also submitting the new board state, head on to the "Challenge Manager" page to create a brand new challenge.
 
 #### 3.1.3 Creating a Challenge
 The idea is to create a challenge for one of the return lines. The first thing to do is selecting the code file and board state you created in the previous step. 
