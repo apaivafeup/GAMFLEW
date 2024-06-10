@@ -41,6 +41,7 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
       } else if (piece.color == Color.RED) {
         piece.setStack({ red: 0, blue: 1 })
       } else {
+        piece.king = false
         piece.setEmpty()
       }
 
@@ -173,7 +174,8 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
         for (var j = 0; j < this.state[this.currentKey][i].length; j++) {
           body[i].push({ 
             color: this.state[this.currentKey][i][j].color,
-            content: (this.state[this.currentKey][i][j].color == "stack" ? this.state[this.currentKey][i][j].stack : null)
+            content: (this.state[this.currentKey][i][j].color == "stack" ? this.state[this.currentKey][i][j].stack : null),
+            king: this.state[this.currentKey][i][j].king
           })
         }
       }

@@ -40,9 +40,18 @@ export default {
       response.data.forEach((board_state) => {
         this.boardStates.push(board_state)
       })
-      this.dropdownClick(0);
+      this.boardStatesDropdownClick(0);
     }).catch((error) => {
       this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
+      this.$error = true
+    })
+
+    await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
+      response.data.forEach((codeFile) => {
+        this.codeFiles.push(codeFile)
+      })
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
       this.$error = true
     })
 
@@ -61,10 +70,15 @@ export default {
       details: false,
       code: false,
       boardStates: [],
+      codeFiles: [],
+      selectedStateId: null,
       selectedState: '',
       stateName: '',
+      selectedCodeId: '',
+      selectedCodeString: '',
       codeName: '',
-      codeString: '// Placeholder code\n\nfunction hello() {\n  console.log("Hello World!");\n}\n\nhello();'
+      codeString: '// Placeholder code\n\nfunction hello() {\n  console.log("Hello World!");\n}\n\nhello();',
+      defaultCodeString: '// Placeholder code\n\nfunction hello() {\n  console.log("Hello World!");\n}\n\nhello();'
     }
   },
 
@@ -87,9 +101,84 @@ export default {
       }
     },
 
-    dropdownClick(id) {
+    boardStatesDropdownClick(id) {
+      this.selectedStateId = id + 1
       this.selectedState = this.boardStates[id].name
+      this.stateName = this.boardStates[id].name
       this.boardCreator.changeState(this.boardStates[id])
+    },
+
+    codeFilesDropdownClick(id) {
+      if (id == -1) {
+        this.codeString = this.defaultCodeString
+        this.codeName = ''
+        return
+      }
+
+      this.selectedCodeId = id + 1
+      this.codeName = this.codeFiles[id].name
+      this.codeString = this.codeFiles[id].content
+    },
+
+    async deleteBoardState() {
+      await this.$axios.delete(this.$api_link + '/board-state/' + this.selectedStateId, this.auth.config)
+        .then(response => {
+          alert('Board state deleted successfully!')
+          this.$router.go()
+        })
+        .catch((error) => {
+          alert('An error occurred when deleting the board state. Please try again later.')
+        })
+    },
+
+    async updateBoardState() {
+      var board_state = {
+        id: this.selectedStateId,
+        name: this.stateName,
+        board_state: this.boardCreator.serializeState(),
+        out_of_bounds_state: {
+          color: this.boardCreator.outOfBoundsState[this.boardCreator.currentKey].color,
+          content: (this.boardCreator.outOfBoundsState[this.boardCreator.currentKey].color == "stack" ? this.boardCreator.outOfBoundsState[this.boardCreator.currentKey].stack : null),
+          king: this.boardCreator.outOfBoundsState[this.boardCreator.currentKey].king
+        }
+      }
+
+      await this.$axios.post(this.$api_link + '/update/board-state/' + this.selectedStateId, board_state, this.auth.config)
+        .then(response => {
+          alert('Board state updated successfully!')
+          this.$router.go()
+        })
+        .catch((error) => {
+          alert('An error occurred when updating the board state. Please try again later.')
+        })
+    },
+
+    async deleteCodeFile() {
+      await this.$axios.delete(this.$api_link + '/code-file/' + this.selectedCodeId, this.auth.config)
+        .then(response => {
+          alert('Code file deleted successfully!')
+          this.$router.go()
+        })
+        .catch((error) => {
+          alert('An error occurred when deleting the code file. Please try again later.')
+        })
+    },
+
+    async updateCodeFile() {
+      var code_file = {
+        id: this.selectedCodeId,
+        name: this.codeName,
+        content: this.codeString
+      }
+
+      await this.$axios.post(this.$api_link + '/update/code-file/' + this.selectedCodeId, code_file, this.auth.config)
+        .then(response => {
+          alert('Code file updated successfully!')
+          this.$router.go()
+        })
+        .catch((error) => {
+          alert('An error occurred when updating the code file. Please try again later.')
+        })
     },
 
     async submit() {
@@ -118,6 +207,7 @@ export default {
       await this.$axios.post(this.$api_link + '/create/code-file', body, this.auth.config)
         .then(response => {
           alert('Code file created successfully!')
+          this.$router.go()
         })
         .catch((error) => {
           alert('An error occurred when creating the code file. Please try again later.')
@@ -155,12 +245,21 @@ export default {
   </div>
   <div class="row" style="justify-content: center;">
     <div class="col" style="flex: 0 0 0%;" v-if="board">
-      <div class="row" style="width: 450px; margin-bottom: 15px;">
+      <div class="row"
+        style="width: 450px; margin-bottom: 15px; display: flex; flex-direction: row; align-items: center;  align-content: center; padding: 0px;">
         <h6 style="margin-bottom: 2.5px;">Existing States</h6>
-        <select id="existing-states-select" class="guide-button" style="margin-left: 12px; padding: 5px; width: 400px;">
-          <option :id="state.name.toLowerCase().replaceAll(' ', '-')+'-option'" @click="dropdownClick(state.id - 1)" v-for="state in boardStates" :value="state.id">{{ state.name }}
+        <select id="existing-states-select" class="guide-button"
+          style="margin-left: 12px; margin-right: 7.5px; padding: 5px; width: 250px;">
+          <option :id="state.name.toLowerCase().replaceAll(' ', '-') + '-option'" @click="boardStatesDropdownClick(state.id - 1)"
+            v-for="state in boardStates" :value="state.id">{{ state.name }}
           </option>
         </select>
+        <button class="guide-button" style="width: 75px; margin: 0px; margin-right: 7.5px;" @click="deleteBoardState()">
+          Delete
+        </button>
+        <button class="guide-button" style="width: 75px; margin: 0px;" @click="updateBoardState()">
+          Update
+        </button>
       </div>
       <div class="row" style="width:450px;">
         <h6 style="margin-bottom: 2.5px;">State Name</h6>
@@ -168,7 +267,7 @@ export default {
           click submit, this name
           will be used.</p>
         <input type="text" placeholder="Write name here." class="is-primary" id="state-name" name="state-name"
-          style="width: 400px; height: 40px; margin-bottom: 5px; margin-left: calc(0.5 * var(--bs-gutter-x));">
+          style="width: 400px; height: 40px; margin-bottom: 5px; margin-left: calc(0.5 * var(--bs-gutter-x));" v-model="stateName">
       </div>
     </div>
     <div class="col" style="flex: 0 0 0%;" v-if="code">
@@ -199,9 +298,10 @@ export default {
         <h6 style="margin-bottom: 2.5px;">Code</h6>
       </div>
       <div class="row" style="font-size: 10px;">
-        <p style="margin-bottom: 5px;">Develop the code in an IDE, and paste it on the right. Please mind formatting.
-          See
-          how it looks!</p>
+        <p style="margin-bottom: 5px;">
+          Develop the code in an IDE, and paste it on the right. Please mind formatting.
+          See how it looks!
+        </p>
       </div>
       <div class="row">
         <CodeBlock id="code-block-example" class="line-numbers" theme="default" height="390px" data-line="1"
@@ -212,9 +312,30 @@ export default {
     </div>
     <div class="col" style="flex: 0 0 0%;">
       <BoardCreator v-if="board" />
-      <code-editor id="code-editor" max-height="555px"
-        style="width: 550px; !important; max-height: 555px; overflow: scroll; border-radius: 12px; border: var(--box-border); background: var(--bs-gray-100);"
-        theme="stackoverflow-light" :line-nums="true" v-model="codeString" v-if="code">
+      <div v-if="code" style="margin-bottom: 5px; display: flex; flex-direction: column; align-items: start; align-content: start;">
+        <div class="row">
+          <h6 style="margin-bottom: 2.5px;">Existing Code Files</h6>
+        </div>
+        <div class="row" style="margin: 0px; padding: 0px; display: flex; flex-direction: row; align-items: center; align-content: center;">
+          <select id="existing-code-files-select" class="guide-button"
+          style="margin-right: 7.5px; padding: 5px; width: 335px;">
+          <option selected value :value="-1" @click="codeFilesDropdownClick(-1)"> -- select an option -- </option>
+          <option :id="file.name.toLowerCase().replaceAll(' ', '-') + '-option'" @click="codeFilesDropdownClick(file.id - 1)"
+            v-for="file in codeFiles" :value="file.id">{{ file.name }}
+          </option>
+        </select>
+        <button class="guide-button" style="width: 100px; margin: 0px; margin-right: 7.5px;" @click="deleteCodeFile()">
+          Delete
+        </button>
+        <button class="guide-button" style="width: 100px; margin: 0px;" @click="updateCodeFile()">
+          Update
+        </button>
+        </div>
+        
+      </div>
+      <code-editor id="code-editor" max-height="487.5px"
+        style="width: 550px !important; max-height: 487.5px; overflow: scroll; border-radius: 12px; border: var(--box-border); background: var(--bs-gray-100);"
+        theme="stackoverflow-light" :line-nums="true"  v-model="codeString" v-if="code">
       </code-editor>
     </div>
 

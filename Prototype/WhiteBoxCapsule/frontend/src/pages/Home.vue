@@ -7,7 +7,9 @@ import { authStore } from '../store/authStore.js'
 export default {
   beforeMount() {
     this.auth = authStore()
+    console.log('passed auth store...')
     this.auth.checkAuth()
+    console.log('checked auth...')
   },
 
   methods: {

@@ -153,13 +153,15 @@ export default {
         board_state: this.board.serializeState(),
         out_of_bounds_state: {
           color: outOfBoundsState.color,
-          content: (outOfBoundsState.color == "stack" ? outOfBoundsState.stack : null)
+          content: (outOfBoundsState.color == "stack" ? outOfBoundsState.stack : null),
+          king: outOfBoundsState.king
         }
       }
       
       await this.$axios.post(this.$api_link + '/create/board-state', body, this.auth.config)
         .then(response => {
           alert('Board state created successfully!')
+          this.$router.go()
         })
         .catch(error => {
           this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }});

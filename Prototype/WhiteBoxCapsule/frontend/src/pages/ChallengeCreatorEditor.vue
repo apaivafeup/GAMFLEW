@@ -586,7 +586,7 @@ export default {
           .then((response) => {
             if (response.status == 200) {
               alert('Challenge submitted successfully!')
-              window.location.href = '/'
+              this.$router.push({ name: 'home'})
             } else {
               alert('There was an error submitting the challenge. Try again.')
             }
@@ -596,7 +596,7 @@ export default {
           .then((response) => {
             if (response.status == 200) {
               alert('Challenge updated successfully!')
-              window.location.href = '/'
+              this.$router.push({ name: 'home'})
             } else {
               alert('There was an error updating the challenge. Try again.')
             }

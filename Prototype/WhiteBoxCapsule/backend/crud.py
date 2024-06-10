@@ -1422,3 +1422,37 @@ def get_player_leaderboard(db: Session):
 
     return result
 
+def delete_board_state(db: Session, board_state_id: int):
+    board_state_to_delete = get_board_state(db, board_state_id)
+    if board_state_to_delete is None:
+        return None
+    db.delete(board_state_to_delete)
+    db.commit()
+    return board_state_to_delete
+
+def delete_code_file(db: Session, code_file_id: int):
+    code_file_to_delete = get_code_file(db, code_file_id)
+    if code_file_to_delete is None:
+        return None
+    db.delete(code_file_to_delete)
+    db.commit()
+    return code_file_to_delete
+
+def update_board_state(db: Session, board_state_id: int, board_state: models.BoardState):
+    board_state_to_update = get_board_state(db, board_state_id)
+
+    board_state_to_update.name = board_state.name
+    board_state_to_update.board_state = board_state.board_state
+    board_state_to_update.out_of_bounds_state = board_state.out_of_bounds_state
+
+    db.commit()
+    return board_state_to_update
+
+def update_code_file(db: Session, code_file_id: int, code_file: models.CodeFile):
+    code_file_to_update = get_code_file(db, code_file_id)
+
+    code_file_to_update.name = code_file.name
+    code_file_to_update.content = code_file.content
+
+    db.commit()
+    return code_file_to_update

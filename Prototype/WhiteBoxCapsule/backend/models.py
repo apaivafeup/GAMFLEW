@@ -158,6 +158,7 @@ class Stack(BaseModel):
 class Piece(BaseModel):
     color: PieceColor
     content: Optional[Stack] = None
+    king: bool = False
 
     @field_validator("content")
     @classmethod
