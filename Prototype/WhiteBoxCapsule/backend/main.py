@@ -501,7 +501,7 @@ def get_leaderboard(current_user: Annotated[models.User, Depends(get_current_act
 def delete_board_state(current_user: Annotated[models.User, Depends(get_current_active_user)], board_state_id: int, db: Session = Depends(get_db)):
     return crud.delete_board_state(db=db, board_state_id=board_state_id)
 
-@app.delete('/code-file/{code_file_id}')
+@app.delete('/code-file/{code_file_id}', response_model=models.CodeFile)
 def delete_code_file(current_user: Annotated[models.User, Depends(get_current_active_user)], code_file_id: int, db: Session = Depends(get_db)):
     return crud.delete_code_file(db=db, code_file_id=code_file_id)
 
@@ -509,8 +509,8 @@ def delete_code_file(current_user: Annotated[models.User, Depends(get_current_ac
 def update_code_file(current_user: Annotated[models.User, Depends(get_current_active_user)], code_file_id: int, code_file: models.CodeFile, db: Session = Depends(get_db)):
     return crud.update_code_file(db=db, code_file_id=code_file_id, code_file=code_file)
 
-@app.post('/update/board-state/{board_state_id}', response_model=models.CodeFile)
-def update_board_state(current_user: Annotated[models.User, Depends(get_current_active_user)], board_state_id: int, board_state: models.CodeFile, db: Session = Depends(get_db)):
+@app.post('/update/board-state/{board_state_id}', response_model=models.BoardState)
+def update_board_state(current_user: Annotated[models.User, Depends(get_current_active_user)], board_state_id: int, board_state: models.BoardState, db: Session = Depends(get_db)):
     return crud.update_board_state(db=db, board_state_id=board_state_id, board_state=board_state)
 
 if __name__ == "__main__":

@@ -71,7 +71,7 @@ export default {
       code: false,
       boardStates: [],
       codeFiles: [],
-      selectedStateId: null,
+      selectedStateId: 1,
       selectedState: '',
       stateName: '',
       selectedCodeId: '',
@@ -254,10 +254,16 @@ export default {
             v-for="state in boardStates" :value="state.id">{{ state.name }}
           </option>
         </select>
-        <button class="guide-button" style="width: 75px; margin: 0px; margin-right: 7.5px;" @click="deleteBoardState()">
+        <button class="guide-button" style="width: 75px; margin: 0px; margin-right: 7.5px;" v-if="selectedStateId > 4" @click="deleteBoardState()">
           Delete
         </button>
-        <button class="guide-button" style="width: 75px; margin: 0px;" @click="updateBoardState()">
+        <button class="guide-button disabled" style="width: 75px; margin: 0px; margin-right: 7.5px;" v-else >
+          Delete
+        </button>
+        <button class="guide-button" style="width: 75px; margin: 0px;" v-if="selectedStateId > 4" @click="updateBoardState()">
+          Update
+        </button>
+        <button class="guide-button disabled" style="width: 75px; margin: 0px;" v-else>
           Update
         </button>
       </div>
@@ -324,10 +330,16 @@ export default {
             v-for="file in codeFiles" :value="file.id">{{ file.name }}
           </option>
         </select>
-        <button class="guide-button" style="width: 100px; margin: 0px; margin-right: 7.5px;" @click="deleteCodeFile()">
+        <button class="guide-button" style="width: 100px; margin: 0px; margin-right: 7.5px;" v-if="selectedCodeId > 7" @click="deleteCodeFile()">
           Delete
         </button>
-        <button class="guide-button" style="width: 100px; margin: 0px;" @click="updateCodeFile()">
+        <button class="guide-button disabled" style="width: 100px; margin: 0px; margin-right: 7.5px;" v-else >
+          Delete
+        </button>
+        <button class="guide-button" style="width: 100px; margin: 0px;" v-if="selectedCodeId > 7" @click="updateCodeFile()">
+          Update
+        </button>
+        <button class="guide-button disabled" style="width: 100px; margin: 0px;" v-else>
           Update
         </button>
         </div>
