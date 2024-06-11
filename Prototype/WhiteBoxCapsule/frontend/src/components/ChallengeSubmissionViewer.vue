@@ -18,10 +18,13 @@
         </div>
       </div>
 
-      <div class="progress-bar">
+      <div class="progress-bar" v-if="challenge != {} && challenge != null && challenge != undefined">
         {{ solution.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
-      <div class="buttons-grid">
+      <div class="progress-bar" v-else>
+        N/A
+      </div>
+      <div class="buttons-grid" v-if="challenge != undefined && challenge != null && challenge != {}">
         <button id="previous-button" class="button is-primary is-fullwidth" v-if="solution.currentKey != 0"
           @click="solution.previous()">
           Previous
@@ -34,6 +37,14 @@
           Next
         </button>
         <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
+          Next
+        </button>
+      </div>
+      <div class="buttons-grid disabled" v-else>
+        <button id="previous-button" class="button is-primary is-fullwidth disabled" style="cursor: default">
+          Previous
+        </button>
+        <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default">
           Next
         </button>
       </div>
@@ -107,11 +118,14 @@
         </div>
       </div>
 
-      <div class="progress-bar">
+      <div class="progress-bar" v-if="challenge != {} && challenge != null && challenge != undefined">
         {{ solution.currentKey + 1 + '/' + challenge.test_cases_count }}
       </div>
+      <div class="progress-bar" v-else>
+        N/A
+      </div>
 
-      <div class="buttons-grid">
+      <div class="buttons-grid" v-if="challenge != undefined && challenge != null && challenge != {}">
         <button id="previous-button" class="button is-primary is-fullwidth" v-if="solution.currentKey != 0"
           @click="solution.previous()">
           Previous
@@ -120,10 +134,19 @@
           Previous
         </button>
         <button id="next-button" class="button is-primary is-fullwidth"
-          v-if="solution.currentKey + 1 != challenge.test_cases_count && solution.currentKey + 1 != Object.keys(solution.initialState).length " @click="solution.next()">
+          v-if="solution.currentKey + 1 != challenge.test_cases_count && solution.currentKey + 1 != Object.keys(solution.initialState).length" @click="solution.next()">
           Next
         </button>
         <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
+          Next
+        </button>
+      </div>
+
+      <div class="buttons-grid disabled" v-else>
+        <button id="previous-button" class="button is-primary is-fullwidth disabled" style="cursor: default">
+          Previous
+        </button>
+        <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default">
           Next
         </button>
       </div>

@@ -8,9 +8,8 @@
         <h6 style="margin-bottom: 2.5px;">Challenge</h6>
       </label>
       <select class="button is-primary guide-button" id="challenge-select" style="width: 650px;"
-        :v-model="selectedChallengeId" v-if="challenges.length > 0">
-        <option @click="updateAttempts(challenge.id)" v-for="challenge in challenges" :value="challenge.id">{{
-          challenge.name }}</option>
+        :v-model="selectedChallengeId" @change="updateAttempts(selectedChallengeId)" v-if="challenges.length > 0">
+        <option v-for="challenge in challenges" :value="challenge.id">{{ challenge.name }}</option>
       </select>
     </div>
     <div style="width: 650px;">
@@ -18,23 +17,24 @@
         <h6 style="margin-bottom: 2.5px;">Attempt</h6>
       </label>
       <select class="button is-primary guide-button" id="attempt-select" style="width: 650px;"
-        v-if="challenge_attempts.length > 0 && selectedAttemptId != null" :value="selectedAttemptId">
-        <option @click="updateSolutionViewer(selectedAttempt.id)" v-for="selectedAttempt in challenge_attempts"
-          :value="selectedAttempt.id">
+        v-if="challenge_attempts.length > 0 && selectedAttemptId != null && users.length > 0 && users.find(user => user.id == selectedAttempt.player_id) != undefined" :value="selectedAttemptId" @change="updateSolutionViewer(selectedAttemptId)">
+        <option v-for="selectedAttempt in challenge_attempts" :value="selectedAttempt.id">
           {{ selectedAttempt.attempt_type.charAt(0).toUpperCase() + selectedAttempt.attempt_type.slice(1) + 'ed' }}
           attempt by {{ users.find(user => user.id == selectedAttempt.player_id).name }} (<em
             style="font-style: italic;">{{ users.find(user => user.id ==
               selectedAttempt.player_id).username }}</em>)</option>
       </select>
       <select class="button is-primary guide-button disabled" id="attempt-select" style="width: 650px;" v-else>
-        <option>No attempts submitted.</option>
+        <option selected="selected" disabled hidden>No attempts submitted.</option>
       </select>
     </div>
   </div>
   <div style="display: flex; flex-direction: row; margin-bottom: 10px; justify-content: center;">
     <div class="row" style="width: 1300px;">
-      <div class="alert alert-special player-info precondition-alert" style="width: 100%;"> <strong
-          style="margin-right: 2.5px;">{{ 'Comment:' }}</strong><em>{{ selectedAttempt.comment }}</em></div>
+      <div class="alert alert-special player-info precondition-alert" v-if="challenge_attempts.length > 0" style="width: 100%;"> <strong
+          style="margin-right: 2.5px;">{{ 'Comment:' }}</strong><em>{{ challenge_attempts[selectedAttemptId - 1].comment }}</em></div>
+          <div class="alert alert-special player-info precondition-alert disabled" v-else style="width: 100%;"> <strong
+            style="margin-right: 2.5px;">{{ 'Comment:' }}</strong><em>No attempts, so no comment!</em></div>
     </div>
   </div>
 
@@ -182,7 +182,7 @@ export default {
       preconditions: [],
       tests: [],
       selectedChallengeId: 1,
-      selectedAttemptId: null,
+      selectedAttemptId: 1,
       dictionary: {},
     }
   },
@@ -192,6 +192,7 @@ export default {
       await this.$axios.get(this.$api_link + '/challenges/attempts/', this.auth.config)
         .then(response => {
           this.attempts = response.data
+          this.updateSolutionViewer(1)
         })
         .catch(error => {
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -202,6 +203,7 @@ export default {
       await this.$axios.get(this.$api_link + '/challenges/', this.auth.config)
         .then(response => {
           this.challenges = response.data
+          this.updateAttempts(1)
         })
         .catch(error => {
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -228,6 +230,11 @@ export default {
 
     updateAttempts(challenge_id = this.selectedChallengeId) {
       this.challenge = this.challenges.find(challenge => challenge.id == challenge_id)
+
+      if (this.challenge == {} || this.challenge == null || this.challenge == undefined) {
+        return
+      } 
+
       this.preconditions = this.challenge.passing_criteria.preconditions
       this.tests = this.challenge.passing_criteria.tests
       this.challenge_attempts = this.attempts['' + challenge_id]
@@ -244,8 +251,11 @@ export default {
     },
 
     updateSolutionViewer(attempt_id) {
-      this.selectedAttempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
-      this.solution.changeState(this.selectedAttempt.test_cases)
+      if (this.challenge_attempts.length > 0) {
+        this.selectedAttempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
+        this.solution.changeState(this.selectedAttempt.test_cases)
+      }
+
       this.$forceUpdate()
     },
 

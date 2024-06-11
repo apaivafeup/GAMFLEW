@@ -254,9 +254,8 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
             </p>
 
             <div class="row" style="padding: 10px; justify-content: center;">
-                <select class="col button is-primary guide-button" style="max-width: 750px;">
-                    <option v-for="name in auxiliaryFunctionsNames" :value="name" :key="name"
-                        @click="selectFunction(name)">
+                <select class="col button is-primary guide-button" style="max-width: 750px;" @change="selectFunction(selectedFunction)" v-model="selectedFunction">
+                    <option v-for="name in auxiliaryFunctionsNames" :value="name" :key="name" >
                         {{ name }}
                     </option>
                 </select>
