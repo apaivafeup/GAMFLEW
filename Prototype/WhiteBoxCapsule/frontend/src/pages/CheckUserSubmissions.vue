@@ -235,6 +235,7 @@ export default {
         this.preconditions = []
         this.tests = []
         this.solution.defaultState()
+        this.solution.generateState()
         return
       } 
 
