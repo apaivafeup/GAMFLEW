@@ -192,7 +192,7 @@ export default {
       await this.$axios.get(this.$api_link + '/challenges/attempts/', this.auth.config)
         .then(response => {
           this.attempts = response.data
-          this.updateSolutionViewer(1)
+          this.updateAttempts(1)
         })
         .catch(error => {
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -203,7 +203,6 @@ export default {
       await this.$axios.get(this.$api_link + '/challenges/', this.auth.config)
         .then(response => {
           this.challenges = response.data
-          this.updateAttempts(1)
         })
         .catch(error => {
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -228,31 +227,45 @@ export default {
       })
     },
 
-    updateAttempts(challenge_id = this.selectedChallengeId) {
+    updateAttempts(challenge_id) {
       this.challenge = this.challenges.find(challenge => challenge.id == challenge_id)
 
       if (this.challenge == {} || this.challenge == null || this.challenge == undefined) {
+        this.challenge_attempts = []
+        this.preconditions = []
+        this.tests = []
+        this.solution.defaultState()
         return
       } 
 
-      this.preconditions = this.challenge.passing_criteria.preconditions
-      this.tests = this.challenge.passing_criteria.tests
-      this.challenge_attempts = this.attempts['' + challenge_id]
+      this.preconditions = (this.challenge.passing_criteria.preconditions.length > 1 ? this.challenge.passing_criteria.preconditions : [])
+      this.tests = (this.challenge.passing_criteria.tests.length > 1 ? this.challenge.passing_criteria.tests : [])
+      this.challenge_attempts = (this.attempts['' + challenge_id].length > 0 ? this.attempts['' + challenge_id] : [])
       this.solution.defaultState()
+      this.solution.generateState()
 
       if (this.challenge_attempts.length > 0) {
-        this.solution.generateState()
         this.selectedAttemptId = this.challenge_attempts[0].id
         this.updateSolutionViewer(this.selectedAttemptId)
       } else {
         this.selectedAttempt = null
-        this.solution.generateState()
       }
+
+      this.$forceUpdate()
     },
 
     updateSolutionViewer(attempt_id) {
+      this.solution.generateState()
+      this.solution.defaultState()
+
       if (this.challenge_attempts.length > 0) {
         this.selectedAttempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
+        
+        if (this.selectedAttempt == {} || this.selectedAttempt == null || this.selectedAttempt == undefined) {
+          this.selectedAttempt = null
+          return
+        }
+
         this.solution.changeState(this.selectedAttempt.test_cases)
       }
 
