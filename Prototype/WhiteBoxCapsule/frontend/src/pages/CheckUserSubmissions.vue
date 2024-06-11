@@ -7,7 +7,7 @@
       <label for="challenge-select" style="margin-right: 10px;">
         <h6 style="margin-bottom: 2.5px;">Challenge</h6>
       </label>
-      <select v-if="challenges.length > 0" class="button is-primary guide-button" id="challenge-select" style="width: 650px;" :value="challenge.id" :v-model="selectedChallengeId" @change="selectChallenge(selectedChallengeId)">
+      <select v-if="challenges.length > 0 && challenge != null" class="button is-primary guide-button" id="challenge-select" style="width: 650px;" :value="challenge.id" :v-model="selectedChallengeId" @change="selectChallenge(selectedChallengeId)">
         <option v-for="challenge in challenges" :value="challenge.id">{{ challenge.name }}</option>
       </select>
       <select v-else class="button is-primary guide-button" id="challenge-select" style="width: 650px;">
@@ -183,7 +183,7 @@ export default {
       selectedAttempt: null,
       challenges: [],
       users: [],
-      challenge: {},
+      challenge: null,
       challenge_attempts: [],
       preconditions: [],
       tests: [],
