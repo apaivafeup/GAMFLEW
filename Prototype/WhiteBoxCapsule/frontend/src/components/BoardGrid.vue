@@ -177,7 +177,7 @@ import 'vue3-easy-data-table'
 export default {
   components: { PieceStack, OutPieceStack },
   props: {
-    challenge: Challenge
+    challenge: Object
   },
 
   data() {

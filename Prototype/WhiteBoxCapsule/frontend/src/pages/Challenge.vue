@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       code_file: CodeFile,
-      challenge: Challenge,
+      challenge: Object,
       board_state: BoardState,
       beat_challenge: Boolean,
       submit_placeholder:

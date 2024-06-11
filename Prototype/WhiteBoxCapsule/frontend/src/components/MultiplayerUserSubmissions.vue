@@ -68,7 +68,7 @@ export default {
 
   props: {
     attempt: {},
-    challenge: Challenge,
+    challenge: Object,
     code_file: CodeFile,
     show_solution_timer: Number,
     playable: Boolean

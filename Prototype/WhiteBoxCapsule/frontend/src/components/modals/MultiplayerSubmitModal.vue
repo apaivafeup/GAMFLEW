@@ -55,8 +55,8 @@ export default defineComponent({
 
   props: {
     placeholder: String,
-    round_id: Number,
-    challenge: Challenge
+    round_id: String,
+    challenge: Object
   },
 
   methods: {

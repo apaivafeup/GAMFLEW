@@ -15,18 +15,17 @@
           </div>
           <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
             <select class="button is-primary guide-button" id="code-file-select" style="width: 650px;"
-              :value="challenge?.code_file">
-              <option @click="selectCode(code.id)" v-for="code in codeFiles" :value="code.id">{{ code.name }}
+              :value="challenge?.code_file" @change="selectCode(selectedCode)" v-model="selectedCode">
+              <option v-for="code in codeFiles" :value="code.id">{{ code.name }}
               </option>
             </select>
           </div>
 
           <div class="row" style="width: 100%; padding: 0px; margin: 0px;">
             <CodeBlock @change="Prism.highlightAll()" class="col line-numbers" theme="default" height="445px"
-              data-line="1" :prismjs="true" :code="codeFiles[challenge?.code_file - 1]?.content"
-              lang="javascript" prism-plugin prism-js
-              style="font-size: 16px; overflow: scroll; margin-bottom: 5px; width: 650px;" :copy-icon="false"
-              :copy-button="false" :copy-tab="false" :tabs="false" />
+              data-line="1" :prismjs="true" :code="codeFiles[challenge?.code_file - 1]?.content" lang="javascript"
+              prism-plugin prism-js style="font-size: 16px; overflow: scroll; margin-bottom: 5px; width: 650px;"
+              :copy-icon="false" :copy-button="false" :copy-tab="false" :tabs="false" />
           </div>
         </div>
         <div class="col">
@@ -37,10 +36,9 @@
             <p style="margin-bottom: 5px;">Choose an existing board state below.</p>
           </div>
           <div class="row" style="width: 100%; margin-left: 0px; margin-bottom: 10px;">
-            <select class="button is-primary guide-button" id="board-state-select"
-              :value="challenge?.initial_board">
-              <option @click="selectState(state.id)" v-for="state in boardStates" :id="state.name + '-option'"
-                :value="state.id">{{ state.name }}
+            <select class="button is-primary guide-button" id="board-state-select" :value="challenge?.initial_board"
+              v-model="selectedBoard" @change="selectState(selectedBoard)">
+              <option v-for="state in boardStates" :id="state.name + '-option'" :value="state.id">{{ state.name }}
               </option>
             </select>
           </div>
@@ -108,8 +106,8 @@
             <p style="font-size: 10px; margin-bottom: 5px;">Remember, for a condition with X variables, we get
               2<sup>x</sup>
               possible test cases!</p>
-            <input id="input-condition-box" @input="changeConditionCount($event)" class="box" type="number"
-              max="10" placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;" />
+            <input id="input-condition-box" @input="changeConditionCount($event)" class="box" type="number" max="10"
+              placeholder="Number of variables." style="margin: 0px; width: 100%; font-size: 18px;" />
           </div>
         </div>
         <div class="row" style="margin-bottom: 5px;">
@@ -124,17 +122,17 @@
             <div class="row" style="margin: 0px;">
               <div class="col" style="padding: 0px; margin-right: 5px;">
                 <select class="button is-primary guide-button" id="coverage-select" style="width: 100%;"
-                  :value="challenge?.challenge_type">
-                  <option @click="selectCoverage(coverage)" v-for="coverage in coverageTypes" :value="coverage">{{
-        coverage }}
+                  v-model="selectedCoverage" @change="selectCoverage(selectedCoverage)">
+                  <option v-for="coverage in coverageTypes" :value="coverage">
+                    {{ coverage }}
                   </option>
                 </select>
               </div>
               <div class="col" style="padding: 0px;">
                 <select class="button is-primary guide-button" id="difficulty-select" style="width: 100%;"
-                  :value="challenge?.difficulty">
-                  <option @click="selectDifficulty(difficulty)" v-for="difficulty in difficulties"
-                    :value="difficulty">
+                  :value="challenge?.difficulty" @change="selectDificulty(selectedDificulty)"
+                  v-model="selectedDificulty">
+                  <option v-for="difficulty in difficulties" :value="difficulty">
                     {{ difficulty }}
                   </option>
                 </select>
@@ -161,8 +159,7 @@
         justify-content: center;
         align-content: center;
         align-items: center;">
-          <button class="box" style="width: 100%; padding: 20px;" @click="addTest(index)"
-            v-if="!boardChecker.passed">
+          <button class="box" style="width: 100%; padding: 20px;" @click="addTest(index)" v-if="!boardChecker.passed">
             Add Test
           </button>
           <button class="box disabled" style="width: 100%; padding: 20px;" v-else>
@@ -233,8 +230,7 @@
             </div>
           </div>
           <div style="margin-bottom: 10px;" id="tests-row" v-if="tests.length != 0">
-            <div class="row" style="margin-bottom: 10px;" :id="'test-info-' + index"
-              v-for="(test, index) in tests">
+            <div class="row" style="margin-bottom: 10px;" :id="'test-info-' + index" v-for="(test, index) in tests">
               <div class="col" style="max-width: 90%; padding: 0px;">
                 <div class="alert alert-info player-info test-alert" :id="'test-info-alert-' + index"
                   style="display: flex; justify-content: start;">
@@ -260,8 +256,8 @@
                   v-if="!boardChecker.passed">
                   <font-awesome-icon icon="trash" style="color: rgb(169, 89, 255)" />
                 </button>
-                <button class="box disabled" style="padding: 10px; border-radius: 50px; "
-                  @click="removeTest(index)" v-else>
+                <button class="box disabled" style="padding: 10px; border-radius: 50px; " @click="removeTest(index)"
+                  v-else>
                   <font-awesome-icon icon="trash" style="color: rgb(169, 89, 255)" />
                 </button>
               </div>
@@ -286,14 +282,15 @@
         </div>
       </div>
       <div class="" style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
-        <button id="submit-challenge-button" class="box is-primary" style="min-width: 50%; padding: 10px; margin: 10px;" v-if="boardChecker.passed"
-          @click="submitChallenge()">
+        <button id="submit-challenge-button" class="box is-primary" style="min-width: 50%; padding: 10px; margin: 10px;"
+          v-if="boardChecker.passed" @click="submitChallenge()">
           Submit Challenge
         </button>
         <button class="box is-primary disabled" style="min-width: 50%; padding: 10px; margin: 10px;" v-else>
           Submit Challenge
         </button>
-        <button id="delete-challenge-button" class="box is-primary" style="min-width: 50%; padding: 10px; margin: 10px;" v-if="challenge.id > 99" @click="deleteChallenge()">
+        <button id="delete-challenge-button" class="box is-primary" style="min-width: 50%; padding: 10px; margin: 10px;"
+          v-if="challenge.id > 99" @click="deleteChallenge()">
           Delete Challenge
         </button>
         <button class="box is-primary disabled" style="min-width: 50%; padding: 10px; margin: 10px;" v-else>
@@ -344,7 +341,7 @@ export default {
     },
       {
         default: h(resolveComponent('LoadingIcon'))
-      });
+      }, this.$slots.default);
 
     this.boardCreator = boardCreatorStore()
     this.boardChecker = boardCheckerStore()
@@ -376,43 +373,43 @@ export default {
 
       this.challenge.passing_criteria.preconditions.forEach((precondition) => this.preconditions.push(this.makeExpression(precondition, true)))
       this.challenge.passing_criteria.tests.forEach((test) => this.tests.push(this.makeExpression(test, true)))
+
+      // Code file and initial board.
+      this.selectState(this.challenge.initial_board)
+
+      // Coverage and difficulty
+      document.getElementById('coverage-select').value = this.challenge.challenge_type
+      document.getElementById('difficulty-select').value = this.challenge.difficulty
+
+      // Challenge details
+
+      document.getElementById('input-name-box').value = this.challenge.name
+      document.getElementById('input-hint-box').value = this.challenge.hint
+      document.getElementById('input-objective-box').value = this.challenge.objective
+      document.getElementById('input-score-box').value = this.challenge.score
+      document.getElementById('input-condition-box').value = this.challenge.passing_criteria.expression_count
+      this.selectedCode = this.challenge.code_file
+      this.selectedBoard = this.challenge.initial_board
+
     }
-
-
-
-    // Code file and initial board.
-    this.selectState(this.challenge.initial_board)
-
-    // Coverage and difficulty
-    document.getElementById('coverage-select').value = this.challenge.challenge_type
-    document.getElementById('difficulty-select').value = this.challenge.difficulty
-
-    // Challenge details
-    document.getElementById('input-name-box').value = this.challenge.name
-    // document.getElementById('input-description-box').value = this.challenge.description
-    document.getElementById('input-hint-box').value = this.challenge.hint
-    document.getElementById('input-objective-box').value = this.challenge.objective
-    document.getElementById('input-score-box').value = this.challenge.score
-    document.getElementById('input-condition-box').value = this.challenge.passing_criteria.expression_count
 
     loader.hide()
     Prism.highlightAll()
   },
 
   props: {
-    id: {
-      type: Number,
-      required: true
-    }
+    id: String
   },
 
   data() {
     return {
       boardStates: [],
       codeFiles: [],
-      selectedBoard: '',
-      stateName: '',
-      selectedCode: '',
+      selectedBoard: 1,
+      stateName: 'empty',
+      selectedCode: 1,
+      selectedCoverage: 'statement',
+      selectedDificulty: 'Very Easy',
       challenge: {
         id: 0,
         name: '',
@@ -591,7 +588,7 @@ export default {
           .then((response) => {
             if (response.status == 200) {
               alert('Challenge submitted successfully!')
-              this.$router.push({ name: 'challenge-manager'})
+              this.$router.push({ name: 'challenge-manager' })
             } else {
               alert('There was an error submitting the challenge. Try again.')
             }
@@ -601,7 +598,7 @@ export default {
           .then((response) => {
             if (response.status == 200) {
               alert('Challenge updated successfully!')
-              this.$router.push({ name: 'challenge-manager'})
+              this.$router.push({ name: 'challenge-manager' })
             } else {
               alert('There was an error updating the challenge. Try again.')
             }
@@ -615,7 +612,7 @@ export default {
         .then((response) => {
           if (response.status == 200) {
             alert('Challenge deleted successfully!')
-            this.$router.push({name: 'challenge-manager'})
+            this.$router.push({ name: 'challenge-manager' })
           } else {
             alert('There was an error deleting the challenge. Please try again.')
           }

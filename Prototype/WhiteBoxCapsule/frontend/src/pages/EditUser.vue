@@ -5,10 +5,7 @@ import LoadingIcon from '../components/LoadingIcon.vue';
 
 export default {
     props: {
-        id: {
-            type: Number,
-            required: true
-        }
+        id: String
     },
 
     beforeMount() {
@@ -24,7 +21,7 @@ export default {
         },
             {
                 default: h(resolveComponent('LoadingIcon'))
-            });
+            }, this.$slots.default, this.$slots.default);
 
             
         this.auth = authStore()

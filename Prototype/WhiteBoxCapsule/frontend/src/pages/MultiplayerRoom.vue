@@ -105,7 +105,7 @@ export default {
             has_time_ended: false,
             timer_set: false,
             code_file: CodeFile,
-            challenge: Challenge,
+            challenge: Object,
             board_state: BoardState,
             submit_placeholder:
                 "Don't know what to write? Answer these: What was the specific objective to hit, beyond the target line? How did you hit it?",
@@ -127,7 +127,7 @@ export default {
         },
             {
                 default: h(resolveComponent('LoadingIcon'))
-            });
+            }, this.$slots.default, this.$slots.default);
 
         this.auth = authStore()
         this.auth.checkAuth()

@@ -108,7 +108,7 @@ import { authStore } from '../store/authStore.js'
 
 export default defineComponent({
   props: {
-    challenge: Challenge,
+    challenge: Object,
     passed: Boolean,
     editor: Boolean,
     unlocked: Boolean

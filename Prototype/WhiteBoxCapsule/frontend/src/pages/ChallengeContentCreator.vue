@@ -36,24 +36,8 @@ export default {
     this.auth = authStore()
     this.auth.checkAuth()
 
-    await this.$axios.get(this.$api_link + '/board-states', this.auth.config).then((response) => {
-      response.data.forEach((board_state) => {
-        this.boardStates.push(board_state)
-      })
-      this.boardStatesDropdownClick(0);
-    }).catch((error) => {
-      this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
-      this.$error = true
-    })
-
-    await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
-      response.data.forEach((codeFile) => {
-        this.codeFiles.push(codeFile)
-      })
-    }).catch((error) => {
-      this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
-      this.$error = true
-    })
+    await this.getBoardStates()
+    await this.getCodeFiles()
 
     if (this.$error) {
       loader.hide()
@@ -71,10 +55,10 @@ export default {
       code: false,
       boardStates: [],
       codeFiles: [],
-      selectedStateId: 1,
+      selectedStateId: 0,
       selectedState: '',
       stateName: '',
-      selectedCodeId: '',
+      selectedCodeId: -1,
       selectedCodeString: '',
       codeName: '',
       codeString: '// Placeholder code\n\nfunction hello() {\n  console.log("Hello World!");\n}\n\nhello();',
@@ -83,6 +67,30 @@ export default {
   },
 
   methods: {
+    async getCodeFiles() {
+      await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
+      response.data.forEach((codeFile) => {
+        this.codeFiles.push(codeFile)
+      })
+      this.codeFilesDropdownClick(-1);
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+      this.$error = true
+    })
+    },
+
+    async getBoardStates() {
+      await this.$axios.get(this.$api_link + '/board-states', this.auth.config).then((response) => {
+        response.data.forEach((board_state) => {
+          this.boardStates.push(board_state)
+        })
+        this.boardStatesDropdownClick(-1);
+      }).catch((error) => {
+        this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } });
+        this.$error = true
+      })
+    },
+
     change(state) {
       var current = (this.board ? 'board' : (this.details ? 'details' : 'code'))
 
@@ -102,6 +110,14 @@ export default {
     },
 
     boardStatesDropdownClick(id) {
+      if (id == -1 || id == -2) {
+        this.selectedState = ''
+        this.selectedStateId = -1
+        this.boardCreator.changeState(this.boardStates[0])
+        this.stateName = ''
+        return
+      }
+
       this.selectedStateId = id + 1
       this.selectedState = this.boardStates[id].name
       this.stateName = this.boardStates[id].name
@@ -109,7 +125,7 @@ export default {
     },
 
     codeFilesDropdownClick(id) {
-      if (id == -1) {
+      if (id == -1 || id == -2) {
         this.codeString = this.defaultCodeString
         this.codeName = ''
         return
@@ -248,19 +264,21 @@ export default {
       <div class="row"
         style="width: 450px; margin-bottom: 15px; display: flex; flex-direction: row; align-items: center;  align-content: center; padding: 0px;">
         <h6 style="margin-bottom: 2.5px;">Existing States</h6>
-        <select id="existing-states-select" class="guide-button"
-          style="margin-left: 12px; margin-right: 7.5px; padding: 5px; width: 250px;">
-          <option :id="state.name.toLowerCase().replaceAll(' ', '-') + '-option'" @click="boardStatesDropdownClick(state.id - 1)"
-            v-for="state in boardStates" :value="state.id">{{ state.name }}
+        <select id="existing-states-select" class="guide-button" style="margin-left: 12px; margin-right: 7.5px; padding: 5px; width: 250px;" v-model="selectedStateId" @change="boardStatesDropdownClick(selectedStateId - 1)" >
+          <option selected="selected" disabled hidden :value="-1"> -- select an option -- </option>
+          <option :id="state.name.toLowerCase().replaceAll(' ', '-') + '-option'" v-for="state in boardStates" :value="state.id">
+            {{ state.name }}
           </option>
         </select>
-        <button class="guide-button" style="width: 75px; margin: 0px; margin-right: 7.5px;" v-if="selectedStateId > 4" @click="deleteBoardState()">
+        <button class="guide-button" style="width: 75px; margin: 0px; margin-right: 7.5px;" v-if="selectedStateId > 4"
+          @click="deleteBoardState()">
           Delete
         </button>
-        <button class="guide-button disabled" style="width: 75px; margin: 0px; margin-right: 7.5px;" v-else >
+        <button class="guide-button disabled" style="width: 75px; margin: 0px; margin-right: 7.5px;" v-else>
           Delete
         </button>
-        <button class="guide-button" style="width: 75px; margin: 0px;" v-if="selectedStateId > 4" @click="updateBoardState()">
+        <button class="guide-button" style="width: 75px; margin: 0px;" v-if="selectedStateId > 4"
+          @click="updateBoardState()">
           Update
         </button>
         <button class="guide-button disabled" style="width: 75px; margin: 0px;" v-else>
@@ -273,7 +291,8 @@ export default {
           click submit, this name
           will be used.</p>
         <input type="text" placeholder="Write name here." class="is-primary" id="state-name" name="state-name"
-          style="width: 400px; height: 40px; margin-bottom: 5px; margin-left: calc(0.5 * var(--bs-gutter-x));" v-model="stateName">
+          style="width: 400px; height: 40px; margin-bottom: 5px; margin-left: calc(0.5 * var(--bs-gutter-x));"
+          v-model="stateName">
       </div>
     </div>
     <div class="col" style="flex: 0 0 0%;" v-if="code">
@@ -318,36 +337,39 @@ export default {
     </div>
     <div class="col" style="flex: 0 0 0%;">
       <BoardCreator v-if="board" />
-      <div v-if="code" style="margin-bottom: 5px; display: flex; flex-direction: column; align-items: start; align-content: start;">
+      <div v-if="code"
+        style="margin-bottom: 5px; display: flex; flex-direction: column; align-items: start; align-content: start;">
         <div class="row">
           <h6 style="margin-bottom: 2.5px;">Existing Code Files</h6>
         </div>
-        <div class="row" style="margin: 0px; padding: 0px; display: flex; flex-direction: row; align-items: center; align-content: center;">
-          <select id="existing-code-files-select" class="guide-button"
-          style="margin-right: 7.5px; padding: 5px; width: 335px;">
-          <option selected value :value="-1" @click="codeFilesDropdownClick(-1)"> -- select an option -- </option>
-          <option :id="file.name.toLowerCase().replaceAll(' ', '-') + '-option'" @click="codeFilesDropdownClick(file.id - 1)"
-            v-for="file in codeFiles" :value="file.id">{{ file.name }}
-          </option>
-        </select>
-        <button class="guide-button" style="width: 100px; margin: 0px; margin-right: 7.5px;" v-if="selectedCodeId > 7" @click="deleteCodeFile()">
-          Delete
-        </button>
-        <button class="guide-button disabled" style="width: 100px; margin: 0px; margin-right: 7.5px;" v-else >
-          Delete
-        </button>
-        <button class="guide-button" style="width: 100px; margin: 0px;" v-if="selectedCodeId > 7" @click="updateCodeFile()">
-          Update
-        </button>
-        <button class="guide-button disabled" style="width: 100px; margin: 0px;" v-else>
-          Update
-        </button>
+        <div class="row"
+          style="margin: 0px; padding: 0px; display: flex; flex-direction: row; align-items: center; align-content: center;">
+          <select id="existing-code-files-select" class="guide-button" style="margin-right: 7.5px; padding: 5px; width: 335px;" v-model="selectedCodeId" @change="codeFilesDropdownClick(selectedCodeId - 1)">
+            <option selected="selected" :value="-1"> -- select an option -- </option>
+            <option :id="file.name.toLowerCase().replaceAll(' ', '-') + '-option'" v-for="file in codeFiles" :value="file.id">
+              {{ file.name }}
+            </option>
+          </select>
+          <button class="guide-button" style="width: 100px; margin: 0px; margin-right: 7.5px;" v-if="selectedCodeId > 7"
+            @click="deleteCodeFile()">
+            Delete
+          </button>
+          <button class="guide-button disabled" style="width: 100px; margin: 0px; margin-right: 7.5px;" v-else>
+            Delete
+          </button>
+          <button class="guide-button" style="width: 100px; margin: 0px;" v-if="selectedCodeId > 7"
+            @click="updateCodeFile()">
+            Update
+          </button>
+          <button class="guide-button disabled" style="width: 100px; margin: 0px;" v-else>
+            Update
+          </button>
         </div>
-        
+
       </div>
       <code-editor id="code-editor" max-height="487.5px"
         style="width: 550px !important; max-height: 487.5px; overflow: scroll; border-radius: 12px; border: var(--box-border); background: var(--bs-gray-100);"
-        theme="stackoverflow-light" :line-nums="true"  v-model="codeString" v-if="code">
+        theme="stackoverflow-light" :line-nums="true" v-model="codeString" v-if="code">
       </code-editor>
     </div>
 

@@ -114,7 +114,7 @@ import { authStore } from '../store/authStore.js'
 export default {
   components: { PieceStackCreator, OutPieceStackCreator  },
   props: {
-    challenge: Challenge,
+    challenge: Object,
   },
 
   data() {

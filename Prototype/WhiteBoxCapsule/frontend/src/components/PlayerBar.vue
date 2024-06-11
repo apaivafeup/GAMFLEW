@@ -69,7 +69,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
   components: { FontAwesomeIcon },
   props: {
-    challenge: Challenge,
+    challenge: Object,
     user: User
   },
 

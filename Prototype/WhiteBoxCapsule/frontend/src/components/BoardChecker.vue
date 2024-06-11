@@ -80,7 +80,7 @@ import { authStore } from '../store/authStore.js'
 export default {
   components: { PieceStackChecker, OutPieceStackChecker },
   props: {
-    challenge: Challenge,
+    challenge: Object,
   },
 
   data() {

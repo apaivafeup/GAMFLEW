@@ -194,7 +194,7 @@ export default {
   components: { PieceStackSolutionViewer, OutPieceStackSolutionViewer },
 
   props: {
-    challenge: Challenge,
+    challenge: Object,
     attempt: null
   },
 

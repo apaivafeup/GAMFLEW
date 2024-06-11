@@ -25,7 +25,7 @@ export default {
     components: {},
 
     props: {
-        challenge: Challenge,
+        challenge: Object,
         unlocked: Boolean
     }
 }

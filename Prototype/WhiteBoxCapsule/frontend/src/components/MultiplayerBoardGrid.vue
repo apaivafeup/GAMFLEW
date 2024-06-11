@@ -208,7 +208,7 @@ import { authStore } from '../store/authStore.js'
 export default {
   components: { PieceStack, OutPieceStack },
   props: {
-    challenge: Challenge,
+    challenge: Object,
     playable: Boolean,
     round: Object,
     can_pass: Boolean,

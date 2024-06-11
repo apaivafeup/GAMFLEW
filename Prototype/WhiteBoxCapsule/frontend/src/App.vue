@@ -31,6 +31,10 @@ import { h, resolveComponent } from 'vue'
 import { faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default {
+  define: {
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true'
+  },
+
   beforeMount() {
     let loader = this.$loading.show({
       color: '#A959FF',
@@ -43,8 +47,8 @@ export default {
       blur: '50px'
     },
       {
-        default: h(resolveComponent('LoadingIcon'))
-      });
+        default: () => h(resolveComponent('LoadingIcon'))
+      }, this.$slots.default);
     this.auth = authStore()
     this.auth.checkAuth()
     loader.hide()

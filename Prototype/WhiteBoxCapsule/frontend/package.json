@@ -9,7 +9,8 @@
     "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "test": "cypress open"
+    "test": "cypress open",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
@@ -21,6 +22,7 @@
     "dotenv-expand": "^10.0.0",
     "downloadjs": "^1.4.7",
     "object-boolean-combinations": "^6.1.3",
+    "patch-package": "^8.0.0",
     "pinia": "^2.1.7",
     "prismjs": "^1.29.0",
     "simple-code-editor": "^2.0.9",
@@ -34,6 +36,10 @@
     "vue3-easy-data-table": "^1.5.47",
     "vue3-highlightjs": "^1.0.5"
   },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ],
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.3.3",
     "@vitejs/plugin-vue": "^4.4.0",

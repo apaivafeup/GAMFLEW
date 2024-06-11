@@ -13,7 +13,7 @@ import Prism from 'prismjs'
 
 export default {
   props: {
-    challenge: Challenge,
+    challenge: Object,
     user: User,
     code_file: CodeFile,
     playable: Boolean,

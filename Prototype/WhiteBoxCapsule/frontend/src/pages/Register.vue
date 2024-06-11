@@ -17,7 +17,7 @@ export default {
         },
             {
                 default: h(resolveComponent('LoadingIcon'))
-            });
+            }, this.$slots.default);
 
         this.auth = authStore()
         this.auth.checkAuth()

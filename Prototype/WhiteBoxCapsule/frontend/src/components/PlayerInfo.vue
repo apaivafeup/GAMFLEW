@@ -16,7 +16,7 @@ import { boardStore } from '../store/boardStore.js'
 export default {
   components: {},
   props: {
-    challenge: Challenge
+    challenge: Object
   },
 
   beforeMount() {

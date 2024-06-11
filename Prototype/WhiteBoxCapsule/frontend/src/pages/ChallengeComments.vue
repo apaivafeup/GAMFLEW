@@ -83,7 +83,7 @@ export default defineComponent({
 
     data() {
         return {
-            challenge: Challenge,
+            challenge: Object,
             auth: null,
             loader: null,
             comments: [],
@@ -104,7 +104,7 @@ export default defineComponent({
         },
             {
                 default: h(resolveComponent('LoadingIcon'))
-            });
+            }, this.$slots.default);
 
         this.auth = authStore()
         this.auth.checkAuth()
