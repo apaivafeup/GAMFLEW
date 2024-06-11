@@ -7,22 +7,24 @@
       <label for="challenge-select" style="margin-right: 10px;">
         <h6 style="margin-bottom: 2.5px;">Challenge</h6>
       </label>
-      <select class="button is-primary guide-button" id="challenge-select" style="width: 650px;"
-        :v-model="selectedChallengeId" @change="updateAttempts(selectedChallengeId)" v-if="challenges.length > 0">
+      <select v-if="challenges.length > 0" class="button is-primary guide-button" id="challenge-select" style="width: 650px;" :value="challenge.id" :v-model="selectedChallengeId" @change="selectChallenge(selectedChallengeId)">
         <option v-for="challenge in challenges" :value="challenge.id">{{ challenge.name }}</option>
+      </select>
+      <select v-else class="button is-primary guide-button" id="challenge-select" style="width: 650px;">
+        <option selected="selected" disabled hidden>No challenges.</option>
       </select>
     </div>
     <div style="width: 650px;">
       <label for="attempt-select" style="margin-right: 10px;">
         <h6 style="margin-bottom: 2.5px;">Attempt</h6>
       </label>
-      <select class="button is-primary guide-button" id="attempt-select" style="width: 650px;"
-        v-if="challenge_attempts.length > 0 && selectedAttemptId != null && users.length > 0 && users.find(user => user.id == selectedAttempt.player_id) != undefined" :value="selectedAttemptId" @change="updateSolutionViewer(selectedAttemptId)">
-        <option v-for="selectedAttempt in challenge_attempts" :value="selectedAttempt.id">
-          {{ selectedAttempt.attempt_type.charAt(0).toUpperCase() + selectedAttempt.attempt_type.slice(1) + 'ed' }}
-          attempt by {{ users.find(user => user.id == selectedAttempt.player_id).name }} (<em
-            style="font-style: italic;">{{ users.find(user => user.id ==
-              selectedAttempt.player_id).username }}</em>)</option>
+      <select class="button is-primary guide-button" id="attempt-select" style="width: 650px;" v-if="challenge_attempts.length > 0 && users.length > 0 && selectedAttempt != null" :value="selectedAttempt.id" :v-model="selectedAttemptId" @change="selectAttempt(selectedAttemptId)">
+        <option v-if="challenge_attempts.length > 0" v-for="attempt in challenge_attempts" :value="attempt.id">
+          {{ attempt.attempt_type.charAt(0).toUpperCase() + attempt.attempt_type.slice(1) + 'ed' }}
+          attempt by {{ users.find(user => user.id == attempt.player_id).name }}
+          (<em style="font-style: italic;">{{ users.find(user => user.id == attempt.player_id).username }}</em>)
+        </option>
+        <option v-else selected="selected" disabled hidden>No attempts submitted.</option>
       </select>
       <select class="button is-primary guide-button disabled" id="attempt-select" style="width: 650px;" v-else>
         <option selected="selected" disabled hidden>No attempts submitted.</option>
@@ -167,12 +169,16 @@ export default {
     await this.getChallenges()
     await this.getUsers()
     await this.getDictionary()
-    this.updateAttempts()
+    this.selectChallenge(1)
+    this.selectAttempt(1)
     loader.hide()
   },
 
   data() {
     return {
+      dictionary: {},
+      selectedAttemptId: 1,
+      selectedChallengeId: 1,
       attempts: Object,
       selectedAttempt: null,
       challenges: [],
@@ -181,18 +187,28 @@ export default {
       challenge_attempts: [],
       preconditions: [],
       tests: [],
-      selectedChallengeId: 1,
-      selectedAttemptId: 1,
-      dictionary: {},
     }
   },
 
   methods: {
+    selectChallenge(challenge_id) {
+      console.log("challenge_id", challenge_id)
+      this.selectedChallengeId = challenge_id
+      this.challenge = this.challenges.find(challenge => challenge.id == challenge_id)
+      this.updateAttempts(challenge_id)
+    },
+
+    selectAttempt(attempt_id) {
+      console.log("attempt_id", attempt_id)
+      this.selectedAttemptId = attempt_id
+      this.selectedAttempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
+      this.updateSolutionViewer(attempt_id)
+    },
+
     async getAttempts() {
       await this.$axios.get(this.$api_link + '/challenges/attempts/', this.auth.config)
         .then(response => {
           this.attempts = response.data
-          this.updateAttempts(1)
         })
         .catch(error => {
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -228,8 +244,6 @@ export default {
     },
 
     updateAttempts(challenge_id) {
-      this.challenge = this.challenges.find(challenge => challenge.id == challenge_id)
-
       if (this.challenge == {} || this.challenge == null || this.challenge == undefined) {
         this.challenge_attempts = []
         this.preconditions = []
@@ -239,38 +253,34 @@ export default {
         return
       } 
 
-      this.preconditions = (this.challenge.passing_criteria.preconditions.length > 1 ? this.challenge.passing_criteria.preconditions : [])
-      this.tests = (this.challenge.passing_criteria.tests.length > 1 ? this.challenge.passing_criteria.tests : [])
-      this.challenge_attempts = (this.attempts['' + challenge_id].length > 0 ? this.attempts['' + challenge_id] : [])
+      this.preconditions = this.challenge.passing_criteria.preconditions
+      this.tests = this.challenge.passing_criteria.tests
+      this.challenge_attempts = this.attempts['' + challenge_id]
       this.solution.defaultState()
       this.solution.generateState()
 
       if (this.challenge_attempts.length > 0) {
         this.selectedAttemptId = this.challenge_attempts[0].id
+        this.selectedAttempt = this.challenge_attempts[0]
         this.updateSolutionViewer(this.selectedAttemptId)
       } else {
         this.selectedAttempt = null
+        this.challenge_attempts = []
+        this.preconditions = []
+        this.tests = []
       }
-
-      this.$forceUpdate()
     },
 
     updateSolutionViewer(attempt_id) {
-      this.solution.generateState()
       this.solution.defaultState()
-
-      if (this.challenge_attempts.length > 0) {
-        this.selectedAttempt = this.challenge_attempts.find(attempt => attempt.id == attempt_id)
-        
-        if (this.selectedAttempt == {} || this.selectedAttempt == null || this.selectedAttempt == undefined) {
-          this.selectedAttempt = null
-          return
-        }
-
-        this.solution.changeState(this.selectedAttempt.test_cases)
+      this.solution.generateState()
+     
+      if (this.selectedAttempt == {} || this.selectedAttempt == null || this.selectedAttempt == undefined) {
+        this.selectedAttempt = null
+        return
       }
 
-      this.$forceUpdate()
+      this.solution.changeState(this.selectedAttempt.test_cases)
     },
 
     replace(test) {
