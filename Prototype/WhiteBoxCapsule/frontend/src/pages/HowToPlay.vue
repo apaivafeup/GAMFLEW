@@ -30,6 +30,10 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
             <button id="guide-button-4" class="col button is-primary is-fullwidth guide-button disabled" v-else style="margin: 0px;">
                 Teacher View
             </button>
+            <button id="guide-button-5" class="col button is-primary is-fullwidth guide-button" style="margin: 0px;"
+                @click="changeTab('multiplayer', '5')">
+                Multiplayer
+            </button>
         </div>
         <div v-if="tab == 'board'" class="display: grid; grid-template-rows: 50% 50%; grid-template-columns: 100%;"
             style="font-size: 12px !important">
@@ -458,6 +462,59 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 
 
         </div>
+        <div v-if="tab == 'multiplayer'" style="font-size: 13px !important; justify-content: center;">
+            <div class="row" style="display: grid; grid-template-columns: 1fr 0.75fr; font-size: 16px;">
+                <div class="col">
+
+               
+                <p style="text-align: justify; margin-bottom: 10px;">
+                    The Multiplayer mode is very similar to the single player mode. It just adds a few rules.
+                </p>
+
+                <strong>Multiplayer Rooms</strong>
+                <p style="text-align: justify; margin-bottom: 10px;">
+                    A multiplayer game can only happen in a multiplayer room. They are pretty easy to create.
+                    You can have up to 5 rounds, with 2 or 3 players.
+                </p>
+
+                <p style="text-align: justify; margin-bottom: 10px;">
+                    Note that, if you create a room, you can't "leave" it, only delete it!
+                </p>
+
+
+                <strong style="margin-bottom: 2.5px;">The Rules</strong>
+                <ul style="margin-left: 2.5px; margin-top: 0px; text-align: justify;">
+                        <li>After all players are in the room, the game starts.</li>
+                        <li>The first player is chosen randomly - after this, players are cycled through!</li>
+                        <li>Each turn has a randomly chosen challenge - any challenge the players have not passed can show up!</li>
+                        <li>You must beat your challenge within the provided time.</li>
+                        <li>You can pass your turn once per challenge. If it reaches you again, you will be able to skip the challenge.</li>
+                        <li>Unlike single player mode, you first validate your solution and then submit it with a comment!</li>
+                        <li>You are able to see the challenge another player is given, but you cannot submit an attempt!</li>
+                        <li>After a player successfully submits an attempt, you will be shown their submitted solution.</li>
+                        <li>The player who scores the most points in the room wins (ties with 3 players are possible)!</li>
+                </ul>
+                
+
+                <strong>Rewards</strong>
+                <p style="text-align: justify; margin-bottom: 10px;">
+                To encourage playing in this mode with other users, there are rewards given per multiplayer game.
+                </p>
+                <p style="text-align: justify; margin-bottom: 10px;">
+                    Both the winner(s) AND participants are rewarded.
+                </p>
+                <p style="text-align: justify; margin-bottom: 10px;">
+                    There are also a few special rewards out in the wild... Strive to ACHIEVE them.
+                </p>
+                </div>
+                <div class="col">
+                    <img src="../assets/pictures/multiplayer_rooms_1.png" style="width: 100%;" />
+                    <img src="../assets/pictures/multiplayer_rooms_2.png" style="width: 100%;" />
+                </div>
+            </div>
+
+
+        </div>
     </div>
 </template>
 
@@ -504,7 +561,8 @@ export default defineComponent({
             var button_1 = document.getElementById('guide-button-1'),
                 button_2 = document.getElementById('guide-button-2'),
                 button_3 = document.getElementById('guide-button-3'),
-                button_4 = document.getElementById('guide-button-4')
+                button_4 = document.getElementById('guide-button-4'),
+                button_5 = document.getElementById('guide-button-5')
 
             if (value == 'code_coverage')
                 button_3.classList.toggle('guide-button-selected')
@@ -514,6 +572,8 @@ export default defineComponent({
                 button_2.classList.toggle('guide-button-selected')
             else if (value == 'teacher_view')
                 button_4.classList.toggle('guide-button-selected')
+            else if (value == 'multiplayer')
+                button_5.classList.toggle('guide-button-selected')
 
             if (this.tab == 'code_coverage') {
                 button_3.classList.toggle('guide-button-selected')
@@ -523,6 +583,8 @@ export default defineComponent({
                 button_2.classList.toggle('guide-button-selected')
             } else if (this.tab == 'teacher_view') {
                 button_4.classList.toggle('guide-button-selected')
+            } else if (this.tab == 'multiplayer') {
+                button_5.classList.toggle('guide-button-selected')
             }
 
             this.tab = value

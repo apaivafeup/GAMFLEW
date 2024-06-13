@@ -50,8 +50,7 @@ import CommentModal from '../components/modals/CommentModal.vue'
             <div class="row"
                 style="width: 100%; display: grid; grid-template-columns: repeat(3, 1.5fr); grid-gap: 10px;">
                 <div class="col" v-for="challenge in challenges" :key="challenge.id">
-                    <ChallengeAchievementCard :challenge="challenge"
-                        :unlocked="user_individual_achievements.includes(challenge.id)" />
+                    <ChallengeAchievementCard :challenge="challenge" :unlocked="user_individual_achievements.includes(challenge.id)" :passed="user_passed_challenges.includes(challenge.id)" />
                 </div>
             </div>
         </div>
@@ -85,6 +84,7 @@ export default {
             general_achievements: [],
             user_general_achievements: [],
             user_individual_achievements: [],
+            user_passed_challenges: [],
             individual: Boolean
         }
     },
@@ -110,6 +110,7 @@ export default {
         await this.getChallenges()
         await this.getIndividualAchievements()
         await this.getGeneralAchievements()
+        await this.getPassedChallenges()
 
         this.individual = true
 
@@ -124,6 +125,14 @@ export default {
         async getChallenges() {
             await this.$axios.get(this.$api_link + '/challenges', this.auth.config).then((response) => {
                 this.challenges = response.data
+            }).catch((error) => {
+                this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
+            })
+        },
+
+        async getPassedChallenges() {
+            await this.$axios.get(this.$api_link + '/users/' + this.auth.user.id + '/passed-challenges/', this.auth.config).then((response) => {
+                this.user_passed_challenges = response.data
             }).catch((error) => {
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
             })

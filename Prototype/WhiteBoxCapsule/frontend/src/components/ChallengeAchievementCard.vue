@@ -12,7 +12,8 @@
                     <font-awesome-icon icon="check" color="white" />
                 </div>
             </span>
-            <p class="card-text" style="font-style: italic; text-align: justify; font-size: 13px;">{{ challenge.achievement_hint }}</p>
+            <p class="card-text" v-if="passed" style="font-style: italic; text-align: justify; font-size: 13px;">{{ challenge.achievement_hint }}</p>
+            <p class="card-text" v-else style="font-style: italic; text-align: justify; font-size: 13px;">Pass {{challenge.name.split(':')[0]}} to unlock this hint!</p>
         </div>
         
     </div>
@@ -26,7 +27,11 @@ export default {
 
     props: {
         challenge: Object,
-        unlocked: Boolean
+        unlocked: Boolean,
+        passed: {
+            type: Boolean,
+            default: true
+        }
     }
 }
 </script>
