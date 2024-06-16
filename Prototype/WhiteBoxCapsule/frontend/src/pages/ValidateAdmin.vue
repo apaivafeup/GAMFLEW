@@ -14,7 +14,7 @@
               </div>
             </div>
             <div class="row" style="display: flex; flex-direction: column; gap: 2.5px; margin-bottom: 5px;">
-              <h5 style="margin: 0px; padding: 0px;">{{ admin.name }}</h5><br />
+              <h5 style="margin: 0px; padding: 0px; text-align: center;">{{ admin.name }}</h5><br />
               <p class="text-muted" style="text-align: center; font-style: italic; margin: 0px;">{{ admin.username }}
               </p>
             </div>
