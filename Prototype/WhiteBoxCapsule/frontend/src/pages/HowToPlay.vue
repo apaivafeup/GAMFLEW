@@ -302,7 +302,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                     </p>
                     </div>
                     <div v-if="code_coverage == 'decision'">
-                        <h6>Statement Coverage</h6>
+                        <h6>Decision Coverage</h6>
                     <p style="text-align: justify; margin-bottom: 10px;">
                         Decision coverage is about covering all possible outcomes of a decision.
                         It is mostly applied to condition code structures, such as <code>If-Then-Else</code> or <code>Switch Case</code>. <br />
