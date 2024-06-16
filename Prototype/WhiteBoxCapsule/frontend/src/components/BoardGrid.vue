@@ -7,20 +7,22 @@
         </div>
         <div class="game-board-out">
           <div class="box">
-            <OutPieceStack :x="board.outOfBoundsState[board.currentKey].position.x" :y="board.outOfBoundsState[board.currentKey].position.y" />
+            <OutPieceStack :x="board.outOfBoundsState[board.currentKey].position.x"
+              :y="board.outOfBoundsState[board.currentKey].position.y" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
-              id="piece-stack-out-x" @input="changeX()" class="col box" name="piece-stack-out-x"
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-x"
+              @input="changeX()" class="col box" name="piece-stack-out-x"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
-            <input v-else id="piece-stack-out-x" :value="board.outOfBoundsState[board.currentKey].position.x" class="col box disabled" name="piece-stack-out-x"
-              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
+            <input v-else id="piece-stack-out-x" :value="board.outOfBoundsState[board.currentKey].position.x"
+              class="col box disabled" name="piece-stack-out-x" style="width: 50px; text-align: center; font-size: 12px"
+              type="number" placeholder="x" />
             <input @input="changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
               id="piece-stack-out-y" class="col box" name="piece-stack-out-y"
               style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
-            <input v-else id="piece-stack-out-y" :value="board.outOfBoundsState[board.currentKey].position.y" class="col box disabled"
-              style="width: 50px; text-align: center; font-size: 12px" type="number" name="piece-stack-out-y"
-              placeholder="y" />
+            <input v-else id="piece-stack-out-y" :value="board.outOfBoundsState[board.currentKey].position.y"
+              class="col box disabled" style="width: 50px; text-align: center; font-size: 12px" type="number"
+              name="piece-stack-out-y" placeholder="y" />
           </div>
         </div>
       </div>
@@ -35,7 +37,8 @@
         </button>
       </router-link>
       <div class="progress-bar">
-        <div class="row" v-if="board.add" style="display: flex; justify-content: center; text-align: center; font-size: 10px; margin-bottom: 10px;">
+        <div class="row" v-if="board.add"
+          style="display: flex; justify-content: center; text-align: center; font-size: 10px; margin-bottom: 10px;">
           Click a spot to change it! <br />
           More clicks do different things!
         </div>
@@ -143,7 +146,13 @@
         <div class="game-board-label col" style="display: flex; justify-content: center">6</div>
         <div class="game-board-label col" style="display: flex; justify-content: center">7</div>
       </div>
-      <div class="game-board" id="challenge-board">
+      <div class="game-board" v-if="!board.passed" id="challenge-board">
+        <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
+          <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
+            :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
+        </div>
+      </div>
+      <div class="game-board disabled" v-else id="challenge-board">
         <div class="box" v-for="index in 64" :id="'board-box-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)">
           <PieceStack :id="'piece-stack-' + Math.floor((index - 1) / 8) + '-' + ((index - 1) % 8)"
             :x="Math.floor((index - 1) / 8).toString()" :y="((index - 1) % 8).toString()" />
@@ -203,7 +212,7 @@ export default {
     },
 
     is_prime(n) {
-      for(let i = 2, s = Math.sqrt(n); i <= s; i++) {
+      for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
         if (n % i === 0) {
           return false;
         }
@@ -669,15 +678,25 @@ export default {
       }
 
       if (this.board.currentKey == 0) {
-        if (eval(this.challenge.achievement)) {
-          return true
-        }
-        return false
-      } else {
-        for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
+        try {
           if (eval(this.challenge.achievement)) {
             return true
           }
+          return false
+        } catch (error) {
+          alert('An error occurred while checking the achievement. Please try again later.')
+        }
+
+
+      } else {
+        try {
+          for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
+            if (eval(this.challenge.achievement)) {
+              return true
+            }
+          }
+        } catch (error) {
+          alert('An error occurred while checking the achievement. Make sure you understood the hint.\nOtherwise, try again later or contact us.')
         }
         return false
       }
@@ -725,7 +744,7 @@ export default {
     },
 
     exit() {
-      this.$router.push({ name: 'challenges'})
+      this.$router.push({ name: 'challenges' })
     },
   },
 
