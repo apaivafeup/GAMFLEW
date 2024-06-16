@@ -125,6 +125,7 @@ export default {
         async getChallenges() {
             await this.$axios.get(this.$api_link + '/challenges', this.auth.config).then((response) => {
                 this.challenges = response.data
+                this.challenges = this.challenges.filter(challenge => challenge.id < 100)
             }).catch((error) => {
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
             })
