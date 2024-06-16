@@ -359,6 +359,21 @@ button.admin-menu-button {
   z-index: 2;
 }
 
+#theme-toggle-house {
+  background-color: var(--button-color);
+  color: var(--toggle-color);
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  border: none;
+  border-radius: 200px;
+  cursor: pointer;
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+  z-index: 2;
+}
+
 #guide-button {
   background-color: var(--button-color);
   color: var(--toggle-color);

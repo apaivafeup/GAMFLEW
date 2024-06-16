@@ -10,6 +10,7 @@
     id="theme-toggle">💡</button>
   <button @click="this.$router.back()" id="theme-toggle" v-if="!url.includes('challenge/')" class="back">◀️</button>
   <button @click="this.$router.back()" id="theme-toggle" v-else>↩️</button>
+  <button @click="this.$router.push({name: 'home'})" id="theme-toggle-house" >🏠</button>
 </template>
 
 <style>
