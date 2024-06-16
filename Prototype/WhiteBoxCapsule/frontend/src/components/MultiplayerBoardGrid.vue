@@ -624,14 +624,13 @@ export default {
     },
 
     async pass() {
-
-
       await this.$axios.post(this.$api_link + '/game-room/' + this.round.game_room_id + '/game-round/' + this.round.id + '/pass/', {}, this.auth.config)
         .then(response => {
           if (response.data == null) {
             alert("You cannot choose to pass again in this round! Try to pass the challenge before the time runs out!")
+          } else {
+            this.$router.go()
           }
-          this.$router.go()
         })
         .catch((error) => {
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
