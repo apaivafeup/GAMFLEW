@@ -272,12 +272,12 @@ export default {
         { x: 0, y: -1 },
       ]
 
-      for (var vertex in vertices) {
-        for (var direction in directions) {
-          var x = vertex.position.x + direction.x
-          var y = vertex.position.y + direction.y
+      for (var i = 0; i < vertices.length; i++) {
+        for (var j = 0; j < directions.length; j++) {
+          var x = parseFloat(vertices[i].position.x) + parseFloat(directions[j].x)
+          var y = parseFloat(vertices[i].position.y) + parseFloat(directions[j].y)
 
-          if (x < 0 || x >= 8 || y < 0 || y >= 8) {
+          if (x < 0 || x > 7 || y < 0 || y > 7) {
             continue
           }
 

@@ -71,7 +71,7 @@ function writeOut(x, y) {
 
 
 describe('test file 1', () => {
-    it('challenge 1.1', () => {
+   it('challenge 1.1', () => {
         challenge(1)
         outOfBounds(10, 10)
         move(0, 0)
@@ -445,6 +445,8 @@ describe('test file 2', () => {
         add()
         click(0, 0)
         click(0, 1)
+        click(5, 3)
+        click(5, 4)
         submit()
     })
 
@@ -454,6 +456,9 @@ describe('test file 2', () => {
         click(2, 7)
         click(2, 7)
         click(1, 0)
+        add()
+        click(5, 3)
+        click(5, 7)
         submit()
     })
 
@@ -1583,7 +1588,6 @@ describe('test file 7', () => {
         add()
         submit()
     })
-
     it('challenge 7.6', () => {
         challenge(92)
         add()
@@ -1694,6 +1698,7 @@ describe('test file 7', () => {
         add()
         submit("7.12")
     })
+
 
     it('challenge 7.13', () => {
         challenge(99)

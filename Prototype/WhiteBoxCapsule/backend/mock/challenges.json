@@ -302,7 +302,7 @@
                 "!(input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.blue == 1)"
             ]
         },
-        "achievement": "input.state[input.currentKey][input.log[input.log[input.currentKey].length - 1].destination.x][input.log[input.log[input.currentKey].length - 1].destination.y].stack.red == 0 || input.state[input.currentKey][input.log[input.log[input.currentKey].length - 1].destination.x][input.log[input.log[input.currentKey].length - 1].destination.y].stack.blue == 0",
+        "achievement": "this.find_stacks(input, input.currentKey).some((piece) => (piece.stack.red == 0 || piece.stack.blue == 0) && piece.color == 'stack')",
         "achievement_hint": "Make a stack by stacking pieces of the same color.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -332,8 +332,8 @@
                 "(input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.blue == 1)"
             ]
         },
-        "achievement": "input.state[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num].length - 1].destination.y].stack.blue == 0",
-        "achievement_hint": "In one test case, the destination must only have [color] X pieces, if any. X = RGB(255, 0, 0).",
+        "achievement": "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.blue == 0 ",
+        "achievement_hint": "In one test case, the destination must only have X-colored pieces, if any. X = RGB(255, 0, 0).",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -361,7 +361,7 @@
                 "(input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.blue == 1)"
             ]
         },
-        "achievement": "input.state[input.currentKey][Math.round((input.log[input.log[input.currentKey].length - 1].destination.x + input.log[input.log[input.currentKey].length - 1].start.x)/2)][Math.round((input.log[input.log[input.currentKey].length - 1].destination.y + input.log[input.log[input.currentKey].length - 1].start.y)/2)].color == 'empty'",
+        "achievement": "input.state[input.currentKey][Math.round((parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) + parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x))/2)][Math.round((parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y) + parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y))/2)].color == 'empty'",
         "achievement_hint": "The destination must pass the condition on line 25. Make sure the middle piece (line 26) follows the same condition.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -390,7 +390,7 @@
                 "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)/2)].color"
             ]
         },
-        "achievement": "input.state[input.currentKey][Math.round((input.log[input.log[input.currentKey].length - 1].destination.x + input.log[input.log[input.currentKey].length - 1].start.x)/2)][Math.round((input.log[input.log[input.currentKey].length - 1].destination.y + input.log[input.log[input.currentKey].length - 1].start.y)/2)].color == 'blue'",
+        "achievement": "input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y)/2)].color == 'blue'",
         "achievement_hint": "The middle piece (line 26) must be of Y color. Y = RGB(0, 0, 255).",
         "difficulty": "Normal",
         "owner_id": 1
@@ -419,7 +419,7 @@
                 "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color != input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)/2)].color && input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)/2)].color != 'empty'"
             ]
         },
-        "achievement": "input.state[input.currentKey][input.log[input.log[input.currentKey].length - 1].destination.x][input.log[input.log[input.currentKey].length - 1].destination.y].color == 'red'",
+        "achievement": "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == 'red'",
         "achievement_hint": "Look closely at this bar. It has two colors, from left to right: X and Y. Move a piece of color Z, knowing that X = Y + Z.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -449,7 +449,7 @@
                 "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color == input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].start.x + input.log[case_num][input.log[case_num].length - 1].destination.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].start.y + input.log[case_num][input.log[case_num].length - 1].destination.y)/2)].color"
             ]
         },
-        "achievement": "input.state[case_num][Math.round((input.log[input.log[case_num].length - 1].destination.x + input.log[input.log[case_num].length - 1].start.x)/2)][Math.round((input.log[input.log[case_num].length - 1].destination.y + input.log[input.log[case_num].length - 1].start.y)/2)].color == 'red'",
+        "achievement": "input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].destination.x + input.log[case_num][input.log[case_num].length - 1].start.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].destination.y + input.log[case_num][input.log[case_num].length - 1].start.y)/2)].color == 'red'",
         "achievement_hint": "Look closely at this bar. It has two colors, from left to right: X and Y. In one test case, move a piece of color Z, knowing that (X - Z) + 'yellow' = RGB(0, 255, 0).",
         "difficulty": "Normal",
         "owner_id": 1
@@ -478,8 +478,8 @@
                 "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.blue >= 2"
             ]
         },
-        "achievement": "input.state[input.currentKey][input.log[input.log[input.currentKey].length - 1].destination.x][input.log[input.log[input.currentKey].length - 1].destination.y].color == 'blue'",
-        "achievement_hint": "Look closely at this bar. It has two colors, from left to right: X and Y. Move a piece of color X.",
+        "achievement": "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == 'blue' || (input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == 'stack' && input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red == 0)",
+        "achievement_hint": "Look closely at this bar. It has two colors, from right to left: X and Y. Move a piece of color X.",
         "difficulty": "Normal",
         "owner_id": 1
     },
@@ -508,7 +508,7 @@
                 "!(input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.red + input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].stack.blue >= 2)"
             ]
         },
-        "achievement": "input.log[input.log[case_num].length - 1].destination.x + input.log[input.log[case_num].length - 1].start.x + input.log[input.log[case_num].length - 1].destination.y + input.log[input.log[case_num].length - 1].start.y == 18",
+        "achievement": "parseFloat(input.log[case_num][input.log[case_num].length - 1].destination.x) + parseFloat(input.log[case_num][input.log[case_num].length - 1].start.x) + parseFloat(input.log[case_num][input.log[case_num].length - 1].destination.y) + parseFloat(input.log[case_num][input.log[case_num].length - 1].start.y) == 18",
         "achievement_hint": "For challenge X.Y, make sure that start.x + start.y + destination.x + destination.y = Y.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -783,7 +783,7 @@
                 "this.get_pieces(input, input.currentKey).some((piece) => ![1, 3, 5, 7].includes(Number(piece.position.y)) && Number(piece.position.x) % 2 != 0)"
             ]
         },
-        "achievement": "(this.log[input.currentKey][this.log[input.currentKey].length - 1].start.x + this.log[input.currentKey][this.log[input.currentKey].length - 1].start.y) * 2 == 10",
+        "achievement": "(parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x) + parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y)) * 2 == 10",
         "achievement_hint": "For challenge X.Y, make one test case where the last interaction makes the following true: [(start.x + start.y) * 2 = 10].",
         "difficulty": "Normal",
         "owner_id": 1
@@ -811,7 +811,7 @@
                 "this.get_pieces(input, input.currentKey).some((piece) => ![0, 2, 4, 6].includes(Number(piece.position.y)) && Number(piece.position.x) % 2 == 0)"
             ]
         },
-        "achievement": "(this.log[input.currentKey][this.log[input.currentKey].length - 1].destination.x + this.log[input.currentKey][this.log[input.currentKey].length - 1].destination.y) + 2 == 11",
+        "achievement": "(parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) + parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)) + 2 == 11",
         "achievement_hint": "For challenge Y.X, make sure the last interaction makes this expression true: [destination.x + destination.y + 2 = 11].",
         "difficulty": "Normal",
         "owner_id": 1
@@ -1064,7 +1064,7 @@
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)"
             ]
         },
-        "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'red').length == 2 && this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 2",
+        "achievement": "this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'red').length == 2 && this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'blue').length == 2 ",
         "achievement_hint": "For challenge X.Y, make sure to have (Y - X) pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1
@@ -1092,7 +1092,7 @@
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color != Color.RED)"
             ]
         },
-        "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'red').length == 3 && this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 3",
+        "achievement": "this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'red').length == 3 && this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'blue').length == 3",
         "achievement_hint": "For challenge Y.X, make sure to have (X - Y) pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1
@@ -1121,7 +1121,7 @@
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)"
             ]
         },
-        "achievement": "this.get_pieces(input, case_num).forEach((piece) => piece.color).filter((color) => color == 'red').length == 1 && this.get_pieces(input, case_num).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 1",
+        "achievement": "this.get_pieces(input, case_num).filter((piece) => piece.color == 'red').length == 1 && this.get_pieces(input, case_num).filter((piece) => piece.color == 'blue').length == 1",
         "achievement_hint": "For challenge X.Y, make sure to have |(2*X - Y)| pieces of each color.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -1178,7 +1178,7 @@
                 "[{ x: 1, y: 1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && piece.color == 'red' && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[input.currentKey][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ]
         },
-        "achievement": "this.get_pieces(input, input.currentKey).forEach((piece) => piece.color).filter((color) => color == 'blue').length == 3",
+        "achievement": "this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'blue').length == 3",
         "achievement_hint": "For challenge Y.X, make sure you have (X/Y) pieces of the color NOT mentioned in the challenge title.",
         "difficulty": "Easy",
         "owner_id": 1
@@ -2300,7 +2300,7 @@
                 "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": "this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue)",
+        "achievement": "this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue",
         "achievement_hint": "Make sure, in one test case, there is a stack with an equal number of red and blue pieces.",
         "difficulty": "Normal",
         "owner_id": 1
@@ -2414,7 +2414,7 @@
                 "!(this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey))"
             ]
         },
-        "achievement": "this.find_first_stack(input, case_num).color != 'empty' && this.find_first_stack(input, case_num).stack.red == 0",
+        "achievement": "this.find_first_stack(input, input.currentKey).color != 'empty' && this.find_first_stack(input, input.currentKey).stack.red == 0",
         "achievement_hint": "Add a stack of only blue pieces on the out of bounds spot.",
         "difficulty": "Hard",
         "owner_id": 1
@@ -2580,7 +2580,7 @@
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 3"
             ]
         },
-        "achievement": "this.has_adjacent_piece(input, case_num, 'stack') && this.find_first_stack(input, case_num).stack.blue == 0",
+        "achievement": "this.has_adjacent_piece(input, input.currentKey, 'stack') && this.find_first_stack(input, input.currentKey).stack.blue == 0",
         "achievement_hint": "Place a stack of red pieces adjacent to a triangle vertex.",
         "difficulty": "Easy",
         "owner_id": 1
@@ -2637,7 +2637,7 @@
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
         },
-        "achievement": "input.outOfBoundsState[case_num].position.x == 7 && input.outOfBoundsState[case_num].position.y == 8 && this.outOfBoundsState[case_num].color == 'red'",
+        "achievement": "input.outOfBoundsState[case_num].position.x == 7 && input.outOfBoundsState[case_num].position.y == 8 && input.outOfBoundsState[case_num].color == 'red'",
         "achievement_hint": "For challenge X.Y, place a red piece on position (X, Y).",
         "difficulty": "Normal",
         "owner_id": 1
@@ -2695,7 +2695,7 @@
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
         },
-        "achievement": "this.state[case_num][7][3].color == 'stack' && this.state[case_num][7][3].stack.red == 3",
+        "achievement": "input.state[case_num][7][3].color == 'stack' && input.state[case_num][7][3].stack.red == 3",
         "achievement_hint": "For challenge X.Y, in one test case, place (Y - X) red pieces on position (X, Y - X)",
         "difficulty": "Normal",
         "owner_id": 1
@@ -2724,7 +2724,7 @@
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 2"
             ]
         },
-        "achievement": "input.outOfBoundsState[input.currentKey].position.x == -4 && input.outOfBoundsState[input.currentKey].position.y == 18 && this.outOfBoundsState[input.currentKey].color == 'red'",
+        "achievement": "input.outOfBoundsState[input.currentKey].position.x == -4 && input.outOfBoundsState[input.currentKey].position.y == 18 && input.outOfBoundsState[input.currentKey].color == 'red'",
         "achievement_hint": "For challenge Y.X, place a red piece on position (Y - X, Y + X).",
         "difficulty": "Easy",
         "owner_id": 1
@@ -2783,7 +2783,7 @@
                 "new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]).size == 1 && [...(new Set([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])]))] == 0"
             ]
         },
-        "achievement": "input.outOfBoundsState[input.currentKey].position.x == 13 && input.outOfBoundsState[input.currentKey].position.y == 7 && this.outOfBoundsState[input.currentKey].stack.red == this.outOfBoundsState[input.currentKey].stack.blue && this.outOfBoundsState[input.currentKey].stack.red + this.outOfBoundsState[input.currentKey].stack.blue == 6",
+        "achievement": "input.outOfBoundsState[input.currentKey].position.x == 13 && input.outOfBoundsState[input.currentKey].position.y == 7 && input.outOfBoundsState[input.currentKey].stack.red == input.outOfBoundsState[input.currentKey].stack.blue && input.outOfBoundsState[input.currentKey].stack.red + input.outOfBoundsState[input.currentKey].stack.blue == 6",
         "achievement_hint": "For challenge Y.X, make a stack of |(X - Y)| pieces in position (X, Y), with the same number of red and blue pieces.",
         "difficulty": "Hard",
         "owner_id": 1
