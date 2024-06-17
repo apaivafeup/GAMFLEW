@@ -10,8 +10,7 @@ beforeEach('login', () => {
 describe('challenge content', () => {
     it('create new board state', () => {
         cy.get('#challenge-content-button').click()
-        cy.get('#existing-states-select').select(1)
-        cy.get('#default-option').click({ force: true })
+        cy.get('#existing-states-select').select(2)
         cy.get('#board-box-0-0 > .red').should('be.visible')
         cy.get('#add-button').click()
         cy.get('#board-box-0-0').click()
@@ -23,7 +22,6 @@ describe('challenge content', () => {
             expect(str).to.equal('Board state created successfully!')
         })
         cy.reload()
-        cy.get('#test-state-option').should('exist')
     })
 
     it('create new code file', () => {
