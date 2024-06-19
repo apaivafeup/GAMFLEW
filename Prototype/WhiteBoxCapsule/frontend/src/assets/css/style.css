@@ -344,12 +344,13 @@ button.admin-menu-button {
   margin-bottom: 10px;
 }
 
-#theme-toggle {
+.theme-toggle {
   background-color: var(--button-color);
   color: var(--toggle-color);
   padding: 5px;
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
+  font-size: 18px;
   border: none;
   border-radius: 200px;
   cursor: pointer;
@@ -363,15 +364,19 @@ button.admin-menu-button {
   background-color: var(--button-color);
   color: var(--toggle-color);
   padding: 5px;
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
+  font-size: 18px;
   border: none;
   border-radius: 200px;
   cursor: pointer;
   position: fixed;
   right: 20px;
-  bottom: 60px;
   z-index: 2;
+}
+
+.theme-toggle {
+  transition: ease-in-out 0.5s;
 }
 
 #guide-button {

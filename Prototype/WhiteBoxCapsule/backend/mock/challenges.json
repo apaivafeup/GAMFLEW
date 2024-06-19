@@ -50,7 +50,7 @@
             ]
         },
         "achievement": "input.log[case_num][input.log[case_num].length - 1].destination.x == 10 && input.log[case_num][input.log[case_num].length - 1].destination.y == 20",
-        "achievement_hint": "Consider, in one test case, that the line (x) for the out of bounds spot starts with 1, and that the column (y) starts with 2. Use the lowest POSITIVE numbers above 9 above 9!",
+        "achievement_hint": "Consider, in one test case, that the line (x) for the out of bounds spot starts with 1, and that the column (y) starts with 2. Use the lowest POSITIVE numbers above 9!",
         "difficulty": "Easy",
         "owner_id": 1
     },
@@ -108,7 +108,7 @@
             ]
         },
         "achievement": "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 1 && Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y) == 4",
-        "achievement_hint": "For challenge X.Y, consider moving Y positions on the x-axis, and X positions on the y-axis. Only the last movement made is considered!",
+        "achievement_hint": "For challenge Y.X, consider moving Y positions on the x-axis, and X positions on the y-axis. Only the last movement made is considered!",
         "difficulty": "Very Easy",
         "owner_id": 1
     },
@@ -1963,7 +1963,7 @@
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": "this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue",
+        "achievement": "this.find_first_stack(input, case_num).stack.red != 0 && this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue",
         "achievement_hint": "In one test case, make a stack where both colors have the same number of pieces.",
         "difficulty": "Normal",
         "owner_id": 1

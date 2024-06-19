@@ -1,6 +1,6 @@
 # <justify>GAMFLEW, Teacher View: Validation Experiment
 
-This document serves as a script/guide to a validation experiment of GAMFLEW, a new serious game to teach white-box testing techniques. Please follow the instructions below to properly participate in the experiment.
+This document serves as a script/guide to a validation experiment of GAMFLEW, a new serious game to teach white-box testing techniques. Please follow the instructions below to properly participate in the experiment. Please check the demonstration video in [this link](https://drive.google.com/file/d/1GHOaQfvJjSebg_ltgKpYLrIKLt0Bu9te/view?usp=sharing).
 
 ## 1. Introduction
 This experiment happens at your own pace, but, as a suggestion, one should only need a maximum of 45 minutes to complete it.
@@ -22,14 +22,14 @@ However, if you want to create your own account, click the "Register" link on th
 
 After authentication, you will be redirected to the game's main page. Here, click on the "Single Player" button.
 
-You will then be on the Challenges page, which lists all challenges. 99 challenges are available, but to make it easier, we selected the following challenges:
+You will then be on the Challenges page, which lists all challenges. 99 challenges are available, but to make it easier, we selected some challenges. **Make sure you beat one of the following**:
 1. Challenge 1.1 (Statement coverage, Very Easy)
 2. Challenge 1.2 (Decision coverage, Easy)
 3. Challenge 1.3 (Modified condition/decision coverage, Hard)
 4. Challenge 2.6 (Condition/decision coverage, Normal)
 5. Challenge 2.8 (Condition coverage, Easy)
 
-For this experiment, **we only ask you to complete one of the challenges**. After this, one should be familiar with the game mechanics to proceed to Part 2.
+After beating a challenge, one should be familiar with the game mechanics to proceed to Part 2.
 
 ### How to Play
 The game is built on a simple idea: players get a challenge containing a code and a specific coverage objective. The player must then "write" test cases to achieve the coverage objective. 
@@ -95,7 +95,7 @@ function makeAMove(start, destination) {
 }
 ```
 
-Pretty simple stuff, right? We recommend you name it *"Code File 0: Make A Move"*. You can give it any name as long as you can identify it. After this, submit it, using the respective button.
+We recommend you name it *"Code File 0: Make A Move"*. You can give it any name as long as you can identify it. After this, submit it, using the respective button.
 
 ![Code File Creator](./figures/challenge_content_creator_2.png)
 

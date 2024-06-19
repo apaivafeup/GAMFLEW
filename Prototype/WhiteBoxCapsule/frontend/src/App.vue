@@ -6,21 +6,18 @@
   <div id="app" class="container">
     <router-view :key="$route.fullPath"></router-view>
   </div>
-  <button v-if="!url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode"
-    id="theme-toggle">💡</button>
-  <button @click="this.$router.back()" id="theme-toggle" v-if="!url.includes('challenge/')" class="back">◀️</button>
-  <button @click="this.$router.back()" id="theme-toggle" v-else>↩️</button>
-  <button @click="this.$router.push({name: 'home'})" id="theme-toggle-house" >🏠</button>
+  
+  <button v-if="open && !url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode" class="theme-toggle" style="bottom: 185px;">💡</button>
+  <button @click="this.$router.back()" class="theme-toggle" v-if="open && !url.includes('challenge/')" style="bottom: 130px;">↩️</button>
+  <button @click="this.$router.push({name: 'home'})" v-if="open" class="theme-toggle" id="theme-toggle-house" style="bottom: 75px;">🏠</button>
+  <button v-if="!open" @click="open = !open" class="theme-toggle" style="bottom: 20px; opacity: 40%;">⬆️</button>
+  <button v-else @click="open = !open" class="theme-toggle" style="bottom: 20px; opacity: 100%;">⬇️</button>
 </template>
 
 <style>
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
-}
-
-.back {
-  margin-right: 45px;
 }
 </style>
 
@@ -57,7 +54,8 @@ export default {
   components: { LoadingIcon },
   data: () => {
     return {
-      url: window.location.href
+      url: window.location.href,
+      open: false,
     };
   },
 
