@@ -93,7 +93,7 @@
 
       </div>
     </div>
-    <div class="row" style="display: flex; justify-content: center; margin-top: 75px;">
+    <div class="row" style="display: flex; justify-content: center; margin-top: 40px;">
       <button class="admin-menu-button" @click="logout($event)" id="logout-button" style="width: 300px;">
         Logout
       </button>

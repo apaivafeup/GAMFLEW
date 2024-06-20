@@ -7,7 +7,7 @@
     <router-view :key="$route.fullPath"></router-view>
   </div>
   
-  <button v-if="open && !url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode" class="theme-toggle" style="bottom: 185px;">💡</button>
+  <button v-if="open && !url.includes('content-challenge') && !url.includes('challenge/')" @click="toggleMode()" class="theme-toggle" style="bottom: 185px;">💡</button>
   <button @click="this.$router.back()" class="theme-toggle" v-if="open && !url.includes('challenge/')" style="bottom: 130px;">↩️</button>
   <button @click="this.$router.push({name: 'home'})" v-if="open" class="theme-toggle" id="theme-toggle-house" style="bottom: 75px;">🏠</button>
   <button v-if="!open" @click="open = !open" class="theme-toggle" style="bottom: 20px; opacity: 40%;">⬆️</button>

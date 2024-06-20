@@ -391,7 +391,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                     <p style="text-align: justify; margin-bottom: 10px;">
                         To make a challenge, you need both an initial state and a code file to associate to it. These, of course, affect how the challenge is played and what must be done to pass it.
                     </p>
-                    <img src="../assets/pictures/challenge_content_creator.png" style="width: 50%;" />
+                    <img src="../assets/pictures/challenge_content_creator_1.png" style="width: 50%;" />
                     <img src="../assets/pictures/challenge_content_creator_2.png" style="width: 50%;" />
                     <p style="text-align: justify; margin-bottom: 10px;">
                         The left tab allows to create new initial board states - these define how a board is initialized when a player starts a challenge. <br style="margin-bottom: 5px;"/>

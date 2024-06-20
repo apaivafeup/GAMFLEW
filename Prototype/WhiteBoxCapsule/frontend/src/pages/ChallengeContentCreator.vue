@@ -60,6 +60,8 @@ export default {
       stateName: '',
       selectedCodeId: -1,
       selectedCodeString: '',
+      submittedBoard: false,
+      submittedCode: false,
       codeName: '',
       codeString: '// Placeholder code\n\nfunction hello() {\n  console.log("Hello World!");\n}\n\nhello();',
       defaultCodeString: '// Placeholder code\n\nfunction hello() {\n  console.log("Hello World!");\n}\n\nhello();'
@@ -245,17 +247,20 @@ export default {
   </div>
   <div class="row" style="justify-content: center; margin-bottom: 5px;">
     <button class="menu-button" id="board-button" v-if="!this.board" @click="this.change('board')"
-      style="width: 30%; padding: 5px;">
+      style="width: 30%; padding: 5px; font-size: 16px;">
       Board State
     </button>
-    <button class="menu-button selected" id="board-button" v-else style="width: 30%; padding: 5px;">
+    <button class="menu-button selected" id="board-button" v-else style="width: 30%; padding: 5px;  font-size: 16px;">
       Board State
     </button>
-    <button class="menu-button" id="code-button" v-if="!this.code" @click="this.change('code')" style="width: 30%;">
+    <button class="menu-button" id="code-button" v-if="!this.code" @click="this.change('code')" style="width: 30%;  font-size: 16px;">
       Code
     </button>
-    <button class="menu-button selected" id="code-button" v-else style="width: 30%;">
+    <button class="menu-button selected" id="code-button" v-else style="width: 30%;  font-size: 16px;">
       Code
+    </button>
+    <button class="menu-button" id="challenge-manager-button" style="width: 30%;  font-size: 16px;" @click="this.$router.push({name: 'challenge-manager'})">
+      Challenge Manager
     </button>
 
   </div>

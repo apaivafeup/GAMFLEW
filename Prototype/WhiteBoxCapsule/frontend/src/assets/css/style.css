@@ -333,6 +333,7 @@ button.menu-button {
   margin: 10px;
   padding: 10px 15px;
   width: 100%;
+  font-size: 16px;
 }
 
 button.admin-menu-button {
@@ -342,6 +343,7 @@ button.admin-menu-button {
   padding: 10px 15px;
   width: 100%;
   margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .theme-toggle {
@@ -542,6 +544,7 @@ textarea {
   margin: 3px 3px 3px 0px;
   padding: 5px 10px;
   height: 40px;
+  font-size: 16px;
 }
 
 .guide-button-selected {
