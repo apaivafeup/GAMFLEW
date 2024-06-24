@@ -17,7 +17,7 @@ describe('Authentication', () => {
         cy.contains('Login').should('be.visible')
     })
 
-    it('error page (not authorized - example)', () => {
+    it('error page (example)', () => {
         cy.visit('http://localhost:5173/#/400_Bad%20Request').wait(3000)
         cy.contains('400').should('be.visible')
     })
