@@ -57,7 +57,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                         through different boards - for each challenge, you get as many as you need.
                         <br style="margin-bottom: 5px" />
                         When all your test cases are done, click the
-                        <button class="button is-primary is-fullwidth">Submit</button> button to check
+                        <button class="button is-primary is-fullwidth">Go!</button> button to check
                         your answer. <br style="margin-bottom: 5px" />
                         After this, you have to click the
                         <button class="button is-primary is-fullwidth">Comment</button> button and explain

@@ -50,7 +50,7 @@ export default {
           border-radius: 50px;
           background-clip: padding-box, border-box;">
             <font-awesome-icon icon="award" />
-            Achievement
+            Achievement Hint
           </button>
           <button class="button disabled" v-else style="border-style: solid;
           border: double 1px transparent;

@@ -93,7 +93,7 @@ pre {
 
 .game-board-out {
   display: grid;
-  grid-template-columns: 64px;
+  grid-template-columns: 150px;
   grid-template-rows: 64px;
   justify-content: center;
 }
