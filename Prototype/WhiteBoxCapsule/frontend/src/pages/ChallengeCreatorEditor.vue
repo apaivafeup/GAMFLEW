@@ -452,7 +452,7 @@ export default {
   methods: {
     addTest(index) {
       if (this.challenge.test_cases_count > 1 && this.challenge.challenge_type == 'statement') {
-        alert('For statement coverage, you can only have one test case. Did you meant to add a precondition?')
+        alert('For statement coverage, you can only have one test case. Did you mean to add a precondition?')
         return
       }
 

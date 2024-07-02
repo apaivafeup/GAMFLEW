@@ -6,21 +6,26 @@
           <div class="game-board-label col" style="display: flex; justify-content: center">Out of Bounds</div>
         </div>
         <div class="game-board-out">
-          <div class="box">
+          <div class="box" style="justify-self: center; width: 64px; height: 64px;">
             <OutPieceStack :x="board.outOfBoundsState[board.currentKey].position.x" :y="board.outOfBoundsState[board.currentKey].position.y" />
           </div>
-          <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
-            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
-              id="piece-stack-out-x" @input="changeX()" class="col box" name="piece-stack-out-x"
-              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
-            <input v-else id="piece-stack-out-x" :value="board.outOfBoundsState[board.currentKey].position.x" class="col box disabled" name="piece-stack-out-x"
-              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x" />
+          <div style="width: 100%; display: flex; flex-direction: row; justify-content: center; margin-top: 7.5px;">
+            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-x"
+              @input="changeX()" class="col box" name="piece-stack-out-x"
+              style="width: 50px; text-align: center; font-size: 12px; width: 32px;" type="number" placeholder="x" />
+            <input v-else id="piece-stack-out-x" :value="board.outOfBoundsState[board.currentKey].position.x"
+              class="col box disabled" name="piece-stack-out-x" style=" width: 32px; text-align: center; font-size: 12px"
+              type="number" placeholder="x" />
             <input @input="changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
               id="piece-stack-out-y" class="col box" name="piece-stack-out-y"
-              style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
-            <input v-else id="piece-stack-out-y" :value="board.outOfBoundsState[board.currentKey].position.y" class="col box disabled"
-              style="width: 50px; text-align: center; font-size: 12px" type="number" name="piece-stack-out-y"
-              placeholder="y" />
+              style=" width: 32px; text-align: center; font-size: 12px" type="number" placeholder="y" />
+            <input v-else id="piece-stack-out-y" :value="board.outOfBoundsState[board.currentKey].position.y"
+              class="col box disabled" style=" width: 32px; text-align: center; font-size: 12px" type="number"
+              name="piece-stack-out-y" placeholder="y" />
+          </div>
+          <div class="row" style="display: flex; justify-content: center; text-align: center; font-size: 10px; margin-bottom: 10px; width: 120%; margin-top: 5px;">
+            Move a piece here to get it out of bounds.
+            You can change coordinates using the input boxes.
           </div>
         </div>
       </div>
