@@ -1,9 +1,5 @@
 <template>
   <div class="container" style="max-width: 95% !important;">
-    <div class="row" style="text-align: center;">
-      <h2 v-if="id == null">Challenge Creator</h2>
-      <h2 v-else>Challenge Editor</h2>
-    </div>
     <div style="display: flex; flex-direction: column; justify-content: center; margin-bottom: 10px;">
       <div class="row" style="justify-content: center; display: flex; flex-direction: row;">
         <div class="col">
@@ -310,7 +306,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 </script>
 
 <script>
-import GameCredits from './GameCredits.vue'
+import GameCredits from '../pages/GameCredits.vue'
 import Menu from '../components/Menu.vue'
 import BoardChecker from '../components/BoardChecker.vue'
 import { boardCreatorStore } from '../store/boardCreator.js'

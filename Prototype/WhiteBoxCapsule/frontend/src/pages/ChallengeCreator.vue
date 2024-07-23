@@ -15,44 +15,24 @@ import { authStore } from '../store/authStore.js'
 
 import { h, resolveComponent } from 'vue'
 import LoadingIcon from '../components/LoadingIcon.vue';
+import ChallengeCreator from '../components/ChallengeCreator.vue'
 
 export default {
   async beforeMount() {
-    let loader = this.$loading.show({
-      color: '#A959FF',
-      container: this.fullPage ? null : this.$refs.formContainer,
-      transition: 'fade',
-      canCancel: true,
-      freezeScroll: true,
-      onCancel: this.onCancel,
-      opacity: 0.9,
-      blur: '50px'
-    },
-      {
-        default: h(resolveComponent('LoadingIcon'))
-      });
-
     this.boardCreator = boardCreatorStore()
     this.auth = authStore()
     this.auth.checkAuth()
 
     await this.getBoardStates()
     await this.getCodeFiles()
-
-    if (this.$error) {
-      loader.hide()
-      return
-    }
-
-    loader.hide()
   },
 
   data() {
     return {
       boardCreator: null,
       board: true,
-      details: false,
       code: false,
+      challenge_tab: false,
       boardStates: [],
       codeFiles: [],
       selectedStateId: 0,
@@ -94,20 +74,20 @@ export default {
     },
 
     change(state) {
-      var current = (this.board ? 'board' : (this.details ? 'details' : 'code'))
+      var current = (this.board ? 'board' : (this.code ? 'code' : 'challenge_tab'))
 
       if (state == 'board') {
         this.board = !this.board
-        this.details = false
-        this.code = false
-      } else if (state == 'details') {
-        this.board = false
-        this.details = !this.details
+        this.challenge_tab = false
         this.code = false
       } else if (state == 'code') {
         this.board = false
-        this.details = false
         this.code = !this.code
+        this.challenge_tab = false
+      } else if (state == 'challenge-tab') {
+        this.board = false
+        this.code = false
+        this.challenge_tab = true
       }
     },
 
@@ -236,7 +216,8 @@ export default {
   components: {
     Menu,
     BoardCreator,
-    'code-editor': CodeEditor
+    'code-editor': CodeEditor,
+    ChallengeCreator
   }
 }
 </script>
@@ -259,8 +240,11 @@ export default {
     <button class="menu-button selected" id="code-button" v-else style="width: 30%;  font-size: 16px;">
       Code
     </button>
-    <button class="menu-button" id="challenge-manager-button" style="width: 30%;  font-size: 16px;" @click="this.$router.push({name: 'challenge-manager'})">
-      Challenge Manager
+    <button class="menu-button" id="challenge-button" style="width: 30%;  font-size: 16px;" @click="this.change('challenge-tab')" v-if="!this.challenge_tab" >
+      Challenge
+    </button>
+    <button class="menu-button selected" id="challenge-button" v-else style="width: 30%; font-size: 16px;">
+      Challenge
     </button>
 
   </div>
@@ -301,9 +285,6 @@ export default {
       </div>
     </div>
     <div class="col" style="flex: 0 0 0%;" v-if="code">
-      <div class="row">
-        <h3>Code Snippets</h3>
-      </div>
       <div class="row">
         <h6 style="margin-bottom: 2.5px;">Code File Name</h6>
       </div>
@@ -376,6 +357,10 @@ export default {
         style="width: 550px !important; max-height: 487.5px; overflow: scroll; border-radius: 12px; border: var(--box-border); background: var(--bs-gray-100);"
         theme="stackoverflow-light" :line-nums="true" v-model="codeString" v-if="code">
       </code-editor>
+    </div>
+
+    <div class="col" v-if="challenge_tab">
+      <ChallengeCreator />
     </div>
 
   </div>

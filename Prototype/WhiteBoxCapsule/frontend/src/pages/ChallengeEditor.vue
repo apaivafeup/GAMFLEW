@@ -1,6 +1,6 @@
 <template>
   <div class="col" style="text-align: center; margin-bottom: 15px;">
-    <h1>Challenge Manager</h1>
+    <h1>Challenge Editor</h1>
   </div>
   
   <div class="col" style="display: flex; justify-content: center; align-items: center; flex-direction: column">
