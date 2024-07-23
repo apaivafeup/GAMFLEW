@@ -111,18 +111,12 @@
             <OutPieceStack :x="board.outOfBoundsState[board.currentKey].position.x" :y="board.outOfBoundsState[board.currentKey].position.y" />
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center; margin-top: 7.5px;">
-            <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-x"
-              @input="changeX()" class="col box" name="piece-stack-out-x"
+            <input id="piece-stack-out-x"
+              @change="changeX()" class="col box" name="piece-stack-out-x"
               style="width: 50px; text-align: center; font-size: 12px; width: 32px;" type="number" placeholder="x" />
-            <input v-else id="piece-stack-out-x" :value="board.outOfBoundsState[board.currentKey].position.x"
-              class="col box disabled" name="piece-stack-out-x" style=" width: 32px; text-align: center; font-size: 12px"
-              type="number" placeholder="x" />
-            <input @input="changeY()" v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0"
+            <input @change="changeY()"
               id="piece-stack-out-y" class="col box" name="piece-stack-out-y"
               style=" width: 32px; text-align: center; font-size: 12px" type="number" placeholder="y" />
-            <input v-else id="piece-stack-out-y" :value="board.outOfBoundsState[board.currentKey].position.y"
-              class="col box disabled" style=" width: 32px; text-align: center; font-size: 12px" type="number"
-              name="piece-stack-out-y" placeholder="y" />
           </div>
           <div class="row" style="display: flex; justify-content: center; text-align: center; font-size: 10px; margin-bottom: 10px; width: 120%; margin-top: 5px;">
             Move a piece here to get it out of bounds.
@@ -479,14 +473,29 @@ export default {
       return new Piece({ x: -2, y: -2 }, Color.EMPTY)
     },
 
+    moveOutOfBounds() {
+      this.board.log[this.board.currentKey].push({
+          type: 'move',
+          start: { x: this.board.outOfBoundsState[this.board.currentKey].position.x, y: this.board.outOfBoundsState[this.board.currentKey].position.y },
+          destination: {
+            x: parseInt((document.getElementById('piece-stack-out-x').value == '' ? '-1' : document.getElementById('piece-stack-out-x').value)),
+            y: parseInt((document.getElementById('piece-stack-out-y').value == '' ? '-1' : document.getElementById('piece-stack-out-y').value))
+          }
+        })
+
+      this.board.updateInfoState()
+    },
+
     changeX() {
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
+        this.moveOutOfBounds()
         this.outX = document.getElementById('piece-stack-out-x').value
       }
     },
 
     changeY() {
       if (!isNaN(document.getElementById('piece-stack-out-x').value)) {
+        this.moveOutOfBounds()
         this.outY = document.getElementById('piece-stack-out-y').value
       }
     },
