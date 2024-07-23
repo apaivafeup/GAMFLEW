@@ -11,31 +11,14 @@
     </div>
     <div class="accordion" id="accordionExample" style="width: 1250px;">
       <div class="accordion-item" v-for="code_file in code_files">
-        <h2 class="accordion-header" :id="'heading' + code_file.id">
-          <button
-            :id="'accordion-button-' + code_file.id"
-            class="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            :data-bs-target="'#collapse' + code_file.id"
-            :aria-controls="'collapse' + code_file.id"
-          >
+        <h2 class="accordion-header" :id="'heading-' + code_file.id" v-if="challenges[code_file.id] != undefined">
+          <button :id="'accordion-button-' + code_file.id" class="accordion-button collapsed" type="button" @click="toggleAccordion(code_file.id)">
             {{ code_file.name }}
           </button>
         </h2>
-        <div
-          :id="'collapse-' + code_file.id"
-          class="accordion-collapse collapse show"
-          :aria-labelledby="'heading' + code_file.id"
-        >
-          <div class="accordion-body">
-            <ul class="list-group"  style="display: grid; grid-template-columns: repeat(3, 1.5fr); grid-gap: 10px;" >
-              <li
-                class="list-group-item"
-                v-if="challenges[code_file.id]"
-                v-for="challenge in challenges[code_file.id].sort(sort_function)"
-                :key="challenge.id"
-              >
+        <div v-if="challenges[code_file.id] != undefined && challenges[code_file.id].length > 0" class="accordion-body accordion-collapse collapse" :id="'collapse-' + code_file.id" data-bs-parent="challengeList">
+            <ul class="list-group"  style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 10px;" >
+              <li class="list-group-item" v-if="challenges[code_file.id]" v-for="challenge in challenges[code_file.id].sort(sort_function)" :key="challenge.id" >
                 <ChallengeCard
                   :editor="true"
                   :id="'challenge-card-' + challenge.id"
@@ -45,7 +28,6 @@
                 />
               </li>
             </ul>
-          </div>
         </div>
       </div>
     </div>
@@ -141,6 +123,19 @@ export default defineComponent({
         this.$router.push({ name: 'challenge-creator' })
       else
         this.$router.push({ name: 'challenge-editor', params: { id: id } })
+    },
+
+    toggleAccordion(id) {
+      let button = document.getElementById('accordion-button-' + id)
+      let collapse = document.getElementById('collapse-' + id)
+
+      if (collapse.classList.contains('show')) {
+        collapse.classList.remove('show')
+        button.classList.add('collapsed')
+      } else {
+        collapse.classList.add('show')
+        button.classList.remove('collapsed')
+      }
     }
   }
 })
