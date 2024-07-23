@@ -503,6 +503,8 @@ def delete_board_state(current_user: Annotated[models.User, Depends(get_current_
 
 @app.delete('/code-file/{code_file_id}', response_model=models.CodeFile)
 def delete_code_file(current_user: Annotated[models.User, Depends(get_current_active_user)], code_file_id: int, db: Session = Depends(get_db)):
+    if (current_user.user_type != schemas.UserType.ADMIN and code_file_id < 7):
+        raise HTTPException(status_code=401, detail="Unauthorized.")
     return crud.delete_code_file(db=db, code_file_id=code_file_id)
 
 @app.post('/update/code-file/{code_file_id}', response_model=models.CodeFile)

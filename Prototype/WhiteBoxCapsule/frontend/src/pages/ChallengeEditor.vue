@@ -11,9 +11,12 @@
     </div>
     <div class="accordion" id="accordionExample" style="width: 1250px;">
       <div class="accordion-item" v-for="code_file in code_files">
-        <h2 class="accordion-header" :id="'heading-' + code_file.id" v-if="challenges[code_file.id] != undefined">
+        <h2 class="accordion-header" :id="'heading-' + code_file.id" v-if="challenges[code_file.id] != undefined" style="display: grid; grid-template-columns: 80% 15%;">
           <button :id="'accordion-button-' + code_file.id" class="accordion-button collapsed" type="button" @click="toggleAccordion(code_file.id)">
             {{ code_file.name }}
+          </button>
+          <button :id="'accordion-delete-button-' + code_file.id" class="menu-button" type="button" style="margin: 20px; font-size: 12px; border-radius: 15px; " @click="deleteCodeFile(code_file.id)">
+            Delete
           </button>
         </h2>
         <div v-if="challenges[code_file.id] != undefined && challenges[code_file.id].length > 0" class="accordion-body accordion-collapse collapse" :id="'collapse-' + code_file.id" data-bs-parent="challengeList">
@@ -114,6 +117,18 @@ export default defineComponent({
   },
 
   methods: {
+    async deleteCodeFile(id) {
+      console.log(id)
+      await this.$axios.delete(this.$api_link + '/code-file/' + id, this.auth.config)
+        .then(response => {
+          alert('Code file deleted successfully!')
+          this.$router.go()
+        })
+        .catch((error) => {
+          alert('An error occurred when deleting the code file. Please try again later.')
+        })
+    },
+
     sort_function(a, b) {
       return a.id - b.id
     },

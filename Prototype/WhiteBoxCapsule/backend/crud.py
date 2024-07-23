@@ -1422,6 +1422,17 @@ def get_player_leaderboard(db: Session):
     return result
 
 def delete_board_state(db: Session, board_state_id: int):
+    challenges = db.query(schemas.Challenge).filter(schemas.Challenge.initial_board == board_state_id).all()
+
+    challenge_ids = [challenge.id for challenge in challenges]
+    attempts = db.query(schemas.Attempt).filter(schemas.Attempt.challenge_id.in_(challenge_ids)).all()
+
+    for attempt in attempts:
+        db.delete(attempt)
+    
+    for challenge in challenges:
+        db.delete(challenge)
+
     board_state_to_delete = get_board_state(db, board_state_id)
     if board_state_to_delete is None:
         return None
@@ -1430,6 +1441,17 @@ def delete_board_state(db: Session, board_state_id: int):
     return board_state_to_delete
 
 def delete_code_file(db: Session, code_file_id: int):
+    challenges = db.query(schemas.Challenge).filter(schemas.Challenge.code_file == code_file_id).all()
+
+    challenge_ids = [challenge.id for challenge in challenges]
+    attempts = db.query(schemas.Attempt).filter(schemas.Attempt.challenge_id.in_(challenge_ids)).all()
+
+    for attempt in attempts:
+        db.delete(attempt)
+    
+    for challenge in challenges:
+        db.delete(challenge)
+
     code_file_to_delete = get_code_file(db, code_file_id)
     if code_file_to_delete is None:
         return None

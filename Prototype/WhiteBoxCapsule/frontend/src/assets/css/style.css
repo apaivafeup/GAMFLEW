@@ -787,3 +787,11 @@ button.badge.comment-score-badge:hover:nth-child(even) {
   height: 30px;
   width: 30px;
 }
+
+.accordion-button {
+  border-color: transparent;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
