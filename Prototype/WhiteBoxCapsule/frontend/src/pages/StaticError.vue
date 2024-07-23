@@ -17,7 +17,7 @@ export default {
         <h2 style="font-size: 56px; font-family:'Lemon Milk';color:#8647d4;"> <em>Not Found</em></h2>
       </div>
       <div class="col">
-        <img src="https://i.ibb.co/BnR2dGP/logo.png" style="width:100%;margin-top:30px;">
+        <img src="../assets/pictures/logo.png" style="width:100%;margin-top:30px;">
         <p style="margin-top: 5px; text-align: center; font-size: 26px; font-family: 'Lemon Milk'; color: #8647d4;"><strong>GAM</strong>e <strong>F</strong>or <strong>LE</strong>arning <strong>W</strong>hite-box testing</p>
       </div>
     </div>

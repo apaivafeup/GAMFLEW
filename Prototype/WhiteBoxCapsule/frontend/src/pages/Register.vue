@@ -100,7 +100,7 @@ export default {
 <template>
     <div>
         <div class="row" style="text-align: center; justify-content: center;">
-            <img src="https://i.ibb.co/BnR2dGP/logo.png" style="width: 600px; margin-top: 30px;" />
+            <img src="../assets/pictures/logo.png" style="width: 600px; margin-top: 30px;" />
         </div>
         <div class="row" style="justify-content: center; margin-top: 30px">
             <h2 style="text-align: center;">Register</h2>

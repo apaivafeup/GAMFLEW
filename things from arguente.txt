@@ -1,0 +1,2 @@
+Using points as currency to buy hints (successful submission comments, for example, or to unlock an achievement hint early).
+Test flakiness + smells.

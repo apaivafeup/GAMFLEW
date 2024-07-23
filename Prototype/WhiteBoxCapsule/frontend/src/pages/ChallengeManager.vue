@@ -18,14 +18,13 @@
             type="button"
             data-bs-toggle="collapse"
             :data-bs-target="'#collapse' + code_file.id"
-            aria-expanded="true"
             :aria-controls="'collapse' + code_file.id"
           >
             {{ code_file.name }}
           </button>
         </h2>
         <div
-          :id="'collapse' + code_file.id"
+          :id="'collapse-' + code_file.id"
           class="accordion-collapse collapse show"
           :aria-labelledby="'heading' + code_file.id"
         >

@@ -4,83 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "458019183aa1fb11",
+        "id": "76ce5b17a21d4792",
         "type": "tabs",
         "children": [
           {
-            "id": "e1395164b87d8125",
+            "id": "98ec322d999bca24",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Bibliography/Software-testing education - A systematic literature mapping.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ded6a7429f8b8613",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Bibliography/Software-testing education - A systematic literature mapping.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e67e1dca6f339c1c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Bibliography/Towards a Model of Testers' Cognitive Processes - Software Testing as a Problem Solving Approach.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "adee9fd4950ae883",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "State of the Art/Snowballed References.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9f6cd16bf844b094",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Bibliography/Exploring the industry’s challenges in software testing - An empirical study.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "418c8d98307a0621",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Bibliography/Exploring the industry’s challenges in software testing - An empirical study.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -146,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "State of the Art/Snowballed References.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -163,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "State of the Art/Snowballed References.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -185,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "State of the Art/Snowballed References.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -207,12 +138,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "adee9fd4950ae883",
+  "active": "98ec322d999bca24",
   "lastOpenFiles": [
+    "2024-07-12.md",
     "Bibliography/Software-testing education - A systematic literature mapping.md",
-    "State of the Art/Snowballed References.md",
-    "Bibliography/Exploring the industry’s challenges in software testing - An empirical study.md",
     "Bibliography/Towards a Model of Testers' Cognitive Processes - Software Testing as a Problem Solving Approach.md",
+    "State of the Art/Snowballed References.md",
+    "Untitled.canvas",
+    "Bibliography/Exploring the industry’s challenges in software testing - An empirical study.md",
     "Bibliography/Software Testing in Introductory Programming Courses.md",
     "Bibliography/Worlds Apart - Industrial and Academic Focus Areas in Software Testing.md",
     "Untitled",
