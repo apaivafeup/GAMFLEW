@@ -323,7 +323,6 @@ def create_user_challenge(db: Session, challenge: schemas.Challenge, user_id: in
     db.commit()
     return db_challenge
 
-
 def get_passed_challenges(db: Session, user_id: int):
     passed_attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).filter(schemas.Attempt.attempt_type == "pass")
     passed_challenges_ids = [attempt.challenge_id for attempt in passed_attempts]

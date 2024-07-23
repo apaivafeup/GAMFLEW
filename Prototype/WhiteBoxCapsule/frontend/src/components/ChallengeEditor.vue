@@ -1,7 +1,7 @@
 <template>
   <div class="container" style="max-width: 95% !important;">
     <div class="row" style="text-align: center;">
-      <h2 v-if="window.location.href.contains('challenge-editor')">Challenge Editor</h2>
+      <h2 v-if="isInEditor()">Challenge Editor</h2>
     </div>
     <div style="display: flex; flex-direction: column; justify-content: center; margin-bottom: 10px;">
       <div class="row" style="justify-content: center; display: flex; flex-direction: row;">
@@ -289,7 +289,7 @@
           Submit Challenge
         </button>
         <button id="delete-challenge-button" class="box is-primary" style="min-width: 50%; padding: 10px; margin: 10px;"
-          v-if="challenge.id > 99" @click="deleteChallenge()">
+          v-if="challenge.id > 99 || auth.user.user_type == 'admin'" @click="deleteChallenge()">
           Delete Challenge
         </button>
         <button class="box is-primary disabled" style="min-width: 50%; padding: 10px; margin: 10px;" v-else>
@@ -449,6 +449,10 @@ export default {
   },
 
   methods: {
+    isInEditor() {
+      return this.$route.name.includes('challenge-editor')
+    },
+
     addTest(index) {
       if (this.challenge.test_cases_count > 1 && this.challenge.challenge_type == 'statement') {
         alert('For statement coverage, you can only have one test case. Did you mean to add a precondition?')

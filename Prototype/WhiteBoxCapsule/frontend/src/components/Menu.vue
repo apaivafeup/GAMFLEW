@@ -53,7 +53,7 @@
       <h4 style="text-align: center;">Challenges</h4>
       <button class="admin-menu-button" id="challenge-content-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
         @click="this.$router.push('content-creator')" style="">
-        Challenge Content Creator
+        Challenge Creator
       </button>
       <button class="admin-menu-button" id="challenge-manager-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
         @click="this.$router.push('challenge-manager')" style="">
