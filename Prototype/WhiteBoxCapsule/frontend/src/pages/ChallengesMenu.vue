@@ -6,7 +6,7 @@
   <div class="col" style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
     <div class="accordion" id="challengeList" style="width: 1250px;">
       <div class="accordion-item" v-for="code_file in code_files">
-        <h2 class="accordion-header" :id="'heading-' + code_file.id" v-if="challenges[code_file.id].length > 0">
+        <h2 class="accordion-header" :id="'heading-' + code_file.id" v-if="challenges[code_file.id] != undefined">
           <button :id="'accordion-button-' + code_file.id" class="accordion-button collapsed" type="button" @click="toggleAccordion(code_file.id)">
             {{ code_file.name }}
           </button>
@@ -65,6 +65,11 @@ export default defineComponent({
 
     await this.$axios.get(this.$api_link + '/challenges-by-code/', this.auth.config).then((response) => {
       this.challenges = response.data
+
+      this.code_files.forEach((code_file) => {
+        if (!this.challenges[code_file.id])
+          this.code_files = this.code_files.filter((cf) => cf.id != code_file.id)
+      })
     }).catch((error) => {
       this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})
       this.$error = true

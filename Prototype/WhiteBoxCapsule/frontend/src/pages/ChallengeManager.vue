@@ -90,6 +90,11 @@ export default defineComponent({
 
     await this.$axios.get(this.$api_link + '/challenges-by-code/', this.auth.config).then((response) => {
       this.challenges = response.data
+
+      this.code_files.forEach((code_file) => {
+        if (!this.challenges[code_file.id])
+          this.code_files = this.code_files.filter((cf) => cf.id != code_file.id)
+      })
     }).catch((error) => {
       this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})
       this.$error = true

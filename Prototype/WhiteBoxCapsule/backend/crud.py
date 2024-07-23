@@ -259,8 +259,7 @@ def get_challenges(db: Session, skip: int = 0, limit: int = 100):
 
 
 def get_challenges_by_code(db: Session):
-    challenges = db.query(schemas.Challenge).order_by(
-        schemas.Challenge.code_file).all()
+    challenges = db.query(schemas.Challenge).order_by(schemas.Challenge.code_file).all()
 
     code_file = ''
     challenges_by_code = {}
