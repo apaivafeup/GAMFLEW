@@ -71,7 +71,7 @@ export default {
                 email: email,
                 picture: picture_path,
                 user_type: user_type,
-                validated: user_type === 'admin' ? false : null
+                validated: ((user_type === 'admin' || user_type === 'teacher') ? false : null)
             }
 
             await this.$axios.post(this.$api_link + '/register', formData2)

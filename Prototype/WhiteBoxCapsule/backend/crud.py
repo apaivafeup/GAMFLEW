@@ -47,7 +47,8 @@ def create_user(db: Session, user: schemas.User):
         score=0,
         achievements=0,
         auth=False,
-        validated=user.validated
+        validated=user.validated,
+        student_class=user.student_class
     )
     db.add(db_user)
     db.commit()

@@ -1,10 +1,25 @@
-[{
+[
+    {
+        "id": 0,
+        "name": "Administrator",
+        "email": "teacher@prototype.com",
+        "username": "admin",
+        "password": "password",
+        "user_type": "admin",
+        "picture": "/static/images/avatar.png",
+        "failed_attempts": 0,
+        "successful_attempts": 0,
+        "score": 0,
+        "achievements": 0,
+        "auth": false
+    },
+    {
     "id": 0,
     "name": "Professor",
     "email": "professor@prototype.com",
     "username": "professor",
     "password": "password",
-    "user_type": "admin",
+    "user_type": "teacher",
     "picture": "/static/images/avatar.png",
     "failed_attempts": 0,
     "successful_attempts": 0,

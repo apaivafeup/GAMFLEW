@@ -60,7 +60,7 @@ export default {
     <h1>Leaderboard</h1>
   </div>
 
-  <div class="row" v-if="user_type == 'admin'">
+  <div class="row" v-if="user_type == 'admin' || user_type == 'teacher'">
     <div class="col">
       <AdminLeaderboardPlayerBar v-for="player in leaderboard" :key="player.id" :user="player" />
     </div>

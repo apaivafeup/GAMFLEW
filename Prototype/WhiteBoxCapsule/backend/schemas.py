@@ -47,6 +47,7 @@ class PieceColor(str, Enum):
 class UserType(str, Enum):
     """Enum for the type of user."""
     PLAYER = "player"
+    TEACHER = "teacher"
     ADMIN = "admin"
 
 class GameState(str, Enum):
@@ -75,6 +76,13 @@ class GameRoundState(str, Enum):
     ONGOING = "ongoing"
     FINISHED = "finished"
 
+class StudentClass(Base):
+    __tablename__ = "student_classes"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(TEXT, unique=True, index=True)
+    teacher = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+
 class User(Base):
     __tablename__ = "users"
 
@@ -91,6 +99,7 @@ class User(Base):
     achievements = Column(Integer, index=True)
     auth = Column(Boolean, default=True, index=True)
     validated = Column(Boolean, nullable=True, index=True)
+    student_class = Column(Integer, ForeignKey("student_classes.id"), nullable=True, index=True)
 
     attempts = relationship("Attempt", back_populates="user")
     challenges = relationship("Challenge", back_populates="user")
