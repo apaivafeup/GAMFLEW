@@ -750,6 +750,27 @@ a:hover {
   margin-bottom: var(--bs-card-title-spacer-y);
 }
 
+.visible-badge:hover, .invisible-badge:hover {
+  opacity: 75%;
+  background-color: rgb(169, 89, 255);
+  border-color: rgba(169,89,251,1);
+  color: white;
+}
+
+.visible-badge {
+  opacity: 100%;
+  background-color: #8adc6d;
+  border-color: #3cd504;
+  color: white;
+}
+
+.invisible-badge {
+  opacity: 100%;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
 .comment-score-badge {
   background-color: var(--background-color);
   border: 1px solid var(--border-color);

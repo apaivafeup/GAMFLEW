@@ -9,7 +9,7 @@
         Create Challenge
       </button>
     </div>
-    <div class="accordion" id="accordionExample" style="width: 1250px;">
+    <div class="accordion" id="accordionExample" style="width: 1400px;">
       <div class="accordion-item" v-for="code_file in code_files">
         <h2 class="accordion-header" :id="'heading-' + code_file.id" v-if="challenges[code_file.id] != undefined" style="display: grid; grid-template-columns: 80% 15%;">
           <button :id="'accordion-button-' + code_file.id" class="accordion-button collapsed" type="button" @click="toggleAccordion(code_file.id)">
@@ -28,6 +28,7 @@
                   :challenge="challenge"
                   :passed="passed_challenges.includes(challenge.id)"
                   :unlocked="unlocked_challenge_achievements.includes(challenge.id)"
+                  :visible="challenge.visible"
                 />
               </li>
             </ul>

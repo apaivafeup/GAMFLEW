@@ -59,6 +59,10 @@
         @click="this.$router.push('challenge-manager')" style="">
         Challenge Manager
       </button>
+      <button class="admin-menu-button" id="challenge-manager-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
+        @click="this.$router.push('class-manager')" style="">
+        Class Manager
+      </button>
       </div>
       <div class="col" style="margin: 0px; padding: 0px;">
       <h4 style="text-align: center;">Game Information</h4>
@@ -84,7 +88,7 @@
           v-if="auth.user.user_type == 'admin'" id="import-button" style="">
           Import
         </button> -->
-        <button class="admin-menu-button" @click="this.$router.push({ name: 'validate-admin' })" id="validate-admin-button" style="">
+        <button class="admin-menu-button" @click="this.$router.push({ name: 'validate-admin' })" v-if="auth.user.user_type == 'admin'" id="validate-admin-button" style="">
           Validate New Administrators
         </button>
         <button class="admin-menu-button" @click="this.$router.push({ name: 'check-user-submissions' })" id="check-user-submission-button" style="">

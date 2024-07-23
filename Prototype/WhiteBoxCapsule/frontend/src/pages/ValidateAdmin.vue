@@ -59,6 +59,10 @@ export default {
 
     this.auth = authStore()
     this.auth.checkAuth()
+
+    if (window.location.href.includes('validate-admin') && this.auth.user.user_type != 'admin') {
+      this.$router.push({ name: 'error', params: { afterCode: '403', code: 'Forbidden', message: 'You are not allowed to access this page.' } })
+    }
     this.toast = useToast()
 
     this.getAdmins()

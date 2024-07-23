@@ -24,6 +24,7 @@ const routes = [
     { name: 'leaderboard', path: '/leaderboard', component: () => import('./pages/Leaderboard.vue'), props: false },
     { name: 'edit-user', path: '/edit-user/:id/', component: () => import('./pages/EditUser.vue'), props: true },
     { name: 'achievements', path: '/achievements', component: () => import('./pages/Achievements.vue'), props: false },
+    { name: 'class-manager', path:'/class-manager', component: () => import('./pages/ClassManager.vue'), props: false },
 ];
 
 const container = document.querySelector('#app')

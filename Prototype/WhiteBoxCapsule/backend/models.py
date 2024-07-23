@@ -57,6 +57,7 @@ class Challenge(BaseModel):
     achievement_hint: Optional[str] = None
     owner_id: int
     difficulty: Difficulty
+    visible: Optional[bool] = False
 
     class Config:
         from_attributes = True
@@ -72,6 +73,7 @@ class ChallengeBasics(BaseModel):
     owner_id: int
     difficulty: Difficulty
     initial_board: str
+    visible: Optional[bool] = False
 
     class Config:
         from_attributes = True
@@ -96,6 +98,14 @@ class User(BaseModel):
     class Config:
         from_attributes = True
 
+
+class StudentClass(BaseModel):
+    id: Optional[int]
+    name: str
+    teacher: int
+
+    class Config:
+        from_attributes = True
 
 class UserBasics(BaseModel):
     id: Optional[int]

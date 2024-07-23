@@ -150,6 +150,7 @@ class Challenge(Base):
     achievement_hint = Column(TEXT, nullable=True)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     difficulty = Column(ENUM(Difficulty), index=True)
+    visible = Column(Boolean, default=False, index=True)
 
     user = relationship("User", back_populates="challenges")
     attempts = relationship("Attempt", back_populates="challenge")

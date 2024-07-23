@@ -422,7 +422,8 @@ export default {
           expression_count: 0,
           preconditions: [''],
           tests: ['']
-        }
+        },
+        visible: false
       },
       preconditions: [''],
       tests: [''],

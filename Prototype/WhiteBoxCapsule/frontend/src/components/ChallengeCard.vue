@@ -3,12 +3,14 @@
     <div class="card-body" style="">
       <div class="row" style="display: flex; justify-content: space-between">
         <div style="width: 100%">
-          <div class="row" style="align-items: center; display: flex; flex-direction: row; align-content: center; margin-bottom: 5px;">
-            <h5 class="card-title" style="width: auto; margin-bottom: 2.5px;">{{ challenge.name.split(':')[0] }}</h5>
-            <div
-              v-if="passed"
-              class="passed-badge"
-              style="
+          <div class="row"
+            style="align-items: center; display: flex; flex-direction: row; align-content: center; margin-bottom: 5px;">
+            <h5 class="card-title" style="width: auto; margin-bottom: 2.5px; font-size: 18px; display: flex;">{{
+              challenge.name.split(':')[0] }}<div v-if="passed" style="margin-left: 5px;">
+                ✅
+              </div>
+            </h5>
+            <div v-if="visible" class="passed-badge visible-badge" style="
                 align-self: start;
                 text-align: right;
                 font-size: 12px;
@@ -19,30 +21,29 @@
                 flex-direction: row;
                 padding: 2.5px 10px;
                 margin-bottom: 2.5px;
-              "
-            >
-              Passed ✅
+              " @click="toggleChallengeVisibility(challenge.id)">
+              Visible
             </div>
-            <button class="passed-badge comments-badge"
-            style="
-              align-self: start;
-              text-align: right;
-              font-size: 12px;
-              margin-right: 2.5px;
-              font-weight: bold;
-              width: auto;
-              display: flex;
-              margin-top: 0px;
-              flex-direction: row;
-              padding: 2.5px 10px;
-              margin-bottom: 2.5px;
-            " @click="goToChallengeComments(challenge.id)" v-else>
-              Comments 💬
-            </button>
-            <div class="col" v-if="this.unlocked" style="display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end;">
+            <div v-if="!visible" class="passed-badge invisible-badge" style="
+                align-self: start;
+                text-align: right;
+                font-size: 12px;
+                font-weight: bold;
+                width: auto;
+                display: flex;
+                margin-top: 0px;
+                flex-direction: row;
+                padding: 2.5px 10px;
+                margin-bottom: 2.5px;
+              " @click="toggleChallengeVisibility(challenge.id)">
+              Invisible
+            </div>
+            <div class="col" v-if="this.unlocked"
+              style="display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end;">
               <font-awesome-icon class="icon" icon="award" fixed-width />
             </div>
-            <div class="col" v-else style="opacity: 45%; display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end;">
+            <div class="col" v-else
+              style="opacity: 45%; display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end;">
               <font-awesome-icon class="icon" icon="award" fixed-width />
             </div>
           </div>
@@ -52,25 +53,33 @@
         </div>
       </div>
       <div class="row">
-        <div :style="challenge.id > 99 ? 'display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;' : 'display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;' ">
-          <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: #ffc107 !important; text-align: center; display: flex; justify-content: center;"><strong>{{ challenge.score }} pts.</strong></div>
-          <div class="badge bg-primary" v-if="challenge.challenge_type != 'mcdc'" style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
+        <div
+          :style="(challenge.id > 99 || auth.user.user_type == 'admin' || challenge.owner_id == challenge.id) ? 'display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;' : 'display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;'">
+          <div class="badge bg-primary"
+            style="margin: 0px; font-size: 12px !important; background-color: #ffc107 !important; text-align: center; display: flex; justify-content: center;">
+            <strong>{{ challenge.score }} pts.</strong></div>
+          <div class="badge bg-primary" v-if="challenge.challenge_type != 'mcdc'"
+            style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
             {{ challenge.challenge_type.charAt(0).toUpperCase() + challenge.challenge_type.slice(1) }}
           </div>
-          <div class="badge bg-primary" v-else style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
+          <div class="badge bg-primary" v-else
+            style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
             {{ challenge.challenge_type.toUpperCase() }}
           </div>
-          <div class="badge bg-primary" style="margin: 0px; font-size: 12px !important; background-color: rgb(13, 202, 240)!important; text-align: center; display: flex; justify-content: center;">
+          <div class="badge bg-primary"
+            style="margin: 0px; font-size: 12px !important; background-color: rgb(13, 202, 240)!important; text-align: center; display: flex; justify-content: center;">
             {{ challenge.difficulty }}
           </div>
-          <button v-if="!this.editor" :id="'challenge-' + challenge.id + '-play'" class="badge menu-button comments-badge play-badge" style="margin: 0px; justify-content: center;" @click="goToChallenge(challenge.id)">
+          <button v-if="!this.editor" :id="'challenge-' + challenge.id + '-play'"
+            class="badge menu-button comments-badge play-badge" style="margin: 0px; justify-content: center;"
+            @click="goToChallenge(challenge.id)">
             Play ▶️
           </button>
-          <button v-else class="badge menu-button comments-badge play-badge" style="margin: 0px; justify-content: center;" @click="goToChallenge(challenge.id)">
+          <button v-else class="badge menu-button comments-badge play-badge"
+            style="margin: 0px; justify-content: center; font-size: 12px;" @click="goToChallenge(challenge.id)">
             Edit 📝
           </button>
-          <button class="badge menu-button delete-badge"
-            style="
+          <button class="badge menu-button delete-badge" style="
               align-self: start;
               text-align: right;
               font-size: 12px;
@@ -81,9 +90,11 @@
               flex-direction: row;
               padding: 2.5px 10px;
               margin-bottom: 2.5px;
-            " @click="deleteChallenge(challenge.id)" v-if="window.location.href.includes('challenge-manager') && challenge.id > 99">
-              Delete 🗑️
-            </button>
+            " @click="deleteChallenge(challenge.id)"
+            v-if="auth.user.user_type == 'admin' || challenge.owner_id == challenge.id">
+            Delete 🗑️
+          </button>
+          
         </div>
       </div>
     </div>
@@ -111,7 +122,8 @@ export default defineComponent({
     challenge: Object,
     passed: Boolean,
     editor: Boolean,
-    unlocked: Boolean
+    unlocked: Boolean,
+    visible: Boolean
   },
 
   data() {
@@ -124,6 +136,18 @@ export default defineComponent({
   },
 
   methods: {
+    toggleChallengeVisibility(id) {
+      this.$axios.post(this.$api_link + '/challenge/' + id + '/visible', {}, this.auth.config)
+        .then((response) => {
+          if (response.status == 200) {
+            console.log('Challenge visibility toggled successfully!')
+            this.challenge.visible = !this.challenge.visible
+          } else {
+            alert('There was an error toggling the challenge visibility. Please try again.')
+          }
+        })
+    },
+
     async deleteChallenge() {
       await this.$axios.delete(this.$api_link + '/challenge/' + this.challenge.id, this.auth.config)
         .then((response) => {
@@ -138,13 +162,13 @@ export default defineComponent({
 
     goToChallenge(id) {
       if (this.editor)
-        this.$router.push({name: 'challenge-editor', params: {id: id}})
+        this.$router.push({ name: 'challenge-editor', params: { id: id } })
       else
-        this.$router.push({name: 'challenge', params: {id: id}})
+        this.$router.push({ name: 'challenge', params: { id: id } })
     },
 
     goToChallengeComments(id) {
-      this.$router.push({name: 'challenge-comments', params: {id: id}})
+      this.$router.push({ name: 'challenge-comments', params: { id: id } })
     }
   }
 })
