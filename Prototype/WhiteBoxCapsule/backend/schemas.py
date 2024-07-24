@@ -150,13 +150,20 @@ class Challenge(Base):
     achievement_hint = Column(TEXT, nullable=True)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     difficulty = Column(ENUM(Difficulty), index=True)
-    visible = Column(Boolean, default=False, index=True)
 
     user = relationship("User", back_populates="challenges")
     attempts = relationship("Attempt", back_populates="challenge")
     code_files = relationship("CodeFile", back_populates="challenges")
     board_states = relationship("BoardState", back_populates="challenges")
     attempt_scores = relationship("AttemptScore", back_populates="challenges")
+
+class StudentClassChallenge(Base):
+    __tablename__ = "student_class_challenge"
+
+    id = Column(Integer, primary_key=True)
+    challenge_id = Column(Integer, ForeignKey("challenges.id"), nullable=False, index=True)
+    student_class_id = Column(Integer, ForeignKey("student_classes.id"), nullable=False, index=True)
+    visible = Column(Boolean, default=False, index=True)
 
 class Attempt(Base):
     __tablename__ = "attempts"

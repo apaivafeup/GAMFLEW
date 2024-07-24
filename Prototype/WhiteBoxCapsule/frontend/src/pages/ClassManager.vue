@@ -19,41 +19,105 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 
         <div class="row" style="display: flex; justify-content: center;">
             <div class="accordion" id="studentClassList" style="width: 1400px;">
-                <div class="accordion-item" v-for="student_class in student_classes">
-                    <h2 class="accordion-header" :id="'heading-' + student_class.id"
-                        v-if="student_class.teacher == auth.user_id"
-                        style="display: grid; grid-template-columns: 80% 15%;">
+                <div class="accordion-item" v-for="student_class in student_classes" v-if="student_classes.length > 0">
+                    <h2 class="accordion-header" :id="'heading-' + student_class.id">
                         <button :id="'accordion-button-' + student_class.id" class="accordion-button collapsed"
                             type="button" @click="toggleAccordion(student_class.id)">
                             {{ student_class.name }}
                         </button>
-                        <button :id="'accordion-delete-button-' + student_class.id" class="menu-button" type="button"
-                            style="margin: 20px; font-size: 12px; border-radius: 15px; "
-                            @click="deleteStudentClass(code_file.id)">
-                            Delete
-                        </button>
                     </h2>
                     <div class="accordion-body accordion-collapse collapse" :id="'collapse-' + student_class.id"
                         data-bs-parent="studentClassList">
-                        <ul class="list-group"
-                            style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 10px;">
-                            <li class="list-group-item" v-for="user in student_classes_users[student_class.id]"
-                                :key="challenge.id">
-                                <div style="display: flex; justify-content: space-between;">
-                                    <p>{{ user.username }}</p>
+                        <div class="row" style="display: grid; grid-template-columns: repeat(2, 1fr);">
+                            <div class="col">
+                                <h4>Students</h4>
+                                <input type="text" id="search-user-input" class="form-control" placeholder="Search..."
+                                    style="margin: 5px 0px; position: relative;" @input="searchUsers()">
+                                <ul class="list-group"
+                                    style="border: 1px solid var(--border-color) !important; overflow: scroll; height: 300px;">
+                                    <li class="list-group-item" v-for="user in filtered_users" style="border-radius: 10px;" v-if="filtered_users != []">
+                                        <div class="container badge" style="display: grid; grid-template-columns: 75% 25%; place-content: start; flex-direction: row; border: 1px solid var(--border-color) !important; margin: 5px 15px; max-width: 95% !important; padding: 15px;">
+                                            <div class="col"
+                                                style="display: flex; flex-direction: row; place-content: center;">
+                                                <img :src="this.$api_link + user.picture"
+                                                    style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+                                                <div class="col"
+                                                    style="display: flex; flex-direction: column; place-content: center; text-align: left;">
+                                                    <h5 style="color: black; margin-bottom: 2.5px;">{{ user.name }}</h5>
+                                                    <p class="text-muted" style="margin: 0px; font-style: italic;">{{
+                                                        user.username }}</p>
+                                                </div>
+                                            </div>
 
-                                    <button class="menu-button"
-                                        @click="removeStudentFromClass(student_class, user)">Remove</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item" v-for="user in users" v-if="users != []">
-                                <div style="display: flex; justify-content: space-between;">
-                                    <p>{{ user.username }}</p>
-                                    <button class="menu-button"
-                                        @click="addStudentToClass(student_class, selectedStudent)">Add</button>
-                                </div>
-                            </li>
-                        </ul>
+                                            <div class="col" style="display: flex; place-content: end;">
+                                                <button class="menu-button" style="width: 100px;" v-if="notInClass(user, student_class)"
+                                                    @click="addStudentToClass(student_class, user)">Add</button>
+                                                <button class="menu-button" style="width: 100px;" v-else
+                                                    @click="removeStudentFromClass(student_class, user)">Remove</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col">
+                                <h4>Challenges</h4>
+                                <input type="text" id="search-challenge-input" class="form-control"
+                                    placeholder="Search..." style="margin: 5px 0px; position: relative;"
+                                    @input="searchChallenges()">
+                                <ul class="list-group"
+                                    style="border: 1px solid var(--border-color) !important; overflow: scroll; height: 300px;">
+                                    <li class="list-group-item" v-for="challenge in filtered_challenges"
+                                        :key="challenge.id">
+                                        <div class="container badge"
+                                            style="display: grid; grid-template-columns: 75% 25%; flex-direction: row; place-content: center; border: 1px solid var(--border-color) !important; margin: 5px 15px; max-width: 95% !important; padding: 15px;">
+                                            <div class="col"
+                                                style="display: flex; flex-direction: row; place-content: center;">
+                                                <div class="col"
+                                                    style="display: flex; flex-direction: column; place-content: center; text-align: left;">
+                                                    <h5 style="color: black; margin-bottom: 2.5px;">{{
+                                                        challenge.name.split(':')[0] }}</h5>
+                                                    <p class="text-muted" style="margin: 0px; font-style: italic;">
+                                                        {{ challenge.name.split(':')[1] }}</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col" style="display: flex; place-content: end;">
+                                                <div v-if="isVisible(challenge, student_class)" class="passed-badge visible-badge button" style="
+                                                align-self: start;
+                                                text-align: right;
+                                                font-size: 15px;
+                                                font-weight: bold;
+                                                width: auto;
+                                                display: flex;
+                                                margin-top: 0px;
+                                                flex-direction: row;
+                                                padding: 15px;
+                                                margin-bottom: 2.5px;
+                                                height: 100% !important;
+                                              " @click="toggleChallengeVisibility(student_class, challenge)">
+                                                    Visible
+                                                </div>
+                                                <div v-else class="passed-badge invisible-badge button" style="
+                                                align-self: start;
+                                                text-align: right;
+                                                font-size: 15px;
+                                                font-weight: bold;
+                                                width: auto;
+                                                display: flex;
+                                                margin-top: 0px;
+                                                flex-direction: row;
+                                                padding: 15px;
+                                                margin-bottom: 2.5px;
+                                              " @click="toggleChallengeVisibility(student_class, challenge)">
+                                                    Invisible
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,13 +145,19 @@ export default defineComponent({
         this.getStudentClasses()
         this.getStudentClassesByUser()
         this.getUsers()
+        this.getChallenges()
+        this.getChallengeVisibility()
     },
 
     data() {
         return {
             student_classes: [],
             student_classes_users: {},
-            users: []
+            users: [],
+            filtered_users: [],
+            challenges: [],
+            challenge_visibility: [],
+            filtered_challenges: []
         }
     },
 
@@ -96,9 +166,84 @@ export default defineComponent({
     },
 
     methods: {
+        toggleAccordion(id) {
+            let button = document.getElementById('accordion-button-' + id)
+            let collapse = document.getElementById('collapse-' + id)
+
+            if (collapse.classList.contains('show')) {
+                collapse.classList.remove('show')
+                button.classList.add('collapsed')
+            } else {
+                collapse.classList.add('show')
+                button.classList.remove('collapsed')
+            }
+        },
+
+        isVisible(challenge, student_class) {
+            if (this.challenge_visibility == undefined || this.challenge_visibility == []) {
+                return false
+            }
+            return this.challenge_visibility.find(challenge_visibility => challenge_visibility.challenge_id == challenge.id && challenge_visibility.student_class_id == student_class.id).visible
+        },
+
+        getChallengeVisibility() {
+            this.$axios.get(this.$api_link + '/student-classes/challenges/visibility', this.auth.config)
+                .then((response) => {
+                    this.challenge_visibility = response.data
+                    this.$forceUpdate()
+                })
+        },
+
+        notInClass(user, student_class) {
+            if (this.student_classes_users[student_class.id] == undefined) {
+                return true
+            }
+            return this.student_classes_users[student_class.id].find(student => student.id == user.id) == undefined
+        },
+
+        toggleChallengeVisibility(studentClass, challenge) {
+            this.$axios.post(this.$api_link + '/student-class/' + studentClass.id + '/challenge/' + challenge.id + '/visible', {}, this.auth.config)
+                .then((response) => {
+                    if (response.status == 200) {
+                        this.getChallengeVisibility()
+                        this.$forceUpdate()
+                    } else {
+                        alert('There was an error toggling the challenge visibility. Please try again.')
+                    }
+                })
+        },
+
+        searchUsers() {
+            var search = document.getElementById('search-user-input').value
+            this.filtered_users = this.users.filter((user) => user.name.toLowerCase().includes(search.toLowerCase()) || user.username.toLowerCase().includes(search.toLowerCase())).sort((a, b) => a.id - b.id)
+        },
+
+        searchChallenges() {
+            var search = document.getElementById('search-challenge-input').value
+            this.filtered_challenges = this.challenges.filter((challenge) => challenge.name.toLowerCase().includes(search.toLowerCase()))
+        },
+
+        async getChallenges() {
+            await this.$axios.get(this.$api_link + '/challenges-by-code/', this.auth.config).then((response) => {
+                for (var list in response.data) {
+                    for (var challenge in response.data[list])
+                        this.challenges.push(response.data[list][challenge])
+                }
+
+                this.challenges = this.challenges.sort((a, b) => a.id - b.id)
+                this.filtered_challenges = this.challenges
+
+                console.log(this.challenges)
+            }).catch((error) => {
+                console.log(error)
+            })
+        },
+
         async getUsers() {
             await this.$axios.get(this.$api_link + '/users/', this.auth.config).then((response) => {
                 this.users = response.data
+
+                this.filtered_users = this.users.sort((a, b) => a.id - b.id)
             }).catch((error) => {
                 console.log(error)
             })
@@ -123,14 +268,20 @@ export default defineComponent({
         async addStudentToClass(student_class, student) {
             await this.$axios.post(this.$api_link + '/student-class/' + student_class.id + '/add-student/' + student.id, {}, this.auth.config).then((response) => {
                 this.getStudentClasses()
+                this.getUsers()
+                this.getStudentClassesByUser()
+                this.$forceUpdate()
             }).catch((error) => {
                 console.log(error)
             })
         },
 
         async removeStudentFromClass(student_class, student) {
-            await this.$axios.delete(this.$api_link + '/student-class/' + student_class.id + '/remove-student/' + student.id, {}, this.auth.config).then((response) => {
+            await this.$axios.post(this.$api_link + '/student-class/' + student_class.id + '/remove-student/' + student.id, {}, this.auth.config).then((response) => {
                 this.getStudentClasses()
+                this.getStudentClassesByUser()
+                this.getUsers()
+                this.$forceUpdate()
             }).catch((error) => {
                 console.log(error)
             })

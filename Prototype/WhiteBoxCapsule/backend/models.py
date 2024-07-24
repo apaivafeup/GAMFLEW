@@ -41,6 +41,14 @@ class ChallengeComments(BaseModel):
     class Config:
         from_attributes = True
 
+class StudentClassChallenge(BaseModel):
+    id: Optional[int]
+    student_class_id: int
+    challenge_id: int
+    visible: bool
+
+    class Config:
+        from_attributes = True
 
 class Challenge(BaseModel):
     id: Optional[int]

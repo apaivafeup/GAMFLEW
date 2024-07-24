@@ -4,7 +4,7 @@
   </div>
   
   <div class="col" style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-    <div class="accordion" id="challengeList" style="width: 1250px;">
+    <div class="accordion" id="challengeList" style="width: 1400px;">
       <div class="accordion-item" v-for="code_file in code_files">
         <h2 class="accordion-header" :id="'heading-' + code_file.id" v-if="challenges[code_file.id] != undefined">
           <button :id="'accordion-button-' + code_file.id" class="accordion-button collapsed" type="button" @click="toggleAccordion(code_file.id)">

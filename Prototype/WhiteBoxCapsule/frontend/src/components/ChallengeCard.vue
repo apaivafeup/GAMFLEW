@@ -10,34 +10,6 @@
                 ✅
               </div>
             </h5>
-            <div v-if="visible" class="passed-badge visible-badge" style="
-                align-self: start;
-                text-align: right;
-                font-size: 12px;
-                font-weight: bold;
-                width: auto;
-                display: flex;
-                margin-top: 0px;
-                flex-direction: row;
-                padding: 2.5px 10px;
-                margin-bottom: 2.5px;
-              " @click="toggleChallengeVisibility(challenge.id)">
-              Visible
-            </div>
-            <div v-if="!visible" class="passed-badge invisible-badge" style="
-                align-self: start;
-                text-align: right;
-                font-size: 12px;
-                font-weight: bold;
-                width: auto;
-                display: flex;
-                margin-top: 0px;
-                flex-direction: row;
-                padding: 2.5px 10px;
-                margin-bottom: 2.5px;
-              " @click="toggleChallengeVisibility(challenge.id)">
-              Invisible
-            </div>
             <div class="col" v-if="this.unlocked"
               style="display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end;">
               <font-awesome-icon class="icon" icon="award" fixed-width />
@@ -54,7 +26,7 @@
       </div>
       <div class="row">
         <div
-          :style="(challenge.id > 99 || auth.user.user_type == 'admin' || challenge.owner_id == challenge.id) ? 'display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;' : 'display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;'">
+          :style="(auth.user.user_type == 'admin' && window.location.href.includes('challenges-manager')) || (challenge.owner_id == challenge.id && window.location.href.includes('challenges-manager')) ? 'display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;' : 'display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;'">
           <div class="badge bg-primary"
             style="margin: 0px; font-size: 12px !important; background-color: #ffc107 !important; text-align: center; display: flex; justify-content: center;">
             <strong>{{ challenge.score }} pts.</strong></div>
@@ -91,7 +63,7 @@
               padding: 2.5px 10px;
               margin-bottom: 2.5px;
             " @click="deleteChallenge(challenge.id)"
-            v-if="auth.user.user_type == 'admin' || challenge.owner_id == challenge.id">
+            v-if="(auth.user.user_type == 'admin' || challenge.owner_id == challenge.id) && window.location.href.includes('challenges-manager')">
             Delete 🗑️
           </button>
           
@@ -136,18 +108,6 @@ export default defineComponent({
   },
 
   methods: {
-    toggleChallengeVisibility(id) {
-      this.$axios.post(this.$api_link + '/challenge/' + id + '/visible', {}, this.auth.config)
-        .then((response) => {
-          if (response.status == 200) {
-            console.log('Challenge visibility toggled successfully!')
-            this.challenge.visible = !this.challenge.visible
-          } else {
-            alert('There was an error toggling the challenge visibility. Please try again.')
-          }
-        })
-    },
-
     async deleteChallenge() {
       await this.$axios.delete(this.$api_link + '/challenge/' + this.challenge.id, this.auth.config)
         .then((response) => {

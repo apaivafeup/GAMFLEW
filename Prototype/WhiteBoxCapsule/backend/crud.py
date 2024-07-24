@@ -84,8 +84,7 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
         achievement=challenge.achievement,
         achievement_hint=challenge.achievement_hint,
         owner_id=challenge.owner_id,
-        difficulty=challenge.difficulty,
-        visible=challenge.visible
+        difficulty=challenge.difficulty
     )
     db.add(db_challenge)
     db.commit()
@@ -260,20 +259,18 @@ def get_challenges(db: Session, skip: int = 0, limit: int = 100):
     return db.query(schemas.Challenge).offset(skip).limit(limit).all()
 
 
-def set_challenge_visibility(db: Session, challenge_id: int):
-    challenge = db.query(schemas.Challenge).filter(
-        schemas.Challenge.id == challenge_id).first()
+def set_challenge_visibility(db: Session, challenge_id: int, student_class_id: int):
+    student_class_challenge = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.challenge_id == challenge_id).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).first()
 
-    if challenge is None:
+    if student_class_challenge is None:
         return None
     
-    if (challenge.visible is None):
-        challenge.visible = False
+    if (student_class_challenge.visible is None):
+        student_class_challenge.visible = False
 
-    challenge.visible = not challenge.visible
-
+    student_class_challenge.visible = not student_class_challenge.visible
     db.commit()
-    return challenge
+    return student_class_challenge
 
 def get_challenges_by_code(db: Session, user_type: schemas.UserType):
     if user_type != schemas.UserType.ADMIN:
@@ -1518,8 +1515,23 @@ def create_student_class(db: Session, student_class: models.StudentClass):
         teacher=student_class.teacher
     )
     db.add(db_student_class)
+
     db.commit()
     return db_student_class
+
+def create_challenge_class(db: Session):
+    challenges = db.query(schemas.Challenge).all()
+    db_class = db.query(schemas.StudentClass).first()
+
+    for challenge in challenges:
+        db_student_class_challenge = schemas.StudentClassChallenge(
+            student_class_id=db_class.id,
+            challenge_id=challenge.id,
+            visible=True
+        )
+        db.add(db_student_class_challenge)
+
+    db.commit()
 
 def get_student_classes(db: Session):
     return db.query(schemas.StudentClass).all()
@@ -1542,7 +1554,7 @@ def add_student_to_class(db: Session, class_id: int, student_id: int):
 
     student.student_class = class_id
     db.commit()
-    return student
+    return student_class
 
 def remove_student_from_class(db: Session, class_id: int, student_id: int):
     student_class = get_student_class(db, class_id)
@@ -1553,7 +1565,7 @@ def remove_student_from_class(db: Session, class_id: int, student_id: int):
 
     student.student_class = None
     db.commit()
-    return student
+    return student_class
 
 def delete_student_class(db: Session, class_id: int):
     student_class_to_delete = get_student_class(db, class_id)
@@ -1580,5 +1592,18 @@ def get_student_classes_by_user(db: Session):
             result[user.student_class] = []
     
         result[user.student_class].append(get_user_basics(db=db, user_id=user.id))
+
+    return result
+
+def get_student_class_challenge_visibility(db: Session):
+    challenges = db.query(schemas.StudentClassChallenge).all()
+    result = []
+
+    for challenge in challenges:
+        result.append({
+            "student_class_id": challenge.student_class_id,
+            "challenge_id": challenge.challenge_id,
+            "visible": challenge.visible
+        })
 
     return result

@@ -519,16 +519,28 @@ def update_board_state(current_user: Annotated[models.User, Depends(get_current_
 def delete_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, db: Session = Depends(get_db)):
     return crud.delete_challenge(db=db, challenge_id=challenge_id)
 
-@app.post('/challenge/{challenge_id}/visible', response_model=models.Challenge)
-def set_challenge_visibility(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, db: Session = Depends(get_db)):
-    return crud.set_challenge_visibility(db=db, challenge_id=challenge_id)
+@app.post('/student-class/{student_class_id}/challenge/{challenge_id}/visible')
+def set_challenge_visibility(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, student_class_id: int, db: Session = Depends(get_db)):
+    return crud.set_challenge_visibility(db=db, challenge_id=challenge_id, student_class_id=student_class_id)
+
+@app.get('/student-classes/challenges/visibility')
+def get_student_class_challenges_visibility(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
+    return crud.get_student_class_challenge_visibility(db=db)
+
+@app.post('/challenge/visible', response_model=models.Challenge)
+def set_challenge_visibility(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_ids: list[int], db: Session = Depends(get_db)):
+    return crud.set_challenge_visibility(db=db, challenge_ids=challenge_ids)
 
 @app.post('/student-class/create', response_model=models.StudentClass)
 def create_class(current_user: Annotated[models.User, Depends(get_current_active_user)], class_: models.StudentClass, db: Session = Depends(get_db)):
     if (current_user.user_type == schemas.UserType.PLAYER):
         raise HTTPException(status_code=401, detail="Unauthorized")
 
-    return crud.create_student_class(db=db, student_class=class_)
+    student_class = crud.create_student_class(db=db, student_class=class_)
+
+    crud.create_challenge_class(db)
+
+    return student_class
 
 @app.get('/student-class/', response_model=list[models.StudentClass])
 def get_student_classes(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
@@ -536,11 +548,11 @@ def get_student_classes(current_user: Annotated[models.User, Depends(get_current
 
 @app.post('/student-class/{class_id}/add-student/{user_id}', response_model=models.StudentClass)
 def add_student_to_class(current_user: Annotated[models.User, Depends(get_current_active_user)], class_id: int, user_id: int, db: Session = Depends(get_db)):
-    return crud.add_student_to_class(db=db, class_id=class_id, user_id=user_id)
+    return crud.add_student_to_class(db=db, class_id=class_id, student_id=user_id)
                                      
 @app.post('/student-class/{class_id}/remove-student/{user_id}', response_model=models.StudentClass)
 def remove_student_from_class(current_user: Annotated[models.User, Depends(get_current_active_user)], class_id: int, user_id: int, db: Session = Depends(get_db)):
-    return crud.remove_student_from_class(db=db, class_id=class_id, user_id=user_id)
+    return crud.remove_student_from_class(db=db, class_id=class_id, student_id=user_id)
 
 @app.post('/student-class/{class_id}/delete', response_model=models.StudentClass)
 def delete_student_class(current_user: Annotated[models.User, Depends(get_current_active_user)], class_id: int, db: Session = Depends(get_db)):
