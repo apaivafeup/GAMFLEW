@@ -178,7 +178,8 @@ def get_user_basics(db: Session, user_id: str):
         score=user.score,
         achievements=user.achievements,
         user_type=user.user_type,
-        validated=user.validated
+        validated=user.validated,
+        student_class=user.student_class
     )
 
     return user_basics
@@ -272,9 +273,14 @@ def set_challenge_visibility(db: Session, challenge_id: int, student_class_id: i
     db.commit()
     return student_class_challenge
 
-def get_challenges_by_code(db: Session, user_type: schemas.UserType):
+def get_challenges_by_code(db: Session, user_type: schemas.UserType, user_id: int):
     if user_type != schemas.UserType.ADMIN:
-        challenges = db.query(schemas.Challenge).order_by(schemas.Challenge.code_file).filter(schemas.Challenge.visible == True).all()
+        challenges = db.query(schemas.Challenge).order_by(schemas.Challenge.code_file).all()
+        student_class_id = db.query(schemas.User).filter(schemas.User.id == user_id).first()
+        student_class_id = student_class_id.student_class
+        student_class_challenge = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).filter(schemas.StudentClassChallenge.visible == True).all()
+        student_class_challenge_ids = [challenge.challenge_id for challenge in student_class_challenge]
+        challenges = [challenge for challenge in challenges if challenge.id in student_class_challenge_ids]
     else:
         challenges = db.query(schemas.Challenge).order_by(schemas.Challenge.code_file).all()
 
@@ -1607,3 +1613,7 @@ def get_student_class_challenge_visibility(db: Session):
         })
 
     return result
+
+def get_challenge_visibility(db: Session, student_class_id: int, challenge_id: int):
+    challenge = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).filter(schemas.StudentClassChallenge.challenge_id == challenge_id).first()
+    return challenge

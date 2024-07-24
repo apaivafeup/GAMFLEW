@@ -109,6 +109,16 @@ export default {
       return
     })
 
+    await this.$axios.get(this.$api_link + '/student-class/' + this.auth.user.student_class + '/challenge/' + this.id + '/visible', this.auth.config).then((response) => {
+      if (response.data.visible == false) {
+        this.$router.push({ name: 'error', params: {afterCode: '_', code: '403', message: 'Forbidden!' } })
+        return
+      }
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
+      return
+    })
+
     if (this.$error) {
       loader.hide()
       return

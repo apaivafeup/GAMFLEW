@@ -80,7 +80,8 @@ export const authStore = defineStore('authStore', {
                             response.data.failed_attempts,
                             response.data.successful_attempts,
                             response.data.achievements,
-                            response.data.user_type
+                            response.data.user_type,
+                            response.data.student_class
                         )
 
                         window.sessionStorage.setItem('user_data', JSON.stringify(this.user))

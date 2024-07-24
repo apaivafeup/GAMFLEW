@@ -101,7 +101,7 @@ class User(BaseModel):
     achievements: int
     auth: bool
     validated: Optional[bool] = None
-    student_class: Optional[str] = None
+    student_class: Optional[int] = None
 
     class Config:
         from_attributes = True
@@ -127,7 +127,7 @@ class UserBasics(BaseModel):
     achievements: int
     user_type: UserType
     validated: Optional[bool] = None
-    student_class: Optional[str] = None
+    student_class: Optional[int] = None
 
     class Config:
         from_attributes = True
