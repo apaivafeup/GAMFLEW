@@ -62,11 +62,93 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 
                             <div class="col">
                                 <h4>Challenges</h4>
+                                <div class="col" style="display: flex; flex-direction: column; place-content: center;">
                                 <input type="text" id="search-challenge-input" class="form-control"
                                     placeholder="Search..." style="margin: 5px 0px; position: relative;"
                                     @input="searchChallenges()">
+                                    <div style="display: inline-flex; flex-direction: row; justify-content: center;">
+
+                                        <div class="form-check form-switch" style="padding: 0px 25px;">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" value="statement" @change="addFilter('statement')">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                          Statement
+                                        </label>
+                                      </div>
+                                      <div class="form-check form-switch" style="padding: 0px 25px;">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" value="decision" @change="addFilter('decision')">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                          Decision
+                                        </label>
+                                      </div>
+                                      <div class="form-check form-switch" style="padding: 0px 25px;">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" value="condition" @change="addFilter('condition')">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                          Condition
+                                        </label>
+                                      </div>
+                                      <div class="form-check form-switch" style="padding: 0px 25px;">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" value="condition/decision" @change="addFilter('condition/decision')">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                          C/D
+                                        </label>
+                                      </div>
+                                      <div class="form-check form-switch" style="padding: 0px 25px;">
+                                        <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" value="mcdc" @change="addFilter('mcdc')">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                          MC/DC
+                                        </label>
+                                      </div>
+                                    </div> 
+                                </div>
                                 <ul class="list-group"
                                     style="border: 1px solid var(--border-color) !important; overflow: scroll; height: 300px;">
+                                    <li class="list-group-item" v-for="code_file in code_files">
+                                        <div class="container badge"
+                                            style="display: grid; grid-template-columns: 75% 25%; flex-direction: row; place-content: center; border: 1px solid var(--border-color) !important; margin: 5px 15px; max-width: 95% !important; padding: 15px;">
+                                            <div class="col"
+                                                style="display: flex; flex-direction: row; place-content: center;">
+                                                <div class="col"
+                                                    style="display: flex; flex-direction: column; place-content: center; text-align: left;">
+                                                    <h5 style="color: black; margin-bottom: 2.5px;">{{
+                                                        code_file.name.split(':')[0] }}</h5>
+                                                    <p class="text-muted" style="margin: 0px; font-style: italic;">
+                                                        {{ code_file.name.split(':')[1] }}</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col" style="display: flex; place-content: end;">
+                                                <div class="passed-badge visible-badge button" style="
+                                                align-self: start;
+                                                text-align: right;
+                                                font-size: 15px;
+                                                font-weight: bold;
+                                                width: auto;
+                                                display: flex;
+                                                margin-top: 0px;
+                                                flex-direction: row;
+                                                padding: 15px;
+                                                margin-bottom: 2.5px;
+                                                height: 100% !important;
+                                              " @click="toggleCodeFileVisibility(student_class, code_file, true)">
+                                                    Visible
+                                                </div>
+                                                <div class="passed-badge invisible-badge button" style="
+                                                align-self: start;
+                                                text-align: right;
+                                                font-size: 15px;
+                                                font-weight: bold;
+                                                width: auto;
+                                                display: flex;
+                                                margin-top: 0px;
+                                                flex-direction: row;
+                                                padding: 15px;
+                                                margin-bottom: 2.5px;
+                                              " @click="toggleCodeFileVisibility(student_class, code_file, false)">
+                                                    Invisible
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
                                     <li class="list-group-item" v-for="challenge in filtered_challenges"
                                         :key="challenge.id">
                                         <div class="container badge"
@@ -147,6 +229,7 @@ export default defineComponent({
         this.getUsers()
         this.getChallenges()
         this.getChallengeVisibility()
+        this.getCodeFiles()
     },
 
     data() {
@@ -180,7 +263,7 @@ export default defineComponent({
         },
 
         isVisible(challenge, student_class) {
-            if (this.challenge_visibility == undefined || this.challenge_visibility == []) {
+            if (this.challenge_visibility == undefined || this.challenge_visibility == [] || this.challenge_visibility.find(challenge_visibility => challenge_visibility.challenge_id == challenge.id && challenge_visibility.student_class_id == student_class.id) == undefined) {
                 return false
             }
             return this.challenge_visibility.find(challenge_visibility => challenge_visibility.challenge_id == challenge.id && challenge_visibility.student_class_id == student_class.id).visible
@@ -213,6 +296,44 @@ export default defineComponent({
                 })
         },
 
+        toggleCodeFileVisibility(studentClass, codeFile, visible) {
+            this.$axios.post(this.$api_link + '/student-class/' + studentClass.id + '/code-file/' + codeFile.id + '/visible', {
+                visible: visible
+            }, this.auth.config)
+                .then((response) => {
+                    if (response.status == 200) {
+                        this.getChallengeVisibility()
+                        this.$forceUpdate()
+                    } else {
+                        alert('There was an error toggling the code file visibility. Please try again.')
+                    }
+                })
+        },
+
+        addFilter(filter) {
+            var filters = document.querySelectorAll('input[type="checkbox"]:checked')
+
+            if (filters.length == 0) {
+                this.filtered_challenges = this.challenges
+                return
+            }
+
+            var result = []
+            for (var i = 0; i < filters.length; i++) {
+
+                var filtered = this.challenges.filter((challenge) => challenge.challenge_type == filters[i].value)
+                for (var j = 0; j < filtered.length; j++) {
+                    if (!result.includes(filtered[j])) {
+                        result.push(filtered[j])
+                    }
+                }
+            }
+            
+            this.filtered_challenges = result.sort((a, b) => a.id - b.id)
+
+            console.log(this.filtered_challenges)
+        },
+
         searchUsers() {
             var search = document.getElementById('search-user-input').value
             this.filtered_users = this.users.filter((user) => user.name.toLowerCase().includes(search.toLowerCase()) || user.username.toLowerCase().includes(search.toLowerCase())).sort((a, b) => a.id - b.id)
@@ -232,12 +353,18 @@ export default defineComponent({
 
                 this.challenges = this.challenges.sort((a, b) => a.id - b.id)
                 this.filtered_challenges = this.challenges
-
-                console.log(this.challenges)
             }).catch((error) => {
                 console.log(error)
             })
         },
+
+        async getCodeFiles() {
+            await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
+                this.code_files = response.data
+            }).catch((error) => {
+                console.log(error)
+            })
+        }, 
 
         async getUsers() {
             await this.$axios.get(this.$api_link + '/users/', this.auth.config).then((response) => {

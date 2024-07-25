@@ -273,6 +273,16 @@ def set_challenge_visibility(db: Session, challenge_id: int, student_class_id: i
     db.commit()
     return student_class_challenge
 
+def set_code_file_visibility(db: Session, code_file_id: int, student_class_id: int, visibility: bool):
+    challenges = db.query(schemas.Challenge).filter(schemas.Challenge.code_file == code_file_id).all()
+    challenge_ids = [challenge.id for challenge in challenges]
+
+    for challenge_id in challenge_ids:
+        student_class_challenge = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.challenge_id == challenge_id).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).first()
+        student_class_challenge.visible = visibility
+
+    db.commit()
+
 def get_challenges_by_code(db: Session, user_type: schemas.UserType, user_id: int):
     if user_type != schemas.UserType.ADMIN:
         challenges = db.query(schemas.Challenge).order_by(schemas.Challenge.code_file).all()
