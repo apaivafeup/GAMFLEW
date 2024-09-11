@@ -1627,3 +1627,12 @@ def get_student_class_challenge_visibility(db: Session):
 def get_challenge_visibility(db: Session, student_class_id: int, challenge_id: int):
     challenge = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).filter(schemas.StudentClassChallenge.challenge_id == challenge_id).first()
     return challenge
+
+def get_attempted_challenges(db: Session, user_id: int):
+    attempts = db.query(schemas.Attempt).filter(schemas.Attempt.player_id == user_id).all()
+    result = []
+
+    for attempt in attempts:
+        result.append(attempt.challenge_id)
+
+    return result

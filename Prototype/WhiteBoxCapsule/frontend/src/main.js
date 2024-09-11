@@ -16,7 +16,7 @@ import FloatingVue from 'floating-vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark, faBullseye, faCheck, faChartSimple} from '@fortawesome/free-solid-svg-icons'
+import { faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark, faBullseye, faCheck, faChartSimple, faComment} from '@fortawesome/free-solid-svg-icons'
 
 import Toast, { POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";
@@ -43,7 +43,7 @@ import 'floating-vue/dist/style.css'
 
 
 
-library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark, faBullseye, faCheck, faChartSimple)
+library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark, faBullseye, faCheck, faChartSimple, faComment)
 
 const pinia = createPinia()
 const app = createApp(App)

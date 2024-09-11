@@ -4,19 +4,40 @@
       <div class="row" style="display: flex; justify-content: space-between">
         <div style="width: 100%">
           <div class="row"
-            style="align-items: center; display: flex; flex-direction: row; align-content: center; margin-bottom: 5px;">
+            style="align-items: center; display: flex; flex-direction: row; align-content: center; padding-right: calc(var(--bs-gutter-x) * 0.5);">
             <h5 class="card-title" style="width: auto; margin-bottom: 2.5px; font-size: 18px; display: flex;">{{
               challenge.name.split(':')[0] }}<div v-if="passed" style="margin-left: 5px;">
                 ✅
               </div>
             </h5>
             <div class="col" v-if="this.unlocked"
-              style="display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end;">
+              style="display: flex; flex-direction: row; font-size: 16px; align-items: flex-start; justify-content: start; padding: 0px; width: 50px;">
               <font-awesome-icon class="icon" icon="award" fixed-width />
             </div>
             <div class="col" v-else
-              style="opacity: 45%; display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end;">
+              style="opacity: 45%; display: flex; flex-direction: row; font-size: 16px; align-items: flex-start; justify-content: start; padding: 0px; width: 50px;">
               <font-awesome-icon class="icon" icon="award" fixed-width />
+            </div>
+            <div class="col" style="width: 1fr;"></div>
+            <div class="col" v-if="attemptedChallenges.includes(challenge.id)"
+              style="display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end; border: 1px solid #8080806b;
+  border-radius: 30px;
+  max-width: 125px;
+  padding: 5px;
+  margin: 0px;
+  align-content: end;
+  align-self: end; ">
+              <font-awesome-icon class="icon" icon="comment" style="color: rgb(13, 150, 240, 0.55) !important; margin-right: 2.5px;" fixed-width /> Comments
+            </div>
+            <div class="col disabled" v-else
+              style="opacity: 45%; display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end; border: 1px solid #8080806b;
+  border-radius: 30px;
+  max-width: 125px;
+  padding: 5px;
+  margin: 0px;
+  align-content: end;
+  align-self: end;">
+              <font-awesome-icon class="icon" icon="comment" style="color:rgb(13, 150, 240, 0.55) !important; margin-right: 2.5px;" fixed-width /> Comments
             </div>
           </div>
           <div class="row">
@@ -95,11 +116,14 @@ export default defineComponent({
     passed: Boolean,
     editor: Boolean,
     unlocked: Boolean,
-    visible: Boolean
+    visible: Boolean,
+    attemptedChallenges: Object
   },
 
   data() {
-    return {}
+    return {
+      auth: null
+    }
   },
 
 
@@ -108,6 +132,7 @@ export default defineComponent({
   },
 
   methods: {
+
     async deleteChallenge() {
       await this.$axios.delete(this.$api_link + '/challenge/' + this.challenge.id, this.auth.config)
         .then((response) => {

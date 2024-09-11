@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-
         <div class="row" style="text-align: center; margin-bottom: 15px;">
             <h1>Challenge Comments</h1>
         </div>
@@ -116,6 +115,20 @@ export default defineComponent({
     },
 
     methods: {
+        async getAttemptedChallenges() {
+            await this.$axios.get(this.$api_link + '/attempted-challenges/' + this.auth.user.id, this.auth.config)
+        .then((response) => {
+          if (response.status == 200) {
+            this.attempted_challenges = response.data
+          }
+        })
+        
+        if (!this.attempted_challenges.includes(this.challenge.id)) {
+            this.$router.push({ name: 'error', params: { afterCode: '_', code: 403, message: 'You are not allowed to view this page.' } });
+            return
+        }
+        },
+
         async getChallenge() {
             const id = this.$route.params.id
 

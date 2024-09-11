@@ -19,6 +19,7 @@
                   :challenge="challenge"
                   :passed="passed_challenges.includes(challenge.id)"
                   :unlocked="unlocked_challenge_achievements.includes(challenge.id)"
+                  :attemptedChallenges="attempted_challenges"
                 />
               </li>
             </ul>
@@ -55,6 +56,16 @@ export default defineComponent({
   
     this.auth = authStore()
     this.auth.checkAuth()
+
+    // await this.$axios.get(this.$api_link + '/attempted-challenges/', this.auth.config)
+    //     .then((response) => {
+    //       if (response.status == 200) {
+    //         this.attempted_challenges = response.data
+    //       }
+    // }).catch((error) => {
+    //   this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})
+    //   this.$error = true
+    // })
 
     await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
       this.code_files = response.data
@@ -102,7 +113,8 @@ export default defineComponent({
       challenges: {},
       code_files: [],
       passed_challenges: [],
-      unlocked_challenge_achievements: []
+      unlocked_challenge_achievements: [],
+      attempted_challenges: []
     }
   },
 

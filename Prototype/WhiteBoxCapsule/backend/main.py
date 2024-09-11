@@ -574,6 +574,10 @@ def get_student_classes_by_user(current_user: Annotated[models.User, Depends(get
 def set_code_file_visibility(current_user: Annotated[models.User, Depends(get_current_active_user)], code_file_id: int, class_id: int, visibility: dict, db: Session = Depends(get_db)):
     return crud.set_code_file_visibility(db=db, code_file_id=code_file_id, student_class_id=class_id, visibility=visibility["visible"])
 
+@app.get('/attempted-challenges/', response_model=list[int])
+def get_attempted_challenges(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
+    return crud.get_attempted_challenges(db, current_user.id)
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
