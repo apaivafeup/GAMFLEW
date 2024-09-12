@@ -1,0 +1,45 @@
+[
+    {
+        "id": 0,
+        "name": "Student 1",
+        "email": "student@prototype.com",
+        "username": "student",
+        "password": "password",
+        "user_type": "player",
+        "picture": "/static/images/avatar.png",
+        "failed_attempts": 0,
+        "successful_attempts": 0,
+        "score": 0,
+        "achievements": 0,
+        "auth": false,
+        "student_class": 1
+    },
+    {
+        "id": 0,
+        "name": "Student 2",
+        "email": "student2@prototype.com",
+        "username": "student2",
+        "password": "password",
+        "user_type": "player",
+        "picture": "/static/images/avatar.png",
+        "failed_attempts": 0,
+        "successful_attempts": 0,
+        "score": 0,
+        "achievements": 0,
+        "auth": false
+    },
+    {
+        "id": 0,
+        "name": "Student 3",
+        "email": "student3@prototype.com",
+        "username": "student3",
+        "password": "password",
+        "user_type": "player",
+        "picture": "/static/images/avatar.png",
+        "failed_attempts": 0,
+        "successful_attempts": 0,
+        "score": 0,
+        "achievements": 0,
+        "auth": false
+    }
+]

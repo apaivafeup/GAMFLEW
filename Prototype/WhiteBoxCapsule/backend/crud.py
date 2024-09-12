@@ -284,10 +284,11 @@ def set_code_file_visibility(db: Session, code_file_id: int, student_class_id: i
     db.commit()
 
 def get_challenges_by_code(db: Session, user_type: schemas.UserType, user_id: int):
-    if user_type != schemas.UserType.ADMIN:
+    student_class_id = db.query(schemas.User).filter(schemas.User.id == user_id).first()
+    student_class_id = student_class_id.student_class
+
+    if user_type != schemas.UserType.ADMIN and student_class_id is not None:
         challenges = db.query(schemas.Challenge).order_by(schemas.Challenge.code_file).all()
-        student_class_id = db.query(schemas.User).filter(schemas.User.id == user_id).first()
-        student_class_id = student_class_id.student_class
         student_class_challenge = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).filter(schemas.StudentClassChallenge.visible == True).all()
         student_class_challenge_ids = [challenge.challenge_id for challenge in student_class_challenge]
         challenges = [challenge for challenge in challenges if challenge.id in student_class_challenge_ids]
@@ -1535,17 +1536,13 @@ def create_student_class(db: Session, student_class: models.StudentClass):
     db.commit()
     return db_student_class
 
-def create_challenge_class(db: Session):
-    challenges = db.query(schemas.Challenge).all()
-    db_class = db.query(schemas.StudentClass).first()
-
-    for challenge in challenges:
-        db_student_class_challenge = schemas.StudentClassChallenge(
-            student_class_id=db_class.id,
-            challenge_id=challenge.id,
-            visible=True
-        )
-        db.add(db_student_class_challenge)
+def create_challenge_class(db: Session, challenge_class: models.StudentClassChallenge):
+    db_student_class_challenge = schemas.StudentClassChallenge(
+        student_class_id=challenge_class.student_class_id,
+        challenge_id=challenge_class.challenge_id,
+        visible=challenge_class.visible
+    )
+    db.add(db_student_class_challenge)
 
     db.commit()
 

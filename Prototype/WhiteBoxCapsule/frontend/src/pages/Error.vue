@@ -33,11 +33,17 @@ export default {
       </div>
     </div>
     <div class="row" style="margin-top: 15vh; display: flex; flex-direction: column; text-align: center; justify-content: center; font-size: 32px;">
-      <p style="margin-bottom: 0px;">
+      <p style="margin-bottom: 0px;" v-if="message != 'No Class'">
         You've either taken a wrong turn into the void or some error has occurred.
       </p>
-      <p style="margin-bottom: 0px;">
+      <p style="margin-bottom: 0px;" v-else>
+        You must be part of a class to access challenges.
+      </p>
+      <p style="margin-bottom: 0px;" v-if="message != 'No Class'">
         Please go somewhere else or try again later.
+      </p>
+      <p style="margin-bottom: 0px;" v-else>
+        Please contact your teacher to join a class.
       </p>
     </div>
     <div class="row" style="margin-top: 22.5vh; display: flex; justify-content: center;">

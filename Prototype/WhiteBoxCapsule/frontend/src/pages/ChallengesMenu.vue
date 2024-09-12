@@ -57,15 +57,12 @@ export default defineComponent({
     this.auth = authStore()
     this.auth.checkAuth()
 
-    // await this.$axios.get(this.$api_link + '/attempted-challenges/', this.auth.config)
-    //     .then((response) => {
-    //       if (response.status == 200) {
-    //         this.attempted_challenges = response.data
-    //       }
-    // }).catch((error) => {
-    //   this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText }})
-    //   this.$error = true
-    // })
+    if (this.auth.user.student_class == null) {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: '401', message: 'No Class'}})
+      this.$error = true
+      loader.hide()
+      return
+    }
 
     await this.$axios.get(this.$api_link + '/code-files/', this.auth.config).then((response) => {
       this.code_files = response.data
