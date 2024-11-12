@@ -22,10 +22,10 @@ export default {
   <div class="row" style="text-align: center; justify-content: center;">
     <img src="../assets/pictures/logo.png" style="width: 600px; margin-top: 30px;" />
   </div>
-  <div class="row" style="justify-content: center; margin-top: 30px" v-if="!auth.auth">
+  <div class="row" style="justify-content: center; margin-top: 30px" v-if="!auth.authenticated">
     <Login />
   </div>
-  <div class="row" style="justify-content: center; margin-top: 30px" v-else-if="auth.auth">
+  <div class="row" style="justify-content: center; margin-top: 30px" v-else-if="auth.authenticated">
     <Menu />
   </div>
 </template>
