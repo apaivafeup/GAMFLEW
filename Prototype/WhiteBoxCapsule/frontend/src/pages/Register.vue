@@ -36,6 +36,7 @@ export default {
             const email = document.getElementById('email').value
             const picture = document.getElementById('picture').files[0] == undefined ? 'default.png' : document.getElementById('picture').files[0]
             const user_type = document.querySelector('input[type="radio"]:checked').value
+            const student_class = null
 
             if (username === '' || password === '' || passwordConfirm === '' || email === '') {
                 alert('Please fill all the fields.')
@@ -71,7 +72,8 @@ export default {
                 email: email,
                 picture: picture_path,
                 user_type: user_type,
-                validated: ((user_type === 'admin' || user_type === 'teacher') ? false : null)
+                validated: ((user_type === 'admin' || user_type === 'teacher') ? false : null),
+                student_class: student_class
             }
 
             await this.$axios.post(this.$api_link + '/register', formData2)

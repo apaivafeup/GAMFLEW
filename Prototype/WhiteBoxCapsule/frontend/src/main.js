@@ -41,11 +41,13 @@ import {
 
 import 'floating-vue/dist/style.css'
 
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark, faBullseye, faCheck, faChartSimple, faComment)
 
-const pinia = createPinia()
 const app = createApp(App)
 app.component('VMenu', Menu)
 app.directive('tooltip', vTooltip)
@@ -53,9 +55,7 @@ app.use(pinia)
 app.use(FloatingVue)
 app.use(VueHighlightJS)
 app.config.globalProperties.$api_link = (
-  import.meta.env.MODE == 'development' ? 
-  import.meta.env.VITE_API_LINK_LOCAL : 
-  import.meta.env.VITE_API_LINK_REMOTE
+  import.meta.env.VITE_API_LINK_LOCAL
 );
 
 

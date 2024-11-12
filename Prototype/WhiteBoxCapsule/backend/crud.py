@@ -1622,6 +1622,14 @@ def get_student_class_challenge_visibility(db: Session):
     return result
 
 def get_challenge_visibility(db: Session, student_class_id: int, challenge_id: int):
+    if student_class_id is -1:
+        return {
+            "id": -1,
+            "student_class_id": -1,
+            "challenge_id": challenge_id,
+            "visible": True
+        }
+
     challenge = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).filter(schemas.StudentClassChallenge.challenge_id == challenge_id).first()
     return challenge
 

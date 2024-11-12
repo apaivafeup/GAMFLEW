@@ -146,6 +146,7 @@ class UserRegister(BaseModel):
     password: str
     user_type: UserType
     validated: Optional[bool] = None
+    student_class: Optional[int] = None
 
 
 class UserResponse(BaseModel):

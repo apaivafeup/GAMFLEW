@@ -15,12 +15,12 @@ export const authStore = defineStore('authStore', {
     },
     actions: {
         async checkAuth() {
-            const username = window.sessionStorage.getItem('username')
+            const username = window.localStorage.getItem('username')
             if (username != null) {
                 this.config = {
-                    headers: { 'Authorization': 'Bearer ' + window.sessionStorage.getItem('access_token') }
+                    headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }
                 }
-                this.user = JSON.parse(window.sessionStorage.getItem('user_data'))
+                this.user = JSON.parse(window.localStorage.getItem('user_data'))
                 this.authenticated = true
             }
         },
@@ -40,8 +40,8 @@ export const authStore = defineStore('authStore', {
                     }
                     this.auth = true;
 
-                    window.sessionStorage.setItem('access_token', response.data.access_token)
-                    window.sessionStorage.setItem('username', form.get('username'))
+                    window.localStorage.setItem('access_token', response.data.access_token)
+                    window.localStorage.setItem('username', form.get('username'))
 
                     this.getUserData(response.data.user_id)
                 }
@@ -57,8 +57,8 @@ export const authStore = defineStore('authStore', {
                         this.config = {}
                         this.username = ''
                         this.authenticated = false
-                        window.sessionStorage.removeItem('access_token')
-                        window.sessionStorage.removeItem('username')
+                        window.localStorage.removeItem('access_token')
+                        window.localStorage.removeItem('username')
                         window.location.reload()
                     }
                 })
@@ -84,12 +84,15 @@ export const authStore = defineStore('authStore', {
                             response.data.student_class
                         )
 
-                        window.sessionStorage.setItem('user_data', JSON.stringify(this.user))
+                        window.localStorage.setItem('user_data', JSON.stringify(this.user))
                     }
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
                 })
         }
+    },
+    persist: {
+        storage: localStorage
     }
 })
