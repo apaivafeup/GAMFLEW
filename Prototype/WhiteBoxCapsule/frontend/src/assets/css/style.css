@@ -816,3 +816,7 @@ button.badge.comment-score-badge:hover:nth-child(even) {
 .accordion-button:focus {
   box-shadow: none;
 }
+
+div.col.challenge-comment-button:hover {
+  background-color: blueviolet;
+}
