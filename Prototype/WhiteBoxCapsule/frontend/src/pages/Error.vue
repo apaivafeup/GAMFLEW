@@ -24,12 +24,12 @@ export default {
   <div class="col" style="padding: 0vw 5vw; display: grid; place-self: center; grid-template-rows: 50% 40% 10%;">
     <div class="row" style="margin-top: 10vh; display: inline-grid; grid-template-columns: 50% 50%; place-self: center; grid-template-rows: 100%; align-content:center; vertical-align: middle; justify-content: center; min-width: 100%;">
       <div class="col" style="display: flex; flex-direction: column;">
-        <h1 style="font-size: 72px; font-family:'Lemon Milk';color:#8647d4;"> <strong>{{code == ''? 'Error' : code}}</strong> </h1>
-        <h2 style="font-size: 56px; font-family:'Lemon Milk';color:#8647d4;"> <em>{{message == '' ? 'Unknown' : message}}</em></h2>
+        <h1 style="font-size: 72px; font-family: 'Inter'; font-weight: 'bold'; color:#8647d4;"> <strong>{{code == ''? 'Error' : code}}</strong> </h1>
+        <h2 style="font-size: 56px; font-family: 'Inter'; font-weight: 'bold'; color:#8647d4;"> <em>{{message == '' ? 'Unknown' : message}}</em></h2>
       </div>
       <div class="col">
         <img src="../assets/pictures/logo.png" style="width:100%;margin-top:30px;">
-        <p style="margin-top: 5px; text-align: center; font-size: 26px; font-family: 'Lemon Milk'; color: #8647d4;"><strong>GAM</strong>e <strong>F</strong>or <strong>LE</strong>arning <strong>W</strong>hite-box testing</p>
+        <p style="margin-top: 5px; text-align: center; font-size: 26px; font-family: 'Inter'; font-weight: 'bold'; color: #8647d4;"><strong>GAM</strong>e <strong>F</strong>or <strong>LE</strong>arning <strong>W</strong>hite-box testing</p>
       </div>
     </div>
     <div class="row" style="margin-top: 15vh; display: flex; flex-direction: column; text-align: center; justify-content: center; font-size: 32px;">
