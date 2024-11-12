@@ -160,7 +160,7 @@
       <EasyDataTable style="width: 525px; height: 537px; margin-left: 10px; margin-right: 2.5px; overflow: scroll;"
         :headers="board.dataTable.headers" :items="board.dataTable.rows" :rows-per-page="11" :fixed-checkbox="true"
         :checkbox-column-width="36" v-model:items-selected="itemsSelected" :maxPaginationNumber="10" v-if="board.table"
-        :theme-color="'#A959FF'">
+        :theme-color="'#A959FF'" @click-row="clickRow">
       </EasyDataTable>
     </div>
 
@@ -190,7 +190,6 @@ export default {
     return {
       goFlag: Boolean,
       headers: [],
-      items: [],
       itemsSelected: [],
       outcomeInput: ''
     }
@@ -204,6 +203,9 @@ export default {
   },
 
   methods: {
+    clickRow(item) {
+    },
+
     is_triangle(a, b, c) {
       return a + b > c && a + c > b && b + c > a
     },

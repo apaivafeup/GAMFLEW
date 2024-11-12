@@ -314,8 +314,7 @@ export const boardStore = defineStore('boardStore', {
 
         var combs = combinations(possible_values, challenge.passing_criteria.expression_count)
 
-        var row = {},
-          rows = []
+        var row = {}, rows = []
         for (var i = 0; i < combs.length; i++) {
           row = {}
           for (var j = 0; j < headers.length - 1; j++) {
