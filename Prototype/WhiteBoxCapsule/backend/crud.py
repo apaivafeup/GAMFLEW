@@ -1622,7 +1622,7 @@ def get_student_class_challenge_visibility(db: Session):
     return result
 
 def get_challenge_visibility(db: Session, student_class_id: int, challenge_id: int):
-    if student_class_id is -1:
+    if student_class_id == -1:
         return {
             "id": -1,
             "student_class_id": -1,
