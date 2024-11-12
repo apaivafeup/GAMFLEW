@@ -93,6 +93,6 @@ export const authStore = defineStore('authStore', {
         }
     },
     persist: {
-        storage: sessionStorage
+        storage: localStorage
     }
 })
