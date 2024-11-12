@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap'
 
 import CodeBlock from 'vue3-code-block'
-import { createApp } from 'vue'
+import { createApp, markRaw } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import Vue3EasyDataTable from 'vue3-easy-data-table'
@@ -51,6 +51,7 @@ library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, fa
 const app = createApp(App)
 app.component('VMenu', Menu)
 app.directive('tooltip', vTooltip)
+
 app.use(pinia)
 app.use(FloatingVue)
 app.use(VueHighlightJS)
@@ -117,10 +118,9 @@ pinia.use(({ store }) => {
   store.$api_link = app.config.globalProperties.$api_link;
   store.$http_names = app.config.globalProperties.$http_names;
   store.$error = app.config.globalProperties.$error;
+  store.$router = markRaw(Router)
 });
 app.config.globalProperties.window = window;
-
-
 
 app.use(Router)
 app.use(LoadingPlugin);
