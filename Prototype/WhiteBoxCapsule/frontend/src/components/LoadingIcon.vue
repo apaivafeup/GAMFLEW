@@ -33,7 +33,7 @@ export default defineComponent({
   <Transition name="fade">
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
       <img src="../assets/pictures/loading.svg" alt="Loading..." style="width: 100px;" />
-      <p id="loading-text" style="font-family: 'Lemon Milk'; color: #8647D4;">{{text}}</p>
+      <p id="loading-text" style="font-family: 'Inter'; font-weight: 'bold'; color: #8647D4;">{{text}}</p>
     </div>
   </Transition>
 </template>
