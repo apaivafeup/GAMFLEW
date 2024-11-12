@@ -218,14 +218,15 @@ class CreateGameRoom(BaseModel):
     name: str
     rounds: int
     player_number: int
-    player_1_id: int
+    room_owner: int
 
 class GameRoom(BaseModel):
     id: Optional[int]
     name: str
     rounds: int
     player_number: int
-    player_1_id: int
+    room_owner: int
+    player_1_id: Optional[int] = None
     player_2_id: Optional[int] = None
     player_3_id: Optional[int] = None
     game_state: Optional[GameState] = GameState.WAITING
@@ -248,7 +249,7 @@ class GameRoom(BaseModel):
     @classmethod
     def validate_players(cls, self):
         if (self.player_3_id is None):
-            if (self.player_1_id == self.player_2_id):
+            if (self.player_1_id == self.player_2_id and self.player_1_id is not None):
                 raise ValueError("A game must have at least 2 and at most 3 different players.")
         else:
             if self.player_1_id == self.player_2_id or self.player_1_id == self.player_3_id or self.player_2_id == self.player_3_id:

@@ -556,7 +556,7 @@ def create_game_room_api(db: Session, game_room: models.CreateGameRoom):
     db_game_room = schemas.GameRoom(
         name=game_room.name,
         rounds=game_room.rounds,
-        player_1_id=game_room.player_1_id,
+        room_owner=game_room.room_owner,
         player_number=game_room.player_number,
         game_state=schemas.GameState.WAITING
     )
@@ -568,7 +568,7 @@ def create_game_room(db: Session, game_room: schemas.GameRoom):
     db_game_room = schemas.GameRoom(
         name=game_room.name,
         rounds=game_room.rounds,
-        player_1_id=game_room.player_1_id,
+        room_owner=game_room.room_owner,
         player_number=game_room.player_number,
         game_state=schemas.GameState.WAITING
     )
@@ -788,9 +788,6 @@ def send_enter_game_log(db: Session, game_room_id: int, user_id: int):
     if game_room_to_log is None:
         raise ValueError("Game room does not exist.")
 
-    if (game_room_to_log.player_1_id != user_id and game_room_to_log.player_2_id != user_id and game_room_to_log.player_3_id != user_id):
-        raise ValueError("User is not in the game room.")
-
     db_game_log = schemas.GameLog(
         message=schemas.GameMessage.ENTER,
         game_room_id=game_room_id,
@@ -806,9 +803,6 @@ def send_leave_game_log(db: Session, game_room_id: int, user_id: int):
 
     if game_room_to_log is None:
         raise ValueError("Game room does not exist.")
-
-    if (game_room_to_log.player_1_id != user_id and game_room_to_log.player_2_id != user_id and game_room_to_log.player_3_id != user_id):
-        raise ValueError("User is not in the game room.")
 
     db_game_log = schemas.GameLog(
         message=schemas.GameMessage.LEAVE,
@@ -939,16 +933,34 @@ def is_in_game_room(db: Session, game_room_id: int, user_id: int):
 
     return (game_room.player_1_id == user_id or game_room.player_2_id == user_id or game_room.player_3_id == user_id)
 
+def is_game_room_full(db: Session, game_room_id: int):
+    game_room = get_game_room(db, game_room_id)
+
+    players_in = 0
+
+    if (game_room.player_1_id is not None):
+        players_in += 1
+    
+    if (game_room.player_2_id is not None):
+        players_in += 1
+    
+    if (game_room.player_3_id is not None):
+        players_in += 1
+
+    return players_in == game_room.player_number    
+
 def enter_game_room(db: Session, game_room_id: int, user_id: int):
     game_room_to_join = get_game_room(db, game_room_id)
 
     if game_room_to_join is None:
         return None
 
-    if is_in_game_room(db, game_room_id, user_id):
+    if is_in_game_room(db, game_room_id, user_id) or is_game_room_full(db, game_room_id):
         return None
 
-    if game_room_to_join.player_2_id is None:
+    if game_room_to_join.player_1_id is None:
+        setattr(game_room_to_join, 'player_1_id', user_id)
+    elif game_room_to_join.player_2_id is None:
         setattr(game_room_to_join, 'player_2_id', user_id)
     elif game_room_to_join.player_3_id is None:
         setattr(game_room_to_join, 'player_3_id', user_id)
@@ -965,7 +977,9 @@ def leave_game_room(db: Session, game_room_id: int, user_id: int):
     if game_room_to_leave is None:
         return None
 
-    if game_room_to_leave.player_2_id == user_id:
+    if game_room_to_leave.player_1_id == user_id:
+        game_room_to_leave.player_1_id = None
+    elif game_room_to_leave.player_2_id == user_id:
         game_room_to_leave.player_2_id = None
     elif game_room_to_leave.player_3_id == user_id:
         game_room_to_leave.player_3_id = None
@@ -1415,7 +1429,7 @@ def compare(user1, user2):
                         return user1.name < user2.name
 
 def get_admin_leaderboard(db: Session):
-    users = db.query(schemas.User).all()
+    users = db.query(schemas.User).filter(schemas.User.user_type == schemas.UserType.PLAYER).all()
     users.sort(key=cmp_to_key(compare))
     result = []
 
