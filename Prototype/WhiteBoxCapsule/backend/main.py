@@ -492,7 +492,7 @@ def get_all_attempts(current_user: Annotated[models.User, Depends(get_current_ac
 
 @app.get('/leaderboard/')
 def get_leaderboard(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
-    if (current_user.user_type == schemas.UserType.ADMIN):
+    if (current_user.user_type != schemas.UserType.PLAYER):
         return crud.get_admin_leaderboard(db)
     else:
         return crud.get_player_leaderboard(db)
