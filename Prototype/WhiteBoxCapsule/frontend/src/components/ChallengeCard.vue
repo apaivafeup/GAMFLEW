@@ -19,25 +19,26 @@
               <font-awesome-icon class="icon" icon="award" fixed-width />
             </div>
             <div class="col" style="width: 1fr;"></div>
-            <div class="col" v-if="attemptedChallenges.includes(challenge.id)"
-              style="display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end; border: 1px solid #8080806b;
+            <button class="col challenge-comments-button" v-if="attemptedChallenges.includes(challenge.id) || this.auth.user_type != 'student'"
+              style="display: flex; cursor: pointer; flex-direction: row; font-size: 16px; align-items: center; justify-content: end; border: 1px solid #8080806b;
   border-radius: 30px;
   max-width: 125px;
   padding: 5px;
   margin: 0px;
   align-content: end;
-  align-self: end; ">
-              <font-awesome-icon class="icon" icon="comment" style="color: rgb(13, 150, 240, 0.55) !important; margin-right: 2.5px;" fixed-width /> Comments
-            </div>
-            <div class="col disabled" v-else
-              style="opacity: 45%; display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end; border: 1px solid #8080806b;
+  align-self: end; " @click="goToChallengeComments(challenge.id)">
+              <font-awesome-icon class="icon" icon="comment"
+                style="color: rgb(13, 150, 240, 0.55) !important; margin-right: 2.5px;" fixed-width /> Comments
+          </button>
+            <div class="col disabled" v-else style="opacity: 45%; display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end; border: 1px solid #8080806b;
   border-radius: 30px;
   max-width: 125px;
   padding: 5px;
   margin: 0px;
   align-content: end;
   align-self: end;">
-              <font-awesome-icon class="icon" icon="comment" style="color:rgb(13, 150, 240, 0.55) !important; margin-right: 2.5px;" fixed-width /> Comments
+              <font-awesome-icon class="icon" icon="comment"
+                style="color:rgb(13, 150, 240, 0.55) !important; margin-right: 2.5px;" fixed-width /> Comments
             </div>
           </div>
           <div class="row">
@@ -50,7 +51,8 @@
           :style="(auth.user.user_type == 'admin' && window.location.href.includes('challenges-manager')) || (challenge.owner_id == challenge.id && window.location.href.includes('challenges-manager')) ? 'display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;' : 'display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;'">
           <div class="badge bg-primary"
             style="margin: 0px; font-size: 12px !important; background-color: #ffc107 !important; text-align: center; display: flex; justify-content: center;">
-            <strong>{{ challenge.score }} pts.</strong></div>
+            <strong>{{ challenge.score }} pts.</strong>
+          </div>
           <div class="badge bg-primary" v-if="challenge.challenge_type != 'mcdc'"
             style="margin: 0px; font-size: 12px !important; background-color: rgb(25, 135, 84)!important; text-align: center; font-style: italic; display: flex; justify-content: center;">
             {{ challenge.challenge_type.charAt(0).toUpperCase() + challenge.challenge_type.slice(1) }}
@@ -87,7 +89,7 @@
             v-if="(auth.user.user_type == 'admin' || challenge.owner_id == challenge.id) && window.location.href.includes('challenges-manager')">
             Delete 🗑️
           </button>
-          
+
         </div>
       </div>
     </div>
