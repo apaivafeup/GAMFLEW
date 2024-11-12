@@ -31,7 +31,73 @@
     </button>
   </div>
 
-  <div class="col" v-else-if="main && auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'">
+  <div class="col" v-else-if="main && auth.user.user_type == 'teacher'">
+    <div class="row" style="display: grid; grid-template-columns: repeat(3, 300px); grid-gap: 30px; place-content: center; margin-bottom: 15px;" >
+      <div class="col" style="margin: 0px; padding: 0px;">
+      <h4 style="text-align: center;">Play</h4>
+      <button class="admin-menu-button" id="single-player-button" @click="this.$router.push('challenges')"
+        style="">
+        Single Player
+      </button>
+      <button class="admin-menu-button" id="multiplayer-button" @click="this.$router.push('multiplayer')" style="">
+        Multiplayer
+      </button>
+      <button class="admin-menu-button" id="achievements-button" @click="this.$router.push('achievements')" style="">
+        Achievements
+      </button>
+      <button class="admin-menu-button" @click="this.$router.push('how-to')" id="how-to-button" style="">
+        How To Play
+      </button>
+      </div>
+      <div class="col" style="margin: 0px; padding: 0px;">
+      <h4 style="text-align: center;">Challenges</h4>
+      <button class="admin-menu-button" id="challenge-content-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
+        @click="this.$router.push('content-creator')" style="">
+        Challenge Creator
+      </button>
+      <button class="admin-menu-button" id="challenge-manager-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
+        @click="this.$router.push('challenge-manager')" style="">
+        Challenge Manager
+      </button>
+      <button class="admin-menu-button" id="challenge-manager-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
+        @click="this.$router.push('class-manager')" style="">
+        Class Manager
+      </button>
+      </div>
+      <div class="col" style="margin: 0px; padding: 0px;">
+      <h4 style="text-align: center;">Game Information</h4>
+      <button class="admin-menu-button" @click="this.$router.push({ name: 'leaderboard' })" id="leaderboard-button" style="">
+        Leaderboard
+      </button>
+      <button class="admin-menu-button" @click="this.$router.push({ name: 'edit-user', params: { id: auth.user.id } })" id="edit-user-button" style="">
+        Edit User
+      </button>
+      <button class="admin-menu-button" @click="this.$router.push({ name: 'user-export' })" id="export-button" style="">
+        Export
+      </button>
+      <button class="admin-menu-button" @click="this.$router.push({ name: 'credits' })" id="credits-button"
+      style="">
+        Credits
+      </button>
+      </div>
+    </div>
+    <div class="row" style="display: grid; grid-template-columns: repeat(1, 300px); place-content: center;" >
+      <div class="col" style="margin: 0px; padding: 0px;">
+        <h4 style="text-align: center;">Administrator Features</h4>
+        <button class="admin-menu-button" @click="this.$router.push({ name: 'check-user-submissions' })" id="check-user-submission-button" style="">
+          Check User Submissions
+        </button>
+
+      </div>
+    </div>
+    <div class="row" style="display: flex; justify-content: center; margin-top: 40px;">
+      <button class="admin-menu-button" @click="logout($event)" id="logout-button" style="width: 300px;">
+        Logout
+      </button>
+    </div>
+  </div>
+
+  <div class="col" v-else-if="main && auth.user.user_type == 'admin'">
     <div class="row" style="display: grid; grid-template-columns: repeat(3, 300px); grid-gap: 30px; place-content: center; margin-bottom: 15px;" >
       <div class="col" style="margin: 0px; padding: 0px;">
       <h4 style="text-align: center;">Play</h4>
@@ -89,7 +155,7 @@
           Import
         </button> -->
         <button class="admin-menu-button" @click="this.$router.push({ name: 'validate-admin' })" v-if="auth.user.user_type == 'admin'" id="validate-admin-button" style="">
-          Validate New Administrators
+          Validate New Teachers
         </button>
         <button class="admin-menu-button" @click="this.$router.push({ name: 'check-user-submissions' })" id="check-user-submission-button" style="">
           Check User Submissions

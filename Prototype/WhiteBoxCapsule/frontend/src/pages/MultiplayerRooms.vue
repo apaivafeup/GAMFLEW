@@ -29,6 +29,7 @@ export default {
         await this.$axios.get(this.$api_link + '/game-rooms/', this.auth.config)
             .then(response => {
                 this.rooms = response.data
+                this.rooms = this.rooms.sort((a, b) => a.id - b.id)
             })
             .catch(error => {
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -64,8 +65,13 @@ export default {
     methods: {
         async enterRoom(id) {
             await this.$axios.post(this.$api_link + '/enter/game-room/' + id, {}, this.auth.config)
-                .then(response => {
-                    this.$router.push({ name: 'multiplayer-room', params: { id: id } })
+                .then((response) => {
+                    console.log("Hey!")
+                    if (response.data == null) {
+                        this.$router.push({ name: 'error', params: { afterCode: '401', code: "Unauthorized", message: "Room is full." } })
+                    } else {
+                        this.$router.push({ name: 'multiplayer-room', params: { id: id } })
+                    }
                 })
                 .catch(error => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -75,8 +81,10 @@ export default {
 
         async deleteRoom(id) {
             await this.$axios.delete(this.$api_link + '/game-room/' + id, this.auth.config)
-                .then(response => {
-                    this.$router.go()
+                .then((response) => {
+                    if (response.status.code == 200) {
+                        this.$router.go()
+                    }
                 })
                 .catch((error) => {
                     this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
@@ -110,13 +118,12 @@ export default {
                                     <h5 class="card-title">{{ room.name }}</h5>
                                     <p class="card-subtitle mb-2 text-muted"
                                         style="font-size: 15px; font-style: italic; padding: 0px; margin: 0px !important;">
-                                        {{
-                                            room.rounds + ' rounds, ' + room.player_number + ' players' }}</p>
+                                        {{ room.rounds + ' rounds, ' + room.player_number + ' players' }}</p>
                                 </div>
                                 <div class="col" style="justify-content: end; display: flex;">
                                     <button class="btn btn-primary" style="padding: 15px; border-radius: 10px;"
                                         @click="enterRoom(room.id)">Enter</button>
-                                    <button class="btn btn-primary" v-if="room.player_1_id == auth.user.id"
+                                    <button class="btn btn-primary" v-if="room.room_owner == auth.user.id"
                                         style="padding: 15px; border-radius: 10px;"
                                         @click="deleteRoom(room.id)">Delete</button>
                                 </div>
@@ -130,9 +137,15 @@ export default {
                                             <img :src="this.$api_link + users[room.player_1_id].picture"
                                                 style="width: 40px; height: 40px;" />
                                             <p style="margin: 0px; padding-right: 5px;">
-                                                {{ users[room.player_1_id] ? users[room.player_1_id].username
-                                                    :
+                                                {{ users[room.player_1_id] ? users[room.player_1_id].username :
                                                 'Empty' }}
+                                            </p>
+                                        </div>
+                                        <div class="badge bg-secondary" v-else style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
+                                            <div style="width: 40px; height: 40px; background-color: white; border-radius: 100px; ">
+                                            </div>
+                                            <p style="margin: 0px; padding-right: 5px;">
+                                                Empty
                                             </p>
                                         </div>
                                         <div class="badge bg-info" v-if="room.player_2_id != null"
@@ -144,10 +157,8 @@ export default {
                                                 'Empty' }}
                                             </p>
                                         </div>
-                                        <div class="badge bg-secondary" v-else
-                                            style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
-                                            <div
-                                                style="width: 40px; height: 40px; background-color: white; border-radius: 100px; ">
+                                        <div class="badge bg-secondary" v-else style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
+                                            <div style="width: 40px; height: 40px; background-color: white; border-radius: 100px; ">
                                             </div>
                                             <p style="margin: 0px; padding-right: 5px;">
                                                 Empty
@@ -158,22 +169,18 @@ export default {
                                             <img :src="this.$api_link + users[room.player_3_id].picture"
                                                 style="width: 40px; height: 40px;" />
                                             <p style="margin: 0px; padding-right: 5px;">
-                                                {{ users[room.player_3_id] ? users[room.player_3_id].username
-                                                    :
+                                                {{ users[room.player_3_id] ? users[room.player_3_id].username :
                                                 'Empty' }}
                                             </p>
                                         </div>
-                                        <div class="badge bg-secondary" v-else-if="room.player_number == 3"
-                                            style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
-                                            <div
-                                                style="width: 40px; height: 40px; background-color: white; border-radius: 100px; ">
+                                        <div class="badge bg-secondary" v-else-if="room.player_number == 3" style="display: grid; grid-template-columns: 40px calc(100% - 40px); grid-gap: 5px; padding: 5px;">
+                                            <div style="width: 40px; height: 40px; background-color: white; border-radius: 100px; ">
                                             </div>
                                             <p style="margin: 0px; padding-right: 5px;">
                                                 Empty
                                             </p>
-                                        </div>
-                                        <div class="badge bg-secondary disabled"
-                                            style="justify-content: center; grid-gap: 5px; padding: 5px;" v-else>
+                                        </div>                                          
+                                        <div class="badge bg-secondary disabled" style="justify-content: center; grid-gap: 5px; padding: 5px;" v-else>
                                             N/A
                                         </div>
                                     </div>

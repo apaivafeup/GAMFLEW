@@ -82,7 +82,7 @@ export default defineComponent({
         name: roomName,
         rounds: rounds,
         player_number: players,
-        player_1_id: this.auth.user.id
+        room_owner: this.auth.user.id
       }
 
       await this.$axios.post(this.$api_link + '/create/game-room/', body, this.auth.config)

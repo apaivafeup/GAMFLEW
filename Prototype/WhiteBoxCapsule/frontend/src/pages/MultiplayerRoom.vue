@@ -143,7 +143,12 @@ export default {
                 this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
                 return
             })
-        // console.log('can_pass', this.can_pass)
+        
+        window.onpopstate = (event) => {
+            this.leaveRoom()
+            console.log("going back from multiplayer room...", event)
+            window.location.reload()
+        }
 
         if (this.$error) {
             loader.hide()

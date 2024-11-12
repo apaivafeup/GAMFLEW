@@ -338,21 +338,23 @@ def read_game_rooms(current_user: Annotated[models.User, Depends(get_current_act
 ## Get specific game room
 @app.get("/game-room/{game_room_id}", response_model=models.GameRoom)
 def read_game_rooms(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
-    game_room = crud.get_game_room(db, game_room_id=game_room_id)
-    return game_room
+    if crud.is_in_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id):
+        return crud.get_game_room(db, game_room_id=game_room_id)
+    return HTTPException(status_code=401, detail="You cannot enter the room.")
 
 ## Enter game room
-@app.post("/enter/game-room/{game_room_id}", response_model=models.GameLog)
+@app.post("/enter/game-room/{game_room_id}")
 def enter_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
-    crud.enter_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id)
+    if crud.enter_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id) is None:
+        return None
     return crud.send_enter_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id)
 
 ## Leave game room
 @app.post("/leave/game-room/{game_room_id}", response_model=models.GameLog)
 def leave_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     crud.leave_game_room(db=db, game_room_id=game_room_id, user_id=current_user.id)
-    return crud.send_leave_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id
-                                    )
+    return crud.send_leave_game_log(db=db, game_room_id=game_room_id, user_id=current_user.id)
+
 ## Start game room
 @app.post("/start/game-room/{game_room_id}", response_model=models.GameLog)
 def start_game_room(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
