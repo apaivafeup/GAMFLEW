@@ -556,7 +556,10 @@ def remove_student_from_class(current_user: Annotated[models.User, Depends(get_c
 
 @app.get('/student-class/{class_id}/challenge/{challenge_id}/visible', response_model=models.StudentClassChallenge)
 def get_challenge_visibility(current_user: Annotated[models.User, Depends(get_current_active_user)], class_id: int, challenge_id: int, db: Session = Depends(get_db)):
-    return crud.get_challenge_visibility(db=db, student_class_id=class_id, challenge_id=challenge_id)
+    if class_id is -1 and current_user.user_type == "student":
+        raise HTTPException(401, "Unauthorized - No Class")
+    else:
+        return crud.get_challenge_visibility(db=db, student_class_id=class_id, challenge_id=challenge_id)
 
 @app.post('/student-class/{class_id}/delete', response_model=models.StudentClass)
 def delete_student_class(current_user: Annotated[models.User, Depends(get_current_active_user)], class_id: int, db: Session = Depends(get_db)):
