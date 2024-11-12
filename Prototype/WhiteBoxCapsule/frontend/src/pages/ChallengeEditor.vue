@@ -29,6 +29,7 @@
                   :passed="passed_challenges.includes(challenge.id)"
                   :unlocked="unlocked_challenge_achievements.includes(challenge.id)"
                   :visible="challenge.visible"
+                  :attempted-challenges="[]"
                 />
               </li>
             </ul>

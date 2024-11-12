@@ -19,7 +19,7 @@
               <font-awesome-icon class="icon" icon="award" fixed-width />
             </div>
             <div class="col" style="width: 1fr;"></div>
-            <div class="col" v-if="attemptedChallenges.includes(challenge.id)"
+            <div class="col" v-if="attemptedChallenges.includes(challenge.id) || this.auth.user.user_type != 'student'"
               style="display: flex; flex-direction: row; font-size: 16px; align-items: center; justify-content: end; border: 1px solid #8080806b;
   border-radius: 30px;
   max-width: 125px;

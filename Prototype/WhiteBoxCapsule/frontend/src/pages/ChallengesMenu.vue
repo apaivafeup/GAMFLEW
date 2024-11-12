@@ -57,7 +57,7 @@ export default defineComponent({
     this.auth = authStore()
     this.auth.checkAuth()
 
-    if (this.auth.user.student_class == null) {
+    if (this.auth.user.student_class == null && this.auth.user.user_type != 'teacher') {
       this.$router.push({ name: 'error', params: {afterCode: '_', code: '401', message: 'No Class'}})
       this.$error = true
       loader.hide()
