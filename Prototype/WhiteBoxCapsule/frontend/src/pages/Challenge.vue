@@ -109,6 +109,10 @@ export default {
       return
     })
 
+    if (this.auth.user.student_class == null) {
+      this.auth.user.student_class = -1;
+    }
+
     await this.$axios.get(this.$api_link + '/student-class/' + this.auth.user.student_class + '/challenge/' + this.id + '/visible', this.auth.config).then((response) => {
       if (response.data.visible == false) {
         this.$router.push({ name: 'error', params: {afterCode: '_', code: '403', message: 'Forbidden!' } })
