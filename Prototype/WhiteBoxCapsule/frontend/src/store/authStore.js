@@ -22,6 +22,10 @@ export const authStore = defineStore('authStore', {
                 }
                 this.user = JSON.parse(window.sessionStorage.getItem('user_data'))
                 this.authenticated = true
+            } else {
+                this.authenticated = false
+                this.user = null
+                this.config = {}
             }
         },
 
@@ -38,7 +42,7 @@ export const authStore = defineStore('authStore', {
                     this.config = {
                         headers: { 'Authorization': 'Bearer ' + response.data.access_token }
                     }
-                    this.auth = true;
+                    this.authenticated = true;
 
                     window.sessionStorage.setItem('access_token', response.data.access_token)
                     window.sessionStorage.setItem('username', form.get('username'))
@@ -91,8 +95,5 @@ export const authStore = defineStore('authStore', {
                     this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
                 })
         }
-    },
-    persist: {
-        storage: localStorage
     }
 })

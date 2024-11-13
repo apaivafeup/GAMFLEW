@@ -41,10 +41,7 @@ import {
 
 import 'floating-vue/dist/style.css'
 
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-
 const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
 
 library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark, faBullseye, faCheck, faChartSimple, faComment)
 
