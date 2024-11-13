@@ -1,5 +1,5 @@
 <template>
-  <div class="col" v-if="main && auth.user.user_type != 'admin' && auth.user.user_type != 'teacher'" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+  <div class="col" v-if="auth.user != null && auth.user.user_type != 'admin' && auth.user.user_type != 'teacher'" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
     <button class="menu-button" id="single-player-button" @click="this.$router.push('challenges')" style="width: 500px">
       Single Player
     </button>
@@ -31,7 +31,7 @@
     </button>
   </div>
 
-  <div class="col" v-else-if="main && auth.user.user_type == 'teacher'">
+  <div class="col" v-else-if="auth.user != null && auth.user.user_type == 'teacher'">
     <div class="row" style="display: grid; grid-template-columns: repeat(3, 300px); grid-gap: 30px; place-content: center; margin-bottom: 15px;" >
       <div class="col" style="margin: 0px; padding: 0px;">
       <h4 style="text-align: center;">Play</h4>
@@ -97,7 +97,7 @@
     </div>
   </div>
 
-  <div class="col" v-else-if="main && auth.user.user_type == 'admin'">
+  <div class="col" v-else-if="auth.user != null && auth.user.user_type == 'admin'">
     <div class="row" style="display: grid; grid-template-columns: repeat(3, 300px); grid-gap: 30px; place-content: center; margin-bottom: 15px;" >
       <div class="col" style="margin: 0px; padding: 0px;">
       <h4 style="text-align: center;">Play</h4>
@@ -169,16 +169,21 @@
       </button>
     </div>
   </div>
+  <div class="row" v-else>
+    <LoadingIcon />
+  </div>
 
 </template>
 
 <script>
 import { defineComponent } from 'vue'
 import { authStore } from '../store/authStore.js'
+import LoadingIcon from './LoadingIcon.vue';
 
 export default defineComponent({
   beforeMount() {
     this.auth = authStore()
+    this.auth.checkAuth()
   },
 
   components: {},
