@@ -334,7 +334,7 @@
                 "(input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red + input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.blue == 1)"
             ]
         },
-        "achievement": "input.state[input.currentKey][Math.round((parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) + parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x))/2)][Math.round((parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y) + parseFloat(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y))/2)].color == 'empty'",
+        "achievement": "this.get_middle_piece(input, input.currentKey, input.log[input.currentKey][input.log[input.currentKey].length - 1].destination, input.log[input.currentKey][input.log[input.currentKey].length - 1].start).color == 'empty'",
         "achievement_hint": "The destination must pass the condition on line 25. Make sure the middle piece (line 26) follows the same condition.",
         "difficulty": "Normal",
         "owner_id": 1,
@@ -358,10 +358,10 @@
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 2"
             ],
             "tests": [
-                "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)/2)].color"
+                "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == this.get_middle_piece(input, input.currentKey, input.log[input.currentKey][input.log[input.currentKey].length - 1].destination, input.log[input.currentKey][input.log[input.currentKey].length - 1].start).color"
             ]
         },
-        "achievement": "input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y)/2)].color == 'blue'",
+        "achievement": "this.get_middle_piece(input, input.currentKey, input.log[input.currentKey][input.log[input.currentKey].length - 1].destination, input.log[input.currentKey][input.log[input.currentKey].length - 1].start).color == 'blue'",
         "achievement_hint": "The middle piece (line 26) must be of Y color. Y = RGB(0, 0, 255).",
         "difficulty": "Normal",
         "owner_id": 1,
@@ -385,7 +385,7 @@
                 "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 2"
             ],
             "tests": [
-                "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color != input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)/2)].color && input.state[input.currentKey][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x)/2)][Math.round((input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y + input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y)/2)].color != 'empty'"
+                "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color != this.get_middle_piece(input, input.currentKey, input.log[input.currentKey][input.log[input.currentKey].length - 1].destination, input.log[input.currentKey][input.log[input.currentKey].length - 1].start).color && this.get_middle_piece(input, input.currentKey, input.log[input.currentKey][input.log[input.currentKey].length - 1].destination, input.log[input.currentKey][input.log[input.currentKey].length - 1].start).color != 'empty'"
             ]
         },
         "achievement": "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == 'red'",
@@ -412,11 +412,11 @@
                 "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 2"
             ],
             "tests": [
-                "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color != input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].start.x + input.log[case_num][input.log[case_num].length - 1].destination.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].start.y + input.log[case_num][input.log[case_num].length - 1].destination.y)/2)].color",
-                "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color == input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].start.x + input.log[case_num][input.log[case_num].length - 1].destination.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].start.y + input.log[case_num][input.log[case_num].length - 1].destination.y)/2)].color"
+                "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color != this.get_middle_piece(input, case_num, input.log[case_num][input.log[case_num].length - 1].destination, input.log[case_num][input.log[case_num].length - 1].start).color",
+                "input.state[case_num][input.log[case_num][input.log[case_num].length - 1].destination.x][input.log[case_num][input.log[case_num].length - 1].destination.y].color == this.get_middle_piece(input, case_num, input.log[case_num][input.log[case_num].length - 1].destination, input.log[case_num][input.log[case_num].length - 1].start).color"
             ]
         },
-        "achievement": "input.state[case_num][Math.round((input.log[case_num][input.log[case_num].length - 1].destination.x + input.log[case_num][input.log[case_num].length - 1].start.x)/2)][Math.round((input.log[case_num][input.log[case_num].length - 1].destination.y + input.log[case_num][input.log[case_num].length - 1].start.y)/2)].color == 'red'",
+        "achievement": "this.get_middle_piece(input, case_num, input.log[case_num][input.log[case_num].length - 1].destination, input.log[case_num][input.log[case_num].length - 1].start).color == 'red'",
         "achievement_hint": "Look closely at this bar. It has two colors, from left to right: X and Y. In one test case, move a piece of color Z, knowing that (X - Z) + 'yellow' = RGB(0, 255, 0).",
         "difficulty": "Normal",
         "owner_id": 1,

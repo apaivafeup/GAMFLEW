@@ -359,6 +359,15 @@ export default {
       return pieces
     },
 
+    get_middle_piece(board, boardKey, a, b) {
+      var a_x = a.x, a_y = a.y,
+          b_x = a.x, b_y = b.y,
+          m_x = Math.round((parseInt(a_x) + parseInt(b_x))/2),
+          m_y = Math.round((parseInt(a_y) + parseInt(b_y))/2)
+
+      return board.state[boardKey][m_x][m_y]
+    },
+
     count_blue_pieces(board, boardKey) {
       var count = 0
       for (var i = 0; i < board.state[boardKey].length; i++) {
