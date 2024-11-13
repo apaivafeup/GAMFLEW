@@ -10,6 +10,13 @@ beforeEach('login', () => {
     cy.get('#login-button').click().wait(1000)
     cy.viewport(1920, 1080)
     cy.get('#single-player-button').click().wait(1000)
+    cy.get('#accordion-button-1').click().wait(300)
+    cy.get('#accordion-button-2').click().wait(300)
+    cy.get('#accordion-button-3').click().wait(300)
+    cy.get('#accordion-button-4').click().wait(300)
+    cy.get('#accordion-button-5').click().wait(300)
+    cy.get('#accordion-button-6').click().wait(300)
+    cy.get('#accordion-button-7').click().wait(300)
 })
 
 describe("test file 1", () => {
@@ -520,7 +527,7 @@ describe("test file 1", () => {
             cy.get('.alert-danger').should('be.visible')
         })
     })
-
+    
     describe("challenge 1.14", () => {
         it('pass challenge 1.14', () => {
             cy.get('#challenge-14-play').click()

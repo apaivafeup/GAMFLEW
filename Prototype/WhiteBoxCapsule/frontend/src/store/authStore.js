@@ -10,22 +10,18 @@ export const authStore = defineStore('authStore', {
             // Actual game state.
             config: {},
             user: User,
-            authenticated: Boolean
+            authenticated: false
         }
     },
     actions: {
         async checkAuth() {
             const username = window.sessionStorage.getItem('username')
-            if (username != null) {
+            if (username != undefined) {
                 this.config = {
                     headers: { 'Authorization': 'Bearer ' + window.sessionStorage.getItem('access_token') }
                 }
                 this.user = JSON.parse(window.sessionStorage.getItem('user_data'))
                 this.authenticated = true
-            } else {
-                this.authenticated = false
-                this.user = null
-                this.config = {}
             }
         },
 
@@ -43,6 +39,7 @@ export const authStore = defineStore('authStore', {
                         headers: { 'Authorization': 'Bearer ' + response.data.access_token }
                     }
                     this.authenticated = true;
+
 
                     window.sessionStorage.setItem('access_token', response.data.access_token)
                     window.sessionStorage.setItem('username', form.get('username'))
