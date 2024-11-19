@@ -11,11 +11,11 @@
           </div>
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
             <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-x"
-              class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="x"/>
+              class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="row"/>
             <input v-else id="piece-stack-out-x" class="col box disabled"
               style="width: 50px; text-align: center; font-size: 12px" type="number" disabled />
             <input v-if="board.outOfBoundsState[board.currentKey].pieceCount() == 0" id="piece-stack-out-y"
-              class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="y" />
+              class="col box" style="width: 50px; text-align: center; font-size: 12px" type="number" placeholder="column" />
             <input v-else id="piece-stack-out-y" class="col box disabled"
               style="width: 50px; text-align: center; font-size: 12px" type="number" disabled />
           </div>
@@ -24,10 +24,10 @@
         <div class="buttons-grid">
           <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
             @click="this.board.addMode()">
-            {{ !board.add ? 'Add' : 'Move' }}
+            {{ board.add ? 'Add' : 'Move' }}
           </button>
           <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default" v-else>
-            {{ !board.add ? 'Add' : 'Move' }}
+            {{ board.add ? 'Add' : 'Move' }}
           </button>
           <button id="reset-button" class="button is-primary is-fullwidth"
             v-if="!board.passed && !board.pause && !board.add" @click="board.generateState(true)">

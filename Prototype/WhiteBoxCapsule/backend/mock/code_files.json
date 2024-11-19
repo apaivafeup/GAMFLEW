@@ -7,7 +7,7 @@
     {
         "id": 2,
         "name": "Test File 2: Is Board Valid?",
-        "content": "function is_board_valid(board) { // board is the board's state.\n\tvar bluePieces = this.count_blue_pieces(board);\n\tvar redPieces = this.count_red_pieces(board);\n\n\tif (bluePieces > 12 || redPieces > 12) {\n\t\treturn false;\n\t} else if (bluePieces == 0 || redPieces == 0) {\n\t\treturn false;\n\t}\n\n\tvar pieces = this.get_pieces(board);\n\tvar odd = [1, 3, 5, 7], even = [0, 2, 4, 6];\n\n\tfor (p in pieces) {\n\t\tif (p.position.x % 2 != 0) {\n\t\t\tif (!odd.includes(p.position.y)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\tif (!even.includes(p.position.y)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t}\n\n\treturn true;\n}"
+        "content": "function is_board_valid(board) { // board is the board's state.\n\tvar bluePieces = this.count_blue_pieces(board);\n\tvar redPieces = this.count_red_pieces(board);\n\n\tif (bluePieces > 12 || redPieces > 12) {\n\t\treturn false;\n\t} else if (bluePieces == 0 || redPieces == 0) {\n\t\treturn false;\n\t}\n\n\tvar pieces = this.get_pieces(board);\n\tvar odd = [1, 3, 5, 7], even = [0, 2, 4, 6];\n\n\tfor (p in pieces) {\n\t\tif (p.position.row % 2 != 0) {\n\t\t\tif (!odd.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\tif (!even.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t}\n\n\treturn true;\n}"
     },
     {
         "id": 3,
