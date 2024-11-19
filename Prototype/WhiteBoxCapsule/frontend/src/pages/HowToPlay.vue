@@ -195,7 +195,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                         padding: 10px;
                         margin-right: 7.5px;
                       ">
-                    <h6>Adding Pieces</h6>
+                    <h6>Adding and Removing Pieces</h6>
                     <p style="text-align: justify; margin: 0px; margin-bottom: -10px">
                         To add a piece, click the
                         <button class="button is-primary is-fullwidth">Add</button> button and then click
@@ -233,10 +233,10 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                             <div style="width: 100%; display: flex; flex-direction: row; justify-content: center">
                                 <input id="piece-stack-out-x" class="col box disabled"
                                     style="width: 50px; text-align: center; font-size: 12px" type="number"
-                                    placeholder="x" />
+                                    placeholder="row" />
                                 <input id="piece-stack-out-y" class="col box disabled"
                                     style="width: 50px; text-align: center; font-size: 12px" type="number"
-                                    placeholder="y" />
+                                    placeholder="column" />
                             </div>
                         </div>
                     </div>

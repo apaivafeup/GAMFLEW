@@ -113,10 +113,10 @@
           <div style="width: 100%; display: flex; flex-direction: row; justify-content: center; margin-top: 7.5px;">
             <input id="piece-stack-out-x"
               @change="changeX()" class="col box" name="piece-stack-out-x"
-              style="width: 50px; text-align: center; font-size: 12px; width: 32px;" type="number" placeholder="x" />
+              style="width: 50px; text-align: center; font-size: 12px; width: 32px;" type="number" placeholder="row" />
             <input @change="changeY()"
               id="piece-stack-out-y" class="col box" name="piece-stack-out-y"
-              style=" width: 32px; text-align: center; font-size: 12px" type="number" placeholder="y" />
+              style=" width: 32px; text-align: center; font-size: 12px" type="number" placeholder="column" />
           </div>
           <div class="row" style="display: flex; justify-content: center; text-align: center; font-size: 10px; margin-bottom: 10px; width: 120%; margin-top: 5px;">
             Move a piece here to get it out of bounds.
@@ -153,10 +153,10 @@
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
           @click="board.addMode()">
-          {{ !board.add ? 'Add' : 'Move' }}
+          {{ board.add ? 'Add' : 'Move' }}
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default" v-else>
-          {{ !board.add ? 'Add' : 'Move' }}
+          {{ board.add ? 'Add' : 'Move' }}
         </button>
         <button id="go-button" class="button is-primary is-fullwidth"
           v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed && !board.pause"

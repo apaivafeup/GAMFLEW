@@ -50,18 +50,13 @@
       </button>
       </div>
       <div class="col" style="margin: 0px; padding: 0px;">
-      <h4 style="text-align: center;">Challenges</h4>
-      <button class="admin-menu-button" id="challenge-content-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
-        @click="this.$router.push('content-creator')" style="">
-        Challenge Creator
-      </button>
-      <button class="admin-menu-button" id="challenge-manager-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
-        @click="this.$router.push('challenge-manager')" style="">
-        Challenge Manager
-      </button>
+      <h4 style="text-align: center;">Classes</h4>
       <button class="admin-menu-button" id="challenge-manager-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
         @click="this.$router.push('class-manager')" style="">
         Class Manager
+      </button>
+      <button class="admin-menu-button" @click="this.$router.push({ name: 'check-user-submissions' })" id="check-user-submission-button" style="">
+          Check User Submissions
       </button>
       </div>
       <div class="col" style="margin: 0px; padding: 0px;">
@@ -79,15 +74,6 @@
       style="">
         Credits
       </button>
-      </div>
-    </div>
-    <div class="row" style="display: grid; grid-template-columns: repeat(1, 300px); place-content: center;" >
-      <div class="col" style="margin: 0px; padding: 0px;">
-        <h4 style="text-align: center;">Administrator Features</h4>
-        <button class="admin-menu-button" @click="this.$router.push({ name: 'check-user-submissions' })" id="check-user-submission-button" style="">
-          Check User Submissions
-        </button>
-
       </div>
     </div>
     <div class="row" style="display: flex; justify-content: center; margin-top: 40px;">
