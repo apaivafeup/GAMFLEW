@@ -76,11 +76,11 @@
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
           @click="board.addMode()">
-          {{ board.add ? 'Add' : 'Move' }}
+          {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default"
           v-else>
-          {{ board.add ? 'Add' : 'Move' }}
+          {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button id="go-button" class="button is-primary is-fullwidth"
           v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed && !board.pause && playable"

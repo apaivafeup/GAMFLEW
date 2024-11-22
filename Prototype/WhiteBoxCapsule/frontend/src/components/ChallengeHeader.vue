@@ -6,16 +6,16 @@
         ><em>{{ name.includes(':')?name.split(':')[1] : name}}</em>
       </div>
       <div class="col" v-if="id != null" id="challenge-buttons" style="display: flex; justify-content: end;">
-        <button class="button" style="width: auto !important;" v-if="id != 1" @click="this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }})">
+        <button class="button" style="width: auto !important;" v-if="id != 1" @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}); window.location.reload()">
           Previous Challenge
         </button>
-        <button class="button disabled" style="width: auto !important;"  v-else  @click="this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }})">
+        <button class="button disabled" style="width: auto !important;"  v-else  @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}); window.location.reload()">
           Previous Challenge
         </button>
-        <button class="button" style="width: auto !important;"  v-if="id != 99" @click="this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }})">
+        <button class="button" style="width: auto !important;"  v-if="id != 99" @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }});  window.location.reload()">
           Next Challenge
         </button>
-        <button class="button disabled" style="width: auto !important;" v-else @click="this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }})">
+        <button class="button disabled" style="width: auto !important;" v-else @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }});  window.location.reload()">
           Next Challenge
         </button>
       </div>
@@ -34,6 +34,7 @@ export default {
   },
 
   beforeMount() {
+    this.board = boardStore()
   },
 
   methods: {}
