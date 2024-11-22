@@ -26,13 +26,7 @@
       <div class="col" style="height: 315.5px;" v-else>
 
       </div>
-
-      <router-link id="next-challenge" :to="{ name: 'challenge', params: { id: challenge.id + 1 } }" v-if="board.passed"
-        style="opacity: 0%; color: transparent; background-color: transparent;">
-        <button id="next-challenge-button" class="button is-primary is-fullwidth">
-          Next Challenge
-        </button>
-      </router-link>
+      
       <div class="progress-bar">
         <div class="row" v-if="board.add"
           style="display: flex; justify-content: center; text-align: center; font-size: 10px; margin-bottom: 10px;">
@@ -68,11 +62,11 @@
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
           @click="board.addMode()">
-          {{ board.add ? 'Add' : 'Move' }}
+          {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default"
           v-else>
-          {{ board.add ? 'Add' : 'Move' }}
+          {{ !board.add ? 'Add' : 'Move' }}
         </button>
         <button id="go-button" class="button is-primary is-fullwidth" data-bs-toggle="modal"
           data-bs-target="#comment-modal"

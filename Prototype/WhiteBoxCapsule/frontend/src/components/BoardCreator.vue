@@ -24,10 +24,10 @@
         <div class="buttons-grid">
           <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
             @click="this.board.addMode()">
-            {{ board.add ? 'Add' : 'Move' }}
+            {{ !board.add ? 'Add' : 'Move' }}
           </button>
           <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default" v-else>
-            {{ board.add ? 'Add' : 'Move' }}
+            {{ !board.add ? 'Add' : 'Move' }}
           </button>
           <button id="reset-button" class="button is-primary is-fullwidth"
             v-if="!board.passed && !board.pause && !board.add" @click="board.generateState(true)">
