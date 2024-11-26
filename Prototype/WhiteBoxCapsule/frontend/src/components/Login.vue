@@ -69,7 +69,7 @@ export default defineComponent({
       formData.append('password', this.password)
       
       this.auth.login(formData)
-      this.beforeMount()
+      this.$forceUpdate()
     },
 
     goToRegister(event) {

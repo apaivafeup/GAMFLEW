@@ -195,10 +195,10 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                         padding: 10px;
                         margin-right: 7.5px;
                       ">
-                    <h6>Adding and Removing Pieces</h6>
+                    <h6>Adding and Removing  Pieces</h6>
                     <p style="text-align: justify; margin: 0px; margin-bottom: -10px">
                         To add a piece, click the
-                        <button class="button is-primary is-fullwidth">Add</button> button and then click
+                        <button class="button is-primary is-fullwidth">Add/Remove</button> button and then click
                         the spot you want to add it to. Each click gives you one of three states: red, blue,
                         empty (in that order). <br />
                     </p>
@@ -210,7 +210,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                         You can add as many pieces as you want, but you can't add pieces to a stack with
                         this feature. You can, however, remove the stack altogether (turn it into an empty
                         spot) and then add individual pieces. Click the
-                        <button class="button is-primary is-fullwidth">Add</button> button again to stop
+                        <button class="button is-primary is-fullwidth">Add/Remove</button> button again to stop
                         adding pieces.
                     </p>
                 </div>

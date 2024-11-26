@@ -286,6 +286,9 @@ export const boardStore = defineStore('boardStore', {
     },
 
     addMode() {
+      if (this.selectedPiece != null) {
+        this.selectedPiece.selected = false
+      }
       this.add = !this.add
       document.body.classList.toggle('add-mode')
     },
