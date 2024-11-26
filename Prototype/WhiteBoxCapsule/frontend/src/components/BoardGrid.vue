@@ -62,11 +62,11 @@
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
           @click="board.addMode()">
-          {{ !board.add ? 'Add' : 'Move' }}
+          {{ !board.add ? 'Add/Remove' : 'Move' }}
         </button>
         <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default"
           v-else>
-          {{ !board.add ? 'Add' : 'Move' }}
+          {{ !board.add ? 'Add/Remove' : 'Move' }}
         </button>
         <button id="go-button" class="button is-primary is-fullwidth" data-bs-toggle="modal"
           data-bs-target="#comment-modal"

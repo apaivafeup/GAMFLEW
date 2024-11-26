@@ -397,6 +397,7 @@ button.admin-menu-button {
 
 .add-button {
   border: var(--box-border);
+  font-size: 9.4px;
 }
 
 .player-bar-box {
