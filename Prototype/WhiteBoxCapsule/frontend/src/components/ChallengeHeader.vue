@@ -9,13 +9,13 @@
         <button class="button" style="width: auto !important;" v-if="id != 1" @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}); this.$forceUpdate()">
           Previous Challenge
         </button>
-        <button class="button disabled" style="width: auto !important;"  v-else  @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}); this.$forceUpdate()">
+        <button class="button disabled" style="width: auto !important;"  v-else  @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}); this.$forceUpdate(); board.emptyState();">
           Previous Challenge
         </button>
-        <button class="button" style="width: auto !important;"  v-if="id != 99" @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}); this.$forceUpdate()">
+        <button class="button" style="width: auto !important;"  v-if="id != 99" @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}); this.$forceUpdate(); board.emptyState();">
           Next Challenge
         </button>
-        <button class="button disabled" style="width: auto !important;" v-else @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}); this.$forceUpdate()">
+        <button class="button disabled" style="width: auto !important;" v-else @click="board.add = false; this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}); this.$forceUpdate(); board.emptyState();">
           Next Challenge
         </button>
       </div>
