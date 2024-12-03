@@ -1744,7 +1744,7 @@
         "test_cases_count": 1,
         "score": 125,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
-        "objective": "Statement coverage of line 14.",
+        "objective": "Statement coverage of line 15.",
         "initial_board": 2,
         "code_file": 5,
         "challenge_type": "statement",
