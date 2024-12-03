@@ -210,7 +210,8 @@ def get_user_by_email(db: Session, email: str):
 
 
 def get_users(db: Session, skip: int = 0, limit: int = 500):
-    users = db.query(schemas.User).limit(limit).offset(skip).all()
+    users = db.query(schemas.User).filter(schemas.User.user_type == schemas.UserType.TEACHER).all()
+    users = users + db.query(schemas.User).filter(schemas.User.user_type == schemas.UserType.PLAYER).all()
 
     user_basics = []
     for user in users:
@@ -374,7 +375,7 @@ def get_unlocked_challenge_achievements(db: Session, user_id: int):
 
 def delete_user(db: Session, user_id: int):
     user_to_delete = get_user(db, user_id)
-    if user_to_delete is None:
+    if user_to_delete is None or user_to_delete.user_type == "admin":
         return None
     db.delete(user_to_delete)
     db.commit()

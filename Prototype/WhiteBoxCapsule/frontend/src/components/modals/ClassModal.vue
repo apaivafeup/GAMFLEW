@@ -72,8 +72,7 @@ export default defineComponent({
         teacher: this.auth.user.id
       }
 
-      await this.$axios.post(this.$api_link + '/student-class/create',
-        studentClass, this.auth.config
+      await this.$axios.post(this.$api_link + '/student-class/create', studentClass, this.auth.config
       ).then((response) => {
         this.toast.success('Class created successfully!')
         this.$refs.close.click()

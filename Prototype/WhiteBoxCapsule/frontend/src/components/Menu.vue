@@ -103,10 +103,6 @@
       </div>
       <div class="col" style="margin: 0px; padding: 0px;">
       <h4 style="text-align: center;">Challenges</h4>
-      <button class="admin-menu-button" id="challenge-content-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
-        @click="this.$router.push('content-creator')" style="">
-        Challenge Creator
-      </button>
       <button class="admin-menu-button" id="challenge-manager-button" v-if="auth.user.user_type == 'admin' || auth.user.user_type == 'teacher'"
         @click="this.$router.push('challenge-manager')" style="">
         Challenge Manager
@@ -136,12 +132,8 @@
     <div class="row" style="display: grid; grid-template-columns: repeat(1, 300px); place-content: center;" >
       <div class="col" style="margin: 0px; padding: 0px;">
         <h4 style="text-align: center;">Administrator Features</h4>
-        <!-- <button class="admin-menu-button" @click="this.$router.push({ name: 'user-import' })"
-          v-if="auth.user.user_type == 'admin'" id="import-button" style="">
-          Import
-        </button> -->
-        <button class="admin-menu-button" @click="this.$router.push({ name: 'validate-admin' })" v-if="auth.user.user_type == 'admin'" id="validate-admin-button" style="">
-          Validate New Teachers
+        <button class="admin-menu-button" @click="this.$router.push({ name: 'manage-users' })" v-if="auth.user.user_type == 'admin'" id="manage-users-button" style="">
+          Manage Users
         </button>
         <button class="admin-menu-button" @click="this.$router.push({ name: 'check-user-submissions' })" id="check-user-submission-button" style="">
           Check User Submissions
