@@ -1242,7 +1242,7 @@
             "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
-                "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)",
+                "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)"
 
             ],
             "tests": [
