@@ -1234,7 +1234,7 @@
         "test_cases_count": 2,
         "score": 450,
         "hint": "Only one piece needs to pass the test in each test case! You can check the How to Play page to know how movement works.",
-        "objective": "Decision coverage of line 47.",
+        "objective": "Decision coverage of line 47-49.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
@@ -1246,8 +1246,8 @@
 
             ],
             "tests": [
-                "[{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))",
-                "![{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
+                "[{ x: 1, y: -1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
+                "![{ x: 1, y: -1}, { x: -1, y: -1}].every(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
