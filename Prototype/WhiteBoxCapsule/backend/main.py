@@ -397,7 +397,7 @@ def read_game_room_state(current_user: Annotated[models.User, Depends(get_curren
 def random_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, db: Session = Depends(get_db)):
     challenge = crud.get_random_challenge(db=db, game_room_id=game_room_id)
     #TODO: make pass the random challenge to the round creation.
-    return crud.add_game_round(db=db, challenge_id=1, game_room_id=game_room_id)
+    return crud.add_game_round(db=db, challenge_id=challenge.id, game_room_id=game_room_id)
 
 ## Start round
 @app.post("/round/{game_round_id}/start", response_model=models.GameLog)
@@ -460,17 +460,11 @@ def export_user_attempts(current_user: Annotated[models.User, Depends(get_curren
 def get_code_file_dictionary(db: Session = Depends(get_db)):
     return crud.get_code_file_dictionary(db)
 
-@app.get('/admin/pending-admins', response_model=list[models.UserBasics])
-def get_non_validated_users(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
-    if current_user.user_type != schemas.UserType.ADMIN:
-        raise HTTPException(status_code=401, detail="Unauthorized")
-    return crud.get_non_validated_users(db)
-
-@app.post('/admin/validate-admin/{user_id}', response_model=models.UserBasics)
+@app.post('/admin/delete-user/{user_id}', response_model=models.UserBasics)
 def validate_user(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, db: Session = Depends(get_db)):
     if current_user.user_type != schemas.UserType.ADMIN:
         raise HTTPException(status_code=401, detail="Unauthorized")
-    return crud.validate_user(db, user_id)
+    return crud.delete_user(db, user_id)
 
 @app.get('/challenges/{challenge_id}/comments', response_model=list[models.ChallengeComments])
 def get_challenge_comments(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, db: Session = Depends(get_db)):

@@ -309,12 +309,9 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
-                        The <code>if (hour < 18) {</code> line is a decision point - according to its condition yielding True or False,
-                        the code will execute one of the two branches. These are: executing the <code>greeting = "Good day";</code> line, or not.<br style="margin-bottom: 5px;"/>
-                        To achieve decision coverage, you need to ensure that both branches are executed at least once. Considering the example,
-                        you'd need to provide a test case where <code>hour</code> is less than 18, and a test case where <code>hour</code> is NOT less than 18. <br style="margin-bottom: 5px;"/>
-                        Regarding the <code>else</code> line: the only way to avoid an <code>else</code> branch is to have the the <code>hour < 18</code> be True. However,
-                        if you had, say <code>else if (hour > 18) {</code>, you could avoid this branch with a test case where <code>hour = 18</code>.
+
+                        To achieve decision coverage, you need to ensure that both outcomes of the decision <code>if (hour < 18) {</code> are executed at least once.<br style="margin-bottom: 5px;"/>
+                        Considering the example, you'd need to provide a test case where <code>hour</code> is lower than 18 (e.g.: <code>statement(14)</code>, to execute <code>greeting = "Good day";</code>), and a test case where <code>hour</code> is NOT lower than 18 (e.g.: <code>statement(20)</code>, to execute <code>greeting = "Good evening";</code>).
                     </p>
                     </div>
                     <div v-if="code_coverage == 'condition'">
@@ -329,25 +326,35 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
-                        If you have a condition like <code>(hour > 6 && hour < 12)</code>, you have two Boolean expressions.
-                        For each expression, you need to provide a test case for it being True, and and another where it is False.
-                        This is possible with only 2 tests: one where <code>hour = 5</code> (less than 6, less than 12 - False + True) and another where <code>hour = 13</code> (greater than 6, greater than 12 - True + False). <br style="margin-bottom: 5px;"/> With these two cases, both expressions pass True and False, thus achieving 100% condition coverage.
+                        You have two conditions in a Boolean expression like <code>(hour > 6 && hour < 12)</code>. For each condition, you need to provide a test case that evaluates it for True, and another for False. This is possible with 2 test cases, e.g.: <code>hour = 5</code> and <code>hour = 13</code>. <br/>
+                        In the first test case (<code>hour = 5</code>), the first condition (<code>hour > 6</code>) is False, and the second condition (<code>hour < 12</code>) is True. In the second test case (<code>hour = 13</code>), the first condition (<code>hour > 6</code>) is True, and the second condition (<code>hour < 12</code>) is False. So, with these two test cases, both conditions are evaluated for True and for False. 
                     </p>
                     </div>
                     <div v-if="code_coverage == 'condition/decision'">
                         <h6>Condition/Decision Coverage</h6>
                     <p style="text-align: justify; margin-bottom: 10px;">
                         Condition/decision coverage joins condition and decision coverage.
-                        In other words, all expressions from conditions are covered for True and False, and all decision points have both branches executed.
+                        In other words, all Boolean expressions have their conditions covered for True and False, and the decision is executed for both True and False.
                     </p>
                     <CodeBlock id="code-block-example" class="line-numbers" theme="default" data-line="1"
                     :prismjs="true" :name="name" :code="condition_code" lang="javascript" prism-js
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
-                        If you have a condition like <code>(hour > 6 && hour < 12)</code>, you have two Boolean expressions.
-                        For each expression, you need to provide a test case for it being True, and and another where it is False. You also must ensure the condition yields True and False (two branches).
-                        You can do this with three tests (two is impossible): one where <code>hour = 7</code> (greater than 6, less than 12 - True + True, Branch 1), one where <code>hour = 5</code> (less than 6, less than 12 - False + True, Branch 2) and another where <code>hour = 13</code> (greater than 6, greater than 12 - True + False). These achieve both 100% condition coverage and 100% decision coverage.
+                        The Boolean expression <code>(hour > 6 && hour < 12)</code> has two conditions. So, we need to test both conditions for both True and False (condition coverage) and test the outcome of the Boolean expression for both True and False as well (decision coverage). For this, we need three test cases:
+                            <ul style="padding: 0px 25px 0px 25px;">
+                                <li>
+                                    One with <code>hour</code> greater than 6 and lower than 12 (e.g., <code>hour = 7</code>). In this case, both conditions are evaluated to True.
+                                </li>
+                                <li>
+                                    Another test case with <code>hour</code> lower than or equal to 6 (e.g., <code>hour = 5</code>) to evaluate first condition (<code>hour > 6</code>) to False (in this case, the second condition remains True).
+                                </li>
+                                <li>
+                                    Another test case with <code>hour</code> higher than or equal to 12 (e.g. <code>hour = 13</code>) to evaluate the second condition (<code>hour < 12</code>) to False (in this case, the first condition remains True).
+                                </li>
+                            </ul>   
+                        These three test cases evaluate both conditions for True and False.
+                        Now, we need two test cases to evaluate the overall decision for True and for False. The test case <code>hour = 5</code> evaluates the decision for False and the test case <code>hour = 7</code> evaluates for True. So, the three test cases above are enough to achieve condition/decision coverage.
                     </p>
                     </div>
                     <div v-if="code_coverage == 'mcdc'">
@@ -360,13 +367,21 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
-                        If you have a condition like <code>(hour > 6 && hour < 12)</code>, you have two Boolean expressions.
-                        The possible combinations with True and False: True + True, True + False, False + True, False + False, where only the first is True.
-                        We need test cases where each expression is <em>determinant</em> - it changes the outcome. <br style="margin-bottom: 5px;"/>
-                        As only one combination yields True (True + True), it must be included.
-                        Then, for False + True, <code>hour > 6</code> is determinant, because it being False makes the outcome False.
-                        Similar reasons for True + False and the <code>hour < 12</code> expression.
-                        So, you need the 3 discriminated test cases to achieve 100% MCDC.
+                        The Boolean expression <code>(hour > 6 && hour < 12)</code> has two conditions. We need to test both conditions for True and for False.
+                        We also need to test the overall decision outcome for True and for False and we need test cases where
+                        each condition is determinant – changing the condition value affects the decision outcome. We need three test cases: 
+                        <ul style="padding: 0px 15px 0px 15px">
+                            <li>
+                                One test case with <code>hour</code> between 6 and 12 (e.g., <code>hour = 7</code>). Both conditions are evaluated to True. The overall decision is also evaluated to True.
+                            </li>
+                            <li>
+                                Another test case with <code>hour</code> less than or equal to 6 (e.g., <code>hour = 5</code>). First condition is evaluated to False. Second condition is evaluated to True. Overall decision is evaluated to False.
+                            </li>
+                            <li>
+                                Another test case with <code>hour</code> greater than or equal to 12 (e.g., <code>hour = 13</code>). First condition is evaluated to True. Second condition is evaluated to False. Overall decision is evaluated to False.
+                            </li>
+                        </ul>
+                        Note that, with test cases 1 and 2, we test the first condition as determinant; with test cases 1 and 3, we test the second condition as determinant.
                     </p>
                     </div>
                 </div>

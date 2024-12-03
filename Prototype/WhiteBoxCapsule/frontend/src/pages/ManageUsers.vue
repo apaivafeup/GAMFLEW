@@ -1,36 +1,32 @@
 <template>
   <div class="col" style="text-align: center; margin-bottom: 15px;">
-    <h1>Validate Administrators</h1>
+    <h1>Manage Users</h1>
   </div>
-  <div class="row" v-if="admins.length > 0">
+  <div class="row" v-if="users.length > 0">
     <div class="col"
       style="display: grid; grid-template-columns: repeat(5, 200px); grid-gap: 30px; place-content: center;">
       <div class="col" style="margin: 0px; padding: 0px;">
         <ul class="list-group" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 10px;">
-          <li class="list-group-item user-card" v-for="admin in admins" :key="admin.id">
+          <li class="list-group-item user-card" v-for="user in users" :key="user.id">
             <div class="row" style="display: flex; justify-content: center; margin-bottom: 5px;">
               <div class="col" style="text-align: center;">
-                <img :src="this.$api_link + admin.picture" style="width: 100px; height: 100px; border-radius: 50%;" />
+                <img :src="this.$api_link + user.picture" style="width: 100px; height: 100px; border-radius: 50%;" />
               </div>
             </div>
             <div class="row" style="display: flex; flex-direction: column; gap: 2.5px; margin-bottom: 5px;">
-              <h5 style="margin: 0px; padding: 0px; text-align: center;">{{ admin.name }}</h5><br />
-              <p class="text-muted" style="text-align: center; font-style: italic; margin: 0px;">{{ admin.username }}
+              <h5 style="margin: 0px; padding: 0px; text-align: center;">{{ user.name }}</h5><br />
+              <p class="text-muted" style="text-align: center; font-style: italic; margin: 0px;">{{ user.username }}
               </p>
             </div>
             <div class="row" style="justify-content: center;">
-              <button class="menu-button" width="width: 100%; margin: 0px;" @click="validateAdmin(admin.id)">
-                Validate
+              <button class="menu-button" width="width: 100%; margin: 0px;" @click="deleteUser(user.id)">
+                Delete
               </button>
             </div>
           </li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="row" style="display: flex; justify-content: center; place-content: center;" v-else>
-    <p style="width: 100%; text-align: center; font-size: 18px; top: 50%;">No pending administrators. <br /> Come back
-      later to validate pending registrations.</p>
   </div>
 </template>
 
@@ -60,38 +56,38 @@ export default {
     this.auth = authStore()
     this.auth.checkAuth()
 
-    if (window.location.href.includes('validate-admin') && this.auth.user.user_type != 'admin') {
+    if (this.auth.user.user_type != 'admin') {
       this.$router.push({ name: 'error', params: { afterCode: '403', code: 'Forbidden', message: 'You are not allowed to access this page.' } })
     }
     this.toast = useToast()
 
-    this.getAdmins()
+    this.getUsers()
 
     loader.hide()
   },
 
   data() {
     return {
-      admins: []
+      users: []
     }
   },
 
   methods: {
-    async getAdmins() {
-      await this.$axios.get(this.$api_link + '/admin/pending-admins', this.auth.config)
+    async getUsers() {
+      await this.$axios.get(this.$api_link + '/users/', this.auth.config)
         .then(response => {
-          this.admins = response.data
+          this.users = response.data
         })
         .catch(error => {
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
         })
     },
 
-    async validateAdmin(admin_id) {
-      await this.$axios.post(this.$api_link + '/admin/validate-admin/' + admin_id, {}, this.auth.config)
+    async deleteUser(user_id) {
+      await this.$axios.post(this.$api_link + '/admin/delete-user/' + user_id, {}, this.auth.config)
         .then(response => {
           this.toast.success('Administrator validated successfully!')
-          this.getAdmins()
+          this.getUsers()
         })
         .catch(error => {
           this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
