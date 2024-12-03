@@ -295,10 +295,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                     style="font-size: 16px; overflow: scroll; width: 100%;" :copy-icon="false" :copy-button="false"
                     :copy-tab="false" :tabs="false" />
                     <p style="text-align: justify; margin-bottom: 10px;">
-                        If you notice, the <code>var greeting</code> is never skipped if the function is called.
-                        However, in each function run, either the <code>greeting = "Good day"</code> or <code>greeting = "Good evening"</code>
-                        line will be executed - to execute one, you can't execute another one. <br style="margin-bottom: 5px;"/>
-                        This to say that with conditional structures such as an If, statement coverage may not be as simple as it appears.
+                        In this case, to achieve 100% statement coverage, you would need two tests, one with <code>hour</code> lower than 18 to execute <code>greeting = "Good day";</code> and another with <code>hour</code> higher than or equal to 18 to execute <code>greeting = "Good evening";</code>.
                     </p>
                     </div>
                     <div v-if="code_coverage == 'decision'">
@@ -547,8 +544,8 @@ export default defineComponent({
             board: null,
             auxiliaryFunctions: auxiliaryFunctions,
             auxiliaryFunctionsNames: auxiliaryFunctionsNames,
-            statement_code: "function statement() {\n\tvar greeting;\n\n\tif (hour < 18) {\n\t\tgreeting = \"Good day\";\n\t} else {\n\t\tgreeting = \"Good evening\";\n\t}\n\n\treturn greeting\n}",
-            condition_code: "function condition() {\n\tvar greeting;\n\n\tif (hour > 6 && hour < 12) {\n\t\tgreeting = \"Good morning\";\n\t} else if (hour > 12 && hour < 19) {\n\t\tgreeting = \"Good afternoon\";\n\t} else {\n\t\tgreeting = \"Good day\";\n\t}\n\n\treturn greeting\n}",
+            statement_code: "function statement(int hour) {\n\tvar greeting;\n\n\tif (hour < 18) {\n\t\tgreeting = \"Good day\";\n\t} else {\n\t\tgreeting = \"Good evening\";\n\t}\n\n\treturn greeting\n}",
+            condition_code: "function condition(int hour) {\n\tvar greeting;\n\n\tif (hour > 6 && hour < 12) {\n\t\tgreeting = \"Good morning\";\n\t} else if (hour > 12 && hour < 19) {\n\t\tgreeting = \"Good afternoon\";\n\t} else {\n\t\tgreeting = \"Good day\";\n\t}\n\n\treturn greeting\n}",
         }
     },
 
