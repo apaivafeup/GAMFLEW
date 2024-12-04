@@ -13,6 +13,10 @@ export default defineComponent({
   },
 
   methods: {
+  },
+
+  compilerOptions: {
+    isCustomElement: true
   }
 })
 </script>

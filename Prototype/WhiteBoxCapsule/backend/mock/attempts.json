@@ -1,7 +1,7 @@
 [
     {
         "id": 0,
-        "player_id": 1,
+        "player_id": 2,
         "challenge_id": 1,
         "score": 100,
         "attempt_type": "pass",
