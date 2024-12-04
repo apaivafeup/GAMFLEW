@@ -12,7 +12,7 @@ export default defineConfig({
       template: {
         compilerOptions: {
           isCustomElement: (tag) => {
-            return tag.startsWith('ion-') // (return true)
+            return tag == 'LoadingIcon' // (return true)
           }
         }
       }

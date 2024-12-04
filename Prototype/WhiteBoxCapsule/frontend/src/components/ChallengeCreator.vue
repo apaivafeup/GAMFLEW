@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/require-v-for-key -->
 <template>
   <div class="container" style="max-width: 95% !important;" v-if="auth.user.user_type == 'admin'">
     <div style="display: flex; flex-direction: column; justify-content: center; margin-bottom: 10px;">
