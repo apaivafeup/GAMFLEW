@@ -12,6 +12,16 @@ import models
 import schemas
 import auth
 
+def get_code_file_visibility(db: Session, code_file_id: int, student_class_id:int):
+    total_challenges = db.query(schemas.Challenge).filter(schemas.Challenge.code_file == code_file_id).all()
+    visible_challenges = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).filter(schemas.StudentClassChallenge.visible == True).all()
+    visible_challenges_ids = [student_class_challenge.challenge_id for student_class_challenge in visible_challenges]
+    for challenge in total_challenges:
+        if visible_challenges_ids.count(challenge.id) != 0:
+            continue
+        return False
+    return True
+
 def create_general_achievement(db: Session, general_achievement: schemas.GeneralAchievement):
     db_general_achievement = schemas.GeneralAchievement(
         name=general_achievement.name,
