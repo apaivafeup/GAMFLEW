@@ -577,6 +577,9 @@ def set_code_file_visibility(current_user: Annotated[models.User, Depends(get_cu
 def get_attempted_challenges(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
     return crud.get_attempted_challenges(db, current_user.id)
 
+@app.get('/code-file/{code_file_id}/visibility/{student_class_id}', response_model=bool)
+def get_code_file_visibility(current_user: Annotated[models.User, Depends(get_current_active_user)], code_file_id: int,student_class_id: int, db: Session = Depends(get_db)):
+    return crud.get_code_file_visibility(code_file_id=code_file_id, db=db, student_class_id=student_class_id)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)

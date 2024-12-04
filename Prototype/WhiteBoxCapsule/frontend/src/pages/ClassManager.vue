@@ -129,7 +129,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                                                 padding: 15px;
                                                 margin-bottom: 2.5px;
                                                 height: 100% !important;
-                                              " @click="toggleCodeFileVisibility(student_class, code_file, true)">
+                                              " @click="toggleCodeFileVisibility(student_class, code_file, true)" v-if="get_code_file_visibility(code_file, student_class)">
                                                     Visible
                                                 </div>
                                                 <div class="passed-badge invisible-badge button" style="
@@ -143,7 +143,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                                                 flex-direction: row;
                                                 padding: 15px;
                                                 margin-bottom: 2.5px;
-                                              " @click="toggleCodeFileVisibility(student_class, code_file, false)">
+                                              " @click="toggleCodeFileVisibility(student_class, code_file, false)" v-else-if="!get_code_file_visibility(code_file, student_class)">
                                                     Invisible
                                                 </div>
                                             </div>
@@ -249,6 +249,13 @@ export default defineComponent({
     },
 
     methods: {
+        get_code_file_visibility(code_file, student_class) {
+            this.$axios.get(this.$api_link + '/code-file/' + code_file.id + '/visibility/' + student_class.id, this.auth.config)
+                .then((response) => {
+                    return response.data;
+                })
+        },
+
         toggleAccordion(id) {
             let button = document.getElementById('accordion-button-' + id)
             let collapse = document.getElementById('collapse-' + id)
