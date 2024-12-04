@@ -66,3 +66,4 @@ Prototype/WhiteBoxCapsule/backend/.env
 Prototype/WhiteBoxCapsule/.vscode/launch.json
 *.pdf
 Prototype/WhiteBoxCapsule/.vscode/launch.json
+/Prototype/WhiteBoxCapsule/.vscode
