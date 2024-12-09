@@ -219,12 +219,14 @@ import ClassModal from '../components/modals/ClassModal.vue'
 
 export default defineComponent({
     beforeMount() {
+        this.board = boardStore()
+        this.auth = authStore()
+    },
+
+    mounted() {
         this.tab = 'board'
         this.code_coverage = 'statement'
         this.teacher_view = 'challenge_content_creator'
-
-        this.board = boardStore()
-        this.auth = authStore()
 
         this.getStudentClasses()
         this.getStudentClassesByUser()
@@ -236,6 +238,9 @@ export default defineComponent({
 
     data() {
         return {
+            tab: '',
+            code_coverage: '',
+            teacher_view: '',
             student_classes: [],
             student_classes_users: {},
             users: [],
