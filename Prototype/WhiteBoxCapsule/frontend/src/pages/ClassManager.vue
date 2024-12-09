@@ -218,7 +218,7 @@ import Prism from 'prismjs'
 import ClassModal from '../components/modals/ClassModal.vue'
 
 export default defineComponent({
-    beforeMount() {
+    mounted() {
         this.tab = 'board'
         this.code_coverage = 'statement'
         this.teacher_view = 'challenge_content_creator'
