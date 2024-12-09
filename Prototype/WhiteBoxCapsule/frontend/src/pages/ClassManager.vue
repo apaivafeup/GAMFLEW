@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/require-v-for-key -->
+<!-- eslint-disable vue/require-v-for-key -->
 <script setup>
 import 'prismjs'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
@@ -317,7 +319,7 @@ export default defineComponent({
                 })
         },
 
-        addFilter(filter) {
+        addFilter() {
             var filters = document.querySelectorAll('input[type="checkbox"]:checked')
 
             if (filters.length == 0) {

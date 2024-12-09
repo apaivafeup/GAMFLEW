@@ -1302,7 +1302,7 @@
             ]
         },
         "achievement": "this.find_first_stack(input, case_num).stack.red == 0 && this.find_first_stack(input, case_num).color == 'stack'",
-        "achievement_hint": "In one test case, have a stack of only blue pieces.",
+        "achievement_hint": "In one test case, have just ONE stack of only blue pieces.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
