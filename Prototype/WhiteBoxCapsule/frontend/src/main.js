@@ -52,10 +52,11 @@ app.directive('tooltip', vTooltip)
 app.use(pinia)
 app.use(FloatingVue)
 app.use(VueHighlightJS)
-app.config.globalProperties.$api_link = (
-  import.meta.env.VITE_API_LINK_LOCAL
-);
 
+app.config.globalProperties.$api_link =
+  import.meta.env.VITE_API_LINK_REMOTE
+  // import.meta.env.VITE_API_LINK_LOCAL;
+;
 
 
 const options = {
