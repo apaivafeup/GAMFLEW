@@ -228,6 +228,9 @@ export default {
     this.board = boardStore()
     this.auth = authStore()
     this.auth.checkAuth()
+
+    this.board.add = false
+    this.$forceUpdate()
   },
 
   mounted() {
