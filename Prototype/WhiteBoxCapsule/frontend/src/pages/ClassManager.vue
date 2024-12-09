@@ -1,13 +1,5 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <!-- eslint-disable vue/require-v-for-key -->
-<script setup>
-import 'prismjs'
-import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
-import 'prismjs/plugins/line-highlight/prism-line-highlight.js'
-import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
-</script>
-
 <template>
     <div v-if="this.auth.user.user_type != 'student'">
         <ClassModal />
@@ -221,6 +213,8 @@ export default defineComponent({
     beforeMount() {
         this.board = boardStore()
         this.auth = authStore()
+
+        Prism.highlightAll()
     },
 
     mounted() {
