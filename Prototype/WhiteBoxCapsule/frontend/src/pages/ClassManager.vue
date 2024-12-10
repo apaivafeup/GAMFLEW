@@ -123,7 +123,7 @@
                                                 padding: 15px;
                                                 margin-bottom: 2.5px;
                                                 height: 100% !important;
-                                              " @click="toggleCodeFileVisibility(student_class, code_file, true)" v-if="get_code_file_visibility(code_file, student_class)">
+                                              " @click="toggleCodeFileVisibility(student_class, code_file, false)" v-if="code_files_visibility[code_file.id] != undefined && code_files_visibility[code_file.id][student_class.id]">
                                                     Visible
                                                 </div>
                                                 <div class="passed-badge invisible-badge button" style="
@@ -137,7 +137,7 @@
                                                 flex-direction: row;
                                                 padding: 15px;
                                                 margin-bottom: 2.5px;
-                                              " @click="toggleCodeFileVisibility(student_class, code_file, false)" v-else-if="!get_code_file_visibility(code_file, student_class)">
+                                              " @click="toggleCodeFileVisibility(student_class, code_file, true)" v-else-if="code_files_visibility[code_file.id] != undefined && !code_files_visibility[code_file.id][student_class.id]">
                                                     Invisible
                                                 </div>
                                             </div>
@@ -225,9 +225,12 @@ export default defineComponent({
         this.getStudentClasses()
         this.getStudentClassesByUser()
         this.getUsers()
+        this.getCodeFiles()
+        this.getCodeFilesVisibility()
         this.getChallenges()
         this.getChallengeVisibility()
-        this.getCodeFiles()
+
+        this.$forceUpdate()
     },
 
     data() {
@@ -241,7 +244,8 @@ export default defineComponent({
             filtered_users: [],
             challenges: [],
             challenge_visibility: [],
-            filtered_challenges: []
+            filtered_challenges: [],
+            code_files_visibility: {}
         }
     },
 
@@ -250,10 +254,10 @@ export default defineComponent({
     },
 
     methods: {
-        get_code_file_visibility(code_file, student_class) {
-            this.$axios.get(this.$api_link + '/code-file/' + code_file.id + '/visibility/' + student_class.id, this.auth.config)
+        getCodeFilesVisibility() {
+            this.$axios.get(this.$api_link + '/code-files/visibility/', this.auth.config)
                 .then((response) => {
-                    return response.data;
+                    this.code_files_visibility = response.data
                 })
         },
 
@@ -292,8 +296,8 @@ export default defineComponent({
             return this.student_classes_users[student_class.id].find(student => student.id == user.id) == undefined
         },
 
-        toggleChallengeVisibility(studentClass, challenge) {
-            this.$axios.post(this.$api_link + '/student-class/' + studentClass.id + '/challenge/' + challenge.id + '/visible', {}, this.auth.config)
+        toggleChallengeVisibility(studentClass, challenge, visibility) {
+            this.$axios.post(this.$api_link + '/student-class/' + studentClass.id + '/challenge/' + challenge.id + '/visible', { visibility: visibility}, this.auth.config)
                 .then((response) => {
                     if (response.status == 200) {
                         this.getChallengeVisibility()
@@ -310,7 +314,7 @@ export default defineComponent({
             }, this.auth.config)
                 .then((response) => {
                     if (response.status == 200) {
-                        this.getChallengeVisibility()
+                        this.getCodeFilesVisibility()
                         this.$forceUpdate()
                     } else {
                         alert('There was an error toggling the code file visibility. Please try again.')
