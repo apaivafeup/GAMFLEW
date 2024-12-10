@@ -5,8 +5,6 @@ import { combinations } from './utils.js'
 import { useToast } from "vue-toastification";
 import { BoardState } from './models/board_state.js';
 
-
-
 export const redPos = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23]
 export const bluePos = [42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64]
 
@@ -52,6 +50,7 @@ export const boardStore = defineStore('boardStore', {
       initialState: BoardState
     }
   },
+
   actions: {
     addPiece(x, y) {
       var piece
