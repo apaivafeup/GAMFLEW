@@ -533,8 +533,7 @@ def create_class(current_user: Annotated[models.User, Depends(get_current_active
         raise HTTPException(status_code=401, detail="Unauthorized")
 
     student_class = crud.create_student_class(db=db, student_class=class_)
-
-    crud.create_challenge_class(db)
+    crud.create_new_challenge_class(db, student_class=student_class)
 
     return student_class
 
@@ -577,9 +576,9 @@ def set_code_file_visibility(current_user: Annotated[models.User, Depends(get_cu
 def get_attempted_challenges(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
     return crud.get_attempted_challenges(db, current_user.id)
 
-@app.get('/code-file/{code_file_id}/visibility/{student_class_id}', response_model=bool)
-def get_code_file_visibility(current_user: Annotated[models.User, Depends(get_current_active_user)], code_file_id: int,student_class_id: int, db: Session = Depends(get_db)):
-    return crud.get_code_file_visibility(code_file_id=code_file_id, db=db, student_class_id=student_class_id)
+@app.get('/code-files/visibility/')
+def get_code_files_visibility(current_user: Annotated[models.User, Depends(get_current_active_user)], db: Session = Depends(get_db)):
+    return crud.get_code_files_visibility(db=db)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)

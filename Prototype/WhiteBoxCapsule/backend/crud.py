@@ -22,6 +22,22 @@ def get_code_file_visibility(db: Session, code_file_id: int, student_class_id:in
         return False
     return True
 
+def get_code_files_visibility(db: Session):
+    code_files = db.query(schemas.CodeFile).all()
+    student_classes = db.query(schemas.StudentClass).all()
+
+    result = {}
+
+    for code_file in code_files:
+        result[code_file.id] = {}
+
+    for student_class in student_classes:
+        result[code_file.id][student_class.id] = {}
+        for code_file in code_files:
+            result[code_file.id][student_class.id] = get_code_file_visibility(db=db, code_file_id=code_file.id, student_class_id=student_class.id)
+        
+    return result
+
 def create_general_achievement(db: Session, general_achievement: schemas.GeneralAchievement):
     db_general_achievement = schemas.GeneralAchievement(
         name=general_achievement.name,
@@ -286,11 +302,13 @@ def set_challenge_visibility(db: Session, challenge_id: int, student_class_id: i
 
 def set_code_file_visibility(db: Session, code_file_id: int, student_class_id: int, visibility: bool):
     challenges = db.query(schemas.Challenge).filter(schemas.Challenge.code_file == code_file_id).all()
-    challenge_ids = [challenge.id for challenge in challenges]
+    code_file_challenge_ids = [x.id for x in challenges]
+    student_class_challenge_ids = [x.id for x in db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.student_class_id == student_class_id)]
 
-    for challenge_id in challenge_ids:
-        student_class_challenge = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.challenge_id == challenge_id).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).first()
-        student_class_challenge.visible = visibility
+    for challenge_id in student_class_challenge_ids:
+        if challenge_id in code_file_challenge_ids:
+            student_class_challenge = db.query(schemas.StudentClassChallenge).filter(schemas.StudentClassChallenge.challenge_id == challenge_id).filter(schemas.StudentClassChallenge.student_class_id == student_class_id).first()
+            student_class_challenge.visible = visibility
 
     db.commit()
 
@@ -1568,6 +1586,19 @@ def create_challenge_class(db: Session, challenge_class: models.StudentClassChal
         visible=challenge_class.visible
     )
     db.add(db_student_class_challenge)
+
+    db.commit()
+
+def create_new_challenge_class(db: Session, student_class: models.StudentClass):
+    challenges = db.query(schemas.Challenge).all()
+
+    for challenge in challenges:
+        db_student_class_challenge = schemas.StudentClassChallenge(
+            student_class_id=student_class.id,
+            challenge_id=challenge.id,
+            visible=False
+        )
+        db.add(db_student_class_challenge)
 
     db.commit()
 
