@@ -339,6 +339,7 @@ export default {
         },
 
         getTimeForRound() {
+            return 10
             if (this.challenge.difficulty == 'Very Easy') {
                 return 100 // 1 minute and 40 seconds
             } else if (this.challenge.difficulty == 'Easy') {
@@ -431,9 +432,11 @@ export default {
                 })
 
             if (this.round.all_passed && this.round.first_chosen == this.auth.user.id) {
-                if (confirm('All players have passed the round. It is your turn, and you can choose to move on to a new challenge.')) {
+                if (confirm('All players have passed the round. It is your turn, and you can choose to move on to a new challenge and give it to the next player. Otherwise, you get to keep trying it!')) {
                     clearInterval(this.interval)
                     this.finishPassedRound()
+                } else {
+                    this.resetRound()
                 }
             }
 
@@ -592,6 +595,17 @@ export default {
 
         async finishPassedRound() {
             await this.$axios.post(this.$api_link + '/round/' + this.round.id + '/all-passed/finish/', {}, this.auth.config)
+                .then(response => {
+                    window.location.reload()
+                })
+                .catch((error) => {
+                    this.$router.push({ name: 'error', params: { afterCode: '_', code: error.response.status, message: error.response.statusText } })
+                    return
+                })
+        },
+
+        async resetRound() {
+            await this.$axios.post(this.$api_link + '/round/' + this.round.id + "/all-passed/reset", {}, this.auth.config)
                 .then(response => {
                     window.location.reload()
                 })

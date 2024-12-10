@@ -903,6 +903,20 @@ def send_pass_round_log(db: Session, game_round_id: int, game_room_id: int, user
     db.commit()
     return db_game_log
 
+def send_reset_round_log(db: Session, user_id: int, game_round_id: int):
+    game_round = db.query(schemas.GameRound).filter(schemas.GameRound.id == game_round_id).first()
+
+    db_game_log = schemas.GameLog(
+        game_round_id=game_round_id,
+        message=schemas.GameMessage.RESET,
+        game_room_id=game_round.game_room_id,
+        user_id=user_id
+    )
+
+    db.add(db_game_log)
+    db.commit()
+    return db_game_log
+
 def send_finish_game_log(db: Session, user_id: int, game_round_id: int = None, game_room_id: int = None):
     game_room_to_log = get_game_room(db, game_room_id)
 
@@ -1138,7 +1152,14 @@ def add_game_round(db: Session, game_room_id: int, challenge_id: int):
         pass_messages = db.query(schemas.GameLog).filter(schemas.GameLog.game_round_id == game_round.id).filter(schemas.GameLog.message == schemas.GameMessage.PASS or schemas.GameLog.message == schemas.GameMessage.AUTO_PASS).all()
     
         if (pass_messages is not None):
-            users_who_passed = list({log.user_id for log in pass_messages})
+            most_recent_reset = db.query(schemas.GameLog).filter(schemas.GameLog.game_round_id == game_round.id).filter(schemas.GameLog.message == schemas.GameMessage.RESET).order_by(schemas.GameLog.id.desc()).first()
+
+            test = -1
+
+            if (most_recent_reset is not None):
+                test = most_recent_reset.id
+            
+            users_who_passed = list({log.user_id for log in pass_messages if log.id > test})
             users_who_passed = sorted(users_who_passed)
 
         if (game_round.state == schemas.GameRoundState.FINISHED):
@@ -1221,6 +1242,21 @@ def finish_game_round(db: Session, game_round_id: int):
 
     db.commit()
     return game_round_to_finish
+
+def reset_game_round(db: Session, game_round_id: int):
+    print('reset game round')
+    game_round_to_reset = db.query(schemas.GameRound).filter(
+        schemas.GameRound.id == game_round_id).first()
+    game_room = get_game_room(db, game_round_to_reset.game_room_id)
+
+    if game_round_to_reset is None:
+        return None
+
+    game_round_to_reset.state = schemas.GameRoundState.ONGOING
+    game_round_to_reset.all_passed = False
+
+    db.commit()
+    return game_round_to_reset
 
 def finish_all_passed_game_round(db: Session, game_round_id: int):
     

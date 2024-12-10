@@ -425,6 +425,19 @@ def finish_all_passed_game_round(current_user: Annotated[models.User, Depends(ge
     
     return game_log
 
+## Reset game round (after all passed, from first chosen)
+@app.post("/round/{game_round_id}/all-passed/reset", response_model=models.GameLog)
+def reset_game_round(current_user: Annotated[models.User, Depends(get_current_active_user)], game_round_id: int, db: Session = Depends(get_db)):
+    game_round = crud.get_game_round(db, game_round_id)
+
+    if (current_user.id == game_round.first_chosen):
+        game_log = crud.send_reset_round_log(db=db, game_round_id=game_round_id, user_id=current_user.id)
+        crud.reset_game_round(db=db, game_round_id=game_round_id)
+    else:
+        raise HTTPException(status_code=401, detail="Only the 1st chosen player can finish the round after a cycle of passes.")
+    
+    return game_log
+
 ## Get round solution
 @app.get("/game-room/{game_room_id}/round/{game_round_id}/solution")
 def get_round_solution(current_user: Annotated[models.User, Depends(get_current_active_user)], game_room_id: int, game_round_id: int, db: Session = Depends(get_db)):
