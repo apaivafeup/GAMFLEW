@@ -1,3 +1,6 @@
+<!-- eslint-disable vue/multi-word-component-names -->
+<!-- eslint-disable no-unused-vars -->
+// eslint-disable-next-line vue/multi-word-component-names
 <script setup>
 import ChallengeHeader from '../components/ChallengeHeader.vue'
 import Board from '../components/Board.vue'
@@ -61,6 +64,9 @@ export default {
 
     this.auth = authStore()
     this.auth.checkAuth()
+    this.board = boardStore()
+    this.board.emptyState(true)
+    this.board.generateState()
 
     var user_id
 
@@ -128,7 +134,7 @@ export default {
       return
     }
 
-    this.board = boardStore()
+
     this.board.initialState = this.board_state
     this.board.setState()
 
@@ -144,7 +150,6 @@ export default {
   beforeUnmount() {
     this.challenge = null
     this.code_file = null
-    this.board.generateState(true)
   },
 
   methods: {},

@@ -195,14 +195,10 @@ export default {
     this.auth.checkAuth()
     this.toast = useToast()
 
-    this.board.add = false
     this.$forceUpdate()
   },
 
   methods: {
-    clickRow(item) {
-    },
-
     is_triangle(a, b, c) {
       return a + b > c && a + c > b && b + c > a
     },

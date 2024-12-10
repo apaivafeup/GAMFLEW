@@ -26,7 +26,6 @@
 import { authStore } from './store/authStore';
 import LoadingIcon from './components/LoadingIcon.vue'
 import { h, resolveComponent } from 'vue'
-import { faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default {
   define: {
@@ -51,6 +50,7 @@ export default {
     this.auth.checkAuth()
     loader.hide()
   },
+  // eslint-disable-next-line vue/no-unused-components
   components: { LoadingIcon },
   data: () => {
     return {

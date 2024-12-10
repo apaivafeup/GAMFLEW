@@ -36,6 +36,9 @@
           <strong>Time Left: </strong><em
             :style="timer >= 30 ? 'color: var(--text-color);' : 'color: red;'">{{ timer }}</em>
         </span>
+        <div class="row" style="display: flex; justify-content: center; text-align: center;">
+          {{ board.currentKey + 1 + '/' + challenge.test_cases_count }}
+        </div>
         <span v-if="playable && timer > 0">
           You can play!
         </span>

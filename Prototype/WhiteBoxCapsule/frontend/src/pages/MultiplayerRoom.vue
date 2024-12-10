@@ -97,7 +97,7 @@ export default {
             playable: false, // if it's our turn to play (step 5),
             winner: [],
             got_round_solution: false,
-            show_solution_timer: 10, //*1000,
+            show_solution_timer: 30, //*1000,
             show_solution_interval: null,
             solution_timer_set: false,
             timer: 0,
@@ -328,8 +328,6 @@ export default {
                 this.getWinner()
             }
 
-            
-
             if (this.has_time_ended) {
                 console.log('time ran out, automatic pass...')
                 this.autoPassRound()
@@ -341,7 +339,6 @@ export default {
         },
 
         getTimeForRound() {
-            return 30
             if (this.challenge.difficulty == 'Very Easy') {
                 return 100 // 1 minute and 40 seconds
             } else if (this.challenge.difficulty == 'Easy') {
