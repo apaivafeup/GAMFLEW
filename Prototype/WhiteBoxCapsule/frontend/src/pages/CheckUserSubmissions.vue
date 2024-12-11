@@ -38,7 +38,7 @@
     <div style="display: flex; flex-direction: row; margin-bottom: 10px; justify-content: center;">
       <div class="row" style="width: 1300px;">
         <div class="alert alert-special player-info precondition-alert" v-if="challenge_attempts.length > 0" style="width: 100%;"> <strong
-            style="margin-right: 2.5px;">{{ 'Comment:' }}</strong><em>{{ challenge_attempts[(selectedAttemptId - 1) % challenge_attempts.length].comment }}</em></div>
+            style="margin-right: 2.5px;">{{ 'Comment:' }}</strong><em>{{ selectedAttempt != null ? selectedAttempt.comment : 'No attempts, so no comment!' }}</em></div>
         <div class="alert alert-special player-info precondition-alert disabled" v-else style="width: 100%;"> <strong
             style="margin-right: 2.5px;">{{ 'Comment:' }}</strong><em>No attempts, so no comment!</em></div>
       </div>
