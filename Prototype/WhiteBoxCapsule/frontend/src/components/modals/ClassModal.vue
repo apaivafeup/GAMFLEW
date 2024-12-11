@@ -76,6 +76,7 @@ export default defineComponent({
       ).then((response) => {
         this.toast.success('Class created successfully!')
         this.$refs.close.click()
+        window.location.reload()
 
       }).catch((error) => {
         this.toast.error('An error occurred while creating the class.')
