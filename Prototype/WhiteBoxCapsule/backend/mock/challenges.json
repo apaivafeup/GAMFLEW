@@ -99,7 +99,7 @@
             ]
         },
         "achievement": "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 1 && Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y) == 4",
-        "achievement_hint": "For challenge Y.X, consider moving Y positions on the x-axis, and X positions on the y-axis. Only the last movement made is considered!",
+        "achievement_hint": "For challenge Y.X, consider moving Y columns, and X rows. Only the last movement made is considered!",
         "difficulty": "Very Easy",
         "owner_id": 1,
         "visible": true
@@ -125,7 +125,7 @@
             ]
         },
         "achievement": "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 5 && Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y) == 6",
-        "achievement_hint": "For challenge X.Y, consider moving (Y * X) positions on the x-axis, and (X + Y) positions on the y-axis. Only the last movement made is considered!",
+        "achievement_hint": "For challenge X.Y, consider moving (Y * X) columns, and (X + Y) rows. Only the last movement made is considered!",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -150,7 +150,7 @@
             ]
         },
         "achievement": "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 6 && Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y) == 6",
-        "achievement_hint": "For challenge X.Y, move [(Y - 1) * 2 - 4] positions on the x-axis, and X*Y positions on the y-axis. Only the last movement made is considered!",
+        "achievement_hint": "For challenge X.Y, move [(Y - 1) * 2 - 4] columns, and X*Y rows. Only the last movement made is considered!",
         "difficulty": "Very Easy",
         "owner_id": 1,
         "visible": true
@@ -226,7 +226,7 @@
             ]
         },
         "achievement": "input.log[case_num][input.log[case_num].length - 1].destination.x + input.log[case_num][input.log[case_num].length - 1].destination.y == 9",
-        "achievement_hint": "In one of test cases, consider the destination to be (X, Y). Make sure X + Y - 1 = 8.",
+        "achievement_hint": "In one of test cases, consider the destination to be (row, column). Make sure row + column - 1 = 8.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -1205,12 +1205,12 @@
         "test_cases_count": 2,
         "score": 325,
         "hint": "You can check the How to Play page to know how one makes a King. Only one piece is needed - if you put more than one, only the first one's considered.",
-        "objective": "Condition coverage of lines 17-19 (2 considered variables, separated by ||).",
+        "objective": "Condition coverage of lines 17-19.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "condition",
         "passing_criteria": {
-            "expression_count": 3,
+            "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
                 "this.get_pieces(input, case_num).some((piece) => piece.king)"
