@@ -55,6 +55,8 @@ export default {
         this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}); 
         this.$forceUpdate();
       }
+      
+    this.$forceUpdate()
   },
 
   changeNextPage(id, last) {
@@ -68,6 +70,7 @@ export default {
       this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}); 
       this.$router.go(1);
     }
+    this.$forceUpdate()
   },
 
   }
