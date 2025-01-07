@@ -22,7 +22,7 @@ However, if you want to create your own account, click the "Register" link on th
 
 After authentication, you will be redirected to the game's main page. Here, click on the "Single Player" button.
 
-You will then be on the Challenges page, which lists all challenges. 99 challenges are available, but to make it easier, we selected some challenges. **Make sure you beat one of the following**:
+You will then be on the Challenges page, which lists all challenges. 98 challenges are available, but to make it easier, we selected some challenges. **Make sure you beat one of the following**:
 1. Challenge 1.1 (Statement coverage, Very Easy)
 2. Challenge 1.2 (Decision coverage, Easy)
 3. Challenge 1.3 (Modified condition/decision coverage, Hard)
