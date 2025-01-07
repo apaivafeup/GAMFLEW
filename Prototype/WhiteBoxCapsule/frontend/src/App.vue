@@ -8,8 +8,8 @@
   </div>
   
   <button v-if="open" @click="toggleMode()" class="theme-toggle" style="bottom: 185px;">💡</button>
-  <button @click="this.$router.back()" class="theme-toggle" v-if="open" style="bottom: 130px;">↩️</button>
-  <button @click="this.$router.push({name: 'home'})" v-if="open" class="theme-toggle" id="theme-toggle-house" style="bottom: 75px;">🏠</button>
+  <button @click="this.board.emptyState(); this.$router.back()" class="theme-toggle" v-if="open" style="bottom: 130px;">↩️</button>
+  <button @click="this.board.emptyState(); this.$router.push({name: 'home'})" v-if="open" class="theme-toggle" id="theme-toggle-house" style="bottom: 75px;">🏠</button>
   <button v-if="!open" @click="open = !open" class="theme-toggle" style="bottom: 20px; opacity: 40%;">⬆️</button>
   <button v-else @click="open = !open" class="theme-toggle" style="bottom: 20px; opacity: 100%;">⬇️</button>
 </template>
@@ -26,6 +26,7 @@
 import { authStore } from './store/authStore';
 import LoadingIcon from './components/LoadingIcon.vue'
 import { h, resolveComponent } from 'vue'
+import { boardStore } from './store/boardStore';
 
 export default {
   define: {
@@ -46,6 +47,7 @@ export default {
       {
         default: () => h(resolveComponent('LoadingIcon'))
       }, this.$slots.default);
+      this.board = boardStore()
     this.auth = authStore()
     this.auth.checkAuth()
     loader.hide()

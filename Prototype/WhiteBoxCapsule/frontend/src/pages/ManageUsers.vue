@@ -86,7 +86,7 @@ export default {
     async deleteUser(user_id) {
       await this.$axios.post(this.$api_link + '/admin/delete-user/' + user_id, {}, this.auth.config)
         .then(response => {
-          this.toast.success('Administrator validated successfully!')
+          this.toast.success('User deleted!')
           this.getUsers()
         })
         .catch(error => {
