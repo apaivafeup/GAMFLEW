@@ -860,15 +860,16 @@
         "name": "Challenge 3.1: A King Piece",
         "test_cases_count": 1,
         "score": 250,
-        "hint": "You can check the How to Play page to know how one makes a King. Only one piece is needed!",
-        "objective": "Statement coverage of line 13.",
+        "hint": "You can check the How to Play page to know how one makes a King. Only one King piece is needed!",
+        "objective": "Statement coverage of line 13.\nNOTE: Use boards with only one King piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, input.currentKey) != 64"
+                "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.count_empty_spaces(input, input.currentKey) == 63"
             ],
             "tests": [
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
@@ -885,8 +886,8 @@
         "name": "Challenge 3.2: A King Can Go Anywhere",
         "test_cases_count": 1,
         "score": 250,
-        "hint": "You can check the How to Play page to know how one makes a King. Only one piece is needed - if you put more than one, only the first is considered.",
-        "objective": "Statement coverage of line 20.",
+        "hint": "You can check the How to Play page to know how one makes a King. Only one King piece is needed - if you put more than one, only the first is considered.",
+        "objective": "Statement coverage of line 20.\nNOTE: Use boards with only one King piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
@@ -894,14 +895,15 @@
             "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.count_empty_spaces(input, input.currentKey) == 63",
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.king)"
             ],
             "tests": [
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[input.currentKey][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ]
         },
-        "achievement": "var s = 0; this.get_pieces(input, input.currentKey).filter(piece => piece.king).forEach(piece => [{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].forEach(position => (input.state[input.currentKey][(parseFloat(piece.position.x) + parseFloat(position.x) > 7) ? 7 : (parseFloat(piece.position.x) + parseFloat(position.x) < 0) ? 0 : parseFloat(piece.position.x) + parseFloat(position.x)][(parseFloat(piece.position.y) + parseFloat(position.y) > 7) ? 7 : (parseFloat(piece.position.y) + parseFloat(position.y) < 0) ? 0 : parseFloat(piece.position.y) + parseFloat(position.y)].color != 'empty') ? s++ : 'nothing' )); s == 2 || s == 3 ",
-        "achievement_hint": "For challenge X.Y, block X or Y diagonally adjacent positions of a King. Use the directions defined on the code.",
+        "achievement": "var s = 0; this.get_pieces(input, input.currentKey).filter(piece => piece.king).forEach(piece => [{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].forEach(position => (input.state[input.currentKey][(parseFloat(piece.position.x) + parseFloat(position.x) > 7) ? 7 : (parseFloat(piece.position.x) + parseFloat(position.x) < 0) ? 0 : parseFloat(piece.position.x) + parseFloat(position.x)][(parseFloat(piece.position.y) + parseFloat(position.y) > 7) ? 7 : (parseFloat(piece.position.y) + parseFloat(position.y) < 0) ? 0 : parseFloat(piece.position.y) + parseFloat(position.y)].color != 'empty') ? s++ : 'nothing' )); s == 2",
+        "achievement_hint": "For challenge X.Y, block Y diagonally adjacent positions of a King. Use the directions defined on the code.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -909,17 +911,19 @@
     {
         "id": 0,
         "name": "Challenge 3.3: Testing Kings",
-        "test_cases_count": 2,
+        "test_cases_count": 1,
         "score": 250,
-        "hint": "You can check the How to Play page to know how one makes a King. Only one piece is needed!",
-        "objective": "Decision coverage of lines 17-19.\nNOTE: These lines are within a for-loop, so only 1 test case is enough.",
+        "hint": "You can check the How to Play page to know how one makes a King. Only one King piece is needed!",
+        "objective": "Decision coverage of lines 17-19.\nNOTE: These lines are within a for-loop, so only 1 test case is enough. Use boards with only one piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64"
+                "this.count_empty_spaces(input, case_num) != 64",
+                "this.count_empty_spaces(input, case_num) == 63",
+                "this.get_pieces(input, case_num).length != 1 && this.get_pieces(input, case_num)[0].king"
             ],
             "tests": [
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].every(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
@@ -937,23 +941,24 @@
         "name": "Challenge 3.4: A King and a Peasant",
         "test_cases_count": 2,
         "score": 250,
-        "hint": "You can check the How to Play page to know how one makes a King. Only one piece is needed!",
-        "objective": "Decision coverage of line 12.",
+        "hint": "You can check the How to Play page to know how one makes a King. You cannot use more than one King piece!",
+        "objective": "Decision coverage of line 12.\nNOTE: Use boards with only one piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64"
+                "this.count_empty_spaces(input, case_num) != 64",
+                "this.count_empty_spaces(input, case_num) == 63"
             ],
             "tests": [
                 "this.get_pieces(input, case_num).some((piece) => piece.king)",
                 "!this.get_pieces(input, case_num).some((piece) => piece.king)"
             ]
         },
-        "achievement": "this.get_pieces(input, case_num).filter((piece) => piece.king == true).length == 4",
-        "achievement_hint": "For challenge Y.X, make X Kings in one test case.",
+        "achievement": "this.get_pieces(input, case_num).filter((piece) => piece.king == true)[0].color == Color.BLUE",
+        "achievement_hint": "Use a blue king.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -964,7 +969,7 @@
         "test_cases_count": 1,
         "score": 300,
         "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
-        "objective": "Statement coverage of line 28.",
+        "objective": "Statement coverage of line 28.\nNOTE: Use boards with only one piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
@@ -972,14 +977,15 @@
             "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.count_empty_spaces(input, input.currentKey) == 63",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
             "tests": [
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)"
             ]
         },
-        "achievement": "this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'red').length == 2 && this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'blue').length == 2 ",
-        "achievement_hint": "For challenge X.Y, make sure to have (Y - X) pieces of each color.",
+        "achievement": "this.get_pieces(input, input.currentKey)[0].position.x == 3 && this.get_pieces(input, input.currentKey)[0].position.y == 5",
+        "achievement_hint": "For challenge X.Y, place the piece on row X and column Y.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -990,7 +996,7 @@
         "test_cases_count": 1,
         "score": 150,
         "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
-        "objective": "Statement coverage of line 43.",
+        "objective": "Statement coverage of line 43.\n\nNOTE: Use boards with only one piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
@@ -998,14 +1004,15 @@
             "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
+                "this.count_empty_spaces(input, input.currentKey) == 63",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
             "tests": [
                 "this.get_pieces(input, input.currentKey).some((piece) => piece.color != Color.RED)"
             ]
         },
-        "achievement": "this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'red').length == 3 && this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'blue').length == 3",
-        "achievement_hint": "For challenge Y.X, make sure to have (X - Y) pieces of each color.",
+        "achievement": "this.get_pieces(input, input.currentKey)[0].position.x == 6 && this.get_pieces(input, input.currentKey)[0].position.y == 3",
+        "achievement_hint": "For challenge X.Y, place the piece on column X and row Y.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -1013,10 +1020,10 @@
     {
         "id": 0,
         "name": "Challenge 3.7: Double The Colors!",
-        "test_cases_count": 2,
+        "test_cases_count": 1,
         "score": 350,
         "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
-        "objective": "Decision coverage of line 27.",
+        "objective": "Decision coverage of line 27.\nNOTE: Use boards with only one piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
@@ -1024,6 +1031,7 @@
             "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
+                "this.count_empty_spaces(input, case_num) == 63",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
             "tests": [
@@ -1031,8 +1039,8 @@
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)"
             ]
         },
-        "achievement": "this.get_pieces(input, case_num).filter((piece) => piece.color == 'red').length == 1 && this.get_pieces(input, case_num).filter((piece) => piece.color == 'blue').length == 1",
-        "achievement_hint": "For challenge X.Y, make sure to have |(2*X - Y)| pieces of each color.",
+        "achievement": "this.get_pieces(input, input.currentKey)[0].position.x == 4 && this.get_pieces(input, input.currentKey)[0].position.y == 3",
+        "achievement_hint": "For challenge X.Y, have a test case with a piece placed on row (Y - X) and column X.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -1042,23 +1050,24 @@
         "name": "Challenge 3.8: Under The Condition of Being King",
         "test_cases_count": 2,
         "score": 225,
-        "hint": "You can check the How to Play page to know how one makes a King. Only one piece is needed - if you put more than one, only the first one's considered.",
-        "objective": "Condition coverage of line 12.",
+        "hint": "You can check the How to Play page to know how one makes a King. Only one King piece is allowed.",
+        "objective": "Condition coverage of line 12.\nNOTE: Use boards with only one piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "condition",
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64"
+                "this.count_empty_spaces(input, case_num) != 64",
+                "this.count_empty_spaces(input, input.currentKey) == 63"
             ],
             "tests": [
                 "this.get_pieces(input, case_num).some((piece) => piece.king)",
                 "!this.get_pieces(input, case_num).some((piece) => piece.king)"
             ]
         },
-        "achievement": "this.get_pieces(input, case_num).length == 5 || this.get_pieces(input, case_num).length == 3",
-        "achievement_hint": "For challenge X.Y, make sure one of the test cases has, at most, either X or Y pieces.",
+        "achievement": "this.get_pieces(input, input.currentKey)[0].position.x == 3 && this.get_pieces(input, input.currentKey)[0].position.y == 5",
+        "achievement_hint": "For challenge X.Y, make sure one of the test cases has a piece placed on row X and column (Y - X).",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -1069,7 +1078,7 @@
         "test_cases_count": 1,
         "score": 250,
         "hint": "Only one piece needs to pass the test in each test case! You can check the How to Play page to know how movement works.",
-        "objective": "Statement coverage of line 36.",
+        "objective": "Statement coverage of line 36.\nNOTE: Use boards with only one red piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
@@ -1077,15 +1086,16 @@
             "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, input.currentKey) != 64",
-                "this.get_pieces(input, input.currentKey).some((piece) => piece.color == Color.RED)",
+                "this.count_empty_spaces(input, input.currentKey) == 63",
+                "this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.RED)",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].every(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
             "tests": [
                 "[{ x: 1, y: 1 }, { x: 1, y: -1 }].some(direction => this.get_pieces(input, input.currentKey).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && piece.color == 'red' && (input.state[input.currentKey][newX][newY].color == Color.EMPTY || (input.state[input.currentKey][newX][newY].color != piece.color && input.state[input.currentKey][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ]
         },
-        "achievement": "this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'blue').length == 3",
-        "achievement_hint": "For challenge Y.X, make sure you have (X/Y) pieces of the color NOT mentioned in the challenge title.",
+        "achievement": "this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'blue').length == 3 && this.get_pieces(input, input.currentKey).filter((piece) => piece.color == 'red').length == 1",
+        "achievement_hint": "For challenge X.Y, use a board with one red piece and (Y / X - 1) blue pieces.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -1104,12 +1114,13 @@
             "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
+                "this.count_empty_spaces(input, case_num) == 63",
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
             "tests": [
                 "[{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).filter((piece) => piece.color == 'red').some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
-                "![{ x: 1, y: 1}, { x: -1, y: 1}].every(direction => this.get_pieces(input, case_num).filter((piece) => piece.color == 'red').some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
+                "![{ x: 1, y: 1}, { x: -1, y: 1}].some(direction => this.get_pieces(input, case_num).filter((piece) => piece.color == 'red').some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.RED && newX >= 0 && newX <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) ==  4",
@@ -1124,7 +1135,7 @@
         "test_cases_count": 2,
         "score": 300,
         "hint": "Only one piece satisfying the test is needed - if you put more than one, only the first one's considered. You can check the How to Play page to know how movement works.",
-        "objective": "Decision coverage of line 27.",
+        "objective": "Decision coverage of line 27.\nNOTE: Use boards with only one piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "decision",
@@ -1132,6 +1143,7 @@
             "expression_count": null,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
+                "this.count_empty_spaces(input, case_num) == 63",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ],
             "tests": [
@@ -1139,46 +1151,19 @@
                 "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)"
             ]
         },
-        "achievement": "this.get_pieces(input, case_num).length != this.count_blue_pieces(input, case_num) || this.get_pieces(input, case_num).length != this.count_red_pieces(input, case_num)",
-        "achievement_hint": "Make sure one test case has at least one piece of each color.",
+        "achievement": "this.get_pieces(input, input.currentKey)[0].position.x == 3 && this.get_pieces(input, input.currentKey)[0].position.y == 4",
+        "achievement_hint": "For challenge X.Y, make one test case have a piece placed on row X and column ((Y - X)/2).",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
     },
     {
         "id": 0,
-        "name": "Challenge 3.12: Movement Under a Colorful Condition",
-        "test_cases_count": 2,
-        "score": 325,
-        "hint": "Only one piece satisfying each test is needed. You can check the How to Play page to know how movement works.",
-        "objective": "Condition coverage of line 27.",
-        "initial_board": 1,
-        "code_file": 3,
-        "challenge_type": "condition",
-        "passing_criteria": {
-            "expression_count": 1,
-            "preconditions": [
-                "this.count_empty_spaces(input, case_num) != 64",
-                "![ { x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 } ].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX + direction.x][newY + direction.y].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
-            ],
-            "tests": [
-                "this.get_pieces(input, case_num).some((piece) => piece.color == Color.RED)",
-                "this.get_pieces(input, case_num).some((piece) => piece.color == Color.BLUE)"
-            ]
-        },
-        "achievement": "(this.count_blue_pieces(input, case_num) == 4 && this.count_red_pieces(input, case_num) == 3) || (this.count_blue_pieces(input, case_num) == 3 && this.count_red_pieces(input, case_num) == 4)",
-        "achievement_hint": "For challenge Y.X, make sure one test case has (X/Y) pieces of one color and Y pieces of the other.",
-        "difficulty": "Easy",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 3.13: Move When Red, Move When Blue",
+        "name": "Challenge 3.12: Move When Red, Move When Blue",
         "test_cases_count": 2,
         "score": 350,
         "hint": "Only one piece satisfying the test is needed - if you put more than one, only the first one's considered. You can check the How to Play page to know how movement works.",
-        "objective": "Condition/decision coverage of line 27.",
+        "objective": "Condition/decision coverage of line 27.\nNOTE: Use boards with only one piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "condition/decision",
@@ -1186,6 +1171,7 @@
             "expression_count": 1,
             "preconditions": [
                 "this.count_empty_spaces(input, case_num) != 64",
+                "this.count_empty_spaces(input, case_num) == 63",
                 "![{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.king && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color != Color.EMPTY)); }))"
             ],
             "tests": [
@@ -1201,11 +1187,11 @@
     },
     {
         "id": 0,
-        "name": "Challenge 3.14: Testing King Movement Semi-Thoroughly",
-        "test_cases_count": 2,
+        "name": "Challenge 3.13: Testing King Movement Semi-Thoroughly",
+        "test_cases_count": 1,
         "score": 325,
         "hint": "You can check the How to Play page to know how one makes a King. Only one piece is needed - if you put more than one, only the first one's considered.",
-        "objective": "Condition coverage of lines 17-19.\nNOTE: These lines are within a for-loop, so only 1 test case is enough.",
+        "objective": "Condition coverage of lines 17-19.\nNOTE: These lines are within a for-loop, so only 1 test case is enough. Use boards with only one King.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "condition",
@@ -1223,15 +1209,15 @@
             ]
         },
         "achievement": "this.count_red_pieces(input, case_num) == this.get_pieces(input, case_num).length || this.count_blue_pieces(input, case_num) == this.get_pieces(input, case_num).length",
-        "achievement_hint": "Use pieces of only one color in one test case!",
+        "achievement_hint": "Use pieces of one color only!",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
     },
     {
         "id": 0,
-        "name": "Challenge 3.15: Can A Blue Piece Move?",
-        "test_cases_count": 2,
+        "name": "Challenge 3.14: Can A Blue Piece Move?",
+        "test_cases_count": 1,
         "score": 450,
         "hint": "Only one piece needs to pass the test in each test case! You can check the How to Play page to know how movement works.",
         "objective": "Decision coverage of line 47-49.\nNOTE: These lines are within a for-loop, so only 1 test case is enough.",
@@ -1247,7 +1233,7 @@
             ],
             "tests": [
                 "[{ x: -1, y: 1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))",
-                "![{ x: -1, y: 1}, { x: -1, y: -1}].every(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
+                "![{ x: -1, y: 1}, { x: -1, y: -1}].some(direction => this.get_pieces(input, case_num).some(piece => { const newX = Number(piece.position.x) + Number(direction.x), newY = Number(piece.position.y) + Number(direction.y); return piece.color == Color.BLUE && newX >= 0 && newX <= 7 && newY >= 0 && newY <= 7 && newX + direction.x >= 0 && newY + direction.y >= 0 && newX + direction.x <= 7 && newY + direction.y <= 7 && (input.state[case_num][newX][newY].color == Color.EMPTY || (input.state[case_num][newX][newY].color != piece.color && input.state[case_num][newX + direction.x][newY + direction.y].color == Color.EMPTY)); }))"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
