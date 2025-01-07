@@ -45,7 +45,7 @@
             ]
         },
         "achievement": "input.log[case_num][input.log[case_num].length - 1].destination.x == 10 && input.log[case_num][input.log[case_num].length - 1].destination.y == 20",
-        "achievement_hint": "Consider, in one test case, that the line (x) for the out of bounds spot starts with 1, and that the column (y) starts with 2. Use the lowest POSITIVE numbers above 9!",
+        "achievement_hint": "Consider, in one test case, that the row for the out of bounds spot starts with 1, and that the column starts with 2. Use the lowest POSITIVE numbers above 9!",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -73,8 +73,8 @@
                 "(input.log[case_num][input.log[case_num].length - 1].destination.y >= 0 || input.log[case_num][input.log[case_num].length - 1].destination.y <= 7 || input.log[case_num][input.log[case_num].length - 1].destination.x >= 0 || input.log[case_num][input.log[case_num].length - 1].destination.x > 7)"
             ]
         },
-        "achievement": "input.log[case_num][input.log[case_num].length - 1].destination.x == 10 && input.log[case_num][input.log[case_num].length - 1].destination.y == 30",
-        "achievement_hint": "Consider, in one test case, that the line (x) for the out of bounds spot starts with 1, and that the column (y) starts with 3. Use the lowest POSITIVE numbers above 9!",
+        "achievement": "input.log[case_num][input.log[case_num].length - 1].destination.x == 10",
+        "achievement_hint": "Consider, in one test case, that the row (x) for the out of bounds spot starts with 1. Use the lowest POSITIVE numbers above 9!",
         "difficulty": "Hard",
         "owner_id": 1,
         "visible": true
@@ -99,7 +99,7 @@
             ]
         },
         "achievement": "Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.x - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x) == 1 && Math.abs(input.log[input.currentKey][input.log[input.currentKey].length - 1].start.y - input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y) == 4",
-        "achievement_hint": "For challenge Y.X, consider moving Y columns, and X rows. Only the last movement made is considered!",
+        "achievement_hint": "For challenge Y.X, consider moving Y rows, and X columns. Only the last movement made is considered!",
         "difficulty": "Very Easy",
         "owner_id": 1,
         "visible": true
@@ -125,7 +125,7 @@
             ]
         },
         "achievement": "Math.abs(input.log[case_num][input.log[case_num].length - 1].start.x - input.log[case_num][input.log[case_num].length - 1].destination.x) == 5 && Math.abs(input.log[case_num][input.log[case_num].length - 1].start.y - input.log[case_num][input.log[case_num].length - 1].destination.y) == 6",
-        "achievement_hint": "For challenge X.Y, consider moving (Y * X) columns, and (X + Y) rows. Only the last movement made is considered!",
+        "achievement_hint": "For challenge X.Y, consider moving (Y * X) rows, and (X + Y) columns. Only the last movement made is considered!",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -335,7 +335,7 @@
             ]
         },
         "achievement": "this.get_middle_piece(input, input.currentKey, input.log[input.currentKey][input.log[input.currentKey].length - 1].destination, input.log[input.currentKey][input.log[input.currentKey].length - 1].start).color == 'empty'",
-        "achievement_hint": "The destination must pass the condition on line 25. Make sure the middle piece (line 26) follows the same condition.",
+        "achievement_hint": "The destination must pass the condition on line 25. Make sure the color of the middlePiece (line 26) is also empty.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -362,7 +362,7 @@
             ]
         },
         "achievement": "this.get_middle_piece(input, input.currentKey, input.log[input.currentKey][input.log[input.currentKey].length - 1].destination, input.log[input.currentKey][input.log[input.currentKey].length - 1].start).color == 'blue'",
-        "achievement_hint": "The middle piece (line 26) must be of Y color. Y = RGB(0, 0, 255).",
+        "achievement_hint": "The middlePiece (line 26) must be of Y color. Y = RGB(0, 0, 255).",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -389,7 +389,7 @@
             ]
         },
         "achievement": "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == 'red'",
-        "achievement_hint": "Look closely at this bar. It has two colors, from left to right: X and Y. Move a piece of color Z, knowing that X = Y + Z.",
+        "achievement_hint": "Move a red piece.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -417,7 +417,7 @@
             ]
         },
         "achievement": "this.get_middle_piece(input, case_num, input.log[case_num][input.log[case_num].length - 1].destination, input.log[case_num][input.log[case_num].length - 1].start).color == 'red'",
-        "achievement_hint": "Look closely at this bar. It has two colors, from left to right: X and Y. In one test case, move a piece of color Z, knowing that (X - Z) + 'yellow' = RGB(0, 255, 0).",
+        "achievement_hint": "Move a red piece in a test case!",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -444,7 +444,7 @@
             ]
         },
         "achievement": "input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == 'blue' || (input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].color == 'stack' && input.state[input.currentKey][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.x][input.log[input.currentKey][input.log[input.currentKey].length - 1].destination.y].stack.red == 0)",
-        "achievement_hint": "Look closely at this bar. It has two colors, from right to left: X and Y. Move a piece of color X.",
+        "achievement_hint": "Move a blue piece.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -495,7 +495,7 @@
             ]
         },
         "achievement": "this.count_blue_pieces(input, input.currentKey) > 12 && this.count_red_pieces(input, input.currentKey) > 12",
-        "achievement_hint": "For challenge X.Y. Make sure both colors have over YX (read as a String, not a calculation!) pieces.",
+        "achievement_hint": "For challenge X.Y. Make sure both colors have over (Y * 10 + X) pieces.",
         "difficulty": "Very Easy",
         "owner_id": 1,
         "visible": true
@@ -542,7 +542,7 @@
             ]
         },
         "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 2 || Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 3",
-        "achievement_hint": "For challenge X.Y, in one test case, make sure there is a difference of X or Y pieces between the colors.",
+        "achievement_hint": "For challenge X.Y, in one test case, make sure there is a difference of X or Y pieces between each set (red and blue).",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -567,7 +567,7 @@
             ]
         },
         "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 8",
-        "achievement_hint": "For challenge X.Y, in one test case, make sure the piece difference between colors is Y*X.",
+        "achievement_hint": "For challenge X.Y, in one test case, make sure the piece difference between the number of pieces of each set (red and blue) is Y * X.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -592,7 +592,7 @@
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) == 1 || this.count_red_pieces(input, case_num) == 1",
-        "achievement_hint": "For challenge Y.X, make sure, in one test case, that one of the colors only has (2*Y - X) pieces.",
+        "achievement_hint": "For challenge Y.X, make sure, in one test case, that one set of pieces (blue or red) only has (2*Y - X + 1) pieces.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -666,7 +666,7 @@
             ]
         },
         "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 4",
-        "achievement_hint": "For challenge Y.X, make one test case where the difference of pieces between colors is X/Y.",
+        "achievement_hint": "For challenge Y.X, make one test case where there is a difference of X/Y between the number of pieces of each set (red and blue).",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -677,7 +677,7 @@
         "test_cases_count": 2,
         "score": 250,
         "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
-        "objective": "Condition coverage of line 7.",
+        "objective": "Condition coverage of line 6.",
         "initial_board": 1,
         "code_file": 2,
         "challenge_type": "condition",
@@ -691,7 +691,7 @@
                 "this.count_red_pieces(input, case_num) != 0"
             ]
         },
-        "achievement": "(this.count_blue_pieces(input, case_num) == 2 && this.count_red_pieces(input, case_num) == 5) || (this.count_blue_pieces(input, case_num) == 5 && this.count_red_pieces(input, case_num) == 2)",
+        "achievement": "(this.count_blue_pieces(input, case_num) == 2 && this.count_red_pieces(input, case_num) == 7) || (this.count_blue_pieces(input, case_num) == 7 && this.count_red_pieces(input, case_num) == 2)",
         "achievement_hint": "For challenge X.Y, make sure one of the test cases has X pieces of one color and (Y - X) pieces of the other color.",
         "difficulty": "Easy",
         "owner_id": 1,
@@ -769,7 +769,7 @@
                 "this.get_pieces(input, input.currentKey).some((piece) => Number(piece.position.x) % 2 != 0)"
             ]
         },
-        "achievement": "this.count_blue_pieces(input, input.currentKey) + this.count_red_pieces(input, input.currentKey) == 22",
+        "achievement": "this.count_blue_pieces(input, input.currentKey) + this.count_red_pieces(input, input.currentKey) <= 22",
         "achievement_hint": "For challenge Y.X, make sure there are at most (X * Y - Y) pieces in the board.",
         "difficulty": "Very Easy",
         "owner_id": 1,
@@ -795,7 +795,7 @@
                 "this.get_pieces(input, input.currentKey).some((piece) => Number(piece.position.x) % 2 != 0)"
             ]
         },
-        "achievement": "this.count_blue_pieces(input, input.currentKey) + this.count_red_pieces(input, input.currentKey) == 15",
+        "achievement": "this.count_blue_pieces(input, input.currentKey) + this.count_red_pieces(input, input.currentKey) <= 15",
         "achievement_hint": "For challenge Y.X, make sure you have at most (X + Y) pieces in the board.",
         "difficulty": "Very Easy",
         "owner_id": 1,
@@ -807,7 +807,7 @@
         "test_cases_count": 2,
         "score": 250,
         "hint": "Pay attention to the code condition! You don't need to care what's inside the branches of the If, only that execution gets there!",
-        "objective": "Decision coverage of line 15.",
+        "objective": "Decision coverage of line 15. Note that only one test case is necessary, because of the for loop!",
         "initial_board": 1,
         "code_file": 2,
         "challenge_type": "decision",
@@ -850,7 +850,7 @@
             ]
         },
         "achievement": "this.get_pieces(input, input.currentKey).slice(0, 12).every((piece) => piece.color == 'blue') && this.get_pieces(input, input.currentKey).slice(12, 25).every((piece) => piece.color == 'red')",
-        "achievement_hint": "The board usually has one color at the top and the other at the bottom. Switch the order.",
+        "achievement_hint": "Blue pieces should be placed above red pieces, i.e., in rows with lower numbers",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -901,7 +901,7 @@
             ]
         },
         "achievement": "var s = 0; this.get_pieces(input, input.currentKey).filter(piece => piece.king).forEach(piece => [{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: -1 }, { x: -1, y: 1 }].forEach(position => (input.state[input.currentKey][(parseFloat(piece.position.x) + parseFloat(position.x) > 7) ? 7 : (parseFloat(piece.position.x) + parseFloat(position.x) < 0) ? 0 : parseFloat(piece.position.x) + parseFloat(position.x)][(parseFloat(piece.position.y) + parseFloat(position.y) > 7) ? 7 : (parseFloat(piece.position.y) + parseFloat(position.y) < 0) ? 0 : parseFloat(piece.position.y) + parseFloat(position.y)].color != 'empty') ? s++ : 'nothing' )); s == 2 || s == 3 ",
-        "achievement_hint": "For challenge X.Y, block X or Y positions adjacent to a King. Use the directions defined on the code.",
+        "achievement_hint": "For challenge X.Y, block X or Y diagonally adjacent positions of a King. Use the directions defined on the code.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
