@@ -226,6 +226,10 @@ export const boardCheckerStore = defineStore('boardStore', {
     },
 
     addMode() {
+      if (this.selectedPiece != null) {
+        this.selectedPiece.select()
+        this.selectedPiece = null
+      }
       this.add = !this.add
       document.body.classList.toggle('add-mode')
     },

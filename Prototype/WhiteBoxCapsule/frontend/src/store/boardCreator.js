@@ -184,6 +184,10 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
     },
 
     addMode() {
+      if (this.selectedPiece != null) {
+        this.selectedPiece.select()
+        this.selectedPiece = null
+      }
       this.add = !this.add
       document.body.classList.toggle('add-mode')
     },
