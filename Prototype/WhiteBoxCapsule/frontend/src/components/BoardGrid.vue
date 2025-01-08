@@ -555,11 +555,14 @@ export default {
         return
       }
 
-      var type = this.challenge.challenge_type
+      var type = this.challenge.challenge_type,
+          test_cases_count = this.challenge.test_cases_count
 
       try {
         if (type == 'statement') {
           this.goUnique(this.board)
+        } else if (type == 'decision' && test_cases_count == 1) {
+          this.goCondition(this.board)
         } else if (type == 'decision') {
           this.goDecision(this.board)
         } else if (type == 'condition' || type == 'mcdc' || type == 'condition/decision') {
@@ -693,7 +696,7 @@ export default {
         return false
       }
 
-      if (this.board.currentKey == 0) {
+      if (this.board.currentKey == 0 && this.challenge.challenge_type == "statement") {
         try {
           if (eval(this.challenge.achievement)) {
             return true

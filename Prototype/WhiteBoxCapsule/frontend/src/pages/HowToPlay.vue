@@ -145,7 +145,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
                     </div>
                     <p style="text-align: justify; margin: 0px">
                         Then, click the spot you want to move it to. Stacks can also be moved, but only as
-                        a whole. Coordinates follow an <em>(x, y)</em> pattern - <em>x</em> is the row and
+                        a whole (they don't count as blue or red pieces). Coordinates follow an <em>(x, y)</em> pattern - <em>x</em> is the row and
                         <em>y</em> is the column.
                     </p>
                 </div>

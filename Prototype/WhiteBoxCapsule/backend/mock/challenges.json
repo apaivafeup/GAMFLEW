@@ -482,7 +482,7 @@
         "name": "Challenge 2.1: Counting Pieces",
         "test_cases_count": 1,
         "score": 100,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces.",
         "objective": "Statement coverage of line 6.",
         "initial_board": 2,
         "code_file": 2,
@@ -528,7 +528,7 @@
         "name": "Challenge 2.3: Counting Pieces, Not Counting Pieces",
         "test_cases_count": 2,
         "score": 200,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces.",
         "objective": "Decision coverage of line 5.",
         "initial_board": 2,
         "code_file": 2,
@@ -552,7 +552,7 @@
         "name": "Challenge 2.4: Counting Pieces, Only When It Matters",
         "test_cases_count": 3,
         "score": 300,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table is probably your best friend, here.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces. The Condition Table is probably your best friend, here.",
         "objective": "Modified condition/decision coverage of line 5.",
         "initial_board": 2,
         "code_file": 2,
@@ -577,7 +577,7 @@
         "name": "Challenge 2.5: Win Conditions, Only When It Matters",
         "test_cases_count": 3,
         "score": 300,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table is probably your best friend, here.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces. The Condition Table is probably your best friend, here.",
         "objective": "Modified condition/decision coverage of line 7.",
         "initial_board": 1,
         "code_file": 2,
@@ -592,7 +592,7 @@
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) == 1 || this.count_red_pieces(input, case_num) == 1",
-        "achievement_hint": "For challenge Y.X, make sure, in one test case, that one set of pieces (blue or red) only has (2*Y - X + 1) pieces.",
+        "achievement_hint": "For challenge Y.X, make sure, in one test case, that one set of pieces (blue or red) only has (2*Y - X + 2) pieces.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -602,7 +602,7 @@
         "name": "Challenge 2.6: Win Conditions, But Thoroughly",
         "test_cases_count": 2,
         "score": 250,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces. The Condition Table may help, here.",
         "objective": "Condition/decision coverage of line 7.",
         "initial_board": 1,
         "code_file": 2,
@@ -626,7 +626,7 @@
         "name": "Challenge 2.7: Counting Pieces, But Thoroughly",
         "test_cases_count": 2,
         "score": 250,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces. The Condition Table may help, here.",
         "objective": "Condition/decision coverage of line 5.",
         "initial_board": 2,
         "code_file": 2,
@@ -650,7 +650,7 @@
         "name": "Challenge 2.8: Counting Pieces On Some Restrictions",
         "test_cases_count": 2,
         "score": 250,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces. The Condition Table may help, here.",
         "objective": "Condition coverage of line 5.",
         "initial_board": 2,
         "code_file": 2,
@@ -676,8 +676,8 @@
         "name": "Challenge 2.9: Winning Conditions On Some Restrictions",
         "test_cases_count": 2,
         "score": 250,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
-        "objective": "Condition coverage of line 6.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces. The Condition Table may help, here.",
+        "objective": "Condition coverage of line 7.",
         "initial_board": 1,
         "code_file": 2,
         "challenge_type": "condition",
@@ -702,7 +702,7 @@
         "name": "Challenge 2.10: Valid Positions for Odd Rows",
         "test_cases_count": 1,
         "score": 250,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces. The Condition Table may help, here.",
         "objective": "Statement coverage of line 17.",
         "initial_board": 2,
         "code_file": 2,
@@ -728,7 +728,7 @@
         "name": "Challenge 2.11: Valid Positions for Even Rows",
         "test_cases_count": 1,
         "score": 250,
-        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. The Condition Table may help, here.",
+        "hint": "The Add button allows you to add or remove pieces. Check the Guide if needed. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces. The Condition Table may help, here.",
         "objective": "Statement coverage of line 21.",
         "initial_board": 2,
         "code_file": 2,
@@ -754,7 +754,7 @@
         "name": "Challenge 2.12: Just Odd Rows",
         "test_cases_count": 1,
         "score": 150,
-        "hint": "Not all is what it seems. Pay attention to the code.",
+        "hint": "Not all is what it seems. Pay attention to the code. Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces.",
         "objective": "Statement coverage of line 16.",
         "initial_board": 2,
         "code_file": 2,
@@ -792,7 +792,7 @@
                 "!(this.count_blue_pieces(input, input.currentKey) == 0 || this.count_red_pieces(input, input.currentKey) == 0)"
             ],
             "tests": [
-                "this.get_pieces(input, input.currentKey).some((piece) => Number(piece.position.x) % 2 != 0)"
+                "this.get_pieces(input, input.currentKey).some((piece) => Number(piece.position.x) % 2 == 0)"
             ]
         },
         "achievement": "this.count_blue_pieces(input, input.currentKey) + this.count_red_pieces(input, input.currentKey) <= 15",
@@ -833,7 +833,7 @@
         "name": "Challenge 2.15: A Valid Board",
         "test_cases_count": 1,
         "score": 250,
-        "hint": "You have a lot of hurdles to get through, and the Add button is your friend - it adds AND removes pieces (check Guide, if needed).",
+        "hint": "You have a lot of hurdles to get through, and the Add button is your friend - it adds AND removes pieces (check Guide, if needed). Remember that stacks (more than 1 piece in any position) do not count as blue or red pieces.",
         "objective": "Statement coverage of line 26.",
         "initial_board": 1,
         "code_file": 2,
@@ -849,7 +849,7 @@
                 "this.get_pieces(input, input.currentKey).every((piece) => (Number(piece.position.x) % 2 != 0 && [1, 3, 5, 7].includes(Number(piece.position.y))) || (Number(piece.position.x) % 2 == 0 && [0, 2, 4, 6].includes(Number(piece.position.y))))"
             ]
         },
-        "achievement": "this.get_pieces(input, input.currentKey).slice(0, 12).every((piece) => piece.color == 'blue') && this.get_pieces(input, input.currentKey).slice(12, 25).every((piece) => piece.color == 'red')",
+        "achievement": "this.get_blue_pieces(input, input.currentKey)[this.get_blue_pieces(input, input.currentKey).length - 1].position.x < this.get_red_pieces(input, input.currentKey)[0].position.x",
         "achievement_hint": "Blue pieces should be placed above red pieces, i.e., in rows with lower numbers",
         "difficulty": "Normal",
         "owner_id": 1,
@@ -861,7 +861,7 @@
         "test_cases_count": 1,
         "score": 250,
         "hint": "You can check the How to Play page to know how one makes a King. Only one King piece is needed!",
-        "objective": "Statement coverage of line 13.\nNOTE: Use boards with only one King piece.",
+        "objective": "Statement coverage of line 13.\nNOTE: Use a board with only one King piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
@@ -887,7 +887,7 @@
         "test_cases_count": 1,
         "score": 250,
         "hint": "You can check the How to Play page to know how one makes a King. Only one King piece is needed - if you put more than one, only the first is considered.",
-        "objective": "Statement coverage of line 20.\nNOTE: Use boards with only one King piece.",
+        "objective": "Statement coverage of line 20.\nNOTE: Use a board with only one King piece.",
         "initial_board": 1,
         "code_file": 3,
         "challenge_type": "statement",
@@ -1365,8 +1365,8 @@
                 "this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.RED) || this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)"
             ]
         },
-        "achievement": "this.find_first_single_piece(input, input.currentKey).color != (this.find_first_stack(input, input.currentKey).stack.red > 0 ? 'red' : (this.find_first_stack(input, input.currentKey).stack.blue > 0 ? 'blue' : 'stack'))",
-        "achievement_hint": "Add one stack of pieces of a color different from the one you choose to pass the challenge.",
+        "achievement": "this.get_pieces(input, input.currentKey).every((piece) => piece.color == Color.BLUE)",
+        "achievement_hint": "Use only blue pieces.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -1472,8 +1472,8 @@
                 "this.get_pieces(input, case_num).length == 0 || (!(this.get_pieces(input, case_num).every(piece => piece.color == Color.RED)) && !(this.get_pieces(input, case_num).every(piece => piece.color == Color.BLUE)))"
             ]
         },
-        "achievement": "this.is_prime(this.find_first_stack(input, case_num).stack.red + this.find_first_stack(input, case_num).stack.blue)",
-        "achievement_hint": "In one test case, add a stack with a prime number of pieces.",
+        "achievement": "this.get_pieces(input, case_num).length == 5",
+        "achievement_hint": "For challenge X.Y, use a test case with (Y - X) pieces on board",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -1495,63 +1495,15 @@
                 "this.count_red_pieces(input, input.currentKey) == this.count_blue_pieces(input, input.currentKey)"
             ]
         },
-        "achievement": "(this.find_first_stack(input, input.currentKey).stack.red + this.find_first_stack(input, input.currentKey).stack.blue == 5) && this.find_stacks(input, input.currentKey).length == 1",
-        "achievement_hint": "For challenge X.Y, make Y stack(s) with X total pieces.",
+        "achievement": "this.get_pieces(input, input.currentKey).length == 6",
+        "achievement_hint": "For challenge X.Y, make a test case with X + Y pieces on the board.",
         "difficulty": "Very Easy",
         "owner_id": 1,
         "visible": true
     },
     {
         "id": 0,
-        "name": "Challenge 5.2: Evenly Matched... or Not!",
-        "test_cases_count": 2,
-        "score": 200,
-        "hint": "Zero is a number, by the way. But you can't use it for both test cases!",
-        "objective": "Decision coverage of line 5.",
-        "initial_board": 1,
-        "code_file": 5,
-        "challenge_type": "decision",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [],
-            "tests": [
-                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)",
-                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
-            ]
-        },
-        "achievement": "this.count_red_pieces(input, case_num) == 5 && this.count_blue_pieces(input, case_num) == 2",
-        "achievement_hint": "For challenge X.Y, in one test case, use X red pieces and Y blue pieces.",
-        "difficulty": "Very Easy",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 5.3: Equally Conditioned",
-        "test_cases_count": 2,
-        "score": 200,
-        "hint": "Zero is a number! But it's not useful for both test cases.",
-        "objective": "Condition coverage of line 5.",
-        "initial_board": 1,
-        "code_file": 5,
-        "challenge_type": "condition",
-        "passing_criteria": {
-            "expression_count": 1,
-            "preconditions": [],
-            "tests": [
-                "this.count_red_pieces(input, case_num) == this.count_blue_pieces(input, case_num)",
-                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
-            ]
-        },
-        "achievement": "this.count_red_pieces(input, case_num) == 3 && this.count_blue_pieces(input, case_num) == 5",
-        "achievement_hint": "For challenge Y.X, in one test case, use X red pieces and Y blue pieces.",
-        "difficulty": "Easy",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 5.4: Equally Conditioned Decision",
+        "name": "Challenge 5.2: Equally Conditioned Decision",
         "test_cases_count": 2,
         "score": 200,
         "hint": "Zero is a number! But it's not useful for both test cases.",
@@ -1567,15 +1519,15 @@
                 "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
             ]
         },
-        "achievement": "this.find_first_stack(input, case_num).stack.red == 4 && this.find_first_stack(input, case_num).stack.blue == 1",
-        "achievement_hint": "For challenge Y.X, in one test case, make a stack with X red pieces and (Y - X) blue pieces.",
+        "achievement": "this.count_red_pieces(input, case_num) == 2 && this.count_blue_pieces(input, case_num) == 5",
+        "achievement_hint": "For challenge Y.X, in one test case, make a test case with X red and Y blue pieces.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
     },
     {
         "id": 0,
-        "name": "Challenge 5.5: Everyone Wins!",
+        "name": "Challenge 5.3: Everyone Wins!",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Using an empty board here is not possible. In the most basic terms (number of pieces per player), what is a tie?",
@@ -1600,7 +1552,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 5.6: No One Wins?",
+        "name": "Challenge 5.4: No One Wins?",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Only one number of pieces per player will work here. Remember: the board is an 8 by 8 grid!",
@@ -1625,7 +1577,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 5.7: A Tie... Or Not!",
+        "name": "Challenge 5.5: A Tie... Or Not!",
         "test_cases_count": 2,
         "score": 225,
         "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
@@ -1651,7 +1603,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 5.8: Conditioned Tie",
+        "name": "Challenge 5.6: Conditioned Tie",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
@@ -1677,7 +1629,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 5.9: Conditioning and Deciding A Tie",
+        "name": "Challenge 5.7: Conditioning and Deciding A Tie",
         "test_cases_count": 2,
         "score": 250,
         "hint": "Only one number of pieces per player is at play here. Remember: the board is an 8 by 8 grid!",
@@ -1703,7 +1655,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 5.10: Not A Tie",
+        "name": "Challenge 5.8: Not A Tie",
         "test_cases_count": 1,
         "score": 100,
         "hint": "You can't use an empty board, here... That would lead to an early return!",
@@ -1726,7 +1678,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 5.11: A Blue (But Not Sad) Victory!",
+        "name": "Challenge 5.9: A Blue (But Not Sad) Victory!",
         "test_cases_count": 1,
         "score": 125,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
@@ -1751,7 +1703,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 5.12: A Red (But Not Angry) Victory!",
+        "name": "Challenge 5.10: A Red (But Not Angry) Victory!",
         "test_cases_count": 1,
         "score": 125,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. Also, each triangle's side must be greater than 0 when measured.",
@@ -1769,40 +1721,14 @@
             ]
         },
         "achievement": "Math.abs(this.count_red_pieces(input, input.currentKey) - this.count_blue_pieces(input, input.currentKey)) == 2",
-        "achievement_hint": "For challenge X.Y, make sure there is a difference of |2*X - Y| pieces between colors.",
+        "achievement_hint": "For challenge X.Y, make a test case with (Y - X) pieces of each color.",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
-    },
+    }, // A partir daqui, é mais 3.
     {
         "id": 0,
-        "name": "Challenge 5.13: Colorful Victories",
-        "test_cases_count": 2,
-        "score": 225,
-        "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
-        "objective": "Decision coverage of line 14.",
-        "initial_board": 2,
-        "code_file": 5,
-        "challenge_type": "decision",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [
-                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
-            ],
-            "tests": [
-                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
-                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
-            ]
-        },
-        "achievement": "this.find_first_stack(input, case_num).stack.red != 0 && this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue",
-        "achievement_hint": "In one test case, make a stack where both colors have the same number of pieces.",
-        "difficulty": "Normal",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 5.14: Colorful Conditioned Victories",
+        "name": "Challenge 5.11: Colorful Conditioned Victories",
         "test_cases_count": 2,
         "score": 250,
         "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
@@ -1820,34 +1746,8 @@
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 3",
-        "achievement_hint": "For challenge X.Y, make sure there is a difference of [|(2*X - Y)| - 1] pieces between colors.",
-        "difficulty": "Normal",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 5.15: Colorful Conditioned Decisions",
-        "test_cases_count": 2,
-        "score": 275,
-        "hint": "One game must be won by each color. For that to happen, you just need a difference of 1 piece between players.",
-        "objective": "Condition/decision coverage of line 14.",
-        "initial_board": 2,
-        "code_file": 5,
-        "challenge_type": "condition/decision",
-        "passing_criteria": {
-            "expression_count": 1,
-            "preconditions": [
-                "this.count_red_pieces(input, case_num) != this.count_blue_pieces(input, case_num)"
-            ],
-            "tests": [
-                "!(this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num))",
-                "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
-            ]
-        },
-        "achievement": "Math.abs(this.count_blue_pieces(input, case_num) - this.count_red_pieces(input, case_num)) == 6",
-        "achievement_hint": "For challenge Y.X, make sure there is a difference of 2*(Y/X) pieces between colors.",
+        "achievement": "this.count_red_pieces(input, case_num) - this.count_blue_pieces(input, case_num) == 0",
+        "achievement_hint": "For challenge X.Y, make a test case where the difference of red-blue pieces is [|(2*X - Y)| - 1].",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
