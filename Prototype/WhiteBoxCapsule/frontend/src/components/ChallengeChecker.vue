@@ -525,6 +525,8 @@ export default {
 
         if (type == 'statement') {
           this.goUnique(input)
+        } else if (type == 'decision' && this.challenge.test_cases_count == 1) {
+          this.goCondition(input)
         } else if (type == 'decision') {
           this.goDecision(input)
         } else if (type == 'condition' || type == 'mcdc' || type == 'condition/decision') {
