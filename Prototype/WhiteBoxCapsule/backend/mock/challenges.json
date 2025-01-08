@@ -804,7 +804,7 @@
     {
         "id": 0,
         "name": "Challenge 2.14: All Rows",
-        "test_cases_count": 2,
+        "test_cases_count": 1,
         "score": 250,
         "hint": "Pay attention to the code condition! You don't need to care what's inside the branches of the If, only that execution gets there!",
         "objective": "Decision coverage of line 15. Note that only one test case is necessary, because of the for loop!",
