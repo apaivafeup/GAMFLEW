@@ -1980,8 +1980,8 @@
                 "this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)"
             ]
         },
-        "achievement": "this.find_first_stack(input, input.currentKey).color != 'empty' && this.find_first_stack(input, input.currentKey).stack.red != 0 && this.find_first_stack(input, input.currentKey).stack.blue != 0",
-        "achievement_hint": "Make sure there is at least one stack with both red and blue pieces on the board.",
+        "achievement": "this.count_red_pieces(input, input.currentKey) == 0",
+        "achievement_hint": "Make a test case without red pieces.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -1992,7 +1992,7 @@
         "test_cases_count": 3,
         "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
-        "objective": "Modified condition/decision coverage of line 11",
+        "objective": "Modified condition/decision coverage of line 12.",
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "mcdc",
@@ -2035,8 +2035,8 @@
                 "this.count_blue_pieces(input, case_num) <= this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)"
             ]
         },
-        "achievement": "this.find_first_stack(input, case_num).color != 'empty' && this.find_first_stack(input, case_num).stack.blue == 0",
-        "achievement_hint": "In one test case, add a stack of only red pieces on the out of bounds spot.",
+        "achievement": "this.count_red_pieces(input, case_num) == 8",
+        "achievement_hint": "Make a test case with 8 red pieces",
         "difficulty": "Hard",
         "owner_id": 1,
         "visible": true
@@ -2061,8 +2061,8 @@
                 "!(this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey))"
             ]
         },
-        "achievement": "this.find_first_stack(input, input.currentKey).color != 'empty' && this.find_first_stack(input, input.currentKey).stack.red == 0",
-        "achievement_hint": "Add a stack of only blue pieces on the out of bounds spot.",
+        "achievement": "this.count_red_pieces(input, input.currentKey) == 3",
+        "achievement_hint": "For challenge X.Y, make a test case with [(Y - X) / 2] red pieces",
         "difficulty": "Hard",
         "owner_id": 1,
         "visible": true
