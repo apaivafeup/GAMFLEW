@@ -1456,7 +1456,7 @@
         "name": "Challenge 4.9: Thoroughly Testing the Colorful Condition",
         "test_cases_count": 3,
         "score": 250,
-        "hint": "An empty board CAN work for one of the needed test cases. You need to avoid the Ifs from lines 5 and 7.",
+        "hint": "Having less than 2 pieces on a board does not avoid the IFs from lines 3 and 5.",
         "objective": "Modified condition/decision coverage of line 7.",
         "initial_board": 1,
         "code_file": 4,
@@ -1544,8 +1544,8 @@
                 "this.count_empty_spaces(input, input.currentKey) != 64"
             ]
         },
-        "achievement": "this.find_first_stack(input, input.currentKey).color != 'empty'",
-        "achievement_hint": "Pass the challenge with a stack.",
+        "achievement": "this.count_empty_spaces(input, input.currentKey) - this.get_pieces(input, input.currentKey) == 8",
+        "achievement_hint": "For challenge X.Y, have X + Y pieces on the board",
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
@@ -1725,7 +1725,7 @@
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
-    }, // A partir daqui, é mais 3.
+    },
     {
         "id": 0,
         "name": "Challenge 5.11: Colorful Conditioned Victories",
@@ -1746,8 +1746,8 @@
                 "this.count_blue_pieces(input, case_num) > this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": "this.count_red_pieces(input, case_num) - this.count_blue_pieces(input, case_num) == 0",
-        "achievement_hint": "For challenge X.Y, make a test case where the difference of red-blue pieces is [|(2*X - Y)| - 1].",
+        "achievement": "this.count_red_pieces(input, case_num) - this.count_blue_pieces(input, case_num) == 1",
+        "achievement_hint": "For challenge X.Y, make a test case where the difference of red-blue pieces is |(2*X - Y)|.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -1828,59 +1828,11 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.4: Triangular Condition",
-        "test_cases_count": 2,
-        "score": 200,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
-        "objective": "Condition coverage of line 7.",
-        "initial_board": 3,
-        "code_file": 6,
-        "challenge_type": "condition",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [],
-            "tests": [
-                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
-                "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
-            ]
-        },
-        "achievement": "Math.pow(Math.sqrt(this.count_red_pieces(input, case_num)), 2) == this.count_red_pieces(input, case_num)",
-        "achievement_hint": "In one test case, make sure that the number of red pieces is a perfect square.",
-        "difficulty": "Very Easy",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 6.5: Triangular Conditional Decision",
-        "test_cases_count": 2,
-        "score": 200,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces. How can you make it so their numbers don't make a triangle?",
-        "objective": "Condition/decision coverage of line 7.",
-        "initial_board": 3,
-        "code_file": 6,
-        "challenge_type": "condition/decision",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [],
-            "tests": [
-                "!this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
-                "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
-            ]
-        },
-        "achievement": "(this.count_red_pieces(input, case_num) + this.count_blue_pieces(input, case_num)) % 2 != 0",
-        "achievement_hint": "In one test case, make sure that the sum of red and blue pieces is an odd number.",
-        "difficulty": "Very Easy",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 6.6: Don't-Build-Or-Build-a-Triangle",
+        "name": "Challenge 6.4: Don't-Build-Or-Build-a-Triangle",
         "test_cases_count": 2,
         "score": 225,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
-        "objective": "Decision coverage of line 9.",
+        "objective": "Decision coverage of line 10.",
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "decision",
@@ -1902,11 +1854,11 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.7: Triangulating Condition",
+        "name": "Challenge 6.5: Triangulating Condition",
         "test_cases_count": 2,
         "score": 450,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
-        "objective": "Condition coverage of line 9.",
+        "objective": "Condition coverage of line 10.",
         "initial_board": 3,
         "code_file": 6,
         "challenge_type": "condition",
@@ -1930,7 +1882,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.8: Never A Scalene Triangle",
+        "name": "Challenge 6.6: Never A Scalene Triangle",
         "test_cases_count": 1,
         "score": 150,
         "hint": "You cannot make a triangle, nor can the condition on line 9 be hit!",
@@ -1956,7 +1908,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.9: Conditioning An Isosceles Triangle",
+        "name": "Challenge 6.7: Conditioning An Isosceles Triangle",
         "test_cases_count": 2,
         "score": 450,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. You're dealing with two separate conditions, so cover true-False state for each, across two test cases! Also, notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -1985,7 +1937,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.10: Deciding If It's An Isosceles Triangle",
+        "name": "Challenge 6.8: Deciding If It's An Isosceles Triangle",
         "test_cases_count": 2,
         "score": 225,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2003,7 +1955,7 @@
                 "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)"
             ]
         },
-        "achievement": "this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue",
+        "achievement": "this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue && this.find_first_stack(input, case_num).stack.red != 0",
         "achievement_hint": "Make sure, in one test case, there is a stack with an equal number of red and blue pieces.",
         "difficulty": "Normal",
         "owner_id": 1,
@@ -2011,7 +1963,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.11: In Theory, An Isosceles Triangle",
+        "name": "Challenge 6.9: In Theory, An Isosceles Triangle",
         "test_cases_count": 1,
         "score": 125,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2036,7 +1988,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.12: Thoroughly Testing A Theoretical Isosceles Triangle",
+        "name": "Challenge 6.10: Thoroughly Testing A Theoretical Isosceles Triangle",
         "test_cases_count": 3,
         "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2064,7 +2016,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.13: Thoroughly Testing A Theoretical Scalene Triangle",
+        "name": "Challenge 6.11: Thoroughly Testing A Theoretical Scalene Triangle",
         "test_cases_count": 3,
         "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2091,7 +2043,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.14: If This Was A Triangle, We'd Be Concerned",
+        "name": "Challenge 6.12: If This Was A Triangle, We'd Be Concerned",
         "test_cases_count": 1,
         "score": 150,
         "hint": "Treat the first three If conditions as landmines - you can't cover them!",
