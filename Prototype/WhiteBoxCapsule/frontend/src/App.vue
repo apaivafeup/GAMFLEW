@@ -5,7 +5,8 @@
     <title>Gamflew</title>
   </head>
   <div id="app" class="container">
-    <router-view :key="$route.fullPath"></router-view>
+    <LoadingIcon v-if="loading"></LoadingIcon> 
+    <router-view v-else :key="$route.fullPath"></router-view>
   </div>
 
   <button v-if="open" @click="toggleMode()" class="theme-toggle" style="bottom: 185px;">💡</button>
@@ -26,7 +27,6 @@
 <script>
 import { authStore } from './store/authStore';
 import LoadingIcon from './components/LoadingIcon.vue'
-import { h, resolveComponent } from 'vue'
 import { boardStore } from './store/boardStore';
 
 export default {
@@ -35,23 +35,10 @@ export default {
   },
 
   beforeMount() {
-    let loader = this.$loading.show({
-      color: '#A959FF',
-      container: this.fullPage ? null : this.$refs.formContainer,
-      transition: 'fade',
-      canCancel: true,
-      freezeScroll: true,
-      onCancel: this.onCancel,
-      opacity: 0.9,
-      blur: '50px'
-    },
-      {
-        default: () => h(resolveComponent('LoadingIcon'))
-      }, this.$slots.default);
     this.board = boardStore()
     this.auth = authStore()
     this.auth.checkAuth()
-    loader.hide()
+    this.loading = false;
   },
   // eslint-disable-next-line vue/no-unused-components
   components: { LoadingIcon },
@@ -59,6 +46,7 @@ export default {
     return {
       url: window.location.href,
       open: false,
+      loading: true
     };
   },
 
