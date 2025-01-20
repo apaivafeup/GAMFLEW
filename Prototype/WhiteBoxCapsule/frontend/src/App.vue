@@ -1,4 +1,5 @@
 <template>
+
   <head>
     <meta charset="utf-8">
     <title>Gamflew</title>
@@ -6,10 +7,10 @@
   <div id="app" class="container">
     <router-view :key="$route.fullPath"></router-view>
   </div>
-  
+
   <button v-if="open" @click="toggleMode()" class="theme-toggle" style="bottom: 185px;">💡</button>
-  <button @click="this.board.emptyState(); this.$router.back()" class="theme-toggle" v-if="open" style="bottom: 130px;">↩️</button>
-  <button @click="this.board.emptyState(); this.$router.push({name: 'home'})" v-if="open" class="theme-toggle" id="theme-toggle-house" style="bottom: 75px;">🏠</button>
+  <button @click="back()" class="theme-toggle" v-if="open" style="bottom: 130px;">↩️</button>
+  <button @click="home()" v-if="open" class="theme-toggle" id="theme-toggle-house" style="bottom: 75px;">🏠</button>
   <button v-if="!open" @click="open = !open" class="theme-toggle" style="bottom: 20px; opacity: 40%;">⬆️</button>
   <button v-else @click="open = !open" class="theme-toggle" style="bottom: 20px; opacity: 100%;">⬇️</button>
 </template>
@@ -47,7 +48,7 @@ export default {
       {
         default: () => h(resolveComponent('LoadingIcon'))
       }, this.$slots.default);
-      this.board = boardStore()
+    this.board = boardStore()
     this.auth = authStore()
     this.auth.checkAuth()
     loader.hide()
@@ -64,7 +65,44 @@ export default {
   methods: {
     toggleMode() {
       document.body.classList.toggle('dark-theme')
-    }
+    },
+
+    back() {
+      let loader = this.$loading.show({
+        color: '#A959FF',
+        container: this.fullPage ? null : this.$refs.formContainer,
+        transition: 'fade',
+        canCancel: true,
+        freezeScroll: true,
+        onCancel: this.onCancel,
+        opacity: 0.9,
+        blur: '50px'
+      });
+      this.board.emptyState();
+      this.$router.back().then(() => {
+        window.location.reload()
+        loader.hide()
+      }
+      )
+    },
+
+    home() {
+      let loader = this.$loading.show({
+        color: '#A959FF',
+        container: this.fullPage ? null : this.$refs.formContainer,
+        transition: 'fade',
+        canCancel: true,
+        freezeScroll: true,
+        onCancel: this.onCancel,
+        opacity: 0.9,
+        blur: '50px'
+      });
+      this.board.emptyState();
+      this.$router.push({ name: 'home' }).then(() => {
+        window.location.reload()
+        loader.hide()
+      });
+    },
   }
 }
 </script>

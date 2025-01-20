@@ -1908,7 +1908,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.7: Conditioning An Isosceles Triangle",
+        "name": "Challenge 6.7: Conditioning a Fake Isosceles Triangle",
         "test_cases_count": 2,
         "score": 450,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. You're dealing with two separate conditions, so cover true-False state for each, across two test cases! Also, notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -1937,7 +1937,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.8: Deciding If It's An Isosceles Triangle",
+        "name": "Challenge 6.8: Faking an Isosceles Triangle",
         "test_cases_count": 2,
         "score": 225,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -1963,7 +1963,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.9: In Theory, An Isosceles Triangle",
+        "name": "Challenge 6.9: Never An Isosceles Triangle",
         "test_cases_count": 1,
         "score": 125,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -1988,7 +1988,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.10: Thoroughly Testing A Theoretical Isosceles Triangle",
+        "name": "Challenge 6.10: Thoroughly Testing A Fake Isosceles Triangle",
         "test_cases_count": 3,
         "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
@@ -2016,7 +2016,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.11: Thoroughly Testing A Theoretical Scalene Triangle",
+        "name": "Challenge 6.11: Thoroughly Testing A Fake Scalene Triangle",
         "test_cases_count": 3,
         "score": 350,
         "hint": "If it's not a triangle, sides don't have to be greater than 0. Notice how the code forces you to fix two of the variables with the same value, but the pair must include variable b!",
