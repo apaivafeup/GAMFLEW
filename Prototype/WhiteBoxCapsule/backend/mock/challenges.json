@@ -849,7 +849,7 @@
                 "this.get_pieces(input, input.currentKey).every((piece) => (Number(piece.position.x) % 2 != 0 && [1, 3, 5, 7].includes(Number(piece.position.y))) || (Number(piece.position.x) % 2 == 0 && [0, 2, 4, 6].includes(Number(piece.position.y))))"
             ]
         },
-        "achievement": "this.get_blue_pieces(input, input.currentKey)[this.get_blue_pieces(input, input.currentKey).length - 1].position.x < this.get_red_pieces(input, input.currentKey)[0].position.x",
+        "achievement": "this.find_blue_pieces(input, input.currentKey)[this.find_blue_pieces(input, input.currentKey).length - 1].position.x < this.find_red_pieces(input, input.currentKey)[0].position.x",
         "achievement_hint": "Blue pieces should be placed above red pieces, i.e., in rows with lower numbers",
         "difficulty": "Normal",
         "owner_id": 1,
