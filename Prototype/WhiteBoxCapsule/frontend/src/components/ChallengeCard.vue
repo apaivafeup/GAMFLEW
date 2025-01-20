@@ -149,9 +149,12 @@ export default defineComponent({
 
     goToChallenge(id) {
       if (this.editor)
-        this.$router.push({ name: 'challenge-editor', params: { id: id } })
+        this.$router.push({ name: 'challenge-editor', params: { id: id } }).then(() => {
+          window.location.reload()})
       else
-        this.$router.push({ name: 'challenge', params: { id: id } })
+        this.$router.push({ name: 'challenge', params: { id: id } }).then(() => {
+          window.location.reload()
+      })
     },
 
     goToChallengeComments(id) {
