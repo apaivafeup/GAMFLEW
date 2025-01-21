@@ -49,10 +49,14 @@ export default {
       this.changeAddMode();
       this.$forceUpdate(); 
       if (one) {
-        this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}); 
+        this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}).then(() => {
+          window.location.reload();
+        }); 
         this.$router.go(1);
       } else {
-        this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}); 
+        this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}).then(() => {
+          window.location.reload();
+        }); 
         this.$forceUpdate();
       }
       
@@ -63,11 +67,15 @@ export default {
     this.changeAddMode();
     this.$forceUpdate(); 
     if (last) {
-      this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}); 
+      this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}).then(() => {
+          window.location.reload();
+        }); 
       this.$forceUpdate();
     }
     else {
-      this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}); 
+      this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}).then(() => {
+          window.location.reload();
+        }); 
       this.$router.go(1);
     }
     this.$forceUpdate()
