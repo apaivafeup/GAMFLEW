@@ -86,8 +86,5 @@
     {"id": 0, "student_class_id": 1, "challenge_id": 85, "visible": true},
     {"id": 0, "student_class_id": 1, "challenge_id": 86, "visible": true},
     {"id": 0, "student_class_id": 1, "challenge_id": 87, "visible": true},
-    {"id": 0, "student_class_id": 1, "challenge_id": 88, "visible": true},
-    {"id": 0, "student_class_id": 1, "challenge_id": 89, "visible": true},
-    {"id": 0, "student_class_id": 1, "challenge_id": 90, "visible": true},
-    {"id": 0, "student_class_id": 1, "challenge_id": 91, "visible": true}
+    {"id": 0, "student_class_id": 1, "challenge_id": 88, "visible": true}
 ]
