@@ -56,39 +56,16 @@ export default {
     },
 
     back() {
-      let loader = this.$loading.show({
-        color: '#A959FF',
-        container: this.fullPage ? null : this.$refs.formContainer,
-        transition: 'fade',
-        canCancel: true,
-        freezeScroll: true,
-        onCancel: this.onCancel,
-        opacity: 0.9,
-        blur: '50px'
-      });
       this.board.emptyState();
       this.$router.back().then(() => {
         window.location.reload()
-        loader.hide()
-      }
-      )
+      });
     },
 
     home() {
-      let loader = this.$loading.show({
-        color: '#A959FF',
-        container: this.fullPage ? null : this.$refs.formContainer,
-        transition: 'fade',
-        canCancel: true,
-        freezeScroll: true,
-        onCancel: this.onCancel,
-        opacity: 0.9,
-        blur: '50px'
-      });
       this.board.emptyState();
       this.$router.push({ name: 'home' }).then(() => {
         window.location.reload()
-        loader.hide()
       });
     },
   }
