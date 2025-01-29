@@ -403,8 +403,10 @@ def get_unlocked_challenge_achievements(db: Session, user_id: int):
 
 def delete_user(db: Session, user_id: int):
     user_to_delete = get_user(db, user_id)
+
     if user_to_delete is None or user_to_delete.user_type == "admin":
         return None
+
     db.delete(user_to_delete)
     db.commit()
     return user_to_delete
