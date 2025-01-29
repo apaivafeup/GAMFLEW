@@ -102,18 +102,18 @@ class User(Base):
     validated = Column(Boolean, nullable=True, index=True)
     student_class = Column(Integer, ForeignKey("student_classes.id"), nullable=True, index=True)
 
-    attempts = relationship("Attempt", back_populates="user")
+    attempts = relationship("Attempt", back_populates="user", cascade="all, delete-orphan")
     challenges = relationship("Challenge", back_populates="user")
-    game_winner_1 = relationship("GameRoom", back_populates="winner_1", foreign_keys="GameRoom.game_winner_1_id")
-    game_winner_2 = relationship("GameRoom", back_populates="winner_2", foreign_keys="GameRoom.game_winner_2_id")
-    game_winner_3 = relationship("GameRoom", back_populates="winner_3", foreign_keys="GameRoom.game_winner_3_id")
-    first_player = relationship("GameRoom", back_populates="player_1", foreign_keys="GameRoom.player_1_id")
-    second_player = relationship("GameRoom", back_populates="player_2", foreign_keys="GameRoom.player_2_id")
-    third_player = relationship("GameRoom", back_populates="player_3", foreign_keys="GameRoom.player_3_id")
-    game_logs = relationship("GameLog", back_populates="users")
-    game_rounds = relationship("GameRound", back_populates="users")
-    attempt_scores = relationship("AttemptScore", back_populates="users")
-    general_achievements = relationship("UserGeneralAchievement", back_populates="users")
+    game_winner_1 = relationship("GameRoom", back_populates="winner_1", foreign_keys="GameRoom.game_winner_1_id", cascade="all, delete-orphan")
+    game_winner_2 = relationship("GameRoom", back_populates="winner_2", foreign_keys="GameRoom.game_winner_2_id", cascade="all, delete-orphan")
+    game_winner_3 = relationship("GameRoom", back_populates="winner_3", foreign_keys="GameRoom.game_winner_3_id", cascade="all, delete-orphan")
+    first_player = relationship("GameRoom", back_populates="player_1", foreign_keys="GameRoom.player_1_id", cascade="all, delete-orphan")
+    second_player = relationship("GameRoom", back_populates="player_2", foreign_keys="GameRoom.player_2_id", cascade="all, delete-orphan")
+    third_player = relationship("GameRoom", back_populates="player_3", foreign_keys="GameRoom.player_3_id", cascade="all, delete-orphan")
+    game_logs = relationship("GameLog", back_populates="users", cascade="all, delete-orphan")
+    game_rounds = relationship("GameRound", back_populates="users", cascade="all, delete-orphan")
+    attempt_scores = relationship("AttemptScore", back_populates="users", cascade="all, delete-orphan")
+    general_achievements = relationship("UserGeneralAchievement", back_populates="users", cascade="all, delete-orphan")
 
 class CodeFile(Base):
     __tablename__ = "code_file"
@@ -152,7 +152,7 @@ class Challenge(Base):
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     difficulty = Column(ENUM(Difficulty), index=True)
 
-    user = relationship("User", back_populates="challenges")
+    user = relationship("User", back_populates="challenges", cascade="all")
     attempts = relationship("Attempt", back_populates="challenge")
     code_files = relationship("CodeFile", back_populates="challenges")
     board_states = relationship("BoardState", back_populates="challenges")
@@ -181,7 +181,7 @@ class Attempt(Base):
     comment_score = Column(Float, nullable=True, index=True)
     comment_score_count = Column(Integer, nullable=True, index=True)
 
-    user = relationship("User", back_populates="attempts")
+    user = relationship("User", back_populates="attempts", cascade="all")
     challenge = relationship("Challenge", back_populates="attempts")
     game_rounds = relationship("GameRound", back_populates="attempts")
     attempt_scores = relationship("AttemptScore", back_populates="attempts")
@@ -212,12 +212,12 @@ class GameRoom(Base):
 
     game_logs = relationship("GameLog", back_populates="game_rooms") # this is the correct way
     game_rounds = relationship("GameRound", back_populates="game_rooms")
-    winner_1 = relationship("User", back_populates="game_winner_1", foreign_keys="GameRoom.game_winner_1_id")
-    winner_2 = relationship("User", back_populates="game_winner_2", foreign_keys="GameRoom.game_winner_2_id")
-    winner_3 = relationship("User", back_populates="game_winner_3", foreign_keys="GameRoom.game_winner_3_id")
-    player_1 = relationship("User", back_populates="first_player", foreign_keys="GameRoom.player_1_id")
-    player_2 = relationship("User", back_populates="second_player", foreign_keys="GameRoom.player_2_id")
-    player_3 = relationship("User", back_populates="third_player", foreign_keys="GameRoom.player_3_id")
+    winner_1 = relationship("User", back_populates="game_winner_1", foreign_keys="GameRoom.game_winner_1_id", cascade="all")
+    winner_2 = relationship("User", back_populates="game_winner_2", foreign_keys="GameRoom.game_winner_2_id", cascade="all")
+    winner_3 = relationship("User", back_populates="game_winner_3", foreign_keys="GameRoom.game_winner_3_id", cascade="all")
+    player_1 = relationship("User", back_populates="first_player", foreign_keys="GameRoom.player_1_id", cascade="all")
+    player_2 = relationship("User", back_populates="second_player", foreign_keys="GameRoom.player_2_id", cascade="all")
+    player_3 = relationship("User", back_populates="third_player", foreign_keys="GameRoom.player_3_id", cascade="all")
 
 class GameLog(Base):
     __tablename__ = "game_logs"
@@ -229,7 +229,7 @@ class GameLog(Base):
     game_round_id = Column(Integer, ForeignKey("game_rounds.id"), nullable=True, index=True)
 
     game_rooms = relationship("GameRoom", back_populates="game_logs")
-    users = relationship("User", back_populates="game_logs")
+    users = relationship("User", back_populates="game_logs", cascade="all")
     game_rounds = relationship("GameRound", back_populates="game_logs")
 
 class GameRound(Base):
@@ -246,7 +246,7 @@ class GameRound(Base):
     first_chosen = Column(Integer, nullable=False, index=True)
 
     game_rooms = relationship("GameRoom", back_populates="game_rounds")
-    users = relationship("User", back_populates="game_rounds")
+    users = relationship("User", back_populates="game_rounds", cascade="all")
     game_logs = relationship("GameLog", back_populates="game_rounds")
     attempts = relationship("Attempt", back_populates="game_rounds")
 
@@ -267,7 +267,7 @@ class AttemptScore(Base):
     given_score = Column(Integer, index=True)
 
     attempts = relationship("Attempt", back_populates="attempt_scores")
-    users = relationship("User", back_populates="attempt_scores")
+    users = relationship("User", back_populates="attempt_scores", cascade="all")
     challenges = relationship("Challenge", back_populates="attempt_scores")
 
 class GeneralAchievement(Base):
@@ -287,5 +287,5 @@ class UserGeneralAchievement(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     general_achievement_id = Column(Integer, ForeignKey("general_achievements.id"), nullable=False, index=True)
 
-    users = relationship("User", back_populates="general_achievements")
+    users = relationship("User", back_populates="general_achievements", cascade="all")
     general_achievements = relationship("GeneralAchievement", back_populates="user_general_achievements")
