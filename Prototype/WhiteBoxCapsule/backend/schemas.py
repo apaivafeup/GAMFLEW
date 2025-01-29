@@ -103,7 +103,7 @@ class User(Base):
     student_class = Column(Integer, ForeignKey("student_classes.id"), nullable=True, index=True)
 
     attempts = relationship("Attempt", back_populates="user", cascade="all, delete-orphan")
-    challenges = relationship("Challenge", back_populates="user")
+    challenges = relationship("Challenge", back_populates="user", cascade="all, delete-orphan")
     game_winner_1 = relationship("GameRoom", back_populates="winner_1", foreign_keys="GameRoom.game_winner_1_id", cascade="all, delete-orphan")
     game_winner_2 = relationship("GameRoom", back_populates="winner_2", foreign_keys="GameRoom.game_winner_2_id", cascade="all, delete-orphan")
     game_winner_3 = relationship("GameRoom", back_populates="winner_3", foreign_keys="GameRoom.game_winner_3_id", cascade="all, delete-orphan")
@@ -122,7 +122,7 @@ class CodeFile(Base):
     name = Column(TEXT, index=True)
     content = Column(TEXT, index=True)
 
-    challenges = relationship("Challenge", back_populates="code_files")
+    challenges = relationship("Challenge", back_populates="code_files", cascade="all, delete-orphan")
 
 class BoardState(Base):
     __tablename__ = "board_state"
@@ -153,10 +153,10 @@ class Challenge(Base):
     difficulty = Column(ENUM(Difficulty), index=True)
 
     user = relationship("User", back_populates="challenges", cascade="all")
-    attempts = relationship("Attempt", back_populates="challenge")
+    attempts = relationship("Attempt", back_populates="challenge", cascade="all, delete-orphan")
     code_files = relationship("CodeFile", back_populates="challenges")
     board_states = relationship("BoardState", back_populates="challenges")
-    attempt_scores = relationship("AttemptScore", back_populates="challenges")
+    attempt_scores = relationship("AttemptScore", back_populates="challenges", cascade="all")
 
 class StudentClassChallenge(Base):
     __tablename__ = "student_class_challenge"
@@ -182,9 +182,9 @@ class Attempt(Base):
     comment_score_count = Column(Integer, nullable=True, index=True)
 
     user = relationship("User", back_populates="attempts", cascade="all")
-    challenge = relationship("Challenge", back_populates="attempts")
-    game_rounds = relationship("GameRound", back_populates="attempts")
-    attempt_scores = relationship("AttemptScore", back_populates="attempts")
+    challenge = relationship("Challenge", back_populates="attempts", cascade="all")
+    game_rounds = relationship("GameRound", back_populates="attempts", cascade="all")
+    attempt_scores = relationship("AttemptScore", back_populates="attempts", cascade="all")
 
 class Token(Base):
     __tablename__ = "tokens"
@@ -210,8 +210,8 @@ class GameRoom(Base):
     game_winner_2_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
     game_winner_3_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
 
-    game_logs = relationship("GameLog", back_populates="game_rooms") # this is the correct way
-    game_rounds = relationship("GameRound", back_populates="game_rooms")
+    game_logs = relationship("GameLog", back_populates="game_rooms", cascade="all")
+    game_rounds = relationship("GameRound", back_populates="game_rooms", cascade="all")
     winner_1 = relationship("User", back_populates="game_winner_1", foreign_keys="GameRoom.game_winner_1_id", cascade="all")
     winner_2 = relationship("User", back_populates="game_winner_2", foreign_keys="GameRoom.game_winner_2_id", cascade="all")
     winner_3 = relationship("User", back_populates="game_winner_3", foreign_keys="GameRoom.game_winner_3_id", cascade="all")
@@ -245,10 +245,10 @@ class GameRound(Base):
     all_passed = Column(Boolean, default=False, index=True)
     first_chosen = Column(Integer, nullable=False, index=True)
 
-    game_rooms = relationship("GameRoom", back_populates="game_rounds")
+    game_rooms = relationship("GameRoom", back_populates="game_rounds", cascade="all")
     users = relationship("User", back_populates="game_rounds", cascade="all")
-    game_logs = relationship("GameLog", back_populates="game_rounds")
-    attempts = relationship("Attempt", back_populates="game_rounds")
+    game_logs = relationship("GameLog", back_populates="game_rounds", cascade="all")
+    attempts = relationship("Attempt", back_populates="game_rounds", cascade="all")
 
 class CodeFileDictionary(Base):
     __tablename__ = "code_file_dictionary"
@@ -266,9 +266,9 @@ class AttemptScore(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     given_score = Column(Integer, index=True)
 
-    attempts = relationship("Attempt", back_populates="attempt_scores")
+    attempts = relationship("Attempt", back_populates="attempt_scores", cascade="all")
     users = relationship("User", back_populates="attempt_scores", cascade="all")
-    challenges = relationship("Challenge", back_populates="attempt_scores")
+    challenges = relationship("Challenge", back_populates="attempt_scores", cascade="all")
 
 class GeneralAchievement(Base):
     __tablename__ = "general_achievements"
