@@ -2,3 +2,5 @@ keys/*
 backend/.env
 .codegpt
 .vscode/*.*
+*.pyc
+backend/__pycache__/main.cpython-312.pyc

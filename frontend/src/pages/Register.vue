@@ -43,6 +43,11 @@ export default {
                 return
             }
 
+            if (username.includes('_')) {
+                alert('Username cannot contain underscore. Please try again.')
+                return
+            }
+
             if (password !== passwordConfirm) {
                 alert('Passwords do not match. Check them again.')
                 return
@@ -72,15 +77,15 @@ export default {
                 email: email,
                 picture: picture_path,
                 user_type: user_type,
-                validated: ((user_type === 'admin' || user_type === 'teacher') ? false : null),
+                validated: null,
                 student_class: student_class
             }
 
             await this.$axios.post(this.$api_link + '/register', formData2)
                 .then(response => {
                     if (response.status === 200) {
-                        if (user_type === 'admin') {
-                            alert('You have successfully registered. Your account will be validated by an existing Teacher user.')
+                        if (user_type === 'teacher') {
+                            alert('You have successfully registered.')
                         } else {
                             alert('You have successfully registered. You can now login.')
                         }
@@ -158,9 +163,6 @@ export default {
                         <input type="radio" class="btn-check" name="options-outlined" style="width: 50%" id="btn-radio-teacher" value="admin" />
                         <label class="btn btn-outline-primary" for="btn-radio-teacher">Teacher</label>
                     </div>
-                    <small id="pictureHelp" class="form-text text-muted" style="font-size: 10px;">
-                        A new Teacher account must be validated by an existing Teacher user.
-                    </small>
                 </div>
 
                 <div class="form-group" style="justify-content: center; margin-top: 20px;">

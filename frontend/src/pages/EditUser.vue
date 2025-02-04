@@ -190,9 +190,6 @@ export default {
                         <input type="radio" class="btn-check" name="options-outlined-2" style="width: 50%" id="btn-radio-teacher" value="admin" />
                         <label class="btn btn-outline-primary" for="btn-radio-teacher">Teacher</label>
                     </div>
-                    <small id="pictureHelp" class="form-text text-muted" style="font-size: 10px;">
-                        A new Teacher account must be validated by an existing Teacher user.
-                    </small>
                 </div>
 
                 <div class="form-group" style="justify-content: center; margin-top: 20px;">
