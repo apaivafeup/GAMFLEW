@@ -6,7 +6,7 @@
     <div class="col"
       style="display: grid; grid-template-columns: repeat(5, 200px); grid-gap: 30px; place-content: center;">
       <div class="col" style="margin: 0px; padding: 0px;">
-        <ul class="list-group" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 10px;">
+        <ul class="list-group" style="display: grid; grid-template-columns: repeat(5, 200px); grid-gap: 10px;">
           <li class="list-group-item user-card" v-for="user in users" :key="user.id">
             <div class="row" style="display: flex; justify-content: center; margin-bottom: 5px;">
               <div class="col" style="text-align: center;">
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-;
 import { authStore } from '../store/authStore.js';
 import { useToast } from 'vue-toastification';
 import { h, resolveComponent } from 'vue'
