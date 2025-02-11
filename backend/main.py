@@ -160,6 +160,10 @@ def create_user(user: models.UserRegister, db: Session = Depends(get_db)):
     if db_user:
         raise HTTPException(status_code=400, detail="Username already registered.")
     
+    db_user = crud.get_user_by_name(db, name=user.name)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Name already registered.")
+    
     db_user = crud.get_user_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(status_code=400, detail="E-mail already registered.")
