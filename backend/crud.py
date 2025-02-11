@@ -230,6 +230,20 @@ def get_user_by_username(db: Session, username: str):
 
     return user
 
+def get_user_by_name(db: Session, name: str):
+    user = db.query(schemas.User).filter(
+        schemas.User.name == name).first()
+
+    if user is not None:
+        user = models.UserResponse(
+            name=user.name,
+            username=user.username,
+            email=user.email,
+            user_type=user.user_type,
+            picture=user.picture,
+        )
+
+    return user
 
 def get_user_by_email(db: Session, email: str):
     return db.query(schemas.User).filter(schemas.User.email == email).first()

@@ -90,12 +90,11 @@ export default {
                             alert('You have successfully registered. You can now login.')
                         }
                         this.$router.push({ name: 'home' })
-                    } else {
-                        alert('An error occurred while registering. Please try again later.')
                     }
                 })
-                .catch(error => {
-                    alert('An error occurred while registering. Please try again later.')
+                .catch((error) => {
+                    console.log(error)
+                    alert('An error occurred while registering. ' + error.response.data.detail)
                 })
         }
 
