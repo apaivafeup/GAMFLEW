@@ -1828,33 +1828,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.4: Equilateral Triangle",
-        "test_cases_count": 2,
-        "score": 225,
-        "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
-        "objective": "Decision coverage of line 10.",
-        "initial_board": 3,
-        "code_file": 6,
-        "challenge_type": "decision",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [
-                "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
-            ],
-            "tests": [
-                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
-                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num))"
-            ]
-        },
-        "achievement": "this.count_empty_spaces(input, case_num) >= this.count_red_pieces(input, case_num) + this.count_blue_pieces(input, case_num)",
-        "achievement_hint": "In one test case, make the number of empty spaces be bigger or equal to all pieces combined.",
-        "difficulty": "Normal",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 6.5: Equilateral Condition",
+        "name": "Challenge 6.4: Equilateral Condition",
         "test_cases_count": 2,
         "score": 450,
         "hint": "If you have no idea how to test values for a triangle, look up the concept of triangle inequality. You only have three variables - red pieces, blue pieces, and empty spaces.",
@@ -1882,7 +1856,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.6: Isosceles Triangle",
+        "name": "Challenge 6.5: Isosceles Triangle",
         "test_cases_count": 1,
         "score": 150,
         "hint": "Make a triangle with a pair of equal sides!",
@@ -1908,7 +1882,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.7: Isosceles Triangle Condition",
+        "name": "Challenge 6.6: Isosceles Triangle Condition",
         "test_cases_count": 3,
         "score": 450,
         "hint": "What is at stake in this challenge is a pair of sides with the same length!",
@@ -1925,10 +1899,10 @@
             "tests": [
                 "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
+                "this.count_red_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
                 "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num)",
-                "this.count_red_pieces(input, case_num) == this.count_empty_pieces(input, case_num)",
-                "this.count_red_pieces(input, case_num) != this.count_empty_pieces(input, case_num)"
+                "this.count_red_pieces(input, case_num) != this.count_empty_spaces(input, case_num)"
             ]
         },
         "achievement": "this.count_blue_pieces(input, case_num) < this.count_empty_spaces(input, case_num)",
@@ -1939,7 +1913,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.8: Isosceles Triangle Decision",
+        "name": "Challenge 6.7: Isosceles Triangle Decision",
         "test_cases_count": 2,
         "score": 225,
         "hint": "What is at stake in this challenge is a pair of sides with the same length!",
@@ -1966,7 +1940,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.9: Modified Condition/Decision for Equilateral Triangle",
+        "name": "Challenge 6.8: Modified Condition/Decision for Equilateral Triangle",
         "test_cases_count": 3,
         "score": 350,
         "hint": "Note that any False condition makes the decision False!",
@@ -1993,7 +1967,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.10: Modified Condition/Decision for Isosceles Triangle",
+        "name": "Challenge 6.9: Modified Condition/Decision for Isosceles Triangle",
         "test_cases_count": 4,
         "score": 350,
         "hint": "Note that any True condition makes the decision True!",
@@ -2022,7 +1996,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.11: Scalene Triangle",
+        "name": "Challenge 6.10: Scalene Triangle",
         "test_cases_count": 1,
         "score": 150,
         "hint": "Treat the first three If conditions as landmines - you can't cover them!",
