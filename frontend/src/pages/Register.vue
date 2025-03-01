@@ -84,11 +84,7 @@ export default {
             await this.$axios.post(this.$api_link + '/register', formData2)
                 .then(response => {
                     if (response.status === 200) {
-                        if (user_type === 'teacher') {
-                            alert('You have successfully registered.')
-                        } else {
-                            alert('You have successfully registered. You can now login.')
-                        }
+                        alert('You have successfully registered. You can now login.')
                         this.$router.push({ name: 'home' })
                     } else {
                         alert('An error occurred while registering. Please try again later.')
