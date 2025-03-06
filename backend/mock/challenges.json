@@ -1842,10 +1842,8 @@
                 "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
-                "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)",
-                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num))",
-                "!(this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num))"
+                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)"
             ]
         },
         "achievement": "this.count_red_pieces(input, case_num) > this.count_empty_spaces(input, case_num)",
@@ -1928,8 +1926,8 @@
                 "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num))"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)) || (this.count_red_pieces(input, case_num) == this.count_empty_pieces(input, case_num)))",
-                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) || this.count_red_pieces(input, case_num) == this.count_empty_pieces(input, case_num)"
+                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)) || (this.count_red_pieces(input, case_num) == this.count_empty_spaces(input, case_num)))",
+                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) || this.count_red_pieces(input, case_num) == this.count_empty_spaces(input, case_num)"
             ]
         },
         "achievement": "this.find_first_stack(input, case_num).stack.red == this.find_first_stack(input, case_num).stack.blue && this.find_first_stack(input, case_num).stack.red != 0",
@@ -1940,34 +1938,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.8: Modified Condition/Decision for Equilateral Triangle",
-        "test_cases_count": 3,
-        "score": 350,
-        "hint": "Note that any False condition makes the decision False!",
-        "objective": "Modified condition/decision coverage of line 10.",
-        "initial_board": 3,
-        "code_file": 6,
-        "challenge_type": "mcdc",
-        "passing_criteria": {
-            "expression_count": 1,
-            "preconditions": [
-                "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
-            ],
-            "tests": [
-                "this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
-                "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
-                "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)"
-            ]
-        },
-        "achievement": "this.count_red_pieces(input, case_num) != this.count_empty_spaces(input, case_num)",
-        "achievement_hint": "In one test case, make sure the number of red pieces and empty spaces is different.",
-        "difficulty": "Hard",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 6.9: Modified Condition/Decision for Isosceles Triangle",
+        "name": "Challenge 6.8: Modified Condition/Decision for Isosceles Triangle",
         "test_cases_count": 4,
         "score": 350,
         "hint": "Note that any True condition makes the decision True!",
@@ -1978,14 +1949,13 @@
         "passing_criteria": {
             "expression_count": 1,
             "preconditions": [
-                "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))",
-                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num))"
+                "this.is_triangle(this.count_red_pieces(input, case_num), this.count_blue_pieces(input, case_num), this.count_empty_spaces(input, case_num))"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || (this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num)) || (this.count_red_pieces(input, case_num) == this.count_empty_pieces(input, case_num)))",
-                "this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) && this.count_red_pieces(input, case_num) == this.count_empty_pieces(input, case_num)",
-                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num) && this.count_red_pieces(input, case_num) == this.count_empty_pieces(input, case_num)",
-                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) && this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) && this.count_red_pieces(input, case_num) != this.count_empty_pieces(input, case_num)"
+                "this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num) && (this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num)) && (this.count_red_pieces(input, case_num) != this.count_empty_spaces(input, case_num))",
+                "this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) || this.count_red_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) != this.count_red_pieces(input, case_num) || this.count_red_pieces(input, case_num) == this.count_empty_spaces(input, case_num)",
+                "this.count_blue_pieces(input, case_num) == this.count_empty_spaces(input, case_num) || this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) || this.count_red_pieces(input, case_num) != this.count_empty_spaces(input, case_num)"
             ]
         },
         "achievement": "this.count_red_pieces(input, case_num) == 8",
@@ -1996,7 +1966,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 6.10: Scalene Triangle",
+        "name": "Challenge 6.9: Scalene Triangle",
         "test_cases_count": 1,
         "score": 150,
         "hint": "Treat the first three If conditions as landmines - you can't cover them!",
@@ -2007,11 +1977,10 @@
         "passing_criteria": {
             "expression_count": null,
             "preconditions": [
-                "this.is_triangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))",
-                "!(this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey))",
-                "!(this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || (this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey)) || (this.count_red_pieces(input, input.currentKey>) == this.count_empty_pieces(input, input.currentKey)))"
+                "this.is_triangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ],
             "tests": [
+                "!(this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey) || this.count_red_pieces(input, input.currentKey>) == this.count_empty_spaces(input, input.currentKey))"
             ]
         },
         "achievement": "this.count_red_pieces(input, input.currentKey) == 3",
@@ -2047,7 +2016,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 7.2: Don't Draw A Right Triangle",
+        "name": "Challenge 7.2: Don't Draw A Scalene Triangle",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Notice the comment in line 17 - it can help you understand which side is which!",
@@ -2064,8 +2033,8 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, input.currentKey)[0], this.find_blue_pieces(input, input.currentKey)[1]), this.distance(this.find_blue_pieces(input, input.currentKey)[1], this.find_blue_pieces(input, input.currentKey)[2]), this.distance(this.find_blue_pieces(input, input.currentKey)[2], this.find_blue_pieces(input, input.currentKey)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": "this.count_red_pieces(input, input.currentKey) == 5",
-        "achievement_hint": "For challenge X.Y, make sure there are 5 red pieces on the board.",
+        "achievement": "this.find_blue_pieces(input, input.currentKey).some(piece => piece.position.x == 7 && piece.position.y == 2)",
+        "achievement_hint": "For challenge X.Y, put a blue piece in line = X, column = Y.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -2090,67 +2059,15 @@
                 "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
             ]
         },
-        "achievement": "this.is_pythagorean_triple(input, case_num)",
-        "achievement_hint": "Make sure the right triangle in test true-branch test case has a trio of Pythagorean triples as its sides.",
+        "achievement": "this.find_blue_pieces(input, input.currentKey).some(piece => piece.position.x == 7 && piece.position.y == 3)",
+        "achievement_hint": "For challenge X,Y, have one of the triangle's vertices in position line = X, column = Y.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
     },
     {
         "id": 0,
-        "name": "Challenge 7.4: Drawing A Right Triangle... Under A Condition!",
-        "test_cases_count": 2,
-        "score": 250,
-        "hint": "Notice the comment in line 17 - it can help you understand which side is which!",
-        "objective": "Condition coverage of line 30.",
-        "initial_board": 1,
-        "code_file": 7,
-        "challenge_type": "condition",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [
-                "this.find_blue_pieces(input, case_num).length == 3"
-            ],
-            "tests": [
-                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))",
-                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
-            ]
-        },
-        "achievement": "[{x: 0, y: 0}, {x: 0, y: 7}, {x: 7, y: 0}, {x: 7, y: 7}].filter((point) => input.state[case_num][point.x][point.y].color == 'red').length == 3",
-        "achievement_hint": "For challenge Y.X, in one test case, make sure (Y - X) corners of the board are occupied by a red piece.",
-        "difficulty": "Normal",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 7.5: Drawing A Right Triangle... Under A Condition!",
-        "test_cases_count": 2,
-        "score": 250,
-        "hint": "Notice the comment in line 17 - it can help you understand which side is which!",
-        "objective": "Condition/decision coverage of line 30.",
-        "initial_board": 1,
-        "code_file": 7,
-        "challenge_type": "condition/decision",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [
-                "this.find_blue_pieces(input, case_num).length == 3"
-            ],
-            "tests": [
-                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))",
-                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) == Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
-            ]
-        },
-        "achievement": "this.has_adjacent_piece(input, case_num, 'red')",
-        "achievement_hint": "In one test case, place a red piece adjacent to a triangle vertex.",
-        "difficulty": "Normal",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 7.6: Draw A Scalene Triangle",
+        "name": "Challenge 7.4: Draw A Scalene Triangle",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Here, the comment in line 17 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
@@ -2176,7 +2093,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 7.7: Don't Draw A Scalene Triangle",
+        "name": "Challenge 7.5: Don't Draw A Scalene Triangle",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Here, the comment in line 17 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
@@ -2202,7 +2119,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 7.8: Draw A Scalene Triangle... Or Not!",
+        "name": "Challenge 7.6: Draw A Scalene Triangle... Or Not!",
         "test_cases_count": 2,
         "score": 225,
         "hint": "Here, the comment in line 17 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
@@ -2221,7 +2138,7 @@
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
         },
-        "achievement": "input.outOfBoundsState[case_num].position.x == 7 && input.outOfBoundsState[case_num].position.y == 8 && input.outOfBoundsState[case_num].color == 'red'",
+        "achievement": "input.outOfBoundsState[case_num].position.x == 7 && input.outOfBoundsState[case_num].position.y == 6 && input.outOfBoundsState[case_num].color == 'red'",
         "achievement_hint": "For challenge X.Y, place a red piece on position (X, Y).",
         "difficulty": "Normal",
         "owner_id": 1,
@@ -2229,61 +2146,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 7.9: Draw A Scalene Triangle... Under A Condition!",
-        "test_cases_count": 2,
-        "score": 250,
-        "hint": "Here, the comment in line 17 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
-        "objective": "Condition coverage of line 32.",
-        "initial_board": 1,
-        "code_file": 7,
-        "challenge_type": "condition",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [
-                "this.find_blue_pieces(input, case_num).length == 3",
-                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
-            ],
-            "tests": [
-                "!(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)",
-                "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
-            ]
-        },
-        "achievement": "input.outOfBoundsState[case_num].position.x == 63 && input.outOfBoundsState[case_num].position.y == 63 && input.outOfBoundsState[case_num].color == 'red'",
-        "achievement_hint": "For challenge X.Y, in one test case, place a red piece on position (X*Y, Y*X).",
-        "difficulty": "Normal",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 7.10: Draw A Scalene Triangle... Under A Condition!",
-        "test_cases_count": 2,
-        "score": 250,
-        "hint": "Here, the comment in line 17 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
-        "objective": "Condition/decision coverage of line 32.",
-        "initial_board": 1,
-        "code_file": 7,
-        "challenge_type": "condition/decision",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [
-                "this.find_blue_pieces(input, case_num).length == 3",
-                "Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[0], 2)) + Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[1], 2)) != Math.round(Math.pow([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])].sort()[2], 2))"
-            ],
-            "tests": [
-                "!(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)",
-                "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
-            ]
-        },
-        "achievement": "input.state[case_num][7][3].color == 'stack' && input.state[case_num][7][3].stack.red == 3",
-        "achievement_hint": "For challenge X.Y, in one test case, place (Y - X) red pieces on position (X, Y - X)",
-        "difficulty": "Normal",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 7.11: Draw An Isosceles Triangle",
+        "name": "Challenge 7.7: Draw An Isosceles Triangle",
         "test_cases_count": 1,
         "score": 250,
         "hint": "An isosceles triangle has only two equal sides. It doesn't matter which ones you choose to be equal.",
