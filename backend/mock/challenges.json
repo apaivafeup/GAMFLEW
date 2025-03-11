@@ -1846,8 +1846,8 @@
                 "this.count_blue_pieces(input, case_num) == this.count_red_pieces(input, case_num) && this.count_blue_pieces(input, case_num) != this.count_empty_spaces(input, case_num)"
             ]
         },
-        "achievement": "this.count_red_pieces(input, case_num) > this.count_empty_spaces(input, case_num)",
-        "achievement_hint": "In one test case, make the number of red pieces equal to or bigger than the sum of empty spaces and blue pieces combined.",
+        "achievement": "this.count_red_pieces(input, case_num) > this.count_blue_pieces(input, case_num)",
+        "achievement_hint": "In one test case, have more red pieces than blue pieces.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
@@ -1980,11 +1980,11 @@
                 "this.is_triangle(this.count_red_pieces(input, input.currentKey), this.count_blue_pieces(input, input.currentKey), this.count_empty_spaces(input, input.currentKey))"
             ],
             "tests": [
-                "!(this.count_blue_pieces(input, input.currentKey) == this.count_empty_spaces(input, input.currentKey) || this.count_blue_pieces(input, input.currentKey) == this.count_red_pieces(input, input.currentKey) || this.count_red_pieces(input, input.currentKey>) == this.count_empty_spaces(input, input.currentKey))"
+                "this.count_blue_pieces(input, input.currentKey) != this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) != this.count_red_pieces(input, input.currentKey) && this.count_red_pieces(input, input.currentKey) != this.count_empty_spaces(input, input.currentKey)"
             ]
         },
-        "achievement": "this.count_red_pieces(input, input.currentKey) == 3",
-        "achievement_hint": "For challenge X.Y, make a test case with [(Y - X) / 2] red pieces",
+        "achievement": "this.count_red_pieces(input, input.currentKey) > 3",
+        "achievement_hint": "For challenge X.Y, make a test case with more than [(Y - X) / 2] red pieces.",
         "difficulty": "Hard",
         "owner_id": 1,
         "visible": true
@@ -2016,7 +2016,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 7.2: Don't Draw A Scalene Triangle",
+        "name": "Challenge 7.2: Don't Draw A Right Triangle",
         "test_cases_count": 1,
         "score": 125,
         "hint": "Notice the comment in line 17 - it can help you understand which side is which!",
@@ -2122,7 +2122,7 @@
         "name": "Challenge 7.6: Draw A Scalene Triangle... Or Not!",
         "test_cases_count": 2,
         "score": 225,
-        "hint": "Here, the comment in line 17 is not that helpful - actually, it's a bait! Don't fall for it - the order is irrelevant, here!",
+        "hint": "Use non-right triagles.",
         "objective": "Decision coverage of line 32.",
         "initial_board": 1,
         "code_file": 7,
@@ -2138,8 +2138,8 @@
                 "(new Set([this.distance(this.find_blue_pieces(input, case_num)[0], this.find_blue_pieces(input, case_num)[1]), this.distance(this.find_blue_pieces(input, case_num)[1], this.find_blue_pieces(input, case_num)[2]), this.distance(this.find_blue_pieces(input, case_num)[2], this.find_blue_pieces(input, case_num)[0])]).size == 3)"
             ]
         },
-        "achievement": "input.outOfBoundsState[case_num].position.x == 7 && input.outOfBoundsState[case_num].position.y == 6 && input.outOfBoundsState[case_num].color == 'red'",
-        "achievement_hint": "For challenge X.Y, place a red piece on position (X, Y).",
+        "achievement": "this.find_red_pieces(input, case_num).some(piece => piece.position.x == 7 && piece.position.y == 6)",
+        "achievement_hint": "For challenge X.Y, place a red piece on position X = line, Y = column.",
         "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
