@@ -1983,8 +1983,8 @@
                 "this.count_blue_pieces(input, input.currentKey) != this.count_empty_spaces(input, input.currentKey) && this.count_blue_pieces(input, input.currentKey) != this.count_red_pieces(input, input.currentKey) && this.count_red_pieces(input, input.currentKey) != this.count_empty_spaces(input, input.currentKey)"
             ]
         },
-        "achievement": "this.count_red_pieces(input, input.currentKey) > 3",
-        "achievement_hint": "For challenge X.Y, make a test case with more than [(Y - X) / 2] red pieces.",
+        "achievement": "this.count_red_pieces(input, input.currentKey) == 15",
+        "achievement_hint": "For challenge X.Y, make a test case with X + Y red pieces.",
         "difficulty": "Hard",
         "owner_id": 1,
         "visible": true
