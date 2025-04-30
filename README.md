@@ -4,7 +4,7 @@
 GAMFLEW is a serious game, manifested in a web application compatible with most web browsers, focused on teaching white-box testing concepts.
 
 ## Prerequisites
-- The game is available for playing ![here](https://fe.up.pt/gamflew/).
+- The game is available for playing [here](https://fe.up.pt/gamflew/).
 - To run a local version, you need to have Docker installed. If you don't have it installed, you can download it from [here](https://www.docker.com/products/docker-desktop).
   - Docker Desktop has everything needed. Be sure it's running before moving on.
 
