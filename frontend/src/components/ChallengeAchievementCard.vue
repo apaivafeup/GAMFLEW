@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import { Challenge } from '../store/models/Challenge.js'
-
 export default {
     components: {},
 

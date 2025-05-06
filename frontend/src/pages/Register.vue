@@ -155,7 +155,7 @@ export default {
                     <div class="row" style="display: grid; grid-template-columns: 50% 50%; grid-gap: 10px; --bs-gutter-x: 0px;">
                         <input type="radio" class="btn-check" name="options-outlined" style="width: 50%" id="btn-radio-student" value="player" checked />
                         <label class="btn btn-outline-primary" for="btn-radio-student">Student</label>
-                        <input type="radio" class="btn-check" name="options-outlined" style="width: 50%" id="btn-radio-teacher" value="admin" />
+                        <input type="radio" class="btn-check" name="options-outlined" style="width: 50%" id="btn-radio-teacher" value="teacher" />
                         <label class="btn btn-outline-primary" for="btn-radio-teacher">Teacher</label>
                     </div>
                 </div>

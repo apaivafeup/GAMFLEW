@@ -7,5 +7,6 @@ uvicorn
 python-jose
 python-dateutil
 bcrypt==4.0.1
+mysql-connector-python
 passlib
 python-multipart
