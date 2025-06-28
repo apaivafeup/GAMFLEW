@@ -35,8 +35,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:80"
-    env_file:
-      - ./backend/.env
     depends_on: 
       - database
 
@@ -46,10 +44,7 @@ services:
     image: vue-frontend
     container_name: frontend
     ports:
-      - "5173:5173"  # Changed from 80 to match Vite default
-    environment:
-      - VITE_API_URL=http://localhost:8000  # For local dev
-      # - VITE_API_URL=http://backend:8000  # For Docker network
+      - "5473:80"
     depends_on:
       - backend
 
