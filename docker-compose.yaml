@@ -46,11 +46,12 @@ services:
     image: vue-frontend
     container_name: frontend
     ports:
-      - "5473:80"
+      - "5173:5173"  # Changed from 80 to match Vite default
+    environment:
+      - VITE_API_URL=http://localhost:8000  # For local dev
+      # - VITE_API_URL=http://backend:8000  # For Docker network
     depends_on:
       - backend
-    env_file:
-      - ./frontend/.env
 
 volumes:
   postgres_data:

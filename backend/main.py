@@ -32,13 +32,21 @@ if not os.path.exists('static/images'):
     os.mkdir('static/images')
 
 app = FastAPI()
-origins = ["*"]
+origins = ["http://frontend:5173", "http://backend:8000", "http://127.0.0.1:8000", "*"]
+
+
+@app.api_route('/', methods=['GET', 'HEAD'])
+def read_root():
+    return {"Hello": "World"}
+
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["http://frontend:80", "http://localhost:5173"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=["*"]
 )
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -50,10 +58,6 @@ def cleanup_expired_tokens(db: Session):
 
     for token in expired_tokens:
         crud.delete_blacklisted_token(db, token.id)
-
-@app.api_route('/', methods=['GET', 'HEAD'])
-def read_root():
-    return {"Hello": "World"}
 
 # their post/token will be your login
 # doesn't work in docs, you have to change the endpoint to /token
