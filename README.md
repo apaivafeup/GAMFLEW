@@ -6,7 +6,8 @@ GAMFLEW is a serious game, manifested in a web application compatible with most 
 ## Prerequisites
 - The game is available for playing [here](https://fe.up.pt/gamflew/).
 - To run a local version, you need to have Docker installed. If you don't have it installed, you can download it from [here](https://www.docker.com/products/docker-desktop).
-  - Docker Desktop has everything needed. Be sure it's running before moving on.
+  - Docker Desktop has everything needed, you only need a Ubuntu distribution (recommended: 22.04). Be sure it's running before moving on.
+  - After installing, go the Settings > Resources > WSL Integration, and enable the distribution you installed.
 
 ## Installation (Docker)
 1. After cloning this repository, you should have two folders: `backend` and `frontend`. You also need a `docker-compose.yaml` file.
