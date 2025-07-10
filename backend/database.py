@@ -8,7 +8,7 @@ import os
 TECH = 'postgresql' #if local else os.environ.get('TECH')
 USERNAME = 'postgres' #if local else 'feupptgamflew'
 PASSWORD = 'password' #if local else os.environ.get('PASSWORD')
-HOST = 'host.docker.internal' #if local else os.environ.get('HOST')
+HOST = 'localhost' #if local else os.environ.get('HOST')
 DATABASE = 'prototype' #if local else os.environ.get('DATABASE')
 PORT = 5432
 
