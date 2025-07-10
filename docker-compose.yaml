@@ -28,11 +28,15 @@ services:
 
   backend:
     image: backend
-    links:
-      - database
     build:
       context: ./backend
       dockerfile: Dockerfile
+    environment:
+      DB_HOST: database
+      DB_USERNAME: postgres
+      DB_PASSWORD: password
+      DB_DATABASE: prototype
+      DB_PORT: 5432
     ports:
       - "8000:80"
     depends_on: 
