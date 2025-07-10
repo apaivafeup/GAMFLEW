@@ -5,15 +5,14 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 # Create a connection string
-TECH = 'postgresql' #if local else os.environ.get('TECH')
-USERNAME = 'postgres' #if local else 'feupptgamflew'
-PASSWORD = 'password' #if local else os.environ.get('PASSWORD')
-HOST = 'host.docker.internal' #if local else os.environ.get('HOST')
-DATABASE = 'prototype' #if local else os.environ.get('DATABASE')
-PORT = 5432
+TECH = os.environ.get('DB_TECH', 'postgresql')
+USERNAME = os.environ.get('DB_USERNAME', 'postgres')
+PASSWORD = os.environ.get('DB_PASSWORD', 'password')
+HOST = os.environ.get('DB_HOST', 'database')  # Default to service name
+DATABASE = os.environ.get('DB_DATABASE', 'prototype')
+PORT = int(os.environ.get('DB_PORT', 5432))
 
 SQLALCHEMY_DATABASE_URL = f"{TECH}://{USERNAME}:%s@{HOST}:{PORT}/{DATABASE}" % quote(PASSWORD)
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
