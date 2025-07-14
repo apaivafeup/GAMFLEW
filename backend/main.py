@@ -602,6 +602,6 @@ def get_code_files_visibility(current_user: Annotated[models.User, Depends(get_c
     return crud.get_code_files_visibility(db=db)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
-    #uvicorn.run(app, host="10.227.242.121", port=8000, ssl_keyfile="./gamflew_api.key", ssl_certfile="./gamflew_api.pem")
+    #uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="10.227.242.121", port=8000, ssl_keyfile="./gamflew_api.key", ssl_certfile="./gamflew_api.p7b")
 
