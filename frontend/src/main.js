@@ -54,7 +54,7 @@ app.use(FloatingVue)
 app.use(VueHighlightJS)
 
 app.config.globalProperties.$api_link =
-  'http://127.0.0.1:8000'
+  'https://gamflew-api.fe.up.pt:8000'
 ;
 
 
@@ -65,7 +65,7 @@ const options = {
 
 app.use(Toast, options);
 
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = ['https://gamflew-api.fe.up.pt:8000', '*'];
 app.config.globalProperties.$axios = axios;
 app.config.globalProperties.$http_names = {
   '200' : 'OK',
