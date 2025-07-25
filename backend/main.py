@@ -32,7 +32,7 @@ if not os.path.exists('static/images'):
     os.mkdir('static/images')
 
 app = FastAPI()
-origins = ["http://frontend:5173", "http://backend:8000", "http://127.0.0.1:8000", "*"]
+origins = ["http://frontend:5173", "http://backend:8000", "http://127.0.0.1:8000", "https://fe.up.pt"]
 
 
 @app.api_route('/', methods=['GET', 'HEAD'])
@@ -43,7 +43,7 @@ def read_root():
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8000", "http://localhost:5473"],  # ← Must match exactly],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
