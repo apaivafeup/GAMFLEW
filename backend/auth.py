@@ -45,7 +45,7 @@ def login(db: Session, username: str, password: str):
 
 def create_access_token(data: dict, blacklisted_token_strings: List[str]):
     to_encode = data.copy()
-    expire = datetime.now() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
 
     while True:
