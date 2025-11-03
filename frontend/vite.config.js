@@ -9,9 +9,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   
   // Determine if we're running locally
-  const isLocal = env.LOCAL === 'true' || env.LOCAL === 'True'
-  
-  // Select the appropriate API link
+  const isLocal = env.VITE_LOCAL === 'True' || env.VITE_LOCAL === 'true'
   const apiTarget = isLocal ? env.VITE_API_LINK_LOCAL : env.VITE_API_LINK_REMOTE
 
   return {
