@@ -1,10 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/css/style.css'
 import './assets/css/prism-line-numbers.css'
-
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap'
-
 import CodeBlock from 'vue3-code-block'
 import { createApp, markRaw } from 'vue'
 import App from './App.vue'
@@ -13,22 +11,16 @@ import Vue3EasyDataTable from 'vue3-easy-data-table'
 import 'vue3-easy-data-table/dist/style.css'
 import { Router } from './router.js'
 import FloatingVue from 'floating-vue'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark, faBullseye, faCheck, faChartSimple, faComment} from '@fortawesome/free-solid-svg-icons'
-
 import Toast, { POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";
-
 import './store/utils.js'
 import axios from 'axios'
-
 import VueHighlightJS from 'vue3-highlightjs'
-
 import {LoadingPlugin} from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
-
 import {
   // Directives
   vTooltip,
@@ -38,33 +30,33 @@ import {
   Tooltip,
   Menu
 } from 'floating-vue'
-
 import 'floating-vue/dist/style.css'
 
 const pinia = createPinia()
-
 library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, faTrash, faCoins, faXmark, faBullseye, faCheck, faChartSimple, faComment)
 
 const app = createApp(App)
+
+// Determine API link based on LOCAL environment variable
+const isLocal = import.meta.env.LOCAL === 'true' || import.meta.env.LOCAL === 'True'
+const apiLink = isLocal 
+  ? import.meta.env.VITE_API_LINK_LOCAL 
+  : import.meta.env.VITE_API_LINK_REMOTE
+
 app.component('VMenu', Menu)
 app.directive('tooltip', vTooltip)
-
 app.use(pinia)
 app.use(FloatingVue)
 app.use(VueHighlightJS)
 
-app.config.globalProperties.$api_link =
-  'http://127.0.0.1:8000'
-;
-
+// Use the dynamically determined API link
+app.config.globalProperties.$api_link = apiLink
 
 const options = {
   position: POSITION.BOTTOM_LEFT,
   timeout: 3000
 };
-
 app.use(Toast, options);
-
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 app.config.globalProperties.$axios = axios;
 app.config.globalProperties.$http_names = {
@@ -109,7 +101,6 @@ app.config.globalProperties.$http_names = {
 };
 app.config.globalProperties.$error = false;
 
-
 pinia.use(({ store }) => {
   store.$axios = app.config.globalProperties.$axios;
   store.$api_link = app.config.globalProperties.$api_link;
@@ -117,11 +108,9 @@ pinia.use(({ store }) => {
   store.$error = app.config.globalProperties.$error;
   store.$router = markRaw(Router)
 });
-app.config.globalProperties.window = window;
 
+app.config.globalProperties.window = window;
 app.use(Router)
 app.use(LoadingPlugin);
-
-
 app.component('EasyDataTable', Vue3EasyDataTable)
 app.component('CodeBlock', CodeBlock).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
