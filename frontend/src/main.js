@@ -38,7 +38,7 @@ library.add(faTrophy, faListCheck, faAward, faClock, faEdit, faCrown, faPlus, fa
 const app = createApp(App)
 
 // Determine API link based on LOCAL environment variable
-const isLocal = import.meta.env.LOCAL === 'true' || import.meta.env.LOCAL === 'True'
+const isLocal = import.meta.env.VITE_LOCAL === 'True' || import.meta.env.VITE_LOCAL === 'true'
 const apiLink = isLocal 
   ? import.meta.env.VITE_API_LINK_LOCAL 
   : import.meta.env.VITE_API_LINK_REMOTE
