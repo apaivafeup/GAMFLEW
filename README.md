@@ -16,7 +16,8 @@ Stable version 1.0 can be downloaded [here](https://github.com/apaivafeup/GAMFLE
 2. Open a terminal and, if not there already, navigate to the folder where the `docker-compose.yaml` file is located.
 3. Run the following command to start the application:
    ```bash
-   docker-compose up
+   docker compose up
+      "Note: in older versions, should use docker-compose up"
    ```
 4. The application should be running now. You can access it by opening a web browser and going to `http://localhost:5473`.
     - You can also access it via the Docker Desktop GUI.
