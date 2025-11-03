@@ -2,6 +2,7 @@
 
 ## Description
 GAMFLEW is a serious game, manifested in a web application compatible with most web browsers, focused on teaching white-box testing concepts.
+Stable version 1.0 can be downloaded [here](https://github.com/apaivafeup/GAMFLEW/releases/tag/1.0)
 
 ## Prerequisites
 - The game is available for playing [here](https://fe.up.pt/gamflew/).
