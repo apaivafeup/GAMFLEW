@@ -5,5 +5,10 @@ backend/.env
 *.pyc
 backend/__pycache__/main.cpython-312.pyc
 *.pyc
+<<<<<<< HEAD
 *.key
 *.p7b
+=======
+*.p7b
+*.key
+>>>>>>> 6b076e5 (Ignoring secret keys)
