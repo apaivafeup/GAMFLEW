@@ -5,3 +5,5 @@ backend/.env
 *.pyc
 backend/__pycache__/main.cpython-312.pyc
 *.pyc
+*.p7b
+*.key
