@@ -7,8 +7,7 @@ from enum import Enum
 
 load_dotenv()
 
-
-local = False
+local = True
 if not local: 
     from sqlalchemy.dialects.mysql import ENUM, TEXT
 else:
