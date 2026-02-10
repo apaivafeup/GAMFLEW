@@ -121,19 +121,40 @@ export const boardStore = defineStore('boardStore', {
         } else {
           this.movePiece(x, y)
         }
-      } else if (
-        this.selectedPiece == null &&
-        this.state[this.currentKey][x][y].color != Color.EMPTY
-      ) {
-        this.selectedCoords.x = x
-        this.selectedCoords.y = y
-        this.selectedPiece = this.state[this.currentKey][x][y]
-        this.selectedPiece.select()
-      } else if (this.selectedPiece == this.state[this.currentKey][x][y]) {
-        this.selectedPiece.select()
-        this.selectedPiece = null
-      } else if (this.selectedPiece != null) {
-        this.movePiece(x, y)
+      } else {
+        // Cycle through states:  EMPTY -> RED -> SELECTED -> BLUE -> SELECTED -> EMPTY
+        const piece = this.state[this.currentKey][x][y]
+        
+        if (this.selectedPiece !== piece) { 
+          if (this.selectedPiece === null && piece.color === Color.EMPTY) {
+            // EMPTY -> RED (added red piece)
+            this.addPiece(x, y)
+          } else if (this.selectedPiece === null && piece.color !== Color.EMPTY) {
+            // RED/BLUE -> SELECTED (selected piece)
+            this.selectedPiece = piece
+            this.selectedCoords.x = x
+            this.selectedCoords.y = y
+            piece.selected = true
+          } else if (this.selectedPiece !== null) {
+            // Move selected piece to new location
+            this.movePiece(x, y)
+          }
+        } else { // If the same piece is selected, cycle through states.
+          if (piece.color === Color.RED && piece.selected) {
+            // SELECTED (RED) -> BLUE 
+            piece.stack = { red: 0, blue: 1 }
+            piece.updateColor()
+            piece.selected = false
+            this.selectedPiece = null
+          } else if (piece.color === Color.BLUE && piece.selected) {
+            // SELECTED (BLUE) -> EMPTY
+            piece.stack = { red: 0, blue: 0 }
+            piece.updateColor()
+            piece.selected = false
+            this.selectedPiece = null
+            this.infoState[this.currentKey].push('Removed piece from (' + x + ', ' + y + ').')
+          }
+        }
       }
     },
 
