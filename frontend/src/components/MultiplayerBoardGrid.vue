@@ -55,13 +55,6 @@
         </div>
       </div>
 
-      <button id="view-button" class="button is-primary is-fullwidth"
-        v-if="!board.passed && !board.pause && !board.add && needsTable()" @click="board.tableMode(challenge)">
-        {{ !board.table ? 'Condition Table' : 'Game Board' }}
-      </button>
-      <button id="view-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
-        {{ !board.table ? 'Condition Table' : 'Game Board' }}
-      </button>
       <div class="buttons-grid">
         <button id="previous-button" class="button is-primary is-fullwidth" v-if="board.currentKey != 0 && !board.add"
           @click="board.previous()">
@@ -76,14 +69,6 @@
         </button>
         <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
           Next
-        </button>
-        <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
-          @click="board.addMode()">
-          {{ !board.add ? 'Add/Remove' : 'Move' }}
-        </button>
-        <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default"
-          v-else>
-          {{ !board.add ? 'Add/Remove' : 'Move' }}
         </button>
         <button id="go-button" class="button is-primary is-fullwidth"
           v-if="board.currentKey + 1 == challenge.test_cases_count && !board.passed && !board.pause && playable"

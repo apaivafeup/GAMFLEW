@@ -22,13 +22,6 @@
         </div>
 
         <div class="buttons-grid">
-          <button id="add-button" class="button is-primary is-fullwidth add-button" v-if="!board.passed && !board.pause"
-            @click="this.board.addMode()">
-            {{ !board.add ? 'Add/Remove' : 'Move' }}
-          </button>
-          <button id="add-button" class="button is-primary is-fullwidth add-button disabled" style="cursor: default" v-else>
-            {{ !board.add ? 'Add/Remove' : 'Move' }}
-          </button>
           <button id="reset-button" class="button is-primary is-fullwidth"
             v-if="!board.passed && !board.pause && !board.add" @click="board.generateState(true)">
             Reset
@@ -38,9 +31,6 @@
           </button>
           <button id="submit-button" class="button is-primary is-fullwidth" @click="submit()">
             Submit
-          </button>
-          <button id="exit-button" class="button is-primary is-fullwidth" @click="board.exit()">
-            Exit
           </button>
         </div>
         
