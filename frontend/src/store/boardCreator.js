@@ -36,14 +36,8 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
       }
 
 
-      if (piece.color == Color.EMPTY) {
-        piece.setStack({ red: 1, blue: 0 })
-      } else if (piece.color == Color.RED) {
-        piece.setStack({ red: 0, blue: 1 })
-      } else {
-        piece.king = false
-        piece.setEmpty()
-      }
+      piece.setStack({ red: 1, blue: 0 })
+      piece.king = false
 
       piece.updateColor()
 
@@ -61,29 +55,71 @@ export const boardCreatorStore = defineStore('boardCreatorStore', {
       }
 
       if (this.isOutOfBounds(x, y)) {
+        const outOfBoundsPiece = this.outOfBoundsState[this.currentKey]
+
         if (this.selectedPiece == null) {
-          if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY) return
+          if (outOfBoundsPiece.color == Color.EMPTY)
+            // EMPTY -> RED (added red piece) 
+            this.addPiece(x, y)
           else {
-            this.selectedPiece = this.outOfBoundsState[this.currentKey]
+            // RED/BLUE -> SELECTED (selected piece)
+            this.selectedPiece = outOfBoundsPiece
             this.selectedCoords = { x: -10, y: -10 }
             this.selectedPiece.select()
           }
+        } else if (this.selectedPiece == outOfBoundsPiece) { // If the same piece is selected, cycle through states.
+          if (outOfBoundsPiece.color === Color.RED && outOfBoundsPiece.selected) {
+            // SELECTED (RED) -> BLUE 
+            outOfBoundsPiece.stack = { red: 0, blue: 1 }
+            outOfBoundsPiece.updateColor()
+            outOfBoundsPiece.selected = false
+            this.selectedPiece = null
+          } else if (outOfBoundsPiece.color === Color.BLUE && outOfBoundsPiece.selected) {
+            // SELECTED (BLUE) -> EMPTY
+            outOfBoundsPiece.stack = { red: 0, blue: 0 }
+            outOfBoundsPiece.updateColor()
+            outOfBoundsPiece.selected = false
+            this.selectedPiece = null
+            this.infoState[this.currentKey].push('Removed piece from (' + x + ', ' + y + ').')
+          }
         } else {
+          // Move selected piece to out of bounds location
           this.movePiece(x, y)
         }
-      } else if (
-        this.selectedPiece == null &&
-        this.state[this.currentKey][x][y].color != Color.EMPTY
-      ) {
-        this.selectedCoords.x = x
-        this.selectedCoords.y = y
-        this.selectedPiece = this.state[this.currentKey][x][y]
-        this.selectedPiece.select()
-      } else if (this.selectedPiece == this.state[this.currentKey][x][y]) {
-        this.selectedPiece.select()
-        this.selectedPiece = null
-      } else if (this.selectedPiece != null) {
-        this.movePiece(x, y)
+      } else {
+        // Cycle through states:  EMPTY -> RED -> SELECTED -> BLUE -> SELECTED -> EMPTY
+        const piece = this.state[this.currentKey][x][y]
+        
+        if (this.selectedPiece !== piece) { 
+          if (this.selectedPiece === null && piece.color === Color.EMPTY) {
+            // EMPTY -> RED (added red piece)
+            this.addPiece(x, y)
+          } else if (this.selectedPiece === null && piece.color !== Color.EMPTY) {
+            // RED/BLUE -> SELECTED (selected piece)
+            this.selectedPiece = piece
+            this.selectedCoords.x = x
+            this.selectedCoords.y = y
+            piece.selected = true
+          } else if (this.selectedPiece !== null) {
+            // Move selected piece to new location
+            this.movePiece(x, y)
+          }
+        } else { // If the same piece is selected, cycle through states.
+          if (piece.color === Color.RED && piece.selected) {
+            // SELECTED (RED) -> BLUE 
+            piece.stack = { red: 0, blue: 1 }
+            piece.updateColor()
+            piece.selected = false
+            this.selectedPiece = null
+          } else if (piece.color === Color.BLUE && piece.selected) {
+            // SELECTED (BLUE) -> EMPTY
+            piece.stack = { red: 0, blue: 0 }
+            piece.updateColor()
+            piece.selected = false
+            this.selectedPiece = null
+            this.infoState[this.currentKey].push('Removed piece from (' + x + ', ' + y + ').')
+          }
+        }
       }
     },
 

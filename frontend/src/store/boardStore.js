@@ -60,17 +60,8 @@ export const boardStore = defineStore('boardStore', {
         piece = this.state[this.currentKey][x][y]
       }
 
-      if (piece.color == Color.EMPTY) {
-        piece.setStack({ red: 1, blue: 0 })
-      } else if (piece.color == Color.RED) {
-        piece.setStack({ red: 0, blue: 1 })
-      } else {
-        piece.setEmpty()
-        
-        if (piece.king) {
-          piece.king = false
-        }
-      }
+      piece.setStack({ red: 1, blue: 0 })
+      piece.king = false
 
       piece.updateColor()
 
