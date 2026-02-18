@@ -110,15 +110,35 @@ export const boardStore = defineStore('boardStore', {
       }
 
       if (this.isOutOfBounds(x, y)) {
+        const outOfBoundsPiece = this.outOfBoundsState[this.currentKey]
+
         if (this.selectedPiece == null) {
-          if (this.outOfBoundsState[this.currentKey].color == Color.EMPTY)
-            return
+          if (outOfBoundsPiece.color == Color.EMPTY)
+            // EMPTY -> RED (added red piece) 
+            this.addPiece(x, y)
           else {
-            this.selectedPiece = this.outOfBoundsState[this.currentKey]
+            // RED/BLUE -> SELECTED (selected piece)
+            this.selectedPiece = outOfBoundsPiece
             this.selectedCoords = { x: -10, y: -10 }
             this.selectedPiece.select()
           }
+        } else if (this.selectedPiece == outOfBoundsPiece) { // If the same piece is selected, cycle through states.
+          if (outOfBoundsPiece.color === Color.RED && outOfBoundsPiece.selected) {
+            // SELECTED (RED) -> BLUE 
+            outOfBoundsPiece.stack = { red: 0, blue: 1 }
+            outOfBoundsPiece.updateColor()
+            outOfBoundsPiece.selected = false
+            this.selectedPiece = null
+          } else if (outOfBoundsPiece.color === Color.BLUE && outOfBoundsPiece.selected) {
+            // SELECTED (BLUE) -> EMPTY
+            outOfBoundsPiece.stack = { red: 0, blue: 0 }
+            outOfBoundsPiece.updateColor()
+            outOfBoundsPiece.selected = false
+            this.selectedPiece = null
+            this.infoState[this.currentKey].push('Removed piece from (' + x + ', ' + y + ').')
+          }
         } else {
+          // Move selected piece to out of bounds location
           this.movePiece(x, y)
         }
       } else {
