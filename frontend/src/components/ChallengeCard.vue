@@ -151,10 +151,12 @@ export default defineComponent({
       if (this.editor)
         this.$router.push({ name: 'challenge-editor', params: { id: id } }).then(() => {
           window.location.reload()})
-      else
-        this.$router.push({ name: 'challenge', params: { id: id } }).then(() => {
+      else {
+        const routeName = this.challenge?.challenge_type === 'mutation' ? 'mutation-challenge' : 'challenge'
+        this.$router.push({ name: routeName, params: { id: id } }).then(() => {
           window.location.reload()
-      })
+        })
+      }
     },
 
     goToChallengeComments(id) {

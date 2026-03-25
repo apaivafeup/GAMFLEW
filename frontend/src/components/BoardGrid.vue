@@ -72,7 +72,10 @@
           Retry
         </button>
       </div>
-      <div id="go-click-element" style="opacity: 0%" @click="go()">
+      <div v-if="challenge.challenge_type !== 'mutation'" id="go-click-element" style="opacity: 0%" @click="go()">
+
+      </div>
+      <div v-else id="go-click-element" style="opacity: 0%" @click="runMutationChallenge(this.board, challenge.mutants)">
 
       </div>
     </div>
@@ -150,6 +153,8 @@ import { Challenge } from '../store/models/challenge.js'
 import { boardStore } from '../store/boardStore.js'
 import { authStore } from '../store/authStore.js'
 import { useToast } from 'vue-toastification'
+import { runMutant } from '../store/models/mutation_challenge.js'
+import { mutationResultsStore } from '../store/mutationResultsStore.js'
 
 import { Color, Piece } from '../store/models/piece.js'
 import OutPieceStack from './OutPieceStack.vue'
@@ -157,6 +162,7 @@ import 'vue3-easy-data-table'
 
 export default {
   components: { PieceStack, OutPieceStack },
+  emit: ['mutation-results'],
   props: {
     challenge: Object
   },
@@ -175,6 +181,9 @@ export default {
     this.auth = authStore()
     this.auth.checkAuth()
     this.toast = useToast()
+
+    this.mutationResults = mutationResultsStore()
+    this.mutationResults.clearResults()
 
     this.$forceUpdate()
   },
@@ -670,6 +679,63 @@ export default {
       } else {
         this.board.fail()
       }
+    },
+
+    
+    async runMutationChallenge(board, mutants) {
+      if (mutants.length == 0) {
+        console.error('No mutants found!')
+        this.mutationResults.clearResults()
+        this.$emit('mutation-results', [])
+        return
+      }
+
+      console.log('[Mutation] Running mutants:', mutants)
+
+      const results = []
+
+      // const input = {
+      //   state: board.state,
+      //   log: board.log,
+      //   currentKey: board.currentKey,
+      //   outOfBoundsState: board.outOfBoundsState
+      // }
+
+      for (const mutant of mutants) {
+        const mutantCode = mutant?.mutated_code || mutant?.code
+        if (!mutantCode) {
+          continue
+        }
+
+        const result = await runMutant(mutantCode, board)
+        results.push({
+          mutantId: mutant.id,
+          mutantName: mutant.name,
+          result
+        })
+      }
+
+      let allKilled = true
+      for (const item of results) {
+        if (item.result.mutantKilled) {
+          continue
+        } else {
+          this.toast.error(`At least one mutant survived! Keep trying!`)
+          this.board.fail()
+          allKilled = false
+          break
+        }
+      }
+
+      if (allKilled) {
+        this.toast.success('All mutants killed! You passed the challenge!')
+        this.board.pass(this.challenge.score)
+      }
+
+      this.mutationResults.setResults(results)
+      this.$emit('mutation-results', results)
+      console.log('[Mutation] Results:', results)
+      return results
     },
 
     checkAchievement(input) {

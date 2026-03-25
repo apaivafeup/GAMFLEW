@@ -27,6 +27,7 @@ class ChallengeType(str, Enum):
     CONDITION = "condition"
     CONDITION_DECISION = "condition/decision"
     MCDC = "mcdc"
+    MUTATION = "mutation"
 
 class Difficulty(str, Enum):
     """Enum for the difficulty of challenge."""

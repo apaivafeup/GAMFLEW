@@ -4,9 +4,9 @@
 <script setup>
 import ChallengeHeader from '../components/ChallengeHeader.vue'
 import Board from '../components/Board.vue'
-import { boardStore } from '../store/boardStore'
+import { boardStore } from '../store/boardStore.js'
 
-import { Challenge } from '../store/models/challenge.js'
+import { MutationChallenge } from '../store/models/mutation_challenge.js'
 import { User } from '../store/models/user.js'
 import { Attempt } from '../store/models/attempt.js'
 import { CodeFile } from '../store/models/code_file.js'
@@ -20,8 +20,8 @@ import CommentModal from '../components/modals/CommentModal.vue'
 </script>
 
 <template style="overflow: hidden">
-  <ChallengeHeader :name="challenge.name" :timer="challenge.timer" :id="id" />
-  <Board :challenge="challenge" :code_file="code_file" :user="auth.user" :beat_challenge="beat_challenge" />
+  <ChallengeHeader :name="challenge?.name" :timer="challenge?.timer" :id="id" />
+  <Board v-if="challenge && challenge.mutants" :challenge="challenge" :code_file="code_file" :user="auth.user" :beat_challenge="beat_challenge" />
   <CommentModal :placeholder="submit_placeholder" />
   <FailModal :placeholder="fail_placeholder" />
 </template>
@@ -36,10 +36,11 @@ export default {
 
   data() {
     return {
-      code_file: CodeFile,
-      challenge: Object,
-      board_state: BoardState,
-      beat_challenge: Boolean,
+      code_file: null,
+      challenge: null,
+      board_state: null,
+      beat_challenge: false,
+      mutants: [],
       submit_placeholder:
         "Don't know what to write? Answer these: What was the specific objective to hit, beyond the target line? How did you hit it?",
       fail_placeholder:
@@ -70,15 +71,21 @@ export default {
 
     var user_id
 
+    //TODO: Load mutants from an API endpoint
+    this.mutants = [
+      {
+        id: 0,
+        name: "Mutant 1: Change Condition",
+        description: "Changed == to != in line 5.",
+        mutated_code: "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length != 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+      }
+    ]
+
+
     await this.$axios.get(this.$api_link + '/challenges/' + this.id, this.auth.config).then((response) => {
       user_id = response.data.owner_id
 
-      if (response.data.challenge_type === 'mutation') {
-        this.$router.replace({ name: 'mutation-challenge', params: { id: this.id } })
-        return
-      }
-
-      this.challenge = new Challenge(
+      this.challenge = new MutationChallenge(
         response.data.id,
         response.data.name,
         response.data.difficulty,
@@ -92,17 +99,13 @@ export default {
         response.data.passing_criteria,
         response.data.achievement,
         response.data.achievement_hint,
-        response.data.owner_id
+        response.data.owner_id,
+        this.mutants
       )
     }).catch((error) => {
       this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
       this.$error = true
     })
-
-    if (!this.challenge) {
-      loader.hide()
-      return
-    }
 
     await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
       this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)

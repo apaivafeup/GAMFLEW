@@ -8,6 +8,8 @@ import { Challenge } from '../store/models/challenge.js'
 import { User } from '../store/models/user.js'
 import { CodeFile } from '../store/models/code_file.js'
 import { authStore } from '../store/authStore.js'
+import MutationChallenge from '../pages/MutationChallenge.vue'
+import MutationChallengeCode from './MutationChallengeCode.vue'
 
 export default {
   props: {
@@ -24,12 +26,22 @@ export default {
     }
   },
 
-  components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar },
+  components: { ChallengeCode, BoardGrid, PlayerInfo, PlayerBar, MutationChallengeCode },
 
   async beforeMount() {
     this.board = boardStore()
     this.board.generateState()
-  }
+  },
+
+  computed: {
+    firstMutatedCode() {
+      return this.challenge?.mutants?.[0]?.mutated_code || this.challenge?.mutants?.[0]?.code || ''
+    },
+
+    firstMutantId() {
+      return this.challenge?.mutants?.[0]?.id ?? null
+    }
+  },
 }
 </script>
 
@@ -39,8 +51,11 @@ export default {
     <div class="col"
       style="display: grid; grid-template-rows: 90px 393px 85px 55px; grid-template-columns: 100%; grid-gap: 5px; justify-items: center;">
       <div class="row" style="width: 100%;">
-        <div class="alert alert-special player-info" v-if="!board.timeout && objective" style="font-size: 14px; display: flex; justify-content: space-between; flex-direction: row;">
-          <p style="margin: 0px; padding: 0px; align-self: center;"><strong>Objective: </strong>{{ challenge.objective }}</p>
+        <div class="alert alert-special player-info" v-if="!board.timeout && objective" style="font-size: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <p style="margin: 0px; padding: 0px;"><strong>Objective: </strong>{{ challenge.objective }}</p>
+            <p v-if="challenge.challenge_type === 'mutation'" style="margin: 0px; padding: 0px;"><strong>Mutant(s) Description: </strong>{{ challenge.mutants?.[0]?.description }}</p>
+          </div>
           <button class="button" @click="objective = !objective" v-if="beat_challenge" style="border-style: solid;
           border: double 1px transparent;
           background-image: linear-gradient(to left, rgb(169, 216, 238), rgb(169, 216, 238)),
@@ -80,7 +95,12 @@ export default {
         </div>
       </div>
       <div class="row" style="display: flex; flex-direction: row; width: 100%;">
-        <ChallengeCode :code_file="code_file" style="width: 100%;" />
+        <p v-if="challenge.challenge_type !== 'mutation'" style="margin: 0px; padding: 0px; align-self: center; font-size: 14px;">
+          <ChallengeCode :code_file="code_file" style="width: 100%;" />
+        </p>
+        <p v-else style="margin: 0px; padding: 0px; align-self: center; font-size: 14px;">
+          <MutationChallengeCode :code_file="code_file" :mutated_code="firstMutatedCode" :mutant_id="firstMutantId" style="width: 100%;" />
+        </p>
       </div>
       <div class="row" style="width: 100%;" v-if="!board.passed && board.hint && !board.error">
         <div class="alert alert-secondary player-info" style="width: 100%; overflow-y: scroll; font-size: 14px;" id="#challenge-hint" >

@@ -8,6 +8,7 @@ const routes = [
     { name: 'credits', path: '/about', component: () => import('./pages/GameCredits.vue') },
     { name: 'challenges', path: '/challenges', component: () => import('./pages/ChallengesMenu.vue') },
     { name: 'challenge', path: '/challenge/:id', component: () => import('./pages/Challenge.vue'), props: true },
+    { name: 'mutation-challenge', path: '/mutation-challenge/:id', component: () => import('./pages/MutationChallenge.vue'), props: true },
     { name: 'challenge-creator', path: '/challenge-creator', component: () => import('./pages/ChallengeCreator.vue') },
     { name: 'challenge-manager', path: '/challenge-manager', component: () => import('./pages/ChallengeEditor.vue') },
     { name: 'challenge-editor', path: '/challenge-editor/:id', component: () => import('./components/ChallengeEditor.vue'), props: true },

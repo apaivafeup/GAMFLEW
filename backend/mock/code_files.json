@@ -33,5 +33,10 @@
         "id": 7,
         "name": "Test File 7: Draw A Triangle",
         "content": "function draw_a_triangle(board) {\n\t// This function finds all blue pieces in the board and\n\t// returns them in a list. The final list is ordered by\n\t// row and column - respectively, (row, column).\n\tvar vertices = this.find_blue_pieces(board)\n\n\tif (vertices.length != 3) {\n\t\treturn;\n\t}\n\n\t// This function calculates the Cartesian distance between\n\t// two (row, column) vertices. It rounds up to 2 decimal places.\n\tvar length_1 = this.distance(vertices[0], vertices[1]),\n\t\tlength_2 = this.distance(vertices[1], vertices[2]),\n\t\tlength_3 = this.distance(vertices[2], vertices[0]);\n\n\t// Ordered from the shortest (1st) to longest (3rd).\t\n\tvar ordered_sides = [length_1, length_2, length_3].sort();\n\n\t// side_a is always the shortest,\n\t// side_c is always the biggest.\n\t// side_b may be the same length as either the above, but NOT BOTH.\n\tvar side_a = ordered_sides[0], \n\t\tside_b = ordered_sides[1],\n\t\tside_c = ordered_sides[2];\n\n\t// Math.sqrt() calculates the square root of a number.\n\t// Math.pow(number, power) calculates number^power.\n\t// Sets are like lists, but they contain no duplicates.\n\tif (Math.sqrt(Math.pow(side_a, 2) + Math.pow(side_b, 2)) == side_c) {\n\t\treturn true; // Rectangle Triangle (Pythagoras)\n\t} else if (new Set([side_a, side_b, side_c]).size == 3) {\n\t\treturn true; // Scalene Triangle\n\t} else if (new Set([side_a, side_b, side_c]).size == 2) {\n\t\treturn true; // Isosceles Triangle\n\t}\n}"
+    },
+    {
+        "id": 8,
+        "name": "Test File 8: Mutation Testing Section",
+        "content": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
     }
 ]
