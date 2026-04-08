@@ -1,11 +1,15 @@
 import jasmineRequire from 'jasmine-core/lib/jasmine-core/jasmine';
 
+const Color = {
+    RED: 'red',
+    BLUE: 'blue'
+};
+
 self.onmessage = function (e) {
     const { mutantCode, inputData } = e.data;
 
     try {
         const failed = runJasmineTests(mutantCode, inputData);
-        console.log(`Mutant killed: ${failed}`);
     } catch (error) {
         self.postMessage({ type: "ERROR", error: error.message });
     }
@@ -46,7 +50,6 @@ function runJasmineTests(mutantCode, inputData) {
             }
         },
         jasmineDone: function() {
-            console.log(`All tests completed. Mutant killed: ${failed}`);
             self.postMessage({ type: "TEST_RESULTS", mutantKilled: failed });
         }
     });
@@ -69,14 +72,13 @@ function runJasmineTests(mutantCode, inputData) {
         `
     );
 
-    const fn = compileMutant(get_pieces, { RED: 'RED', BLUE: 'BLUE' });
+    const fn = compileMutant(get_pieces, Color);
 
     // predefined test
-    describe("Game Ended with one piece", () => {
+    describe("Game Ended", () => {
         it("computes correctly", () => {
             let pieces = get_pieces(inputData);
             const result = fn(inputData);
-            console.log("Pieces for testing:", pieces);
 
             console.log("Result of mutant function:", result);
 
@@ -86,15 +88,12 @@ function runJasmineTests(mutantCode, inputData) {
                 expect(result).toBe(false);
             } 
             else if (pieces.length === 1) {
-                console.log("Testing with one piece");
                 expect(result).toBe(true);
             } 
             else if (pieces.every(p => p.color === "red") || pieces.every(p => p.color === "blue")) {
-                console.log("Testing with same-colored pieces");
                 expect(result).toBe(true);
             }
             else {
-                console.log("Testing with different-colored pieces");
                 expect(result).toBe(false);
             }
         });

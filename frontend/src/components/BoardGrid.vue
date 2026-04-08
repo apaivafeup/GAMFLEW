@@ -690,16 +690,7 @@ export default {
         return
       }
 
-      console.log('[Mutation] Running mutants:', mutants)
-
       const results = []
-
-      // const input = {
-      //   state: board.state,
-      //   log: board.log,
-      //   currentKey: board.currentKey,
-      //   outOfBoundsState: board.outOfBoundsState
-      // }
 
       for (const mutant of mutants) {
         const mutantCode = mutant?.mutated_code || mutant?.code

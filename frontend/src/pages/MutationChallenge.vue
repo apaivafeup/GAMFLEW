@@ -71,15 +71,16 @@ export default {
 
     var user_id
 
-    //TODO: Load mutants from an API endpoint
-    this.mutants = [
-      {
-        id: 0,
-        name: "Mutant 1: Change Condition",
-        description: "Changed == to != in line 5.",
-        mutated_code: "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length != 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
-      }
-    ]
+    this.mutants = []
+    await this.$axios.get(this.$api_link + '/mutation-challenge/' + this.id, this.auth.config).then((response) => {
+      user_id = response.data.owner_id
+
+      // Obtain the mutants from the mutation challenge response
+      this.mutants = response.data.mutants || []
+    }).catch((error) => {
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status.toString(), message: error.response.statusText } })
+      this.$error = true
+    })
 
 
     await this.$axios.get(this.$api_link + '/challenges/' + this.id, this.auth.config).then((response) => {

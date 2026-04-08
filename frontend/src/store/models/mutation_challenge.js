@@ -46,8 +46,6 @@ export function runMutant(fn, input, timeout = 2000) {
             currentKey: input.currentKey,
             outOfBoundsState: JSON.parse(JSON.stringify(input.outOfBoundsState))
         }
-
-        console.log("Serialized input for worker:", serializedInput);
         
         const worker = new Worker(
             new URL("../mutationWorker.js", import.meta.url), { type: "module" }
