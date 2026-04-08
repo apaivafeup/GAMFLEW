@@ -116,6 +116,37 @@ def create_challenge(db: Session, challenge: schemas.Challenge):
     db.commit()
     return db_challenge
 
+def create_mutation_challenge(db: Session, mutation_challenge: schemas.MutationChallenge):
+    challenge = db.query(schemas.Challenge).filter(
+        schemas.Challenge.id == mutation_challenge.challenge_id
+    ).first()
+
+    if challenge is None:
+        return None
+
+    existing = db.query(schemas.MutationChallenge).filter(
+        schemas.MutationChallenge.challenge_id == mutation_challenge.challenge_id
+    ).first()
+    if existing is not None:
+        return existing
+
+    try:
+        # Insert directly into the child table to avoid an unintended parent-table insert.
+        db.execute(
+            schemas.MutationChallenge.__table__.insert().values(
+                challenge_id=mutation_challenge.challenge_id,
+                mutants=mutation_challenge.mutants,
+            )
+        )
+        db.commit()
+    except SQLAlchemyError:
+        db.rollback()
+        raise
+
+    return db.query(schemas.MutationChallenge).filter(
+        schemas.MutationChallenge.challenge_id == mutation_challenge.challenge_id
+    ).first()
+
 def update_challenge(db: Session, challenge_id: int, challenge: schemas.Challenge):
     db_challenge = db.query(schemas.Challenge).filter(
         schemas.Challenge.id == challenge_id).first()
@@ -361,6 +392,8 @@ def get_code_file(db: Session, code_file_id: int):
 def get_challenge(db: Session, challenge_id: int):
     return db.query(schemas.Challenge).filter(schemas.Challenge.id == challenge_id).first()
 
+def get_mutation_challenge(db: Session, challenge_id: int):
+    return db.query(schemas.MutationChallenge).filter(schemas.MutationChallenge.challenge_id == challenge_id).first()
 
 def get_random_challenge(db: Session, game_room_id: int, exclude_challenges: list[int] = []):
     challenge_count = int(db.query(schemas.Challenge).count())

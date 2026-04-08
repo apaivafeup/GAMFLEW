@@ -303,6 +303,12 @@ def read_challenge(current_user: Annotated[models.User, Depends(get_current_acti
     challenge = crud.get_challenge(db, challenge_id=challenge_id)
     return challenge
 
+## Get mutation challenge with challenge id
+@app.get("/mutation-challenge/{challenge_id}", response_model=models.MutationChallenge)
+def read_mutation_challenge(current_user: Annotated[models.User, Depends(get_current_active_user)], challenge_id: int, db: Session = Depends(get_db)):
+    mutation_challenge = crud.get_mutation_challenge(db, challenge_id=challenge_id)
+    return mutation_challenge
+
 ## Get passed challenges
 @app.get("/users/{user_id}/passed-challenges/", response_model=list[int])
 def read_passed_challenges(current_user: Annotated[models.User, Depends(get_current_active_user)], user_id: int, db: Session = Depends(get_db)):

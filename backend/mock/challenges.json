@@ -2176,7 +2176,7 @@
         "name": "Challenge 8.1: Mutation Testing Challenge",
         "test_cases_count": 1,
         "score": 250,
-        "hint": "Try to find an input that makes the function return an incorrect output!",
+        "hint": "Try to find an input that makes the function return false!",
         "objective": "Kill the mutant on line 5.",
         "initial_board": 1,
         "code_file": 8,
@@ -2188,7 +2188,28 @@
         },
         "achievement": "",
         "achievement_hint": "Try to find an input that makes the function return an incorrect output!",
-        "difficulty": "Normal",
+        "difficulty": "Easy",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 8.2: Mutation Testing Challenge",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Try to find an input that makes the function return true when it should return false, or false when it should return true!",
+        "objective": "Kill the mutant on line 6.",
+        "initial_board": 1,
+        "code_file": 8,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": "",
+        "achievement_hint": "Try to find an input that makes the function return an incorrect output!",
+        "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
     }

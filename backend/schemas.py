@@ -158,6 +158,12 @@ class Challenge(Base):
     board_states = relationship("BoardState", back_populates="challenges")
     attempt_scores = relationship("AttemptScore", back_populates="challenges", cascade="all")
 
+class MutationChallenge(Challenge):
+    __tablename__ = "mutation_challenges"
+
+    challenge_id = Column(Integer, ForeignKey("challenges.id"), primary_key=True)
+    mutants = Column(PickleType, index=True)
+
 class StudentClassChallenge(Base):
     __tablename__ = "student_class_challenge"
 

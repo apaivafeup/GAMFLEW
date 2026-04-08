@@ -13,6 +13,7 @@ create_op = {
     str(models.CodeFile): crud.create_code_file,
     str(models.BoardState): crud.create_board_state,
     str(models.Challenge): crud.create_challenge,
+    str(models.MutationChallenge): crud.create_mutation_challenge,
     str(models.Attempt): crud.create_attempt,
     str(models.GameRoom): crud.create_game_room,
     str(models.CodeFileDictionary): crud.create_code_file_dictionary,
@@ -37,8 +38,8 @@ def load_data_best_effort(entries: List[BaseModel]) -> None:
         try:
             with SessionLocal.begin() as db:
                 create_op[str(type(entry))](db, entry)
-        except Exception as error: 
-            print(error)           
+        except Exception as error:
+            print(f"[seed error] model={type(entry).__name__} data={entry.model_dump()} error={error}")
 
 if __name__ == '__main__':
     print('This script cannot be directly invoked')

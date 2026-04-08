@@ -70,6 +70,13 @@ class Challenge(BaseModel):
     class Config:
         from_attributes = True
 
+class MutationChallenge(BaseModel):
+    challenge_id: int
+    mutants: list[dict]
+
+    class Config:
+        from_attributes = True
+
 
 class ChallengeBasics(BaseModel):
     id: Optional[int]

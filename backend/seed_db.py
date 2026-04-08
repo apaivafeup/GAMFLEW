@@ -19,6 +19,7 @@ models_entries = [
     (models.CodeFile, "./mock/code_files.json"),
     (models.BoardState, "./mock/board_states.json"),
     (models.Challenge, "./mock/challenges.json"),
+    (models.MutationChallenge, "./mock/mutation_challenges.json"),
     (models.StudentClassChallenge, "./mock/student_class_challenge.json"),	
     (models.Attempt, "./mock/attempts.json"),
     (models.GameRoom, "./mock/game_rooms.json"),
