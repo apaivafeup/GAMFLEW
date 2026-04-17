@@ -56,7 +56,7 @@ export default {
             <p style="margin: 0px; padding: 0px;"><strong>Objective: </strong>{{ challenge.objective }}</p>
             <p v-if="challenge.challenge_type === 'mutation'" style="margin: 0px; padding: 0px;"><strong>Mutant(s) Description: </strong>{{ challenge.mutants?.[0]?.description }}</p>
           </div>
-          <button class="button" @click="objective = !objective" v-if="beat_challenge" style="border-style: solid;
+          <button class="button" @click="objective = !objective" v-if="beat_challenge && challenge.challenge_type !== 'mutation'" style="border-style: solid;
           border: double 1px transparent;
           background-image: linear-gradient(to left, rgb(169, 216, 238), rgb(169, 216, 238)),
                             linear-gradient(to right, rgb(107, 196, 237), rgb(107, 196, 237));
@@ -67,7 +67,7 @@ export default {
             <font-awesome-icon icon="award" />
             Achievement Hint
           </button>
-          <button class="button disabled" v-else style="border-style: solid;
+          <button class="button disabled" v-else-if="challenge.challenge_type !== 'mutation'" style="border-style: solid;
           border: double 1px transparent;
           background-image: linear-gradient(to left, rgb(169, 216, 238), rgba(225, 209, 241, 1)),
                             linear-gradient(to right, rgb(186, 143, 229), rgb(107, 196, 237));

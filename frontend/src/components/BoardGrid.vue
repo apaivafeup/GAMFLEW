@@ -39,18 +39,18 @@
       </div>
 
       <div class="buttons-grid">
-        <button id="previous-button" class="button is-primary is-fullwidth" v-if="board.currentKey != 0 && !board.add"
+        <button id="previous-button" class="button is-primary is-fullwidth" v-if="challenge.test_cases_count > 1 && board.currentKey != 0 && !board.add"
           @click="board.previous()">
           Previous
         </button>
-        <button id="previous-button" class="button is-primary is-fullwidth disabled" v-else style="cursor: default">
+        <button id="previous-button" class="button is-primary is-fullwidth disabled" v-else-if="challenge.test_cases_count > 1 && board.currentKey == 0 && !board.add" style="cursor: default">
           Previous
         </button>
         <button id="next-button" class="button is-primary is-fullwidth"
-          v-if="board.currentKey + 1 != challenge.test_cases_count && !board.add && !board.table" @click="board.next()">
+          v-if="challenge.test_cases_count > 1 && board.currentKey + 1 != challenge.test_cases_count && !board.add && !board.table" @click="board.next()">
           Next
         </button>
-        <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else>
+        <button id="next-button" class="button is-primary is-fullwidth disabled" style="cursor: default" v-else-if="challenge.test_cases_count > 1 && (board.currentKey + 1 == challenge.test_cases_count || board.add || board.table)">
           Next
         </button>
         <button id="go-button" class="button is-primary is-fullwidth" data-bs-toggle="modal"
@@ -185,16 +185,18 @@ export default {
 
     this.mutationResults = mutationResultsStore()
     this.mutationResults.clearResults()
-
+    
     this.code_file = null
-    await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
-      this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
-      console.log(this.code_file)
-    }).catch((error) => {
-      console.log(error)
-      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
-      this.$error = true
-    })
+    if (this.challenge.challenge_type === 'mutation') {
+      await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
+        this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
+        console.log(this.code_file)
+      }).catch((error) => {
+        console.log(error)
+        this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
+        this.$error = true
+      })
+    }
 
     this.$forceUpdate()
   },
