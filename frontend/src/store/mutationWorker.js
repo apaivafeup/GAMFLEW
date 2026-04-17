@@ -1,31 +1,60 @@
 import jasmineRequire from 'jasmine-core/lib/jasmine-core/jasmine';
-
-const Color = {
-    RED: 'red',
-    BLUE: 'blue'
-};
+import {auxiliaryFunctions} from '../../src/assets/js/auxiliary_functions.js'; 
+import { Color, Piece } from './models/piece.js';
 
 self.onmessage = function (e) {
-    const { mutantCode, inputData } = e.data;
+    const { originalCode, mutantCode, inputData } = e.data;
 
     try {
-        const failed = runJasmineTests(mutantCode, inputData);
+        const failed = runJasmineTests(originalCode, mutantCode, inputData);
     } catch (error) {
         self.postMessage({ type: "ERROR", error: error.message });
     }
 };
 
-function get_pieces(inputData) {
-    let pieces = [];
+function compileAuxiliaryFunctions() {
+    const compiledFunctions = {};
 
-    for (const key of inputData.state[inputData.currentKey]) {
-        for (const piece of key) {
-            if (piece.color !== "empty") {
-                pieces.push(piece);
-            }
-        }
+    for (const [name, code] of Object.entries(auxiliaryFunctions)) {
+        compiledFunctions[name] = new Function('Color', 'Piece', `${code}; return ${name};`)(Color, Piece);
     }
-    return pieces;
+
+    return compiledFunctions;
+}
+
+function getFunctionName(sourceCode) {
+    const match = sourceCode.match(/function\s+([A-Za-z_$][\w$]*)\s*\(/);
+
+    if (!match) {
+        throw new Error('Could not determine the target function name from the provided source');
+    }
+
+    return match[1];
+}
+
+function compileCallableSource(sourceCode, helperContext) {
+    const helperNames = Object.keys(helperContext);
+    const targetName = getFunctionName(sourceCode);
+
+    const factory = new Function(
+        ...helperNames,
+        'Color',
+        'Piece',
+        'helperContext',
+        `
+        ${sourceCode}
+
+        if (typeof ${targetName} !== 'function') {
+            throw new Error('Source code must define a ${targetName} function');
+        }
+
+        return function (...args) {
+            return ${targetName}.apply(helperContext, args);
+        };
+        `
+    );
+
+    return factory(...helperNames.map(name => helperContext[name]), Color, Piece, helperContext);
 }
 
 function createJasmineEnv() {
@@ -35,12 +64,15 @@ function createJasmineEnv() {
     return { jasmine, env };
 }
 
-function runJasmineTests(mutantCode, inputData) {
+function runJasmineTests(originalCode, mutantCode, inputData) {
     const { jasmine, env } = createJasmineEnv();
     const jasmineInterface = jasmineRequire.interface(jasmine, env);
     const { describe, it, expect } = jasmineInterface;
     
     let failed = false;
+
+    const helperFunctions = compileAuxiliaryFunctions();
+    const helperContext = { ...helperFunctions };
 
     env.addReporter({
         specDone: function(result) {
@@ -54,48 +86,24 @@ function runJasmineTests(mutantCode, inputData) {
         }
     });
 
-    // Compile mutated source into a callable function.
-    // Supports code that declares `has_game_ended` and uses `this.get_pieces`/`Color`.
-    const compileMutant = new Function(
-        'get_pieces',
-        'Color',
-        `
-        ${mutantCode}
+    const fn_original = compileCallableSource(originalCode, helperContext);
+    const fn_mutant = compileCallableSource(mutantCode, helperContext);
 
-        if (typeof has_game_ended === 'function') {
-            return function (board) {
-                return has_game_ended.call({ get_pieces }, board);
-            };
-        }
+    // Convert inputData to the expected format for the test
+    const board = {
+        state: inputData.state[inputData.currentKey],
+        currentKey: inputData.currentKey,
+        log: inputData.log,
+        outOfBoundsState: inputData.outOfBoundsState[inputData.currentKey]   
+    }
 
-        throw new Error('Mutant code must define a has_game_ended(board) function');
-        `
-    );
+    // Test suite for the mutant
+    describe("Comparing Mutant with Original", () => {
+        it("produces the same result", () => {
+            const result_original = fn_original(board);
+            const result_mutant = fn_mutant(board);
 
-    const fn = compileMutant(get_pieces, Color);
-
-    // predefined test
-    describe("Game Ended", () => {
-        it("computes correctly", () => {
-            let pieces = get_pieces(inputData);
-            const result = fn(inputData);
-
-            console.log("Result of mutant function:", result);
-
-            expect(typeof result).toBe("boolean");
-
-            if (pieces.length === 0) {
-                expect(result).toBe(false);
-            } 
-            else if (pieces.length === 1) {
-                expect(result).toBe(true);
-            } 
-            else if (pieces.every(p => p.color === "red") || pieces.every(p => p.color === "blue")) {
-                expect(result).toBe(true);
-            }
-            else {
-                expect(result).toBe(false);
-            }
+            expect(result_mutant).toBe(result_original);
         });
     });
 

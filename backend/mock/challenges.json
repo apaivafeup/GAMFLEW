@@ -2212,5 +2212,26 @@
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 8.3: Mutation Testing Challenge",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Try to find an input that makes the function return true when it should return false, or false when it should return true!",
+        "objective": "Kill the mutant on line 7.",
+        "initial_board": 1,
+        "code_file": 8,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": "",
+        "achievement_hint": "Try to find an input that makes the function return an incorrect output!",
+        "difficulty": "Easy",
+        "owner_id": 1,
+        "visible": true
     }
 ]

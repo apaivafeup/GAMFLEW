@@ -155,6 +155,7 @@ import { authStore } from '../store/authStore.js'
 import { useToast } from 'vue-toastification'
 import { runMutant } from '../store/models/mutation_challenge.js'
 import { mutationResultsStore } from '../store/mutationResultsStore.js'
+import { CodeFile } from '../store/models/code_file.js'
 
 import { Color, Piece } from '../store/models/piece.js'
 import OutPieceStack from './OutPieceStack.vue'
@@ -176,7 +177,7 @@ export default {
     }
   },
 
-  beforeMount() {
+  async beforeMount() {
     this.board = boardStore()
     this.auth = authStore()
     this.auth.checkAuth()
@@ -184,6 +185,16 @@ export default {
 
     this.mutationResults = mutationResultsStore()
     this.mutationResults.clearResults()
+
+    this.code_file = null
+    await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
+      this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
+      console.log(this.code_file)
+    }).catch((error) => {
+      console.log(error)
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
+      this.$error = true
+    })
 
     this.$forceUpdate()
   },
@@ -693,12 +704,13 @@ export default {
       const results = []
 
       for (const mutant of mutants) {
+        const originalCode = this.code_file?.content
         const mutantCode = mutant?.mutated_code || mutant?.code
         if (!mutantCode) {
           continue
         }
 
-        const result = await runMutant(mutantCode, board)
+        const result = await runMutant(originalCode, mutantCode, board)
         results.push({
           mutantId: mutant.id,
           mutantName: mutant.name,

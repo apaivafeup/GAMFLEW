@@ -47,7 +47,24 @@ export default {
 
     changePreviousPage(id, one) {
       this.changeAddMode();
-      this.$forceUpdate(); 
+      this.$forceUpdate();
+
+      //If it is a mutation challenge
+      if (id >= 85) {
+        this.$router.push({ name: 'mutation-challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}).then(() => {
+          window.location.reload();
+        }); 
+        this.$forceUpdate();
+        return
+      }
+      else if (id == 84) {
+        this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}).then(() => {
+          window.location.reload();
+        }); 
+        this.$forceUpdate();
+        return
+      }
+
       if (one) {
         this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) - 1).toString() }}).then(() => {
           window.location.reload();
@@ -66,6 +83,16 @@ export default {
   changeNextPage(id, last) {
     this.changeAddMode();
     this.$forceUpdate(); 
+
+    //If it is a mutation challenge
+    if (id >= 83 && !last) {
+      this.$router.push({ name: 'mutation-challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}).then(() => {
+          window.location.reload();
+        }); 
+      this.$forceUpdate();
+      return
+    } 
+
     if (last) {
       this.$router.push({ name: 'challenge', params: { id: parseInt(parseInt(id) + 1).toString() }}).then(() => {
           window.location.reload();

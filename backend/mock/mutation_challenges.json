@@ -20,5 +20,16 @@
                 "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn false;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
             }
         ]
+    },
+    {
+        "challenge_id": 86,
+        "mutants": [
+            {
+                "id": 2,
+                "name": "Mutant 3: Change Logical Operator",
+                "description": "Changed \"||\" to \"&&\" in line 6.",
+                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) && pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+            }
+        ]
     }
 ]
