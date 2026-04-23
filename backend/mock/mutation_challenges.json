@@ -4,9 +4,10 @@
         "mutants": [
             {
                 "id": 0,
-                "name": "Mutant 1: Change Condition",
-                "description": "Changed \"==\" to \"!=\" in line 5.",
-                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length != 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+                "name": "Mutant 1: Change Return Value",
+                "description": "Changed \"return true\" to \"return false\" in line 6.",
+                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn false;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
+                "equivalent": false
             }
         ]
     },
@@ -14,10 +15,11 @@
         "challenge_id": 85,
         "mutants": [
             {
-                "id": 1,
-                "name": "Mutant 2: Change Return Value",
-                "description": "Changed \"return true\" to \"return false\" in line 6.",
-                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn false;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+                "id": 0,
+                "name": "Mutant 1: Change Logical Operator",
+                "description": "Changed \"||\" to \"&&\" in line 6.",
+                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) && pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
+                "equivalent": false
             }
         ]
     },
@@ -25,11 +27,38 @@
         "challenge_id": 86,
         "mutants": [
             {
-                "id": 2,
-                "name": "Mutant 3: Change Logical Operator",
-                "description": "Changed \"||\" to \"&&\" in line 6.",
-                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) && pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+                "id": 0,
+                "name": "Mutant 1: Change Comparison Operator",
+                "description": "Changed \"==\" to \"!=\" in line 5.",
+                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length != 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
+                "equivalent": false
             }
         ]
+    },
+    {
+        "challenge_id": 87,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Change Comparison Operator",
+                "description": "Changed \"==\" to \"!=\" in line 3.",
+                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length != 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
+                "equivalent": false
+            },
+            {
+                "id": 1,
+                "name": "Mutant 2: Find the Equivalent?",
+                "description": "Changed \"==\" to \"<=\" in line 3.",
+                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length <= 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
+                "equivalent": true
+            },
+            {
+                "id": 2,
+                "name": "Mutant 3: Find the Equivalent? (Part 2)",
+                "description": "Changed \"==\" to \">=\" in line 5.",
+                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length >= 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
+                "equivalent": false
+            }
+        ]       
     }
 ]

@@ -57,6 +57,21 @@ export default {
     Prism.highlightAll()
   },
 
+  watch: {
+    mutant_code: {
+      async handler () {
+        await this.$nextTick()
+        Prism.highlightAll()
+      }
+    },
+    mutant_id: {
+      async handler () {
+        await this.$nextTick()
+        Prism.highlightAll()
+      }
+    }
+  },
+
   computed: {
     currentMutantResult() {
       const results = this.mutationResults?.results || []

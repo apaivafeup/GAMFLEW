@@ -35,10 +35,11 @@ export class MutationChallenge extends Challenge {
             owner
         );
         this.mutants = mutants;
+        this.equivalentMutantFlags = mutants.map(m => false);
     }
 }
 
-export function runMutant(originalCode, mutantCode, input, timeout = 2000) {
+export function runMutant(originalCode, mutantCode, input, mutantId, timeout = 2000) {
     return new Promise(resolve => {
         const serializedInput = {
             state: JSON.parse(JSON.stringify(input.state)),
@@ -66,6 +67,7 @@ export function runMutant(originalCode, mutantCode, input, timeout = 2000) {
             originalCode: originalCode.toString(),
             mutantCode: mutantCode.toString(),
             inputData: serializedInput,
+            mutantId: mutantId
         });
     });
 }

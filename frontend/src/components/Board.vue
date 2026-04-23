@@ -33,13 +33,19 @@ export default {
     this.board.generateState()
   },
 
-  computed: {
-    firstMutatedCode() {
-      return this.challenge?.mutants?.[0]?.mutated_code || this.challenge?.mutants?.[0]?.code || ''
-    },
+  methods: {
+    getMutatedCode(index) {
+      if (this.challenge.challenge_type === 'mutation' && this.challenge.mutants && this.challenge.mutants[index]) {
+        return this.challenge.mutants[index].mutated_code
+      }
+      return null
+     },
 
-    firstMutantId() {
-      return this.challenge?.mutants?.[0]?.id ?? null
+    getMutantId(index) {
+      if (this.challenge.challenge_type === 'mutation' && this.challenge.mutants && this.challenge.mutants[index]) {
+        return this.challenge.mutants[index].id
+      }
+      return null
     }
   },
 }
@@ -54,7 +60,7 @@ export default {
         <div class="alert alert-special player-info" v-if="!board.timeout && objective" style="font-size: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px;">
           <div style="display: flex; flex-direction: column; gap: 4px;">
             <p style="margin: 0px; padding: 0px;"><strong>Objective: </strong>{{ challenge.objective }}</p>
-            <p v-if="challenge.challenge_type === 'mutation'" style="margin: 0px; padding: 0px;"><strong>Mutant(s) Description: </strong>{{ challenge.mutants?.[0]?.description }}</p>
+            <p v-if="challenge.challenge_type === 'mutation'" style="margin: 0px; padding: 0px;"><strong>Mutant(s) Description: </strong>{{ challenge.mutants?.[board.currentKey]?.description }}</p>
           </div>
           <button class="button" @click="objective = !objective" v-if="beat_challenge && challenge.challenge_type !== 'mutation'" style="border-style: solid;
           border: double 1px transparent;
@@ -99,7 +105,7 @@ export default {
           <ChallengeCode :code_file="code_file" style="width: 100%;" />
         </p>
         <p v-else style="margin: 0px; padding: 0px; align-self: center; font-size: 14px;">
-          <MutationChallengeCode :code_file="code_file" :mutated_code="firstMutatedCode" :mutant_id="firstMutantId" style="width: 100%;" />
+          <MutationChallengeCode :code_file="code_file" :mutated_code="getMutatedCode(board.currentKey)" :mutant_id="getMutantId(board.currentKey)" style="width: 100%;" />
         </p>
       </div>
       <div class="row" style="width: 100%;" v-if="!board.passed && board.hint && !board.error">

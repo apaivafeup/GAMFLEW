@@ -2173,28 +2173,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 8.1: Mutation Testing Challenge",
-        "test_cases_count": 1,
-        "score": 250,
-        "hint": "Try to find an input that makes the function return false!",
-        "objective": "Kill the mutant on line 5.",
-        "initial_board": 1,
-        "code_file": 8,
-        "challenge_type": "mutation",
-        "passing_criteria": {
-            "expression_count": null,
-            "preconditions": [],
-            "tests": []
-        },
-        "achievement": "",
-        "achievement_hint": "Try to find an input that makes the function return an incorrect output!",
-        "difficulty": "Easy",
-        "owner_id": 1,
-        "visible": true
-    },
-    {
-        "id": 0,
-        "name": "Challenge 8.2: Mutation Testing Challenge",
+        "name": "Challenge 8.1: Changing Return Values",
         "test_cases_count": 1,
         "score": 250,
         "hint": "Try to find an input that makes the function return true when it should return false, or false when it should return true!",
@@ -2207,15 +2186,15 @@
             "preconditions": [],
             "tests": []
         },
-        "achievement": "",
-        "achievement_hint": "Try to find an input that makes the function return an incorrect output!",
+        "achievement": null,
+        "achievement_hint": null,
         "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
     },
     {
         "id": 0,
-        "name": "Challenge 8.3: Mutation Testing Challenge",
+        "name": "Challenge 8.2: Changing Logical Operators",
         "test_cases_count": 1,
         "score": 250,
         "hint": "Try to find an input that makes the function return true when it should return false, or false when it should return true!",
@@ -2228,9 +2207,51 @@
             "preconditions": [],
             "tests": []
         },
-        "achievement": "",
-        "achievement_hint": "Try to find an input that makes the function return an incorrect output!",
-        "difficulty": "Easy",
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Normal",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 8.3: Changing Comparison Operators",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Try to find an input that makes the function return false!",
+        "objective": "Kill the mutant on line 5.",
+        "initial_board": 1,
+        "code_file": 8,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Hard",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 8.4: Find The Equivalent Mutant",
+        "test_cases_count": 3,
+        "score": 250,
+        "hint": "Don't forget that one of the mutants is equivalent - you can't kill it! Find it and flag it as equivalent instead!",
+        "objective": "Find the equivalent mutant and kill the other non-equivalent mutants.",
+        "initial_board": 1,
+        "code_file": 8,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Hard",
         "owner_id": 1,
         "visible": true
     }

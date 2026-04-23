@@ -36,7 +36,7 @@
     },
     {
         "id": 8,
-        "name": "Test File 8: Mutation Testing Section",
+        "name": "Test File 8: Has Game Ended? (MUTATION TESTING)",
         "content": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
     }
 ]

@@ -26,6 +26,27 @@
       <div class="col" style="height: 315.5px;" v-else>
 
       </div>
+
+      <div class="equivalent-mutant-section" style="display: flex; justify-content: center; margin: 5px;" v-if="challenge.challenge_type === 'mutation'">
+        <button id="equivalent-mutant-button" class="button is-primary is-fullwidth" v-if="!challenge.equivalentMutantFlags[board.currentKey] && !board.passed"
+          @click="toggleEquivalentMutant(challenge.mutants[board.currentKey])">
+          Flag as Equivalent Mutant
+        </button>
+        <button id="equivalent-mutant-button" class="button is-primary is-fullwidth disabled" v-if="!challenge.equivalentMutantFlags[board.currentKey] && board.passed"
+           style="cursor: default"
+          @click="toggleEquivalentMutant(challenge.mutants[board.currentKey])">
+          Flag as Equivalent Mutant
+        </button>
+        <button id="equivalent-mutant-button" class="button is-primary is-fullwidth" v-else-if="challenge.equivalentMutantFlags[board.currentKey] && !board.passed"
+          @click="toggleEquivalentMutant(challenge.mutants[board.currentKey])">
+           Unflag as Equivalent Mutant
+        </button>
+        <button id="equivalent-mutant-button" class="button is-primary is-fullwidth disabled" v-else-if="challenge.equivalentMutantFlags[board.currentKey] && board.passed"
+          style="cursor: default"
+          @click="toggleEquivalentMutant(challenge.mutants[board.currentKey])">
+           Unflag as Equivalent Mutant
+        </button>
+      </div>
       
       <div class="progress-bar">
         <div class="row" v-if="board.add"
@@ -694,6 +715,12 @@ export default {
       }
     },
 
+    toggleEquivalentMutant(mutant) {
+      if (mutant) {
+        this.challenge.equivalentMutantFlags[this.board.currentKey] = !this.challenge.equivalentMutantFlags[this.board.currentKey]
+      }
+    },
+
     
     async runMutationChallenge(board, mutants) {
       if (mutants.length == 0) {
@@ -706,13 +733,37 @@ export default {
       const results = []
 
       for (const mutant of mutants) {
+        // Check if mutant is flagged as equivalent by the user and if is is actually equivalent
+        if (mutant.equivalent && this.challenge.equivalentMutantFlags[mutant.id]) {
+          results.push({
+            mutantId: mutant.id,
+            mutantName: mutant.name,
+            result: {
+              mutantKilled: true,
+              reason: 'Flagged as equivalent by the user'
+            }
+          })
+          continue
+        } else if (this.challenge.equivalentMutantFlags[mutant.id]) { // Mutant is flagged as equivalent by the user but is not actually equivalent
+          results.push({
+            mutantId: mutant.id,
+            mutantName: mutant.name,
+            result: {
+              mutantKilled: false,
+              reason: 'Flagged as equivalent by the user, but not actually equivalent'
+            }
+          })
+          this.toast.warning(`One of the flagged mutants is not actually equivalent! Unflag it to pass the challenge.`)
+          continue
+        }
+
         const originalCode = this.code_file?.content
         const mutantCode = mutant?.mutated_code || mutant?.code
         if (!mutantCode) {
           continue
         }
 
-        const result = await runMutant(originalCode, mutantCode, board)
+        const result = await runMutant(originalCode, mutantCode, board, mutant.id)
         results.push({
           mutantId: mutant.id,
           mutantName: mutant.name,
@@ -737,6 +788,8 @@ export default {
         this.board.pass(this.challenge.score)
       }
 
+      this.board.achievement = (this.board.passed && this.checkAchievement(this.board)) || false
+      this.submitAttempt()
       this.mutationResults.setResults(results)
       this.$emit('mutation-results', results)
       console.log('[Mutation] Results:', results)

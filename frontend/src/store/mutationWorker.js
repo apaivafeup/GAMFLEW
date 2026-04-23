@@ -3,10 +3,10 @@ import {auxiliaryFunctions} from '../../src/assets/js/auxiliary_functions.js';
 import { Color, Piece } from './models/piece.js';
 
 self.onmessage = function (e) {
-    const { originalCode, mutantCode, inputData } = e.data;
+    const { originalCode, mutantCode, inputData, mutantId } = e.data;
 
     try {
-        const failed = runJasmineTests(originalCode, mutantCode, inputData);
+        const failed = runJasmineTests(originalCode, mutantCode, inputData, mutantId);
     } catch (error) {
         self.postMessage({ type: "ERROR", error: error.message });
     }
@@ -64,7 +64,7 @@ function createJasmineEnv() {
     return { jasmine, env };
 }
 
-function runJasmineTests(originalCode, mutantCode, inputData) {
+function runJasmineTests(originalCode, mutantCode, inputData, mutantId) {
     const { jasmine, env } = createJasmineEnv();
     const jasmineInterface = jasmineRequire.interface(jasmine, env);
     const { describe, it, expect } = jasmineInterface;
@@ -82,7 +82,7 @@ function runJasmineTests(originalCode, mutantCode, inputData) {
             }
         },
         jasmineDone: function() {
-            self.postMessage({ type: "TEST_RESULTS", mutantKilled: failed });
+            self.postMessage({ type: "TEST_RESULTS", mutantKilled: failed, mutantId: mutantId });
         }
     });
 
@@ -91,10 +91,10 @@ function runJasmineTests(originalCode, mutantCode, inputData) {
 
     // Convert inputData to the expected format for the test
     const board = {
-        state: inputData.state[inputData.currentKey],
+        state: inputData.state[mutantId],
         currentKey: inputData.currentKey,
         log: inputData.log,
-        outOfBoundsState: inputData.outOfBoundsState[inputData.currentKey]   
+        outOfBoundsState: inputData.outOfBoundsState[mutantId]   
     }
 
     // Test suite for the mutant
