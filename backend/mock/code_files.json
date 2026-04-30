@@ -38,5 +38,10 @@
         "id": 8,
         "name": "Test File 8: Has Game Ended? (MUTATION TESTING)",
         "content": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}"
+    },
+    {
+        "id": 9,
+        "name": "Test File 9: Who Won? (MUTATION TESTING)",
+        "content": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}"
     }
 ]

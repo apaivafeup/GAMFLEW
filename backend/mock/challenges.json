@@ -2215,7 +2215,7 @@
     },
     {
         "id": 0,
-        "name": "Challenge 8.3: Changing Comparison Operators",
+        "name": "Challenge 8.3: Changing Conditional Boundary Operators",
         "test_cases_count": 1,
         "score": 250,
         "hint": "Try to find an input that makes the function return false!",
@@ -2243,6 +2243,90 @@
         "objective": "Find the equivalent mutant and kill the other non-equivalent mutants.",
         "initial_board": 1,
         "code_file": 8,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Hard",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 9.1: Adding Increment Operators",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Try to find an input that makes the function return a value that is one more than the expected value!",
+        "objective": "Kill the mutant on line 3.",
+        "initial_board": 1,
+        "code_file": 9,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Easy",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 9.2: Changing Return Values to null",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Try to find an input that makes the function return null when it should return a value!",
+        "objective": "Kill the mutant on line 8.",
+        "initial_board": 1,
+        "code_file": 9,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Normal",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 9.3: Changing Conditions to True/False",
+        "test_cases_count": 2,
+        "score": 250,
+        "hint": "Try to find an input that makes the function return true when it should return false, or false when it should return true!",
+        "objective": "Kill the mutants on line 5.",
+        "initial_board": 1,
+        "code_file": 9,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Hard",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 9.4: Find The Equivalent Mutant II",
+        "test_cases_count": 3,
+        "score": 250,
+        "hint": "Don't forget that one of the mutants is equivalent - you can't kill it! Find it and flag it as equivalent instead!",
+        "objective": "Find the equivalent mutant and kill the other non-equivalent mutants.",
+        "initial_board": 1,
+        "code_file": 9,
         "challenge_type": "mutation",
         "passing_criteria": {
             "expression_count": null,
