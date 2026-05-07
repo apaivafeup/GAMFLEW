@@ -103,7 +103,7 @@ function runJasmineTests(originalCode, mutantCode, inputData, mutantId) {
             const result_original = fn_original(board);
             const result_mutant = fn_mutant(board);
 
-            expect(result_mutant).toBe(result_original);
+            expect(result_mutant).toEqual(result_original);
         });
     });
 

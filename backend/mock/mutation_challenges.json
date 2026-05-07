@@ -44,25 +44,35 @@
                 "description": "Changed \"==\" to \"!=\" in line 3.",
                 "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length != 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
                 "equivalent": false
-            },
-            {
-                "id": 1,
-                "name": "Mutant 2: Find the Equivalent?",
-                "description": "Changed \"==\" to \"<=\" in line 3.",
-                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length <= 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
-                "equivalent": true
-            },
-            {
-                "id": 2,
-                "name": "Mutant 3: Find the Equivalent? (Part 2)",
-                "description": "Changed \"==\" to \">=\" in line 5.",
-                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length >= 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
-                "equivalent": false
             }
         ]       
     },
     {
         "challenge_id": 88,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Find the Equivalent?",
+                "description": "Changed \"==\" to \"<=\" in line 3.",
+                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length <= 0) return false;\n\n\tif (pieces.length == 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
+                "equivalent": true
+            }
+        ]
+    },
+    {
+        "challenge_id": 89,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Find the Equivalent? (Part 2)",
+                "description": "Changed \"==\" to \">=\" in line 5.",
+                "mutated_code": "function has_game_ended(board) {\n\tvar pieces = this.get_pieces(board);\n\tif (pieces.length == 0) return false;\n\n\tif (pieces.length >= 1) {\n\t\treturn true;\n\t} else if (pieces.every(p => p.color == Color.RED) || pieces.every(p => p.color == Color.BLUE)) {\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 90,
         "mutants": [
             {
                 "id": 0,
@@ -74,19 +84,19 @@
         ]
     },
     {
-        "challenge_id": 89,
+        "challenge_id": 91,
         "mutants": [
             {
                 "id": 0,
                 "name": "Mutant 1: Adding Increment Operators",
-                "description": "Added increment operator to line 3.",
-                "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board)++;\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
+                "description": "Added increment operator to line 5.",
+                "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (++blue == red) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
                 "equivalent": false
             }
         ]
      },
      {
-        "challenge_id": 90,
+        "challenge_id": 92,
         "mutants": [
             {
                 "id": 0,
@@ -94,40 +104,55 @@
                 "description": "Changed \"blue == red\" to \"true\" in line 5.",
                 "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (true) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
                 "equivalent": false
-            },
+            }
+        ]
+     },
+     {
+        "challenge_id": 93,
+        "mutants": [
             {
-                "id": 1,
-                "name": "Mutant 2: Change Condition to Always False",
+                "id": 0,
+                "name": "Mutant 1: Change Condition to Always False",
                 "description": "Changed \"blue == red\" to \"false\" in line 5.",
                 "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (false) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
                 "equivalent": false
             }
         ]
      },
-        {
-            "challenge_id": 91,
-            "mutants": [
-                {
-                    "id": 0,
-                    "name": "Mutant 1: Change Return Value",
-                    "description": "Changed \"return null\" to \"return [Color.RED, Color.BLUE]\" in line 11.",
-                    "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
-                    "equivalent": false
-                },
-                {
-                    "id": 1,
-                    "name": "Mutant 2: Add a Decrement Operator",
-                    "description": "Added decrement operator to line 3.",
-                    "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board)--;\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
-                    "equivalent": false
-                },
-                {
-                    "id": 2,
-                    "name": "Mutant 3: Change Condition Boundary Operator",
-                    "description": "Changed \"!=\" to \"<\" in line 6.",
-                    "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) < 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
-                    "equivalent": true
-                }
-            ]
-        }
+     {
+        "challenge_id": 94,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Change Return Value",
+                "description": "Changed \"return null\" to \"return [Color.RED, Color.BLUE]\" in line 11.",
+                "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 95,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 2: Add a Decrement Operator",
+                "description": "Added decrement operator to line 5.",
+                "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (--blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 96,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 3: Change Condition Boundary Operator",
+                "description": "Changed \"!=\" to \"<\" in line 6.",
+                "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) < 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
+                "equivalent": true
+            }
+        ]
+    }
 ]
