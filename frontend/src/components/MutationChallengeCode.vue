@@ -1,4 +1,8 @@
 <template>
+  <div class="row" style="display: flex; justify-content: center; margin: 5px; width: 100%;">
+    <button v-if="!show_original" @click="toggleOriginalCode()" class="button is-primary">Show Original Code</button>
+    <button v-else @click="toggleOriginalCode()" class="button is-primary">Show Mutated Code</button>
+  </div>
   <CodeBlock
     :class="[
       'col line-numbers mutation-code-block',
@@ -8,7 +12,7 @@
     height="393px"
     :data-line="changedLines"
     :prismjs="true"
-    :code="mutated_code || code_file.content"
+    :code="show_original ? code_file.content : mutated_code"
     lang="javascript"
     prism-plugin
     prism-js
@@ -51,6 +55,12 @@ export default {
     mutated_code: String,
     mutant_id: [Number, String]
   },
+  data() {
+    return {
+      show_original: false,
+      mutationResults: null
+    }
+  },
 
   async beforeMount() {
     this.mutationResults = mutationResultsStore()
@@ -69,6 +79,18 @@ export default {
         await this.$nextTick()
         Prism.highlightAll()
       }
+    },
+    show_original: {
+      async handler () {
+        await this.$nextTick()
+        Prism.highlightAll()
+      }
+    }
+  },
+
+  methods: {
+    toggleOriginalCode() {
+      this.show_original = !this.show_original
     }
   },
 
