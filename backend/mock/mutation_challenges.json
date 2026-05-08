@@ -136,7 +136,7 @@
         "mutants": [
             {
                 "id": 0,
-                "name": "Mutant 2: Add a Decrement Operator",
+                "name": "Mutant 1: Add a Decrement Operator",
                 "description": "Added decrement operator to line 5.",
                 "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) != 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (--blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
                 "equivalent": false
@@ -148,10 +148,154 @@
         "mutants": [
             {
                 "id": 0,
-                "name": "Mutant 3: Change Condition Boundary Operator",
+                "name": "Mutant 1: Change Condition Boundary Operator",
                 "description": "Changed \"!=\" to \"<\" in line 6.",
                 "mutated_code": "function who_won(board) {\n\tvar blue = this.count_blue_pieces(board),\n\t\tred = this.count_red_pieces(board);\n\n\tif (blue == red) {\n\t\tif (this.count_empty_spaces(board) < 64) {\n\t\t\t// Tie\n\t\t\treturn [Color.RED, Color.BLUE];\n\t\t} else {\n\t\t\t// Invalid board.\n\t\t\treturn null;\n\t\t}\n\t} else {\n\t\tif (blue > red) {\n\t\t\treturn Color.BLUE;\n\t\t} else {\n\t\t\treturn Color.RED;\n\t\t}\n\t}\n}",
                 "equivalent": true
+            }
+        ]
+    },
+    {
+        "challenge_id": 97,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Change Logical Operator to its Negation",
+                "description": "Changed \"||\" to \"&&\" in line 7.",
+                "mutated_code": "function is_board_valid(board) { // board is the board's state.\n\tvar bluePieces = this.count_blue_pieces(board);\n\tvar redPieces = this.count_red_pieces(board);\n\n\tif (bluePieces > 12 || redPieces > 12) {\n\t\treturn false;\n\t} else if (bluePieces == 0 && redPieces == 0) {\n\t\treturn false;\n\t}\n\n\tvar pieces = this.get_pieces(board);\n\tvar odd = [1, 3, 5, 7], even = [0, 2, 4, 6];\n\n\tfor (p in pieces) {\n\t\tif (p.position.row % 2 != 0) {\n\t\t\tif (!odd.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\tif (!even.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t}\n\n\treturn true;\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 98,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Change Logical Operator to its Negation",
+                "description": "Changed \"==\" to \"!=\" in line 7.",
+                "mutated_code": "function is_board_valid(board) { // board is the board's state.\n\tvar bluePieces = this.count_blue_pieces(board);\n\tvar redPieces = this.count_red_pieces(board);\n\n\tif (bluePieces > 12 || redPieces > 12) {\n\t\treturn false;\n\t} else if (bluePieces == 0 || redPieces != 0) {\n\t\treturn false;\n\t}\n\n\tvar pieces = this.get_pieces(board);\n\tvar odd = [1, 3, 5, 7], even = [0, 2, 4, 6];\n\n\tfor (p in pieces) {\n\t\tif (p.position.row % 2 != 0) {\n\t\t\tif (!odd.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\tif (!even.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t}\n\n\treturn true;\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 99,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Inverting a Condition",
+                "description": "Changed \"!=\" to \"==\" in line 15.",
+                "mutated_code": "function is_board_valid(board) { // board is the board's state.\n\tvar bluePieces = this.count_blue_pieces(board);\n\tvar redPieces = this.count_red_pieces(board);\n\n\tif (bluePieces > 12 || redPieces > 12) {\n\t\treturn false;\n\t} else if (bluePieces == 0 || redPieces == 0) {\n\t\treturn false;\n\t}\n\n\tvar pieces = this.get_pieces(board);\n\tvar odd = [1, 3, 5, 7], even = [0, 2, 4, 6];\n\n\tfor (p in pieces) {\n\t\tif (p.position.row % 2 == 0) {\n\t\t\tif (!odd.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\tif (!even.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t}\n\n\treturn true;\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 100,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Inverting a Condition",
+                "description": "Removed the negation operator from line 16.",
+                "mutated_code": "function is_board_valid(board) { // board is the board's state.\n\tvar bluePieces = this.count_blue_pieces(board);\n\tvar redPieces = this.count_red_pieces(board);\n\n\tif (bluePieces > 12 || redPieces > 12) {\n\t\treturn false;\n\t} else if (bluePieces == 0 || redPieces == 0) {\n\t\treturn false;\n\t}\n\n\tvar pieces = this.get_pieces(board);\n\tvar odd = [1, 3, 5, 7], even = [0, 2, 4, 6];\n\n\tfor (p in pieces) {\n\t\tif (p.position.row % 2 != 0) {\n\t\t\tif (odd.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t} else {\n\t\t\tif (!even.includes(p.position.column)) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t}\n\n\treturn true;\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 101,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Removing the Negation",
+                "description": "Removed the negation operator on line 7.",
+                "mutated_code": "function build_a_triangle(board) {\n\tvar a = this.count_red_pieces(board); // Counts the number of red pieces.\n\tvar b = this.count_blue_pieces(board); // Counts the number of blue pieces.\n\tvar c = this.count_empty_spaces(board); // Counts the number of empty spaces (no pieces).\n\t\n\t// Tests if the lengths of the sides of the triangle are valid.\n\tif (this.is_triangle(a, b, c)) {\n\t\treturn false;\n\t} else {\n\t\tif (b == c && b == a) {\n\t\t\treturn true;\n\t\t} else if (b == a || b == c || a == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn true;\n\t\t}\n\t}\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 102,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Changing == to !=",
+                "description": "Changed \"==\" to \"!=\" on line 9. ",
+                "mutated_code": "function build_a_triangle(board) {\n\tvar a = this.count_red_pieces(board); // Counts the number of red pieces.\n\tvar b = this.count_blue_pieces(board); // Counts the number of blue pieces.\n\tvar c = this.count_empty_spaces(board); // Counts the number of empty spaces (no pieces).\n\t\n\t// Tests if the lengths of the sides of the triangle are valid.\n\tif (!this.is_triangle(a, b, c)) {\n\t\treturn false;\n\t} else {\n\t\tif (b != c && b == a) {\n\t\t\treturn true;\n\t\t} else if (b == a || b == c || a == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn true;\n\t\t}\n\t}\n}",
+                "equivalent": true
+            }
+        ]
+    },
+    {
+        "challenge_id": 103,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Changing && to ||",
+                "description": "Changed the \"&&\" to \"||\" on line 9.",
+                "mutated_code": "function build_a_triangle(board) {\n\tvar a = this.count_red_pieces(board); // Counts the number of red pieces.\n\tvar b = this.count_blue_pieces(board); // Counts the number of blue pieces.\n\tvar c = this.count_empty_spaces(board); // Counts the number of empty spaces (no pieces).\n\t\n\t// Tests if the lengths of the sides of the triangle are valid.\n\tif (!this.is_triangle(a, b, c)) {\n\t\treturn false;\n\t} else {\n\t\tif (b == c || b == a) {\n\t\t\treturn true;\n\t\t} else if (b == a || b == c || a == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn true;\n\t\t}\n\t}\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 104,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Changing || to &&",
+                "description": "Changed the \"||\" to \"&&\" on line 11.",
+                "mutated_code": "function build_a_triangle(board) {\n\tvar a = this.count_red_pieces(board); // Counts the number of red pieces.\n\tvar b = this.count_blue_pieces(board); // Counts the number of blue pieces.\n\tvar c = this.count_empty_spaces(board); // Counts the number of empty spaces (no pieces).\n\t\n\t// Tests if the lengths of the sides of the triangle are valid.\n\tif (!this.is_triangle(a, b, c)) {\n\t\treturn false;\n\t} else {\n\t\tif (b == c && b == a) {\n\t\t\treturn true;\n\t\t} else if (b == a && b == c || a == c) {\n\t\t\treturn true;\n\t\t} else {\n\t\t\treturn true;\n\t\t}\n\t}\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 105,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Changing != to ==",
+                "description": "Changed \"!=\" to \"==\" on line 7.",
+                "mutated_code": "function draw_a_triangle(board) {\n\t// This function finds all blue pieces in the board and\n\t// returns them in a list. The final list is ordered by\n\t// row and column - respectively, (row, column).\n\tvar vertices = this.find_blue_pieces(board)\n\n\tif (vertices.length == 3) {\n\t\treturn;\n\t}\n\n\t// This function calculates the Cartesian distance between\n\t// two (row, column) vertices. It rounds up to 2 decimal places.\n\tvar length_1 = this.distance(vertices[0], vertices[1]),\n\t\tlength_2 = this.distance(vertices[1], vertices[2]),\n\t\tlength_3 = this.distance(vertices[2], vertices[0]);\n\n\t// Ordered from the shortest (1st) to longest (3rd).\t\n\tvar ordered_sides = [length_1, length_2, length_3].sort();\n\n\t// side_a is always the shortest,\n\t// side_c is always the biggest.\n\t// side_b may be the same length as either the above, but NOT BOTH.\n\tvar side_a = ordered_sides[0],\n\t\tside_b = ordered_sides[1],\n\t\tside_c = ordered_sides[2];\n\n\t// Math.sqrt() calculates the square root of a number.\n\t// Math.pow(number, power) calculates number^power.\n\t// Sets are like lists, but they contain no duplicates.\n\tif (Math.sqrt(Math.pow(side_a, 2) + Math.pow(side_b, 2)) == side_c) {\n\t\treturn true; // Rectangle Triangle (Pythagoras)\n\t} else if (new Set([side_a, side_b, side_c]).size == 3) {\n\t\treturn true; // Scalene Triangle\n\t} else if (new Set([side_a, side_b, side_c]).size == 2) {\n\t\treturn true; // Isosceles Triangle\n\t}\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 106,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Changing == 3 to == 2",
+                "description": "Changed the Set size check from \"== 3\" to \"== 2\" on line 32.",
+                "mutated_code": "function draw_a_triangle(board) {\n\t// This function finds all blue pieces in the board and\n\t// returns them in a list. The final list is ordered by\n\t// row and column - respectively, (row, column).\n\tvar vertices = this.find_blue_pieces(board)\n\n\tif (vertices.length != 3) {\n\t\treturn;\n\t}\n\n\t// This function calculates the Cartesian distance between\n\t// two (row, column) vertices. It rounds up to 2 decimal places.\n\tvar length_1 = this.distance(vertices[0], vertices[1]),\n\t\tlength_2 = this.distance(vertices[1], vertices[2]),\n\t\tlength_3 = this.distance(vertices[2], vertices[0]);\n\n\t// Ordered from the shortest (1st) to longest (3rd).\t\n\tvar ordered_sides = [length_1, length_2, length_3].sort();\n\n\t// side_a is always the shortest,\n\t// side_c is always the biggest.\n\t// side_b may be the same length as either the above, but NOT BOTH.\n\tvar side_a = ordered_sides[0],\n\t\tside_b = ordered_sides[1],\n\t\tside_c = ordered_sides[2];\n\n\t// Math.sqrt() calculates the square root of a number.\n\t// Math.pow(number, power) calculates number^power.\n\t// Sets are like lists, but they contain no duplicates.\n\tif (Math.sqrt(Math.pow(side_a, 2) + Math.pow(side_b, 2)) == side_c) {\n\t\treturn true; // Rectangle Triangle (Pythagoras)\n\t} else if (new Set([side_a, side_b, side_c]).size == 2) {\n\t\treturn true; // Scalene Triangle\n\t} else if (new Set([side_a, side_b, side_c]).size == 2) {\n\t\treturn true; // Isosceles Triangle\n\t}\n}",
+                "equivalent": false
+            }
+        ]
+    },
+    {
+        "challenge_id": 107,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Changing == to <=",
+                "description": "Changed \"==\" to \"<=\" in line 30.",
+                "mutated_code": "function draw_a_triangle(board) {\n\t// This function finds all blue pieces in the board and\n\t// returns them in a list. The final list is ordered by\n\t// row and column - respectively, (row, column).\n\tvar vertices = this.find_blue_pieces(board)\n\n\tif (vertices.length != 3) {\n\t\treturn;\n\t}\n\n\t// This function calculates the Cartesian distance between\n\t// two (row, column) vertices. It rounds up to 2 decimal places.\n\tvar length_1 = this.distance(vertices[0], vertices[1]),\n\t\tlength_2 = this.distance(vertices[1], vertices[2]),\n\t\tlength_3 = this.distance(vertices[2], vertices[0]);\n\n\t// Ordered from the shortest (1st) to longest (3rd).\t\n\tvar ordered_sides = [length_1, length_2, length_3].sort();\n\n\t// side_a is always the shortest,\n\t// side_c is always the biggest.\n\t// side_b may be the same length as either the above, but NOT BOTH.\n\tvar side_a = ordered_sides[0],\n\t\tside_b = ordered_sides[1],\n\t\tside_c = ordered_sides[2];\n\n\t// Math.sqrt() calculates the square root of a number.\n\t// Math.pow(number, power) calculates number^power.\n\t// Sets are like lists, but they contain no duplicates.\n\tif (Math.sqrt(Math.pow(side_a, 2) + Math.pow(side_b, 2)) <= side_c) {\n\t\treturn true; // Rectangle Triangle (Pythagoras)\n\t} else if (new Set([side_a, side_b, side_c]).size == 3) {\n\t\treturn true; // Scalene Triangle\n\t} else if (new Set([side_a, side_b, side_c]).size == 2) {\n\t\treturn true; // Isosceles Triangle\n\t}\n}",
+                "equivalent": true
+            }
+        ]
+    },
+    {
+        "challenge_id": 108,
+        "mutants": [
+            {
+                "id": 0,
+                "name": "Mutant 1: Changing == to !=",
+                "description": "Changed \"==\" to \"!=\" in line 30.",
+                "mutated_code": "function draw_a_triangle(board) {\n\t// This function finds all blue pieces in the board and\n\t// returns them in a list. The final list is ordered by\n\t// row and column - respectively, (row, column).\n\tvar vertices = this.find_blue_pieces(board)\n\n\tif (vertices.length != 3) {\n\t\treturn;\n\t}\n\n\t// This function calculates the Cartesian distance between\n\t// two (row, column) vertices. It rounds up to 2 decimal places.\n\tvar length_1 = this.distance(vertices[0], vertices[1]),\n\t\tlength_2 = this.distance(vertices[1], vertices[2]),\n\t\tlength_3 = this.distance(vertices[2], vertices[0]);\n\n\t// Ordered from the shortest (1st) to longest (3rd).\t\n\tvar ordered_sides = [length_1, length_2, length_3].sort();\n\n\t// side_a is always the shortest,\n\t// side_c is always the biggest.\n\t// side_b may be the same length as either the above, but NOT BOTH.\n\tvar side_a = ordered_sides[0],\n\t\tside_b = ordered_sides[1],\n\t\tside_c = ordered_sides[2];\n\n\t// Math.sqrt() calculates the square root of a number.\n\t// Math.pow(number, power) calculates number^power.\n\t// Sets are like lists, but they contain no duplicates.\n\tif (Math.sqrt(Math.pow(side_a, 2) + Math.pow(side_b, 2)) != side_c) {\n\t\treturn true; // Rectangle Triangle (Pythagoras)\n\t} else if (new Set([side_a, side_b, side_c]).size == 3) {\n\t\treturn true; // Scalene Triangle\n\t} else if (new Set([side_a, side_b, side_c]).size == 2) {\n\t\treturn true; // Isosceles Triangle\n\t}\n}",
+                "equivalent": false
             }
         ]
     }

@@ -2230,7 +2230,7 @@
         },
         "achievement": null,
         "achievement_hint": null,
-        "difficulty": "Hard",
+        "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
     },
@@ -2335,7 +2335,7 @@
         },
         "achievement": null,
         "achievement_hint": null,
-        "difficulty": "Normal",
+        "difficulty": "Easy",
         "owner_id": 1,
         "visible": true
     },
@@ -2356,7 +2356,7 @@
         },
         "achievement": null,
         "achievement_hint": null,
-        "difficulty": "Hard",
+        "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
     },
@@ -2377,7 +2377,7 @@
         },
         "achievement": null,
         "achievement_hint": null,
-        "difficulty": "Hard",
+        "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
     },
@@ -2441,6 +2441,258 @@
         "achievement": null,
         "achievement_hint": null,
         "difficulty": "Hard",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 10.1: Resilient Conditions",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "The condition won't trigger on most inputs! What input will change the return value?",
+        "objective": "Kill the mutant on line 7.",
+        "initial_board": 1,
+        "code_file": 10,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Easy",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 10.2: Negating Conditions",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "The condition won't trigger on most inputs! What input will change the return value?",
+        "objective": "Kill the mutant on line 7.",
+        "initial_board": 1,
+        "code_file": 10,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Easy",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 10.3: Resilient Conditions... Or Not!",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Try to find an input that makes the function return true when it should return false, or false when it should return true!",
+        "objective": "Kill the mutant on line 15.",
+        "initial_board": 1,
+        "code_file": 10,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Normal",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 0,
+        "name": "Challenge 10.4: Negating Conditions... Or Not!",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Try to find an input that makes the function return true when it should return false, or false when it should return true!",
+        "objective": "Kill the mutant on line 16.",
+        "initial_board": 1,
+        "code_file": 10,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Normal",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 101,
+        "name": "Challenge 11.1: Triangle or Not?",
+        "test_cases_count": 1,
+        "score": 200,
+        "hint": "Think about what inputs would make is_triangle return a different value if its condition was flipped!",
+        "objective": "Kill the mutant on line 7.",
+        "initial_board": 1,
+        "code_file": 11,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Easy",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 102,
+        "name": "Challenge 11.2: Is This An Equilateral Triangle?",
+        "test_cases_count": 1,
+        "score": 300,
+        "hint": "Are you sure this mutant can actually be killed? Think carefully about what the function always returns in the else branch!",
+        "objective": "Kill the mutant on line 9.",
+        "initial_board": 1,
+        "code_file": 11,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Hard",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 103,
+        "name": "Challenge 11.3: Equal Sides",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Think about what happens when all three sides are equal vs when only two are!",
+        "objective": "Kill the mutant on line 9.",
+        "initial_board": 1,
+        "code_file": 11,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Normal",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 104,
+        "name": "Challenge 11.4: Two Sides the Same",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Focus on the conditions that check if exactly two sides are equal!",
+        "objective": "Kill the mutant on line 11.",
+        "initial_board": 1,
+        "code_file": 11,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Normal",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 105,
+        "name": "Challenge 12.1: Wrong Number of Vertices",
+        "test_cases_count": 1,
+        "score": 200,
+        "hint": "Think about what happens when the number of blue pieces is checked against 3!",
+        "objective": "Kill the mutant on line 7.",
+        "initial_board": 1,
+        "code_file": 12,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Easy",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 106,
+        "name": "Challenge 12.2: How Many Unique Sides?",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "A Set removes duplicates. Think about what happens when you change how many unique sides are expected!",
+        "objective": "Kill the mutant on line 32.",
+        "initial_board": 1,
+        "code_file": 12,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Normal",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 107,
+        "name": "Challenge 12.3: Sorting Sides",
+        "test_cases_count": 1,
+        "score": 300,
+        "hint": "Consider what values side_c can realistically take after sorting. Can the mutated condition ever produce a different result?",
+        "objective": "Kill the mutant on line 30.",
+        "initial_board": 1,
+        "code_file": 12,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Hard",
+        "owner_id": 1,
+        "visible": true
+    },
+    {
+        "id": 108,
+        "name": "Challenge 12.4: Pythagoras Strikes Back",
+        "test_cases_count": 1,
+        "score": 250,
+        "hint": "Try to find a right triangle! What if the condition was checking something slightly different?",
+        "objective": "Kill the mutant on line 30.",
+        "initial_board": 1,
+        "code_file": 12,
+        "challenge_type": "mutation",
+        "passing_criteria": {
+            "expression_count": null,
+            "preconditions": [],
+            "tests": []
+        },
+        "achievement": null,
+        "achievement_hint": null,
+        "difficulty": "Normal",
         "owner_id": 1,
         "visible": true
     }

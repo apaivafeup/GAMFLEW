@@ -12,7 +12,7 @@
         <button class="button disabled" style="width: auto !important;"  v-else  @click="changePreviousPage(id, false)">
           Previous Challenge
         </button>
-        <button class="button" style="width: auto !important;"  v-if="id != 99" @click="changeNextPage(id, false)">
+        <button class="button" style="width: auto !important;"  v-if="id != 108" @click="changeNextPage(id, false)">
           Next Challenge
         </button>
         <button class="button disabled" style="width: auto !important;" v-else @click="changeNextPage(id, true)">
