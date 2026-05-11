@@ -1,11 +1,12 @@
 <template>
   <div class="row" style="display: flex; justify-content: center; margin: 5px; width: 100%;">
-    <button v-if="!show_original" @click="toggleOriginalCode()" class="button is-primary">Show Original Code</button>
-    <button v-else @click="toggleOriginalCode()" class="button is-primary">Show Mutated Code</button>
+    <button v-if="show_original" @click="toggleOriginalCode()" class="button is-primary">Original Code</button>
+    <button v-else @click="toggleOriginalCode()" class="button is-primary">Mutated Code</button>
   </div>
   <CodeBlock
     :class="[
       'col line-numbers mutation-code-block',
+      { 'original-code-block': show_original },
       { 'killed-mutant-code-block': hasResult && isCurrentMutantKilled }
     ]"
     theme="default"
@@ -39,6 +40,10 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
 
 .killed-mutant-code-block :deep(.line-highlight) {
   background: rgba(99, 255, 99, 0.5) !important;
+}
+
+.original-code-block :deep(.line-highlight) {
+  background: rgba(255, 255, 99, 0.3) !important;
 }
 </style>
 
