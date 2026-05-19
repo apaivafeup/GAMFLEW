@@ -1,3 +1,5 @@
+import { instrumentCode, evaluateCoverage } from "../../assets/js/codeInstrumenter.js";
+
 export class Challenge {
   constructor(
     id,
@@ -30,4 +32,46 @@ export class Challenge {
     this.achievement_hint = achievement_hint
     this.owner = owner
   }
+}
+
+export function runCoverage(originalCode, input, challengeType, testCaseCount, lineRange) {
+  const { instrumentedCode, coverageMap } = instrumentCode(originalCode, challengeType, lineRange);
+
+  const serializedInput = {
+    state: JSON.parse(JSON.stringify(input.state)),
+    log: JSON.parse(JSON.stringify(input.log)),
+    currentKey: input.currentKey,
+    outOfBoundsState: JSON.parse(JSON.stringify(input.outOfBoundsState))
+  };
+
+  return new Promise(resolve => {
+    const worker = new Worker(
+      new URL("../coverageWorker.js", import.meta.url), { type: "module" }
+    );
+
+    const timer = setTimeout(() => {
+      worker.terminate();
+      resolve({ success: false, timeout: true });
+    }, 5000);
+
+    worker.onmessage = e => {
+      clearTimeout(timer);
+      worker.terminate();
+
+      if (e.data.type === "COVERAGE_RESULTS") {
+        console.log('Received coverage results from worker:', e.data.result);
+        resolve({ coverageMap: e.data.result });
+      } else if (e.data.type === "ERROR") {
+        console.error('Error in coverage worker:', e.data.error);
+        resolve({ error: e.data.error });
+      }
+    };
+
+    worker.postMessage({
+      originalCode: instrumentedCode,
+      inputData: serializedInput,
+      coverageMap,
+      testCaseCount
+    });
+  });
 }

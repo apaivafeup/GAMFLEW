@@ -21,6 +21,7 @@
     "axios": "^1.12.2",
     "bootstrap": "^5.3.2",
     "browserslist": "^4.23.1",
+    "diff": "^5.2.0",
     "dotenv-expand": "^10.0.0",
     "downloadjs": "^1.4.7",
     "floating-vue": "^5.2.2",
@@ -37,7 +38,6 @@
     "vue-router": "^4.2.5",
     "vue-simple-search-dropdown": "^1.0.1",
     "vue-toastification": "^2.0.0-rc.5",
-    "diff": "^5.2.0",
     "vue3-code-block": "^2.2.12",
     "vue3-easy-data-table": "^1.5.47",
     "vue3-highlightjs": "^1.0.5"

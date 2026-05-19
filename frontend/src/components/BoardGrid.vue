@@ -170,7 +170,7 @@
 import PieceStack from './PieceStack.vue'
 
 // JS
-import { Challenge } from '../store/models/challenge.js'
+import { Challenge, runCoverage } from '../store/models/challenge.js'
 import { boardStore } from '../store/boardStore.js'
 import { authStore } from '../store/authStore.js'
 import { useToast } from 'vue-toastification'
@@ -208,16 +208,13 @@ export default {
     this.mutationResults.clearResults()
     
     this.code_file = null
-    if (this.challenge.challenge_type === 'mutation') {
-      await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
-        this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
-        console.log(this.code_file)
-      }).catch((error) => {
-        console.log(error)
-        this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
-        this.$error = true
-      })
-    }
+    await this.$axios.get(this.$api_link + '/code-files/' + this.challenge.code_file, this.auth.config).then((response) => {
+      this.code_file = new CodeFile(response.data.id, response.data.name, response.data.content)
+    }).catch((error) => {
+      console.error('Error fetching code file:', error)
+      this.$router.push({ name: 'error', params: {afterCode: '_', code: error.response.status, message: error.response.statusText } })
+      this.$error = true
+    })
 
     this.$forceUpdate()
   },
@@ -574,7 +571,7 @@ export default {
     },
 
     // Submit functions
-    go() {
+    async go() {
       if (!this.board.go) {
         return
       }
@@ -584,7 +581,7 @@ export default {
 
       try {
         if (type == 'statement') {
-          this.goUnique(this.board)
+          await this.goUnique(this.board)
         } else if (type == 'decision' && test_cases_count == 1) {
           this.goCondition(this.board)
         } else if (type == 'decision') {
@@ -595,6 +592,7 @@ export default {
           console.error('Invalid submit type')
         }
       } catch (error) {
+        console.error('Error during submission:', error)
         this.board.fail()
         this.board.error = true;
         return
@@ -610,32 +608,62 @@ export default {
 
     },
 
-    goUnique(input) {
-      var preconditions = this.challenge.passing_criteria.preconditions,
-        tests = this.challenge.passing_criteria.tests
+    async goUnique(input) {
+      // var preconditions = this.challenge.passing_criteria.preconditions,
+      //   tests = this.challenge.passing_criteria.tests
 
-      for (var i = 0; i < preconditions.length; i++) {
-        var precondition = preconditions[i]
-        if (!eval(precondition)) {
-          this.board.fail()
-          return
-        }
+      // for (var i = 0; i < preconditions.length; i++) {
+      //   var precondition = preconditions[i]
+      //   if (!eval(precondition)) {
+      //     this.board.fail()
+      //     return
+      //   }
+      // }
+
+      // var count = 0
+      // for (var i = 0; i < tests.length; i++) {
+      //   var test = tests[i]
+      //   if (!eval(test)) {
+      //     this.board.fail()
+      //     return
+      //   } else {
+      //     count++
+      //   }
+      // }
+
+      // if (count == tests.length) {
+      //   this.board.add = false
+      //   this.board.pass(this.challenge.score)
+      // }
+
+      //Find the line range for the coverage challenge, based on the challenge's objective (String) [Example: "line 6" OR "lines 5-6"]
+      var lineRange = this.challenge.objective.match(/(?:line\s+(\d+))|(?:lines\s+(\d+)-(\d+))/)
+      
+      //Transform the regex into an array of line numbers [Example: "line 6" -> [6, 6], "lines 5-6" -> [5, 6]]
+      lineRange = lineRange ? (lineRange[1] ? [parseInt(lineRange[1]), parseInt(lineRange[1])] : [parseInt(lineRange[2]), parseInt(lineRange[3])]) : null
+
+      const originalCode = this.code_file?.content
+
+      const result = await runCoverage(originalCode, input, this.challenge.challenge_type, this.challenge.test_cases_count, lineRange);
+
+      const coverageEntries = Object.values(result.coverageMap)
+
+      console.log('Coverage result:', result)
+
+      var passed = false
+      if (lineRange[0] == lineRange[1]) {
+        passed = coverageEntries.some(entry => entry.line === lineRange[0] && entry.hit === true)
+      } else {
+        passed = coverageEntries.some(entry => entry.line >= lineRange[0] && entry.line <= lineRange[1] && entry.hit === true)
       }
 
-      var count = 0
-      for (var i = 0; i < tests.length; i++) {
-        var test = tests[i]
-        if (!eval(test)) {
-          this.board.fail()
-          return
-        } else {
-          count++
-        }
-      }
-
-      if (count == tests.length) {
-        this.board.add = false
+      if (passed) {
+        console.log('Test passed!')
         this.board.pass(this.challenge.score)
+      } else {
+        console.log('Test failed!')
+        this.board.fail()
+        return
       }
     },
 
@@ -833,18 +861,21 @@ export default {
         challenge_id: this.board.attempt.challenge_id,
         attempt_type: this.board.passed ? 'pass' : 'fail',
         comment: this.board.attempt.comment,
-        achievement: this.board.achievement,
+        achievement: this.board.achievement ? true : false,
         test_cases: this.saveTestCases(),
         score: this.board.passed ? this.challenge.score : 0,
         comment_score_count: this.board.passed ? 0 : null,
         comment_score: this.board.passed ? 0 : null
       }
 
+      console.log('Submitting attempt with body:', body)
+
       var flag = false, score = 0
       await this.$axios.post(this.$api_link + '/create/attempt/', body, this.auth.config).then((response) => {
         this.board.submit(response.data.score)
         this.auth.getUserData(this.auth.user.id) // update user data
       }).catch((error) => {
+        console.log('Error submitting attempt:', error)
         this.toast.error('An error occurred while submitting your attempt. Please try again later.')
       })
 

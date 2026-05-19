@@ -137,7 +137,7 @@ export default {
       </div>
     </div>
     <div class="col" style="display: flex; flex-direction: column; justify-content: right">
-      <BoardGrid :challenge="challenge" :playable="playable"/>
+      <BoardGrid v-if="challenge && challenge.code_file" :challenge="challenge" :playable="playable"/>
       <PlayerBar :user="user" />
     </div>
   </div>
