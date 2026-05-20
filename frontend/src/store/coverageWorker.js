@@ -68,7 +68,7 @@ function runCoverageTests(originalCode, inputData, coverageMap, testCaseCount) {
             outOfBoundsState: inputData.outOfBoundsState[i]
         };
 
-        console.log(`Executing test case ${i} with board state:`, board.state[2][0]);
+        //console.log(`Executing test case ${i} with board state:`, board.state);
 
         try {
             fn_original(board);

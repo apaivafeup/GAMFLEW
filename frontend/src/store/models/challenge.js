@@ -67,6 +67,8 @@ export function runCoverage(originalCode, input, challengeType, testCaseCount, l
       }
     };
 
+    //console.log("Serialized input for coverage worker:", serializedInput);
+
     worker.postMessage({
       originalCode: instrumentedCode,
       inputData: serializedInput,
