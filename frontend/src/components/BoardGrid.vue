@@ -584,8 +584,10 @@ export default {
           await this.goUnique(this.board)
         } else if (type == 'decision') {
           await this.goDecision(this.board)
-        } else if (type == 'condition' || type == 'mcdc' || type == 'condition/decision') {
-          this.goCondition(this.board)
+        } else if (type == 'condition') {
+          await this.goCondition(this.board)
+        } else if (type == 'mcdc' || type == 'condition/decision') {
+          console.log('NOT YET AVAILABLE: Running MCDC/Condition Decision challenge')
         } else {
           console.error('Invalid submit type')
         }
@@ -639,43 +641,6 @@ export default {
     },
 
     async goDecision(input) {
-      // var preconditions = this.challenge.passing_criteria.preconditions,
-      //   tests = this.challenge.passing_criteria.tests
-
-      // var passed = Array(tests.length).fill(false)
-      // for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
-      //   for (var i = 0; i < preconditions.length; i++) {
-      //     var precondition = preconditions[i]
-      //     if (!eval(precondition)) {
-      //       this.board.fail()
-      //       return
-      //     }
-      //   }
-
-      //   for (var i = 0; i < tests.length; i++) {
-      //     var test = tests[i]
-
-      //     if (passed[i] == true) {
-      //       continue
-      //     }
-
-      //     if (!eval(test)) {
-      //       continue
-      //     } else {
-      //       passed[i] = true
-      //       break
-      //     }
-      //   }
-      // }
-
-      // //console.log('passed', passed)
-
-      // if (!passed.includes(false)) {
-      //   this.board.add = false
-      //   this.board.pass(this.challenge.score)
-      // } else {
-      //   this.board.fail()
-      // }
       //Find the line range for the coverage challenge, based on the challenge's objective (String) [Example: "line 6" OR "lines 5-6"]
       var lineRange = this.challenge.objective.match(/(?:line\s+(\d+))|(?:lines\s+(\d+)-(\d+))/)
       
@@ -707,39 +672,35 @@ export default {
       }
     },
 
-    goCondition(input) {
-      var preconditions = this.challenge.passing_criteria.preconditions,
-        tests = this.challenge.passing_criteria.tests
+    async goCondition(input) {
+      //Find the line range for the coverage challenge, based on the challenge's objective (String) [Example: "line 6" OR "lines 5-6"]
+      var lineRange = this.challenge.objective.match(/(?:line\s+(\d+))|(?:lines\s+(\d+)-(\d+))/)
+      
+      //Transform the regex into an array of line numbers [Example: "line 6" -> [6, 6], "lines 5-6" -> [5, 6]]
+      lineRange = lineRange ? (lineRange[1] ? [parseInt(lineRange[1]), parseInt(lineRange[1])] : [parseInt(lineRange[2]), parseInt(lineRange[3])]) : null
 
-      var passed = Array(tests.length).fill(false)
-      for (var case_num = 0; case_num <= this.board.currentKey; case_num++) {
-        for (var i = 0; i < preconditions.length; i++) {
-          var precondition = preconditions[i]
-          if (!eval(precondition)) {
-            //console.log(case_num, precondition)
-            this.board.fail()
-            return
-          }
-        }
+      const originalCode = this.code_file?.content
 
-        for (var i = 0; i < tests.length; i++) {
-          var test = tests[i]
+      const result = await runCoverage(originalCode, input, this.challenge.challenge_type, this.challenge.test_cases_count, lineRange);
 
-          if (!eval(test)) {
-            continue
-          } else {
-            passed[i] = true
-          }
-        }
+      const coverageEntries = Object.values(result.coverageMap)
+
+      //console.log('Coverage result:', result)
+
+      var passed = false
+      if (lineRange[0] == lineRange[1]) {
+        passed = coverageEntries.some(entry => entry.line === lineRange[0] && Object.values(entry.trueHits).every(hit => hit === true) && Object.values(entry.falseHits).every(hit => hit === true))
+      } else {
+        passed = coverageEntries.some(entry => entry.line >= lineRange[0] && entry.line <= lineRange[1] && Object.values(entry.trueHits).every(hit => hit === true) && Object.values(entry.falseHits).every(hit => hit === true))
       }
 
-      //console.log('passed', passed)
-
-      if (!passed.includes(false)) {
-        this.board.add = false
+      if (passed) {
+        console.log('Test passed!')
         this.board.pass(this.challenge.score)
       } else {
+        console.log('Test failed!')
         this.board.fail()
+        return
       }
     },
 

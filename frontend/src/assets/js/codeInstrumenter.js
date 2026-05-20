@@ -18,6 +18,18 @@ export function createCoverageTracker(coverageMap) {
                 }
             }
             return value;
+        },
+        hitCondition(id, index, value) {
+            if (coverageMap[id]) {
+                if (typeof value === 'boolean') {
+                    if (value) {
+                        coverageMap[id].trueHits[index] = true;
+                    }
+                    else {
+                        coverageMap[id].falseHits[index] = true;
+                    }
+                }
+            }
         }
     };
 }
@@ -39,7 +51,9 @@ export function evaluateCoverage(coverageMap, challengeType) {
     if (challengeType === 'statement') {
         return Object.values(coverageMap).every(statement => statement.hit);
     } else if (challengeType === 'decision') {
-        return Object.values(coverageMap).every(decision => decision.trueHit || decision.falseHit);
+        return Object.values(coverageMap).every(decision => decision.trueHit && decision.falseHit);
+    } else if (challengeType === 'condition') {
+        return Object.values(coverageMap).every(condition => Object.values(condition.trueHits).every(hit => hit === true) && Object.values(condition.falseHits).every(hit => hit === true));
     }
 
     return false;
@@ -106,6 +120,48 @@ function instrumentDecisionChallenge(sourceCode, lineRange) {
                 coverageMap[id] = { line, trueHit: false, falseHit: false, value: condition.trim() };
 
                 return `__coverage__.hitDecision('` + id + `', eval('` + condition.trim() + `'));\n${match}`;
+            }
+        }
+    );
+
+    console.log('Final Instrumented code:', instrumentedCode);
+
+    return { instrumentedCode, coverageMap };
+}
+
+function instrumentConditionChallenge(sourceCode, lineRange) {
+    const coverageMap = {};
+
+    let statementId = 0;
+
+    let instrumentedCode = sourceCode.replace(
+        /if\s*\(([^()]*(?:\([^()]*(?:\([^()]*\)[^()]*)*\)[^()]*)*)\)/g,
+        (match, condition, offset) => {
+            const line = sourceCode.substring(0, offset).split('\n').length;
+            
+            if (Number(line) < lineRange[0] || Number(line) > lineRange[1]) {
+                return match;
+            }
+            else {
+                const id = statementId++;
+
+                let trueHits = {};
+                let falseHits = {};
+
+                let coverageCallString = ``;
+
+                    condition = condition.split(/(&&|\|\|)/).map(part => part.trim()).filter(part => part && part !== '&&' && part !== '||');
+
+                condition.forEach((part, index) => {
+                    trueHits[index] = false;
+                    falseHits[index] = false;
+
+                    coverageCallString += `__coverage__.hitCondition('` + id + `', ` + index + `, eval('` + part + `'));\n`;
+                });
+
+                coverageMap[id] = { line, trueHits, falseHits, value: condition };
+
+                return coverageCallString + match;
             }
         }
     );
