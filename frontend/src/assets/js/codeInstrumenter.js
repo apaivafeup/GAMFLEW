@@ -19,14 +19,30 @@ export function createCoverageTracker(coverageMap) {
             }
             return value;
         },
-        hitCondition(id, index, value) {
+        hitCondition(id, conditionIndex, value) {
             if (coverageMap[id]) {
                 if (typeof value === 'boolean') {
                     if (value) {
-                        coverageMap[id].trueHits[index] = true;
+                        coverageMap[id].trueHits[conditionIndex] = true;
                     }
                     else {
-                        coverageMap[id].falseHits[index] = true;
+                        coverageMap[id].falseHits[conditionIndex] = true;
+                    }
+                }
+            }
+        },
+        hitMCDC(id, conditionValues, conditionOutput) {
+            if (coverageMap[id]) {
+                if (typeof conditionOutput === 'boolean') {
+                    // Find the matching condition key. .find callback must return a boolean.
+                    const conditionKey = Object.keys(coverageMap[id].conditionsValues).find(key =>
+                        coverageMap[id].conditionsValues[key].every((value, index) => value === conditionValues[index])
+                    );
+
+                    const conditionId = conditionKey !== undefined ? parseInt(conditionKey, 10) : -1;
+
+                    if (conditionId !== -1 && coverageMap[id].decisionOutput[conditionId] === conditionOutput) {
+                        coverageMap[id].casesHit[conditionId] = true;
                     }
                 }
             }
@@ -41,8 +57,9 @@ export function instrumentCode(sourceCode, challengeType, lineRange) {
         return instrumentDecisionChallenge(sourceCode, lineRange);
     } else if (challengeType === 'condition') {
         return instrumentConditionChallenge(sourceCode, lineRange);
-    }
-    else {
+    } else if (challengeType === 'mcdc') {
+        return instrumentMCDCChallenge(sourceCode, lineRange);
+    } else {
         throw new Error(`Instrumenter loaded with unsupported challenge type: ${challengeType}`);
     }
 }
@@ -54,6 +71,8 @@ export function evaluateCoverage(coverageMap, challengeType) {
         return Object.values(coverageMap).every(decision => decision.trueHit && decision.falseHit);
     } else if (challengeType === 'condition') {
         return Object.values(coverageMap).every(condition => Object.values(condition.trueHits).every(hit => hit === true) && Object.values(condition.falseHits).every(hit => hit === true));
+    } else if (challengeType === 'mcdc') {
+        return Object.values(coverageMap).every(mcdc => Object.values(mcdc.casesHit).every(hit => hit === true));
     }
 
     return false;
@@ -150,7 +169,7 @@ function instrumentConditionChallenge(sourceCode, lineRange) {
 
                 let coverageCallString = ``;
 
-                    condition = condition.split(/(&&|\|\|)/).map(part => part.trim()).filter(part => part && part !== '&&' && part !== '||');
+                condition = condition.split(/(&&|\|\|)/).map(part => part.trim()).filter(part => part && part !== '&&' && part !== '||');
 
                 condition.forEach((part, index) => {
                     trueHits[index] = false;
@@ -170,3 +189,84 @@ function instrumentConditionChallenge(sourceCode, lineRange) {
 
     return { instrumentedCode, coverageMap };
 }
+
+function instrumentMCDCChallenge(sourceCode, lineRange) {
+    const coverageMap = {};
+
+    let statementId = 0;
+
+    let instrumentedCode = sourceCode.replace(
+        /if\s*\(([^()]*(?:\([^()]*(?:\([^()]*\)[^()]*)*\)[^()]*)*)\)/g,
+        (match, condition, offset) => {
+            const line = sourceCode.substring(0, offset).split('\n').length;
+            if (Number(line) < lineRange[0] || Number(line) > lineRange[1]) {
+                return match;
+            }
+            else {
+                const id = statementId++;
+
+                let conditionsValues = {0 : []};
+                let decisionOutput = {0: false};
+                let casesHit = {0: false};
+                let tempArray = [];
+                
+                let tempCallString = ``;
+                let coverageCallString = ``;
+
+                if (condition.includes('&&')) {
+                    const parts = condition.split('&&').map(part => part.trim());
+
+                    conditionsValues[0] = new Array(parts.length).fill(true);
+                    decisionOutput[0] = true;
+                    casesHit[0] = false;
+
+                    parts.forEach((part, index) => {
+                        tempArray = new Array(parts.length).fill(true);
+
+                        tempArray[index] = false;
+
+                        conditionsValues[index + 1] = tempArray;
+                        decisionOutput[index + 1] = false;
+
+                        casesHit[index + 1] = false;
+
+                        tempCallString += `eval('` + part + `')` + (index < parts.length - 1 ? ', ' : ']');
+                    });
+
+                    coverageCallString += `__coverage__.hitMCDC('` + id + `', [` + tempCallString + `, eval('` + condition + `'));\n`;
+                } else if (condition.includes('||')) {
+                    const parts = condition.split('||').map(part => part.trim());
+
+                    conditionsValues[0] = new Array(parts.length).fill(false);
+                    decisionOutput[0] = false;
+                    casesHit[0] = false;
+
+                    parts.forEach((part, index) => {
+                        tempArray = new Array(parts.length).fill(false);
+
+                        tempArray[index] = true;
+
+                        conditionsValues[index + 1] = tempArray;
+                        decisionOutput[index + 1] = true;
+
+                        casesHit[index + 1] = false;
+
+                        tempCallString += `eval('` + part + `')` + (index < parts.length - 1 ? ', ' : ']');
+                    });
+
+                     coverageCallString += `__coverage__.hitMCDC('` + id + `', [` + tempCallString + `, eval('` + condition + `'));\n`;
+                }
+
+                coverageMap[id] = { line, conditionsValues, decisionOutput, casesHit, value: condition.trim() };
+
+                return coverageCallString + match;
+            }
+        }
+    );
+
+    console.log('Final Instrumented code:', instrumentedCode);
+
+    return { instrumentedCode, coverageMap };
+}
+
+

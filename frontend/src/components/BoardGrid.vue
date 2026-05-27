@@ -586,8 +586,10 @@ export default {
           await this.goDecision(this.board)
         } else if (type == 'condition') {
           await this.goCondition(this.board)
-        } else if (type == 'mcdc' || type == 'condition/decision') {
-          console.log('NOT YET AVAILABLE: Running MCDC/Condition Decision challenge')
+        } else if (type == 'condition/decision') {
+          await this.goConditionDecision(this.board)
+        } else if (type == 'mcdc') {
+          await this.goMCDC(this.board)
         } else {
           console.error('Invalid submit type')
         }
@@ -692,6 +694,75 @@ export default {
         passed = coverageEntries.some(entry => entry.line === lineRange[0] && Object.values(entry.trueHits).every(hit => hit === true) && Object.values(entry.falseHits).every(hit => hit === true))
       } else {
         passed = coverageEntries.some(entry => entry.line >= lineRange[0] && entry.line <= lineRange[1] && Object.values(entry.trueHits).every(hit => hit === true) && Object.values(entry.falseHits).every(hit => hit === true))
+      }
+
+      if (passed) {
+        console.log('Test passed!')
+        this.board.pass(this.challenge.score)
+      } else {
+        console.log('Test failed!')
+        this.board.fail()
+        return
+      }
+    },
+
+    async goConditionDecision(input) {
+      //Find the line range for the coverage challenge, based on the challenge's objective (String) [Example: "line 6" OR "lines 5-6"]
+      var lineRange = this.challenge.objective.match(/(?:line\s+(\d+))|(?:lines\s+(\d+)-(\d+))/)
+      
+      //Transform the regex into an array of line numbers [Example: "line 6" -> [6, 6], "lines 5-6" -> [5, 6]]
+      lineRange = lineRange ? (lineRange[1] ? [parseInt(lineRange[1]), parseInt(lineRange[1])] : [parseInt(lineRange[2]), parseInt(lineRange[3])]) : null
+
+      const originalCode = this.code_file?.content
+
+      const conditionResult = await runCoverage(originalCode, input, 'condition', this.challenge.test_cases_count, lineRange);
+      const conditionCoverageEntries = Object.values(conditionResult.coverageMap)
+
+      const decisionResult = await runCoverage(originalCode, input, 'decision', this.challenge.test_cases_count, lineRange);
+      const decisionCoverageEntries = Object.values(decisionResult.coverageMap)
+
+      console.log('Condition coverage result 1:', conditionCoverageEntries, ' Decision coverage result 2:', decisionCoverageEntries)
+
+      var passed = false
+      if (lineRange[0] == lineRange[1]) {
+        const conditionsPass = conditionCoverageEntries.some(entry => entry.line === lineRange[0] && Object.values(entry.trueHits).every(hit => hit === true) && Object.values(entry.falseHits).every(hit => hit === true))
+        const decisionsPass = decisionCoverageEntries.some(entry => entry.line === lineRange[0] && entry.trueHit === true && entry.falseHit === true)
+        passed = conditionsPass && decisionsPass
+      } else {
+        const conditionsPass = conditionCoverageEntries.some(entry => entry.line >= lineRange[0] && entry.line <= lineRange[1] && Object.values(entry.trueHits).every(hit => hit === true) && Object.values(entry.falseHits).every(hit => hit === true))
+        const decisionsPass = decisionCoverageEntries.some(entry => entry.line >= lineRange[0] && entry.line <= lineRange[1] && entry.trueHit === true && entry.falseHit === true)
+        passed = conditionsPass && decisionsPass
+      }
+
+      if (passed) {
+        console.log('Test passed!')
+        this.board.pass(this.challenge.score)
+      } else {
+        console.log('Test failed!')
+        this.board.fail()
+        return
+      }
+    },
+
+    async goMCDC(input) {
+      //Find the line range for the coverage challenge, based on the challenge's objective (String) [Example: "line 6" OR "lines 5-6"]
+      var lineRange = this.challenge.objective.match(/(?:line\s+(\d+))|(?:lines\s+(\d+)-(\d+))/)
+      
+      //Transform the regex into an array of line numbers [Example: "line 6" -> [6, 6], "lines 5-6" -> [5, 6]]
+      lineRange = lineRange ? (lineRange[1] ? [parseInt(lineRange[1]), parseInt(lineRange[1])] : [parseInt(lineRange[2]), parseInt(lineRange[3])]) : null
+
+      const originalCode = this.code_file?.content
+
+      const mcdcResult = await runCoverage(originalCode, input, this.challenge.challenge_type, this.challenge.test_cases_count, lineRange);
+      const mcdcCoverageEntries = Object.values(mcdcResult.coverageMap)
+
+      console.log('MCDC coverage result:', mcdcCoverageEntries)
+
+      var passed = false
+      if (lineRange[0] == lineRange[1]) {
+        passed = mcdcCoverageEntries.some(entry => entry.line === lineRange[0] && Object.values(entry.casesHit).every(hit => hit === true))
+      } else {
+        passed = mcdcCoverageEntries.some(entry => entry.line >= lineRange[0] && entry.line <= lineRange[1] && Object.values(entry.casesHit).every(hit => hit === true))
       }
 
       if (passed) {

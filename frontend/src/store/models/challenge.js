@@ -59,7 +59,7 @@ export function runCoverage(originalCode, input, challengeType, testCaseCount, l
       worker.terminate();
 
       if (e.data.type === "COVERAGE_RESULTS") {
-        console.log('Received coverage results from worker:', e.data.result);
+        //console.log('Received coverage results from worker:', e.data.result);
         resolve({ coverageMap: e.data.result });
       } else if (e.data.type === "ERROR") {
         console.error('Error in coverage worker:', e.data.error);
