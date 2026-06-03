@@ -623,7 +623,7 @@ export default {
 
       const coverageEntries = Object.values(result.coverageMap)
 
-      //console.log('Coverage result:', result)
+      console.log('Coverage result:', result)
 
       var passed = false
       if (lineRange[0] == lineRange[1]) {
@@ -655,7 +655,7 @@ export default {
 
       const coverageEntries = Object.values(result.coverageMap)
 
-      //console.log('Coverage result:', result)
+      console.log('Coverage result:', result)
 
       var passed = false
       if (lineRange[0] == lineRange[1]) {
@@ -687,7 +687,7 @@ export default {
 
       const coverageEntries = Object.values(result.coverageMap)
 
-      //console.log('Coverage result:', result)
+      console.log('Coverage result:', result)
 
       var passed = false
       if (lineRange[0] == lineRange[1]) {

@@ -33,11 +33,22 @@ function getFunctionName(sourceCode) {
     return match[1];
 }
 
+function getArgumentCount(sourceCode) {
+    const match = sourceCode.match(/function\s+[A-Za-z_$][\w$]*\s*\(([^)]*)\)/);
+
+    if (!match) {
+        throw new Error('Could not determine the target function arguments from the provided source');
+    }
+
+    return match[1].split(',').length;
+}
+
 function runCoverageTests(originalCode, inputData, coverageMap, testCaseCount) {
     const helperFunctions = compileAuxiliaryFunctions();
     const helperContext = { ...helperFunctions };
     const __coverage__ = createCoverageTracker(coverageMap);
     const entryFunctionName = getFunctionName(originalCode);
+    const argCount = getArgumentCount(originalCode);
 
     //console.log('Running coverage tests with input data:', inputData.state);
 
@@ -71,7 +82,20 @@ function runCoverageTests(originalCode, inputData, coverageMap, testCaseCount) {
         //console.log(`Executing test case ${i} with board state:`, board.state);
 
         try {
-            fn_original(board);
+            if (argCount === 1) {
+                fn_original(board);
+            }
+            else if (argCount === 3) {
+                if (board.log.length === 0) {
+                    throw new Error('You must move at least one piece in order to cover the target line');
+                }
+                const start = { row: Number(board.log[board.log.length - 1].start.x), column: Number(board.log[board.log.length - 1].start.y) };
+                const destination = { row: Number(board.log[board.log.length - 1].destination.x), column: Number(board.log[board.log.length - 1].destination.y) };
+                fn_original(board, start, destination);
+            }
+            else {
+                throw new Error(`Unsupported number of arguments (${argCount}) in the target function`);
+            }
         }
         catch (error) {
             console.error(`Error executing test case ${i}:`, error);

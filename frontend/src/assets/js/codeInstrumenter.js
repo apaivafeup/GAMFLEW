@@ -86,7 +86,7 @@ function instrumentStatementChallenge(sourceCode, lineRange)
     let statementId = 0;
 
     let instrumentedCode = sourceCode.replace(
-        /return\s+([^;]+);|if\s*\(|else\s*{/g,
+        /return\s+([^;]+);|if\s*\(|else\s*{|while\s*\(|for\s*\(/g,
         (match, value, offset) => {
             const line = sourceCode.substring(0, offset).split('\n').length;
 
@@ -106,10 +106,20 @@ function instrumentStatementChallenge(sourceCode, lineRange)
 
                     return `__coverage__.hitStatement('` + id + `', 'if statement');\n${match}`;
                 }
-                else { // Else Statements
+                else if (match.includes('else')) { // Else Statements
                     coverageMap[id] = { line, hit: false, value: 'else statement' };
 
                     return `${match}\n__coverage__.hitStatement('` + id + `', 'else statement');`;
+                }
+                else if (match.includes('while')) { // While Statements
+                    coverageMap[id] = { line, hit: false, value: 'while statement' };
+
+                    return `__coverage__.hitStatement('` + id + `', 'while statement');\n${match}`;
+                }
+                else { // For Statements
+                    coverageMap[id] = { line, hit: false, value: 'for statement' };
+
+                    return `__coverage__.hitStatement('` + id + `', 'for statement');\n${match}`;
                 }
             }
         }
@@ -135,6 +145,8 @@ function instrumentDecisionChallenge(sourceCode, lineRange) {
             }
             else {
                 const id = statementId++;
+
+                condition = condition.replace(/\n|\t/g, '');
 
                 coverageMap[id] = { line, trueHit: false, falseHit: false, value: condition.trim() };
 
@@ -169,11 +181,15 @@ function instrumentConditionChallenge(sourceCode, lineRange) {
 
                 let coverageCallString = ``;
 
+                condition = condition.replace(/\n|\t/g, '');
+
                 condition = condition.split(/(&&|\|\|)/).map(part => part.trim()).filter(part => part && part !== '&&' && part !== '||');
 
                 condition.forEach((part, index) => {
                     trueHits[index] = false;
                     falseHits[index] = false;
+
+                    part = part.replace(/\(|\)/g, '');
 
                     coverageCallString += `__coverage__.hitCondition('` + id + `', ` + index + `, eval('` + part + `'));\n`;
                 });
@@ -213,6 +229,8 @@ function instrumentMCDCChallenge(sourceCode, lineRange) {
                 let tempCallString = ``;
                 let coverageCallString = ``;
 
+                condition = condition.replace(/\n|\t/g, '');
+
                 if (condition.includes('&&')) {
                     const parts = condition.split('&&').map(part => part.trim());
 
@@ -229,6 +247,8 @@ function instrumentMCDCChallenge(sourceCode, lineRange) {
                         decisionOutput[index + 1] = false;
 
                         casesHit[index + 1] = false;
+
+                        part = part.replace(/\(|\)/g, '');
 
                         tempCallString += `eval('` + part + `')` + (index < parts.length - 1 ? ', ' : ']');
                     });
@@ -251,6 +271,7 @@ function instrumentMCDCChallenge(sourceCode, lineRange) {
 
                         casesHit[index + 1] = false;
 
+                        part = part.replace(/\(|\)/g, '');
                         tempCallString += `eval('` + part + `')` + (index < parts.length - 1 ? ', ' : ']');
                     });
 

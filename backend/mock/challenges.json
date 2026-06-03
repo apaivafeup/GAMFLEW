@@ -1020,7 +1020,7 @@
     {
         "id": 0,
         "name": "Challenge 3.7: Double The Colors!",
-        "test_cases_count": 1,
+        "test_cases_count": 2,
         "score": 350,
         "hint": "Don't forget the function cannot return before reaching the line you have to cover!",
         "objective": "Decision coverage of line 27.\nNOTE: Use boards with only one piece.",
